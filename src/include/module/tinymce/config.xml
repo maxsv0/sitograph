@@ -1,0 +1,114 @@
+<?xml version='1.0'?> 
+<document>
+
+<config>
+	<param name="activationUrl" value="*"/>
+	<param name="activationLevel" value="3"/>
+	<param name="adminMenu" value="0"/>
+
+</config>
+
+
+<install>
+	<param name="name" value="tinymce" />
+	<param name="version" value="1.0"/>
+	<param name="date" value="01.06.2016"/>
+	<param name="title" value="TinyMCE"/>
+	<param name="description" value="TinyMCE Editor v. 4.3.12"/>
+	
+	<dependency module="msv-core" version="1.0" />
+
+	<file dir="module" path="tinymce/tinymce.php"/>
+	<file dir="module" path="tinymce/config.xml"/>
+	<file dir="content" path="js/tinymce/jquery.tinymce.min.js"/>
+	<file dir="content" path="js/tinymce/tinymce.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/colorpicker/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/print/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/autolink/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/hr/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/legacyoutput/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/contextmenu/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/fullpage/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/template/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/textpattern/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/autosave/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/tabfocus/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/example/dialog.html"/>
+	<file dir="content" path="js/tinymce/plugins/example/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/importcss/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/fullscreen/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/media/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/media/moxieplayer.swf"/>
+	<file dir="content" path="js/tinymce/plugins/imagetools/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/lists/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/code/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/visualchars/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/example_dependency/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/preview/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/autoresize/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/responsivefilemanager/img/insertfile.gif"/>
+	<file dir="content" path="js/tinymce/plugins/responsivefilemanager/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/paste/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/textcolor/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/layer/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/table/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/link/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/bbcode/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/insertdatetime/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/image/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/charmap/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/wordcount/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/emoticons/img/smiley-innocent.gif"/>
+	<file dir="content" path="js/tinymce/plugins/emoticons/img/smiley-foot-in-mouth.gif"/>
+	<file dir="content" path="js/tinymce/plugins/emoticons/img/smiley-sealed.gif"/>
+	<file dir="content" path="js/tinymce/plugins/emoticons/img/smiley-undecided.gif"/>
+	<file dir="content" path="js/tinymce/plugins/emoticons/img/smiley-kiss.gif"/>
+	<file dir="content" path="js/tinymce/plugins/emoticons/img/smiley-embarassed.gif"/>
+	<file dir="content" path="js/tinymce/plugins/emoticons/img/smiley-frown.gif"/>
+	<file dir="content" path="js/tinymce/plugins/emoticons/img/smiley-money-mouth.gif"/>
+	<file dir="content" path="js/tinymce/plugins/emoticons/img/smiley-wink.gif"/>
+	<file dir="content" path="js/tinymce/plugins/emoticons/img/smiley-laughing.gif"/>
+	<file dir="content" path="js/tinymce/plugins/emoticons/img/smiley-smile.gif"/>
+	<file dir="content" path="js/tinymce/plugins/emoticons/img/smiley-tongue-out.gif"/>
+	<file dir="content" path="js/tinymce/plugins/emoticons/img/smiley-cool.gif"/>
+	<file dir="content" path="js/tinymce/plugins/emoticons/img/smiley-surprised.gif"/>
+	<file dir="content" path="js/tinymce/plugins/emoticons/img/smiley-yell.gif"/>
+	<file dir="content" path="js/tinymce/plugins/emoticons/img/smiley-cry.gif"/>
+	<file dir="content" path="js/tinymce/plugins/emoticons/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/codesample/css/prism.css"/>
+	<file dir="content" path="js/tinymce/plugins/codesample/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/visualblocks/css/visualblocks.css"/>
+	<file dir="content" path="js/tinymce/plugins/visualblocks/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/directionality/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/save/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/spellchecker/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/searchreplace/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/pagebreak/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/nonbreaking/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/anchor/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/advlist/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/plugins/noneditable/plugin.min.js"/>
+	<file dir="content" path="js/tinymce/skins/lightgray/content.min.css"/>
+	<file dir="content" path="js/tinymce/skins/lightgray/skin.ie7.min.css"/>
+	<file dir="content" path="js/tinymce/skins/lightgray/img/loader.gif"/>
+	<file dir="content" path="js/tinymce/skins/lightgray/img/anchor.gif"/>
+	<file dir="content" path="js/tinymce/skins/lightgray/img/trans.gif"/>
+	<file dir="content" path="js/tinymce/skins/lightgray/img/object.gif"/>
+	<file dir="content" path="js/tinymce/skins/lightgray/content.inline.min.css"/>
+	<file dir="content" path="js/tinymce/skins/lightgray/skin.min.css"/>
+	<file dir="content" path="js/tinymce/skins/lightgray/fonts/tinymce-small.ttf"/>
+	<file dir="content" path="js/tinymce/skins/lightgray/fonts/tinymce-small.svg"/>
+	<file dir="content" path="js/tinymce/skins/lightgray/fonts/tinymce.svg"/>
+	<file dir="content" path="js/tinymce/skins/lightgray/fonts/tinymce.woff"/>
+	<file dir="content" path="js/tinymce/skins/lightgray/fonts/tinymce-small.woff"/>
+	<file dir="content" path="js/tinymce/skins/lightgray/fonts/tinymce-small.eot"/>
+	<file dir="content" path="js/tinymce/skins/lightgray/fonts/tinymce.ttf"/>
+	<file dir="content" path="js/tinymce/skins/lightgray/fonts/tinymce.eot"/>
+	<file dir="content" path="js/tinymce/license.txt"/>
+	<file dir="content" path="js/tinymce/langs/readme.md"/>
+	<file dir="content" path="js/tinymce/langs/ru.js"/>
+	<file dir="content" path="js/tinymce/langs/ru_RU.js"/>
+	<file dir="content" path="js/tinymce/themes/modern/theme.min.js"/>
+</install>
+
+</document>

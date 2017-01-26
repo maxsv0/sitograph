@@ -13,7 +13,7 @@
 	<param name="relatedItemsCount" value="6"/>
 	<param name="newestItemsCount" value="15"/>
 	<param name="adminMenu" value="true"/>
-	<param name="adminMenuOrder" value="11"/>
+	<param name="adminMenuOrder" value="28"/>
 	
 	<constant name="TABLE_BLOG_ARTICLES" value="articles"/>
 	<constant name="TABLE_BLOG_ARTICLE_CATEGORIES" value="article_categories"/>

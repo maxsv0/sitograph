@@ -1,0 +1,32 @@
+<?xml version='1.0'?> 
+<document>
+
+<config>
+	<param name="activationUrl" value="*"/>
+	<param name="activationLevel" value="3"/>
+	<param name="adminMenu" value="0"/>
+</config>
+
+
+<install>
+	<param name="name" value="fancybox" />
+	<param name="version" value="1.0"/>
+	<param name="date" value="01.06.2016"/>
+	<param name="title" value="jQuery.Fancybox"/>
+	<param name="description" value="jQuery Fancybox v2.1.5"/>
+	
+	<dependency module="msv-core" version="1.0" />
+	
+	<file dir="module" path="fancybox/fancybox.php"/>
+	<file dir="module" path="fancybox/config.xml"/>
+	<file dir="content" path="css/jquery.fancybox.css"/>
+	<file dir="content" path="js/jquery.fancybox.min.js"/>
+	<file dir="content" path="images/fancybox/blank.gif"/>
+	<file dir="content" path="images/fancybox/fancybox_loading.gif"/>
+	<file dir="content" path="images/fancybox/fancybox_loading@2x.gif"/>
+	<file dir="content" path="images/fancybox/fancybox_overlay.png"/>
+	<file dir="content" path="images/fancybox/fancybox_sprite.png"/>
+	<file dir="content" path="images/fancybox/fancybox_sprite@2x.png"/>
+</install>
+
+</document>

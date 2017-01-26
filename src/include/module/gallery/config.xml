@@ -10,7 +10,7 @@
 	<param name="searchUrlParam" value="s"/>
 	<param name="previewItemsCount" value="2"/>
 	<param name="adminMenu" value="true"/>
-	<param name="adminMenuOrder" value="12"/>
+	<param name="adminMenuOrder" value="29"/>
 	
 	<constant name="TABLE_GALLERY_ALBUM" value="gallery_album"/>
 	<constant name="TABLE_GALLERY_PHOTOS" value="gallery_photos"/>
