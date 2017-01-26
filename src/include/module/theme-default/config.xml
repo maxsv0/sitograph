@@ -1,0 +1,105 @@
+<?xml version='1.0'?> 
+<document>
+
+<config>
+	<param name="activationLevel" value="7"/>
+	<param name="activationUrl" value="*"/>
+	<param name="adminMenu" value="0"/>
+	
+</config>
+
+<install>
+	<param name="name" value="theme-default"/>
+	<param name="version" value="1.1"/>
+	<param name="date" value="24.01.2017"/>
+	<param name="installHook" value="ThemeDefaultInstall"/>
+	<param name="title" value="Theme - Default"/>
+	<param name="description" value="Default theme for MSV"/>
+	
+	<dependency module="msv-core" version="1.0" />
+	
+	<file dir="module" path="theme-default/theme-default.php"/>
+	<file dir="module" path="theme-default/config.xml"/>
+	<file dir="template" path="default/404.tpl"/>
+	<file dir="template" path="default/main.tpl"/>
+	<file dir="template" path="default/main-sideblock.tpl"/>
+	<file dir="template" path="default/index.tpl"/>
+	<file dir="template" path="default/widget/header.tpl"/>
+	<file dir="template" path="default/widget/footer.tpl"/>
+	<file dir="template" path="default/widget/messages.tpl"/>
+	<file dir="template" path="default/widget/navigation.tpl"/>
+	<file dir="template" path="default/widget/pagination.tpl"/>
+	<file dir="template" path="default/widget/sideblock.tpl"/>
+	<file dir="template" path="default/widget/menu-top.tpl"/>
+	<file dir="template" path="default/widget/menu-bottom.tpl"/>
+	
+	<file dir="template" path="default/admin.tpl"/>
+	<file dir="template" path="default/admin-login.tpl"/>
+
+	<file dir="template" path="default/admin/list-table.tpl"/>
+	<file dir="template" path="default/admin/form-table.tpl"/>
+	<file dir="template" path="default/admin/field-form.tpl"/>
+	<file dir="template" path="default/admin/fields/field-bool.tpl"/>
+	<file dir="template" path="default/admin/fields/field-default.tpl"/>
+	<file dir="template" path="default/admin/fields/field-text.tpl"/>
+	<file dir="template" path="default/admin/fields/field-doc.tpl"/>
+	<file dir="template" path="default/admin/fields/field-lang.tpl"/>
+	<file dir="template" path="default/admin/fields/field-updated.tpl"/>
+	<file dir="template" path="default/admin/fields/field-select.tpl"/>
+	<file dir="template" path="default/admin/fields/field-date.tpl"/>
+	<file dir="template" path="default/admin/fields/field-picture.tpl"/>
+	<file dir="template" path="default/admin/fields/field-file.tpl"/>
+	<file dir="template" path="default/admin/fields/field-multiselect.tpl"/>
+	<file dir="template" path="default/admin/section/design.tpl"/>
+	<file dir="template" path="default/admin/section/documents.tpl"/>
+	<file dir="template" path="default/admin/section/structure.tpl"/>
+	<file dir="template" path="default/admin/section/media_library.tpl"/>
+	<file dir="template" path="default/admin/section/menu.tpl"/>
+	<file dir="template" path="default/admin/section/locales.tpl"/>
+	<file dir="template" path="default/admin/section/users.tpl"/>
+	<file dir="template" path="default/admin/section/robots.tpl"/>
+	<file dir="template" path="default/admin/section/history.tpl"/>
+	<file dir="template" path="default/admin/section/mail_template.tpl"/>
+	<file dir="template" path="default/admin/section/module_settings.tpl"/>
+	<file dir="template" path="default/admin/section/analytics.tpl"/>
+	<file dir="template" path="default/admin/section/social.tpl"/>
+	<file dir="template" path="default/admin/section/site_settings.tpl"/>
+	<file dir="template" path="default/admin/section/realtime.tpl"/>
+	<file dir="template" path="default/admin/section/seo.tpl"/>
+	<file dir="template" path="default/admin/section/sitemap.tpl"/>
+	<file dir="template" path="default/admin/section/manual.tpl"/>
+	<file dir="template" path="default/admin/section/index.tpl"/>
+	<file dir="template" path="default/admin/section/custom.tpl"/>
+	<file dir="template" path="default/admin/section/config.tpl"/>
+	<file dir="template" path="default/admin/section/htaccess.tpl"/>
+	<file dir="template" path="default/admin/menu/edit.tpl"/>
+	<file dir="template" path="default/admin/menu/list.tpl"/>
+	<file dir="template" path="default/admin/documents/edit.tpl"/>
+	<file dir="template" path="default/admin/documents/list.tpl"/>
+	<file dir="template" path="default/admin/custom/edit.tpl"/>
+	<file dir="template" path="default/admin/custom/list.tpl"/>
+	<file dir="template" path="default/admin/site_settings/edit.tpl"/>
+	<file dir="template" path="default/admin/site_settings/list.tpl"/>
+	<file dir="template" path="default/admin/structure/edit.tpl"/>
+	<file dir="template" path="default/admin/structure/list.tpl"/>
+	<file dir="template" path="default/admin/structure/list-level.tpl"/>
+	<file dir="template" path="default/admin/structure/list-level2.tpl"/>
+	<file dir="template" path="default/admin/users/edit.tpl"/>
+	<file dir="template" path="default/admin/users/list.tpl"/>
+	<file dir="template" path="default/admin/seo/edit.tpl"/>
+	<file dir="template" path="default/admin/seo/list.tpl"/>
+	<file dir="template" path="default/admin/mail_template/edit.tpl"/>
+	<file dir="template" path="default/admin/mail_template/list.tpl"/>
+	<file dir="template" path="default/admin/media/file-upload.tpl"/>
+</install>
+
+
+<locales>
+	<locale name="ru">
+		<field name="default.field" value="Custom Text"/>
+	</locale>
+	<locale name="en">
+		<field name="default.field" value="Custom Text"/>
+	</locale>
+</locales>
+</document>

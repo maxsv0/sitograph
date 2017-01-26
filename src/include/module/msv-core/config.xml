@@ -1,0 +1,684 @@
+<?xml version='1.0'?> 
+<document>
+
+<config>
+	<param name="activationUrl" value="*"/>
+	<param name="adminMenu" value="0"/>
+	
+	<constant name="TABLE_STRUCTURE" value="structure"/>
+	<constant name="TABLE_DOCUMENTS" value="documents"/>
+	<constant name="TABLE_SETTINGS" value="settings"/>
+	<constant name="TABLE_MAIL_TEMPLATES" value="mail_templates"/>
+	<constant name="TABLE_MENU" value="menu"/>
+	
+	<api name="structure" action="ajax_Get_Structure"/>
+	<api name="uploadpic" action="ajax_Upload_Picture"/>
+	
+	<table name="structure" index="url" title="name" useseo="true">
+		<field name="id" type="id"/>
+		<field name="published" type="published"/>
+		<field name="deleted" type="deleted"/>
+		<field name="author" type="author"/>
+		<field name="updated" type="updated"/>
+		<field name="lang" type="lang"/>
+		<field name="url" type="str"/>
+		<field name="parent_id" type="int" select-from="table:structure"/>
+		<field name="name" type="str"/>
+		<field name="template" type="str"/>
+		<field name="page_template" type="str"/>
+		<field name="page_document_id" type="int"/>
+		<field name="sitemap" type="str"/>
+		<field name="debug" type="bool"/>
+		<field name="access" type="str" select-from="list:everyone,user,admin,superadmin"/>
+		<field name="access_users" type="array" selectlist="table:users"/>
+	</table>
+	<table name="documents" index="id" title="id">
+		<field name="id" type="id"/>
+		<field name="published" type="published"/>
+		<field name="deleted" type="deleted"/>
+		<field name="author" type="author"/>
+		<field name="updated" type="updated"/>
+		<field name="lang" type="lang"/>
+		<field name="name" type="text"/>
+		<field name="text" type="doc"/>
+		<field name="external_link" type="str"/>
+	</table>
+	<table name="settings" index="param" title="param">
+		<field name="id" type="id"/>
+		<field name="published" type="published"/>
+		<field name="deleted" type="deleted"/>
+		<field name="author" type="author"/>
+		<field name="updated" type="updated"/>
+		<field name="lang" type="lang"/>
+		<field name="param" type="str"/>
+		<field name="value" type="str"/>
+		<field name="description" type="str"/>
+	</table>
+	<table name="mail_templates" index="id" title="name">
+		<field name="id" type="id"/>
+		<field name="published" type="published"/>
+		<field name="deleted" type="deleted"/>
+		<field name="author" type="author"/>
+		<field name="updated" type="updated"/>
+		<field name="lang" type="lang"/>
+		<field name="name" type="str"/>
+		<field name="subject" type="str"/>
+		<field name="text" type="doc"/>
+	</table>
+	<table name="menu" index="id" title="name">
+		<field name="id" type="id"/>
+		<field name="published" type="published"/>
+		<field name="deleted" type="deleted"/>
+		<field name="author" type="author"/>
+		<field name="updated" type="updated"/>
+		<field name="lang" type="lang"/>
+		<field name="menu_id" type="str"/>
+		<field name="structure_id" type="int" select-from="table:structure"/>
+		<field name="name" type="str"/>
+		<field name="url" type="str"/>
+		<field name="order_id" type="int"/>
+		<field name="parent_id" type="int" select-from="table:menu"/>
+	</table>
+</config>
+
+<install>
+	<param name="name" value="msv-core" />
+	<param name="version" value="1.2"/>
+	<param name="date" value="29.12.2016"/>
+	<param name="installHook" value="CoreInstall"/>
+	<param name="title" value="MSVCore"/>
+	<param name="description" value="Core functions for MSV"/>
+
+	<dependency module="msv-api" version="1.0" />
+	
+	<file dir="abs" path="robots.txt"/>
+	<file dir="abs" path="index.php"/>
+	<file dir="abs" path="load.php"/>
+	<file dir="include" path="index.php"/>
+	<file dir="include" path="class.msv.php"/>
+	<file dir="include" path="class.module.php"/>
+	<file dir="module" path="index.php"/>
+	<file dir="module" path="msv-core/msv-core.php"/>
+	<file dir="module" path="msv-core/config.xml"/>
+	<file dir="content" path="images/msv-logo.png"/>
+</install>
+
+<locales>
+	<locale name="ru">
+		<field name="actions" value="Действия"/>
+		<field name="not_found" value="Не найдено"/>
+		<field name="yes" value="Да"/>
+		<field name="no" value="Нет"/>
+		
+		<field name="btn.delete" value="Удалить"/>
+		<field name="btn.edit" value="Редактировать"/>
+		<field name="btn.duplicate" value="Дублировать"/>
+		<field name="btn.create" value="Создать"/>
+		<field name="btn.document_create" value="Создать документ"/>
+		<field name="btn.document_edit" value="Документ"/>
+		<field name="btn.add_new" value="Добавить элемент"/>
+		<field name="btn.cancel" value="Отмена"/>
+		<field name="btn.close" value="Закрыть"/>
+		<field name="btn.reset" value="Сбросить"/>
+		<field name="btn.save" value="Сохранить"/>
+		<field name="btn.save_exit" value="Сохранить и выйти"/>
+		<field name="btn.add_child" value="Добавить подраздел"/>
+		<field name="btn.back_to_admin" value="Вернуться в админку"/>
+		<field name="btn.edit_settings" value="Настройки"/>
+		<field name="btn.edit_document" value="Документы"/>
+		<field name="btn.edit_seo" value="SEO страницы"/>
+		
+		<field name="tab.home" value="Основное"/>
+		<field name="tab.document" value="Документ"/>
+		<field name="tab.seo" value="SEO"/>
+		<field name="tab.files" value="Изображения и файлы"/>
+		<field name="tab.access" value="Доступ"/>
+		<field name="tab.history" value="История изменений"/>
+		
+		<field name="type.id" value="ID, число"/>
+		<field name="type.author" value="строка (60)"/>
+		<field name="type.updated" value="дата"/>
+		<field name="type.lang" value="строка (20)"/>
+		<field name="type.str" value="строка (255)"/>
+		<field name="type.int" value="целое число"/>
+		<field name="type.boot" value="логический"/>
+		<field name="type.array" value="список"/>
+		<field name="type.pic" value="изображение"/>
+		<field name="type.file" value="файл"/>
+		<field name="type.select" value="список"/>
+		
+		<field name="table.structure" value="Структура сайта"/>
+		<field name="table.structure.id" value="ID"/>
+		<field name="table.structure.published" value="Активно"/>
+		<field name="table.structure.deleted" value="Удалено"/>
+		<field name="table.structure.author" value="Автор"/>
+		<field name="table.structure.updated" value="Обновлено"/>
+		<field name="table.structure.lang" value="Язык"/>
+		<field name="table.structure.url" value="URL"/>
+		<field name="table.structure.parent_id" value="Родительский ID"/>
+		<field name="table.structure.name" value="Название"/>
+		<field name="table.structure.template" value="Дизайн"/>
+		<field name="table.structure.page_template" value="Шаблон"/>
+		<field name="table.structure.page_document_id" value="Документ"/>
+		<field name="table.structure.document_text" value="Документ"/>
+		<field name="table.structure.document_name" value="Заголовок Документа"/>
+		<field name="table.structure.sitemap" value="Карта сайта"/>
+		<field name="table.structure.debug" value="Режим отладки"/>
+		<field name="table.structure.menu" value="Меню"/>
+		<field name="table.structure.menu_order" value="Номер в меню"/>
+		<field name="table.structure.access" value="Доступ"/>
+		<field name="table.structure.access_users" value="Доступ для пользователей"/>
+		<field name="table.structure.seo_title" value="Title страницы"/>
+		<field name="table.structure.seo_description" value="Описание страницы"/>
+		<field name="table.structure.seo_keywords" value="Ключевые слова"/>
+		
+		<field name="access.everyone" value="Доступен для всех"/>
+		<field name="access.user" value="Зарег. пользователи"/>
+		<field name="access.admin" value="Администратор"/>
+		<field name="access.superadmin" value="Суперадмин"/>
+		
+		<field name="table.settings" value="Настройки сайта"/>
+		<field name="table.settings.id" value="ID"/>
+		<field name="table.settings.published" value="Активно"/>
+		<field name="table.settings.deleted" value="Удалено"/>
+		<field name="table.settings.author" value="Автор"/>
+		<field name="table.settings.updated" value="Обновлено"/>
+		<field name="table.settings.lang" value="Язык"/>
+		<field name="table.settings.param" value="Название переменной"/>
+		<field name="table.settings.value" value="Значение"/>
+		<field name="table.settings.description" value="Описание"/>
+		
+		<field name="table.documents" value="Документы"/>
+		<field name="table.documents.id" value="ID"/>
+		<field name="table.documents.published" value="Активно"/>
+		<field name="table.documents.deleted" value="Удалено"/>
+		<field name="table.documents.author" value="Автор"/>
+		<field name="table.documents.updated" value="Обновлено"/>
+		<field name="table.documents.lang" value="Язык"/>
+		<field name="table.documents.name" value="Название документа"/>
+		<field name="table.documents.text" value="Текст документа HTML"/>
+		<field name="table.documents.external_link" value="Внешняя ссылка"/>
+		
+		<field name="table.mail_templates" value="Шаблоны писем"/>
+		<field name="table.mail_templates.id" value="ID"/>
+		<field name="table.mail_templates.published" value="Активно"/>
+		<field name="table.mail_templates.deleted" value="Удалено"/>
+		<field name="table.mail_templates.author" value="Автор"/>
+		<field name="table.mail_templates.updated" value="Обновлено"/>
+		<field name="table.mail_templates.lang" value="Язык"/>
+		<field name="table.mail_templates.name" value="Название"/>
+		<field name="table.mail_templates.subject" value="Тема письма"/>
+		<field name="table.mail_templates.text" value="Текст письма HTML"/>
+		
+		<field name="table.menu" value="Меню сайта"/>
+		<field name="table.menu.id" value="ID"/>
+		<field name="table.menu.published" value="Активно"/>
+		<field name="table.menu.deleted" value="Удалено"/>
+		<field name="table.menu.author" value="Автор"/>
+		<field name="table.menu.updated" value="Обновлено"/>
+		<field name="table.menu.lang" value="Язык"/>
+		<field name="table.menu.menu_id" value="ID меню"/>
+		<field name="table.menu.structure_id" value="Структура сайта"/>
+		<field name="table.menu.name" value="Название"/>
+		<field name="table.menu.url" value="Ссылка"/>
+		<field name="table.menu.order_id" value="Номер"/>
+		<field name="table.menu.parent_id" value="Родительский ID"/>
+		
+		<field name="msg.error_remove_active" value="Невозможно удалить активный модуль"/>
+		<field name="msg.removed" value="удален"/>
+		<field name="msg.no_repository" value="Репозиторий не найден"/>
+		<field name="msg.repository_not_found" value="не найден в репозитории"/>
+		<field name="msg.cant_open_zip" value="не удалось открыть .zip архив"/>
+		<field name="msg.deleted_ok" value="Успешно удалено"/>
+		<field name="msg.created_ok" value="Создано успешно"/>
+		<field name="msg.saved_ok" value="Успешно сохранено"/>
+		<field name="msg.save_error" value="Ошибка сохранения"/>
+		<field name="msg.development_version" value="Это бета версия MSV Website. Режим чтения."/>
+		
+		<field name="structure.homepage" value="Главная"/>
+		<field name="structure.first_page" value="Первая страница"/>
+		<field name="structure.404" value="Ошибка 404"/>
+		<field name="structure.admin_homepage" value="Панель управления"/>
+		<field name="structure.admin_login" value="Вход в Панель управления"/>
+	</locale>
+	<locale name="en">
+		<field name="actions" value="Actions"/>
+		<field name="not_found" value="Not found"/>
+		<field name="yes" value="Yes"/>
+		<field name="no" value="No"/>
+		
+		<field name="btn.delete" value="Delete"/>
+		<field name="btn.edit" value="Edit"/>
+		<field name="btn.duplicate" value="Duplicate"/>
+		<field name="btn.create" value="Create"/>
+		<field name="btn.document_create" value="Create Document"/>
+		<field name="btn.document_edit" value="Edit Document"/>
+		<field name="btn.add_new" value="Add new item"/>
+		<field name="btn.cancel" value="Cancel"/>
+		<field name="btn.close" value="Сlose"/>
+		<field name="btn.reset" value="Reset"/>
+		<field name="btn.save" value="Save"/>
+		<field name="btn.save_exit" value="Save and Exit"/>
+		<field name="btn.add_child" value="Add sub-page"/>
+		<field name="btn.back_to_admin" value="Back to Admin"/>
+		<field name="btn.edit_settings" value="Edit Settings"/>
+		<field name="btn.edit_document" value="Edit Document"/>
+		<field name="btn.edit_seo" value="Edit SEO"/>
+		
+		<field name="tab.home" value="General"/>
+		<field name="tab.document" value="Document"/>
+		<field name="tab.seo" value="SEO"/>
+		<field name="tab.files" value="Pictures and files"/>
+		<field name="tab.access" value="Access"/>
+		<field name="tab.history" value="Changes history"/>
+		
+		<field name="type.id" value="ID, int"/>
+		<field name="type.author" value="string (60)"/>
+		<field name="type.updated" value="date"/>
+		<field name="type.lang" value="string (20)"/>
+		<field name="type.str" value="string (255)"/>
+		<field name="type.int" value="int"/>
+		<field name="type.bool" value="bool"/>
+		<field name="type.array" value="list"/>
+		<field name="type.pic" value="picture"/>
+		<field name="type.file" value="file"/>
+		<field name="type.select" value="select"/>
+
+		<field name="table.structure" value="Structure"/>
+		<field name="table.structure.id" value="ID"/>
+		<field name="table.structure.published" value="Published"/>
+		<field name="table.structure.deleted" value="Deleted"/>
+		<field name="table.structure.author" value="Author"/>
+		<field name="table.structure.updated" value="Updated"/>
+		<field name="table.structure.lang" value="Lang"/>
+		<field name="table.structure.url" value="URL"/>
+		<field name="table.structure.parent_id" value="Parent ID"/>
+		<field name="table.structure.name" value="Name"/>
+		<field name="table.structure.template" value="Design"/>
+		<field name="table.structure.page_template" value="Page template"/>
+		<field name="table.structure.page_document_id" value="Document"/>
+		<field name="table.structure.document_text" value="Document"/>
+		<field name="table.structure.document_name" value="Document Title"/>
+		<field name="table.structure.sitemap" value="Sitemap"/>
+		<field name="table.structure.debug" value="Debug mode"/>
+		<field name="table.structure.menu" value="Menu"/>
+		<field name="table.structure.menu_order" value="Menu order num"/>
+		<field name="table.structure.access" value="Access"/>
+		<field name="table.structure.access_users" value="Access for users"/>
+		<field name="table.structure.seo_title" value="Page Title"/>
+		<field name="table.structure.seo_description" value="Description"/>
+		<field name="table.structure.seo_keywords" value="Keywords"/>
+		
+		<field name="access.everyone" value="Everyone"/>
+		<field name="access.user" value="Registered Users"/>
+		<field name="access.admin" value="Administrator"/>
+		<field name="access.superadmin" value="Superadmin"/>
+		
+		<field name="table.settings" value="Settings"/>
+		<field name="table.settings.id" value="ID"/>
+		<field name="table.settings.published" value="Published"/>
+		<field name="table.settings.deleted" value="Deleted"/>
+		<field name="table.settings.author" value="Author"/>
+		<field name="table.settings.updated" value="Updated"/>
+		<field name="table.settings.lang" value="Lang"/>
+		<field name="table.settings.param" value="Config name"/>
+		<field name="table.settings.value" value="Param value"/>
+		<field name="table.settings.description" value="Description"/>
+		
+		<field name="table.documents" value="Documents"/>
+		<field name="table.documents.id" value="ID"/>
+		<field name="table.documents.published" value="Published"/>
+		<field name="table.documents.deleted" value="Deleted"/>
+		<field name="table.documents.author" value="Author"/>
+		<field name="table.documents.updated" value="Updated"/>
+		<field name="table.documents.lang" value="Lang"/>
+		<field name="table.documents.name" value="Document Name"/>
+		<field name="table.documents.text" value="Document Text HTML"/>
+		<field name="table.documents.external_link" value="External Link"/>
+		
+		<field name="table.menu" value="Menu"/>
+		<field name="table.menu.id" value="ID"/>
+		<field name="table.menu.published" value="Published"/>
+		<field name="table.menu.deleted" value="Deleted"/>
+		<field name="table.menu.author" value="Author"/>
+		<field name="table.menu.updated" value="Updated"/>
+		<field name="table.menu.lang" value="Lang"/>
+		<field name="table.menu.menu_id" value="Menu ID"/>
+		<field name="table.menu.structure_id" value="Structure"/>
+		<field name="table.menu.name" value="Link name"/>
+		<field name="table.menu.url" value="Link URL"/>
+		<field name="table.menu.order_id" value="Sort number"/>
+		<field name="table.menu.parent_id" value="Parent ID"/>
+		
+		<field name="table.mail_templates" value="Email Templates"/>
+		<field name="table.mail_templates.id" value="ID"/>
+		<field name="table.mail_templates.published" value="Published"/>
+		<field name="table.mail_templates.deleted" value="Deleted"/>
+		<field name="table.mail_templates.author" value="Author"/>
+		<field name="table.mail_templates.updated" value="Updated"/>
+		<field name="table.mail_templates.lang" value="Lang"/>
+		<field name="table.mail_templates.name" value="Template Name"/>
+		<field name="table.mail_templates.subject" value="Email subject"/>
+		<field name="table.mail_templates.text" value="Email body HTML"/>
+		
+		<field name="msg.error_remove_active" value="Can't remove active module"/>
+		<field name="msg.removed" value="removed"/>
+		<field name="msg.no_repository" value="Репозиторий не найден"/>
+		<field name="msg.repository_not_found" value="not found in repository"/>
+		<field name="msg.cant_open_zip" value="can't open zip file"/>
+		<field name="msg.deleted_ok" value="Deleted successfuly"/>
+		<field name="msg.created_ok" value="Created successfuly"/>
+		<field name="msg.saved_ok" value="Saved successfuly"/>
+		<field name="msg.save_error" value="Error during saving"/>
+		<field name="msg.development_version" value="This is development version. Readonly mode."/>
+		<field name="msg.email_sent_to" value="Письмо успешно отправлено на email"/>
+		<field name="msg.email_sending_error" value="Ошибка отправки письма на email "/>
+		
+		<field name="structure.homepage" value="Homepage"/>
+		<field name="structure.first_page" value="The First page"/>
+		<field name="structure.404" value="404 Error"/>
+		<field name="structure.admin_homepage" value="Admin Homepage"/>
+		<field name="structure.admin_login" value="Admin Login"/>
+	</locale>
+	<locale name="de">
+		<field name="actions" value="Actions"/>
+		<field name="not_found" value="Not found"/>
+		<field name="yes" value="Yes"/>
+		<field name="no" value="No"/>
+		
+		<field name="btn.delete" value="Delete"/>
+		<field name="btn.edit" value="Edit"/>
+		<field name="btn.duplicate" value="Duplicate"/>
+		<field name="btn.create" value="Create"/>
+		<field name="btn.document_create" value="Create Document"/>
+		<field name="btn.document_edit" value="Edit Document"/>
+		<field name="btn.add_new" value="Add new item"/>
+		<field name="btn.cancel" value="Cancel"/>
+		<field name="btn.close" value="Сlose"/>
+		<field name="btn.reset" value="Reset"/>
+		<field name="btn.save" value="Save"/>
+		<field name="btn.save_exit" value="Save and Exit"/>
+		<field name="btn.add_child" value="Add sub-page"/>
+		<field name="btn.back_to_admin" value="Back to Admin"/>
+		<field name="btn.edit_settings" value="Edit Settings"/>
+		<field name="btn.edit_document" value="Edit Document"/>
+		<field name="btn.edit_seo" value="Edit SEO"/>
+		
+		<field name="tab.home" value="General"/>
+		<field name="tab.document" value="Document"/>
+		<field name="tab.seo" value="SEO"/>
+		<field name="tab.files" value="Pictures and files"/>
+		<field name="tab.access" value="Access"/>
+		<field name="tab.history" value="Changes history"/>
+		
+		<field name="type.id" value="ID, int"/>
+		<field name="type.author" value="string (60)"/>
+		<field name="type.updated" value="date"/>
+		<field name="type.lang" value="string (20)"/>
+		<field name="type.str" value="string (255)"/>
+		<field name="type.int" value="int"/>
+		<field name="type.bool" value="bool"/>
+		<field name="type.array" value="list"/>
+		<field name="type.pic" value="picture"/>
+		<field name="type.file" value="file"/>
+		<field name="type.select" value="select"/>
+
+		<field name="table.structure" value="Structure"/>
+		<field name="table.structure.id" value="ID"/>
+		<field name="table.structure.published" value="Published"/>
+		<field name="table.structure.deleted" value="Deleted"/>
+		<field name="table.structure.author" value="Author"/>
+		<field name="table.structure.updated" value="Updated"/>
+		<field name="table.structure.lang" value="Lang"/>
+		<field name="table.structure.url" value="URL"/>
+		<field name="table.structure.parent_id" value="Parent ID"/>
+		<field name="table.structure.name" value="Name"/>
+		<field name="table.structure.template" value="Design"/>
+		<field name="table.structure.page_template" value="Page template"/>
+		<field name="table.structure.page_document_id" value="Document"/>
+		<field name="table.structure.document_text" value="Document"/>
+		<field name="table.structure.document_name" value="Document Title"/>
+		<field name="table.structure.sitemap" value="Sitemap"/>
+		<field name="table.structure.debug" value="Debug mode"/>
+		<field name="table.structure.menu" value="Menu"/>
+		<field name="table.structure.menu_order" value="Menu order num"/>
+		<field name="table.structure.access" value="Access"/>
+		<field name="table.structure.access_users" value="Access for users"/>
+		<field name="table.structure.seo_title" value="Page Title"/>
+		<field name="table.structure.seo_description" value="Description"/>
+		<field name="table.structure.seo_keywords" value="Keywords"/>
+		
+		<field name="access.everyone" value="Everyone"/>
+		<field name="access.user" value="Registered Users"/>
+		<field name="access.admin" value="Administrator"/>
+		<field name="access.superadmin" value="Superadmin"/>
+		
+		<field name="table.settings" value="Settings"/>
+		<field name="table.settings.id" value="ID"/>
+		<field name="table.settings.published" value="Published"/>
+		<field name="table.settings.deleted" value="Deleted"/>
+		<field name="table.settings.author" value="Author"/>
+		<field name="table.settings.updated" value="Updated"/>
+		<field name="table.settings.lang" value="Lang"/>
+		<field name="table.settings.param" value="Config name"/>
+		<field name="table.settings.value" value="Param value"/>
+		<field name="table.settings.description" value="Description"/>
+		
+		<field name="table.documents" value="Documents"/>
+		<field name="table.documents.id" value="ID"/>
+		<field name="table.documents.published" value="Published"/>
+		<field name="table.documents.deleted" value="Deleted"/>
+		<field name="table.documents.author" value="Author"/>
+		<field name="table.documents.updated" value="Updated"/>
+		<field name="table.documents.lang" value="Lang"/>
+		<field name="table.documents.name" value="Document Name"/>
+		<field name="table.documents.text" value="Document Text HTML"/>
+		<field name="table.documents.external_link" value="External Link"/>
+		
+		<field name="table.menu" value="Menu"/>
+		<field name="table.menu.id" value="ID"/>
+		<field name="table.menu.published" value="Published"/>
+		<field name="table.menu.deleted" value="Deleted"/>
+		<field name="table.menu.author" value="Author"/>
+		<field name="table.menu.updated" value="Updated"/>
+		<field name="table.menu.lang" value="Lang"/>
+		<field name="table.menu.menu_id" value="Menu ID"/>
+		<field name="table.menu.structure_id" value="Structure"/>
+		<field name="table.menu.name" value="Link name"/>
+		<field name="table.menu.url" value="Link URL"/>
+		<field name="table.menu.order_id" value="Sort number"/>
+		
+		<field name="table.mail_templates" value="Email Templates"/>
+		<field name="table.mail_templates.id" value="ID"/>
+		<field name="table.mail_templates.published" value="Published"/>
+		<field name="table.mail_templates.deleted" value="Deleted"/>
+		<field name="table.mail_templates.author" value="Author"/>
+		<field name="table.mail_templates.updated" value="Updated"/>
+		<field name="table.mail_templates.lang" value="Lang"/>
+		<field name="table.mail_templates.name" value="Template Name"/>
+		<field name="table.mail_templates.subject" value="Email subject"/>
+		<field name="table.mail_templates.text" value="Email body HTML"/>
+		
+		<field name="msg.error_remove_active" value="Can't remove active module"/>
+		<field name="msg.removed" value="removed"/>
+		<field name="msg.no_repository" value="Репозиторий не найден"/>
+		<field name="msg.repository_not_found" value="not found in repository"/>
+		<field name="msg.cant_open_zip" value="can't open zip file"/>
+		<field name="msg.deleted_ok" value="Deleted successfuly"/>
+		<field name="msg.created_ok" value="Created successfuly"/>
+		<field name="msg.saved_ok" value="Saved successfuly"/>
+		<field name="msg.save_error" value="Error during saving"/>
+		<field name="msg.development_version" value="This is development version. Readonly mode."/>
+		<field name="msg.email_sent_to" value="Письмо успешно отправлено на email"/>
+		<field name="msg.email_sending_error" value="Ошибка отправки письма на email "/>
+		
+		<field name="structure.homepage" value="Homepage"/>
+		<field name="structure.first_page" value="The First page"/>
+		<field name="structure.404" value="404 Error"/>
+		<field name="structure.admin_homepage" value="Admin Homepage"/>
+		<field name="structure.admin_login" value="Admin Login"/>
+	</locale>
+    <locale name="ua">
+        <field name="actions" value="Дії"/>
+		<field name="not_found" value="Не знайдено"/>
+		<field name="yes" value="Так"/>
+		<field name="no" value="Ні"/>
+		
+		<field name="btn.delete" value="Видалити"/>
+		<field name="btn.edit" value="Редагувати"/>
+		<field name="btn.duplicate" value="Дублювати"/>
+		<field name="btn.document_create" value="Створити"/>
+		<field name="btn.document_edit" value="Редагувати"/>
+		<field name="btn.add_new" value="Додати елемент"/>
+		<field name="btn.cancel" value="Відмінити"/>
+		<field name="btn.reset" value="Скинути"/>
+		<field name="btn.save" value="Зберігти"/>
+		<field name="btn.save_exit" value="Зберігти і вийти"/>
+		<field name="btn.add_child" value="Добдати подрозділ"/>
+        <field name="btn.generate" value="Генерувати"/>
+		
+		<field name="tab.home" value="Головне"/>
+		<field name="tab.document" value="Документ"/>
+		<field name="tab.seo" value="SEO"/>
+		<field name="tab.files" value="Зображення і файли"/>
+		<field name="tab.access" value="Доступ"/>
+		<field name="tab.history" value="Історія змін"/>
+		
+		<field name="admin.homepage" value="Головна"/>
+		<field name="admin.homepage_title" value="Головна HOST"/>
+		<field name="admin.users" value="Користувачі сайту"/>
+		<field name="admin.users_title" value="Список користувачів сайту"/>
+		<field name="admin.structure" value="Структура сайту"/>
+		<field name="admin.structure_title" value="Структура сайту {HOST}"/>
+		<field name="admin.menu" value="Меню"/>
+		<field name="admin.menu_title" value="Управління меню сайту"/>
+		<field name="admin.documents" value="Документи"/>
+		<field name="admin.documents_title" value="Документи"/>
+		<field name="admin.files_and_doc" value="Файли і документи"/>
+		<field name="admin.files_and_doc_title" value="Менеджер файлів і документів"/>
+		<field name="admin.site_settings" value="Налаштування сайту"/>
+		<field name="admin.site_settings_title" value="Налаштування сайту"/>
+		<field name="admin.locales" value="Мови і тексти"/>
+		<field name="admin.locales_title" value="Мови і тексти"/>
+		<field name="admin.mail_template" value="Шаблони листів"/>
+		<field name="admin.mail_template_title" value="Шаблони листів"/>
+		<field name="admin.stat" value="Статистика переглядів"/>
+		<field name="admin.stat_title" value="Статистика переглядів для {HOST}"/>
+		<field name="admin.seo" value="SEO"/>
+		<field name="admin.seo_title" value="SEO сайту"/>
+		<field name="admin.robots" value="Редагування robots.txt"/>
+		<field name="admin.robots_title" value="Файл robots.txt"/>
+		<field name="admin.module_settings" value="Управління модулями сайту"/>
+		<field name="admin.module_settings_title" value="Управління модулями сайту"/>
+		<field name="admin.design" value="Дизайни"/>
+		<field name="admin.design_title" value="Дизайни"/>
+		<field name="admin.history" value="Істория сесий"/>
+		<field name="admin.history_title" value="Істория сесий користувачів"/>
+		<field name="admin.locale_param" value="Назва змінної"/>
+		<field name="admin.locale_value" value="Значення"/>
+		<field name="admin.robots_example_open" value="Приклад відкритого сайту:"/>
+		<field name="admin.robots_example_closed" value="Приклад закритого сайту:"/>
+		<field name="admin.robots_example_seo" value="Приклад для SEO:"/>
+        <field name="admin.sitemap" value="Мапа сайту"/>
+		
+		<field name="type.id" value="ID, число"/>
+		<field name="type.author" value="строка (60)"/>
+		<field name="type.updated" value="дата"/>
+		<field name="type.lang" value="строка (20)"/>
+		<field name="type.str" value="строка (255)"/>
+		<field name="type.int" value="целое число"/>
+		<field name="type.boot" value="логический"/>
+		<field name="type.array" value="список"/>
+		<field name="type.pic" value="зображення"/>
+		<field name="type.file" value="файл"/>
+		<field name="type.select" value="список"/>
+		
+		<field name="table.structure" value="Структура сайту"/>
+		<field name="table.structure.id" value="ID"/>
+		<field name="table.structure.published" value="Активно"/>
+		<field name="table.structure.deleted" value="Видалене"/>
+		<field name="table.structure.author" value="Автор"/>
+		<field name="table.structure.updated" value="Оновлено"/>
+		<field name="table.structure.lang" value="Мова"/>
+		<field name="table.structure.url" value="URL"/>
+		<field name="table.structure.parent_id" value="Батьківський ID"/>
+		<field name="table.structure.name" value="Назва"/>
+		<field name="table.structure.template" value="Дизайн"/>
+		<field name="table.structure.page_template" value="Шаблон"/>
+		<field name="table.structure.page_document_id" value="Документ"/>
+		<field name="table.structure.document_text" value="Документ"/>
+		<field name="table.structure.sitemap" value="Мапа сайту"/>
+		<field name="table.structure.debug" value="Режим налагодження"/>
+		<field name="table.structure.menu" value="Меню"/>
+		<field name="table.structure.menu_order" value="Номер в меню"/>
+		<field name="table.structure.access" value="Доступ"/>
+		<field name="table.structure.access_users" value="Доступ для користувачів"/>
+		<field name="table.structure.seo_title" value="Title страници"/>
+		<field name="table.structure.seo_description" value="Опис страници"/>
+		<field name="table.structure.seo_keywords" value="Ключові слова"/>
+		
+		<field name="access.everyone" value="Доступен для всіх"/>
+		<field name="access.user" value="Зарег. користувачі"/>
+		<field name="access.admin" value="Адміністратор"/>
+		<field name="access.superadmin" value="Суперадмін"/>
+		
+		<field name="table.settings" value="Налаштування сайту"/>
+		<field name="table.settings.id" value="ID"/>
+		<field name="table.settings.published" value="Активно"/>
+		<field name="table.settings.deleted" value="Видалене"/>
+		<field name="table.settings.author" value="Автор"/>
+		<field name="table.settings.updated" value="Оновлено"/>
+		<field name="table.settings.lang" value="Мова"/>
+		<field name="table.settings.param" value="Назва змінной"/>
+		<field name="table.settings.value" value="Значення"/>
+		<field name="table.settings.description" value="Опис"/>
+		
+		<field name="table.documents" value="Документи"/>
+		<field name="table.documents.id" value="ID"/>
+		<field name="table.documents.published" value="Активно"/>
+		<field name="table.documents.deleted" value="Видалене"/>
+		<field name="table.documents.author" value="Автор"/>
+		<field name="table.documents.updated" value="Обновлено"/>
+		<field name="table.documents.lang" value="Мова"/>
+		<field name="table.documents.name" value="Назва документу"/>
+		<field name="table.documents.text" value="Текст документу HTML"/>
+		<field name="table.documents.external_link" value="Зовнішня ссылка"/>
+		
+		<field name="table.mail_templates" value="Шаблони листів"/>
+		<field name="table.mail_templates.id" value="ID"/>
+		<field name="table.mail_templates.published" value="Активно"/>
+		<field name="table.mail_templates.deleted" value="Видалене"/>
+		<field name="table.mail_templates.author" value="Автор"/>
+		<field name="table.mail_templates.updated" value="Обновлено"/>
+		<field name="table.mail_templates.lang" value="Мова"/>
+		<field name="table.mail_templates.name" value="Назва"/>
+		<field name="table.mail_templates.subject" value="Тема листа"/>
+		<field name="table.mail_templates.text" value="Текст листа HTML"/>
+		
+		<field name="table.menu" value="Меню сайту"/>
+		<field name="table.menu.id" value="ID"/>
+		<field name="table.menu.published" value="Активно"/>
+		<field name="table.menu.deleted" value="Видалене"/>
+		<field name="table.menu.author" value="Автор"/>
+		<field name="table.menu.updated" value="Оновлено"/>
+		<field name="table.menu.lang" value="Мова"/>
+		<field name="table.menu.menu_id" value="ID меню"/>
+		<field name="table.menu.structure_id" value="Структура сайту"/>
+		<field name="table.menu.name" value="Назва"/>
+		<field name="table.menu.url" value="Ссылка"/>
+		<field name="table.menu.order_id" value="Номер"/>
+		
+		<field name="msg.error_remove_active" value="Неможливо видалити активный модуль"/>
+		<field name="msg.removed" value="видалене"/>
+		<field name="msg.repository_not_found" value="не знайден в репозитории"/>
+		<field name="msg.cant_open_zip" value="не удалось відкрити .zip архив"/>
+		<field name="msg.deleted_ok" value="Успішно видалене"/>
+		<field name="msg.created_ok" value="Створено успішно"/>
+		<field name="msg.saved_ok" value="Успешно збережено"/>
+		<field name="msg.save_error" value="Помилка збереження"/> 
+		<field name="msg.development_version" value="This is development version. Readonly mode."/>
+		<field name="msg.email_sent_to" value="Письмо успешно отправлено на email"/>
+		<field name="msg.email_sending_error" value="Ошибка отправки письма на email "/> 
+    </locale>
+</locales>
+</document>

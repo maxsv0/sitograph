@@ -1,0 +1,192 @@
+<?xml version='1.0'?> 
+<document>
+
+<config>
+	<param name="activationUrl" value="*"/>
+	<param name="baseUrl" value="/blog/"/>
+	<param name="itemsPerPage" value="10"/>
+	<param name="pageUrlParam" value="p"/>
+	<param name="searchUrlParam" value="s"/>
+	<param name="categoryUrlParam" value="category"/>
+	<param name="authorUrlParam" value="author"/>
+	<param name="previewItemsCount" value="10"/>
+	<param name="relatedItemsCount" value="6"/>
+	<param name="newestItemsCount" value="15"/>
+	<param name="adminMenu" value="true"/>
+	<param name="adminMenuOrder" value="11"/>
+	
+	<constant name="TABLE_BLOG_ARTICLES" value="articles"/>
+	<constant name="TABLE_BLOG_ARTICLE_CATEGORIES" value="article_categories"/>
+	
+	<filter url="*" action="BlogLoadPreview"/>
+	<filter url="/blog/" action="BlogLoadArticles"/>
+	<filter url="/blog/*" action="BlogLoadArticleDetails" setpage="/blog/"/>
+	
+	<table name="articles" index="url" title="title" useseo="1">
+		<field name="id" type="id"/>
+		<field name="published" type="published"/>
+		<field name="deleted" type="deleted"/>
+		<field name="author" type="author"/>
+		<field name="updated" type="updated"/>
+		<field name="lang" type="lang"/>
+		<field name="sticked" type="bool"/>
+		<field name="url" type="str"/>
+		<field name="date" type="date"/>
+		<field name="title" type="str"/>
+		<field name="description" type="doc" listskip="1"/>
+		<field name="text" type="doc" listskip="1"/>
+		<field name="pic" type="pic" max-width="1600" max-height="1200" listskip="1"/>
+		<field name="pic_preview" type="pic" max-width="800" max-height="600"/>
+		<field name="album_id" type="int" select-from="table:gallery_album" listskip="1"/>
+		<field name="views" type="int"/>
+		<field name="shares" type="int"/>
+		<field name="comments" type="int"/>
+	</table>
+	<table name="article_categories" index="url,article_id" title="title">
+		<field name="id" type="id"/>
+		<field name="published" type="published"/>
+		<field name="deleted" type="deleted"/>
+		<field name="author" type="author"/>
+		<field name="updated" type="updated"/>
+		<field name="lang" type="lang"/>
+		<field name="article_id" type="int" select-from="table:articles"/>
+		<field name="title" type="str"/>
+		<field name="url" type="str"/>
+	</table>
+</config>
+
+<install>
+	<param name="name" value="blog" />
+	<param name="version" value="1.1"/>
+	<param name="date" value="29.12.2016"/>
+	<param name="title" value="Blog"/>
+	<param name="description" value="Blog and Publications module"/>
+	
+	<param name="installHook" value="BlogInstall"/>
+	
+	<dependency module="msv-core" version="1.0" />
+	<dependency module="gallery" version="1.0" />
+	
+	<file dir="module" path="blog/blog.php"/>
+	<file dir="module" path="blog/config.xml"/>
+	<file dir="template" path="default/main-blog.tpl"/>
+	<file dir="template" path="default/blog/article-list.tpl"/>
+	<file dir="template" path="default/blog/article-preview.tpl"/>
+	<file dir="template" path="default/blog/article-preview-short.tpl"/>
+	<file dir="template" path="default/blog/list.tpl"/>
+	<file dir="template" path="default/blog/details.tpl"/>
+	<file dir="template" path="default/blog/main.tpl"/>
+	<file dir="template" path="default/widget/sideblock-blog.tpl"/>
+</install>
+
+
+<locales>
+	<locale name="ru">
+		<field name="module.blog" value="Блог"/>
+		<field name="table.articles" value="Блог, статьи"/>
+		<field name="table.articles.id" value="ID"/>
+		<field name="table.articles.published" value="Активно"/>
+		<field name="table.articles.deleted" value="Удалено"/>
+		<field name="table.articles.author" value="Автор"/>
+		<field name="table.articles.updated" value="Обновлено"/>
+		<field name="table.articles.lang" value="Язык"/>
+		<field name="table.articles.sticked" value="Топ"/>
+		<field name="table.articles.url" value="URL"/>
+		<field name="table.articles.date" value="Дата"/>
+		<field name="table.articles.title" value="Заголовок"/>
+		<field name="table.articles.description" value="Краткий текст"/>
+		<field name="table.articles.text" value="Значение"/>
+		<field name="table.articles.pic" value="Изображение большое"/>
+		<field name="table.articles.pic_preview" value="Изображение"/>
+		<field name="table.articles.album_id" value="Альбом"/>
+		<field name="table.articles.views" value="Просмотров"/>
+		<field name="table.articles.shares" value="Публикаций"/>
+		<field name="table.articles.comments" value="Коментариев"/>
+		<field name="table.articles.seo_title" value="Title страницы"/>
+		<field name="table.articles.seo_description" value="Описание страницы"/>
+		<field name="table.articles.seo_keywords" value="Ключевые слова"/>
+		<field name="table.article_categories" value="Рубрики и теги"/>
+		<field name="table.article_categories.id" value="ID"/>
+		<field name="table.article_categories.published" value="Активно"/>
+		<field name="table.article_categories.deleted" value="Удалено"/>
+		<field name="table.article_categories.author" value="Автор"/>
+		<field name="table.article_categories.updated" value="Обновлено"/>
+		<field name="table.article_categories.lang" value="Язык"/>
+		<field name="table.article_categories.url" value="URL"/>
+		<field name="table.article_categories.article_id" value="Статья"/>
+		<field name="table.article_categories.title" value="Заголовок"/>
+	</locale>
+	<locale name="en">
+		<field name="module.blog" value="Blog"/>
+		<field name="table.articles" value="Blog Publications"/>
+		<field name="table.articles.id" value="ID"/>
+		<field name="table.articles.published" value="Published"/>
+		<field name="table.articles.deleted" value="Deleted"/>
+		<field name="table.articles.author" value="Author"/>
+		<field name="table.articles.updated" value="Updated"/>
+		<field name="table.articles.lang" value="Lang"/>
+		<field name="table.articles.sticked" value="Sticked"/>
+		<field name="table.articles.url" value="URL"/>
+		<field name="table.articles.date" value="Date"/>
+		<field name="table.articles.title" value="Title"/>
+		<field name="table.articles.description" value="Short text"/>
+		<field name="table.articles.text" value="Article text"/>
+		<field name="table.articles.pic" value="Picture Big"/>
+		<field name="table.articles.pic_preview" value="Picture"/>
+		<field name="table.articles.album_id" value="Album"/>
+		<field name="table.articles.views" value="Views"/>
+		<field name="table.articles.shares" value="Shares"/>
+		<field name="table.articles.comments" value="Comments"/>
+		<field name="table.articles.seo_title" value="Page Title"/>
+		<field name="table.articles.seo_description" value="Description"/>
+		<field name="table.articles.seo_keywords" value="Keywords"/>
+		<field name="table.article_categories" value="Article Categories"/>
+		<field name="table.article_categories.id" value="ID"/>
+		<field name="table.article_categories.published" value="Published"/>
+		<field name="table.article_categories.deleted" value="Deleted"/>
+		<field name="table.article_categories.author" value="Author"/>
+		<field name="table.article_categories.updated" value="Updated"/>
+		<field name="table.article_categories.lang" value="Lang"/>
+		<field name="table.article_categories.url" value="URL"/>
+		<field name="table.article_categories.article_id" value="Article"/>
+		<field name="table.article_categories.title" value="Title"/>
+	</locale>
+	<locale name="de">
+		<field name="module.blog" value="Blog"/>
+		<field name="table.articles" value="Blog Publications"/>
+		<field name="table.articles.id" value="ID"/>
+		<field name="table.articles.published" value="Published"/>
+		<field name="table.articles.deleted" value="Deleted"/>
+		<field name="table.articles.author" value="Author"/>
+		<field name="table.articles.updated" value="Updated"/>
+		<field name="table.articles.lang" value="Lang"/>
+		<field name="table.articles.sticked" value="Sticked"/>
+		<field name="table.articles.url" value="URL"/>
+		<field name="table.articles.date" value="Date"/>
+		<field name="table.articles.title" value="Title"/>
+		<field name="table.articles.description" value="Short text"/>
+		<field name="table.articles.text" value="Article text"/>
+		<field name="table.articles.pic" value="Picture Big"/>
+		<field name="table.articles.pic_preview" value="Picture"/>
+		<field name="table.articles.album_id" value="Album"/>
+		<field name="table.articles.views" value="Views"/>
+		<field name="table.articles.shares" value="Shares"/>
+		<field name="table.articles.comments" value="Comments"/>
+		<field name="table.articles.seo_title" value="Page Title"/>
+		<field name="table.articles.seo_description" value="Description"/>
+		<field name="table.articles.seo_keywords" value="Keywords"/>
+		<field name="table.article_categories" value="Article Categories"/>
+		<field name="table.article_categories.id" value="ID"/>
+		<field name="table.article_categories.published" value="Published"/>
+		<field name="table.article_categories.deleted" value="Deleted"/>
+		<field name="table.article_categories.author" value="Author"/>
+		<field name="table.article_categories.updated" value="Updated"/>
+		<field name="table.article_categories.lang" value="Lang"/>
+		<field name="table.article_categories.url" value="URL"/>
+		<field name="table.article_categories.article_id" value="Article"/>
+		<field name="table.article_categories.title" value="Title"/>
+	</locale>
+</locales>
+
+		
+</document>

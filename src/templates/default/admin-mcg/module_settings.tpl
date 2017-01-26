@@ -1,0 +1,1 @@
+{$admin_module_setup}
