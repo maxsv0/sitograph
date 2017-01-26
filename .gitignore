@@ -1,0 +1,4 @@
+.DS_Store
+.idea
+src/config.php
+src/include/custom/
