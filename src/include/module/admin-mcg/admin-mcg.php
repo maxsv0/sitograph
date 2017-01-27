@@ -224,39 +224,6 @@ if (!empty($section) && array_key_exists($section, $menu_ar)) {
 
 
 
-
-MSV_includeJS("
-$(document).ready(function() {
-
-    var url = document.location.toString();
-	if (url.match('#')) {
-	    $('.nav-tabs a[href=\"#' + url.split('#')[1] + '\"]').tab('show');
-	} 
-
-	tinymce.init({
-	  selector: '.editor',
-	  language: '".LANG."',
-	  height: 500,
-      verify_html : false,
-	  plugins: [
-	    'advlist autolink lists link image charmap print preview anchor',
-	    'searchreplace visualblocks code fullscreen',
-	    'insertdatetime media table contextmenu paste responsivefilemanager code'
-	  ],
-	  toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image responsivefilemanager code',
-	  content_css: [
-	    '/content/css/bootstrap.min.css',
-	    '/content/css/default.css',
-	  ],
-	  external_filemanager_path:'/filemanager/',
-	   filemanager_title:'"._t("admin.files_and_doc_title")."',
-	   external_plugins: { 'filemanager' : '/filemanager/plugin.min.js'}
-	});
-
- });
-");
-
-
 function AdminMCGInstall() {
 	// update admin pages
 	MSV_Structure_add("*", "/admin/", "Admin Homepage", "default", "admin-mcg.tpl", 0, "", 0, "admin");
