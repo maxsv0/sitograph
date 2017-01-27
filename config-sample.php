@@ -17,7 +17,7 @@ define("DEBUG_LOG", "/var/log/msv-debug.log");
 define("SITE_CLOSED", false);
 define("SHOW_ADMIN_MENU", 1);
 define("PHP_LOCALE", "en_US.UTF-8");
-define("PHP_TIMEZONE", "Europe/London");
+define("PHP_TIMEZONE", "Europe/Kiev");
 define("DATABATE_ENCODING", "utf8");
 define("FORSE_TRAILING_SLASH", true);
 define("SUBDOMAIN_LANGUAGES", true);
