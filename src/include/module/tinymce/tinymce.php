@@ -16,6 +16,7 @@ $(document).ready(function() {
 	  language: '".LANG."',
 	  height: 500,
       verify_html : false,
+      convert_urls : false,
 	  menubar: false,
 	  plugins: [
 	    'advlist autolink lists link image charmap print preview anchor',

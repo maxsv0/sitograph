@@ -2,3 +2,4 @@
 .idea
 src/config.php
 src/include/custom/
+src/filemanager/
