@@ -1180,3 +1180,7 @@ overflow:scroll;
 #uploadModal .modal-header, #libraryModal .modal-header {
    padding: 15px 15px 0 15px;
 }
+#search_toogle {
+    margin-top:20px;
+    text-align: right;
+}

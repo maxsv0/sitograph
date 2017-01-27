@@ -165,6 +165,15 @@ $menu_ar["module_comments"] = array(
 	"orderID" => 26,
 );
 
+$menu_ar["module_search"] = array(
+	"name" => _t("admin.module_search"), 
+	"access" => "admin",
+    "handler" => "module-search.php",
+	"url" => "/admin/?section=module_search",
+	"file" => "search.tpl",
+	"title" => _t("admin.module_search_title"),
+	"orderID" => 27,
+);
 
 //$menu_ar["design"] = array(
 //	"name" => _t("admin.design"), 

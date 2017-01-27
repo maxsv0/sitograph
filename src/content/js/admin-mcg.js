@@ -37,3 +37,53 @@ function textCounter( field, countfield, maxlimit ) {
 }  
 
 
+var active_block = 0;
+
+function change_view(x) {
+    var d = document.getElementById("block_title_"+x);
+    var t = document.getElementById("block_text_"+x);
+    
+    if (d.className == "block_title") {
+        d.className = "block_title_a";
+        t.style.display = "block";
+
+        if (active_block != 0) {
+            change_view(active_block);
+        }
+        active_block = x;
+    } else {
+        d.className = "block_title";
+        t.style.display = "none";
+        
+        active_block = 0;
+    }
+}
+function open_all() {
+    i = 1;
+    var d = document.getElementById("block_title_"+i);
+    var t = document.getElementById("block_text_"+i);
+    while (d && t) {
+        d.className = "block_title_a";
+        t.style.display = "block";
+        
+        i++;
+        var d = document.getElementById("block_title_"+i);
+        var t = document.getElementById("block_text_"+i);
+    }
+    $("#search_toogle").html("<a href='javascript:close_all();'>Свернуть все</a>");
+}
+function close_all() {
+    i = 1;
+    var d = document.getElementById("block_title_"+i);
+    var t = document.getElementById("block_text_"+i);
+    while (d && t) {
+        d.className = "block_title";
+        t.style.display = "none";
+        
+        i++;
+        var d = document.getElementById("block_title_"+i);
+        var t = document.getElementById("block_text_"+i);
+    }
+     $("#search_toogle").html("<a href='javascript:open_all();'>Развернуть все</a>");
+}
+

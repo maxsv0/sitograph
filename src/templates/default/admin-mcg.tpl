@@ -110,7 +110,7 @@
 		</td>
 		<td style="padding-right: 5px;">
 		
-		<form action="/admin/?edit=search&menu_block=search&search" method="POST">
+		<form action="/admin/?section=module_search&menu_block=module_search&search" method="POST">
 		<table align="right" cellpadding="0" cellspacing="0">
 		<tr>
 			<td><input class="input_search" type="text" name="keyword" value="Найти" onblur="if(this.value=='') this.value=Найти', this.style.color='#000000';" onfocus="if(this.value=='Найти') this.value='', this.style.color='#000000';"></td>

@@ -31,6 +31,7 @@
 	<file dir="module" path="admin-mcg/module-sitemap.php"/>
 	<file dir="module" path="admin-mcg/module-catalog.php"/>
 	<file dir="module" path="admin-mcg/module-comments.php"/>
+	<file dir="module" path="admin-mcg/module-search.php"/>
 	<file dir="module" path="admin-mcg/config.xml"/>
 	
 	<file dir="template" path="default/admin/list-table.tpl"/>
@@ -61,6 +62,7 @@
 	<file dir="template" path="default/admin-mcg/seo.tpl"/>
 	<file dir="template" path="default/admin-mcg/site_settings.tpl"/>
 	<file dir="template" path="default/admin-mcg/stat.tpl"/>
+	<file dir="template" path="default/admin-mcg/search.tpl"/>
 	<file dir="template" path="default/admin-mcg/structure.tpl"/>
 	<file dir="template" path="default/admin-mcg/users.tpl"/>
 	<file dir="template" path="default/admin-mcg/menu.tpl"/>
@@ -170,6 +172,9 @@
         
         <field name="admin.module_comments" value="Комментарии"/>
         <field name="admin.module_comments_title" value="Комментарии"/>
+        
+        <field name="admin.module_search" value="Поиск"/>
+        <field name="admin.module_search_title" value="Поиск"/>
         
 		<field name="admin.design" value="Дизайны"/>
 		<field name="admin.design_title" value="Дизайны"/>
