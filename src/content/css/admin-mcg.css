@@ -43,7 +43,9 @@ a:hover, .add_link:hover {
 }
 /* ----------------- */
 
-
+.admin_mode_link:hover {
+    color: #ffffff;
+}
 
 
 #login_form {
