@@ -115,6 +115,12 @@
 	<file dir="content" path="images/adminmcg/menu_left_img_top.gif"/>
 	<file dir="content" path="images/adminmcg/menu_left_img_top_1.gif"/>
 	<file dir="content" path="images/adminmcg/menu_left_img_top_2.gif"/>
+	<file dir="content" path="images/adminmcg/block_minus.gif"/>
+	<file dir="content" path="images/adminmcg/block_plus.gif"/>
+	<file dir="content" path="images/adminmcg/block_name.gif"/>
+	<file dir="content" path="images/adminmcg/tab_menu_bg.gif"/>
+	<file dir="content" path="images/adminmcg/table_bg_1.gif"/>
+    
 </install>
 
 

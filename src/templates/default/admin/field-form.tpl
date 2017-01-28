@@ -1,9 +1,9 @@
 {if $item_id}
 
 <div class="form-group">
-<small class="text-muted" style="position:absolute;opacity:0.2;">
+<!--<small class="text-muted" style="position:absolute;opacity:0.2;">
 {$t["type.$item_type"]}
-</small>
+</small>-->
 <label for="i{$item_id}" class="col-sm-2 control-label">
 {_t("table.$admin_table.$item_name")}
 {if $item_type === "pic"}
