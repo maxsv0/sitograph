@@ -185,7 +185,7 @@
 		<field name="admin.design" value="Дизайны"/>
 		<field name="admin.design_title" value="Дизайны"/>
 		<field name="admin.history" value="История сессий"/>
-		<field name="admin.history_title" value="История сессий вользоателей"/>
+		<field name="admin.history_title" value="История сессий пользоателей"/>
 		<field name="admin.locale_param" value="Название переменной"/>
 		<field name="admin.locale_value" value="Значение"/>
 		<field name="admin.robots_example_open" value="Пример открытого сайта:"/>
@@ -270,6 +270,79 @@
 	</locale>
     <locale name="ua">
 		<field name="msg.module_handler_not_found" value="Не вдалося знайти обробник модуля"/>
+		<field name="msg.no_stored_image" value="Зображення не завантажено"/>
+		<field name="btn.remove_link" value="Видалити посилання на файл"/>
+		<field name="btn.upload_file" value="Завантажити файл"/>
+		<field name="btn.generate" value="Сгенерувати"/>
+		<field name="btn.export_table" value="Експорт таблиці"/>
+		<field name="btn.goto" value="Перейти до"/>
+		<field name="msg.sitemap_generated" value="Sitemap.xml успішно створений"/>
+		<field name="title.upload_files" value="Завантажити файли в "/>
+		<field name="title.upload_step1" value="1. Оберить файл"/>
+		<field name="title.upload_step2" value="2. Файл буде завантажений на сервер"/>
+		<field name="title.upload_step3" value="3. Натисніть Зберегти"/>
+		<field name="form.file" value="Файл:"/>
+		<field name="form.server_path" value="Шлях на сервере"/>
+		<field name="form.select_file" value="Оберить файлы"/>
+		<field name="form.image_max_size" value="Розмір"/>
+		
+		<field name="admin.filename" value="Ім'я файлу"/>
+		<field name="admin.filetype" value="Тип"/>
+		<field name="admin.filepreview" value="Перегляд"/>
+		<field name="admin.fileaccess" value="Доступ"/>
+		<field name="admin.homepage" value="Головна"/>
+		<field name="admin.homepage_title" value="Головна {HOST}"/>
+		<field name="admin.users" value="Користувачі сайту"/>
+		<field name="admin.users_title" value="Список користувачів сайту"/>
+		<field name="admin.structure" value="Структура сайту"/>
+		<field name="admin.structure_title" value="Структура сайту {HOST}"/>
+		<field name="admin.menu" value="Меню"/>
+		<field name="admin.menu_title" value="Управління меню сайту"/>
+		<field name="admin.documents" value="Документи"/>
+		<field name="admin.documents_title" value="Документи"/>
+		<field name="admin.files_and_doc" value="Файли и документи"/>
+		<field name="admin.files_and_doc_title" value="Менеджер файлів і документів"/>
+		<field name="admin.site_settings" value="Налаштування сайту"/>
+		<field name="admin.site_settings_title" value="Налаштування сайту"/>
+		<field name="admin.locales" value="Мови і тексти"/>
+		<field name="admin.locales_title" value="Мови і тексти"/>
+		<field name="admin.mail_template" value="Шаблони листів"/>
+		<field name="admin.mail_template_title" value="Шаблони листів"/>
+		<field name="admin.stat" value="Статистика переглядів"/>
+		<field name="admin.stat_title" value="Статистика переглядів для {HOST}"/>
+		<field name="admin.seo" value="SEO"/>
+		<field name="admin.seo_title" value="SEO сайту"/>
+		<field name="admin.robots" value="Управління robots.txt"/>
+		<field name="admin.robots_title" value="Файл robots.txt"/>
+		<field name="admin.module_settings" value="Управління модулями сайту"/>
+		<field name="admin.module_settings_title" value="Управління модулями сайту"/>
+        <field name="admin.module_catalog" value="Завантаження каталогу з 1С"/>
+        <field name="admin.module_catalog_title" value="Завантаження каталогу з 1С"/>
+        
+        <field name="admin.module_comments" value="Коментарі"/>
+        <field name="admin.module_comments_title" value="Коментарі"/>
+        
+        <field name="admin.module_search" value="Пошук"/>
+        <field name="admin.module_search_title" value="Пошук"/>
+        
+		<field name="admin.design" value="Дизайни"/>
+		<field name="admin.design_title" value="Дизайни"/>
+		<field name="admin.history" value="Історія сесій"/>
+		<field name="admin.history_title" value="Історія сесій користувачів"/>
+		<field name="admin.locale_param" value="Назва змінної"/>
+		<field name="admin.locale_value" value="Значення"/>
+		<field name="admin.robots_example_open" value="Приклад відкритого сайту:"/>
+		<field name="admin.robots_example_closed" value="Приклад закритого сайту:"/>
+		<field name="admin.robots_example_seo" value="Приклад для SEO:"/>
+		<field name="admin.realtime" value="Онлайн аналітика"/>
+		<field name="admin.analytics" value="Аналітика сайту"/>
+		<field name="admin.social" value="Експорт соц. мереж"/>
+		<field name="admin.manual" value="Інструкція використання"/>
+		<field name="admin.structure_manage" value="Управління структурою"/>
+		<field name="admin.media_library" value="Сховище файлів"/>
+		<field name="admin.dev_tools" value="Налаштування"/>
+		<field name="admin.sitemap" value="Управління sitemap.xml"/>
+		<field name="admin.manual_title" value="Інструкція"/>
 	</locale>
 </locales>
 

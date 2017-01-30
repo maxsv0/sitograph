@@ -5,7 +5,7 @@
 {$t["type.$item_type"]}
 </small>-->
 {if $item_type === "pic" || $item_type === "doc" || $item_type === "text"}
-    <label for="i{$item_id}" class="col-sm-6 control-label">
+    <label for="i{$item_id}" class="col-sm-2 control-label">
     {_t("table.$admin_table.$item_name")}
     {if $item_type === "pic"}
     

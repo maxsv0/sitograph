@@ -1,4 +1,4 @@
-<div class="col-sm-10">
+<div class="col-sm-4">
 {if $value && $value != '0000-00-00 00:00:00'}
  	<input type="text" class="form-control" id="i{$item_id}" placeholder="{$item_id}" name="{$form_id}_{$item_id}" value="{$value}">
 {else}
