@@ -341,7 +341,7 @@ ul.nav li.active a {
 
 .form-horizontal {
     background: rgba(0, 0, 0, 0) url("/content/images/adminmcg/table_bg_1.gif") no-repeat scroll 0 0;
-    padding: 10px;
+    padding: 10px 10px 10px 20px;
 }
 
 .form-horizontal input[type="text"] {
@@ -352,7 +352,8 @@ ul.nav li.active a {
     line-height: 30px;
     padding-left: 10px;
     font-family: Verdana;
-    font-size: 12px
+    font-size: 12px;
+    border-radius: 0px;
 }
 
 /* Ð§ÐµÐºÐ±Ð¾ÐºÑÑ‹ */
@@ -413,7 +414,7 @@ table.table-module tr td:last-child, table.table-module tr:first-child th:last-c
     font-family: Verdana;
     font-size: 12px;
 }
-.btn:hover {
+.btn:hover, .btn:active, .btn:active:hover, .btn.active:hover, .btn:focus, .btn:active:focus , .btn.active:focus{
     background: #cccccc none repeat scroll 0 0;
     border-color: #cccccc;
     color: #ffffff;
@@ -430,8 +431,8 @@ table.table-module tr td:last-child, table.table-module tr:first-child th:last-c
     border-color: transparent;
     color: #747474;
 }
-.table-module .btn:hover, .table-module .btn:active:hover,
-.table-module .btn:active:focus
+.table-module .btn:hover, .table-module .btn:active,
+.table-module .btn:focus
 {
     background-color: transparent;
     border-color: transparent;
@@ -440,7 +441,7 @@ table.table-module tr td:last-child, table.table-module tr:first-child th:last-c
 .form-horizontal .control-label {
     font-family: Verdana;
     font-size: 12px;
-    text-align: right;
+    text-align: left;
     font-weight: normal;    
 }
 

@@ -4,30 +4,32 @@
 <!--<small class="text-muted" style="position:absolute;opacity:0.2;">
 {$t["type.$item_type"]}
 </small>-->
-<label for="i{$item_id}" class="col-sm-2 control-label">
-{_t("table.$admin_table.$item_name")}
-{if $item_type === "pic"}
-
-	<p class="text-info" style="margin-top:10px;font-weight:300;">
-	{_t("form.image_max_size")}: 
-	</p>
-	<p class="text-nowrap">
-{if $itemField["max-width"]}
-{$itemField["max-width"]} px
-{else}
-any
-{/if}
-	<small class="text-muted">х</small> 
-{if $itemField["max-height"]}
-{$itemField["max-height"]} px
-{else}
-any
-{/if}
-</p>
-	
-	
-{/if}
-</label>
+{if $item_type === "pic" || $item_type === "doc" || $item_type === "text"}
+    <label for="i{$item_id}" class="col-sm-6 control-label">
+    {_t("table.$admin_table.$item_name")}
+    {if $item_type === "pic"}
+    
+    	<p class="text-info" style="margin-top:10px;font-weight:300;">
+    	{_t("form.image_max_size")}: 
+    	</p>
+    	<p class="text-nowrap">
+    {if $itemField["max-width"]}
+    {$itemField["max-width"]} px
+    {else}
+    any
+    {/if}
+    	<small class="text-muted">х</small> 
+    {if $itemField["max-height"]}
+    {$itemField["max-height"]} px
+    {else}
+    any
+    {/if}
+    </p>
+    	
+    	
+    {/if}
+    </label>
+{/if}    
 
 {if $item_type === "doc"}
 
@@ -74,7 +76,32 @@ any
 	{include "$themePath/admin/fields/field-default.tpl"}
 	
 {/if}
-
+{if !($item_type === "pic" || $item_type ==="doc" || $item_type ==="text")}
+    <label for="i{$item_id}" class="col-sm-6 control-label">
+    {_t("table.$admin_table.$item_name")}
+    {if $item_type === "pic"}
+    
+    	<p class="text-info" style="margin-top:10px;font-weight:300;">
+    	{_t("form.image_max_size")}: 
+    	</p>
+    	<p class="text-nowrap">
+    {if $itemField["max-width"]}
+    {$itemField["max-width"]} px
+    {else}
+    any
+    {/if}
+    	<small class="text-muted">х</small> 
+    {if $itemField["max-height"]}
+    {$itemField["max-height"]} px
+    {else}
+    any
+    {/if}
+    </p>
+    	
+    	
+    {/if}
+    </label>
+{/if}
 </div>
 
 

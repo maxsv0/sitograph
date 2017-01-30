@@ -1,4 +1,4 @@
-<div class="col-sm-10">
+<div class="col-sm-4">
 
 <select class="form-control" id="i{$item_id}" name="{$form_id}_{$item_id}">
 <option value="" {if empty($value)}selected{/if}></option>
