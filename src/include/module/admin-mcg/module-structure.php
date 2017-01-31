@@ -36,7 +36,9 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
         // выключаем/включаем разделы
         
         $resultQueryItem = API_getDBItem(TABLE_STRUCTURE, "`url` = '".MSV_SQLescape($_POST["form_url"])."'");
-    	$parent_url = array();
+    	
+      
+        $parent_url = array();
         if ($resultQueryItem["ok"]) {
     	  $parent_url = GetParentSection($resultQueryItem["data"]["id"]); 
     	} 
@@ -44,7 +46,7 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
         if (!empty($parent_url)) {
            foreach ($parent_url as $v=>$k) {
             if (!empty($k)) {
-             var_dump($k);
+            
              $sqlCode = "update `".TABLE_STRUCTURE."`
                        set `published` = '".MSV_SQLescape($_POST["form_published"])."' 
                        where `url` = '".$k."'
@@ -78,13 +80,13 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
 
 function GetParentSection($id) {
       $parent_url = array();
-      
-      $sqlCode = "select * from `".TABLE_STRUCTURE."` where `parent_id`='".$id."' and `deleted`<>'1'";
-      $count_data = API_SQL($sqlCode);
-      while($row = mysqli_fetch_assoc($count_data["data"])) {
-        $parent_url[] = $row['url'];
-        $parent_url = array_merge($parent_url, GetParentSection($row['id']));
-      }
+      $result = API_getDBList(TABLE_STRUCTURE, "`parent_id`='".$id."'","",1000);
+      if ($result["ok"]) {
+          foreach ($result["data"] as $row) {
+            $parent_url[] = $row['url'];
+            $parent_url = array_merge($parent_url, GetParentSection($row['id']));
+          }
+      }    
       return $parent_url;  
 }
 
