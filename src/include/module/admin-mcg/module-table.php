@@ -28,10 +28,15 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
 				$rowSEO["title"] = $_POST["form_seo_title"];
 				$rowSEO["description"] = $_POST["form_seo_description"];
 				$rowSEO["keywords"] = $_POST["form_seo_keywords"];
+                $rowSEO["sitemap"] = $_POST["form_published"] == 1 ? 1:0;
 				
 				$resultSave = API_updateDBItemRow(TABLE_SEO, $rowSEO);
+                API_SiteMapGenegate();
 			} else {
-				$resultSave = SEO_add($itemUrl, $_POST["form_seo_title"], $_POST["form_seo_description"], $_POST["form_seo_keywords"]);
+				$resultSave = SEO_add($itemUrl, $_POST["form_seo_title"], $_POST["form_seo_description"], $_POST["form_seo_keywords"],($_POST["form_published"] == 1 ? 1:0));
+                if ($_POST["form_published"] == 1) {
+                    API_SiteMapGenegate();
+                }
 			}
 		}
 	} else {

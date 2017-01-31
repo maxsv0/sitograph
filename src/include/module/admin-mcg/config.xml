@@ -199,6 +199,7 @@
 		<field name="admin.media_library" value="Хранилище файлов"/>
 		<field name="admin.dev_tools" value="Настройки"/>
 		<field name="admin.sitemap" value="Управление sitemap.xml"/>
+		<field name="admin.sitemap_title" value="Управление sitemap.xml"/>
 		<field name="admin.manual_title" value="Инструкция"/>
 	</locale>
 	<locale name="en">
@@ -342,7 +343,8 @@
 		<field name="admin.media_library" value="Сховище файлів"/>
 		<field name="admin.dev_tools" value="Налаштування"/>
 		<field name="admin.sitemap" value="Управління sitemap.xml"/>
-		<field name="admin.manual_title" value="Інструкція"/>
+		<field name="admin.sitemap_title" value="Управління sitemap.xml"/>
+        <field name="admin.manual_title" value="Інструкція"/>
 	</locale>
 </locales>
 

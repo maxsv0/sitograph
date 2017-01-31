@@ -7,7 +7,8 @@ $tableInfo["fields"]["document_text"] = array(
 MSV_assignData("admin_table_info", $tableInfo);
 
 if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
-	MSV_proccessUpdateTable(TABLE_STRUCTURE, "form_");
+	
+    MSV_proccessUpdateTable(TABLE_STRUCTURE, "form_");
 	
 	// save document
 	API_updateDBItem(TABLE_DOCUMENTS, "text", "'".MSV_SQLEscape($_POST["form_document_text"])."'", " `id` = '".(int)$_POST["form_page_document_id"]."'");
@@ -19,15 +20,75 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
 		$rowSEO["title"] = $_POST["form_seo_title"];
 		$rowSEO["description"] = $_POST["form_seo_description"];
 		$rowSEO["keywords"] = $_POST["form_seo_keywords"];
-		
+		$rowSEO["sitemap"] = $_POST["form_published"] == 1 ? 1:0;
+        
 		$resultSave = API_updateDBItemRow(TABLE_SEO, $rowSEO);
+        // вносим коррективы в URL меню 
+           $sqlCode = "update `".TABLE_MENU."`
+                       set `url` = '".MSV_SQLescape($_POST["form_url"])."' 
+                       where `structure_id` = '".MSV_SQLescape($_POST["form_id"])."'
+                       ";
+                  
+           $result = API_SQL($sqlCode);
+        // вносим коррективы в URL меню 
+        
+        
+        // выключаем/включаем разделы
+        
+        $resultQueryItem = API_getDBItem(TABLE_STRUCTURE, "`url` = '".MSV_SQLescape($_POST["form_url"])."'");
+    	$parent_url = array();
+        if ($resultQueryItem["ok"]) {
+    	  $parent_url = GetParentSection($resultQueryItem["data"]["id"]); 
+    	} 
+        
+        if (!empty($parent_url)) {
+           foreach ($parent_url as $v=>$k) {
+            if (!empty($k)) {
+             var_dump($k);
+             $sqlCode = "update `".TABLE_STRUCTURE."`
+                       set `published` = '".MSV_SQLescape($_POST["form_published"])."' 
+                       where `url` = '".$k."'
+                       ";
+             $result = API_SQL($sqlCode);
+               
+             $sqlCode = "update `".TABLE_SEO."`
+                       set `sitemap` = '".MSV_SQLescape($_POST["form_published"])."' 
+                       where `url` like '".$k."%'
+                       ";
+             $result = API_SQL($sqlCode);
+             }            
+           }
+        }
+        
+		// выключаем/включаем разделы/подразделы
+        
+        API_SiteMapGenegate(); // генерируем карту сайта
 	} else {
-		$resultSave = SEO_add($_POST["form_url"], $_POST["form_seo_title"], $_POST["form_seo_description"], $_POST["form_seo_keywords"]);
+		$resultSave = SEO_add($_POST["form_url"], $_POST["form_seo_title"], $_POST["form_seo_description"], $_POST["form_seo_keywords"],($_POST["form_published"] == 1 ? 1:0));
+        if ($_POST["form_published"] == 1) {
+            API_SiteMapGenegate();
+        }
 	}
 	if (!$resultSave["ok"]) {
 		MSV_redirect("/admin/?section=$section&edit=".$_POST["form_id"]."&save_error=".urlencode($resultSave["msg"]));
+        
 	}
 }
+
+
+function GetParentSection($id) {
+      $parent_url = array();
+      
+      $sqlCode = "select * from `".TABLE_STRUCTURE."` where `parent_id`='".$id."' and `deleted`<>'1'";
+      $count_data = API_SQL($sqlCode);
+      while($row = mysqli_fetch_assoc($count_data["data"])) {
+        $parent_url[] = $row['url'];
+        $parent_url = array_merge($parent_url, GetParentSection($row['id']));
+      }
+      return $parent_url;  
+}
+
+
 if (!empty($_POST["save"])) {
 	$_REQUEST["edit"] = $_POST["form_id"];
 }
@@ -181,3 +242,5 @@ if ($resultQuery["ok"]) {
 	
 	MSV_assignData("admin_list", $adminList);
 }
+
+
