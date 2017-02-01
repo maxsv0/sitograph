@@ -19,6 +19,17 @@ $(document).ready(function() {
         }
     });
     
+   // скрыть подразделы в структуре сайта 
+   if ($("#structure-table").size()>0) {
+       $("#structure-table tr").each(function(){
+        if ($(this).data("level")>0) {
+            $(this).hide();
+        }
+        
+       }); 
+   } 
+   // скрыть подразделы в структуре сайта 
+    
 });
 
 function textCounter( field, countfield, maxlimit ) {
@@ -87,3 +98,27 @@ function close_all() {
      $("#search_toogle").html("<a href='javascript:open_all();'>Развернуть все</a>");
 }
 
+function toogle_parent(e,id, level) {
+    
+    if ($(e).parent().parent().hasClass('selected')) {
+        $(e).parent().parent().removeClass('selected');
+        $("#block_"+id).attr("src","/content/images/adminmcg/arrow_right.png");
+        $("#structure-table tr").each(function(){
+            if ($(this).data("index") == id && $(this).data("level")== parseInt(level)+1) {
+                $(this).hide();
+            }
+         });
+    } else {
+        $(e).parent().parent().addClass('selected');
+        $("#block_"+id).attr("src","/content/images/adminmcg/arrow_down.png");
+         $("#structure-table tr").each(function(){
+             
+            if ($(this).data("index") == id && $(this).data("level") == parseInt(level)+1) {
+               
+                $(this).show();
+            }
+         });
+    }
+
+    
+}

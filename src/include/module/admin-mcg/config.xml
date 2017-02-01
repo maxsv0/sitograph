@@ -81,7 +81,6 @@
 	<file dir="template" path="default/admin-mcg/structure/edit.tpl"/>
 	<file dir="template" path="default/admin-mcg/structure/list.tpl"/>
 	<file dir="template" path="default/admin-mcg/structure/list-level.tpl"/>
-	<file dir="template" path="default/admin-mcg/structure/list-level2.tpl"/>
 	<file dir="template" path="default/admin-mcg/users/edit.tpl"/>
 	<file dir="template" path="default/admin-mcg/users/list.tpl"/>
 	<file dir="template" path="default/admin-mcg/seo/edit.tpl"/>
@@ -120,6 +119,8 @@
 	<file dir="content" path="images/adminmcg/block_name.gif"/>
 	<file dir="content" path="images/adminmcg/tab_menu_bg.gif"/>
 	<file dir="content" path="images/adminmcg/table_bg_1.gif"/>
+	<file dir="content" path="images/adminmcg/arrow_right.png"/>
+	<file dir="content" path="images/adminmcg/arrow_down.png"/>
     
 </install>
 

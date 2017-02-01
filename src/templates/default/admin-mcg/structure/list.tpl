@@ -2,7 +2,7 @@
 
 {if $listTable}
 <div class="table-responsive">
-<table class="table table-hover table-striped table-module">
+<table id="structure-table" class="table table-hover table-striped table-module">
 <th>
 &nbsp;
 </th>
@@ -34,7 +34,7 @@
 <th>{$t["actions"]}</th>
 
 
-{include file="$themePath/admin-mcg/structure/list-level.tpl" show_parent_id=0}
+{include file="$themePath/admin-mcg/structure/list-level.tpl" show_parent_id=0 level=0}
 
 </div>
 </table>

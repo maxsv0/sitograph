@@ -241,7 +241,17 @@ if ($resultQuery["ok"]) {
 			$adminList = $adminListFiltered;
 		}
 	}
-	
+   
+    
+	$adminListFiltered = array();
+    foreach ($adminList as $listItemID => $listItem) {
+				if (isset($listItem['parent_id'])) {
+				  $adminListFiltered[$listItem['parent_id']][] = $listItem;
+                }
+                
+	}
+	$adminList = $adminListFiltered;
+    ksort($adminList);
 	MSV_assignData("admin_list", $adminList);
 }
 

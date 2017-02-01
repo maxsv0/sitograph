@@ -1,15 +1,22 @@
-{foreach from=$listTable name=loop key=item_id item=item}
-{if $item.parent_id == $show_parent_id}
-{if $item.debug}
-<tr class="danger">
-{else}
-<tr>
-{/if}
+{foreach from=$listTable[$show_parent_id] name=loop key=item_id item=item}
 
-<td>|</td>
+
+<tr {if $item.debug}class="danger"{/if} data-index="{$item.parent_id}" data-level="{$level}">
+
+<td>
+{if !empty($listTable[$item.id])}
+<a href="javascript:void(0)" onclick="toogle_parent(this,'{$item.id}','{$level}')"><img id="block_{$item.id}" src="/content/images/adminmcg/arrow_right.png"/></a>
+{/if}
+</td>
+
+
+
 
 <td class="text-nowrap">
-{$item.name|strip_tags|truncate:200:".."}
+{section name=index start=0 loop=$level step=1}
+<span>»</span>&nbsp;
+{/section}
+<span>{$item.name|strip_tags|truncate:200:".."}</span>
 {if $item.debug}
 <div><span class="badge">debug</span></div>
 {/if}
@@ -79,7 +86,13 @@
 </td>
 </tr>
 
-{include file="$themePath/admin-mcg/structure/list-level2.tpl" show_parent_id=$item.id}
 
+{if !empty($listTable[$item.id])}
+        {assign var=level value=$level+1}    
+        {include file="$themePath/admin-mcg/structure/list-level.tpl" listTable=$listTable show_parent_id=$item.id level=$level}
 {/if}
+
+
+
+
 {/foreach}
