@@ -34,7 +34,7 @@
 <th>{$t["actions"]}</th>
 
 
-{include file="$themePath/admin-mcg/structure/list-level.tpl" show_parent_id=0 level=0}
+{include file="$themePath/admin-mcg/structure/list-level.tpl" show_parent_id=0 level=1}
 
 </div>
 </table>

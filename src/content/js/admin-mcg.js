@@ -22,12 +22,24 @@ $(document).ready(function() {
    // скрыть подразделы в структуре сайта 
    if ($("#structure-table").size()>0) {
        $("#structure-table tr").each(function(){
-        if ($(this).data("level")>0) {
+        if ($(this).data("level")>1) {
             $(this).hide();
         }
-        
+       }); 
+       $("#structure-table").find(".selected").each(function(){
+        if ($(this).data("show")>0) {
+            var show_index = $(this).data("show");
+            $("#block_"+$(this).data("show")).attr("src","/content/images/adminmcg/arrow_down.png");
+            $("#structure-table tr").each(function(){
+                if ($(this).data("index")== show_index) {
+                    $(this).show();
+                }
+            });
+            
+        }
        }); 
    } 
+   
    // скрыть подразделы в структуре сайта 
     
 });
@@ -103,6 +115,7 @@ function toogle_parent(e,id, level) {
     if ($(e).parent().parent().hasClass('selected')) {
         $(e).parent().parent().removeClass('selected');
         $("#block_"+id).attr("src","/content/images/adminmcg/arrow_right.png");
+        set_structure_status('remove', $(e).parent().parent().data("index"), $(e).parent().parent().data("level"), id);
         $("#structure-table tr").each(function(){
             if ($(this).data("index") == id && $(this).data("level")== parseInt(level)+1) {
                 $(this).hide();
@@ -111,14 +124,32 @@ function toogle_parent(e,id, level) {
     } else {
         $(e).parent().parent().addClass('selected');
         $("#block_"+id).attr("src","/content/images/adminmcg/arrow_down.png");
+        set_structure_status('add', $(e).parent().parent().data("index"), $(e).parent().parent().data("level"),id);
          $("#structure-table tr").each(function(){
-             
             if ($(this).data("index") == id && $(this).data("level") == parseInt(level)+1) {
-               
                 $(this).show();
             }
          });
     }
+}
 
+function set_structure_status (mode, index, level, show){
+            $.ajax({
+			type 	 : "GET",
+			dataType : 'json',
+			async  	 : false,
+			url 	 : "/api/set_structure_status/",
+			
+			data: ({mode : mode, index : index, level : level, show:show}),
+			
+			success: function(data){
+			    
+				if(data.ok){
+
+				}
+				return false;
+			}
+        
+ });
     
 }

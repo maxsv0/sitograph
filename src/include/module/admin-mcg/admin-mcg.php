@@ -229,3 +229,5 @@ function AdminMCGInstall() {
 	MSV_Structure_add("*", "/admin/", "Admin Homepage", "default", "admin-mcg.tpl", 0, "", 0, "admin");
 	MSV_Structure_add("*", "/admin/login/", "Admin Homepage Login", "default", "admin-mcg-login.tpl", 0, "", 0, "everyone");
 }
+
+

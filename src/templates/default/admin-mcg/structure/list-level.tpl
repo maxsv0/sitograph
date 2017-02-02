@@ -1,11 +1,13 @@
 {foreach from=$listTable[$show_parent_id] name=loop key=item_id item=item}
 
-
-<tr {if $item.debug}class="danger"{/if} data-index="{$item.parent_id}" data-level="{$level}">
+{if $show_parent_id == 0}
+{assign var=level value=1}    
+{/if}
+<tr {if $item.debug}class="danger"{/if} data-index="{$item.parent_id}" data-level="{$level}" {if $structure_show && $structure_show[$item.parent_id] == $level && !empty($listTable[$item.id])}data-show="{$item.id}" class="selected"{/if}>
 
 <td>
 {if !empty($listTable[$item.id])}
-<a href="javascript:void(0)" onclick="toogle_parent(this,'{$item.id}','{$level}')"><img id="block_{$item.id}" src="/content/images/adminmcg/arrow_right.png"/></a>
+<a href="javascript:void(0)" style="margin-top:3px" onclick="toogle_parent(this,'{$item.id}','{$level}')"><img id="block_{$item.id}" src="/content/images/adminmcg/arrow_right.png"/></a>
 {/if}
 </td>
 
@@ -13,7 +15,7 @@
 
 
 <td class="text-nowrap">
-{section name=index start=0 loop=$level step=1}
+{section name=index start=1 loop=$level step=1}
 <span>»</span>&nbsp;
 {/section}
 <span>{$item.name|strip_tags|truncate:200:".."}</span>

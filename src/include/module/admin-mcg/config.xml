@@ -5,6 +5,8 @@
 	<param name="activationUrl" value="/admin/"/>
 	<param name="activationLevel" value="8"/>
 	<param name="adminMenu" value="0"/>
+    
+    <api name="set_structure_status" action="ajax_set_structure_status"/>
 </config>
 
 

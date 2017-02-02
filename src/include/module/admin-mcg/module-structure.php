@@ -198,7 +198,7 @@ if ($resultQuery["ok"]) {
 	$adminList = $resultQuery["data"];
 	$listPages = $resultQuery["pages"];
 	MSV_assignData("admin_list_pages", $listPages);
-
+    
 	foreach ($tableInfo["fields"] as $field) {
 		
 		if (!empty($field["select-from"])) {
@@ -245,14 +245,15 @@ if ($resultQuery["ok"]) {
     
 	$adminListFiltered = array();
     foreach ($adminList as $listItemID => $listItem) {
+        
 				if (isset($listItem['parent_id'])) {
 				  $adminListFiltered[$listItem['parent_id']][] = $listItem;
                 }
                 
 	}
 	$adminList = $adminListFiltered;
-    ksort($adminList);
 	MSV_assignData("admin_list", $adminList);
+    if (!empty($_SESSION['structure_show'])) MSV_assignData("structure_show", $_SESSION['structure_show']);
+    
 }
-
 
