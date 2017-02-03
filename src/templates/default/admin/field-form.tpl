@@ -78,7 +78,7 @@
 {/if}
 {if !($item_type === "pic" || $item_type ==="doc" || $item_type ==="text")}
     <label for="i{$item_id}" class="col-sm-6 control-label">
-    {_t("table.$admin_table.$item_name")}
+    {if $item_name}{_t("table.$admin_table.$item_name")}{/if}
     {if $item_type === "pic"}
     
     	<p class="text-info" style="margin-top:10px;font-weight:300;">

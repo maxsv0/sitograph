@@ -72,7 +72,7 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
         }
 	}
 	if (!$resultSave["ok"]) {
-		MSV_redirect("/admin/?section=$section&edit=".$_POST["form_id"]."&save_error=".urlencode($resultSave["msg"]));
+		MSV_redirect("/admin/?section=$section&edit=".$_POST["form_id"]."&save_error=".urlencode($resultSave["msg"]."&lang=".LANG));
         
 	}
 }

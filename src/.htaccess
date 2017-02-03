@@ -81,6 +81,9 @@ RedirectMatch 403 ^/templates/(.*)$
 	#RewriteRule ^ru/(.*)$ /$1?lang=ru&%{QUERY_STRING} [L,P]
 	#RewriteRule ^en/(.*)$ /$1?lang=en&%{QUERY_STRING} [L,P]
 	
+    RewriteRule ^ua/$ /?lang=ua [L,P]
+	RewriteRule ^ua/(.*)$ /$1?lang=ua&%{QUERY_STRING} [L,P]
+    
 	RewriteBase /
 	RewriteRule ^index\.php$ - [L]
 	RewriteCond %{REQUEST_URI} !^/pagespeed_global_admin
