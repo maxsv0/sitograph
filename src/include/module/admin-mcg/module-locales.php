@@ -87,7 +87,7 @@ if (isset($_REQUEST["add_new"])) {
     'value' =>!empty($_REQUEST["form_value"])? $_REQUEST["form_value"]:$moduleObj->locales[$_REQUEST["edit"]],
     'module' =>$_REQUEST["module"]
     );
-     var_dump($moduleObj->locales[$_REQUEST["edit"]]);
+  //   var_dump($moduleObj->locales[$_REQUEST["edit"]]);
     MSV_assignData("itemField", $itemField);
     MSV_assignData("edit", 1);
 } else {
