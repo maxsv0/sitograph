@@ -1,6 +1,6 @@
 {if $admin_manual_edit_mode}
 
-<form method="POST" action="/admin/?section={$admin_section}">
+<form method="POST" action="{$lang_url}/admin/?section={$admin_section}">
 
 <div class="form-group">
   <textarea class="form-control editor" rows="15" name="form_manual_content">{$admin_manual}</textarea>
@@ -19,8 +19,8 @@
 <input type="hidden" value="manual" name="section">
 
 </form>
-<br>
-<br>
+<br/>
+<br/>
 
 {else}
 
@@ -29,7 +29,7 @@
 {if $user.access === "superadmin"}
 <div class="btnCover">
 <div>
-<a href="/admin/?section=manual&edit_mode"><span class="glyphicon glyphicon-edit"></span> {$t["btn.edit"]}</a>
+<a href="{$lang_url}/admin/?section=manual&edit_mode"><span class="glyphicon glyphicon-edit"></span> {$t["btn.edit"]}</a>
 </div>
 </div>
 {/if}

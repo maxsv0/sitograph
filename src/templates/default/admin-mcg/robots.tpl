@@ -2,7 +2,7 @@
 
 <div class="btnCover">
 <div>
-<a href="/admin/?section=robots&edit_mode"><span class="glyphicon glyphicon-edit"></span> {$t["btn.edit"]}</a>
+<a href="{$lang_url}/admin/?section=robots&edit_mode"><span class="glyphicon glyphicon-edit"></span> {$t["btn.edit"]}</a>
 </div>
 </div>
 {if $mcg_robots}
@@ -17,7 +17,7 @@ Robots.txt {$t["not_found"]}
 
 {if $mcg_robots_edit_mode}
 
-<form method="POST" action="/admin/?section={$admin_section}">
+<form method="POST" action="{$lang_url}/admin/?section={$admin_section}">
 
 <div class="form-group">
 	<label for="exampleInputPassword1">robots.txt</label>

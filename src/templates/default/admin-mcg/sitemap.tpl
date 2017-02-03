@@ -4,7 +4,7 @@
 
 {if $admin_sitemap_edit_mode}
 
-<form method="POST" action="/admin/?section={$admin_section}">
+<form method="POST" action="{$lang_url}/admin/?section={$admin_section}">
 
 <div class="form-group">
   <textarea class="form-control" rows="15" name="form_sitemap_content">{$admin_sitemap}</textarea>
@@ -23,17 +23,17 @@
 <input type="hidden" value="sitemap" name="section">
 
 </form>
-<br>
-<br>
+<br/>
+<br/>
 
 {else}
 
 
 <div class="btnCover">
 <div>
-<a href="/admin/?section=sitemap&generate"><span class="glyphicon glyphicon-flash"></span> {_t("btn.generate")}</a>
+<a href="{$lang_url}/admin/?section=sitemap&generate"><span class="glyphicon glyphicon-flash"></span> {_t("btn.generate")}</a>
 &nbsp;&nbsp;&nbsp;
-<a href="/admin/?section=sitemap&edit_mode"><span class="glyphicon glyphicon-edit"></span> {_t("btn.edit")}</a>
+<a href="{$lang_url}/admin/?section=sitemap&edit_mode"><span class="glyphicon glyphicon-edit"></span> {_t("btn.edit")}</a>
 </div>
 </div>
 {if $admin_sitemap}
