@@ -11,7 +11,6 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
      $config_path = $moduleObj->pathConfig;
      
      $configXML = simplexml_load_file($config_path); 
-   //  var_dump($configXML->locales->locale);
      foreach ($configXML->locales->locale as $loc) {
         $attributes = $loc->attributes();
         if ((string)$attributes["name"] == LANG) {
@@ -33,7 +32,7 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
     // echo("<pre>".htmlspecialchars($configXML->asXML())."</pre>");
      $configXML->asXml($config_path);
    }  
-   //  var_dump($configXML->locales->locale);  
+   
    if (!empty($_POST["save_exit"])) {
     MSV_redirect("/admin/?section=$section");
    } 
@@ -43,12 +42,31 @@ if (!empty($_POST["save"])) {
 	$_REQUEST["edit"] = $_POST["itemID"];
 }
 
+if (!empty($_REQUEST["delete"])) {
+    if (!empty($_REQUEST["module"])) {
+        $moduleObj = MSV_get("website.".$_REQUEST["module"]);   
+        $config_path = $moduleObj->pathConfig;
+        $configXML = simplexml_load_file($config_path); 
+        foreach ($configXML->locales->locale as $loc) {
+        $attributes = $loc->attributes();
+        if ((string)$attributes["name"] == LANG) {
+            unset($loc->xpath('field[@name="'.$_REQUEST["delete"].'"]')[0]->{0});
+        }
+       } 
+     //  echo("<pre>".htmlspecialchars($configXML->asXML())."</pre>");
+       $configXML->asXml($config_path);       
+    }
+	MSV_redirect("/admin/?section=$section");
+}
+
+
+
 if (isset($_REQUEST["add_new"])) {
    $modules = array();
     foreach ($this->website->modules as $module) {
     	$modules[$module] = $module;
     }
-  // var_dump($modules);
+ 
     $admin_edit = array();
     
     $admin_edit[] = array(

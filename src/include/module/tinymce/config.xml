@@ -110,5 +110,12 @@
 	<file dir="content" path="js/tinymce/langs/ru_RU.js"/>
 	<file dir="content" path="js/tinymce/themes/modern/theme.min.js"/>
 </install>
-
+<locales>
+	<locale name="ru">
+    </locale>
+	<locale name="en">
+    </locale>
+    <locale name="ua">
+    </locale>
+</locales>
 </document>

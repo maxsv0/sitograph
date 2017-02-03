@@ -22,5 +22,12 @@
 	<file dir="content" path="css/jquery.cropper.css"/>
 	<file dir="content" path="js/jquery.cropper.js"/>
 </install>
-
+<locales>
+	<locale name="ru">
+    </locale>
+	<locale name="en">
+    </locale>
+    <locale name="ua">
+    </locale>
+</locales>
 </document>

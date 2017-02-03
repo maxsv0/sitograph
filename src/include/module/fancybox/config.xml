@@ -28,5 +28,12 @@
 	<file dir="content" path="images/fancybox/fancybox_sprite.png"/>
 	<file dir="content" path="images/fancybox/fancybox_sprite@2x.png"/>
 </install>
-
+<locales>
+	<locale name="ru">
+    </locale>
+	<locale name="en">
+    </locale>
+    <locale name="ua">
+    </locale>
+</locales>
 </document>
