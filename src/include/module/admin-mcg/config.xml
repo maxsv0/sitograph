@@ -59,6 +59,10 @@
 	<file dir="template" path="default/admin-mcg/index.tpl"/>
 	<file dir="template" path="default/admin-mcg/mail_template.tpl"/>
 	<file dir="template" path="default/admin-mcg/locales.tpl"/>
+	<file dir="template" path="default/admin-mcg/locates/add.tpl"/>
+	<file dir="template" path="default/admin-mcg/locates/edit.tpl"/>
+	<file dir="template" path="default/admin-mcg/locates/list.tpl"/>
+    
 	<file dir="template" path="default/admin-mcg/module_settings.tpl"/>
 	<file dir="template" path="default/admin-mcg/robots.tpl"/>
 	<file dir="template" path="default/admin-mcg/seo.tpl"/>
