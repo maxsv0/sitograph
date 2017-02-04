@@ -165,18 +165,18 @@ if (!empty($section) && array_key_exists($section, $menu_ar)) {
 				 || $field["type"] === "file") {
 					$tabs["files"]["fields"][] = $field;
 				} elseif ($field["type"] === "published"
-				 || $field["type"] === "deleted") {
+				 || $field["type"] === "deleted"
+				 || $field["type"] === "author"
+				 || $field["type"] === "updated"
+				 || $field["type"] === "lang") {
 					$tabs["access"]["fields"][] = $field;
 				} elseif ($field["type"] === "int"
 				 || $field["type"] === "id"
-				 || $field["type"] === "updated"
 				 || $field["type"] === "str"
 				 || $field["type"] === "array"
 				 || $field["type"] === "multiselect"
-				 || $field["type"] === "author"
 				 || $field["type"] === "select"
-				 || $field["type"] === "select"
-				 || $field["type"] === "lang") {
+				 || $field["type"] === "select") {
 					$tabs["home"]["fields"][] = $field;
 				} else {	// TODO: ? do we need this?
 					$tabs["home"]["fields"][] = $field;
