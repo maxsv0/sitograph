@@ -192,8 +192,9 @@ if (!empty($section) && array_key_exists($section, $menu_ar)) {
 		header('Content-Encoding: UTF-8');
 		header('Content-type: text/csv; charset=UTF-8');
 		header('Content-Disposition: attachment; filename='.$table.'-'.time().'.csv');
-	
+		
 		$out = fopen('php://output', 'w');
+		fputs($out, "\xEF\xBB\xBF");
 		
 		$table_info = MSV_getConfig("admin_table_info");
 		$rowShort = array();
