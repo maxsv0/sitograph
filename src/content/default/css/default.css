@@ -430,3 +430,52 @@ a.title_link:hover {
     margin:20px 0px;
     text-align: center;
 }
+
+.admin_panel {
+ position:absolute;
+ top: 0;
+ z-index:2000;
+ background-color:#e6e6e6;
+ top:0px;
+ height:20px!important;
+ border-bottom:1px solid #ccc; 
+}
+.admin_panel tr td {
+    width: 50%;
+    vertical-align: top;
+    font-family: Verdana!important;
+    padding-top: 3px;
+    font-size: 13px;
+}
+.admin_panel p {
+    font-size: 13px;
+    color: #666666;
+    font-family: Verdana!important;
+    margin: 0px 0px 5px; 
+}
+.admin_pic {
+    display: inline;
+}
+.admin_bg_red {
+    font-size:13px;
+    font-family: Verdana!important; 
+    margin-left:5px;
+    text-decoration:none;
+    color: #ee1a3b;
+    width: 200px;
+    white-space: nowrap;
+    display: inline;
+    padding:0px 3px; 
+}
+.admin_bg_red:hover {
+    background-color:#f01735;
+    color: #ffffff;    
+}
+
+.admin_panel a:hover {
+    text-decoration:none;
+
+}
+.admin_mode_link:hover {
+    color: #ffffff;
+}

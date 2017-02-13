@@ -1118,19 +1118,34 @@ function MSV_outputAdminMenu() {
 	$W = MSV_get("website");
 	
 	$strOut  = "";
-	$strOut .= "<div style='position:fixed;opacity:0.5;bottom:0;left:0;width:150px;background:rgba(0,0,0,0.8);color:#fff;padding:20px 15px;'>";
-	$strOut .= "<p><a href='".$W->langUrl."/admin/' style='color:#fff;'>"._t("btn.back_to_admin")."</a></p><hr>";
-	$strOut .= "<h4>".$W->page["name"]."</h4>";
-	$strOut .= "<h5>url: ".$W->page["url"]."</h5>";
-	$strOut .= "<p><a href='".$W->langUrl."/admin/?section=structure&table=structure&edit=".$W->page["id"]."' style='color:#fff;'>"._t("btn.edit_settings")."</a></p>";
-	if ($W->page["page_document_id"]) {
-		$strOut .= "<p><a href='".$W->langUrl."/admin/?section=documents&table=documents&edit=".$W->page["page_document_id"]."#document' style='color:#fff;'>"._t("btn.document_edit")."</a></p>";
-	} else {		
-		$strOut .= "<p><a href='".$W->langUrl."/admin/?section=structure&document_create=".$W->page["id"]."' style='color:#fff;'>"._t("btn.document_create")."</a></p>";
-	}
-	$strOut .= "<p><a href='".$W->langUrl."/admin/?section=structure&table=structure&edit=".$W->page["id"]."#seo' style='color:#fff;'>"._t("btn.edit_seo")."</a></p>";
-	$strOut .= "</div>";
-
+    
+    $strOut  .='<table width="100%" cellpadding="0" cellspacing="0" class="admin_panel">';
+    $strOut  .='<tbody><tr><td width="50%" align="right" style="padding-right:10px;">';
+    $strOut  .='<p>Административный просмотр сайта</p></td>';
+    $strOut  .='<td align="left">';
+    $strOut  .='<a href="/admin/">';
+    $strOut  .='<div class="admin_pic">';
+    $strOut  .='<img src="/content/images/adminmcg/admin_panel.png"/>';
+    $strOut  .='</div>';
+    $strOut  .='<div class="admin_bg_red">Вернуться в «Сайтограф»</div>';
+    $strOut  .='</a>';
+    $strOut  .='</td></tr></tbody></table>';
+    $strOut  .='<style>';
+    $strOut  .='body {padding-top:30px;}';
+    $strOut  .='</style>';
+//	$strOut .= "<div style='position:fixed;opacity:0.5;bottom:0;left:0;width:150px;background:rgba(0,0,0,0.8);color:#fff;padding:20px 15px;'>";
+//	$strOut .= "<p><a href='".$W->langUrl."/admin/' style='color:#fff;'>"._t("btn.back_to_admin")."</a></p><hr>";
+//	$strOut .= "<h4>".$W->page["name"]."</h4>";
+//	$strOut .= "<h5>url: ".$W->page["url"]."</h5>";
+//	$strOut .= "<p><a href='".$W->langUrl."/admin/?section=structure&table=structure&edit=".$W->page["id"]."' style='color:#fff;'>"._t("btn.edit_settings")."</a></p>";
+//	if ($W->page["page_document_id"]) {
+//		$strOut .= "<p><a href='".$W->langUrl."/admin/?section=documents&table=documents&edit=".$W->page["page_document_id"]."#document' style='color:#fff;'>"._t("btn.document_edit")."</a></p>";
+//	} else {		
+//		$strOut .= "<p><a href='".$W->langUrl."/admin/?section=structure&document_create=".$W->page["id"]."' style='color:#fff;'>"._t("btn.document_create")."</a></p>";
+//	}
+//	$strOut .= "<p><a href='".$W->langUrl."/admin/?section=structure&table=structure&edit=".$W->page["id"]."#seo' style='color:#fff;'>"._t("btn.edit_seo")."</a></p>";
+//	$strOut .= "</div>";
+//
 	return $strOut;
 }
 
@@ -1698,42 +1713,42 @@ function get_table_auto_increment_next_value($table) {
         
 function translit_encode($string) {
 	$trans_fwd = array(
-        	'а'=>'a',
-        	'б'=>'b',
-        	'в'=>'v',
-        	'г'=>'g',
-        	'д'=>'d',
-        	'е'=>'e',
-        	'є'=>'e',
-        	'ё'=>'e',
-        	'ж'=>'zh',
-        	'з'=>'z',
-        	'и'=>'i',
-        	'і'=>'i',
-        	'ї'=>'i',
-        	'й'=>'y',
-        	'к'=>'k',
-        	'л'=>'l',
-        	'м'=>'m',
-        	'н'=>'n',
-        	'о'=>'o',
-        	'п'=>'p',
-        	'р'=>'r',
-        	'с'=>'s',
-        	'т'=>'t',
-        	'у'=>'u',
-        	'ф'=>'f',
-        	'х'=>'h',
-        	'ц'=>'c',
-        	'ч'=>'ch',
-        	'ш'=>'sh',
-        	'щ'=>'sch',
-        	'ъ'=>'',
-        	'ы'=>'i',
-        	'ь'=>'',
-        	'э'=>'e',
-        	'ю'=>'yu',
-        	'я'=>'ya',
+        	'Р°'=>'a',
+        	'Р±'=>'b',
+        	'РІ'=>'v',
+        	'Рі'=>'g',
+        	'Рґ'=>'d',
+        	'Рµ'=>'e',
+        	'С”'=>'e',
+        	'С‘'=>'e',
+        	'Р¶'=>'zh',
+        	'Р·'=>'z',
+        	'Рё'=>'i',
+        	'С–'=>'i',
+        	'С—'=>'i',
+        	'Р№'=>'y',
+        	'Рє'=>'k',
+        	'Р»'=>'l',
+        	'Рј'=>'m',
+        	'РЅ'=>'n',
+        	'Рѕ'=>'o',
+        	'Рї'=>'p',
+        	'СЂ'=>'r',
+        	'СЃ'=>'s',
+        	'С‚'=>'t',
+        	'Сѓ'=>'u',
+        	'С„'=>'f',
+        	'С…'=>'h',
+        	'С†'=>'c',
+        	'С‡'=>'ch',
+        	'С€'=>'sh',
+        	'С‰'=>'sch',
+        	'СЉ'=>'',
+        	'С‹'=>'i',
+        	'СЊ'=>'',
+        	'СЌ'=>'e',
+        	'СЋ'=>'yu',
+        	'СЏ'=>'ya',
         	' '=>'-',
         	'-'=>'-',
         	'0'=>'0',
