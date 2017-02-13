@@ -1,5 +1,4 @@
-
-<html>
+<!DOCTYPE html>
 
 <head>
 <title>Панель управления</title>
@@ -8,8 +7,8 @@
 
 
 {$htmlHead}
-<link rel="stylesheet" type="text/css" href="/content/css/admin-mcg.css" />
-<script src="/content/js/tinymce/tinymce.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{$content_url}/css/admin-mcg.css" />
+<script src="{$content_url}/js/tinymce/tinymce.min.js"></script>
 
 </head>
 
@@ -48,11 +47,11 @@
 		<td colspan="3" bgcolor="#313131" height="3"></td>
 	</tr>
 	<tr bgcolor="#3D3D3D">
-		<td><a href="/admin/"><img class="block" src="/content/images/adminmcg/logo.gif" style="border: none;" /></a></td>
+		<td><a href="/admin/"><img class="block" src="{$content_url}/images/adminmcg/logo.gif" style="border: none;" /></a></td>
     	<td>
     		<table cellpadding="0" cellspacing="0">
     		<tr>
-    			<td><img src="/content/images/adminmcg/{$admin_cms_icon}"/></td>
+    			<td><img src="{$content_url}/images/adminmcg/{$admin_cms_icon}"/></td>
     			<td style="padding-left: 10px;"><span style="font-size: 18px; color: #FFFFFF;" >{$host}</span></td>
     		</tr>
     		</table>        
@@ -60,7 +59,7 @@
 		<td>
     		<table cellpadding="0" cellspacing="0">
     		<tr>
-    			<td><img src="/content/images/adminmcg/av_pic.gif"/></td>
+    			<td><img src="{$content_url}/images/adminmcg/av_pic.gif"/></td>
     			<td style="padding-left: 10px;"><a class="admin_mode_link" href="{$home_url}">Административный<br>просмотр сайта</a></td>
     		</tr>
     		</table>        
@@ -69,12 +68,12 @@
 	</tr>
     
 	{if count($languages) > 1}
-	<tr valign="top" style="background: url(/content/images/adminmcg/heder_bg.gif) repeat-x;">
+	<tr valign="top" style="background: url({$content_url}/images/adminmcg/heder_bg.gif) repeat-x;">
 		<td colspan="3" height="25">
 		
 		<table align="right" cellpadding="0" cellspacing="0" width="280">
 		<tr>
-			<td style="background: url(/content/images/adminmcg/lang_bg.gif) left top no-repeat; padding-right: 5px;">
+			<td style="background: url({$content_url}/images/adminmcg/lang_bg.gif) left top no-repeat; padding-right: 5px;">
 			
 			<table align="right" cellpadding="0" cellspacing="0">
 			<tr>
@@ -100,7 +99,7 @@
 	</tr>
 	{/if}
 	
-	<tr style="background: url(/content/images/adminmcg/heder_bg.gif) 0px -25px repeat-x;">
+	<tr style="background: url({$content_url}/images/adminmcg/heder_bg.gif) 0px -25px repeat-x;">
 		<td colspan="2" height="75">
 		
 		<div style="padding-left: 50px; font-family: Arial; font-size: 36px;">
@@ -114,7 +113,7 @@
 		<table align="right" cellpadding="0" cellspacing="0">
 		<tr>
 			<td><input class="input_search" type="text" name="keyword" value="Найти" onblur="if(this.value=='') this.value=Найти', this.style.color='#000000';" onfocus="if(this.value=='Найти') this.value='', this.style.color='#000000';"></td>
-			<td><input type="image" src="/content/images/adminmcg/btn_search.gif" name="search"/></td>
+			<td><input type="image" src="{$content_url}/images/adminmcg/btn_search.gif" name="search"/></td>
 		</tr>
 		</table>
 		</form>

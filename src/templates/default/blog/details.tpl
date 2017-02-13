@@ -1,15 +1,21 @@
 <div class="container">
-{include file="$themePath/widget/navigation.tpl"}
+<div class="row content-block">
+    {include file="$themePath/widget/menu-top.tpl"}
+    <div class="row sep_line"></div>	
+    {include file="$themePath/widget/navigation.tpl"}
 
 
-<div class="row">
-<div class="col-sm-8">
+{if $blog_article_details.title}
+    <div class="col-lg-12 title_block"><h1>{$blog_article_details.title}</h1></div>
+    {/if}
+    
+<div class="col-lg-8 col-md-7 col-sm-12">
 
 
 {if $blog_article_details.sections}
 <div style="color: #999;text-transform:uppercase;">
 {foreach from=$blog_article_details.sections item=category name=loop} 
-<a  style="color: #999;" href="/blog/?{$blog.categoryUrlParam}={$category.url}">{$category.title}</a>
+<a  style="color: #999;" href="{$lang_url}/blog/?{$blog.categoryUrlParam}={$category.url}">{$category.title}</a>
 {if !$smarty.foreach.loop.last} / {/if}
 {/foreach}
 </div>
@@ -17,12 +23,9 @@
 
 
 
-	<h1 style="margin-top:10px;margin-bottom:5px;">{$blog_article_details.title}</h1>
-	
-	
 	<div class="row">
 		<p class="col-sm-6 text-muted small">
-		<a href="/blog/?{$blog.authorUrlParam}={$blog_article_details.author}">{$blog_article_details.author}</a> 
+		<a href="{$lang_url}/blog/?{$blog.authorUrlParam}={$blog_article_details.author}">{$blog_article_details.author}</a> 
 		posted on {$blog_article_details.date}
 		</p>
 		
@@ -83,22 +86,22 @@
 	{/if}
 	
 
-<hr>
+<hr/>
 
 
 {if $blog_articles_related}
-<h3>Related posts</h3>
+<h3>{_t("blog.label_related_posts")}</h3>
 <div class="row rowItems">
 {foreach from=$blog_articles_related key=article_id item=article} 
 {if $article@iteration > 6}{break}{/if}
 <div class="col-sm-6 col-md-4 rowItem">
 {if $article.pic_preview}
 <p>
-	<a href="/blog/{$article.url}/"><img src="{$article.pic_preview}" alt="{$article.title}" class="img-responsive"></a>
+	<a href="{$lang_url}/blog/{$article.url}/"><img src="{$article.pic_preview}" alt="{$article.title}" class="img-responsive"></a>
 </p>
 {/if}
 <p>  
-    <a href="/blog/{$article.url}/"><h4 class="media-heading">{$article.title}</h4></a>
+    <a href="{$lang_url}/blog/{$article.url}/"><h4 class="media-heading">{$article.title}</h4></a>
 </p>  
 {if !$article.pic_preview}
 <p>
@@ -113,19 +116,20 @@
 <p class="clearfix"></p>
 
 {if $blog_articles_newest}
-<h3>Latest posts</h3>
+
+<h3>{_t("blog.label_latest_posts")}</h3>
 {foreach from=$blog_articles_newest key=article_id item=article} 
 {if $article@iteration > 7}{break}{/if}
 <div class="media">
   <div class="media-left">
-    <a href="/blog/{$article.url}/">
+    <a href="{$lang_url}/blog/{$article.url}/">
 {if $article.pic_preview}
       <img class="media-object" src="{$article.pic_preview}" alt="{$article.title}" width="120">
 {/if}
     </a>
   </div>
   <div class="media-body">
-    <a href="/blog/{$article.url}/"><h4 class="media-heading">{$article.title}</h4></a>
+    <a href="{$lang_url}/blog/{$article.url}/"><h4 class="media-heading">{$article.title}</h4></a>
     
  	{if $article.description}
 	<p>{$article.description}</p>
@@ -141,7 +145,7 @@
 
 </div>
 
-<div class="col-sm-4">
+<div class="col-lg-4 col-md-5 hidden-sm">
 	{include file="$themePath/widget/sideblock.tpl"}
 </div>
 

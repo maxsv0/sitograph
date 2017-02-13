@@ -523,6 +523,7 @@ class MSV_Website {
 		$Smarty->assign("themeDefaultPath", ABS_TEMPLATE."/default");
 		$Smarty->assign("themePath", ABS_TEMPLATE."/".$this->template);
 		$Smarty->assign("themeUrl", ABS_TEMPLATEs."/".$this->template);
+		$Smarty->assign("content_url", CONTENT_URL);
 		
 		
 		$this->includeCSS = array_reverse($this->includeCSS);

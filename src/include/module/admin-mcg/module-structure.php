@@ -23,17 +23,12 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
 		$rowSEO["sitemap"] = $_POST["form_published"] == 1 ? 1:0;
         
 		$resultSave = API_updateDBItemRow(TABLE_SEO, $rowSEO);
-        // вносим коррективы в URL меню 
            $sqlCode = "update `".TABLE_MENU."`
                        set `url` = '".MSV_SQLescape($_POST["form_url"])."' 
                        where `structure_id` = '".MSV_SQLescape($_POST["form_id"])."'
                        ";
                   
            $result = API_SQL($sqlCode);
-        // вносим коррективы в URL меню 
-        
-        
-        // выключаем/включаем разделы
         
         $resultQueryItem = API_getDBItem(TABLE_STRUCTURE, "`url` = '".MSV_SQLescape($_POST["form_url"])."'");
     	
@@ -62,9 +57,7 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
            }
         }
         
-		// выключаем/включаем разделы/подразделы
-        
-        API_SiteMapGenegate(); // генерируем карту сайта
+        API_SiteMapGenegate(); 
 	} else {
 		$resultSave = SEO_add($_POST["form_url"], $_POST["form_seo_title"], $_POST["form_seo_description"], $_POST["form_seo_keywords"],($_POST["form_published"] == 1 ? 1:0));
         if ($_POST["form_published"] == 1) {

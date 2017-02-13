@@ -17,9 +17,9 @@ function ThemeDefaultInstall($module) {
 	
 	// theme options
 	MSV_setConfig("theme_active", "theme-default", true, "*");
-	MSV_setConfig("theme_css_path", "/content/css/default.css", true, "*");
-	MSV_setConfig("theme_js_path", "/content/js/default.js", true, "*");
-	MSV_setConfig("theme_include_font", "<link href='https://fonts.googleapis.com/css?family=Roboto:300,500&subset=latin,cyrillic' rel='stylesheet' type='text/css'>", true, "*");
+	MSV_setConfig("theme_css_path", "/content/default/css/default.css", true, "*");
+	MSV_setConfig("theme_js_path", "/content/default/js/default.js", true, "*");
+//	MSV_setConfig("theme_include_font", "<link href='https://fonts.googleapis.com/css?family=Roboto:300,500&subset=latin,cyrillic' rel='stylesheet' type='text/css'>", true, "*");
 	MSV_setConfig("theme_use_bootstrap", 1, true, "*");
 	MSV_setConfig("theme_use_jquery", 1, true, "*");
 }

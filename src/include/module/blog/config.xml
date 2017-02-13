@@ -115,6 +115,12 @@
 		<field name="table.article_categories.url" value="URL"/>
 		<field name="table.article_categories.article_id" value="Статья"/>
 		<field name="table.article_categories.title" value="Заголовок"/>
+        <field name="blog.continue_reading" value="Подробнее"/>
+        <field name="blog.label_search" value="Поиск:"/>
+        <field name="blog.label_рopular_posts" value="Популярные"/>
+        <field name="blog.label_latest_posts" value="Последние публикации"/>
+        <field name="blog.label_related_posts" value="Связанные публикации"/>
+        <field name="blog.btn_search" value="Найти"/>
 	</locale>
 	<locale name="en">
 		<field name="module.blog" value="Blog"/>

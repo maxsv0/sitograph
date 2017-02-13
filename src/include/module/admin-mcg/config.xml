@@ -9,7 +9,6 @@
     <api name="set_structure_status" action="ajax_set_structure_status"/>
 </config>
 
-
 <install>
 	<param name="name" value="admin-mcg"/>
 	<param name="version" value="1.0"/>
@@ -208,7 +207,8 @@
 		<field name="admin.sitemap" value="Управление sitemap.xml"/>
 		<field name="admin.sitemap_title" value="Управление sitemap.xml"/>
 		<field name="admin.manual_title" value="Инструкция"/>
-	<field name="btn.remove_confirm" value="Вы уверены что хотите удалить?"/></locale>
+	    <field name="btn.remove_confirm" value="Вы уверены что хотите удалить?"/>
+	</locale>
 	<locale name="en">
 		<field name="msg.module_handler_not_found" value="Module handler not found"/>
 		<field name="msg.no_stored_image" value="No stored image"/>
@@ -226,7 +226,6 @@
 		<field name="form.server_path" value="Server path"/>
 		<field name="form.select_file" value="Select file"/>
 		<field name="form.image_max_size" value="Image max size"/>
-		
 		<field name="admin.filename" value="Name"/>
 		<field name="admin.filetype" value="Type"/>
 		<field name="admin.filepreview" value="Preview"/>

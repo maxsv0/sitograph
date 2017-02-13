@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>{$page.title}</title>
-	<meta name="keywords" content="{$page.keywords}">
-	<meta name="description" content="{$page.description}">
+	<meta name="keywords" content="{$page.keywords}"/>
+	<meta name="description" content="{$page.description}"/>
 
     {$htmlHead}
   </head>
@@ -26,7 +26,7 @@
       
       <ul class="nav navbar-nav navbar-left">
       <li style="width:180px;"><a class="navbar-brand" href="{$lang_url}/admin/">
-      <img src="/content/images/msv-logo.png">
+      <img src="{$content_url}/images/msv-logo.png"/>
       </a>
       </li>
       
