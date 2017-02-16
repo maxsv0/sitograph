@@ -22,8 +22,8 @@
 {/if}
     </a>
   </div>
-  <div class="">
-    <a href="{$lang_url}/blog/{$article.url}/"><h4 class="">{$article.title}</h4></a>
+  <div class="media-left-title">
+    <a href="{$lang_url}/blog/{$article.url}/">{$article.title}</a>
   </div>
 </div>
 

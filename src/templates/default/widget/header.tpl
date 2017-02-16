@@ -30,8 +30,8 @@
  	<div  class="row">
 		<div class="col-lg-2 col-lg-offset-10 col-md-3 col-md-offset-9 col-sm-4 col-sm-offset-8">
 			<div class="search-block">
-			<form action="" method="post">
-				<input type="text" name="search" value="" placeholder="найти"/>
+			<form action="{$lang_url}/search/?search" method="post">
+				<input type="text" name="keyword" value="{$search_str}" placeholder="найти"/>
 				<button type="submit" value="search"></button>
 				
 			</form>

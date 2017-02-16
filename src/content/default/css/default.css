@@ -31,7 +31,7 @@ h4 {
     padding: 0;
     margin: 0;
     color: #3d3d3d;
-    font-size: 22px;
+    font-size: 18px;
 }
 
 
@@ -408,7 +408,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9a0f25', end
     width:100%;
     margin: 10px 0px;
 }
-
+a.title_link {
+    font-family: PTSansNarrowBold,Verdana;
+    text-decoration: none;
+    color: #3d3d3d;
+    font-weight: 400;
+    font-size: 18px;
+    
+}
 a.title_link:hover {
     text-decoration: none;
     border-bottom: 2px solid #ee1a3b;
@@ -431,6 +438,18 @@ a.title_link:hover {
     text-align: center;
 }
 
+
+.media-left-title a {
+    font-family: PTSansNarrowBold,Verdana;
+    text-decoration: none;
+    color: #3d3d3d;
+    font-weight: 400;
+    font-size: 18px;
+}
+.media-left-title a:hover {
+    color: #9b0820;
+}
+/* админпанель */
 .admin_panel {
  position:absolute;
  top: 0;
@@ -479,3 +498,5 @@ a.title_link:hover {
 .admin_mode_link:hover {
     color: #ffffff;
 }
+/* админпанель */
+

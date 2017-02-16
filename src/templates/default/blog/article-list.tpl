@@ -10,8 +10,8 @@
 {/if}
 
 
-<a href="{$lang_url}/blog/{$article.url}/" class="title_link"><h4>{$article.title}</h4></a>
-
+<a href="{$lang_url}/blog/{$article.url}/" class="title_link">{$article.title}</a>
+<br /><br />
 <div class="row">
 	<p class="col-sm-6 text-muted small">
 	<a href="{$lang_url}/blog/?{$blog.authorUrlParam}={$article.author}">{$article.author}</a> 
@@ -32,11 +32,11 @@
 	<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> {$article.comments}
 	</p>
 </div>
-
+<br />
 {if $article.pic_preview}
 
 <a href="{$lang_url}/blog/{$article.url}/">
-<img src="{$article.pic_preview}" alt="">
+<img src="{$article.pic_preview}" alt=""/>
 </a>
 
 {/if}
