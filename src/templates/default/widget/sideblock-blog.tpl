@@ -1,8 +1,8 @@
 <div class="sideblock_search">
-<form role="form" action="{$lang_url}/blog/">
+<form role="form" action="">
 			  <div class="form-group">
 				<label for="inputSearch" class="control-label">{_t("blog.label_search")}</label>
-				<input type="text" id="inputSearch" name="{$blog.searchUrlParam}" class=""/>
+				<input type="text" id="inputSearch" name="{$blog.searchUrlParam}" class="search-input"/>
 			  </div>
 			  <input type="submit" class="send-btn" value="{_t("blog.btn_search")}"/>
 </form>

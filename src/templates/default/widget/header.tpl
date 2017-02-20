@@ -14,6 +14,13 @@
 <body>
 
  <div class="container header">
+    <div class="row">
+    <div class="col-lg-4 col-lg-offset-8 col-md-4 col-md-offset-8 col-sm-6 col-sm-offset-6 ">
+        <div class="login-block">
+     	{include file="$themePath/widget/menu-user.tpl"}
+        </div>
+        </div>
+    </div> 
  	<div class="row">
 		<div class="col-lg-2 col-lg-offset-10 col-md-3 col-md-offset-9 col-sm-4 col-sm-offset-8">
 			<div class="header-menu">
@@ -53,8 +60,8 @@
 				</table>
             </div>    
 		</div>
-        
  	</div>
+       
  	<div class="row">
  		<div class="logo-block">
  			<a href="{$lang_url}/">
@@ -62,5 +69,5 @@
  			</a>
  		</div>
  	</div>
- 	
+    
  </div>

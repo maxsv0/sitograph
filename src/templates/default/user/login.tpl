@@ -1,4 +1,4 @@
-<form class="form-horizontal" method="POST" action="/login/">
+<form class="form-horizontal" method="POST" action="{$lang_url}/login/">
   <div class="form-group">
     <label for="inputEmail" class="col-sm-2 control-label">{_t("users.form.email")}</label>
     <div class="col-sm-10">
@@ -20,12 +20,12 @@
       </div>
     </div>
     <div class="col-sm-4 text-right">
-      <a href="/password-reset/">{_t("users.form.link_forget")}</a>
+      <a href="{$lang_url}/password-reset/">{_t("users.form.link_forget")}</a>
     </div>
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default" name="doLogin" value="1">{_t("users.form.sign_in")}</button>
+      <button type="submit" class="login-btn" name="doLogin" value="1">{_t("users.form.sign_in")}</button>
     </div>
   </div>
   

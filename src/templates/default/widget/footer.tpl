@@ -1,6 +1,6 @@
  <div class="container footer">
  	<div class="row contact-block">
- 		<div class="col-lg-6 col-md-8 col-sm-8 col-xs-10">
+ 		<div class="col-lg-6 col-md-8 col-sm-8 col-xs-8">
 			<span class="contact-title">Наши контакты</span>
 			<table cellpadding="5" cellspacing="0" style="color: #FFF;">
 
@@ -20,14 +20,19 @@
 			</tr>
 			</table>	
  		</div>
-		<div class="col-lg-6 col-md-4 col-sm-4 col-xs-2">
+		<div class="col-lg-6 col-md-4 col-sm-4 col-xs-4">
 			<div class="social_block">
                     <a href="https://www.facebook.com/MCGAgency" class="f_big"></a>
                     <a href="http://vk.com/mcgagency" class="b_big"></a>
              </div>
+		</div>
+        <div class="col-lg-6 col-md-4 col-sm-4 col-xs-4">
+			<div class="bottom_menu">
+                {include file="$themePath/widget/menu-bottom.tpl"}    
+             </div>
 		</div> 	
  	</div>
- 	<div class="row">
+ 	<div class="row footer-copyright">
  		<table cellpadding="0" cellspacing="0" border="0" width="100%">
 	<tr>
 		<td width="52"><img src="{$content_url}/{$page.template}/images/line_bottom_p1.gif" width="52" height="43" alt="&nbsp;"/></td>

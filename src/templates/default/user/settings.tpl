@@ -1,6 +1,4 @@
 <div class="col-md-6">
-<h2>My settings</h2>
-
 <form class="form-horizontal" method="POST" >
 
 {if $user.email_verified}
@@ -84,10 +82,14 @@
     </div>
   </div>
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-8">
-      <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-ban-circle">&nbsp;</span>{$t["btn.reset"]}</button>
-      <button type="submit" name="doSave" value="1" class="btn btn-primary"><span class="glyphicon glyphicon-ok">&nbsp;</span>{$t["btn.save"]}</button>
+    <div class="col-lg-6 col-sm-6">
+      <button class="login-btn" type="reset"><span class="glyphicon glyphicon-ban-circle">&nbsp;</span>{$t["btn.reset"]}</button>
+      
     </div>
+    <div class="col-lg-6 col-sm-6">
+    <button type="submit" name="doSave" value="1" class="login-btn"><span class="glyphicon glyphicon-ok">&nbsp;</span>{$t["btn.save"]}</button>
+    </div>
+    
   </div>
 </form>
 
@@ -97,8 +99,6 @@
 
 
 <div class="col-md-6">
-<h2>Change password</h2>
-
 <form class="form-horizontal" method="POST" >
   
   <div class="form-group">
@@ -121,7 +121,7 @@
   </div>
   <div class="form-group">
     <div class="col-sm-offset-6 col-sm-6">
-      <button type="submit" class="btn btn-primary" name="password_save" value="1">Save changes</button>
+      <button type="submit" class="login-btn" name="password_save" value="1">Save changes</button>
     </div>
   </div>
 </form>

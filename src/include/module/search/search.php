@@ -148,7 +148,7 @@ function ajax_More_Search($module)
                                 $text = $title;
                             }
                             $text = strip_tags(preg_replace($search, "", $text));
-                            $text = substr($text, $a - 300, 300);
+                            $text = mb_substr($text, $a - 300, 300);
                             $ar2["text"] = highlight($_REQUEST['keyword'], $text, 50);
                             $ar2["url"] = $url;
                             $module_search[] = $ar2;
@@ -321,7 +321,7 @@ function Get_Search_List($module)
                                 $text = $title;
                             }
                             $text = strip_tags($text);
-                            $text = substr($text, $a - 300, 300);
+                            $text = mb_substr($text, $a - 300, 300);
                             $ar2["text"] = highlight($_POST['keyword'], $text, 50);
                             $ar2["url"] = $url;
                             $module_search[] = $ar2;

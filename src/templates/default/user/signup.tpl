@@ -1,5 +1,4 @@
-<div class="col-md-6 col-md-offset-3">
-<h2>{_t("users.form.title_sign_up")}</h2>
+
 
 <form class="form-horizontal" method="POST" >
   <div class="form-group">
@@ -33,11 +32,8 @@
     </div>
   </div>
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-8">
-      <button type="submit" class="btn btn-primary" name="doSingUp" value="1">{_t("users.form.sign_up")}</button>
+    <div class="col-sm-offset-4 col-sm-8">
+      <button type="submit" class="login-btn singup-btn" name="doSingUp" value="1">{_t("users.form.sign_up")}</button>
     </div>
   </div>
 </form>
-
-</div>
-

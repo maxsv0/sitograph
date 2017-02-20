@@ -1,7 +1,7 @@
 <div class="thumbnail galleryAlbum">
 
 
-<a href="/gallery/{$album.url}/">
+<a href="{$lang_url}/gallery/{$album.url}/">
 <img src="{$album.pic_preview}" alt="">
 </a>
 
@@ -17,8 +17,8 @@
 	{$album.shares} shares, 
 	{$album.comments} comments
 	</p>
-	
-	<p><a href="/gallery/{$album.url}/" class="btn btn-primary" role="button">Album details</a></p>
+	<br />
+	<p><a href="{$lang_url}/gallery/{$album.url}/" class="send-btn more_detals" role="button">Album details</a></p>
 </div>
 
 
