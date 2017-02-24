@@ -1,11 +1,6 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Alex
- * Date: 27.01.2017
- * Time: 8:26
- */
+
  
 MSV_IncludeJSFile(CONTENT_URL."/js/search.js","/search/");
 MSV_IncludeCSSFile(CONTENT_URL."/css/search.css", "/search/");
