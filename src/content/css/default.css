@@ -1,87 +1,168 @@
-body {
-	font-family: 'Open Sans', sans-serif;
-	font-weight:300;
+.header {
+	padding-top:20px
 }
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-	font-weight:300;
+.content-block {
+	background:#fff;
+}
+.top-menu {
+	height: 66px;
+	background:#eee;
 }
 
-.breadcrumb {
-	background: none;
+
+
+.sitemap-ico {
+	width: 11px;
+	height: 9px;
+	background: url(/content/images/sitemap_ico.png) no-repeat;
+	display: inline-block
+	
+}
+
+.mail-ico {
+	width: 11px;
+	height: 9px;
+	background: url(/content/images/mail_ico.png) no-repeat;
+	display: inline-block
+}
+
+.top-lang {
+	font-family: Verdana;
+	color: #ffffff;
+	width: 16px;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 30px;
+	display: inline;
+	text-decoration: none;
+}
+
+.navbar  {
 	margin-bottom: 0px;
-	padding: 0px 30px 25px 5px;
+    min-height: inherit;
+	
+	
 }
 
-.link-dashed {
-    border-bottom: dashed 1px #ccc;
-    text-decoration: none;
-    cursor:pointer;
+.navbar-nav > li > a {
+	font-family: Verdana;
+	color: #666666;
+	font-size: 16.92px;
+	line-height: 30px;
+	transform: scale(1.064,1.064);
+    padding-bottom: 0px;
+    padding-top: 5px;
+	border-bottom: 2px solid transparent;
 }
 
-.link-dashed:hover {
-     border-bottom: dashed 1px #ccc;
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    background-color: transparent;
+	border-bottom: 2px solid #ed1a3b;
+    color:  #000;
+	height: 38px 
+}
+.navbar-collapse {
+	overflow: hidden
+}
+.nav > li > a:hover, .nav > li > a:focus {
+	background-color: transparent;
+	border-bottom: 2px solid #ed1a3b;
+	color:#000;
+	height: 38px 
 }
 
-
-
-
-/* enable absolute positioning */
-.inner-addon { 
-    position: relative; 
+.navbar-default .navbar-collapse, .navbar-default .navbar-form, .navbar-default {
+    border-color: transparent;
+	background-color: transparent
 }
-
-/* style icon */
-.inner-addon .glyphicon {
-  position: absolute;
-  padding: 10px;
-  pointer-events: none;
-}
-
-/* align icon */
-.left-addon .glyphicon  { left:  0px;}
-.right-addon .glyphicon { right: 0px;}
-
-/* add padding  */
-.left-addon input  { padding-left:  30px; }
-.right-addon input { padding-right: 30px; }
-
-
-
-.form-group.required .control-label:after {
-  content:"*";
-  color:red;
-}
-
-text {
-    background: #ECFCE3;
-    color: #000;
-    padding: 0;
-    display: inline-block;
-    border: 1px dashed #ccc;
-}
-textblock {
-    background: #ECFCE3;
-    color: #000;
-    padding: 0;
-    display: block;
-    border: 1px dashed #ccc;
-    margin-bottom: 20px;
-}
-mark.admin-btn {
+.navbar-toggle {
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    float: right;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    padding: 9px 10px;
     position: relative;
-    z-index: 1000;
-    left: 98%;
-    top: -10px;
-    border: 1px dashed #ccc;
 }
 
-.next_block {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 3px solid #ccc;
-    margin: 1em 0;
-    padding: 0; 
+.navigation {
+	height: 48px;
+	margin: 0px 15px;
+	background-color: #e5e5e5;
+	padding:13px;
+	clear: both
+	
+}
+.navigation ul {
+	list-style: none;
+	margin-left: -40px;
+	
+}
+.navigation ul li {
+	display: block;
+	float: left
+}
+div.navigation a:hover {
+	background: #F01735;
+	color: #FFFFFF;    
 }
 
 
+
+
+.admin_pic {
+	display: inline-block;
+	background:url(/content/images/sitograph/admin_panel.png);
+	width:12px;
+	height:18px;
+}
+
+
+.admin_panel {
+ position:absolute;
+ top: 0;
+ z-index:2000;
+ background-color:#e6e6e6;
+ top:0px;
+ height:20px!important;
+ border-bottom:1px solid #ccc; 
+}
+.admin_panel tr td {
+    width: 50%;
+    vertical-align: top;
+    font-family: Verdana!important;
+    padding-top: 3px;
+    font-size: 13px;
+}
+.admin_panel p {
+    font-size: 13px;
+    color: #666666;
+    font-family: Verdana!important;
+    margin: 0px 0px 5px; 
+}
+
+.admin_panel a:hover {
+    text-decoration:none;
+
+}
+.admin_mode_link:hover {
+    color: #ffffff;
+}
+.admin_title {
+    font-size:13px;
+    font-family: Verdana!important; 
+    margin-left:5px;
+    text-decoration:none;
+    color: #ee1a3b;
+    width: 200px;
+    white-space: nowrap;
+    display: inline;
+    padding:0px 3px; 
+}
+.admin_title:hover {
+    background-color:#f01735;
+    color: #ffffff;    
+}

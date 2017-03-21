@@ -5,7 +5,7 @@ function apiRequest($module) {
 	foreach ($module->website->api as $apiInfo) {
 		if ($apiInfo["name"] === $apiRequest) {
 			if (function_exists($apiInfo["action"])) {
-				$evalCode = "\$result = ".$apiInfo["action"]."(\$this);";
+				$evalCode = "\$result = ".$apiInfo["action"]."(\$module);";
 				eval($evalCode);
 				
 				echo $result;
@@ -752,32 +752,4 @@ function API_itemAdd($table, $fields, $lang = LANG) {
 	$sqlCode = substr($sqlCode, 0, -1)." ) ";
 	
 	return API_SQL($sqlCode);
-}
-
-function API_SiteMapGenegate() {
-    $sitemapPath = ABS."/sitemap.xml";
-    
-    $sitemapXML = '<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.google.com/schemas/sitemap/0.84"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.google.com/schemas/sitemap/0.84 http://www.google.com/schemas/sitemap/0.84/sitemap.xsd">
-';
-	$website = MSV_get("website");
-
-	foreach ($website->languages as $langID) {
-		$query = API_getDBList(TABLE_SEO, "`sitemap` > 0", "`url` desc", 10000, 0,  $langID);
-		if ($query["ok"] && $query["data"]) {
-			foreach ($query["data"] as $item) {
-				$sitemapXML .= "
-<url>
-<loc>".HOME_LINK.$item["url"]."</loc>
-<priority>1</priority>
-<lastmod>".date("Y-m-d", strtotime($item["updated"]))."</lastmod>
-</url>\n";
-			}
-		}
-	}
-	
-	$sitemapXML .= "</urlset>";
-	file_put_contents($sitemapPath, $sitemapXML);
 }

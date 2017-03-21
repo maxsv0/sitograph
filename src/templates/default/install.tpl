@@ -35,7 +35,7 @@
 {if $install_step === 1}
 
 	<p>
-	<h1>Welcome to MSV Website Manager. </h1>
+	<h1>Welcome to MSV Website.</h1>
 	</p>
 
 	<p>

@@ -123,7 +123,6 @@
 		<field name="btn.save" value="Сохранить"/>
 		<field name="btn.save_exit" value="Сохранить и выйти"/>
 		<field name="btn.add_child" value="Добавить подраздел"/>
-		<field name="btn.back_to_admin" value="Вернуться в админку"/>
 		<field name="btn.edit_settings" value="Настройки"/>
 		<field name="btn.edit_document" value="Документы"/>
 		<field name="btn.edit_seo" value="SEO страницы"/>
@@ -172,9 +171,9 @@
 		<field name="table.structure.seo_description" value="Описание страницы"/>
 		<field name="table.structure.seo_keywords" value="Ключевые слова"/>
 		
-		<field name="access.everyone" value="Доступен для всех"/>
-		<field name="access.user" value="Зарег. пользователи"/>
-		<field name="access.admin" value="Администратор"/>
+		<field name="access.everyone" value="Доступен всем"/>
+		<field name="access.user" value="Только пользователи"/>
+		<field name="access.admin" value="Администраторы"/>
 		<field name="access.superadmin" value="Суперадмин"/>
 		
 		<field name="table.settings" value="Настройки сайта"/>
@@ -236,7 +235,8 @@
 		<field name="msg.development_version" value="Это бета версия MSV Website. Режим чтения."/>
 		
 		<field name="structure.homepage" value="Главная"/>
-		<field name="structure.first_page" value="Первая страница"/>
+		<field name="structure.page1" value="Тестовая страница"/>
+		<field name="structure.sitemap" value="Карта сайта"/>
 		<field name="structure.404" value="Ошибка 404"/>
 		<field name="structure.admin_homepage" value="Панель управления"/>
 		<field name="structure.admin_login" value="Вход в Панель управления"/>
@@ -260,7 +260,6 @@
 		<field name="btn.save" value="Save"/>
 		<field name="btn.save_exit" value="Save and Exit"/>
 		<field name="btn.add_child" value="Add sub-page"/>
-		<field name="btn.back_to_admin" value="Back to Admin"/>
 		<field name="btn.edit_settings" value="Edit Settings"/>
 		<field name="btn.edit_document" value="Edit Document"/>
 		<field name="btn.edit_seo" value="Edit SEO"/>
@@ -363,7 +362,7 @@
 		
 		<field name="msg.error_remove_active" value="Can't remove active module"/>
 		<field name="msg.removed" value="removed"/>
-		<field name="msg.no_repository" value="Репозиторий не найден"/>
+		<field name="msg.no_repository" value="Repository not found"/>
 		<field name="msg.repository_not_found" value="not found in repository"/>
 		<field name="msg.cant_open_zip" value="can't open zip file"/>
 		<field name="msg.deleted_ok" value="Deleted successfuly"/>
@@ -375,145 +374,8 @@
 		<field name="msg.email_sending_error" value="Ошибка отправки письма на email "/>
 		
 		<field name="structure.homepage" value="Homepage"/>
-		<field name="structure.first_page" value="The First page"/>
-		<field name="structure.404" value="404 Error"/>
-		<field name="structure.admin_homepage" value="Admin Homepage"/>
-		<field name="structure.admin_login" value="Admin Login"/>
-	</locale>
-	<locale name="de">
-		<field name="actions" value="Actions"/>
-		<field name="not_found" value="Not found"/>
-		<field name="yes" value="Yes"/>
-		<field name="no" value="No"/>
-		
-		<field name="btn.delete" value="Delete"/>
-		<field name="btn.edit" value="Edit"/>
-		<field name="btn.duplicate" value="Duplicate"/>
-		<field name="btn.create" value="Create"/>
-		<field name="btn.document_create" value="Create Document"/>
-		<field name="btn.document_edit" value="Edit Document"/>
-		<field name="btn.add_new" value="Add new item"/>
-		<field name="btn.cancel" value="Cancel"/>
-		<field name="btn.close" value="Сlose"/>
-		<field name="btn.reset" value="Reset"/>
-		<field name="btn.save" value="Save"/>
-		<field name="btn.save_exit" value="Save and Exit"/>
-		<field name="btn.add_child" value="Add sub-page"/>
-		<field name="btn.back_to_admin" value="Back to Admin"/>
-		<field name="btn.edit_settings" value="Edit Settings"/>
-		<field name="btn.edit_document" value="Edit Document"/>
-		<field name="btn.edit_seo" value="Edit SEO"/>
-		
-		<field name="tab.home" value="General"/>
-		<field name="tab.document" value="Document"/>
-		<field name="tab.seo" value="SEO"/>
-		<field name="tab.files" value="Pictures and files"/>
-		<field name="tab.access" value="Access"/>
-		<field name="tab.history" value="Changes history"/>
-		
-		<field name="type.id" value="ID, int"/>
-		<field name="type.author" value="string (60)"/>
-		<field name="type.updated" value="date"/>
-		<field name="type.lang" value="string (20)"/>
-		<field name="type.str" value="string (255)"/>
-		<field name="type.int" value="int"/>
-		<field name="type.bool" value="bool"/>
-		<field name="type.array" value="list"/>
-		<field name="type.pic" value="picture"/>
-		<field name="type.file" value="file"/>
-		<field name="type.select" value="select"/>
-
-		<field name="table.structure" value="Structure"/>
-		<field name="table.structure.id" value="ID"/>
-		<field name="table.structure.published" value="Published"/>
-		<field name="table.structure.deleted" value="Deleted"/>
-		<field name="table.structure.author" value="Author"/>
-		<field name="table.structure.updated" value="Updated"/>
-		<field name="table.structure.lang" value="Lang"/>
-		<field name="table.structure.url" value="URL"/>
-		<field name="table.structure.parent_id" value="Parent ID"/>
-		<field name="table.structure.name" value="Name"/>
-		<field name="table.structure.template" value="Design"/>
-		<field name="table.structure.page_template" value="Page template"/>
-		<field name="table.structure.page_document_id" value="Document"/>
-		<field name="table.structure.document_text" value="Document"/>
-		<field name="table.structure.document_name" value="Document Title"/>
-		<field name="table.structure.sitemap" value="Sitemap"/>
-		<field name="table.structure.debug" value="Debug mode"/>
-		<field name="table.structure.menu" value="Menu"/>
-		<field name="table.structure.menu_order" value="Menu order num"/>
-		<field name="table.structure.access" value="Access"/>
-		<field name="table.structure.access_users" value="Access for users"/>
-		<field name="table.structure.seo_title" value="Page Title"/>
-		<field name="table.structure.seo_description" value="Description"/>
-		<field name="table.structure.seo_keywords" value="Keywords"/>
-		
-		<field name="access.everyone" value="Everyone"/>
-		<field name="access.user" value="Registered Users"/>
-		<field name="access.admin" value="Administrator"/>
-		<field name="access.superadmin" value="Superadmin"/>
-		
-		<field name="table.settings" value="Settings"/>
-		<field name="table.settings.id" value="ID"/>
-		<field name="table.settings.published" value="Published"/>
-		<field name="table.settings.deleted" value="Deleted"/>
-		<field name="table.settings.author" value="Author"/>
-		<field name="table.settings.updated" value="Updated"/>
-		<field name="table.settings.lang" value="Lang"/>
-		<field name="table.settings.param" value="Config name"/>
-		<field name="table.settings.value" value="Param value"/>
-		<field name="table.settings.description" value="Description"/>
-		
-		<field name="table.documents" value="Documents"/>
-		<field name="table.documents.id" value="ID"/>
-		<field name="table.documents.published" value="Published"/>
-		<field name="table.documents.deleted" value="Deleted"/>
-		<field name="table.documents.author" value="Author"/>
-		<field name="table.documents.updated" value="Updated"/>
-		<field name="table.documents.lang" value="Lang"/>
-		<field name="table.documents.name" value="Document Name"/>
-		<field name="table.documents.text" value="Document Text HTML"/>
-		<field name="table.documents.external_link" value="External Link"/>
-		
-		<field name="table.menu" value="Menu"/>
-		<field name="table.menu.id" value="ID"/>
-		<field name="table.menu.published" value="Published"/>
-		<field name="table.menu.deleted" value="Deleted"/>
-		<field name="table.menu.author" value="Author"/>
-		<field name="table.menu.updated" value="Updated"/>
-		<field name="table.menu.lang" value="Lang"/>
-		<field name="table.menu.menu_id" value="Menu ID"/>
-		<field name="table.menu.structure_id" value="Structure"/>
-		<field name="table.menu.name" value="Link name"/>
-		<field name="table.menu.url" value="Link URL"/>
-		<field name="table.menu.order_id" value="Sort number"/>
-		
-		<field name="table.mail_templates" value="Email Templates"/>
-		<field name="table.mail_templates.id" value="ID"/>
-		<field name="table.mail_templates.published" value="Published"/>
-		<field name="table.mail_templates.deleted" value="Deleted"/>
-		<field name="table.mail_templates.author" value="Author"/>
-		<field name="table.mail_templates.updated" value="Updated"/>
-		<field name="table.mail_templates.lang" value="Lang"/>
-		<field name="table.mail_templates.name" value="Template Name"/>
-		<field name="table.mail_templates.subject" value="Email subject"/>
-		<field name="table.mail_templates.text" value="Email body HTML"/>
-		
-		<field name="msg.error_remove_active" value="Can't remove active module"/>
-		<field name="msg.removed" value="removed"/>
-		<field name="msg.no_repository" value="Репозиторий не найден"/>
-		<field name="msg.repository_not_found" value="not found in repository"/>
-		<field name="msg.cant_open_zip" value="can't open zip file"/>
-		<field name="msg.deleted_ok" value="Deleted successfuly"/>
-		<field name="msg.created_ok" value="Created successfuly"/>
-		<field name="msg.saved_ok" value="Saved successfuly"/>
-		<field name="msg.save_error" value="Error during saving"/>
-		<field name="msg.development_version" value="This is development version. Readonly mode."/>
-		<field name="msg.email_sent_to" value="Письмо успешно отправлено на email"/>
-		<field name="msg.email_sending_error" value="Ошибка отправки письма на email "/>
-		
-		<field name="structure.homepage" value="Homepage"/>
-		<field name="structure.first_page" value="The First page"/>
+		<field name="structure.page1" value="Example page"/>
+		<field name="structure.sitemap" value="Sitemap"/>
 		<field name="structure.404" value="404 Error"/>
 		<field name="structure.admin_homepage" value="Admin Homepage"/>
 		<field name="structure.admin_login" value="Admin Login"/>
@@ -679,6 +541,13 @@
 		<field name="msg.development_version" value="This is development version. Readonly mode."/>
 		<field name="msg.email_sent_to" value="Письмо успешно отправлено на email"/>
 		<field name="msg.email_sending_error" value="Ошибка отправки письма на email "/> 
+		
+		<field name="structure.homepage" value="Homepage"/>
+		<field name="structure.page1" value="Example page"/>
+		<field name="structure.sitemap" value="Sitemap"/>
+		<field name="structure.404" value="404 Error"/>
+		<field name="structure.admin_homepage" value="Admin Homepage"/>
+		<field name="structure.admin_login" value="Admin Login"/>
     </locale>
 </locales>
 </document>

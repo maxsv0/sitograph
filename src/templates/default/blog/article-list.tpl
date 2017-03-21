@@ -36,7 +36,7 @@
 {if $article.pic_preview}
 
 <a href="{$lang_url}/blog/{$article.url}/">
-<img src="{$article.pic_preview}" alt=""/>
+<img src="{$article.pic_preview}" alt="" class="img-responsive"/>
 </a>
 
 {/if}

@@ -1,7 +1,19 @@
 {assign var="items" value=$menu['top']}
 
-<div class="top-menu">
-	<div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-sm-8 col-sm-offset-4 col-xs-4 col-xs-offset-8">
+
+<div class="col-sm-3 logo-block">
+	<a href="{$home_url}">
+{if $theme_logo}
+	<img src="{$theme_logo}"/>
+{else}
+	<h1>{$host}</h1>
+{/if}
+	</a>
+</div>
+
+
+
+	<div class="col-sm-8">
     <!-- Меню navbar -->
 		<nav class="navbar navbar-default">
 		  <!-- Бренд и переключатель, который вызывает меню на мобильных устройствах -->
@@ -49,6 +61,5 @@
 		</nav>
 	</div>
 			
-</div>
 
 
