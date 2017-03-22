@@ -41,9 +41,9 @@
 	        </div>
 	        
 	        <div class="header-menu">
-				<a href="#" class="sitemap-ico"></a>
+				<a href="/sitemap/" class="sitemap-ico"></a>
 				<span class="top-delimiter"></span>
-				<a href="#" class="mail-ico"></a>
+				<a href="/contacts/" class="mail-ico"></a>
 				<span class="top-delimiter"></span>
 				<a href="http://localhost/" class="top-lang">en</a>
 				<a href="http://ua.localhost/" class="top-lang">ua</a>

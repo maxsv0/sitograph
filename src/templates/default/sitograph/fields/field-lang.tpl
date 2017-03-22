@@ -1,4 +1,3 @@
-
 <div class="col-sm-4">
 	<select name="{$form_id}_{$item_id}" class="form-control">
 <option value="*" {if $value == "*"}selected{/if}>*</option>

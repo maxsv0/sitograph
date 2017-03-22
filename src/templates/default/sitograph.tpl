@@ -151,7 +151,7 @@
 <div class="">
 {/if}
 <a href="{$lang_url}{$subitem.url}">
-<p class="">{$subitem.name}</p>
+<p {if $subitem.access === "superadmin"}class="admin_crown"{/if}>{$subitem.name}</p>
 {if $admin_submenu_active == $submenu_id} 
 <img id="menu_active_arrow" src="/content/images/sitograph/menu_h33px.gif">
 {/if}
@@ -162,29 +162,21 @@
 </div>
 {else}
 {if $item.url}
-		{if $admin_menu_active == $menu_id}
+	{if $admin_menu_active == $menu_id}
 		<div class="active">
 			<a href="{$lang_url}{$item.url}">
-		{if $item.access === "superadmin"}
-			<p class="admin_crown" style="background-position: 100% 11px;">{$item.name}</p></a>
-		{else}
-			<p>{$item.name}</p>
-		{/if}
+				<p {if $item.access === "superadmin"}class="admin_crown"{/if}>{$item.name}</p></a>
 			</a>
 			<img id="menu_active_arrow" src="/content/images/sitograph/menu_h37px.gif" style="left: 218px;">
 		</div>
-		{else}
+	{else}
 		<div class="">
 		<a href="{$lang_url}{$item.url}">
-		{if $item.access === "superadmin"}
-			<p class="admin_crown" style="background-position: 100% 11px;">{$item.name}</p></a>
-		{else}
-			<p>{$item.name}</p>
-		{/if}
+			<p {if $item.access === "superadmin"}class="admin_crown"{/if}>{$item.name}</p></a>
 		</a>
 		</div>
-		{/if}
-		{/if}
+	{/if}
+{/if}
 {/if}
 {/if}
 {/foreach}

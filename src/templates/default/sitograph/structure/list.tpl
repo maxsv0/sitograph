@@ -3,7 +3,7 @@
 {if $listTable}
 <div class="table-responsive">
 <table class="table table-hover table-striped table-module">
-<th>{$t["actions"]}</th>
+
 <th>
 &nbsp;
 </th>
@@ -27,7 +27,7 @@
 <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=updated&sortd={$table_sortd_rev}">{$t["table.structure.updated"]}</a>
 {if $table_sort == "updated"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
 </th>
-
+<th>{$t["actions"]}</th>
 
 
 {include file="$themePath/sitograph/structure/list-level.tpl" show_parent_id=0}

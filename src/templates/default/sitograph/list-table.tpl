@@ -6,7 +6,6 @@
 
 {if $smarty.foreach.loop.first}
 <tr>
-<th>{$t["actions"]}</th>
 {foreach from=$item key=itemFieldID item=itemField} 
 {if !in_array($itemFieldID, $admin_list_skip) && !empty($admin_table_info.fields.$itemFieldID.type)}
 <th{if $table_sort == $itemFieldID} class='colactive'{/if}>
@@ -14,6 +13,7 @@
 </th>
 {/if}
 {/foreach}
+<th>{$t["actions"]}</th>
 </tr>
 {/if}
 
@@ -22,11 +22,6 @@
 {else}
 <tr class="danger">
 {/if}
-<td class="text-nowrap">
-	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&edit={$item.id}&p={$admin_list_page}" title="{$t['btn.edit']}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit"></span></a>
-	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&duplicate={$item.id}&p={$admin_list_page}" title="{$t['btn.duplicate']}" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-duplicate"></span></a>
-	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&delete={$item.id}&p={$admin_list_page}" title="{$t['btn.delete']}" class="btn btn-danger btn-sm" onclick="if (!confirm('{$t["btn.remove_confirm"]}')) return false;"><span class="glyphicon glyphicon-remove"></span></a>
-</td>
 {foreach from=$item key=itemFieldID item=itemField}
 {if !in_array($itemFieldID, $admin_list_skip) && !empty($admin_table_info.fields.$itemFieldID.type)}
 {assign var="type" value=$admin_table_info.fields.$itemFieldID.type}
@@ -54,7 +49,11 @@
 {/if}
 {/foreach}
 
-
+<td class="text-nowrap">
+	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&edit={$item.id}&p={$admin_list_page}" title="{$t['btn.edit']}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit"></span></a>
+	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&duplicate={$item.id}&p={$admin_list_page}" title="{$t['btn.duplicate']}" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-duplicate"></span></a>
+	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&delete={$item.id}&p={$admin_list_page}" title="{$t['btn.delete']}" class="btn btn-danger btn-sm" onclick="if (!confirm('{$t["btn.remove_confirm"]}')) return false;"><span class="glyphicon glyphicon-remove"></span></a>
+</td>
 
 
 </tr>

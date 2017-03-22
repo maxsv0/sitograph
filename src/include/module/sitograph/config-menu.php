@@ -72,7 +72,7 @@ $submenu["menu"] = array(
 );
 $submenu["documents"] = array(
 	"name" => _t("admin.documents"), 
-	"access" => "admin",
+	"access" => "superadmin",
 	"handler" => "module-table.php",
 	"table" => TABLE_DOCUMENTS,
 	"url" => "/admin/?section=documents",
@@ -81,7 +81,7 @@ $submenu["documents"] = array(
 );
 $submenu["seo"] = array(
 	"name" => _t("admin.seo"), 
-	"access" => "admin",
+	"access" => "superadmin",
 	"handler" => "module-table.php",
 	"table" => TABLE_SEO,
 	"url" => "/admin/?section=seo",
@@ -179,10 +179,15 @@ $menu_ar["module_settings"] = array(
 	"orderID" => 110,
 );
 
-
-
-$submenu = array();
-$submenu["site_settings"] = array(
+$menu_ar["module_settings"] = array(
+	"name" => _t("admin.module_settings"), 
+	"access" => "superadmin",
+	"url" => "/admin/?section=module_settings",
+	"file" => "module_settings.tpl",
+	"title" => _t("admin.module_settings_title"),
+	"orderID" => 110,
+);
+$menu_ar["site_settings"] = array(
 	"name" => _t("admin.site_settings"), 
 	"access" => "admin",
 	"handler" => "module-table.php",
@@ -191,9 +196,12 @@ $submenu["site_settings"] = array(
 	"file" => "site_settings.tpl",
 	"title" => _t("admin.site_settings_title")
 );
+
+
+$submenu = array();
 $submenu["locales"] = array(
 	"name" => _t("admin.locales"), 
-	"access" => "admin",
+	"access" => "superadmin",
 	"handler" => "module-locales.php",
 	"url" => "/admin/?section=locales",
 	"file" => "locales.tpl",
@@ -201,7 +209,7 @@ $submenu["locales"] = array(
 );
 $submenu["robots"] = array(
 	"name" => _t("admin.robots"), 
-	"access" => "admin",
+	"access" => "superadmin",
 	"handler" => "module-robots.php",
 	"url" => "/admin/?section=robots",
 	"file" => "robots.tpl",
@@ -243,7 +251,7 @@ $menu_index = array_merge($menu_index, array_keys($submenu));
 
 $menu_ar["dev_tools"] = array(
 	"name" => _t("admin.dev_tools"), 
-	"access" => "admin",
+	"access" => "superadmin",
 	"title" => _t("admin.dev_tools"),
 	"submenu" => $submenu,
 	"orderID" => 200,

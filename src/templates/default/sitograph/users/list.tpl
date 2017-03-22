@@ -3,7 +3,6 @@
 {if $listTable}
 <div class="table-responsive">
 <table class="table table-hover table-striped table-module">
-<th>{$t["actions"]}</th>
 
 <th>
 <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=id&sortd={$table_sortd_rev}">{$t["table.users.id"]}</a>
@@ -33,7 +32,8 @@
 <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=updated&sortd={$table_sortd_rev}">{$t["table.users.updated"]}</a>
 {if $table_sort == "updated"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
 </th>
-
+<th>{$t["actions"]}</th>
+</tr>
 
 {foreach from=$listTable name=loop key=item_id item=item}
 {if $item.published}
@@ -41,13 +41,6 @@
 {else}
 <tr class="danger">
 {/if}
-<td class="text-nowrap">
-{if $item.access_data !== "superadmin" || ($item.access_data === "superadmin" && $user.access === "superadmin")}
-	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&edit={$item.id}" title="Edit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
-	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&duplicate={$item.id}" title="Duplicate" class="btn btn-warning"><span class="glyphicon glyphicon-duplicate"></span></a>
-	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&delete={$item.id}" title="Delete" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
-{/if}
-</td>
 <td>{$item.id}</td>
 
 <td class="text-nowrap">
@@ -65,6 +58,13 @@
 <td>{$item.access}</td>
 <td>{$item.iss}</td>
 <td class="text-nowrap"><small>{$item.updated}</small></td>
+<td class="text-nowrap">
+{if $item.access_data !== "superadmin" || ($item.access_data === "superadmin" && $user.access === "superadmin")}
+	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&edit={$item.id}" title="Edit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
+	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&duplicate={$item.id}" title="Duplicate" class="btn btn-warning"><span class="glyphicon glyphicon-duplicate"></span></a>
+	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&delete={$item.id}" title="Delete" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+{/if}
+</td>
 </tr>
 {/foreach}
 </div>

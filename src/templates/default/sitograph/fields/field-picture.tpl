@@ -1,4 +1,4 @@
-<div class="col-sm-9">
+<div class="col-sm-12">
 <p>
 {if $value}
 <div class="img-container">
