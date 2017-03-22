@@ -127,7 +127,7 @@ if (isset($_GET['search'])) {
        
 } 
  
-
+/*
 function highlight($s, $text, $c) {
 	$text = strip_tags($text);
 	$text = str_replace(array("&nbsp;","\n"), " ", $text);
@@ -155,6 +155,7 @@ function highlight($s, $text, $c) {
     
 	return (empty($ar2) ? "" :  preg_replace($pattern, $replace, implode(' ', $ar2)));
 }
+*/
 
 
 ?>

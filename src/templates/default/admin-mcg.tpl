@@ -8,7 +8,7 @@
 
 {$htmlHead}
 <link rel="stylesheet" type="text/css" href="{$content_url}/css/admin-mcg.css" />
-<script src="{$content_url}/js/tinymce/tinymce.min.js"></script>
+
 
 </head>
 
