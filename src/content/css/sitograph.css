@@ -426,6 +426,9 @@ table.table-module tr td:last-child, table.table-module tr:first-child th:last-c
     text-align: right;
     padding:4px;
 }
+table.table-module tr:first-child th:last-child {
+    padding: 8px;
+}
 
 table.table-module .colactive {
     background:#444!important;

@@ -4,31 +4,31 @@
 <div class="table-responsive">
 <table class="table table-hover table-striped table-module">
 
-<th>
+<th{if $table_sort == "id"} class='colactive'{/if}>
 <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=id&sortd={$table_sortd_rev}">{$t["table.users.id"]}</a>
 {if $table_sort == "id"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
 </th>
-<th>
+<th{if $table_sort == "email"} class='colactive'{/if}>
 <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=email&sortd={$table_sortd_rev}">{$t["table.users.email"]}</a>
 {if $table_sort == "email"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
 </th>
-<th>
+<th{if $table_sort == "name"} class='colactive'{/if}>
 <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=name&sortd={$table_sortd_rev}">{$t["table.users.name"]}</a>
 {if $table_sort == "name"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
 </th>
-<th>
+<th{if $table_sort == "phone"} class='colactive'{/if}>
 <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=phone&sortd={$table_sortd_rev}">{$t["table.users.phone"]}</a>
 {if $table_sort == "phone"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
 </th>
-<th>
+<th{if $table_sort == "access"} class='colactive'{/if}>
 <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=access&sortd={$table_sortd_rev}">{$t["table.users.access"]}</a>
 {if $table_sort == "access"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
 </th>
-<th>
+<th{if $table_sort == "iss"} class='colactive'{/if}>
 <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=iss&sortd={$table_sortd_rev}">{$t["table.users.iss"]}</a>
 {if $table_sort == "iss"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
 </th>
-<th>
+<th{if $table_sort == "updated"} class='colactive'{/if}>
 <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=updated&sortd={$table_sortd_rev}">{$t["table.users.updated"]}</a>
 {if $table_sort == "updated"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
 </th>
