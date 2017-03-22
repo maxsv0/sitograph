@@ -424,6 +424,7 @@ table.table-module tr:nth-child(even) td {
 }
 table.table-module tr td:last-child, table.table-module tr:first-child th:last-child {
     text-align: right;
+    padding:4px;
 }
 
 table.table-module .colactive {
