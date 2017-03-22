@@ -429,6 +429,9 @@ table.table-module tr td:last-child, table.table-module tr:first-child th:last-c
 table.table-module tr:first-child th:last-child {
     padding: 8px;
 }
+table.table-module tr:first-child th:first-child {
+   width:50px;
+}
 
 table.table-module .colactive {
     background:#444!important;

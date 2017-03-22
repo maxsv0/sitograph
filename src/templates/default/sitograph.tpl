@@ -41,7 +41,7 @@
             
 	</tr>
 	<tr bgcolor="#3D3D3D" style="border-bottom:3px solid #d7d7d7;border-top:3px solid #313131;">
-		<td><a href="/admin/"><img src="{$content_url}/images/sitograph/sitograph-logo-white.png" style="border: none;" /></a></td>
+		<td><a href="/admin/"><img src="{$content_url}/images/sitograph/sitograph-logo-white-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png" style="border: none;" /></a></td>
     	<td>
     		<table cellpadding="0" cellspacing="0">
     		<tr>
@@ -220,7 +220,7 @@
 		<td height="81"><img src="/content/images/sitograph/menu_left_img_bottom_2.gif"/></td>
 		<td bgcolor="#333333" valign="top" colspan="3">
 			<div style="padding-left: 26px;">
-			<a href="http://sitograph.com/" target="_blank"><img src="{$content_url}/images/sitograph/sitograph-logo-white.png"/></a>
+			<a href="http://sitograph.com/" target="_blank"><img src="{$content_url}/images/sitograph/sitograph-logo-white-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png"/></a>
 			</div>
 		</td>
 	</tr>
