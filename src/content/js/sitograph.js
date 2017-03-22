@@ -35,6 +35,9 @@ $(document).ready(function() {
 			$("#fUploadForm")[0].submit();
 		}
      });
+     
+     
+    $('[data-toggle="tooltip"]').tooltip(); 
 });
 
 function removeLink(x) {

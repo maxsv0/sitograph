@@ -179,24 +179,6 @@ $menu_ar["module_settings"] = array(
 	"orderID" => 110,
 );
 
-$menu_ar["module_settings"] = array(
-	"name" => _t("admin.module_settings"), 
-	"access" => "superadmin",
-	"url" => "/admin/?section=module_settings",
-	"file" => "module_settings.tpl",
-	"title" => _t("admin.module_settings_title"),
-	"orderID" => 110,
-);
-$menu_ar["site_settings"] = array(
-	"name" => _t("admin.site_settings"), 
-	"access" => "admin",
-	"handler" => "module-table.php",
-	"table" => TABLE_SETTINGS,
-	"url" => "/admin/?section=site_settings",
-	"file" => "site_settings.tpl",
-	"title" => _t("admin.site_settings_title")
-);
-
 
 $submenu = array();
 $submenu["locales"] = array(
@@ -259,20 +241,34 @@ $menu_ar["dev_tools"] = array(
 
 $menu_ar["design"] = array(
 	"name" => _t("admin.design"), 
-	"access" => "superadmin",
+	"access" => "admin",
 	"handler" => "module-design.php",
 	"url" => "/admin/?section=design",
 	"file" => "design.tpl",
 	"title" => _t("admin.design_title"),
 	"orderID" => 100,
 );
-//$menu_ar["history"] = array(
-//	"name" => _t("admin.history"), 
-//	"access" => "superadmin",
-//	"url" => "/admin/?section=history",
-//	"file" => "history.tpl",
-//	"title" => _t("admin.history_title")
-//);
+
+$menu_ar["site_settings"] = array(
+	"name" => _t("admin.site_settings"), 
+	"access" => "admin",
+	"handler" => "module-table.php",
+	"table" => TABLE_SETTINGS,
+	"url" => "/admin/?section=site_settings",
+	"file" => "site_settings.tpl",
+	"title" => _t("admin.site_settings_title"),
+	"orderID" => 105,
+);
+
+$menu_ar["history"] = array(
+	"name" => _t("admin.history"), 
+	"access" => "admin",
+	"handler" => "module-history.php",
+	"url" => "/admin/?section=history",
+	"file" => "history.tpl",
+	"title" => _t("admin.history_title"),
+	"orderID" => 200,
+);
 
 
 $menu_index = array_merge($menu_index, array_keys($menu_ar));

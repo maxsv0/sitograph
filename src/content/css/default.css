@@ -10,6 +10,17 @@
 }
 
 
+.link-dashed {
+    border-bottom: dashed 1px #ccc;
+    text-decoration: none;
+    cursor:pointer;
+}
+
+.link-dashed:hover {
+     border-bottom: dashed 1px #ccc;
+}
+
+
 
 .sitemap-ico {
 	width: 11px;
