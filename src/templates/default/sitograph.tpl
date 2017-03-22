@@ -153,7 +153,7 @@
 <a href="{$lang_url}{$subitem.url}">
 <p {if $subitem.access === "superadmin"}class="admin_crown"{/if}>{$subitem.name}</p>
 {if $admin_submenu_active == $submenu_id} 
-<img id="menu_active_arrow" src="/content/images/sitograph/menu_h33px.gif">
+<img id="menu_active_arrow" src="/content/images/sitograph/menu_h37px.gif">
 {/if}
 </a>
 </div>
