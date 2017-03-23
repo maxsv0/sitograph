@@ -125,41 +125,9 @@ if (isset($_GET['search'])) {
       }
       
       MSV_assignData("search", 1); 
+      MSV_assignData("keyword", $_POST['keyword']); 
        
 } 
- 
-<<<<<<< HEAD:src/include/module/admin-mcg/module-search.php
-/*
-function highlight($s, $text, $c) {
-	$text = strip_tags($text);
-	$text = str_replace(array("&nbsp;","\n"), " ", $text);
-	$text = array_map("trim", explode(" ", $text));
-	
-	$i = 0;
-	$i_pos = 0;
-	foreach ($text as $v) {
-		if (!empty($v)) {
-			$ar[] = $v;
-			if (strstr($v, $s) && empty($i_pos)) $i_pos = $i;
-			$i++;
-		}
-	}
-	$i_pos = ($i_pos - $c) < 0 ? 0 : $i_pos - $c;
-	for ($i = $i_pos; $i < ($c * 2 + $i_pos); $i++) {
-		if (!empty($ar[$i])) $ar2[] = $ar[$i];
-	}
-	unset($ar);
-   // var_dump(str_replace($s, "<strong>".$s."</strong>", implode(' ', $ar2)));
-    // Создаем строку для регулярного выражения
-    $pattern = "/((?:^|>)[^<]*)(".$s.")/si";
-    // Подсвеченная строка
-    $replace = '$1<b>$2</b>';
-    
-	return (empty($ar2) ? "" :  preg_replace($pattern, $replace, implode(' ', $ar2)));
-}
-*/
-=======
->>>>>>> 98c0e94511c428968643362dd015ed88d1ecdbf0:src/include/module/sitograph/module-search.php
 
 
 ?>

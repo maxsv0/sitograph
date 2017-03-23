@@ -5,7 +5,7 @@
         <table width="100%" cellpadding="0" cellspacing="0" class="search_table">
         <td width="130">Ключевое слово</td>
             <td valign="center">
-                <input type="text" class="big" name="keyword" value=""/>
+                <input type="text" class="big" name="keyword" value="{$keyword}"/>
             </td>
         </tr>
         <tr>
@@ -35,8 +35,8 @@
         {assign var=i value=$i+1}
     {/foreach}
     
-    {else}
-    <div><b>По вашему запросу ничего не найдено.</b></div>
+    {elseif $keyword}
+    <div style="margin-top:20px"><b>По вашему запросу ничего не найдено.</b></div>
     
     {/if}
 {/if}
