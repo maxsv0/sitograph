@@ -218,7 +218,7 @@
 		<field name="admin.manual_title" value="Инструкция использования"/>
 		<field name="admin.view_website" value="Административный просмотр сайта"/>
 		<field name="admin.logged_as" value="Вы вошли как"/>
-	</locale>
+	<field name="btn.search" value="Искать"/><field name="form.search_lable" value="Поиск"/><field name="search.expand_all" value="Развернуть все"/><field name="form.search_word" value="Ключевое слово"/><field name="search.error_mcg" value="По вашему запросу ничего не найдено."/></locale>
 	<locale name="en">
 		<field name="cms" value="Content Management System"/>
 		<field name="msg.module_handler_not_found" value="Module handler not found"/>
