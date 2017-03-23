@@ -1,10 +1,10 @@
 <table class="table">
 <tr>
-	<td>Page</td>
-	<td>Time start</td>
-	<td>Run time</td>
-	<td>Modules loaded</td>
-	<td>SQL queries</td>
+	<th>Page</th>
+	<th>Time start</th>
+	<th>Run time</th>
+	<th>Modules loaded</th>
+	<th>SQL queries</th>
 </tr>
 {foreach from=$debug_log_actions name=loop key=start item=action}
 <tr>

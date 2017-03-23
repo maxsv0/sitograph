@@ -4,7 +4,7 @@
 <div class="table-responsive">
 <table class="table table-hover table-striped table-module">
 
-<th>
+<th style="width:25px;">
 &nbsp;
 </th>
 <th{if $table_sort == "name"} class='colactive'{/if}>

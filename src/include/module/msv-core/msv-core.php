@@ -1702,8 +1702,8 @@ function CoreInstall($module) {
 	MSV_setConfig("message_error", "", true, "*");
 	
 	// mailing options
-	MSV_setConfig("email_from", "", true, "*");
-	MSV_setConfig("email_fromname", "", true, "*");
+	MSV_setConfig("email_from", "admin@localhost", true, "*");
+	MSV_setConfig("email_fromname", "Website", true, "*");
 	
 	
 	// TODO: +++++ add mail templates

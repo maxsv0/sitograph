@@ -196,14 +196,13 @@ p.user_crown {
 
 
 #menu_left div.mod_box_active div a {
-    background: #E8E8E8;
+    background: #d7d7d7;
     border: none;
     padding-left: 40px;
-    height: 33px;
+    height: 37px;
 }
 
 #menu_left div.mod_box_active{
-    margin-bottom:10px;
 }
 
 
@@ -428,6 +427,9 @@ table.table-module tr td:last-child, table.table-module tr:first-child th:last-c
 }
 table.table-module tr:first-child th:last-child {
     padding: 8px;
+}
+table.table-module tr:first-child th:first-child {
+   width:50px;
 }
 
 table.table-module .colactive {
