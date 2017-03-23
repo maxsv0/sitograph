@@ -4,6 +4,7 @@
 <config>
 	<param name="activationLevel" value="7"/>
 	<param name="activationUrl" value="*"/>
+	<param name="baseUrl" value="/search/"/>
     <param name="adminMenu" value="1"/>
     <param name="adminMenuOrder" value="41"/>
     

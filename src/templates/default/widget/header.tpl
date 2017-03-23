@@ -9,65 +9,47 @@
 	<meta name="description" content="{$page.description}"/>
 
     {$htmlHead}
-    <link rel="stylesheet" type="text/css" href="{$content_url}/{$page.template}/css/default.css"/>
   </head>
-<body>
+<body {if $theme_bg}style="background: url({$theme_bg}) top center no-repeat #FFF;"{/if}>
 
- <div class="container header">
+<div class="container header">
     <div class="row">
-    <div class="col-lg-4 col-lg-offset-8 col-md-4 col-md-offset-8 col-sm-6 col-sm-offset-6 ">
-        <div class="login-block">
-     	{include file="$themePath/widget/menu-user.tpl"}
-        </div>
-        </div>
-    </div> 
- 	<div class="row">
-		<div class="col-lg-2 col-lg-offset-10 col-md-3 col-md-offset-9 col-sm-4 col-sm-offset-8">
-			<div class="header-menu">
-				<a href="#" class="sitemap-ico"></a>
-				<span class="top-delimiter"></span>
-				<a href="#" class="mail-ico"></a>
-				<span class="top-delimiter"></span>
-				<a href="#" class="top-lang">ua</a>
-				
-			</div>
-		</div>
- 		
- 	</div>
- 	<div  class="row">
-		<div class="col-lg-2 col-lg-offset-10 col-md-3 col-md-offset-9 col-sm-4 col-sm-offset-8">
-			<div class="search-block">
-			<form action="{$lang_url}/search/?search" method="post">
-				<input type="text" name="keyword" value="{$search_str}" placeholder="найти"/>
-				<button type="submit" value="search"></button>
-				
-			</form>
-				
-			</div>
-		</div>
- 	</div>
- 	<div class="row">
- 	    <div class="col-lg-2 col-lg-offset-10 col-md-3 col-md-offset-9 col-sm-4 col-sm-offset-8">
-            <div class="phone-block">
+		<div class="col-md-4">
+			<div class="phone-block">
  		       <table cellpadding="0" cellspacing="0" width="170" style="margin-top:15px">
 				<tr>
-					<td style="padding-right: 10px;"><img src="{$content_url}/{$page.template}/images/pic_s_tel.gif" width="14" height="14" alt="Контактные телефоны"></td>
+					<td style="padding-right: 10px;"><img src="{$content_url}/images/pic_tel.gif" width="14" height="14" alt="Контактные телефоны"></td>
 					<td style="font-size: 13px; white-space: nowrap; color: #FFF;">
 					+380 (44) 536-00-66<br/>
 					+380 (93) 898-33-70
 					</td>
 				</tr>
 				</table>
-            </div>    
+            </div>  
 		</div>
+		<div class="col-md-4">
+			<div class="search-block">
+				<form action="{$lang_url}/search/?search" method="post">
+					<input type="text" name="keyword" value="{$search_str}" placeholder="найти"/>
+					<button type="submit" value="search"></button>
+				</form>
+			</div>
+		</div>
+    	<div class="col-md-4">
+	        <div class="login-block">
+	     	{include file="$themePath/widget/menu-user.tpl"}
+	        </div>
+	        
+	        <div class="header-menu">
+				<a href="/sitemap/" class="sitemap-ico"></a>
+				<span class="top-delimiter"></span>
+				<a href="/contacts/" class="mail-ico"></a>
+				<span class="top-delimiter"></span>
+				<a href="http://localhost/" class="top-lang">en</a>
+				<a href="http://ua.localhost/" class="top-lang">ua</a>
+				<a href="http://ru.localhost/" class="top-lang">ru</a>
+			</div>
+        </div>
  	</div>
        
- 	<div class="row">
- 		<div class="logo-block">
- 			<a href="{$lang_url}/">
- 				<img src="{$content_url}/{$page.template}/images/sitograph_logo.png"/>
- 			</a>
- 		</div>
- 	</div>
-    
- </div>
+</div>

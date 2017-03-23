@@ -1,5 +1,5 @@
 <?php 
-define("ABS", __DIR__);
+define("ABS", "H:\OpenServer\domains\sitegraph.ua\src");
 define("LANGUAGES", "ru,ua");
 define("DB_HOST", "localhost");
 define("DB_LOGIN", "mysql");
@@ -9,7 +9,7 @@ define("DB_REQUIRED", false);
 define("DATE_FORMAT", "d.m.Y H:i:s");
 define("PROTOCOL", "http://");
 define("MASTERHOST", "");
-define("UPLOAD_FILES_PATH", __DIR__."/content");
+define("UPLOAD_FILES_PATH", "H:\OpenServer\domains\sitegraph.ua\src/content");
 define("CONTENT_URL", "/content");
 define("PHP_HIDE_ERRORS", false);
 define("DEBUG", true);

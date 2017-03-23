@@ -113,7 +113,7 @@ function ajax_More_Search($module)
                             $title = $row['name'];
                         } else
                         {
-                            $title = highlight($_REQUEST['keyword'], $row[$modules_base_url[$v]['title']], 10);
+                            $title = MSV_HighlightText($_REQUEST['keyword'], $row[$modules_base_url[$v]['title']], 10);
                             $url = $modules_base_url[$v]['url'] . (!empty($row['url']) ? $row['url'] . '/' :
                                 '');
                         }
@@ -144,7 +144,7 @@ function ajax_More_Search($module)
                             }
                             $text = strip_tags(preg_replace($search, "", $text));
                             $text = mb_substr($text, $a - 300, 300);
-                            $ar2["text"] = highlight($_REQUEST['keyword'], $text, 50);
+                            $ar2["text"] = MSV_HighlightText($_REQUEST['keyword'], $text, 50);
                             $ar2["url"] = $url;
                             $module_search[] = $ar2;
                             $i++;
@@ -286,7 +286,7 @@ function Get_Search_List($module)
                             $title = $row['name'];
                         } else
                         {
-                            $title = highlight($_POST['keyword'], $row[$modules_base_url[$v]['title']], 10);
+                            $title = MSV_HighlightText($_POST['keyword'], $row[$modules_base_url[$v]['title']], 10);
                             $url = $modules_base_url[$v]['url'] . (!empty($row['url']) ? $row['url'] . '/' :
                                 '');
                         }
@@ -317,7 +317,7 @@ function Get_Search_List($module)
                             }
                             $text = strip_tags($text);
                             $text = mb_substr($text, $a - 300, 300);
-                            $ar2["text"] = highlight($_POST['keyword'], $text, 50);
+                            $ar2["text"] = MSV_HighlightText($_POST['keyword'], $text, 50);
                             $ar2["url"] = $url;
                             $module_search[] = $ar2;
                             $i++;
@@ -351,39 +351,6 @@ function Get_Search_List($module)
         // запись в таблицу результатов запросов    
     }
 }
-
-function highlight($s, $text, $c)
-{
-    $text = strip_tags($text);
-    $text = str_replace(array("&nbsp;", "\n"), " ", $text);
-    $text = array_map("trim", explode(" ", $text));
-    $i = 0;
-    $i_pos = 0;
-    foreach ($text as $v)
-    {
-        if (!empty($v))
-        {
-            $ar[] = $v;
-            if (strstr($v, $s) && empty($i_pos))
-                $i_pos = $i;
-            $i++;
-        }
-    }
-    $i_pos = ($i_pos - $c) < 0 ? 0 : $i_pos - $c;
-    for ($i = $i_pos; $i < ($c * 2 + $i_pos); $i++)
-    {
-        if (!empty($ar[$i]))
-            $ar2[] = $ar[$i];
-    }
-    unset($ar);
-    // var_dump(str_replace($s, "<strong>".$s."</strong>", implode(' ', $ar2)));
-    // Создаем строку для регулярного выражения
-    $pattern = "/((?:^|>)[^<]*)(".$s.")/si";
-    // Подсвеченная строка
-    $replace = '$1<b>$2</b>';
-    return (empty($ar2) ? "" : preg_replace($pattern, $replace, implode(' ', $ar2)));
-}
-
 
 function SearchInstall($module) {
 

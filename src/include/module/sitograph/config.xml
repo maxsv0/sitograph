@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+<config>
+	<param name="activationUrl" value="/admin/"/>
+	<param name="activationLevel" value="8"/>
+	<param name="adminMenu" value="0"/>
+    
+    <api name="set_structure_status" action="ajax_set_structure_status"/>
+</config>
+
+<install>
+	<param name="name" value="sitograph"/>
+	<param name="version" value="5.1"/>
+	<param name="date" value="13.03.2017"/>
+	<param name="title" value="Сайтограф"/>
+	<param name="description" value="Система Управления Содержимым сайта CMS"/>
+	
+	<param name="installHook" value="SitographInstall"/>
+	
+	<dependency module="msv-core" version="1.0"/>
+	<dependency module="msv-api" version="1.0"/>
+	
+	<file dir="module" path="sitograph/sitograph.php"/>
+	<file dir="module" path="sitograph/config-menu.php"/>
+	<file dir="module" path="sitograph/module-table.php"/>
+	<file dir="module" path="sitograph/module-robots.php"/>
+	<file dir="module" path="sitograph/module-structure.php"/>
+	<file dir="module" path="sitograph/module-locales.php"/>
+	<file dir="module" path="sitograph/module-docs.php"/>
+	<file dir="module" path="sitograph/module-manual.php"/>
+	<file dir="module" path="sitograph/module-sitemap.php"/>
+	<file dir="module" path="sitograph/module-catalog.php"/>
+	<file dir="module" path="sitograph/module-comments.php"/>
+	<file dir="module" path="sitograph/module-search.php"/>
+	<file dir="module" path="sitograph/config.xml"/>
+	
+	<file dir="template" path="default/sitograph/list-table.tpl"/>
+	<file dir="template" path="default/sitograph/form-table.tpl"/>
+	<file dir="template" path="default/sitograph/field-form.tpl"/>
+	<file dir="template" path="default/sitograph/fields/field-bool.tpl"/>
+	<file dir="template" path="default/sitograph/fields/field-default.tpl"/>
+	<file dir="template" path="default/sitograph/fields/field-text.tpl"/>
+	<file dir="template" path="default/sitograph/fields/field-doc.tpl"/>
+	<file dir="template" path="default/sitograph/fields/field-lang.tpl"/>
+	<file dir="template" path="default/sitograph/fields/field-updated.tpl"/>
+	<file dir="template" path="default/sitograph/fields/field-select.tpl"/>
+	<file dir="template" path="default/sitograph/fields/field-date.tpl"/>
+	<file dir="template" path="default/sitograph/fields/field-picture.tpl"/>
+	<file dir="template" path="default/sitograph/fields/field-file.tpl"/>
+	
+	<file dir="template" path="default/sitograph.tpl"/>
+	<file dir="template" path="default/sitograph-login.tpl"/>
+	<file dir="template" path="default/sitograph/design.tpl"/>
+	<file dir="template" path="default/sitograph/documents.tpl"/>
+	<file dir="template" path="default/sitograph/files_and_doc.tpl"/>
+	<file dir="template" path="default/sitograph/history.tpl"/>
+	<file dir="template" path="default/sitograph/index.tpl"/>
+	<file dir="template" path="default/sitograph/mail_template.tpl"/>
+	<file dir="template" path="default/sitograph/locales.tpl"/>
+	<file dir="template" path="default/sitograph/locates/add.tpl"/>
+	<file dir="template" path="default/sitograph/locates/edit.tpl"/>
+	<file dir="template" path="default/sitograph/locates/list.tpl"/>
+    
+	<file dir="template" path="default/sitograph/module_settings.tpl"/>
+	<file dir="template" path="default/sitograph/robots.tpl"/>
+	<file dir="template" path="default/sitograph/seo.tpl"/>
+	<file dir="template" path="default/sitograph/site_settings.tpl"/>
+	<file dir="template" path="default/sitograph/stat.tpl"/>
+	<file dir="template" path="default/sitograph/search.tpl"/>
+	<file dir="template" path="default/sitograph/structure.tpl"/>
+	<file dir="template" path="default/sitograph/users.tpl"/>
+	<file dir="template" path="default/sitograph/menu.tpl"/>
+	<file dir="template" path="default/sitograph/sitemap.tpl"/>
+	<file dir="template" path="default/sitograph/manual.tpl"/>
+	<file dir="template" path="default/sitograph/menu/edit.tpl"/>
+	<file dir="template" path="default/sitograph/menu/list.tpl"/>
+	<file dir="template" path="default/sitograph/documents/edit.tpl"/>
+	<file dir="template" path="default/sitograph/documents/list.tpl"/>
+	<file dir="template" path="default/sitograph/custom.tpl"/>
+	<file dir="template" path="default/sitograph/custom/edit.tpl"/>
+	<file dir="template" path="default/sitograph/custom/list.tpl"/>
+	<file dir="template" path="default/sitograph/custom/list-table.tpl"/>
+	<file dir="template" path="default/sitograph/site_settings/edit.tpl"/>
+	<file dir="template" path="default/sitograph/site_settings/list.tpl"/>
+	<file dir="template" path="default/sitograph/structure/edit.tpl"/>
+	<file dir="template" path="default/sitograph/structure/list.tpl"/>
+	<file dir="template" path="default/sitograph/structure/list-level.tpl"/>
+	<file dir="template" path="default/sitograph/users/edit.tpl"/>
+	<file dir="template" path="default/sitograph/users/list.tpl"/>
+	<file dir="template" path="default/sitograph/seo/edit.tpl"/>
+	<file dir="template" path="default/sitograph/seo/list.tpl"/>
+	<file dir="template" path="default/sitograph/mail_template/edit.tpl"/>
+	<file dir="template" path="default/sitograph/mail_template/list.tpl"/>
+	
+	<file dir="content" path="css/sitograph.css"/>
+	<file dir="content" path="js/sitograph.js"/>
+	<file dir="content" path="js/admin.js"/>
+	<file dir="content" path="images/sitograph/admin_crown.png"/>
+	<file dir="content" path="images/sitograph/av_pic.gif"/>
+	<file dir="content" path="images/sitograph/bg.gif"/>
+	<file dir="content" path="images/sitograph/btn_search.gif"/>
+	<file dir="content" path="images/sitograph/heder_bg.gif"/>
+	<file dir="content" path="images/sitograph/index_text.png"/>
+	<file dir="content" path="images/sitograph/lang_bg.gif"/>
+	<file dir="content" path="images/sitograph/login_plain.png"/>
+	<file dir="content" path="images/sitograph/logo.gif"/>
+	<file dir="content" path="images/sitograph/sitograph-logo-dark.png"/>
+	<file dir="content" path="images/sitograph/sitograph-logo-white.png"/>
+	<file dir="content" path="images/sitograph/logo_mcg_part_1.gif"/>
+	<file dir="content" path="images/sitograph/logo_mcg_part_2.gif"/>
+	<file dir="content" path="images/sitograph/menu_a_arrow.png"/>
+	<file dir="content" path="images/sitograph/menu_a_arrow_active.png"/>
+	<file dir="content" path="images/sitograph/menu_h33px.gif"/>
+	<file dir="content" path="images/sitograph/menu_h37px.gif"/>
+	<file dir="content" path="images/sitograph/menu_left_bg.gif"/>
+	<file dir="content" path="images/sitograph/menu_left_img_bottom_1.gif"/>
+	<file dir="content" path="images/sitograph/menu_left_img_bottom_2.gif"/>
+	<file dir="content" path="images/sitograph/menu_left_img_top.gif"/>
+	<file dir="content" path="images/sitograph/menu_left_img_top_1.gif"/>
+	<file dir="content" path="images/sitograph/menu_left_img_top_2.gif"/>
+	<file dir="content" path="images/sitograph/block_minus.gif"/>
+	<file dir="content" path="images/sitograph/block_plus.gif"/>
+	<file dir="content" path="images/sitograph/block_name.gif"/>
+	<file dir="content" path="images/sitograph/table_bg_1.gif"/>
+	<file dir="content" path="images/sitograph/arrow_right.png"/>
+	<file dir="content" path="images/sitograph/arrow_down.png"/>
+    
+</install>
+
+
+<locales>
+	<locale name="ru">
+		<field name="cms" value="Система управления сайтом"/>
+		<field name="msg.module_handler_not_found" value="Не найден обработчик модуля"/>
+		<field name="msg.no_stored_image" value="Изображение не загружено"/>
+		<field name="msg.sitemap_generated" value="Sitemap.xml успешно создан"/>
+
+		<field name="btn.login" value="Войти"/>
+		<field name="btn.logout" value="Выход"/>
+		<field name="btn.remove_link" value="Удалить ссылку на файл"/>
+		<field name="btn.upload_file" value="Загрузить файл"/>
+		<field name="btn.generate" value="Сгенерировать"/>
+		<field name="btn.export_table" value="Экспорт таблицы"/>
+		<field name="btn.goto" value="Перейти к"/>
+	    <field name="btn.remove_confirm" value="Вы уверены что хотите удалить?"/>
+	    <field name="btn.back_to_admin" value="Вернуться в «Сайтограф»"/>
+
+		<field name="title.back_to_admin" value="Административный просмотр сайта"/>
+		<field name="title.upload_files" value="Загрузить файлы в "/>
+		<field name="title.upload_step1" value="1. Выберите файл"/>
+		<field name="title.upload_step2" value="2. Файл будет загружен на сервер"/>
+		<field name="title.upload_step3" value="3. Нажмите Сохранить"/>
+		
+		<field name="form.wellcome" value="представьтесь, пожалуйста —"/>
+		<field name="form.login" value="Логин"/>
+		<field name="form.password" value="Пароль"/>
+		<field name="form.file" value="Файл:"/>
+		<field name="form.server_path" value="Путь на севвере"/>
+		<field name="form.select_file" value="Выберете файлы"/>
+		<field name="form.image_max_size" value="Размер"/>
+		<field name="form.search_placeholder" value="Найти"/>
+		
+		<field name="admin.filename" value="Имя файла"/>
+		<field name="admin.filetype" value="Тип"/>
+		<field name="admin.filepreview" value="Просмотр"/>
+		<field name="admin.fileaccess" value="Доступ"/>
+		<field name="admin.homepage" value="Главная"/>
+		<field name="admin.homepage_title" value="Главная {HOST}"/>
+		<field name="admin.users" value="Пользователи сайта"/>
+		<field name="admin.users_title" value="Список пользователей сайта"/>
+		<field name="admin.structure" value="Структура сайта"/>
+		<field name="admin.structure_title" value="Структура сайта {HOST}"/>
+		<field name="admin.menu" value="Меню"/>
+		<field name="admin.menu_title" value="Управление меню сайта"/>
+		<field name="admin.documents" value="Документы"/>
+		<field name="admin.documents_title" value="Документы"/>
+		<field name="admin.files_and_doc" value="Файлы и документы"/>
+		<field name="admin.files_and_doc_title" value="Менеджер файлов и документов"/>
+		<field name="admin.site_settings" value="Настройки сайта"/>
+		<field name="admin.site_settings_title" value="Настройки сайта"/>
+		<field name="admin.locales" value="Языки и тексты"/>
+		<field name="admin.locales_title" value="Языки и тексты"/>
+		<field name="admin.mail_template" value="Шаблоны писем"/>
+		<field name="admin.mail_template_title" value="Шаблоны писем"/>
+		<field name="admin.stat" value="Статистика просмотров"/>
+		<field name="admin.stat_title" value="Статистика просмотров для {HOST}"/>
+		<field name="admin.seo" value="SEO"/>
+		<field name="admin.seo_title" value="SEO сайта"/>
+		<field name="admin.robots" value="Управление robots.txt"/>
+		<field name="admin.robots_title" value="Файл robots.txt"/>
+		<field name="admin.module_settings" value="Управление модулями сайта"/>
+		<field name="admin.module_settings_title" value="Управление модулями сайта"/>
+        <field name="admin.module_catalog" value="Загрузка каталога из 1С"/>
+        <field name="admin.module_catalog_title" value="Загрузка каталога из 1С"/>
+        <field name="admin.module_comments" value="Комментарии"/>
+        <field name="admin.module_comments_title" value="Комментарии"/>
+        <field name="admin.module_search" value="Поиск"/>
+        <field name="admin.module_search_title" value="Поиск"/>
+		<field name="admin.design" value="Дизайны"/>
+		<field name="admin.design_title" value="Дизайны"/>
+		<field name="admin.history" value="История сессий"/>
+		<field name="admin.history_title" value="История сессий пользоателей"/>
+		<field name="admin.locale_param" value="Название переменной"/>
+		<field name="admin.locale_value" value="Значение"/>
+		<field name="admin.robots_example_open" value="Пример открытого сайта:"/>
+		<field name="admin.robots_example_closed" value="Пример закрытого сайта:"/>
+		<field name="admin.robots_example_seo" value="Пример для SEO:"/>
+		<field name="admin.realtime" value="Онлайн аналитика"/>
+		<field name="admin.analytics" value="Аналитика сайта"/>
+		<field name="admin.social" value="Экспорт соц. сетей"/>
+		<field name="admin.manual" value="Инструкция"/>
+		<field name="admin.structure_manage" value="Управление структурой"/>
+		<field name="admin.media_library" value="Хранилище файлов"/>
+		<field name="admin.dev_tools" value="Настройки"/>
+		<field name="admin.sitemap" value="Управление sitemap.xml"/>
+		<field name="admin.sitemap_title" value="Управление sitemap.xml"/>
+		<field name="admin.manual_title" value="Инструкция использования"/>
+		<field name="admin.view_website" value="Административный просмотр сайта"/>
+		<field name="admin.logged_as" value="Вы вошли как"/>
+	</locale>
+	<locale name="en">
+		<field name="cms" value="Content Management System"/>
+		<field name="msg.module_handler_not_found" value="Module handler not found"/>
+		<field name="msg.no_stored_image" value="No stored image"/>
+		<field name="msg.sitemap_generated" value="Sitemap.xml successfully created"/>
+		
+		<field name="btn.login" value="Login"/>
+		<field name="btn.logout" value="Logout"/>
+		<field name="btn.remove_link" value="Remove Link"/>
+		<field name="btn.upload_file" value="Upload file"/>
+		<field name="btn.generate" value="Generate"/>
+		<field name="btn.export_table" value="Export table"/>
+		<field name="btn.goto" value="Goto"/>
+	    <field name="btn.remove_confirm" value="Are you sure you want to delete?"/>
+		<field name="btn.back_to_admin" value="Back to «Sitograph»"/>
+
+		<field name="title.back_to_admin" value="Administrative view"/>
+		<field name="title.upload_files" value="Upload files"/>
+		<field name="title.upload_step1" value="1. Select file"/>
+		<field name="title.upload_step2" value="2. File uploaded automatically"/>
+		<field name="title.upload_step3" value="3. Click Save"/>
+		
+		<field name="form.wellcome" value="Log in to your account —"/>
+		<field name="form.login" value="Login"/>
+		<field name="form.password" value="Password"/>
+		<field name="form.file" value="File:"/>
+		<field name="form.server_path" value="Server path"/>
+		<field name="form.select_file" value="Select file"/>
+		<field name="form.image_max_size" value="Image max size"/>
+		<field name="form.search_placeholder" value="Найти"/>
+		
+		<field name="admin.filename" value="Name"/>
+		<field name="admin.filetype" value="Type"/>
+		<field name="admin.filepreview" value="Preview"/>
+		<field name="admin.fileaccess" value="Access"/>
+		<field name="admin.homepage" value="Admin Dashboard"/>
+		<field name="admin.homepage_title" value="Admin Homepage {HOST}"/>
+		<field name="admin.users" value="Users"/>
+		<field name="admin.users_title" value="List of Website Users"/>
+		<field name="admin.structure" value="Structure and pages"/>
+		<field name="admin.structure_title" value="Website Structure {HOST}"/>
+		<field name="admin.menu" value="Menu"/>
+		<field name="admin.menu_title" value="Website Menu Manage"/>
+		<field name="admin.documents" value="Documents"/>
+		<field name="admin.documents_title" value="List of Documents"/>
+		<field name="admin.files_and_doc" value="File Manager"/>
+		<field name="admin.files_and_doc_title" value="File Manager"/>
+		<field name="admin.site_settings" value="Site Settings"/>
+		<field name="admin.site_settings_title" value="Site Settings"/>
+		<field name="admin.locales" value="Locales and texts"/>
+		<field name="admin.locales_title" value="Locales and texts"/>
+		<field name="admin.mail_template" value="Email Templates"/>
+		<field name="admin.mail_template_title" value="Email Templates"/>
+		<field name="admin.stat" value="Analytics"/>
+		<field name="admin.stat_title" value="Analytics for {HOST}"/>
+		<field name="admin.seo" value="SEO"/>
+		<field name="admin.seo_title" value="SEO for {HOST}"/>
+		<field name="admin.robots" value="Manage robots.txt"/>
+		<field name="admin.robots_title" value="Content of robots.txt"/>
+		<field name="admin.module_settings" value="Modules Settings"/>
+		<field name="admin.module_settings_title" value="Settings and updates"/>
+		<field name="admin.design" value="Designs"/>
+		<field name="admin.design_title" value="Designs"/>
+		<field name="admin.history" value="History"/>
+		<field name="admin.history_title" value="History of users sessions"/>
+		<field name="admin.locale_param" value="Text ID"/>
+		<field name="admin.locale_value" value="Value"/>
+		<field name="admin.robots_example_open" value="Example for open website:"/>
+		<field name="admin.robots_example_closed" value="Example for closed website:"/>
+		<field name="admin.robots_example_seo" value="SEO optimized Example:"/>
+		<field name="admin.realtime" value="Real-Time Overview"/>
+		<field name="admin.analytics" value="Analytics"/>
+		<field name="admin.social" value="Social Wall"/>
+		<field name="admin.manual" value="Admin manual"/>
+		<field name="admin.structure_manage" value="Structure Manage"/>
+		<field name="admin.media_library" value="Media Library"/>
+		<field name="admin.dev_tools" value="Development Tools"/>
+		<field name="admin.sitemap" value="Manage sitemap.xml"/>
+		<field name="admin.manual_title" value="Инструкция"/>
+		<field name="admin.logged_as" value="Logged as"/>
+		<field name="admin.view_website" value="View Website"/>
+	</locale>
+    <locale name="ua">
+    	<field name="cms" value="Система управління контентом"/>
+		<field name="msg.module_handler_not_found" value="Не вдалося знайти обробник модуля"/>
+		<field name="msg.no_stored_image" value="Зображення не завантажено"/>
+		<field name="msg.sitemap_generated" value="Sitemap.xml успішно створений"/>
+
+    	<field name="btn.login" value="Войти"/>
+    	<field name="btn.logout" value="Выйти"/>
+		<field name="btn.remove_link" value="Видалити посилання на файл"/>
+		<field name="btn.upload_file" value="Завантажити файл"/>
+		<field name="btn.generate" value="Сгенерувати"/>
+		<field name="btn.export_table" value="Експорт таблиці"/>
+		<field name="btn.goto" value="Перейти до"/>
+		<field name="btn.remove_confirm" value="Ви впевнені що хочете видалити?"/>
+		<field name="btn.back_to_admin" value="Вернуться в «Сайтограф»"/>
+
+		<field name="title.back_to_admin" value="Administrative view"/>
+		<field name="title.upload_files" value="Завантажити файли в "/>
+		<field name="title.upload_step1" value="1. Оберить файл"/>
+		<field name="title.upload_step2" value="2. Файл буде завантажений на сервер"/>
+		<field name="title.upload_step3" value="3. Натисніть Зберегти"/>
+		
+		<field name="form.wellcome" value="представтесь будь ласка —"/>
+		<field name="form.login" value="Логин"/>
+		<field name="form.password" value="Пароль"/>
+		<field name="form.file" value="Файл:"/>
+		<field name="form.server_path" value="Шлях на сервере"/>
+		<field name="form.select_file" value="Оберить файлы"/>
+		<field name="form.image_max_size" value="Розмір"/>
+		<field name="form.search_placeholder" value="Найти"/>
+		
+		<field name="admin.filename" value="Ім'я файлу"/>
+		<field name="admin.filetype" value="Тип"/>
+		<field name="admin.filepreview" value="Перегляд"/>
+		<field name="admin.fileaccess" value="Доступ"/>
+		<field name="admin.homepage" value="Головна"/>
+		<field name="admin.homepage_title" value="Головна {HOST}"/>
+		<field name="admin.users" value="Користувачі сайту"/>
+		<field name="admin.users_title" value="Список користувачів сайту"/>
+		<field name="admin.structure" value="Структура сайту"/>
+		<field name="admin.structure_title" value="Структура сайту {HOST}"/>
+		<field name="admin.menu" value="Меню"/>
+		<field name="admin.menu_title" value="Управління меню сайту"/>
+		<field name="admin.documents" value="Документи"/>
+		<field name="admin.documents_title" value="Документи"/>
+		<field name="admin.files_and_doc" value="Файли и документи"/>
+		<field name="admin.files_and_doc_title" value="Менеджер файлів і документів"/>
+		<field name="admin.site_settings" value="Налаштування сайту"/>
+		<field name="admin.site_settings_title" value="Налаштування сайту"/>
+		<field name="admin.locales" value="Мови і тексти"/>
+		<field name="admin.locales_title" value="Мови і тексти"/>
+		<field name="admin.mail_template" value="Шаблони листів"/>
+		<field name="admin.mail_template_title" value="Шаблони листів"/>
+		<field name="admin.stat" value="Статистика переглядів"/>
+		<field name="admin.stat_title" value="Статистика переглядів для {HOST}"/>
+		<field name="admin.seo" value="SEO"/>
+		<field name="admin.seo_title" value="SEO сайту"/>
+		<field name="admin.robots" value="Управління robots.txt"/>
+		<field name="admin.robots_title" value="Файл robots.txt"/>
+		<field name="admin.module_settings" value="Управління модулями сайту"/>
+		<field name="admin.module_settings_title" value="Управління модулями сайту"/>
+        <field name="admin.module_catalog" value="Завантаження каталогу з 1С"/>
+        <field name="admin.module_catalog_title" value="Завантаження каталогу з 1С"/>
+        <field name="admin.module_comments" value="Коментарі"/>
+        <field name="admin.module_comments_title" value="Коментарі"/>
+        <field name="admin.module_search" value="Пошук"/>
+        <field name="admin.module_search_title" value="Пошук"/>
+		<field name="admin.design" value="Дизайни"/>
+		<field name="admin.design_title" value="Дизайни"/>
+		<field name="admin.history" value="Історія сесій"/>
+		<field name="admin.history_title" value="Історія сесій користувачів"/>
+		<field name="admin.locale_param" value="Назва змінної"/>
+		<field name="admin.locale_value" value="Значення"/>
+		<field name="admin.robots_example_open" value="Приклад відкритого сайту:"/>
+		<field name="admin.robots_example_closed" value="Приклад закритого сайту:"/>
+		<field name="admin.robots_example_seo" value="Приклад для SEO:"/>
+		<field name="admin.realtime" value="Онлайн аналітика"/>
+		<field name="admin.analytics" value="Аналітика сайту"/>
+		<field name="admin.social" value="Експорт соц. мереж"/>
+		<field name="admin.manual" value="Інструкція"/>
+		<field name="admin.structure_manage" value="Управління структурою"/>
+		<field name="admin.media_library" value="Сховище файлів"/>
+		<field name="admin.dev_tools" value="Налаштування"/>
+		<field name="admin.sitemap" value="Управління sitemap.xml"/>
+		<field name="admin.sitemap_title" value="Управління sitemap.xml"/>
+        <field name="admin.manual_title" value="Інструкція використання"/>
+		<field name="admin.view_website" value="View Website"/>
+		<field name="admin.logged_as" value="Вы вошли как"/>
+	</locale>
+</locales>
+
+</document>

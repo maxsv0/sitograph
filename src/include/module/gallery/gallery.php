@@ -186,7 +186,7 @@ function Gallery_Album_add($url, $album_date = "", $album_title = "", $album_des
 	$result = API_itemAdd(TABLE_GALLERY_ALBUM, $item);
 	
 	if ($result["ok"]) {
-		SEO_add("/gallery/".$url."/", $album_title, $album_title, $album_title);
+		SEO_add("/gallery/".$url."/", $album_title, $album_title, $album_title, 1);
 	}
 	
 	return $result;
@@ -221,7 +221,7 @@ function Gallery_Photo_add($album_id, $photo_date = "", $photo_title = "", $phot
 	$result = API_itemAdd(TABLE_GALLERY_PHOTOS, $item);
 	
 	if ($result["ok"]) {
-		SEO_add("/gallery/".$url."/", $album_title, $album_title, $album_title);
+		SEO_add("/gallery/".$url."/", $album_title, $album_title, $album_title, 1);
 	}
 	
 	return $result;

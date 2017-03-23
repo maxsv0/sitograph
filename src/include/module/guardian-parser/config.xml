@@ -1,0 +1,33 @@
+<?xml version='1.0'?> 
+<document>
+
+<config>
+	<param name="activationUrl" value="/guardian-parser/"/>
+	<param name="activationLevel" value="9"/>
+	<param name="adminMenu" value="0"/>
+	
+	<param name="searchKeyword" value=""/>
+	<param name="searchTag" value=""/>
+	<param name="searchSection" value=""/>
+	<param name="searchLimit" value="2"/>
+	<param name="searchPage" value="1"/>
+	
+	<filter url="/guardian-parser/" action="GuardianLoadArticles" setpage="/"/>
+</config>
+
+<install>
+	<param name="name" value="guardian-parser"/>
+	<param name="version" value="1.02"/>
+	<param name="date" value="01.06.2016"/>
+	<param name="installHook" value="GuardianParserInstall"/>
+	
+	<dependency module="msv-core" version="1.0" />
+	<dependency module="blog" version="1.0" />
+	
+	<file dir="module" path="guardian-parser/guardian-parser.php"/>
+	<file dir="module" path="guardian-parser/config.xml"/>
+</install>
+
+
+
+</document>

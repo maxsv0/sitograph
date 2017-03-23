@@ -24,6 +24,18 @@ Functions list
 - MSV_IncludeJS($jsCode)	 => MSV_Include
 - MSV_IncludeHTML($htmlCode) => MSV_Include
 
+- MSV_Document_add($name = "", $text = "", $ext_link = "", $lang = LANG) 
+- MSV_Structure_add($lang, $url, $name = "", $template = "", $page_template = "", $sitemap = "", $menu = "", $menu_order = 0, $access, $parent_url = "") {
+
+- MSV_PasswordGenerate($length = 12) returns string
+- MSV_GetIP() {
+- MSV_SitemapGenegate
+- MSV_EmailTemplate($template, $mailTo, $data = array(), $message = true, $lang = LANG) 
+- MSV_Email($to = "", $subject = "", $body = "", $header = "") {
+- MSV_EmailDefault($to = "", $subject = "", $body = "", $header = "") 
+
+- MSV_HighlightText($s, $text, $c) {
+
 
 
 */
@@ -783,7 +795,7 @@ function MSV_SQLEscape($string) {
 }
 
 
-function MSV_storePic($url, $type = "jpg", $name = "", $table = "", $field = "") {
+function MSV_storeFile($url, $type = "jpg", $name = "", $table = "", $field = "") {
 	
 	// path example:
 	// content/table/year/month/hash.jpg
@@ -851,8 +863,31 @@ function MSV_storePic($url, $type = "jpg", $name = "", $table = "", $field = "")
 	
 	$filePath = $dirPath."/".$fileName;
 	
+	$r = file_put_contents($filePath, $cont);
+	if ($r) {
+		return $fileUrl;
+	}
+	
+	return -10;
+}
+
+
+
+function MSV_storePic($url, $type = "jpg", $name = "", $table = "", $field = "") {
+	
+	// store original file
+	$fileResult = MSV_storeFile($url, $type, $name, $table, $field);
+	
+	if (is_numeric($fileResult)) {
+		// result is error
+		return $fileResult;
+	}
+	
+	$fileUrl = HOME_URL.CONTENT_URL."/".$fileResult;
+	$filePath = UPLOAD_FILES_PATH."/".$fileResult;
+	
 	// copy file
-	$cont = file_get_contents($url);
+	$cont = file_get_contents($fileUrl);
 	if ($cont) {
 		
 		if (!empty($field) && !empty($table)) {
@@ -918,11 +953,7 @@ function MSV_storePic($url, $type = "jpg", $name = "", $table = "", $field = "")
 			}
 		}
 		
-		
-		$r = file_put_contents($filePath, $cont);
-		if ($r) {
-			return $fileUrl;
-		}
+		return $fileResult;
 	}
 	
 	return -10;
@@ -1117,22 +1148,22 @@ function MSV_redirect($url) {
 function MSV_outputAdminMenu() {
 	$W = MSV_get("website");
 	
-	$strOut  = "";
-    
     $strOut  .='<table width="100%" cellpadding="0" cellspacing="0" class="admin_panel">';
     $strOut  .='<tbody><tr><td width="50%" align="right" style="padding-right:10px;">';
-    $strOut  .='<p>Административный просмотр сайта</p></td>';
+    $strOut  .='<p>'._t("title.back_to_admin").'</p></td>';
     $strOut  .='<td align="left">';
     $strOut  .='<a href="/admin/">';
-    $strOut  .='<div class="admin_pic">';
-    $strOut  .='<img src="/content/images/adminmcg/admin_panel.png"/>';
-    $strOut  .='</div>';
-    $strOut  .='<div class="admin_bg_red">Вернуться в «Сайтограф»</div>';
+    $strOut  .='<div class="admin_pic">&nbsp;</div>';
+    $strOut  .='<div class="admin_title">'._t("btn.back_to_admin").'</div>';
     $strOut  .='</a>';
     $strOut  .='</td></tr></tbody></table>';
     $strOut  .='<style>';
     $strOut  .='body {padding-top:30px;}';
     $strOut  .='</style>';
+	
+	
+	
+//	$strOut  = "";
 //	$strOut .= "<div style='position:fixed;opacity:0.5;bottom:0;left:0;width:150px;background:rgba(0,0,0,0.8);color:#fff;padding:20px 15px;'>";
 //	$strOut .= "<p><a href='".$W->langUrl."/admin/' style='color:#fff;'>"._t("btn.back_to_admin")."</a></p><hr>";
 //	$strOut .= "<h4>".$W->page["name"]."</h4>";
@@ -1145,7 +1176,7 @@ function MSV_outputAdminMenu() {
 //	}
 //	$strOut .= "<p><a href='".$W->langUrl."/admin/?section=structure&table=structure&edit=".$W->page["id"]."#seo' style='color:#fff;'>"._t("btn.edit_seo")."</a></p>";
 //	$strOut .= "</div>";
-//
+
 	return $strOut;
 }
 
@@ -1411,7 +1442,7 @@ function MSV_Structure_add($lang, $url, $name = "", $template = "", $page_templa
 		$website = MSV_get("website");
 
 		foreach ($website->languages as $langID) {
-			MSV_Structure_add($langID, $url, $name, $template, $page_template, $sitemap, $menu, $menu_order, $access);
+			MSV_Structure_add($langID, $url, $name, $template, $page_template, $sitemap, $menu, $menu_order, $access, $parent_url);
 		}
 		
 		return true;
@@ -1444,7 +1475,7 @@ function MSV_Structure_add($lang, $url, $name = "", $template = "", $page_templa
 		$structure_id = $result["insert_id"];
 		
 		// add seo
-		SEO_add($url, $name, '', '', $lang);
+		SEO_add($url, $name, '', '', $sitemap, $lang);
 		
 		// add docuemnt
 		$resultDocument = MSV_Document_add($name, "", "", $lang);
@@ -1587,6 +1618,67 @@ function MSV_GetIP() {
 }
 
 
+function MSV_SitemapGenegate() {
+    $sitemapPath = ABS."/sitemap.xml";
+    
+    if (!is_writable($sitemapPath)) {
+    	MSV_MessageError("Can't write to $sitemapPath");
+    	return false;
+    }
+    
+    $sitemapXML = '<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.google.com/schemas/sitemap/0.84"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.google.com/schemas/sitemap/0.84 http://www.google.com/schemas/sitemap/0.84/sitemap.xsd">
+';
+	$website = MSV_get("website");
+
+	foreach ($website->languages as $langID) {
+		$query = API_getDBList(TABLE_SEO, "`sitemap` > 0", "`url` asc", 10000, 0,  $langID);
+		if ($query["ok"] && $query["data"]) {
+			foreach ($query["data"] as $item) {
+				$sitemapXML .= "
+<url>
+<loc>".HOME_LINK.$item["url"]."</loc>
+<priority>1</priority>
+<lastmod>".date("Y-m-d", strtotime($item["updated"]))."</lastmod>
+</url>\n";
+			}
+		}
+	}
+	
+	$sitemapXML .= "</urlset>";
+	return file_put_contents($sitemapPath, $sitemapXML);
+}
+
+
+function MSV_HighlightText($s, $text, $c) {
+	$text = strip_tags($text);
+	$text = str_replace(array("&nbsp;","\n"), " ", $text);
+	$text = array_map("trim", explode(" ", $text));
+	
+	$i = 0;
+	$i_pos = 0;
+	foreach ($text as $v) {
+		if (!empty($v)) {
+			$ar[] = $v;
+			if (strstr($v, $s) && empty($i_pos)) $i_pos = $i;
+			$i++;
+		}
+	}
+	$i_pos = ($i_pos - $c) < 0 ? 0 : $i_pos - $c;
+	for ($i = $i_pos; $i < ($c * 2 + $i_pos); $i++) {
+		if (!empty($ar[$i])) $ar2[] = $ar[$i];
+	}
+	unset($ar);
+   // var_dump(str_replace($s, "<strong>".$s."</strong>", implode(' ', $ar2)));
+    // Создаем строку для регулярного выражения
+    $pattern = "/((?:^|>)[^<]*)(".$s.")/si";
+    // Подсвеченная строка
+    $replace = '$1<b>$2</b>';
+    
+	return (empty($ar2) ? "" :  preg_replace($pattern, $replace, implode(' ', $ar2)));
+}
 
 
 // ********** Install Script ********
@@ -1661,9 +1753,9 @@ function ajax_Upload_Picture() {
 			}
 			
 			// store Picture 
-			$result = MSV_storePic($file["tmp_name"], $fileType, $fileName, $table, $field);
-			if ($result) {
-				echo CONTENT_URL."/".$result;
+			$fileResult = MSV_storePic($file["tmp_name"], $fileType, $fileName, $table, $field);
+			if (is_numeric($fileResult)) {
+				echo CONTENT_URL."/".$fileResult;
 			}
 		} else {
 			// error
@@ -1713,42 +1805,42 @@ function get_table_auto_increment_next_value($table) {
         
 function translit_encode($string) {
 	$trans_fwd = array(
-        	'Р°'=>'a',
-        	'Р±'=>'b',
-        	'РІ'=>'v',
-        	'Рі'=>'g',
-        	'Рґ'=>'d',
-        	'Рµ'=>'e',
-        	'С”'=>'e',
-        	'С‘'=>'e',
-        	'Р¶'=>'zh',
-        	'Р·'=>'z',
-        	'Рё'=>'i',
-        	'С–'=>'i',
-        	'С—'=>'i',
-        	'Р№'=>'y',
-        	'Рє'=>'k',
-        	'Р»'=>'l',
-        	'Рј'=>'m',
-        	'РЅ'=>'n',
-        	'Рѕ'=>'o',
-        	'Рї'=>'p',
-        	'СЂ'=>'r',
-        	'СЃ'=>'s',
-        	'С‚'=>'t',
-        	'Сѓ'=>'u',
-        	'С„'=>'f',
-        	'С…'=>'h',
-        	'С†'=>'c',
-        	'С‡'=>'ch',
-        	'С€'=>'sh',
-        	'С‰'=>'sch',
-        	'СЉ'=>'',
-        	'С‹'=>'i',
-        	'СЊ'=>'',
-        	'СЌ'=>'e',
-        	'СЋ'=>'yu',
-        	'СЏ'=>'ya',
+        	'а'=>'a',
+        	'б'=>'b',
+        	'в'=>'v',
+        	'г'=>'g',
+        	'д'=>'d',
+        	'е'=>'e',
+        	'є'=>'e',
+        	'ё'=>'e',
+        	'ж'=>'zh',
+        	'з'=>'z',
+        	'и'=>'i',
+        	'і'=>'i',
+        	'ї'=>'i',
+        	'й'=>'y',
+        	'к'=>'k',
+        	'л'=>'l',
+        	'м'=>'m',
+        	'н'=>'n',
+        	'о'=>'o',
+        	'п'=>'p',
+        	'р'=>'r',
+        	'с'=>'s',
+        	'т'=>'t',
+        	'у'=>'u',
+        	'ф'=>'f',
+        	'х'=>'h',
+        	'ц'=>'c',
+        	'ч'=>'ch',
+        	'ш'=>'sh',
+        	'щ'=>'sch',
+        	'ъ'=>'',
+        	'ы'=>'i',
+        	'ь'=>'',
+        	'э'=>'e',
+        	'ю'=>'yu',
+        	'я'=>'ya',
         	' '=>'-',
         	'-'=>'-',
         	'0'=>'0',
