@@ -1,11 +1,14 @@
 <?php
+// exit if already installed
+if (MSV_INSTALED && empty($_SESSION["msv_install_step"])) {
+	return true;
+}
 
 if (!empty($_SESSION["msv_install_step"])) {
 	$install_step = (int)$_SESSION["msv_install_step"];
 } else {
 	$install_step = 1;
 }
-
 
 $website = $this->website;
 $website->page = array(1);
@@ -80,13 +83,12 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
 				$configList[$name] = $value;
 			}
 			
-			if (is_writable(ABS."/config.php")) {
-				file_put_contents(ABS."/config.php", $configPHP);
-				sleep(1); // TODO: WHY??
-				
-				$website->messages["success"][] = "".ABS."/config.php updated successfuly";
+			$resultFile = @file_put_contents(ABS."/config.php", $configPHP);
+
+			if ($resultFile) {
+				$website->messages["success"][] = "".ABS."/config.php successfuly created";
 			} else {
-				$website->messages["error"][] = "Can't write to ".ABS."/config.php";
+				$website->messages["error"][] = "ERROR: Can't write to ".ABS."/config.php";
 			}
 		}
 	}
@@ -159,10 +161,8 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
 		$_SESSION["msv_install_step"] = $install_step = 0;
 		
 		// copy design "default" to "custom"
-		
-		// disable module Install
-		MSV_disableModule("install");
-		
+		// TODO: >>>>>>>
+
 		// redirect to homepage
 		$website->outputRedirect("/");
 	}
@@ -185,12 +185,15 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
 }
 
 if ($install_step === 2) {
-	if (is_writable(ABS."config.php")) {
-		$website->messages["error"][] = "ERROR: <b>".ABS."config.php</b> is not writable";
-	} else {
-		$website->messages["success"][] = "SUCCESS: config.php is writable";
+	if (file_exists(ABS."/config.php")) {
+		$website->messages["error"][] = "ERROR: <b>".ABS."/config.php</b> already exists and will be overwritten!";
+		
+		if (!is_writable(ABS."/config.php")) {
+			$website->messages["error"][] = "ERROR: <b>".ABS."/config.php</b> is not writable";
+		}
 	}
 }
+
 if ($install_step === 3) {
 	if (empty($website->config["db"])) {
 		$website->messages["error"][] = "ERROR: Database connection not established.";
