@@ -13,7 +13,7 @@
 <body bgcolor="F7F7F7">
 
 <div style="padding:50px 100px;">
-<h2 style="color:#303030;text-align:center;">MSV</h2>
+<h2 style="color:#bebebe;text-align:center;">MSV Framework 1.0</h2>
 <div style="background:#fff;padding:20px 30px 5px 30px;max-width:800px;margin:0 auto;">
 <form style="text-align:center;" method="POST">
 
@@ -35,7 +35,7 @@
 {if $install_step === 1}
 
 	<p>
-	<h1>Welcome to MSV Website.</h1>
+	<h1>Welcome to Sitograph.</h1>
 	</p>
 
 	<p>

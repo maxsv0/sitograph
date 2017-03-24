@@ -227,9 +227,6 @@ if ($install_step === 3) {
 	}
 	
 	$modulesListRemote = array(
-		"fancybox",
-		"cropper",
-		"tinymce",
 	);
 	
 	// sort lists
