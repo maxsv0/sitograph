@@ -1,6 +1,6 @@
 <?php 
 define("ABS", "H:\OpenServer\domains\sitegraph.ua\src");
-define("LANGUAGES", "ru,ua");
+define("LANGUAGES", "ru,ua,en");
 define("DB_HOST", "localhost");
 define("DB_LOGIN", "mysql");
 define("DB_PASSWORD", "mysql");

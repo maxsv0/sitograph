@@ -11,7 +11,28 @@ $(document).ready(function() {
         }
     });
 
-
+   // скрыть подразделы в структуре сайта 
+   if ($("#structure-table").size()>0) {
+       $("#structure-table tr").each(function(){
+        if ($(this).data("level")>1) {
+            $(this).hide();
+        }
+       }); 
+       $("#structure-table").find(".selected").each(function(){
+        if ($(this).data("show")>0) {
+            var show_index = $(this).data("show");
+            $("#block_"+$(this).data("show")).attr("src","/content/images/adminmcg/arrow_down.png");
+            $("#structure-table tr").each(function(){
+                if ($(this).data("index")== show_index) {
+                    $(this).show();
+                }
+            });
+            
+        }
+       }); 
+   } 
+   
+   // скрыть подразделы в структуре сайта 
 
 
 

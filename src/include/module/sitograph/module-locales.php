@@ -8,6 +8,8 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
      $moduleObj = MSV_get("website.".$_REQUEST["module"]);   
      $config_path = $moduleObj->pathConfig;
      
+     $_SESSION['location_active'] = $_REQUEST["module"];
+     
      $configXML = simplexml_load_file($config_path); 
      
      if (!is_writable($config_path)) {
@@ -40,7 +42,7 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
    }  
    
    if (!empty($_POST["save_exit"])) {
-	MSV_redirect("/admin/?section=$section");
+//	MSV_redirect($this->website->langUrl."/admin/?section=$section");
    } 
 }
 
@@ -50,6 +52,7 @@ if (!empty($_POST["save"])) {
 
 if (!empty($_REQUEST["delete"])) {
     if (!empty($_REQUEST["module"])) {
+        $_SESSION['location_active'] = $_REQUEST["module"];
         $moduleObj = MSV_get("website.".$_REQUEST["module"]);   
         $config_path = $moduleObj->pathConfig;
         $configXML = simplexml_load_file($config_path); 
@@ -62,7 +65,7 @@ if (!empty($_REQUEST["delete"])) {
      //  echo("<pre>".htmlspecialchars($configXML->asXML())."</pre>");
        $configXML->asXml($config_path);       
     }
-	MSV_redirect("/admin/?section=$section");
+	MSV_redirect($this->website->langUrl."/admin/?section=$section");
 }
 
 
@@ -111,6 +114,7 @@ if (isset($_REQUEST["add_new"])) {
     'value' =>!empty($_REQUEST["form_value"])? $_REQUEST["form_value"]:$moduleObj->locales[$_REQUEST["edit"]],
     'module' =>$_REQUEST["module"]
     );
+    
   //   var_dump($moduleObj->locales[$_REQUEST["edit"]]);
     MSV_assignData("itemField", $itemField);
     MSV_assignData("edit", 1);
@@ -120,6 +124,8 @@ if (isset($_REQUEST["add_new"])) {
     	$moduleObj = MSV_get("website.".$module);
     	$module_locales[$module] = $moduleObj->locales;
     }
+   
     MSV_assignData("admin_module_locales", $module_locales);
     MSV_assignData("admin_locales", $this->website->locales);
+    MSV_assignData("locales_active", $_SESSION['location_active']);
 }

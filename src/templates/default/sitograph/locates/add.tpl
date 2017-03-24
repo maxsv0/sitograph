@@ -4,7 +4,7 @@
   <ul class="nav nav-tabs" role="tablist">
   
 
-<li role="presentation" class="active"><a href="#loc" aria-controls="loc" role="tab" data-toggle="tab">Название</a></li>
+<li role="presentation" class="active"><a href="#loc" aria-controls="loc" role="tab" data-toggle="tab">{$t["admin.locale_tab_name"]}</a></li>
 
   </ul>
   

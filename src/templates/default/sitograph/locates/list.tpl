@@ -7,9 +7,9 @@
   <ul class="nav nav-tabs" role="tablist">
 {foreach from=$admin_module_locales name=loop key=moduleName item=localeList}
 {if $smarty.foreach.loop.first}
-	<li role="presentation" class="active"><a href="#module-{$moduleName}" aria-controls="module-{$moduleName}" role="tab" data-toggle="tab">{$moduleName}</a></li>
+	<li role="presentation" {if !$locales_active}class="active"{/if}><a href="#module-{$moduleName}" aria-controls="module-{$moduleName}" role="tab" data-toggle="tab">{$moduleName}</a></li>
 {else}
-	<li role="presentation"><a href="#module-{$moduleName}" aria-controls="module-{$moduleName}" role="tab" data-toggle="tab">{$moduleName}</a></li>
+	<li role="presentation" {if $locales_active == $moduleName}class="active"{/if}><a href="#module-{$moduleName}" aria-controls="module-{$moduleName}" role="tab" data-toggle="tab">{$moduleName}</a></li>
 {/if}
 {/foreach}
   </ul>
@@ -18,9 +18,9 @@
 <div class="tab-content">
 {foreach from=$admin_module_locales name=loop key=moduleName item=localeList}
 {if $smarty.foreach.loop.first}
-	<div role="tabpanel" class="tab-pane active" id="module-{$moduleName}">
+	<div role="tabpanel" class="tab-pane {if !$locales_active}active{/if}" id="module-{$moduleName}">
 {else}
-	<div role="tabpanel" class="tab-pane" id="module-{$moduleName}">
+	<div role="tabpanel" class="tab-pane {if $locales_active == $moduleName}active{/if}" id="module-{$moduleName}">
 {/if}
 
 
@@ -61,7 +61,7 @@
 
 
 <div class="col-sm-6">
-<a href="/admin/?section={$admin_section}&add_new" class="btn btn-primary"><span class="glyphicon glyphicon-ok">&nbsp;</span>{$t["btn.add_new"]}</a>
+<a href="{$lang_url}/admin/?section={$admin_section}&add_new" class="btn btn-primary"><span class="glyphicon glyphicon-ok">&nbsp;</span>{$t["btn.add_new"]}</a>
 </div>
 
 
