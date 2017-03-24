@@ -195,29 +195,6 @@ function closePicLibraryModal() {
 	$("#libraryModal").modal('hide');
 }
 
-function set_structure_status (mode, index, level, show){
-            $.ajax({
-			type 	 : "GET",
-			dataType : 'json',
-			async  	 : false,
-			url 	 : "/api/set_structure_status/",
-			
-			data: ({mode : mode, index : index, level : level, show:show}),
-			
-			success: function(data){
-			    
-				if(data.ok){
-
-				}
-				return false;
-			}
-        
- });
-    
-}
-
-
-
 
 var active_block = 0;
 
@@ -267,4 +244,47 @@ function close_all() {
         var t = document.getElementById("block_text_"+i);
     }
      $("#search_toogle").html("<a href='javascript:open_all();'>Развернуть все</a>");
+}
+
+function toogle_parent(e,id, level) {
+    
+    if ($(e).parent().parent().hasClass('selected')) {
+        $(e).parent().parent().removeClass('selected');
+        $("#block_"+id).attr("src","/content/images/sitograph/arrow_right.png");
+        set_structure_status('remove', $(e).parent().parent().data("index"), $(e).parent().parent().data("level"), id);
+        $("#structure-table tr").each(function(){
+            if ($(this).data("index") == id && $(this).data("level")== parseInt(level)+1) {
+                $(this).hide();
+            }
+         });
+    } else {
+        $(e).parent().parent().addClass('selected');
+        $("#block_"+id).attr("src","/content/images/sitograph/arrow_down.png");
+        set_structure_status('add', $(e).parent().parent().data("index"), $(e).parent().parent().data("level"),id);
+         $("#structure-table tr").each(function(){
+            if ($(this).data("index") == id && $(this).data("level") == parseInt(level)+1) {
+                $(this).show();
+            }
+         });
+    }
+}
+
+
+
+function set_structure_status (mode, index, level, show){
+	$.ajax({
+		type 	 : "GET",
+		dataType : 'json',
+		async  	 : false,
+		url 	 : "/api/set_structure_status/",
+		
+		data: ({mode : mode, index : index, level : level, show:show}),
+		
+		success: function(data){
+			if(data.ok){
+			}
+			return false;
+		}
+	});
+    
 }

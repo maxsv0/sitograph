@@ -257,7 +257,16 @@ if ($resultQuery["ok"]) {
 		}
 	}
 	
+	$adminListFiltered = array();
+    foreach ($adminList as $listItemID => $listItem) {
+		if (isset($listItem['parent_id'])) {
+		  $adminListFiltered[$listItem['parent_id']][] = $listItem;
+        }
+	}
+	$adminList = $adminListFiltered;
 	MSV_assignData("admin_list", $adminList);
+	
+	if (!empty($_SESSION['structure_show'])) MSV_assignData("structure_show", $_SESSION['structure_show']);
 }
 
 
@@ -271,4 +280,21 @@ function GetParentSection($id) {
           }
       }    
       return $parent_url;  
+}
+
+
+
+function ajax_set_structure_status ($module) {
+    
+    if (!empty($_REQUEST['mode'])) {
+        if ($_REQUEST['mode'] == 'add') {
+           $_SESSION['structure_show'][$_REQUEST['index']] = $_REQUEST['level'];
+        } elseif($_REQUEST['mode'] == 'remove') {
+           unset($_SESSION['structure_show'][$_REQUEST['index']]); 
+        }
+    }
+    
+    
+    $result['ok'] =true;
+    return json_encode($result);
 }

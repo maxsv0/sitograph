@@ -1,15 +1,24 @@
-{foreach from=$listTable name=loop key=item_id item=item}
-{if $item.parent_id == $show_parent_id}
-{if $item.published}
-<tr>
-{else}
-<tr class="danger">
-{/if}
+{foreach from=$listTable[$show_parent_id] name=loop key=item_id item=item}
 
-<td><span class="text-muted">|</span></td>
+{if $show_parent_id == 0}
+{assign var=level value=1}    
+{/if}
+<tr {if $item.debug}class="danger"{/if} data-index="{$item.parent_id}" data-level="{$level}" {if $structure_show && $structure_show[$item.parent_id] == $level && !empty($listTable[$item.id])}data-show="{$item.id}" class="selected"{/if}>
+
+<td>
+{if !empty($listTable[$item.id])}
+<a href="javascript:void(0)" style="margin-top:3px" onclick="toogle_parent(this,'{$item.id}','{$level}')"><img id="block_{$item.id}" src="/content/images/sitograph/arrow_right.png"/></a>
+{/if}
+</td>
+
+
+
 
 <td class="text-nowrap">
-{$item.name|strip_tags|truncate:200:".."}
+{section name=index start=1 loop=$level step=1}
+<span>»</span>&nbsp;
+{/section}
+<span>{$item.name|strip_tags|truncate:200:".."}</span>
 {if $item.debug}
 <div><span class="badge">debug</span></div>
 {/if}
@@ -42,7 +51,6 @@
 </td>
 
 <td class="text-nowrap text-center">
-<small>
 {if $item.access === "everyone"}
 	<span class="text-success">{$item.access_data}</span>
 {elseif $item.access === "user"}
@@ -54,7 +62,6 @@
 {else}
 	{$item.access_data}
 {/if}
-</small>
 </td>
 <td class="text-nowrap text-center">
 {if $item.sitemap}
@@ -74,19 +81,20 @@
 <td><small>{$item.updated}</small></td>
 
 <td class="text-nowrap">
-{if strpos($item.url, "/admin/") ===  false}
-	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&edit={$item.id}" title="{$t['btn.edit']}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit"></span></a>
-	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&duplicate={$item.id}" title="{$t['btn.duplicate']}" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-duplicate"></span></a>
-	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&add_child={$item.id}" title="{$t['btn.add_child']}" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-plus"></span></a>
-	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&delete={$item.id}" onclick="if (!confirm('Вы уверены что хотите удалить?')) return false;" title="{$t['btn.delete']}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span></a>
-{else}
-<span class="text-muted">-</span>
-{/if}
+	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&delete={$item.id}" onclick="if (!confirm('{$t["btn.remove_confirm"]}')) return false;" title="{$t['btn.delete']}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&duplicate={$item.id}" title="{$t['btn.duplicate']}" class="btn btn-warning"><span class="glyphicon glyphicon-duplicate"></span></a>
+	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&add_child={$item.id}" title="{$t['btn.add_child']}" class="btn btn-warning"><span class="glyphicon glyphicon-plus"></span></a>
+	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&edit={$item.id}" title="{$t['btn.edit']}" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
 </td>
-
 </tr>
 
-{include file="$themePath/sitograph/structure/list-level2.tpl" show_parent_id=$item.id}
 
+{if !empty($listTable[$item.id])}
+        {assign var=level value=$level+1}    
+        {include file="$themePath/sitograph/structure/list-level.tpl" listTable=$listTable show_parent_id=$item.id level=$level}
 {/if}
+
+
+
+
 {/foreach}
