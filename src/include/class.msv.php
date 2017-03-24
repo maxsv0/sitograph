@@ -476,7 +476,26 @@ class MSV_Website {
 		$this->requestUrl = $url;
 	}
 	function parseRequest() {
-		$requestUrl = $_SERVER["REQUEST_URI"];
+		// handle redirect from mod_rewrite module
+		// REDIRECT_URL is used by default
+		if (!empty($_SERVER["REDIRECT_URL"])) {
+			$requestUrl = $_SERVER["REDIRECT_URL"];
+		} else {
+			$requestUrl = $_SERVER["REQUEST_URI"];
+		}
+		
+		// fix homepage of non-default language
+		foreach ($this->languages as $langName) {
+			if ($requestUrl === "/".$langName."/") {
+				$requestUrl = "/";
+				
+				// if default language is used in URL -> redirect
+				if ($langName === $this->langDefault) {
+					$this->outputRedirect($requestUrl);
+				}
+			}
+		}
+		
 		$ar = explode("?", $requestUrl, 2);
 		$requestUrl = $ar[0];
 		if (!empty($ar[1])) {
