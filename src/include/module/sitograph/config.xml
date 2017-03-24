@@ -388,7 +388,7 @@
 		<field name="admin.sitemap_title" value="Управління sitemap.xml"/>
         <field name="admin.manual_title" value="Інструкція використання"/>
 		<field name="admin.view_website" value="View Website"/>
-		<field name="admin.logged_as" value="Вы вошли как"/>
+		<field name="admin.logged_as" value="Ви увійшли як"/>
 	</locale>
 </locales>
 

@@ -20,7 +20,7 @@ define("PHP_LOCALE", "en_US.UTF-8");
 define("PHP_TIMEZONE", "Europe/Kiev");
 define("DATABATE_ENCODING", "utf8");
 define("FORSE_TRAILING_SLASH", true);
-define("SUBDOMAIN_LANGUAGES", true);
+define("SUBDOMAIN_LANGUAGES", false);
 define("REP", "http://rep.msvhost.com/rep/main/");
 define("USER_HASH_PASSWORD", true);
 define("USER_IGNORE_PRIVILEGES", false);
