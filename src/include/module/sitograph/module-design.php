@@ -10,6 +10,14 @@ foreach ($this->website->modules as $module) {
 }
 MSV_assignData("admin_designs", $designs);
 
+//$config = MSV_get("website.config");
+//$themeConfig = array();
+//foreach ($config as $key => $value) {
+//	if (strpos($key, "theme_") === 0) {
+//		$themeConfig[$key] = $value;
+//	}
+//}
+//MSV_assignData("admin_design_config", $themeConfig);
 
 if (!empty($_GET["design_activate"])) {
 	$themeName = $_GET["design_activate"];

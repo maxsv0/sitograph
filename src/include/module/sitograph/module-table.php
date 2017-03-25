@@ -46,6 +46,14 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
 if (!empty($_POST["save"])) {
 	$_REQUEST["edit"] = $_POST["form_id"];
 }
+if (!empty($_REQUEST["edit_key"])) {
+	$resultQueryItem = API_getDBItem($table, "`param` like '".MSV_SQLEscape($_REQUEST["edit_key"])."'");
+	if ($resultQueryItem["ok"] && !empty($resultQueryItem["data"])) {
+		$_REQUEST["edit"] = $resultQueryItem["data"]["id"];
+	} else {
+		$_REQUEST["add_new"] = 1;
+	}
+}
 if (!empty($_REQUEST["edit"])) {
 	$resultQueryItem = API_getDBItem($table, "`id` = '".(int)$_REQUEST["edit"]."'");
 	if ($resultQueryItem["ok"]) {
@@ -86,8 +94,8 @@ if (isset($_REQUEST["add_new"])) {
 		"lang" => LANG,
 	);
 	if (!empty($_REQUEST["edit_key"])) {
-		// toDO: ket from table config
-		//$item["id"] = $_REQUEST["edit_key"];
+		// toDO: support multi index
+		$item[$tableInfo["index"]] = $_REQUEST["edit_key"];
 	}
 	MSV_assignData("admin_edit", $item);
 }

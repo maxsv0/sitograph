@@ -38,10 +38,12 @@
 
 <locales>
 	<locale name="ru">
-		<field name="default.field" value="Custom Text"/>
+		<field name="theme.bg" value="Фон сайта, картинка"/>
+		<field name="theme.logo" value="Логотип, картинка"/>
 	</locale>
 	<locale name="en">
-		<field name="default.field" value="Custom Text"/>
+		<field name="theme.bg" value="Website Background Image"/>
+		<field name="theme.logo" value="Logo Image"/>
 	</locale>
 </locales>
 </document>

@@ -589,9 +589,13 @@ class MSV_Website {
 		$Smarty->assign("page", $this->page);
 		$Smarty->assign("page_template", $this->page["page_template"]);
 		
+		// assign config values directly to templaye
 		foreach ($this->config as $param => $value) {
 			$Smarty->assign($param, $value);
 		}
+		
+		// also assign config as array 
+		$Smarty->assign("config", $this->config);
 		
 		// assign page messages
 		$messageError = implode("<br>\n", $this->messages["error"]);
