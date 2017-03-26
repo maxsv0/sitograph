@@ -12,8 +12,8 @@
   </head>
 <body bgcolor="F7F7F7">
 
-<div style="padding:50px 100px;">
-<h2 style="color:#bebebe;text-align:center;">MSV Framework 1.0</h2>
+<div style="padding:50px 100px 0px 100px;">
+<h2 style="color:#bebebe;text-align:center;">Sitograph 5.2</h2>
 <div style="background:#fff;padding:20px 30px 5px 30px;max-width:800px;margin:0 auto;">
 <form style="text-align:center;" method="POST">
 
@@ -45,7 +45,8 @@
 
 {elseif $install_step === 2}
 <p>
-Before getting started, we need to setup config.php file that can be found in the root directory.
+Before getting started, we need to setup <b>config.php</b> in the root directory.<br>
+Sample config <b>config-sample.php</b> is being used right now.
 </p>
 
 <table width="100%" cellpadding="5" cellspacing="0">
@@ -85,6 +86,10 @@ Before getting started, we need to setup config.php file that can be found in th
 
 <h2>Install modules</h2>
 
+<p>
+Once you press "Continue" button each of the modules will be installed.<br>
+Installation process includes creation of database tables and default website structure.
+</p>
 
 <div>
 
@@ -116,14 +121,14 @@ Before getting started, we need to setup config.php file that can be found in th
 <table width="90%">
 <tr>
 	<td width="50%" align="right">
-		<input type="checkbox" name="admin_create" value="1" checked>
+		<input type="checkbox" name="admin_create" id="iadmin_create" value="1" checked>
 	</td>
 	<td align="left">
-		Create website admin account
+		<label for="iadmin_create">Create website admin account</label> 
 	</td>
 </tr>
 <tr>
-	<td width="50%" align="right">Administrator Login</td>
+	<td width="50%" align="right">Administrator Email</td>
 	<td>
 		<input type="text" style="width:100%;" name="admin_login" value="{$admin_login}">
 	</td>
@@ -136,6 +141,9 @@ Before getting started, we need to setup config.php file that can be found in th
 </tr>
 </table>
 
+<p>
+<b>Note!</b> Administrator will receive email once account will be created.
+</p>
 
 	<p>
 	<input type="submit" value="Continue" style="font-size:26px;">  
@@ -147,11 +155,11 @@ Before getting started, we need to setup config.php file that can be found in th
 
 
 
-<h1>Installations successful</h1>
+<h1>Congratulations! Installation successful!</h1>
 
 
 	<p>
-	<input type="submit" value="Reload page to continue" style="font-size:26px;">  
+	<input type="submit" value="Reload page to start using website" style="font-size:26px;">  
 	<input type="hidden" name="install_step" value="5">  
 	</p>
 
@@ -190,6 +198,8 @@ Step: {$install_step}
 
 
 </div>	
+
+<h4 style="color:#bebebe;text-align:center;">MSV Framework 1.0</h4>
 
 {$htmlFooter}
 

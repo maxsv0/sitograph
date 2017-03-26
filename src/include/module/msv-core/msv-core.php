@@ -26,6 +26,7 @@ Functions list
 
 - MSV_Document_add($name = "", $text = "", $ext_link = "", $lang = LANG) 
 - MSV_Structure_add($lang, $url, $name = "", $template = "", $page_template = "", $sitemap = "", $menu = "", $menu_order = 0, $access, $parent_url = "") {
+- MSV_MailTemplate_add($name = "", $subject = "", $text = "", $header = "", $lang = LANG) {
 
 - MSV_PasswordGenerate($length = 12) returns string
 - MSV_GetIP() {
@@ -78,9 +79,7 @@ function MSV_Start() {
 	if (!empty($message_error)) {
 		MSV_MessageError($message_error);
 	}
-	
-	// link mail function
-	MSV_setConfig("mailer", "MSV_EmailDefault");
+
 }
 
 
@@ -1517,6 +1516,22 @@ function MSV_Document_add($name = "", $text = "", $ext_link = "", $lang = LANG) 
 }
 
 
+function MSV_MailTemplate_add($name = "", $subject = "", $text = "", $header = "", $lang = LANG) {
+	
+	$item = array(
+		"published" => 1,
+		"name" => $name,
+		"subject" => $subject,
+		"text" => $text,
+		"header" => $header,
+	);
+	
+	$result = API_itemAdd(TABLE_MAIL_TEMPLATES, $item, $lang);
+
+	return $result;
+}
+
+
 function MSV_EmailDefault($to = "", $subject = "", $body = "", $header = "") {
 	
 	$emailFrom = MSV_getConfig("email_from");
@@ -1571,6 +1586,12 @@ function MSV_EmailTemplate($template, $mailTo, $data = array(), $message = true,
 		    '),
 		    $mailSubject);
 		    
+		    
+		// add header HTML to a body
+		if (!empty($resultMail["data"]["header"])) {
+			$mailBody = $resultMail["data"]["header"].$mailBody;
+		}
+		 
 		$r = MSV_Email($mailTo, $mailSubject, $mailBody);
 		
 		if ($r) {
@@ -1695,7 +1716,7 @@ function CoreInstall($module) {
 	MSV_setConfig("theme_use_jquery", 0, true, "*");
 	
 	// trigger email sending on user registration
-	MSV_setConfig("email_registration", 0, true, "*");
+	MSV_setConfig("email_registration", 1, true, "*");
 	
 	// add messages to default output
 	MSV_setConfig("message_ok", "", true, "*");

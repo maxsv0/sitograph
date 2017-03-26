@@ -64,6 +64,7 @@
 		<field name="name" type="str"/>
 		<field name="subject" type="str"/>
 		<field name="text" type="doc"/>
+		<field name="header" type="text"/>
 	</table>
 	<table name="menu" index="id" title="name">
 		<field name="id" type="id"/>
@@ -207,7 +208,8 @@
 		<field name="table.mail_templates.lang" value="Язык"/>
 		<field name="table.mail_templates.name" value="Название"/>
 		<field name="table.mail_templates.subject" value="Тема письма"/>
-		<field name="table.mail_templates.text" value="Текст письма HTML"/>
+		<field name="table.mail_templates.text" value="Текст письма"/>
+		<field name="table.mail_templates.header" value="Заголовок HTML"/>
 		
 		<field name="table.menu" value="Меню сайта"/>
 		<field name="table.menu.id" value="ID"/>
@@ -358,7 +360,8 @@
 		<field name="table.mail_templates.lang" value="Lang"/>
 		<field name="table.mail_templates.name" value="Template Name"/>
 		<field name="table.mail_templates.subject" value="Email subject"/>
-		<field name="table.mail_templates.text" value="Email body HTML"/>
+		<field name="table.mail_templates.text" value="Email body"/>
+		<field name="table.mail_templates.header" value="Header HTML"/>
 		
 		<field name="msg.error_remove_active" value="Can't remove active module"/>
 		<field name="msg.removed" value="removed"/>
@@ -515,7 +518,8 @@
 		<field name="table.mail_templates.lang" value="Мова"/>
 		<field name="table.mail_templates.name" value="Назва"/>
 		<field name="table.mail_templates.subject" value="Тема листа"/>
-		<field name="table.mail_templates.text" value="Текст листа HTML"/>
+		<field name="table.mail_templates.text" value="Текст листа"/>
+		<field name="table.mail_templates.header" value="Заголовок HTML"/>
 		
 		<field name="table.menu" value="Меню сайту"/>
 		<field name="table.menu.id" value="ID"/>

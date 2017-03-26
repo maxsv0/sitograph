@@ -1,6 +1,6 @@
 <?php
 // exit if already installed
-if (MSV_INSTALED && empty($_SESSION["msv_install_step"])) {
+if (MSV_INSTALED) {
 	return true;
 }
 

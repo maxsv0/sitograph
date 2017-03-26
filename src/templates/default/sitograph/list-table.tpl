@@ -42,7 +42,7 @@
 {/if}
 </td>
 {elseif $type === "doc"}
-<td>{$itemField}</td>
+<td>{$itemField|htmlspecialchars|truncate:300:".."}</td>
 {else}
 <td>{$itemField|htmlspecialchars|truncate:60:".."}</td>
 {/if}
