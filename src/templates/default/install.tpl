@@ -13,7 +13,7 @@
 <body bgcolor="F7F7F7">
 
 <div style="padding:50px 100px 0px 100px;">
-<h2 style="color:#bebebe;text-align:center;">Sitograph 5.2</h2>
+<h2 style="color:#bebebe;text-align:center;">Sitograph CMS</h2>
 <div style="background:#fff;padding:20px 30px 5px 30px;max-width:800px;margin:0 auto;">
 <form style="text-align:center;" method="POST">
 
@@ -35,7 +35,7 @@
 {if $install_step === 1}
 
 	<p>
-	<h1>Welcome to Sitograph.</h1>
+	<h1>Welcome to Sitograph installation wizard.</h1>
 	</p>
 
 	<p>
@@ -87,14 +87,14 @@ Sample config <b>config-sample.php</b> is being used right now.
 <h2>Install modules</h2>
 
 <p>
-Once you press "Continue" button each of the modules will be installed.<br>
+Once you press "Continue" button each of modules will be installed.<br>
 Installation process includes creation of database tables and default website structure.
 </p>
 
 <div>
 
 <div style="text-align:left;float:left;width:50%;">
-<p><u>Local modules to activate</u> : </p>
+<p><u>Local modules to install</u>: </p>
 {foreach from=$modulesList key=moduleName item=moduleInfo} 
 <input type="checkbox" name="modules_local[]" checked value="{$moduleName}">
 {$moduleName}<br>
@@ -103,7 +103,7 @@ Installation process includes creation of database tables and default website st
 
 
 <div style="text-align:left;float:left;width:50%;">
-<p><u>Remote modules to install</u> : </p>
+<p><u>Remote modules to install</u>: </p>
 {foreach from=$modulesListRemote item=moduleName} 
 <input type="checkbox" name="modules_remote[]" checked value="{$moduleName}">
 {$moduleName}<br>
@@ -114,9 +114,9 @@ Installation process includes creation of database tables and default website st
 
 <br style="clear:both;">
 
+<hr>
 
-
-<h2>Add Administrator</h2>
+<h2>Create Administrator account</h2>
 
 <table width="90%">
 <tr>
@@ -124,7 +124,7 @@ Installation process includes creation of database tables and default website st
 		<input type="checkbox" name="admin_create" id="iadmin_create" value="1" checked>
 	</td>
 	<td align="left">
-		<label for="iadmin_create">Create website admin account</label> 
+		<label for="iadmin_create">Add Administrator account</label> 
 	</td>
 </tr>
 <tr>
@@ -142,7 +142,7 @@ Installation process includes creation of database tables and default website st
 </table>
 
 <p>
-<b>Note!</b> Administrator will receive email once account will be created.
+<b>Note!</b> Administrator will receive email once account is created.
 </p>
 
 	<p>
@@ -199,7 +199,10 @@ Step: {$install_step}
 
 </div>	
 
-<h4 style="color:#bebebe;text-align:center;">MSV Framework 1.0</h4>
+<h4 style="color:#bebebe;text-align:center;">
+<a href='http://sitograph.com/' style="color:#bebebe;">Sitograph 5.2</a> 
+developed using 
+<a href='http://doc.msvhost.com/' style="color:#bebebe;">MSV Framework 1.0</a></h4>
 
 {$htmlFooter}
 
