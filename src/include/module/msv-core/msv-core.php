@@ -1449,8 +1449,8 @@ function MSV_Structure_add($lang, $url, $name = "", $template = "", $page_templa
 	
 	$parent_id = 0;
 	if (!empty($parent_url)) {
-		$resultParent = API_getDBItem(TABLE_STRUCTURE, "`url` = '".MSV_SQLEscape($parent_url)."'");
-		if ($resultParent["ok"]) {
+		$resultParent = API_getDBItem(TABLE_STRUCTURE, "`url` = '".MSV_SQLEscape($parent_url)."'", $lang);
+		if ($resultParent["ok"] && !empty($resultParent["data"])) {
 			$parent_id = $resultParent["data"]["id"];
 		}
 	}
@@ -1716,7 +1716,7 @@ function CoreInstall($module) {
 	MSV_setConfig("theme_use_jquery", 0, true, "*");
 	
 	// trigger email sending on user registration
-	MSV_setConfig("email_registration", 1, true, "*");
+	MSV_setConfig("email_registration", 0, true, "*");
 	
 	// add messages to default output
 	MSV_setConfig("message_ok", "", true, "*");
@@ -1725,9 +1725,6 @@ function CoreInstall($module) {
 	// mailing options
 	MSV_setConfig("email_from", "admin@localhost", true, "*");
 	MSV_setConfig("email_fromname", "Website", true, "*");
-	
-	
-	// TODO: +++++ add mail templates
 	
 }
 

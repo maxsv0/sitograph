@@ -13,7 +13,7 @@ define("UPLOAD_FILES_PATH", __DIR__."/content");
 define("CONTENT_URL", "/content");
 define("PHP_HIDE_ERRORS", false);
 define("DEBUG", true);
-define("DEBUG_LOG", "/var/log/msv-debug.log");
+define("DEBUG_LOG", "");
 define("SITE_CLOSED", false);
 define("SHOW_ADMIN_MENU", 1);
 define("PHP_LOCALE", "en_US.UTF-8");
