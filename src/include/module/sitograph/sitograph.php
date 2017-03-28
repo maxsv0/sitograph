@@ -41,11 +41,10 @@ if (!empty($_REQUEST["table"])) {
 // pagination
 if (!empty($_REQUEST["p"])) {
     $admin_list_page = $_REQUEST["p"];
-    MSV_assignData("admin_list_page", $_REQUEST["p"]);
 } else {
     $admin_list_page = 0;
 }
-
+MSV_assignData("admin_list_page", $admin_list_page);
 
 $menuItem = array();
 $menuActive = $menuSubActive = "";

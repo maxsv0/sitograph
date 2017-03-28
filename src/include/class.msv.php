@@ -99,6 +99,15 @@ class MSV_Website {
 			$this->outputError("Can't create website: Languages not set");
 		}
 		
+		// set install flag depending to defined constant
+		if (MSV_INSTALED) {
+			$this->instaled = true;
+		} else {
+			$this->instaled = false;
+			$this->log("MSV: setup required");
+		}
+		
+		// if DB_REQUIRED, check for db config
 		if (defined("DB_REQUIRED") && DB_REQUIRED) {
 			if (!defined("DB_HOST")) {
 				$this->outputError("DB_HOST not defined");
@@ -124,7 +133,7 @@ class MSV_Website {
 			$this->config["db"] = $conn;
 
 			if (!$conn && DB_REQUIRED && $this->instaled) {
-				$this->outputError("Can't connect to database. ".mysqli_error($this->config["db"]));
+				$this->outputError("Can't connect to database. Please check if MySQL is running.");
 			}
 			
 			if ($this->config["db"]) {
@@ -247,24 +256,24 @@ class MSV_Website {
 			$this->config["referer"] = $_SERVER["HTTP_REFERER"];
 		}
 		
+		// link default mail function
+		$this->config["mailer"] = "MSV_EmailDefault";
+		
 		$this->parseRequest();
 		$this->activateCustom();
 		$this->activateModules();
-		
-		// if module Install is in list => run install
-		
+
 		// TODO: run all msv-* module?
 		// run core, api, seo
 		$this->runModule("msv-core");
 		$this->runModule("msv-api");
-		$this->runModule("msv-seo");
 		
-		if (in_array("install", $this->modules)) {
-			$this->log("MSV: setup required");
+		// is msv is already installed?
+		if (!$this->instaled) {
 			$this->runModule("install");
-		} else {
-			$this->instaled = true;
 		}
+		
+		$this->runModule("msv-seo");
 		
 		$this->user = array(
 			"access" => "anonymous",
@@ -382,7 +391,6 @@ class MSV_Website {
 		// if in $this->modulesActive[]
 		
 		// TODO: check dep for $module
-		
 		$obj = $this->{$module};
         if ($obj) {
         	if (!empty($obj->config)) {
@@ -404,8 +412,7 @@ class MSV_Website {
         		$this->api = array_merge($this->api, $obj->api);
         	}
         	
-        	
-        	if (in_array("install", $this->modules)) {
+        	if (!$this->instaled) {
 				//during installation run all php, dont check url
 	        	$result = $obj->runUrl("*");
         	} else {
@@ -417,7 +424,9 @@ class MSV_Website {
         		$this->modulesActive[] = $module;
         		$this->log("MSV -> $module active");
         	}
-        }
+        } else {
+        	$this->outputError("Can't run module '$module'. Not activated");
+		}	
 	}
 	function activateModules() {
 		if ($handle = opendir(ABS_MODULE)) {
@@ -589,9 +598,13 @@ class MSV_Website {
 		$Smarty->assign("page", $this->page);
 		$Smarty->assign("page_template", $this->page["page_template"]);
 		
+		// assign config values directly to templaye
 		foreach ($this->config as $param => $value) {
 			$Smarty->assign($param, $value);
 		}
+		
+		// also assign config as array 
+		$Smarty->assign("config", $this->config);
 		
 		// assign page messages
 		$messageError = implode("<br>\n", $this->messages["error"]);

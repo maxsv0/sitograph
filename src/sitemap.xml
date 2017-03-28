@@ -70,6 +70,12 @@ xsi:schemaLocation="http://www.google.com/schemas/sitemap/0.84 http://www.google
 </url>
 
 <url>
+<loc>http://sitegraph.ua/settings/new-page/</loc>
+<priority>1</priority>
+<lastmod>2017-03-24</lastmod>
+</url>
+
+<url>
 <loc>http://sitegraph.ua/signup/</loc>
 <priority>1</priority>
 <lastmod>2017-03-22</lastmod>

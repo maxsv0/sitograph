@@ -4,15 +4,16 @@
 <config>
 	<param name="activationUrl" value="*"/>
 	<param name="activationLevel" value="1"/>
+	<param name="adminMenu" value="0"/>
 </config>
 
 
 <install>
 	<param name="name" value="install" />
-	<param name="version" value="1.1"/>
-	<param name="date" value="01.06.2016"/>
-	<param name="title" value="MSVInstall"/>
-	<param name="description" value="MSV Website Installer"/>
+	<param name="version" value="1.2"/>
+	<param name="date" value="25.03.2017"/>
+	<param name="title" value="Sitograph Install"/>
+	<param name="description" value="Sitograph Installer"/>
 	
 	<file dir="module" path="install/install.php"/>
 	<file dir="module" path="install/config.xml"/>

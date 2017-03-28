@@ -23,6 +23,9 @@
 {else}
 <p class="text-success"><b>activated</b></p>
 {/if}
+
+<p><a href="/admin/?section=design&config" class="btn btn-primary">Settings</a></p>
+
 </div>
 
 
@@ -32,5 +35,29 @@
 
 <hr>
 {/foreach}
+
+
+{if $theme_config_show}
+<div class="row">
+
+{foreach from=$theme_config name=loop key=name item=item}
+
+<div class="form-group">
+<label class="control-label col-sm-5" for="email">{$item.name}</label>
+<div class="col-sm-4">
+  <input type="test" class="form-control" readonly id="config_{$name}" value="{$item.value}">
+</div>
+<div class="col-sm-3">
+  <a href="/admin/?section=site_settings&edit_key={$name}" class="btn btn-primary">Edit</a>
+</div>
+</div>
+
+{/foreach}
+
+</div>
+{/if}
+
+
+
 
 {/if}

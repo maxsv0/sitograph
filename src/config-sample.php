@@ -5,7 +5,7 @@ define("DB_HOST", "127.0.0.1");
 define("DB_LOGIN", "msv");
 define("DB_PASSWORD", "");
 define("DB_NAME", "msv");
-define("DB_REQUIRED", false);
+define("DB_REQUIRED", true);
 define("DATE_FORMAT", "d.m.Y H:i:s");
 define("PROTOCOL", "http://");
 define("MASTERHOST", "");

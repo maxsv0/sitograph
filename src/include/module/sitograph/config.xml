@@ -11,7 +11,7 @@
 
 <install>
 	<param name="name" value="sitograph"/>
-	<param name="version" value="5.1"/>
+	<param name="version" value="5.2"/>
 	<param name="date" value="13.03.2017"/>
 	<param name="title" value="Сайтограф"/>
 	<param name="description" value="Система Управления Содержимым сайта CMS"/>
@@ -23,16 +23,21 @@
 	
 	<file dir="module" path="sitograph/sitograph.php"/>
 	<file dir="module" path="sitograph/config-menu.php"/>
-	<file dir="module" path="sitograph/module-table.php"/>
-	<file dir="module" path="sitograph/module-robots.php"/>
-	<file dir="module" path="sitograph/module-structure.php"/>
-	<file dir="module" path="sitograph/module-locales.php"/>
-	<file dir="module" path="sitograph/module-docs.php"/>
-	<file dir="module" path="sitograph/module-manual.php"/>
-	<file dir="module" path="sitograph/module-sitemap.php"/>
 	<file dir="module" path="sitograph/module-catalog.php"/>
 	<file dir="module" path="sitograph/module-comments.php"/>
+	<file dir="module" path="sitograph/module-config.php"/>
+	<file dir="module" path="sitograph/module-design.php"/>
+	<file dir="module" path="sitograph/module-docs.php"/>
+	<file dir="module" path="sitograph/module-history.php"/>
+	<file dir="module" path="sitograph/module-htaccess.php"/>
+	<file dir="module" path="sitograph/module-locales.php"/>
+	<file dir="module" path="sitograph/module-manual.php"/>
+	<file dir="module" path="sitograph/module-media.php"/>
+	<file dir="module" path="sitograph/module-robots.php"/>
 	<file dir="module" path="sitograph/module-search.php"/>
+	<file dir="module" path="sitograph/module-sitemap.php"/>
+	<file dir="module" path="sitograph/module-structure.php"/>
+	<file dir="module" path="sitograph/module-table.php"/>
 	<file dir="module" path="sitograph/config.xml"/>
 	
 	<file dir="template" path="default/sitograph/list-table.tpl"/>

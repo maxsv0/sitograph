@@ -26,3 +26,23 @@ function ThemeDefaultInstall($module) {
 	MSV_setConfig("theme_bg", "/content/images/bg_full.gif", true, "*");
 	MSV_setConfig("theme_logo", "/content/images/sitograph_logo.png", true, "*");
 }
+
+
+$themeConfig = array(
+	"theme_bg" => array(
+		"name" => _t("theme.bg"),
+		"type" => "pic",
+		"value" => MSV_getConfig("theme_bg"),
+	),
+	"theme_logo" => array(
+		"name" => _t("theme.logo"),
+		"type" => "pic",
+		"value" => MSV_getConfig("theme_logo"),
+	),
+);
+
+MSV_setConfig("theme_config", $themeConfig);
+
+if (isset($_GET["config"])) {
+	MSV_setConfig("theme_config_show", 1);
+}
