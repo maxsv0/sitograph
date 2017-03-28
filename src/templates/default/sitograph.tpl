@@ -217,9 +217,9 @@
 	</tr>
 	</tr>
 	<tr>
-		<td height="81"><img src="/content/images/sitograph/menu_left_img_bottom_2.gif"/></td>
+		<td bgcolor="#333333" height="81"></td>
 		<td bgcolor="#333333" valign="top" colspan="3">
-			<div style="padding-left: 26px;">
+			<div>
 			<a href="http://sitograph.com/" target="_blank"><img src="{$content_url}/images/sitograph/sitograph-logo-white-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png"/></a>
 			</div>
 		</td>

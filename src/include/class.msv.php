@@ -836,8 +836,6 @@ class MSV_Website {
 				MSV_reinstallModule($module, false);
 			}
 			$this->messages["success"][] = "Update ALL successfully";
-			// TODO:
-			// run install hooks??
 		}
 		
 		if (!empty($_GET["module_install"])) {

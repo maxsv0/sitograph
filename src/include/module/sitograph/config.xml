@@ -220,10 +220,20 @@
 		<field name="admin.dev_tools" value="Настройки"/>
 		<field name="admin.sitemap" value="sitemap.xml"/>
 		<field name="admin.sitemap_title" value="Управление sitemap.xml"/>
+		<field name="admin.config" value="Настройки сайта"/>
+		<field name="admin.config_title" value="Настройки сайта - config.php"/>
+		<field name="admin.htaccess" value="Настройки сервера"/>
+		<field name="admin.htaccess_title" value="Настройки сервера - .htaccess"/>
 		<field name="admin.manual_title" value="Инструкция использования"/>
 		<field name="admin.view_website" value="Административный просмотр сайта"/>
 		<field name="admin.logged_as" value="Вы вошли как"/>
-	<field name="btn.search" value="Искать"/><field name="form.search_lable" value="Поиск"/><field name="search.expand_all" value="Развернуть все"/><field name="form.search_word" value="Ключевое слово"/><field name="search.error_mcg" value="По вашему запросу ничего не найдено."/><field name="admin.config" value="Конфигурация"/><field name="admin.config_title" value="Конфигурация сайта"/><field name="admin.htaccess" value="htaccess"/><field name="admin.htaccess_title" value="Редактирование .htaccess"/></locale>
+	<field name="btn.search" value="Искать"/><field name="form.search_lable" value="Поиск"/><field name="search.expand_all" value="Развернуть все"/><field name="form.search_word" value="Ключевое слово"/><field name="search.error_mcg" value="По вашему запросу ничего не найдено."/><field name="admin.config" value="Конфигурация"/><field name="admin.config_title" value="Конфигурация сайта"/><field name="admin.htaccess" value="htaccess"/><field name="admin.htaccess_title" value="Редактирование .htaccess"/>
+		<field name="btn.search" value="Искать"/>
+		<field name="form.search_lable" value="Поиск"/>
+		<field name="search.expand_all" value="Развернуть все"/>
+		<field name="form.search_word" value="Ключевое слово"/>
+		<field name="search.error_mcg" value="По вашему запросу ничего не найдено."/>
+	</locale>
 	<locale name="en">
 		<field name="cms" value="Content Management System"/>
 		<field name="msg.module_handler_not_found" value="Module handler not found"/>
@@ -303,8 +313,17 @@
 		<field name="admin.dev_tools" value="Development Tools"/>
 		<field name="admin.sitemap" value="Manage sitemap.xml"/>
 		<field name="admin.manual_title" value="Инструкция"/>
+		<field name="admin.config" value="Manage config"/>
+		<field name="admin.config_title" value="Manage config.php file"/>
+		<field name="admin.htaccess" value="Web-server config"/>
+		<field name="admin.htaccess_title" value="Web-server config - .htaccess"/>
 		<field name="admin.logged_as" value="Logged as"/>
 		<field name="admin.view_website" value="View Website"/>
+		<field name="btn.search" value="Search"/>
+		<field name="form.search_lable" value="Search"/>
+		<field name="search.expand_all" value="Expand all"/>
+		<field name="form.search_word" value="Keyword"/>
+		<field name="search.error_mcg" value="Nothing was found."/>
 	</locale>
     <locale name="ua">
     	<field name="cms" value="Система управління контентом"/>
@@ -392,9 +411,24 @@
 		<field name="admin.sitemap" value="sitemap.xml"/>
 		<field name="admin.sitemap_title" value="Управління sitemap.xml"/>
         <field name="admin.manual_title" value="Інструкція використання"/>
+		<field name="admin.config" value="Налаштування сайту"/>
+		<field name="admin.config_title" value="Налаштування сайту - config.php"/>
+		<field name="admin.htaccess" value="Налаштування серверу"/>
+		<field name="admin.htaccess_title" value="Налаштування серверу - .htaccess"/>
 		<field name="admin.view_website" value="View Website"/>
 		<field name="admin.logged_as" value="Ви увійшли як"/>
-	<field name="admin.locale_tab_name" value="Назва"/><field name="admin.config" value="Конфігурація"/><field name="admin.config_title" value="Конфігурація сайту"/><field name="admin.htaccess" value="htaccess"/><field name="admin.htaccess_title" value="Редагування htaccess"/></locale>
+		<field name="admin.locale_tab_name" value="Назва"/>
+		<field name="admin.config" value="Конфігурація"/>
+		<field name="admin.config_title" value="Конфігурація сайту"/>
+		<field name="admin.htaccess" value="htaccess"/>
+		<field name="admin.htaccess_title" value="Редагування htaccess"/>
+		<field name="btn.search" value="Искать"/>
+		<field name="form.search_lable" value="Поиск"/>
+		<field name="search.expand_all" value="Развернуть все"/>
+		<field name="form.search_word" value="Ключевое слово"/>
+		<field name="search.error_mcg" value="По вашему запросу ничего не найдено."/>
+	</locale>
+
 </locales>
 
 </document>
