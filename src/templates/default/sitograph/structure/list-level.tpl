@@ -37,7 +37,7 @@
 	<span class="text-info">{$item.template}</span>
 {/if}
 {else}
-<span class="label label-danger">не указан</span>
+<span class="label label-danger">{_t("not_set")}</span>
 {/if}
 
 /
@@ -45,7 +45,7 @@
 {if $item.page_template}
 {$item.page_template}
 {else}
-<span class="label label-danger">не указан</span>
+<span class="label label-danger">{_t("not_set")}</span>
 {/if}
 </small>
 </td>
@@ -78,7 +78,7 @@
 {/if}
 </td>
 
-<td><small>{$item.updated}</small></td>
+<td><small>{$item.updated|substr:0:10}</small></td>
 
 <td class="text-nowrap">
 	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&delete={$item.id}" onclick="if (!confirm('{$t["btn.remove_confirm"]}')) return false;" title="{$t['btn.delete']}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>

@@ -282,8 +282,8 @@ function UserAdd($email, $email_verified = 0, $password = "", $name = "", $phone
 function UsersInstall($module) {
 	
 	MSV_Structure_add("all", "/user/", _t("structure.users.account"), "default", "user.tpl", 1, "user", 1, "user");
-	MSV_Structure_add("all", "/signup/", _t("structure.users.signup"), "default", "user-signup.tpl", 1, "bottom", 1, "everyone", "/user/");
-	MSV_Structure_add("all", "/login/", _t("structure.users.login"), "default", "user-login.tpl", 1, "bottom", 2, "everyone", "/user/");
+	MSV_Structure_add("all", "/signup/", _t("structure.users.signup"), "default", "user-signup.tpl", 1, "nouser", 1, "everyone", "/user/");
+	MSV_Structure_add("all", "/login/", _t("structure.users.login"), "default", "user-login.tpl", 1, "nouser", 2, "everyone", "/user/");
 	MSV_Structure_add("all", "/password-reset/", _t("structure.users.password_reset"), "default", "user-password-reset.tpl", 1, "", 0, "everyone", "/user/");
 	MSV_Structure_add("all", "/settings/", _t("structure.users.settings"), "default", "user-settings.tpl", 1, "user", 2, "user", "/user/");
 	

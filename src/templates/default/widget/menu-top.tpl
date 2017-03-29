@@ -52,11 +52,6 @@
                 {/if}
               {/section} 
 			</ul>
-			  <!-- Список ссылок, расположенный справа 
-			<ul class="nav navbar-nav navbar-right">
-		  	  <li class="line hidden-xs"></li>	
-			  <li><a href="#">Войти</a></li>
-			</ul>-->
 		  </div>
 		</nav>
 	</div>

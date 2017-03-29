@@ -24,7 +24,13 @@ function ThemeDefaultInstall($module) {
 	
 	// theme options
 	MSV_setConfig("theme_bg", "/content/images/bg_full.gif", true, "*");
-	MSV_setConfig("theme_logo", "/content/images/sitograph_logo.png", true, "*");
+	if (LANG === "ru" || LANG === "ua") {
+		MSV_setConfig("theme_logo", "/content/images/sitograph/sitograph-logo-dark-ru.png", true, "*");
+	} else {
+		MSV_setConfig("theme_logo", "/content/images/sitograph/sitograph-logo-dark-en.png", true, "*");
+	}
+	
+	MSV_setConfig("theme_copyright_text", "Content Management System Sitograph 2016-2017", true, "*");
 }
 
 

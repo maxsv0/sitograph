@@ -1,8 +1,19 @@
 .header {
-	padding-top:20px
+	padding-top:20px;
+	background:#bb233a;
 }
 .content-block {
 	background:#fff;
+}
+.contact-block {
+	background:#666;
+}
+.contact-title {
+	color:#fff;
+	margin:10px 0;
+}
+.footer-copyright {
+	background: #ddd;
 }
 .top-menu {
 	height: 66px;
@@ -20,7 +31,9 @@
      border-bottom: dashed 1px #ccc;
 }
 
-
+.login-block a {
+	color:#fff;
+}
 
 .sitemap-ico {
 	width: 11px;
@@ -37,15 +50,20 @@
 	display: inline-block
 }
 
+.header-menu p {
+	margin: 0 0 5px;
+}
+
 .top-lang {
 	font-family: Verdana;
 	color: #ffffff;
-	width: 16px;
 	font-size: 12px;
 	font-weight: 700;
-	line-height: 30px;
-	display: inline;
 	text-decoration: none;
+}
+
+.top-lang a {
+	color: #ffffff;
 }
 
 .navbar  {

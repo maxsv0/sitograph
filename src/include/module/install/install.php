@@ -15,10 +15,14 @@ $website->page = array(1);
 $website->template = "default";
 $website->pageTemplate = "install.tpl";
 
+MSV_Include("/content/js/jquery.min.js");
+MSV_Include("/content/css/bootstrap.min.css");
+MSV_Include("/content/js/bootstrap.min.js");
+
 $configListNames = array(
-	"ABS", "LANGUAGES",
-	"DB_HOST","DB_LOGIN","DB_PASSWORD","DB_NAME","DB_REQUIRED",
-	"DATE_FORMAT","PROTOCOL","MASTERHOST",
+	"LANGUAGES",
+	"DB_HOST","DB_LOGIN","DB_PASSWORD","DB_NAME",
+	"ABS","DB_REQUIRED","DATE_FORMAT","PROTOCOL","MASTERHOST",
 	"UPLOAD_FILES_PATH","CONTENT_URL","PHP_HIDE_ERRORS",
 	"DEBUG","DEBUG_LOG","SITE_CLOSED","SHOW_ADMIN_MENU",
 	"PHP_LOCALE","PHP_TIMEZONE","DATABATE_ENCODING",
@@ -32,7 +36,7 @@ $configListNames = array(
 //
 
 if (!empty($_REQUEST["install_reset"])) {
-	$_SESSION["msv_install_step"] = $install_step = 0;
+	$_SESSION["msv_install_step"] = $install_step = 1;
 	$_SESSION["user_id"] = $_SESSION["user_email"] = "";
 	unset($_SESSION["user_id"]);
 	unset($_SESSION["user_email"]);
@@ -47,7 +51,7 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
 	}
 	if ($_REQUEST["install_step"] === 3) {
 
-		if (empty($_REQUEST["msv_LANGUAGES"]) || !is_array($_REQUEST["msv_LANGUAGES"])) {
+		if (empty($_REQUEST["msv_LANGUAGES"])) {
 			$website->messages["error"][] = "Please select languages";
 		} else {
 
@@ -63,9 +67,7 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
 					$value = $valueCurrent;
 				}
 				
-				if ($name === "LANGUAGES") {
-					$configPHP .= "define(\"".$name."\", \"".implode(",", $value)."\");\n";
-				} elseif (is_bool($valueCurrent)) {
+				if (is_bool($valueCurrent)) {
 					$value = (int)$value;
 					if ($value) {
 						$configPHP .= "define(\"".$name."\", true);\n";

@@ -12,10 +12,10 @@
   </head>
 <body bgcolor="F7F7F7">
 
-<div style="padding:50px 100px 0px 100px;">
+<div class="container" style="padding:50px 100px 0px 100px;">
 <h2 style="color:#bebebe;text-align:center;">Sitograph CMS</h2>
-<div style="background:#fff;padding:20px 30px 5px 30px;max-width:800px;margin:0 auto;">
-<form style="text-align:center;" method="POST">
+<div class="well">
+<form class="form-horizontal" method="POST">
 
 
 
@@ -34,49 +34,33 @@
 
 {if $install_step === 1}
 
-	<p>
-	<h1>Welcome to Sitograph installation wizard.</h1>
+	<p class="text-center">
+	<h1>Welcome to Sitograph installation wizard</h1>
 	</p>
 
-	<p>
-	<input type="submit" value="Start installation" style="font-size:36px;">  
+	<p class="text-center" style="margin:50px 0;">
+	<input type="submit" value="Start installation" class="btn btn-lg btp-primary">  
 	<input type="hidden" name="install_step" value="2">  
 	</p>
 
 {elseif $install_step === 2}
-<p>
+<p class="lead">
 Before getting started, we need to setup <b>config.php</b> in the root directory.<br>
-Sample config <b>config-sample.php</b> is being used right now.
+Sample config <b>config-sample.php</b> is being used when config.php is not present.
 </p>
 
-<table width="100%" cellpadding="5" cellspacing="0">
 {foreach from=$configList key=configName item=configValue}
-{if $configName === "LANGUAGES"}
-<tr valign="top">
-	<td align="right" width="45%">Select Languages:</td>
-	<td align="left">
-{foreach from=$languages item=langID} 
-<input type="checkbox" name="msv_LANGUAGES[]" checked value="{$langID}"> {$langID}
-&nbsp;&nbsp;
-{/foreach} 
-	</td>
-</tr>
-{else}
-<tr valign="top">
-	<td align="right" width="45%">{$configName}</td>
-	<td align="left">
-	<input type="text" name="msv_{$configName}" value="{$configValue}" style="width:95%;">
-	</td>
-</tr>
-{/if}
+<div class="form-group">
+<label for="imsv_{$configName}" class="col-sm-4 control-label">{$configName}</label>
+<div class="col-sm-8">
+	<input type="text" class="form-control" name="msv_{$configName}" id="imsv_{$configName}" value="{$configValue}" style="width:95%;">
+</div>
+</div>
 {/foreach}
 
-
-
-</table>
 	
-	<p>
-	<input type="submit" value="Continue" style="font-size:26px;">  
+	<p class="text-center">
+	<input type="submit" value="Continue" class="btn btn-lg btp-primary">  
 	<input type="hidden" name="install_step" value="3">  
 	</p>
 	
@@ -84,11 +68,11 @@ Sample config <b>config-sample.php</b> is being used right now.
 {elseif $install_step === 3}
 
 
-<h2>Install modules</h2>
+<h2 class="text-center">Install modules</h2>
 
-<p>
-Once you press "Continue" button each of modules will be installed.<br>
-Installation process includes creation of database tables and default website structure.
+<p class="lead">
+Once you press "<b>Continue</b>" each of modules will be installed.<br>
+Installation process includes creation of database tables and default website.
 </p>
 
 <div>
@@ -116,37 +100,39 @@ Installation process includes creation of database tables and default website st
 
 <hr>
 
-<h2>Create Administrator account</h2>
+<h2 class="text-center">Create Administrator account</h2>
 
-<table width="90%">
-<tr>
-	<td width="50%" align="right">
-		<input type="checkbox" name="admin_create" id="iadmin_create" value="1" checked>
-	</td>
-	<td align="left">
-		<label for="iadmin_create">Add Administrator account</label> 
-	</td>
-</tr>
-<tr>
-	<td width="50%" align="right">Administrator Email</td>
-	<td>
-		<input type="text" style="width:100%;" name="admin_login" value="{$admin_login}">
-	</td>
-</tr>
-<tr>
-	<td align="right">Administrator Password</td>
-	<td>
-		<input type="text" style="width:100%;" name="admin_password" value="{$admin_password}">
-	</td>
-</tr>
-</table>
 
-<p>
+<div class="form-group">
+<div class="col-sm-offset-5 col-sm-7">
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="admin_create" value="1" checked> Add Administrator account
+    </label>
+  </div>
+</div>
+</div>
+
+<div class="form-group">
+<label for="iadmin_login" class="col-sm-5 control-label">Administrator Email</label>
+<div class="col-sm-7">
+  <input type="email" class="form-control" id="iadmin_login" name="admin_login" value="{$admin_login}" placeholder="Email">
+</div>
+</div>
+
+<div class="form-group">
+<label for="iadmin_password" class="col-sm-5 control-label">Administrator Password</label>
+<div class="col-sm-7">
+  <input type="text" class="form-control" id="iadmin_password" name="admin_password" value="{$admin_password}">
+</div>
+</div>
+
+<p class="text-info">
 <b>Note!</b> Administrator will receive email once account is created.
 </p>
 
-	<p>
-	<input type="submit" value="Continue" style="font-size:26px;">  
+	<p class="text-center">
+	<input type="submit" value="Continue" class="btn btn-lg btp-primary">  
 	<input type="hidden" name="install_step" value="4">  
 	</p>
 	
@@ -158,8 +144,8 @@ Installation process includes creation of database tables and default website st
 <h1>Congratulations! Installation successful!</h1>
 
 
-	<p>
-	<input type="submit" value="Reload page to start using website" style="font-size:26px;">  
+	<p class="text-center">
+	<input type="submit" value="Reload page to start using website" class="btn btn-lg btp-primary">  
 	<input type="hidden" name="install_step" value="5">  
 	</p>
 
@@ -179,7 +165,7 @@ something went wrong
 </form>
 
 
-<p>
+<p class="text-muted">
 Step: {$install_step}
 </p>
 
@@ -190,7 +176,7 @@ Step: {$install_step}
 {if $install_step > 1}
 <p>
 <form method="POST">
-<input type="submit" value="Reset installation" name="install_reset">  
+<input type="submit" value="Reset installation" name="install_reset" class="btn btn-danger">  
 <input type="hidden" name="install_step" value="1">  
 </form>
 </p>
@@ -200,9 +186,9 @@ Step: {$install_step}
 </div>	
 
 <h4 style="color:#bebebe;text-align:center;">
-<a href='http://sitograph.com/' style="color:#bebebe;">Sitograph 5.2</a> 
+<a href='http://sitograph.com/' target="_blank">Sitograph 5.2</a> 
 developed using 
-<a href='http://doc.msvhost.com/' style="color:#bebebe;">MSV Framework 1.0</a></h4>
+<a href='http://doc.msvhost.com/' target="_blank">MSV Framework 1.0</a></h4>
 
 {$htmlFooter}
 
