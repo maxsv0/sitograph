@@ -233,6 +233,7 @@ if (!empty($section) && in_array($section, $menu_index)) {
 				} elseif ($field["type"] === "int"
 				 || $field["type"] === "id"
 				 || $field["type"] === "str"
+				 || $field["type"] === "url"
 				 || $field["type"] === "array"
 				 || $field["type"] === "multiselect"
 				 || $field["type"] === "select") {

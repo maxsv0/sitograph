@@ -46,6 +46,10 @@
 {elseif $item_type === "lang"}
 
 	{include "$themePath/sitograph/fields/field-lang.tpl"}
+		
+{elseif $item_type === "url"}
+
+	{include "$themePath/sitograph/fields/field-url.tpl"}
 	
 {elseif $item_type === "bool" || $item_type === "published" || $item_type === "deleted"}
 
@@ -80,8 +84,7 @@
     <label for="i{$item_id}" class="col-sm-6 control-label">
     
     {if $item_name}{_t("table.$admin_table.$item_name")}{/if}
-    
-    
+
     <small class="text-muted" style="color:#fff;">
 	{$t["type.$item_type"]}
 	</small>

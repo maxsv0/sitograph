@@ -21,7 +21,7 @@
 		<field name="author" type="author"/>
 		<field name="updated" type="updated"/>
 		<field name="lang" type="lang"/>
-		<field name="url" type="str"/>
+		<field name="url" type="url"/>
 		<field name="parent_id" type="int" select-from="table:structure"/>
 		<field name="name" type="str"/>
 		<field name="template" type="str"/>
@@ -76,7 +76,7 @@
 		<field name="menu_id" type="str"/>
 		<field name="structure_id" type="int" select-from="table:structure"/>
 		<field name="name" type="str"/>
-		<field name="url" type="str"/>
+		<field name="url" type="url"/>
 		<field name="order_id" type="int"/>
 		<field name="parent_id" type="int" select-from="table:menu"/>
 	</table>

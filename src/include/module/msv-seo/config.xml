@@ -18,7 +18,7 @@
 		<field name="author" type="author"/>
 		<field name="updated" type="updated"/>
 		<field name="lang" type="lang"/>
-		<field name="url" type="str"/>
+		<field name="url" type="url"/>
 		<field name="title" type="text"/>
 		<field name="description" type="text"/>
 		<field name="keywords" type="text"/>

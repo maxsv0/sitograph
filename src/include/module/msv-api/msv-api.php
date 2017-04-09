@@ -139,9 +139,22 @@ function API_updateDBItemRow($table, $row) {
 	
 	// build query parts
 	$sqlCodeField = $sqlCodeValue = $sqlCodeUpdate = "";
+	$indexValue = '';
+	
 	foreach ($row as $field => $value) {
 		$type = $infoTable["fields"][$field]["type"];
 		$sqlCodeField .= " `".$field."`,";
+		
+		if ($type === "id") {
+			$indexValue = $value;
+		} 
+		if ($type === "url" && empty($value)) {
+			if (empty($indexValue)) {
+				$value = "----------";
+			} else {
+				$value = $indexValue;
+			}
+		}
 		
 		if ($type === "bool"		 ||
 			$type === "int" 		 ||
@@ -571,6 +584,10 @@ function API_createTable($table) {
 			case "float":
 				$sqlCode .= " `".$field["name"]."` FLOAT NOT NULL DEFAULT 0 ";
 			break;
+			case "url":
+				$sqlCode .= " `".$field["name"]."` VARCHAR(200) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL ";
+				$tableIndexes[] = $field["name"];
+			break;
 			case "author":
 				$sqlCode .= " `".$field["name"]."` VARCHAR(60) CHARACTER SET 'utf8' COLLATE 'utf8_general_ci' NULL ";
 				$tableIndexes[] = $field["name"];
@@ -603,10 +620,6 @@ function API_createTable($table) {
 				break;
 		}
 		$sqlCode .= ",\n";
-		
-		if ($field["name"] === "url") {
-			$tableIndexes[] = "url";
-		}
 	}
 	$sqlCode .= " PRIMARY KEY (`id`)) ";
 	
@@ -710,12 +723,15 @@ function API_itemAdd($table, $fields, $lang = LANG) {
 	}
 	$sqlCode = substr($sqlCode, 0, -1)." ) ";
 	$sqlCode .= " values (";
+	$indexValue = '';
 	
 	foreach ($infoTable["fields"] as $field) {
 		//TODO: ???? if (!array_key_exists($field["name"], $fields)) continue;
 		
 		// skip ID
+		// store ID value to use it as default for url
 		if ($field["type"] === "id") {
+			$indexValue = $fields[$field["name"]];
 			continue;
 		}
 		if (array_key_exists($field["name"], $fields)) {
@@ -740,6 +756,16 @@ function API_itemAdd($table, $fields, $lang = LANG) {
 			break;
 			case "pic":
 				$valueEscaped = " '".MSV_SQLEscape($value)."' ";
+			break;
+			case "url":
+				// if url is empty set: url = id
+				if (empty($value) && empty($indexValue)) {
+					$valueEscaped = " '----------' ";
+				} elseif (empty($value)) {
+					$valueEscaped = " '".MSV_SQLEscape($indexValue)."' ";
+				} else {
+					$valueEscaped = " '".MSV_SQLEscape($value)."' ";
+				}
 			break;
 			default:
 				$valueEscaped = " '".MSV_SQLEscape($value)."' ";
