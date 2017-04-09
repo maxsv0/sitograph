@@ -50,6 +50,10 @@
 {elseif $item_type === "url"}
 
 	{include "$themePath/sitograph/fields/field-url.tpl"}
+			
+{elseif $item_type === "author"}
+
+	{include "$themePath/sitograph/fields/field-author.tpl"}
 	
 {elseif $item_type === "bool" || $item_type === "published" || $item_type === "deleted"}
 
