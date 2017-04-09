@@ -1283,6 +1283,11 @@ overflow:scroll;
     text-align: right;
 }
 
+.field-help {
+   color:#a94442;
+   margin-left:10px;
+}
+
 .footer_bg {
     background: #ededed;
     background: -webkit-linear-gradient(left, #ededed , #fff); 
