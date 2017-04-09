@@ -130,7 +130,8 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
 			
 			
 		} else {
-			$website->messages["error"][] = "Can't start without modules";
+			// no modules selected to be installed
+			// ok? sure
 		}
 		
 		// create superadmin account
