@@ -145,6 +145,7 @@
 {/if}
 <a href="#" onclick="return false;"><p class="">{$item.name}</p></a>
 {foreach from=$item.submenu key=submenu_id item=subitem}
+{if $subitem.access === "superadmin" && $user.access === "superadmin" || $subitem.access === "admin" && $user.access === "admin" || $subitem.access === "admin" && $user.access === "superadmin"}
 {if $admin_submenu_active == $submenu_id} 
 <div class="active">
 {else}
@@ -157,6 +158,7 @@
 {/if}
 </a>
 </div>
+{/if}
 {/foreach}
 
 </div>

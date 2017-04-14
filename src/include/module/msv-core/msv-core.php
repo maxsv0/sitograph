@@ -41,8 +41,6 @@ Functions list
 
 */
 
-
-
 function MSV_Start() {
 	MSV_Log("Website: Start");
 	
@@ -82,7 +80,6 @@ function MSV_Start() {
 
 }
 
-
 function MSV_Load() {
 	$website = MSV_get("website");
 	
@@ -99,7 +96,6 @@ function MSV_Load() {
 	
 	// TODO: add more html part to config
 }
-
 
 function MSV_Output404() {
 	$website = MSV_get("website");
@@ -120,7 +116,6 @@ function MSV_Output404() {
 
 	$website->outputNotFound();
 }
-
 
 function MSV_Output() {
 	$website = MSV_get("website");
@@ -143,11 +138,8 @@ function MSV_Output() {
 		}
 	}
 
-	
 	$website->outputPage();
 }
-
-
 
 function MSV_IncludeCSS($cssCode) {
 	$website = MSV_get("website");
@@ -1145,7 +1137,7 @@ function MSV_redirect($url) {
 
 
 function MSV_outputAdminMenu() {
-	$W = MSV_get("website");
+	$website = MSV_get("website");
 	
     $strOut  .='<table width="100%" cellpadding="0" cellspacing="0" class="admin_panel">';
     $strOut  .='<tbody><tr><td width="50%" align="right" style="padding-right:10px;">';
@@ -1159,22 +1151,6 @@ function MSV_outputAdminMenu() {
     $strOut  .='<style>';
     $strOut  .='body {padding-top:30px;}';
     $strOut  .='</style>';
-	
-	
-	
-//	$strOut  = "";
-//	$strOut .= "<div style='position:fixed;opacity:0.5;bottom:0;left:0;width:150px;background:rgba(0,0,0,0.8);color:#fff;padding:20px 15px;'>";
-//	$strOut .= "<p><a href='".$W->langUrl."/admin/' style='color:#fff;'>"._t("btn.back_to_admin")."</a></p><hr>";
-//	$strOut .= "<h4>".$W->page["name"]."</h4>";
-//	$strOut .= "<h5>url: ".$W->page["url"]."</h5>";
-//	$strOut .= "<p><a href='".$W->langUrl."/admin/?section=structure&table=structure&edit=".$W->page["id"]."' style='color:#fff;'>"._t("btn.edit_settings")."</a></p>";
-//	if ($W->page["page_document_id"]) {
-//		$strOut .= "<p><a href='".$W->langUrl."/admin/?section=documents&table=documents&edit=".$W->page["page_document_id"]."#document' style='color:#fff;'>"._t("btn.document_edit")."</a></p>";
-//	} else {		
-//		$strOut .= "<p><a href='".$W->langUrl."/admin/?section=structure&document_create=".$W->page["id"]."' style='color:#fff;'>"._t("btn.document_create")."</a></p>";
-//	}
-//	$strOut .= "<p><a href='".$W->langUrl."/admin/?section=structure&table=structure&edit=".$W->page["id"]."#seo' style='color:#fff;'>"._t("btn.edit_seo")."</a></p>";
-//	$strOut .= "</div>";
 
 	return $strOut;
 }

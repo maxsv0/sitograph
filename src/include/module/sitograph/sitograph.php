@@ -82,6 +82,12 @@ if (!empty($admin_table)) {
 	}
 }
 
+$website = MSV_get("website");
+
+// check page access, deny if no access
+if (!$website->checkAccess($menuItem["access"], $website->user["access"])) {
+	MSV_Error("Access denied");
+}
 
 MSV_assignData("admin_section", $section);
 MSV_assignData("admin_menu_active", $menuActive);

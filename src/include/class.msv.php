@@ -676,6 +676,9 @@ class MSV_Website {
 		if ($pageAccess === "everyone") {
 			return true;
 		}
+		if ($userAccess === "superadmin") {
+			return true;
+		}
 		if ($pageAccess === "admin" && ($userAccess === "admin" || $userAccess === "superadmin")) {
 			return true;
 		}
