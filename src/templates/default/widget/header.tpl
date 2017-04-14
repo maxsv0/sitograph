@@ -29,8 +29,8 @@
 		<div class="col-md-4">
 			<div class="search-block">
 				<form action="{$lang_url}/search/?search" method="post">
-					<input type="text" name="keyword" value="{$search_str}" placeholder="найти"/>
-					<button type="submit" value="search" class="btn btn-xs">{_t("btn.search")}</button>
+					<input type="text" name="keyword" class="input-sm" value="{$search_str}" placeholder="{_t("form.search_lable")}"/>
+					<button type="submit" value="search" class="btn btn-sm">{_t("btn.search")}</button>
 				</form>
 			</div>
 		</div>

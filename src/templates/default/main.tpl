@@ -1,13 +1,15 @@
 {include file="$themePath/widget/header.tpl"}
 
+<div class="container top-menu">
+	<div class="row">
+		{include file="$themePath/widget/menu-top.tpl"}
+	</div>
+</div>
+
+{include file="$themePath/widget/navigation.tpl"}
 
 <div class="container">
 	<div class="row content-block">
-
-
-{include file="$themePath/widget/menu-top.tpl"}
-
-<div class="row sep_line"></div>	
 
 {if $page.name}
 <div class="col-lg-12 title_block"><h1>{$page.name}</h1></div>

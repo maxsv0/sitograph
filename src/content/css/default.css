@@ -16,7 +16,6 @@
 	background: #ddd;
 }
 .top-menu {
-	height: 66px;
 	background:#eee;
 }
 
@@ -118,12 +117,10 @@
 }
 
 .navigation {
-	height: 48px;
-	margin: 0px 15px;
+	height: 40px;
+	line-height: 40px;
 	background-color: #e5e5e5;
-	padding:13px;
 	clear: both
-	
 }
 .navigation ul {
 	list-style: none;

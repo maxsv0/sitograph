@@ -35,10 +35,8 @@
                 {if !$items[index].sub}
                 {if $items[index].url == $page.url}
                     <li class="active"><a href="{$lang_url}{$items[index].url}">{$items[index].name}</a></li>
-                    {if !$smarty.section.index.last}<li class="line hidden-xs"></li>{/if}
                 {else}
                     <li><a href="{$lang_url}{$items[index].url}">{$items[index].name}</a></li>
-                    {if !$smarty.section.index.last}<li class="line hidden-xs"></li>{/if}
                 {/if}
                 {else}
                 <li class="dropdown">

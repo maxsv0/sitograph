@@ -1,14 +1,15 @@
 {include file="$themePath/widget/header.tpl"}
 
+<div class="container top-menu">
+	<div class="row">
+		{include file="$themePath/widget/menu-top.tpl"}
+	</div>
+</div>
 
- <div class="container">
+{include file="$themePath/widget/navigation.tpl"}
+
+<div class="container">
   	<div class="row content-block">
-
-
-    {include file="$themePath/widget/menu-top.tpl"}
-
-    <div class="row sep_line"></div>	
-    {include file="$themePath/widget/navigation.tpl"}	
     {if $blog_article_details.title}
     <div class="col-lg-12 title_block"><h1>{$blog_article_details.title}</h1></div>
     {elseif $page.name}
@@ -23,7 +24,7 @@
 		{include file="$themePath/widget/sideblock.tpl"}
     </div>
 	</div>
-  </div>
+</div>
   
 
 

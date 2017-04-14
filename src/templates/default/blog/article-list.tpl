@@ -10,8 +10,8 @@
 {/if}
 
 
-<a href="{$lang_url}/blog/{$article.url}/" class="title_link">{$article.title}</a>
-<br /><br />
+<h2><a href="{$lang_url}/blog/{$article.url}/">{$article.title}</a></h2>
+
 <div class="row">
 	<p class="col-sm-6 text-muted small">
 	<a href="{$lang_url}/blog/?{$blog.authorUrlParam}={$article.author}">{$article.author}</a> 
