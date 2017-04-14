@@ -116,7 +116,7 @@
 		<field name="btn.duplicate" value="Дублировать"/>
 		<field name="btn.create" value="Создать"/>
 		<field name="btn.document_create" value="Создать документ"/>
-		<field name="btn.document_edit" value="Документ"/>
+		<field name="btn.document_edit" value="Редактировать документ"/>
 		<field name="btn.add_new" value="Добавить элемент"/>
 		<field name="btn.cancel" value="Отмена"/>
 		<field name="btn.close" value="Закрыть"/>
@@ -392,8 +392,8 @@
 		<field name="btn.delete" value="Видалити"/>
 		<field name="btn.edit" value="Редагувати"/>
 		<field name="btn.duplicate" value="Дублювати"/>
-		<field name="btn.document_create" value="Створити"/>
-		<field name="btn.document_edit" value="Редагувати"/>
+		<field name="btn.document_create" value="Створити документ"/>
+		<field name="btn.document_edit" value="Редагувати документ"/>
 		<field name="btn.add_new" value="Додати елемент"/>
 		<field name="btn.cancel" value="Відмінити"/>
 		<field name="btn.reset" value="Скинути"/>
