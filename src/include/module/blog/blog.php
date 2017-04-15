@@ -270,6 +270,7 @@ function Blog_add($url, $post_date = "", $post_title = "", $post_description = "
 	$result = API_itemAdd(TABLE_BLOG_ARTICLES, $item, $lang);
 	
 	if ($result["ok"]) {
+		$blog = MSV_get("website.blog");
 		SEO_add($blog->baseUrl.$url."/", $post_title, $post_title, $post_title, 1, $lang);
 	}
 	

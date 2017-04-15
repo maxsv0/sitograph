@@ -186,7 +186,8 @@ function Gallery_Album_add($url, $album_date = "", $album_title = "", $album_des
 	$result = API_itemAdd(TABLE_GALLERY_ALBUM, $item);
 	
 	if ($result["ok"]) {
-		SEO_add("/gallery/".$url."/", $album_title, $album_title, $album_title, 1);
+		$gallery = MSV_get("website.gallery");
+		SEO_add($gallery->baseUrl.$url."/", $album_title, $album_title, $album_title, 1);
 	}
 	
 	return $result;
