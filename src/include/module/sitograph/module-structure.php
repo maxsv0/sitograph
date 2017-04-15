@@ -121,6 +121,7 @@ if (!empty($_REQUEST["add_child"])) {
 		$resultQueryItem["data"]["parent_id"] = $resultQueryItem["data"]["id"];
 		$resultQueryItem["data"]["url"] = $resultQueryItem["data"]["url"]."new-page/";
 		$resultQueryItem["data"]["id"] = "";
+		$resultQueryItem["data"]["page_document_id"] = "";
 		
 		MSV_assignData("admin_edit_structure", $resultQueryItem["data"]);
 	}
