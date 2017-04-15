@@ -1,9 +1,8 @@
 
-
 {if $blog_article_details.sections}
-<div style="color: #999;text-transform:uppercase;">
+<div class="category-block">
 {foreach from=$blog_article_details.sections item=category name=loop} 
-<a  style="color: #999;" href="{$lang_url}/blog/?{$blog.categoryUrlParam}={$category.url}">{$category.title}</a>
+<h4><a href="{$lang_url}/blog/?{$blog.categoryUrlParam}={$category.url}">{$category.title}</a></h4>
 {if !$smarty.foreach.loop.last} / {/if}
 {/foreach}
 </div>
@@ -11,14 +10,15 @@
 
 
 
+<div class="article-info-block">
 	<div class="row">
-		<p class="col-sm-6 text-muted small">
+	<div class="col-sm-6 text-muted small">
 		<a href="{$lang_url}/blog/?{$blog.authorUrlParam}={$blog_article_details.author}">{$blog_article_details.author}</a> 
 		posted on {$blog_article_details.date}
-		</p>
+		</div>
 		
 		
-		<p class="col-sm-6 text-right small">
+		<div class="col-sm-6 text-right small">
 		{$blog_article_details.shares} Shares 
 		&nbsp;&nbsp;&nbsp;
 		<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
@@ -31,27 +31,28 @@
 		Views
 		&nbsp;&nbsp;&nbsp;
 		<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> {$blog_article_details.comments}
-		</p>
 	</div>
+	</div>
+</div>
 		
 	
 	
 {if $blog_article_details.pic_preview}
-<p style="margin-top:15px">
+<div class="article-media-block">
 <a href="{$blog_article_details.pic}" rel="fancybox"  title="{$blog_article_details.title}">
 <img src="{$blog_article_details.pic_preview}" alt="{$blog_article_details.title}" class="thumbnail img-responsive">
 </a>
-</p>
+</div>
 {/if}
 	
-	{if $blog_article_details.categories}
-	<p style="line-height: 3;">
-	{foreach from=$blog_article_details.categories item=category} 
-	<a href="/blog/?{$blog.categoryUrlParam}={$category.url}" class="btn btn-default">{$category.title}</a>
-	{/foreach}
-	</p>
-	{/if}
-	
+
+{if $blog_article_details.categories}
+<div class="category2-block">
+{foreach from=$blog_article_details.categories item=category} 
+<a href="/blog/?{$blog.categoryUrlParam}={$category.url}" class="btn btn-default">{$category.title}</a>
+{/foreach}
+</div>
+{/if}
 	
 	
 {if $blog_article_details.album}

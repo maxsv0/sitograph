@@ -1,24 +1,24 @@
-<div class="articles-block">
-
 {if $article.sections}
-<div class="articles_category">
+<div class="category-block">
 {foreach from=$article.sections item=category name=loop} 
-<a href="{$lang_url}/blog/?{$blog.categoryUrlParam}={$category.url}">{$category.title}</a>
+<h4><a href="{$lang_url}/blog/?{$blog.categoryUrlParam}={$category.url}">{$category.title}</a></h4>
 {if !$smarty.foreach.loop.last} / {/if}
 {/foreach}
 </div>
 {/if}
 
 
+<div class="articles-block">
+
 <h2><a href="{$lang_url}/blog/{$article.url}/">{$article.title}</a></h2>
 
-<div class="row">
-	<p class="col-sm-6 text-muted small">
+<div class="row article-info-block">
+	<div class="col-sm-6 text-muted small">
 	<a href="{$lang_url}/blog/?{$blog.authorUrlParam}={$article.author}">{$article.author}</a> 
 	posted on {$article.date}
-	</p>
+	</div>
 	
-	<p class="col-sm-6 text-right small">
+	<div class="col-sm-6 text-right small">
 	{$article.shares} Shares 
 	&nbsp;&nbsp;&nbsp;
 	<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
@@ -30,28 +30,28 @@
 	Views
 	&nbsp;&nbsp;&nbsp;
 	<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> {$article.comments}
-	</p>
+	</div>
 </div>
-<br />
+
+
 {if $article.pic_preview}
-
+<div class="article-media-block">
 <a href="{$lang_url}/blog/{$article.url}/">
-<img src="{$article.pic_preview}" alt="" class="img-responsive"/>
+<img src="{$article.pic_preview}" alt="" class="thumbnail img-responsive"/>
 </a>
-
+</div>
 {/if}
 
-<div class="caption">
-	
-	
-	
-	{if $article.description}
-	<p>{$article.description}</p>
-	{/if}
-	
-	<p class="text-right small"><a href="{$lang_url}/blog/{$article.url}/" class="bg_red">{_t("blog.continue_reading")}</a></p>
+<div class="article-description-block">
+{if $article.description}
+	{$article.description}
+{/if}
+</div>
+
+<div class="article-more-block">
+<a href="{$lang_url}/blog/{$article.url}/" class="btn btn-primary">{_t("blog.continue_reading")}</a>
 </div>
 
 
 
-</div> <!-- thumbnail -->	
+</div> 

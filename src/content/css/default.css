@@ -12,6 +12,47 @@
 	color:#fff;
 	margin:10px 0;
 }
+.category-block {
+	color: #999;
+	text-transform:uppercase;
+}
+.category-block a {
+	color: #999;
+}
+.category-block h4 {
+	display:inline-block;
+	margin-top: 10px;
+    margin-bottom: 5px;
+}
+.category2-block {
+	line-height: 3;
+}
+.article-media-block {
+}
+.article-info-block {
+	margin-bottom:10px;
+	margin-top:5px;
+}
+.article-description-block {
+	margin-bottom:5px;
+}
+.article-more-block {
+	text-align:right;
+	margin-bottom:5px;
+}
+.articles-block h2 {
+	display:inline-block;
+	margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+.title-block {
+	color:#fff;
+	margin:10px 0;
+}
+
 .footer-copyright {
 	background: #ddd;
 }
