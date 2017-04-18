@@ -16,10 +16,35 @@
 	<div class="col-lg-8 col-md-7 col-sm-12">
 	{$document.text}
 	</div>
+	
+	<div class="col-lg-8 col-md-7 col-sm-12">
+
+{foreach from=$blog_articles_newest key=article_id item=article} 
+{if $article@iteration <= 2}
+{include "$themePath/blog/article-preview.tpl"}
+{/if}
+{/foreach}
+	</div>
+	
+
 	<div class="col-lg-4 col-md-5 hidden-sm">
 	{include file="$themePath/widget/sideblock.tpl"}
 	</div>
-	</div>
+	
+	</div><!-- row -->
+	
+
+	<div class="row">
+{foreach from=$blog_articles_newest key=article_id item=article} 
+{if $article@iteration > 2}
+<div class="col-lg-3 col-md-4 col-sm-6">
+{include "$themePath/blog/article-preview-short.tpl"}
+</div>
+{/if}
+{/foreach}
+	
+
+	</div><!-- row -->
 </div>
 
 

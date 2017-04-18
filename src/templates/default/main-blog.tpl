@@ -11,9 +11,9 @@
 <div class="container">
   	<div class="row content-block">
     {if $blog_article_details.title}
-    <div class="col-lg-12 title_block"><h1>{$blog_article_details.title}</h1></div>
+    <div class="col-lg-12 article-title-block"><h1>{$blog_article_details.title}</h1></div>
     {elseif $page.name}
-    <div class="col-lg-12 title_block"><h1>{$page.name}</h1></div>
+    <div class="col-lg-12 article-title-block"><h1>{$page.name}</h1></div>
     {/if}
     
     <div class="col-lg-8 col-md-7 col-sm-12">

@@ -28,7 +28,8 @@
 .category2-block {
 	line-height: 3;
 }
-.article-media-block {
+.article-media-block .thumbnail {
+	margin-bottom:5px;
 }
 .article-info-block {
 	margin-bottom:10px;
@@ -46,14 +47,16 @@
 	margin-top: 5px;
     margin-bottom: 5px;
 }
-
-
-
-.title-block {
-	color:#fff;
+.article-title-block {
 	margin:10px 0;
 }
-
+.article-title-block h4 {
+	margin-top: 0px;
+    margin-bottom: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .footer-copyright {
 	background: #ddd;
 }
@@ -178,25 +181,20 @@ div.navigation a:hover {
 	color: #FFFFFF;    
 }
 
-
-
-
 .admin_pic {
 	display: inline-block;
 	background:url(/content/images/sitograph/admin_panel.png);
 	width:12px;
 	height:18px;
 }
-
-
 .admin_panel {
- position:absolute;
- top: 0;
- z-index:2000;
- background-color:#e6e6e6;
- top:0px;
- height:20px!important;
- border-bottom:1px solid #ccc; 
+	position:absolute;
+	top: 0;
+	z-index:2000;
+	background-color:#e6e6e6;
+	top:0px;
+	height:20px!important;
+	border-bottom:1px solid #ccc; 
 }
 .admin_panel tr td {
     width: 50%;
@@ -211,7 +209,6 @@ div.navigation a:hover {
     font-family: Verdana!important;
     margin: 0px 0px 5px; 
 }
-
 .admin_panel a:hover {
     text-decoration:none;
 

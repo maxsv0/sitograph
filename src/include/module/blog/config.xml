@@ -11,7 +11,7 @@
 	<param name="authorUrlParam" value="author"/>
 	<param name="previewItemsCount" value="10"/>
 	<param name="relatedItemsCount" value="6"/>
-	<param name="newestItemsCount" value="15"/>
+	<param name="newestItemsCount" value="14"/>
 	<param name="adminMenu" value="true"/>
 	<param name="adminMenuOrder" value="28"/>
 	
@@ -121,6 +121,7 @@
         <field name="blog.label_latest_posts" value="Последние публикации"/>
         <field name="blog.label_related_posts" value="Связанные публикации"/>
         <field name="blog.btn_search" value="Найти"/>
+        <field name="blog.search_no_result" value="Статьи не найдены."/>
 	</locale>
     <locale name="ua">
 		<field name="module.blog" value="Блог"/>
@@ -162,6 +163,7 @@
         <field name="blog.label_latest_posts" value="Останні публікації"/>
         <field name="blog.label_related_posts" value="Пов'язані публікації"/>
         <field name="blog.btn_search" value="Знайти"/>
+        <field name="blog.search_no_result" value="Статті не були знайдені."/>
 	</locale>
 	<locale name="en">
 		<field name="module.blog" value="Blog"/>
@@ -197,6 +199,13 @@
 		<field name="table.article_categories.url" value="URL"/>
 		<field name="table.article_categories.article_id" value="Article"/>
 		<field name="table.article_categories.title" value="Title"/>
+        <field name="blog.continue_reading" value="Continue Reading"/>
+        <field name="blog.label_search" value="Search for keyword"/>
+        <field name="blog.label_рopular_posts" value="Popular articles"/>
+        <field name="blog.label_latest_posts" value="Latest articles"/>
+        <field name="blog.label_related_posts" value="Related articles"/>
+        <field name="blog.btn_search" value="Search"/>
+        <field name="blog.search_no_result" value="No articles was found."/>
 	</locale>
 	<locale name="de">
 		<field name="module.blog" value="Blog"/>

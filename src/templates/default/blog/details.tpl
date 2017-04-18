@@ -9,7 +9,6 @@
 {/if}
 
 
-
 <div class="article-info-block">
 	<div class="row">
 	<div class="col-sm-6 text-muted small">
@@ -34,9 +33,8 @@
 	</div>
 	</div>
 </div>
-		
-	
-	
+
+
 {if $blog_article_details.pic_preview}
 <div class="article-media-block">
 <a href="{$blog_article_details.pic}" rel="fancybox"  title="{$blog_article_details.title}">
@@ -44,7 +42,7 @@
 </a>
 </div>
 {/if}
-	
+
 
 {if $blog_article_details.categories}
 <div class="category2-block">
@@ -56,7 +54,7 @@
 	
 	
 {if $blog_article_details.album}
-<div class="row" >
+<div class="row">
 {foreach from=$blog_article_details.album.photos item=photo name=loop}
 <div class="hide">
 <a class="thumbnail" rel="fancybox" title="{$blog_article_details.title}" href="{$photo.pic}"><img src="{$photo.pic_preview}" alt=""></a>
@@ -64,16 +62,14 @@
 {/foreach}
 </div>
 {/if}
-	
-	
 
-	
-	{if $blog_article_details.text}
-		<p>{$blog_article_details.text}</p>
-	{elseif $blog_article_details.description}
-		<p>{$blog_article_details.description}</p>
-	{/if}
-	
+
+{if $blog_article_details.text}
+	<p>{$blog_article_details.text}</p>
+{elseif $blog_article_details.description}
+	<p>{$blog_article_details.description}</p>
+{/if}
+
 
 <hr/>
 
@@ -85,13 +81,13 @@
 {if $article@iteration > 6}{break}{/if}
 <div class="col-sm-6 col-md-4 rowItem">
 {if $article.pic_preview}
-<p>
+<div class="article-media-block">
 	<a href="{$lang_url}/blog/{$article.url}/"><img src="{$article.pic_preview}" alt="{$article.title}" class="img-responsive"></a>
-</p>
+</div>
 {/if}
-<p>  
+<div class="article-title-block">  
     <a href="{$lang_url}/blog/{$article.url}/"><h4 class="media-heading">{$article.title}</h4></a>
-</p>  
+</div>  
 {if !$article.pic_preview}
 <p>
 	{$article.description}
@@ -102,7 +98,6 @@
 </div>
 {/if}
 
-<p class="clearfix"></p>
 
 {if $blog_articles_newest}
 
@@ -110,15 +105,16 @@
 {foreach from=$blog_articles_newest key=article_id item=article} 
 {if $article@iteration > 7}{break}{/if}
 <div class="media">
+{if $article.pic_preview}
   <div class="media-left">
     <a href="{$lang_url}/blog/{$article.url}/">
-{if $article.pic_preview}
       <img class="media-object" src="{$article.pic_preview}" alt="{$article.title}" width="120">
-{/if}
+
     </a>
   </div>
+{/if}
   <div class="media-body">
-    <a href="{$lang_url}/blog/{$article.url}/"><h4 class="media-heading">{$article.title}</h4></a>
+    <h4 class="media-heading"><a href="{$lang_url}/blog/{$article.url}/">{$article.title}</a></h4>
     
  	{if $article.description}
 	<p>{$article.description}</p>
@@ -126,6 +122,8 @@
   </div>
 </div>
 {/foreach} 
+
+<p class="clearfix"></p>
 {/if}
 
 

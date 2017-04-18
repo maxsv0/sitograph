@@ -9,7 +9,7 @@
 	<param name="searchKeyword" value=""/>
 	<param name="searchTag" value=""/>
 	<param name="searchSection" value=""/>
-	<param name="searchLimit" value="2"/>
+	<param name="searchLimit" value="5"/>
 	<param name="searchPage" value="1"/>
 	
 	<filter url="/guardian-parser/" action="GuardianLoadArticles" setpage="/"/>
