@@ -245,15 +245,31 @@ function Blog_add($url, $post_date = "", $post_title = "", $post_description = "
 	if (empty($post_date)) {
 		$post_date = "NOW()";
 	}
-	$picPath = "";
+	
+	// url for attached files
+	$picPath = $picPathPreview = "";
+	
+	// save photo file
 	if (!empty($pic)) {
-		$picPath = MSV_storePic($pic, "jpg", "", TABLE_BLOG_ARTICLES, "pic");
-	}
-	$picPathPreview = "";
-	if (!empty($pic)) {
-		$picPathPreview = MSV_storePic($pic_preview, "jpg", "", TABLE_BLOG_ARTICLES, "pic_preview");
+		$fileResult = MSV_storePic($pic, "jpg", "", TABLE_BLOG_ARTICLES, "pic");
+		
+		// if result is number - some error occurred
+		if (!is_numeric($fileResult)) {
+			$picPath = $fileResult;
+		}
 	}
 	
+	// save preview file
+	if (!empty($pic_preview)) {
+		$fileResult = MSV_storePic($pic_preview, "jpg", "", TABLE_BLOG_ARTICLES, "pic_preview");
+		
+		// if result is number - some error occurred
+		if (!is_numeric($fileResult)) {
+			$picPathPreview = $fileResult;
+		}
+	}
+	
+	// prepare data for insertion
 	$item = array(
 		"published" => 1,
 		"url" => $url,
@@ -267,6 +283,7 @@ function Blog_add($url, $post_date = "", $post_title = "", $post_description = "
 		"shares" => $shares,
 	);
 	
+	// add items to database
 	$result = API_itemAdd(TABLE_BLOG_ARTICLES, $item, $lang);
 	
 	if ($result["ok"]) {

@@ -874,80 +874,78 @@ function MSV_storePic($url, $type = "jpg", $name = "", $table = "", $field = "")
 		return $fileResult;
 	}
 	
-	$fileUrl = HOME_URL.CONTENT_URL."/".$fileResult;
+	$fileUrl = $fileResult;
 	$filePath = UPLOAD_FILES_PATH."/".$fileResult;
 	
-	// copy file
-	$cont = file_get_contents($fileUrl);
-	if ($cont) {
+	// if resize is needed
+	if (!empty($field) && !empty($table)) {
+		// get a file
+		$cont = file_get_contents($filePath);
+		if (!$cont) {
+			return -5;
+		}
 		
-		if (!empty($field) && !empty($table)) {
-			$tablesList = MSV_get("website.tables");
-			$infoTable = $tablesList[$table];
+		// get table info
+		$tablesList = MSV_get("website.tables");
+		$infoTable = $tablesList[$table];
 
-			$infoField = $infoTable["fields"][$field];
+		$infoField = $infoTable["fields"][$field];
+		
+		// check img size from config
+		if (!empty($infoField["max-width"]) || !empty($infoField["max-height"])) { 
+			// create imgage using GD
+			$img = imagecreatefromstring($cont);
 			
-			if (!empty($infoField["max-width"]) || !empty($infoField["max-height"])) { 
-				// check img size, resize if need
+			$height = imagesy($img);
+			$width = imagesx($img);
+			
+			if (!empty($infoField["max-width"]) && $width > $infoField["max-width"]) {
+				$widthNew = $infoField["max-width"];
+				$heightNew = $height/$width*$widthNew;
 				
-				// create imgage using GD
-				$img = imagecreatefromstring($cont);
+				$imgNew = imagecreatetruecolor($widthNew, $heightNew);
+
+                // save alpha channel
+                imagesavealpha($imgNew, true);
+                imagealphablending($imgNew, false);
+
+                if ($type === "jpg") {
+                    $bgColor = imagecolorallocatealpha($imgNew, 255, 255, 255, 0);
+                } else {
+                    $bgColor = imagecolorallocatealpha($imgNew, 255, 255, 255, 127);
+                }
+                imagefill($imgNew, 0, 0, $bgColor);
+
+                // copy image
+                imagecopyresampled($imgNew, $img, 0, 0, 0, 0, $widthNew, $heightNew, $width, $height);
+				$img = $imgNew;
 				
-				$height = imagesy($img);
-				$width = imagesx($img);
 				
-				if (!empty($infoField["max-width"]) && $width > $infoField["max-width"]) {
-					$widthNew = $infoField["max-width"];
-					$heightNew = $height/$width*$widthNew;
-					
-					$imgNew = imagecreatetruecolor($widthNew, $heightNew);
-
-                    // save alpha channel
-                    imagesavealpha($imgNew, true);
-                    imagealphablending($imgNew, false);
-
-                    if ($type === "jpg") {
-                        $bgColor = imagecolorallocatealpha($imgNew, 255, 255, 255, 0);
-                    } else {
-                        $bgColor = imagecolorallocatealpha($imgNew, 255, 255, 255, 127);
-                    }
-                    imagefill($imgNew, 0, 0, $bgColor);
-
-                    // copy image
-                    imagecopyresampled($imgNew, $img, 0, 0, 0, 0, $widthNew, $heightNew, $width, $height);
-					$img = $imgNew;
-					
-					
-					switch ($type) {
-						case "png":
-							imagepng($img, $filePath);
+				switch ($type) {
+					case "png":
+						imagepng($img, $filePath);
+					break;
+					case "gif":
+						imagegif($img, $filePath);
+					break;
+					case "jpg":
+						imagejpeg($img, $filePath, 90);
+					break;
+					default:
+						imagejpeg($img, $filePath, 90);
 						break;
-						case "gif":
-							imagegif($img, $filePath);
-						break;
-						case "jpg":
-							imagejpeg($img, $filePath, 90);
-						break;
-						default:
-							imagejpeg($img, $filePath, 90);
-							break;
-					}
-					
-					return $fileUrl;
-				} else {
-					
-					// do not resize
-					// do not change original file
-					
 				}
+				
+			} else {
+				
+				// do not resize
+				// do not change original file
 				
 			}
 		}
-		
-		return $fileResult;
 	}
 	
-	return -10;
+	return $fileUrl;
 }
 
 function MSV_get($param = "website") {

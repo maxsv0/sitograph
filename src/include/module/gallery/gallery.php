@@ -162,15 +162,31 @@ function Gallery_Album_add($url, $album_date = "", $album_title = "", $album_des
 	if (empty($album_date)) {
 		$album_date = "NOW()";
 	}
-	$picPath = "";
+	
+	// url for attached files
+	$picPath = $picPathPreview = "";
+
+	// save photo file
 	if (!empty($pic)) {
-		$picPath = MSV_storePic($pic, "jpg", "", TABLE_GALLERY_ALBUM, "pic");
-	}
-	$picPathPreview = "";
-	if (!empty($pic)) {
-		$picPathPreview = MSV_storePic($pic_preview, "jpg", "", TABLE_GALLERY_ALBUM, "pic_preview");
+		$fileResult = MSV_storePic($pic, "jpg", "", TABLE_GALLERY_ALBUM, "pic");
+		
+		// if result is number - some error occurred
+		if (!is_numeric($fileResult)) {
+			$picPath = $fileResult;
+		}
 	}
 	
+	// save preview file
+	if (!empty($pic_preview)) {
+		$fileResult = MSV_storePic($pic_preview, "jpg", "", TABLE_GALLERY_ALBUM, "pic_preview");
+		
+		// if result is number - some error occurred
+		if (!is_numeric($fileResult)) {
+			$picPathPreview = $fileResult;
+		}
+	}
+	
+	// prepare data for insertion
 	$item = array(
 		"published" => 1,
 		"url" => $url,
@@ -183,6 +199,7 @@ function Gallery_Album_add($url, $album_date = "", $album_title = "", $album_des
 		"shares" => $shares,
 	);
 	
+	// add items to database
 	$result = API_itemAdd(TABLE_GALLERY_ALBUM, $item);
 	
 	if ($result["ok"]) {
@@ -200,15 +217,31 @@ function Gallery_Photo_add($album_id, $photo_date = "", $photo_title = "", $phot
 	if (empty($photo_date)) {
 		$photo_date = "NOW()";
 	}
-	$picPath = "";
+	
+	// url for attached files
+	$picPath = $picPathPreview = "";
+	
+	// save photo file
 	if (!empty($pic)) {
-		$picPath = MSV_storePic($pic, "jpg", "", TABLE_GALLERY_PHOTOS, "pic");
+		$fileResult = MSV_storePic($pic, "jpg", "", TABLE_GALLERY_PHOTOS, "pic");
+		
+		// if result is number - some error occurred
+		if (!is_numeric($fileResult)) {
+			$picPath = $fileResult;
+		}
 	}
-	$picPathPreview = "";
-	if (!empty($pic)) {
-		$picPathPreview = MSV_storePic($pic_preview, "jpg", "", TABLE_GALLERY_PHOTOS, "pic_preview");
+	
+	// save preview file
+	if (!empty($pic_preview)) {
+		$fileResult = MSV_storePic($pic_preview, "jpg", "", TABLE_GALLERY_PHOTOS, "pic_preview");
+		
+		// if result is number - some error occurred
+		if (!is_numeric($fileResult)) {
+			$picPathPreview = $fileResult;
+		}
 	}
 
+	// prepare data for insertion
 	$item = array(
 		"published" => 1,
 		"album_id" => $album_id,
@@ -219,6 +252,7 @@ function Gallery_Photo_add($album_id, $photo_date = "", $photo_title = "", $phot
 		"pic_preview" => $picPathPreview,
 	);
 	
+	// add items to database
 	$result = API_itemAdd(TABLE_GALLERY_PHOTOS, $item);
 	
 	if ($result["ok"]) {

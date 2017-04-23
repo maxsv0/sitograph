@@ -124,7 +124,14 @@ if (!empty($_REQUEST["doSave"])) {
 		}
 		
 		if (!empty($_FILES["user_pic"]) && !empty($_FILES["user_pic"]["name"])) {
-			$_REQUEST["user_pic"] = MSV_storePic($_FILES["user_pic"]["tmp_name"], $_FILES["user_pic"]["type"], "", TABLE_USERS, "pic");
+			
+			// save user picture
+			$fileResult = MSV_storePic($_FILES["user_pic"]["tmp_name"], $_FILES["user_pic"]["type"], "", TABLE_USERS, "pic");
+		
+			// if result is number - some error occurred
+			if (!is_numeric($fileResult)) {
+				$_REQUEST["user_pic"] = $fileResult;
+			}
 		}
 		
 		// proccess update
