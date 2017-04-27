@@ -485,13 +485,10 @@ class MSV_Website {
 		$this->requestUrl = $url;
 	}
 	function parseRequest() {
-		// handle redirect from mod_rewrite module
-		// REDIRECT_URL is used by default
-		if (!empty($_SERVER["REDIRECT_URL"])) {
-			$requestUrl = $_SERVER["REDIRECT_URL"];
-		} else {
-			$requestUrl = $_SERVER["REQUEST_URI"];
-		}
+		// handle request URL
+		// using REQUEST_URI according to discussion at:
+		// http://stackoverflow.com/questions/6483912/php-serverredirect-url-vs-serverrequest-uri
+		$requestUrl = $_SERVER["REQUEST_URI"];
 		
 		// fix homepage of non-default language
 		foreach ($this->languages as $langName) {
