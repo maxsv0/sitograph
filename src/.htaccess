@@ -78,8 +78,8 @@ RedirectMatch 403 ^/templates/(.*)$
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 	
-	#RewriteRule ^ru/(.*)$ /$1?lang=ru&%{QUERY_STRING} [L,P]
-	#RewriteRule ^en/(.*)$ /$1?lang=en&%{QUERY_STRING} [L,P]
+	
+	RewriteRule ^en(.*)$ $1?lang=en&%{QUERY_STRING} [L]
 	
 	RewriteRule ^ua(.*)$ $1?lang=ua&%{QUERY_STRING} [L]
     

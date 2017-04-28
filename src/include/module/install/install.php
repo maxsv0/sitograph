@@ -233,8 +233,8 @@ if ($install_step === 3) {
 	);
 	
 	// sort lists
-	asort($modulesList);
-	asort($modulesListRemote);
+    ksort($modulesList);
+	ksort($modulesListRemote);
 	
 	$website->config["modulesList"] = $modulesList;
 	$website->config["modulesListRemote"] = $modulesListRemote;
