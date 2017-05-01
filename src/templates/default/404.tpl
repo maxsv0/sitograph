@@ -9,14 +9,18 @@
 	<meta name="description" content="{$page.description}">
   </head>
 <body style="background-color:#333746;">
-
+<style>
+{literal}
+h1,h2 {color:#74c4d4;}
+{/literal}
+</style>
 
 <table align="center" height="100%" width="600" cellpadding="0" cellspacing="0" style="min-height:600px;">
 <tr>
 <td align="left" valign="middle">
 
 {if $document.name}
-<h1 style="color:#f6f88c;">{$document.name}</h1>
+<h1>{$document.name}</h1>
 {/if}
 	
 {if $document}

@@ -11,8 +11,8 @@
 <div class="container">
 	<div class="row content-block">
 
-	{if $page.name}
-	<div class="col-lg-12"><h1>{$page.name}</h1></div>
+	{if $document.name}
+	<div class="col-lg-12"><h1>{$document.name}</h1></div>
 	{/if}
 	
 	<div class="col-lg-8 col-md-7 col-sm-12">

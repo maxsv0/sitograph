@@ -379,7 +379,7 @@
 		<field name="structure.homepage" value="Homepage"/>
 		<field name="structure.page1" value="Example page"/>
 		<field name="structure.sitemap" value="Sitemap"/>
-		<field name="structure.404" value="404 Error"/>
+		<field name="structure.404" value="Error 404"/>
 		<field name="structure.admin_homepage" value="Admin Homepage"/>
 		<field name="structure.admin_login" value="Admin Login"/>
 	</locale>
@@ -549,7 +549,7 @@
 		<field name="structure.homepage" value="Homepage"/>
 		<field name="structure.page1" value="Example page"/>
 		<field name="structure.sitemap" value="Sitemap"/>
-		<field name="structure.404" value="404 Error"/>
+		<field name="structure.404" value="Error 404"/>
 		<field name="structure.admin_homepage" value="Admin Homepage"/>
 		<field name="structure.admin_login" value="Admin Login"/>
     </locale>

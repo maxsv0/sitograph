@@ -1467,7 +1467,7 @@ function MSV_Structure_add($lang, $url, $name = "", $template = "", $page_templa
 			$item = array(
 				"published" => 1,
 				"url" => $url,
-				"name" => $document_title,
+				"name" => $name,
 				"menu_id" => $menu,
 				"structure_id" => $structure_id,
 				"order_id" => $menu_order,
