@@ -13,8 +13,9 @@ if (isset($_REQUEST['logout'])) {
 	unset($_SESSION['user_email']);
 }
 
+$allowSingUp = MSV_getConfig("users_registration_allow");
 
-if (!empty($_REQUEST["doSingUp"])) {
+if ($allowSingUp && !empty($_REQUEST["doSingUp"])) {
 	if (empty($_REQUEST["email"])) {
 		MSV_MessageError(_t("msg.users.noemail"));
 	}
@@ -250,7 +251,7 @@ function UserAdd($email, $email_verified = 0, $password = "", $name = "", $phone
 	$result = API_itemAdd(TABLE_USERS, $item, "*");
 
 	if ($result["ok"]) {
-		$doEmail = MSV_getConfig("email_registration");
+		$doEmail = MSV_getConfig("users_registration_email");
 		if ($doEmail) {
 			
 			$userinfo = array(
@@ -302,5 +303,13 @@ function UsersInstall($module) {
 		"order_id" => 100,
 	);
 	API_itemAdd(TABLE_MENU, $item, "all");
+	
+	// trigger email sending on user registration
+	// default value: 1 => each user will receive email on registration
+	MSV_setConfig("users_registration_email", 1, true, "*");
+	
+	// allow user registration on website using form
+	// default value: 0 => users can't register himself
+	MSV_setConfig("users_registration_allow", 0, true, "*");
 	
 }

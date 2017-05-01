@@ -79,9 +79,10 @@ if (!empty($admin_table)) {
 
 $website = MSV_get("website");
 
-// check page access, deny if no access
+// user with no access will be redirected by MSV class
+// but we check access level here to avoid any further file execution
 if (!$website->checkAccess($menuItem["access"], $website->user["access"])) {
-	MSV_Error("Access denied");
+	return;
 }
 
 MSV_assignData("admin_section", $section);
@@ -286,9 +287,6 @@ if (!empty($section) && in_array($section, $menu_index)) {
 function SitographInstall($module) {
 	MSV_Structure_add("*", "/admin/", _t("structure.admin_homepage"), "default", "sitograph.tpl", 0, "", 0, "admin");
 	MSV_Structure_add("*", "/admin/login/", _t("structure.admin_login"), "default", "sitograph-login.tpl", 0, "", 0, "everyone");
-	
-	// trigger email sending on user registration
-	MSV_setConfig("email_registration", 1, true, "*");
 	
 	// mailing options
 	MSV_setConfig("email_from", "tech@sitograph.com", true, "*");

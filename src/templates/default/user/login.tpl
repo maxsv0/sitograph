@@ -25,9 +25,10 @@
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="login-btn" name="doLogin" value="1">{_t("users.form.sign_in")}</button>
+      <button type="submit" class="btn btn-lg btn-primary" name="doLogin" value="1">{_t("users.form.sign_in")}</button>
     </div>
   </div>
   
 </form>
 
+<div style="height:100px;"></div>

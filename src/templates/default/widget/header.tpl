@@ -36,7 +36,7 @@
 		</div>
     	<div class="col-sm-4">
 	        <div class="row">
-	        <div class="col-xs-6 header-menu">
+	        <div class="col-xs-4 header-menu">
 	     <p>
 				
 				<a href="/sitemap/" class="sitemap-ico"></a>
@@ -55,7 +55,7 @@
 {/if} 
 	     	</div>
 	     	
-	        <div class="col-xs-6 login-block">
+	        <div class="col-xs-8 login-block">
 	     	{include file="$themePath/widget/menu-user.tpl"}
 	     	</div>
 	     	

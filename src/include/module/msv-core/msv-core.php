@@ -1406,7 +1406,7 @@ function _t($textID) {
 // ********** User Functions ********
 
 
-function MSV_Structure_add($lang, $url, $name = "", $template = "", $page_template = "", $sitemap = "", $menu = "", $menu_order = 0, $access, $parent_url = "") {
+function MSV_Structure_add($lang, $url, $name = "", $template = "", $page_template = "", $sitemap = "", $menu = "", $menu_order = 0, $access, $parent_url = "", $document_title = "", $document_text = "") {
 	
 	
 	// run recursively and exit
@@ -1415,7 +1415,7 @@ function MSV_Structure_add($lang, $url, $name = "", $template = "", $page_templa
 		$website = MSV_get("website");
 
 		foreach ($website->languages as $langID) {
-			MSV_Structure_add($langID, $url, $name, $template, $page_template, $sitemap, $menu, $menu_order, $access, $parent_url);
+			MSV_Structure_add($langID, $url, $name, $template, $page_template, $sitemap, $menu, $menu_order, $access, $parent_url, $document_title, $document_text);
 		}
 		
 		return true;
@@ -1450,8 +1450,13 @@ function MSV_Structure_add($lang, $url, $name = "", $template = "", $page_templa
 		// add seo
 		SEO_add($url, $name, '', '', $sitemap, $lang);
 		
-		// add docuemnt
-		$resultDocument = MSV_Document_add($name, "", "", $lang);
+		// set document title if it was not provided
+		if (empty($document_title)) {
+			$document_title = $name;
+		}
+		
+		// add document
+		$resultDocument = MSV_Document_add($document_title, $document_text, "", $lang);
 		
 		// update structure=>set document
 		if ($resultDocument["ok"]) {
@@ -1462,7 +1467,7 @@ function MSV_Structure_add($lang, $url, $name = "", $template = "", $page_templa
 			$item = array(
 				"published" => 1,
 				"url" => $url,
-				"name" => $name,
+				"name" => $document_title,
 				"menu_id" => $menu,
 				"structure_id" => $structure_id,
 				"order_id" => $menu_order,
@@ -1688,9 +1693,6 @@ function CoreInstall($module) {
 	MSV_setConfig("theme_include_font", "", true, "*");
 	MSV_setConfig("theme_use_bootstrap", 0, true, "*");
 	MSV_setConfig("theme_use_jquery", 0, true, "*");
-	
-	// trigger email sending on user registration
-	MSV_setConfig("email_registration", 0, true, "*");
 	
 	// add messages to default output
 	MSV_setConfig("message_ok", "", true, "*");

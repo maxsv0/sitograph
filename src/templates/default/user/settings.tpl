@@ -87,7 +87,7 @@
       
     </div>
     <div class="col-lg-6 col-sm-6">
-    <button type="submit" name="doSave" value="1" class="login-btn"><span class="glyphicon glyphicon-ok">&nbsp;</span>{$t["btn.save"]}</button>
+    <button type="submit" name="doSave" value="1" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-ok">&nbsp;</span>{$t["btn.save"]}</button>
     </div>
     
   </div>
@@ -121,7 +121,7 @@
   </div>
   <div class="form-group">
     <div class="col-sm-offset-6 col-sm-6">
-      <button type="submit" class="login-btn" name="password_save" value="1">Save changes</button>
+      <button type="submit" class="btn btn-lg btn-primary" name="password_save" value="1">Save changes</button>
     </div>
   </div>
 </form>

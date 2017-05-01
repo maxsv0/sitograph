@@ -1,4 +1,4 @@
-
+{if $users_registration_allow}
 
 <form class="form-horizontal" method="POST" >
   <div class="form-group">
@@ -33,7 +33,16 @@
   </div>
   <div class="form-group">
     <div class="col-sm-offset-4 col-sm-8">
-      <button type="submit" class="login-btn singup-btn" name="doSingUp" value="1">{_t("users.form.sign_up")}</button>
+      <button type="submit" class="btn btn-lg btn-primary" name="doSingUp" value="1">{_t("users.form.sign_up")}</button>
     </div>
   </div>
 </form>
+
+{else}
+
+<div class="alert alert-danger">Registration is not allowed. Please contact website administrator.</div>
+
+{/if}
+
+
+<div style="height:100px;"></div>

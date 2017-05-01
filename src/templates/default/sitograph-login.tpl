@@ -33,7 +33,7 @@
 	<tr>
 		<td style="padding-bottom: 50px;" align="center">
 		<p>
-			<img src="{$content_url}/images/sitograph/sitograph-logo-dark-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png">
+			<img src="{$content_url}/images/sitograph/sitograph-logo-dark-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png" style="height:80px;">
 		</p>
 		<h4>{_t("cms")}</h4>
 		</td>
