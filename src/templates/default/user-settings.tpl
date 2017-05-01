@@ -12,12 +12,15 @@
 	<div class="row content-block">
 
     <div class="col-md-12">
-    	{if $page.name}
-	    <h1>{$page.name}</h1>
+    	{if $document.name}
+	    <h1>{$document.name}</h1>
 	    {/if}
+	    
     	{if $document}
     		{$document.text}<br />
     	{/if}
+    	
+    	{include file="$themePath/widget/messages.tpl"}
     	
         {include file="$themePath/user/settings.tpl"}
     </div>

@@ -12,8 +12,8 @@
 	<div class="row content-block">
 	
     <div class="col-md-6 col-md-offset-3">
-    	{if $page.name}
-	    <h1>{$page.name}</h1>
+    	{if $document.name}
+	    <h1>{$document.name}</h1>
 	    {/if}
 	    
     	{if $document}

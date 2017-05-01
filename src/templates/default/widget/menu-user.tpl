@@ -5,8 +5,8 @@
 
 <div class="dropdown">
   <p class="dropdown-toggle" id="dropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    Hello, {$user.email}
-    <span class="caret"></span>
+    Hello, 
+    <b>{$user.email}</b>&nbsp;<span class="caret"></span>
   </p>
   <ul class="dropdown-menu" aria-labelledby="dropdownUser">
   

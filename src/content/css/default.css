@@ -92,6 +92,7 @@
 }
 
 .login-block {
+	color:#fff;
 	padding-right:20px;
 }
 .login-block a {
@@ -129,7 +130,7 @@
 }
 
 .top-lang a {
-	color: #ffffff;
+	color: #fff;
 }
 
 .navbar  {
