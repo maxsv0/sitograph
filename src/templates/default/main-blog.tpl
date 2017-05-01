@@ -27,7 +27,4 @@
 </div>
   
 
-
-
-
 {include file="$themePath/widget/footer.tpl"}

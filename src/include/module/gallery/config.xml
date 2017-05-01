@@ -157,6 +157,7 @@
 		<field name="table.gallery_photos.url" value="URL"/>
 		<field name="table.gallery_photos.article_id" value="Стаття"/>
 		<field name="table.gallery_photos.title" value="Заголовок"/>
+		<field name="gallery.search_no_result" value="Альбомы не найдены."/>
 	</locale>    
 	<locale name="en">
 		<field name="module.gallery" value="Photo Gallery"/>
@@ -193,6 +194,7 @@
 		<field name="table.gallery_photos.description" value="Short text"/>
 		<field name="table.gallery_photos.pic" value="Picture Big"/>
 		<field name="table.gallery_photos.pic_preview" value="Picture"/>
+		<field name="gallery.search_no_result" value="No albums were found."/>
 	</locale>
 	<locale name="de">
 		<field name="module.gallery" value="Photo Gallery"/>

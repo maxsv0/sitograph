@@ -32,7 +32,7 @@
 
 {if $article.pic_preview}
 <div class="article-media-block">
-<a href="{$article.pic}" rel="fancybox"  title="{$article.title}">
+<a href="/blog/{$article.url}/" title="{$article.title}">
 <img src="{$article.pic_preview}" alt="{$article.title}" class="thumbnail img-responsive">
 </a>
 </div>

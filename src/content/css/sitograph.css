@@ -28,7 +28,7 @@ input, textarea {
 }
 a, .add_link {
     text-decoration: none;
-    color:#bb233a;
+    color:#ed2a45;
 }
 
 a:hover, .add_link:hover {
@@ -176,7 +176,6 @@ p.user_crown {
     padding-right: 20px;
 }
 
-/* ÐÐµÐ°ÐºÑ‚Ð¸Ð²Ð½Ð¾Ðµ Ð¿Ð¾Ð´Ð¼ÐµÐ½ÑŽ */
 #menu_left div.mod_box a {
     background: url(/content/images/sitograph/menu_a_arrow.png) 10px center no-repeat #E8E8E8;
     padding-left: 25px;
@@ -185,33 +184,25 @@ p.user_crown {
     display: none;
 }
 
-/* ÐÐºÑ‚Ð¸Ð²Ð½Ð¾Ðµ Ð¿Ð¾Ð´Ð¼ÐµÐ½ÑŽ */
 #menu_left div.mod_box_active a {
     background: url(/content/images/sitograph/menu_a_arrow_active.png) 10px center no-repeat #E8E8E8;
     border-bottom: none;
 }
 #menu_left div.mod_box_active a p {
 }
-
-
-
 #menu_left div.mod_box_active div a {
     background: #d7d7d7;
     border: none;
     padding-left: 40px;
     height: 37px;
 }
-
 #menu_left div.mod_box_active{
 }
-
-
-/* ÐÐºÑ‚Ð¸Ð²Ð½Ñ‹Ð¹ Ð¿ÑƒÐ½ÐºÑ‚ */
 #menu_left div a:hover, #menu_left div div a:hover {
     background-color: #FFFFFF;
 }
 #menu_left div.active a, #menu_left div div.active a {
-    background: #333333 !important;
+    background: #333746 !important;
     border: none;
 }
 #menu_left div.active a p, #menu_left div div.active a p {
@@ -346,7 +337,7 @@ ul.nav li a {
     background: #eeeeee;
 }
 ul.nav li a:hover {
-    color:#bb233a;
+    color:#ed2a45;
 }
 .nav-tabs  li.active  a{
    background: #eeeeee;
@@ -400,7 +391,7 @@ input.style_on_off {
 
 
 table.table-module tr:first-child th  {
-    background: #333333;
+    background: #333746;
 }
 table.table-module tr:first-child th a, table.table-module tr:first-child th {
     color: #FFFFFF;
@@ -433,7 +424,7 @@ table.table-module tr:first-child th:first-child {
 }
 
 table.table-module .colactive {
-    background:#444!important;
+    background:#ed2a45!important;
 }
 
 .form-inline .form-control {
@@ -456,7 +447,7 @@ table.table-module .colactive {
 {
     background-color: transparent;
     border-color: transparent;
-    color:#bb233a;
+    color:#ed2a45;
 }
 .form-horizontal .control-label {
     font-family: Verdana;

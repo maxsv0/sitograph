@@ -4,7 +4,7 @@
 
 {foreachelse}
 
-<div class="alert alert-info">No articles was found.</div>
+<div class="alert alert-info">{_t('blog.search_no_result')}</div>
 
 {/foreach} 
         

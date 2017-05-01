@@ -8,14 +8,17 @@
 	<meta name="keywords" content="{$page.keywords}">
 	<meta name="description" content="{$page.description}">
   </head>
-<body style="background-color:#bebebe;">
+<body style="background-color:#333746;">
 
 
 <table align="center" height="100%" width="600" cellpadding="0" cellspacing="0" style="min-height:600px;">
 <tr>
 <td align="left" valign="middle">
-<h1>Error 404</h1>
 
+{if $document.name}
+<h1 style="color:#f6f88c;">{$document.name}</h1>
+{/if}
+	
 {if $document}
 {$document.text}
 {/if}

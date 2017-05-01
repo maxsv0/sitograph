@@ -1,4 +1,4 @@
-<div class="pull-right">
+<div class="text-right">
 
 {if $user.id}
 
@@ -33,6 +33,7 @@
 
 {assign var="items" value=$menu['nouser']}
 
+<ul class="list-unstyled">
 {section name=index loop=$items} 
 
 {if $items[index].url == $page.url}
@@ -42,7 +43,7 @@
 {/if}
 
 {/section}
-
+</ul>
 
 
 </div>

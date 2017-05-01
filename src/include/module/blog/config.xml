@@ -205,7 +205,7 @@
         <field name="blog.label_latest_posts" value="Latest articles"/>
         <field name="blog.label_related_posts" value="Related articles"/>
         <field name="blog.btn_search" value="Search"/>
-        <field name="blog.search_no_result" value="No articles was found."/>
+        <field name="blog.search_no_result" value="No articles were found."/>
 	</locale>
 	<locale name="de">
 		<field name="module.blog" value="Blog"/>

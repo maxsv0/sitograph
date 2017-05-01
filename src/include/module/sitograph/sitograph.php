@@ -21,11 +21,6 @@ function AdminLoad($admin) {
 }
 
 
-$cms_icon = MSV_getConfig("admin_cms_icon");
-if (empty($cms_icon)) {
-	MSV_assignData("admin_cms_icon", "cms_favicon.gif");
-}
-
 $section = "index";
 $menuActive = "index";
 $menuSubActive = "realtime";

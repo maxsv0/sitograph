@@ -7,15 +7,13 @@
 
 
 {foreachelse}
-<div class="col-sm-6 col-md-offset-2">
-<div class="well">No photos was found.</div>
-</div>
+
+<div class="alert alert-info">{_t('gallery.search_no_result')}</div>
+
+
 {/foreach} 
 
 
 
 {assign var="pagination" value=$gallery_pages}
 {include file="$themePath/widget/pagination.tpl"}
-
-
-

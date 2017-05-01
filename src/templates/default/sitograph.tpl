@@ -32,20 +32,20 @@
 		<table cellpadding="0" cellspacing="0" width="100%">
 		<tr>
 			<td>&nbsp;</td>
-			<td align="right"><a style="font-size: 11px; color: #ec1d3d;" href="/admin/?section=manual">{_t("admin.manual")}</a></td>
-			<td align="right" style="padding-right: 10px;"><a style="font-size: 11px; color: #ec1d3d;" href="/?logout">{_t("btn.logout")}</a></td>
+			<td align="right"><a style="font-size: 11px; color: #ed2a45;" href="/admin/?section=manual">{_t("admin.manual")}</a></td>
+			<td align="right" style="padding-right: 10px;"><a style="font-size: 11px; color: #ed2a45;" href="/?logout">{_t("btn.logout")}</a></td>
 		</tr>
 		</table>
 		</div>
 		</td>
             
 	</tr>
-	<tr bgcolor="#3D3D3D" style="border-bottom:3px solid #d7d7d7;border-top:3px solid #313131;">
-		<td><a href="/admin/"><img src="{$content_url}/images/sitograph/sitograph-logo-white-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png" style="border: none;" /></a></td>
+	<tr bgcolor="#333746" style="border-bottom:3px solid #d7d7d7;border-top:3px solid #313131;">
+		<td><a href="/admin/"><img src="{$content_url}/images/sitograph/sitograph-logo-white-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png" style="border: none;height:80px;" /></a></td>
     	<td>
     		<table cellpadding="0" cellspacing="0">
     		<tr>
-    			<td><img src="{$content_url}/images/sitograph/{$admin_cms_icon}"/></td>
+    			<td><img src="{$theme_cms_favicon}"/></td>
     			<td style="padding-left: 10px;"><span style="font-size: 18px; color: #FFFFFF;" >{$host}</span></td>
     		</tr>
     		</table>        
@@ -219,10 +219,10 @@
 	</tr>
 	</tr>
 	<tr>
-		<td bgcolor="#333333" height="81"></td>
-		<td bgcolor="#333333" valign="top" colspan="3">
+		<td bgcolor="#333746" height="81"></td>
+		<td bgcolor="#333746" valign="top" colspan="3">
 			<div>
-			<a href="http://sitograph.com/" target="_blank"><img src="{$content_url}/images/sitograph/sitograph-logo-white-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png"/></a>
+			<a href="http://sitograph.com/" target="_blank"><img src="{$content_url}/images/sitograph/sitograph-logo-white-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png" style="height:80px;"/></a>
 			</div>
 		</td>
 	</tr>

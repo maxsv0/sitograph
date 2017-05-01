@@ -12,9 +12,9 @@
 <install>
 	<param name="name" value="sitograph"/>
 	<param name="version" value="5.2"/>
-	<param name="date" value="13.03.2017"/>
-	<param name="title" value="Сайтограф"/>
-	<param name="description" value="Система Управления Содержимым сайта CMS"/>
+	<param name="date" value="01.05.2017"/>
+	<param name="title" value="Sitograph"/>
+	<param name="description" value="Content Management System. CMS Sitograph"/>
 	
 	<param name="installHook" value="SitographInstall"/>
 	

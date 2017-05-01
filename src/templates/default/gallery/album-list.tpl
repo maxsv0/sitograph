@@ -18,7 +18,7 @@
 	{$album.comments} comments
 	</p>
 	<br />
-	<p><a href="{$lang_url}/gallery/{$album.url}/" class="send-btn more_detals" role="button">Album details</a></p>
+	<p><a href="{$lang_url}/gallery/{$album.url}/" class="btn btn-primary" role="button">Album details</a></p>
 </div>
 
 
