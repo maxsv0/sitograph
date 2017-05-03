@@ -124,8 +124,14 @@ MSV_assignData("table_sort", $sort);
 MSV_assignData("table_sortd", $sortd);
 MSV_assignData("table_sortd_rev", $sortd_rev);
 
+$listLimit = 100;
 
-$resultQuery = API_getDBListPaged($table, "", "`$sort` $sortd", 100, "p");
+// in case of export show all rows
+if (isset($_GET["export"])) {
+	$listLimit = 65000;
+}
+
+$resultQuery = API_getDBListPaged($table, "", "`$sort` $sortd", $listLimit, "p");
 if ($resultQuery["ok"]) {
 	MSV_assignData("admin_list", $resultQuery["data"]);
 	
