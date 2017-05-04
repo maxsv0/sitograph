@@ -49,15 +49,23 @@ Before getting started, we need to setup <b>config.php</b> in the root directory
 Sample config <b>config-sample.php</b> is being used when config.php is not present.
 </p>
 
-{foreach from=$configList key=configName item=configValue}
+{foreach from=$configList key=configName item=configValue name=loop}
+{if $smarty.foreach.loop.index >= 5}
+<div class="form-group collapse">
+{else}
 <div class="form-group">
+{/if}
+
 <label for="imsv_{$configName}" class="col-sm-4 control-label">{$configName}</label>
 <div class="col-sm-8">
 	<input type="text" class="form-control" name="msv_{$configName}" id="imsv_{$configName}" value="{$configValue}" style="width:95%;">
 </div>
 </div>
-{/foreach}
 
+{/foreach}
+<p class="text-right">
+<a href="#" data-toggle="collapse" data-target=".form-group.collapse">More settings</a>
+</p>
 	
 	<p class="text-center">
 	<input type="submit" value="Continue" class="btn btn-lg btp-primary">  

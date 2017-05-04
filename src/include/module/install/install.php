@@ -142,6 +142,9 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
 				if ($resultUser["ok"] && !empty($resultUser["insert_id"])) {
 					$_SESSION['user_id'] = $resultUser["insert_id"];
 					$_SESSION['user_email'] = $_REQUEST["admin_login"];
+					
+					// store website admin email
+					MSV_setConfig("admin_email", $_REQUEST["admin_login"], true, "*");
 				} else {
 					$website->messages["error"][] = "Error adding administrator account: ".$resultUser["msg"];
 				}

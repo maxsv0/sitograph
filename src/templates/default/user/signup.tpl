@@ -40,7 +40,13 @@
 
 {else}
 
-<div class="alert alert-danger">Registration is not allowed. Please contact website administrator.</div>
+<div class="alert alert-danger">
+Registration is not allowed. 
+{if $admin_email}
+<br>Please contact website administrator at
+<a href="mailto:{$admin_email}">{$admin_email}</a>
+{/if}
+</div>
 
 {/if}
 
