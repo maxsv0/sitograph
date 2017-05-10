@@ -1,8 +1,6 @@
 .DS_Store
 .idea
 src/config.php
-src/include/custom/
-src/filemanager/
 src/content/articles/
 src/content/gallery_album/
 src/content/gallery_photos/
