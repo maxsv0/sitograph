@@ -1748,8 +1748,10 @@ function ajax_Upload_Picture() {
 			
 			// store Picture 
 			$fileResult = MSV_storePic($file["tmp_name"], $fileType, $fileName, $table, $field);
-			if (is_numeric($fileResult)) {
+			if (!is_numeric($fileResult)) {
 				echo CONTENT_URL."/".$fileResult;
+			} else {
+				echo $fileResult;
 			}
 		} else {
 			// error
