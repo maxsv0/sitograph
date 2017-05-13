@@ -37,7 +37,7 @@ sudo service apache2 restart
 chmod +x sitograph/mysqlcreate.sh
 sitograph/mysqlcreate.sh root rootpassword sitograph
 ```
-
-First two arguments are username and password to connect to MySQL
-Third argument is a name of database to create
-Fouth argument is a password for a user. Leave blank to generate new password
+mysqlcreate.sh will create new database and user and grant all permissions for this DB
+* First two arguments are username and password to connect to MySQL
+* Third argument is a name of database to create
+* Fouth argument is a password for a user. Leave blank to generate new password
