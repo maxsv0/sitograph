@@ -140,7 +140,7 @@
 		<field name="msg.module_handler_not_found" value="Не найден обработчик модуля"/>
 		<field name="msg.no_stored_image" value="Изображение не загружено"/>
 		<field name="msg.sitemap_generated" value="Sitemap.xml успешно создан"/>
-		<field name="msg.ga_not_configured" value="Google Analytics API не настроен."/>
+		<field name="msg.ga_not_configured" value="Google Analytics API не настроен. Укажите идентификатор отслеживания, чтобы начать сбор статистики."/>
 		<field name="msg.ga_json_not_configured" value="Необходимо указать JSON файл авторизации для Google Service."/>
 
 		<field name="btn.login" value="Войти"/>
@@ -246,7 +246,8 @@
 		<field name="msg.module_handler_not_found" value="Module handler not found"/>
 		<field name="msg.no_stored_image" value="No stored image"/>
 		<field name="msg.sitemap_generated" value="Sitemap.xml successfully created"/>
-		<field name="msg.ga_not_configured" value="Google Analytics API not configured."/>
+		<field name="msg.ga_not_configured" value="Google Analytics not configured. Specify Tracking ID to start gathering statistics."/>
+		<field name="msg.ga_api_not_configured" value="Google Analytics API not configured. "/>
 		<field name="msg.ga_json_not_configured" value="Please specify path to a JSON authorization file for Google Service."/>
 		
 		<field name="btn.login" value="Login"/>
@@ -341,7 +342,7 @@
 		<field name="msg.module_handler_not_found" value="Не вдалося знайти обробник модуля"/>
 		<field name="msg.no_stored_image" value="Зображення не завантажено"/>
 		<field name="msg.sitemap_generated" value="Sitemap.xml успішно створений"/>
-		<field name="msg.ga_not_configured" value="Google Analytics API не настроен."/>
+		<field name="msg.ga_not_configured" value="Google Analytics API не настроен. Укажите идентификатор отслеживания, чтобы начать сбор статистики."/>
 		<field name="msg.ga_json_not_configured" value="Необходимо указать JSON файл авторизации для Google Service."/>
 
     	<field name="btn.login" value="Увійти"/>

@@ -1,3 +1,10 @@
+{if !$google_analytics_code}
+	<div class="alert alert-danger">
+	<b>{_t("msg.ga_not_configured")}</b><br>
+	<a href="/admin/?section=site_settings&edit_key=google_analytics_tracking_id">{_t("admin.site_settings")} (google_analytics_tracking_id)</a>.
+	</div>
+{/if}
+
 {if $GA_access_token}
 
 
@@ -226,8 +233,10 @@ gapi.analytics.ready(function() {
 {else}
 
 	<div class="alert alert-danger">
-	<b>{_t("msg.ga_not_configured")}</b><br>
+	<b>{_t("msg.ga_api_not_configured")}</b><br>
 	{_t("msg.ga_json_not_configured")} <br>
-	<a href="/admin/?section=site_settings&edit_key=googleservice_auth_json">{_t("admin.site_settings")} (googleservice_auth_json)</a>.
+	<a href="/admin/?section=site_settings&edit_key=google_service_auth_json">{_t("admin.site_settings")} (google_service_auth_json)</a>.
 	</div>
+	
+	<img src="/content/images/sitograph/1.jpg" class="img-responsive">
 {/if}

@@ -1,0 +1,24 @@
+<?xml version='1.0'?> 
+<document>
+
+<config>
+	<param name="activationUrl" value="*"/>
+	<param name="activationLevel" value="3"/>
+	<param name="adminMenu" value="0"/>
+</config>
+
+
+<install>
+	<param name="name" value="ga" />
+	<param name="version" value="1.0"/>
+	<param name="date" value="01.06.2016"/>
+	<param name="title" value="Google: Analytics"/>
+	<param name="description" value="Google Analytics Integration"/>
+	
+	<dependency module="msv-core" version="1.0" />
+	
+	<file dir="module" path="google-analytics/google-analytics.php"/>
+	<file dir="module" path="google-analytics/config.xml"/>
+</install>
+
+</document>
