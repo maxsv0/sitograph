@@ -10,7 +10,7 @@
 <br />
 
 
-<h3>{_t("blog.label_рopular_posts")}</h3>
+<h3>{_t("blog.label_popular_posts")}</h3>
 
 {foreach from=$blog_articles_topviews key=article_id item=article} 
 

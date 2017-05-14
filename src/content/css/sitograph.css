@@ -94,14 +94,10 @@ a:hover, .add_link:hover {
 	border-bottom: 1px solid #FFFFFF;
 }
 
-/* для ИЕ */
 *html #login_form input, *html #login_form_focus input {
 	margin-top: -1px;
 	padding-top: 3px;
 }
-
-
-
 
 
 .block_name{

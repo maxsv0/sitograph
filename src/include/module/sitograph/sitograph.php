@@ -6,6 +6,7 @@ MSV_IncludeJSFile("/content/js/sitograph.js");
 MSV_IncludeCSSFile("/content/css/sitograph.css");
 
 MSV_assignData("admin_title", $this->title." ".$this->version." <small>".$this->date."</small>");
+MSV_assignData("admin_title_page", $this->title." ".$this->description." ".$this->version."");
 
 function AdminLoad($admin) {
 	if (DEBUG_PAGE) {

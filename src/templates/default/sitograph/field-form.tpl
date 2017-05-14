@@ -15,7 +15,7 @@
 {else}
     any
 {/if}
-    	<small class="text-muted">х</small> 
+    	<small class="text-muted">x</small> 
 {if $itemField["max-height"]}
     {$itemField["max-height"]} px
 {else}

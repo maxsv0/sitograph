@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    // Меню админки
+    // Admin menu
     $("#menu_left div.mod_box").unbind('click').click(function() {
         if ($(this).hasClass("mod_box_active")) {
         	$(this).addClass("mod_box")
@@ -11,7 +11,7 @@ $(document).ready(function() {
         }
     });
 
-   // скрыть подразделы в структуре сайта 
+   // Site structure -> hide all sub-levels
    if ($("#structure-table").size()>0) {
        $("#structure-table tr").each(function(){
         if ($(this).data("level")>1) {

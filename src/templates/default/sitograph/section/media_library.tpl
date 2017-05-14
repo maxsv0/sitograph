@@ -62,7 +62,7 @@
 {/if}
 </td>
 <td>
-	<a href="{$lang_url}/admin/?section={$admin_section}&media={$mediaID}&delete={$fileInfo.url}" title="{$t['btn.delete']}" class="btn btn-danger" onclick="if (!confirm('Вы уверены что хотите удалить?')) return false;"><span class="glyphicon glyphicon-remove"></span></a>
+	<a href="{$lang_url}/admin/?section={$admin_section}&media={$mediaID}&delete={$fileInfo.url}" title="{$t['btn.delete']}" class="btn btn-danger" onclick="if (!confirm('{$t['btn.remove_confirm']}')) return false;"><span class="glyphicon glyphicon-remove"></span></a>
 </td>
 
 </tr>

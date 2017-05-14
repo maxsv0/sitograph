@@ -226,7 +226,8 @@ gapi.analytics.ready(function() {
 {else}
 
 	<div class="alert alert-danger">
-	<b>Google Analytics API не настроен.</b><br>
-	Необходимо указать JSON файл авторизации для Google Service. Настройки сайта -> <a href="/admin/?section=site_settings&edit_key=googleservice_auth_json">googleservice_auth_json</a>.
+	<b>{_t("msg.ga_not_configured")}</b><br>
+	{_t("msg.ga_json_not_configured")} <br>
+	<a href="/admin/?section=site_settings&edit_key=googleservice_auth_json">{_t("admin.site_settings")} (googleservice_auth_json)</a>.
 	</div>
 {/if}
