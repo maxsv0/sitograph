@@ -238,5 +238,4 @@ gapi.analytics.ready(function() {
 	<a href="/admin/?section=site_settings&edit_key=google_service_auth_json">{_t("admin.site_settings")} (google_service_auth_json)</a>.
 	</div>
 	
-	<img src="/content/images/sitograph/1.jpg" class="img-responsive">
 {/if}

@@ -140,63 +140,7 @@ gapi.analytics.ready(function() {
     pollingInterval: 5
   });
 
-  
-  
-/**
-   * Creates a new DataChart instance showing sessions over the past 30 days.
-   * It will be rendered inside an element with the id "chart-1-container".
-   */
-  var dataChart1 = new gapi.analytics.googleCharts.DataChart({
-    query: {
-      'ids': 'ga:122485389', // <-- Replace with the ids value for your view.
-      'start-date': '30daysAgo',
-      'end-date': 'yesterday',
-      'metrics': 'ga:sessions,ga:users',
-      'dimensions': 'ga:date'
-    },
-    chart: {
-      'container': 'chart-n1-container',
-      'type': 'LINE',
-      'options': {
-        'width': '100%'
-      }
-    }
-  });
-  dataChart1.execute();
 
-
-  /**
-   * Creates a new DataChart instance showing top 5 most popular demos/tools
-   * amongst returning users only.
-   * It will be rendered inside an element with the id "chart-3-container".
-   */
-  var dataChart2 = new gapi.analytics.googleCharts.DataChart({
-    query: {
-      'ids': 'ga:122485389', // <-- Replace with the ids value for your view.
-      'start-date': '30daysAgo',
-      'end-date': 'yesterday',
-      'metrics': 'ga:pageviews',
-      'dimensions': 'ga:pagePathLevel1',
-      'sort': '-ga:pageviews',
-      'filters': 'ga:pagePathLevel1!=/',
-      'max-results': 7
-    },
-    chart: {
-      'container': 'chart-n2-container',
-      'type': 'PIE',
-      'options': {
-        'width': '100%',
-        'pieHole': 4/9,
-      }
-    }
-  });
-  dataChart2.execute();
-
-  
-  
-  
-  
-  
   /**
    * Add CSS animation to visually show the when users come and go.
    */
@@ -242,13 +186,68 @@ gapi.analytics.ready(function() {
     activeUsers.set(data).execute();
 
     // Render all the of charts for this view.
+    renderChartContainer1(data.ids);
+    renderChartContainer2(data.ids);
     renderWeekOverWeekChart(data.ids);
     renderYearOverYearChart(data.ids);
     renderTopBrowsersChart(data.ids);
     renderTopCountriesChart(data.ids);
   });
 
-  /**
+    /**
+     * Creates a new DataChart instance showing sessions over the past 30 days.
+     * It will be rendered inside an element with the id "chart-1-container".
+     */
+    function renderChartContainer1(ids) {
+        var dataChart1 = new gapi.analytics.googleCharts.DataChart({
+            query: {
+                'ids': ids,
+                'start-date': '30daysAgo',
+                'end-date': 'yesterday',
+                'metrics': 'ga:sessions,ga:users',
+                'dimensions': 'ga:date'
+            },
+            chart: {
+                'container': 'chart-n1-container',
+                'type': 'LINE',
+                'options': {
+                    'width': '100%'
+                }
+            }
+        });
+        dataChart1.execute();
+    }
+
+    /**
+     * Creates a new DataChart instance showing top 5 most popular demos/tools
+     * amongst returning users only.
+     * It will be rendered inside an element with the id "chart-3-container".
+     */
+    function renderChartContainer2(ids) {
+        var dataChart2 = new gapi.analytics.googleCharts.DataChart({
+            query: {
+                'ids': ids,
+                'start-date': '30daysAgo',
+                'end-date': 'yesterday',
+                'metrics': 'ga:pageviews',
+                'dimensions': 'ga:pagePathLevel1',
+                'sort': '-ga:pageviews',
+                'filters': 'ga:pagePathLevel1!=/',
+                'max-results': 7
+            },
+            chart: {
+                'container': 'chart-n2-container',
+                'type': 'PIE',
+                'options': {
+                    'width': '100%',
+                    'pieHole': 4 / 9,
+                }
+            }
+        });
+        dataChart2.execute();
+    }
+
+    /**
    * Draw the a chart.js line chart with data from the specified view that
    * overlays session data for the current week over session data for the
    * previous week.
