@@ -88,15 +88,16 @@ class MSV_Website {
 	
 	
 	function start() {
-		if (defined("SITE_CLOSED") && SITE_CLOSED) {
-			$this->outputForbidden();
-		}
-		
 		// set languages
 		if (defined("LANGUAGES")) {
 			$this->languages = explode(",", LANGUAGES);
 		} else {
 			$this->outputError("Can't create website: Languages not set");
+		}
+		
+		// if website closed output text
+		if (defined("SITE_CLOSED") && SITE_CLOSED) {
+			$this->output("Will come back soon.");
 		}
 		
 		// set install flag depending to defined constant
