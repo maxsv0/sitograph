@@ -280,7 +280,7 @@ function UserAdd($email, $email_verified = 0, $password = "", $name = "", $phone
 			}
 			$userinfo["verify_code"] = $user_verify;
 
-			MSV_EmailTemplate("user_registration", $email, $userinfo);
+			MSV_EmailTemplate("user_registration", $email, $userinfo, false);
 		}
 	}
 	
