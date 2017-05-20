@@ -10,7 +10,7 @@ sudo rm /var/www/html/index.html
 ### Install dependencies
 ```
 sudo apt-get update
-sudo apt-get install php7.0-xml php7.0-gd php7.0-mbstring php7.0-mcrypt
+sudo apt-get install php7.0-xml php7.0-gd php7.0-mbstring
 ```
 
 ### Clone from GIT repository
