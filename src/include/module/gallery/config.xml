@@ -18,6 +18,8 @@
 	<filter url="/gallery/" action="GalleryLoad"/>
 	<filter url="/gallery/*" action="GalleryLoadAlbum" setpage="/gallery/"/>
 	
+	<api name="gallery" action="ajaxGalleryRequest"/>
+	
 	<table name="gallery_album" index="url" title="title" useseo="true">
 		<field name="id" type="id"/>
 		<field name="published" type="published"/>

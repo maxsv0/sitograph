@@ -22,6 +22,8 @@
 	<filter url="/blog/" action="BlogLoadArticles"/>
 	<filter url="/blog/*" action="BlogLoadArticleDetails" setpage="/blog/"/>
 	
+	<api name="blog" action="ajaxBlogRequest"/>
+	
 	<table name="articles" index="url" title="title" useseo="1">
 		<field name="id" type="id"/>
 		<field name="published" type="published"/>

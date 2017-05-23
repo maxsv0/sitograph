@@ -5,7 +5,9 @@
 	<param name="activationUrl" value="*"/>
 	<param name="adminMenu" value="0"/>
 	
-	<filter action="apiRequest" url="/api/*/"/>
+	<filter action="apiRequest" url="/api/*"/>
+	<filter action="apiRequest" url="/api/*/*"/>
+	<filter action="apiRequest" url="/api/*/*/*"/>
 </config>
 
 <install>
