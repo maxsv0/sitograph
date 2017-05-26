@@ -4,7 +4,6 @@
 ```
 sudo apt-get update
 sudo apt-get install lamp-server^
-sudo rm /var/www/html/index.html
 ```
 
 ### Install dependencies
@@ -22,6 +21,7 @@ git clone https://github.com/maxsv0/sitograph
 ```
 sudo cp -ar sitograph/src/.  /var/www/html
 sudo chown -R www-data:www-data /var/www/html
+sudo cp -ar sitograph/src/templates/default/.  /var/www/html/templates/custom/
 ```
 
 ### Enable Apache configuration and modules

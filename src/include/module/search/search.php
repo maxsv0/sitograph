@@ -354,7 +354,7 @@ function Get_Search_List($module)
 
 function SearchInstall($module) {
 
-	MSV_Structure_add("all", $module->baseUrl, "Search", "default", "site-search.tpl", 1, "", 10, "everyone");
+	MSV_Structure_add("all", $module->baseUrl, "Search", "custom", "site-search.tpl", 1, "", 10, "everyone");
 	
 }
 

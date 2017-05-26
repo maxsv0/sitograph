@@ -207,8 +207,8 @@ if ($install_step === 3) {
 		$website->messages["success"][] = "SUCCESS: Database connection established.";
 	}
 	
-	if (is_writable(ABS_CUSTOM."smarty/cache")) {
-		$website->messages["error"][] = "ERROR: <b>".ABS_CUSTOM."smarty/cache</b> is not writable";
+	if (is_writable(SMARTY_DIR."cache")) {
+		$website->messages["error"][] = "ERROR: <b>".SMARTY_DIR."cache</b> is not writable";
 	} else {
 		$website->messages["success"][] = "SUCCESS: smarty/cache is writable";
 	}

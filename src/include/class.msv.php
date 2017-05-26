@@ -538,7 +538,7 @@ class MSV_Website {
 		$Smarty->cache_lifetime = 120;
 		
 		$Smarty->template_dir = ABS_TEMPLATE;
-		$compile_dir = ABS_INCLUDE."/custom/smarty/cache";
+		$compile_dir = SMARTY_DIR."cache";
 		if (!is_writeable($compile_dir)) {
 			$this->outputError("Cant write to $compile_dir");
 		}
