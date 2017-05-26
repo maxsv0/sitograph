@@ -42,11 +42,7 @@
 	<file dir="module" path="search/search.php"/>
 	<file dir="module" path="search/config.xml"/>
     
-    
 	<file dir="template" path="default/site-search.tpl"/>
-	<file dir="content" path="css/search.css"/>
-	<file dir="content" path="js/search.js"/>
-    
 </install>
 
 <locales>

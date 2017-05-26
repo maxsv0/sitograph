@@ -17,7 +17,9 @@
 			<div class="phone-block">
  		       <table cellpadding="0" cellspacing="0" width="170" style="margin-bottom:15px">
 				<tr>
-					<td style="padding-right: 10px;"><img src="{$content_url}/images/pic_tel.gif" width="14" height="14"></td>
+					<td style="padding-right: 10px;">
+					<span class="glyphicon glyphicon-earphone" style="color: #FFF;"></span>
+					</td>
 					<td style="font-size: 13px; white-space: nowrap; color: #FFF;">
 					+380 (44) 536-00-66<br/>
 					+380 (93) 898-33-70

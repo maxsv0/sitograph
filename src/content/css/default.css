@@ -264,3 +264,20 @@ div.navigation a:hover {
   background-color: #f6f88c;
   border: 1px solid #333746;
 }
+
+.search-result {
+    margin: 30px 0px;
+}
+.no-left-padding {
+    padding-left:0px
+}
+.search-result input[type="text"] {
+    width: 100%;
+}
+.btn_more {
+    text-align: center;
+    cursor: pointer;
+}
+.btn_more:hover {
+    text-decoration: underline;
+}

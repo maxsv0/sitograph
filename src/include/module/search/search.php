@@ -2,9 +2,6 @@
 
 
  
-MSV_IncludeJSFile(CONTENT_URL."/js/search.js","/search/");
-MSV_IncludeCSSFile(CONTENT_URL."/css/search.css", "/search/");
-
 function ajax_More_Search($module)
 {
     $items_per_page = 10;
