@@ -331,6 +331,18 @@ class MSV_Website {
 		$this->template = $page["template"];
 		$this->pageTemplate = $page["page_template"];
 		
+		// check template file
+		$templatePath = ABS_TEMPLATE."/".$this->template."/".$this->pageTemplate;
+		if (!file_exists($templatePath) || 
+			!is_readable($templatePath) || 
+			!is_file($templatePath)) {
+			
+			// if template not found in dir, fall back to 'default' theme
+			$this->template = 'default';
+			$templatePath = ABS_TEMPLATE."/".$this->template."/".$this->pageTemplate;
+		}
+		$this->pageTemplatePath = $templatePath;
+		
 		return true;
 	}
 	
@@ -721,14 +733,11 @@ class MSV_Website {
 		}
 
 		// check template file
-		$templatePath = ABS_TEMPLATE."/".$this->template."/".$this->pageTemplate;
-		if (!file_exists($templatePath) || 
-			!is_readable($templatePath) || 
-			!is_file($templatePath)) {
-			$this->outputError("Page template not found: $templatePath");
+		if (!file_exists($this->pageTemplatePath) || 
+			!is_readable($this->pageTemplatePath) || 
+			!is_file($this->pageTemplatePath)) {
+			$this->outputError("Page template not found: ".$this->pageTemplatePath);
 		}
-		$this->pageTemplatePath = $templatePath;
-		
 		
 		// proccess post/get admin functions  
 		// TODO: check user rights?? 

@@ -49,10 +49,10 @@ function ThemeDefaultInstall($module) {
 <p>&nbsp;</p>';
 	
 	// create basic site structure
-	MSV_Structure_add("all", "/", _t("structure.homepage"), "default", "index.tpl", 1, "top", 1, "everyone", "");
-	MSV_Structure_add("all", "/example-page/", _t("structure.page1"), "default", "main.tpl", 1, "top", 2, "everyone", "", $docExampleTitle, $docExampleText);
-	MSV_Structure_add("all", "/sitemap/", _t("structure.sitemap"), "default", "sitemap.tpl", 0, "", 0, "everyone", "");
-	MSV_Structure_add("all", "/404/", _t("structure.404"), "default", "404.tpl", 0, "", 0, "everyone", "", $doc404Title, $doc404Text);
+	MSV_Structure_add("all", "/", _t("structure.homepage"), "custom", "index.tpl", 1, "top", 1, "everyone", "");
+	MSV_Structure_add("all", "/example-page/", _t("structure.page1"), "custom", "main.tpl", 1, "top", 2, "everyone", "", $docExampleTitle, $docExampleText);
+	MSV_Structure_add("all", "/sitemap/", _t("structure.sitemap"), "custom", "sitemap.tpl", 0, "", 0, "everyone", "");
+	MSV_Structure_add("all", "/404/", _t("structure.404"), "custom", "404.tpl", 0, "", 0, "everyone", "", $doc404Title, $doc404Text);
 	
 	// theme options
 	MSV_setConfig("theme_active", "theme-default", true, "*");

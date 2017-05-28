@@ -14,6 +14,7 @@ $website = $this->website;
 $website->page = array(1);
 $website->template = "default";
 $website->pageTemplate = "install.tpl";
+$website->pageTemplatePath = ABS_TEMPLATE."/default/install.tpl";
 
 MSV_Include("/content/js/jquery.min.js");
 MSV_Include("/content/css/bootstrap.min.css");
@@ -206,8 +207,7 @@ if ($install_step === 3) {
 	} else {
 		$website->messages["success"][] = "SUCCESS: Database connection established.";
 	}
-	
-	if (is_writable(SMARTY_DIR."cache")) {
+	if (!is_writable(SMARTY_DIR."cache")) {
 		$website->messages["error"][] = "ERROR: <b>".SMARTY_DIR."cache</b> is not writable";
 	} else {
 		$website->messages["success"][] = "SUCCESS: smarty/cache is writable";
