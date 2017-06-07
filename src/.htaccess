@@ -15,7 +15,13 @@ RedirectMatch 403 ^/templates/(.*)$
 
 <IfModule mod_rewrite.c>
 	RewriteEngine On
-
+	
+	RewriteBase /
+	RewriteRule ^index\.php$ - [L]
+	RewriteCond %{REQUEST_URI} !^/pagespeed_global_admin
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule . /index.php?%{QUERY_STRING} [L]
+	
 	RewriteRule ^en(.*)$ $1?lang=en&%{QUERY_STRING} [L]
 	RewriteRule ^ua(.*)$ $1?lang=ua&%{QUERY_STRING} [L]
 </IfModule>
