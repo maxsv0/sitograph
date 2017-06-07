@@ -151,7 +151,7 @@ function GalleryLoadAlbum($gallery) {
 
 function GalleryInstall($module) {
 
-	MSV_Structure_add("all", $module->baseUrl, "My Gallery", "custom", "main-gallery.tpl", 1, "top", 10, "everyone");
+	MSV_Structure_add("all", $module->baseUrl, "Gallery", "custom", "main-gallery.tpl", 1, "top", 10, "everyone");
 	
 }
 

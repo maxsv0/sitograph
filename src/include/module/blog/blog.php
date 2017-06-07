@@ -236,7 +236,7 @@ function BlogLoadArticleDetails($blog) {
 
 function BlogInstall($module) {
 
-	MSV_Structure_add("all", $module->baseUrl, "My Blog", "custom", "main-blog.tpl", 1, "top", 10, "everyone");
+	MSV_Structure_add("all", $module->baseUrl, "Blog", "custom", "main-blog.tpl", 1, "top", 10, "everyone");
 	
 }
 
