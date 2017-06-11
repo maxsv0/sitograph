@@ -1,6 +1,6 @@
 <?php
 
-MSV_IncludeJSFile("/content/js/tinymce/tinymce.min.js");
+MSV_IncludeJSFile("/content/js/tinymce/tinymce.min.js", "", "admin");
 
 
 MSV_includeJS("
@@ -31,5 +31,5 @@ $(document).ready(function() {
 	});
 
  });
-");
+", "", "admin");
 
