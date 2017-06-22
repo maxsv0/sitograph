@@ -3,7 +3,7 @@
 
 <config>
 
-	<param name="activationLevel" value="1"/>
+	<param name="activationLevel" value="2"/>
 	<param name="activationUrl" value="*"/>
 	<param name="adminMenu" value="0"/>
 	
@@ -128,8 +128,13 @@
 		<field name="msg.users.email_verified" value="Email is verified"/>
 		<field name="msg.users.verification_sent" value="Verification Email sent."/>
 		<field name="msg.users.resend_verification" value="Resend Email Activation"/>
+		<field name="msg.users.noaccess" value="Доступ к этой странице запрещен"/>
+		<field name="msg.users.reg_success" value="Вы успешно зарегистрировались на сайте"/>
+		<field name="msg.users.email_not_found" value="Указанный вами Email не найден"/>
 		<field name="users.goto_account" value="Перейти в аккаунт"/>
 		<field name="users.activate_account" value="Активировать аккаунт"/>
+		<field name="users.password_reset" value="Enter your email address that you used to register. We'll send you an email with your username and a link to reset your password."/>
+		<field name="users.form.password_reset" value="Reset Password"/>
 		<field name="users.form.email" value="Email"/>
 		<field name="users.form.password" value="Пароль"/>
 		<field name="users.form.remember_me" value="Запомнить меня"/>
@@ -191,8 +196,13 @@
 		<field name="msg.users.email_verified" value="Email is verified"/>
 		<field name="msg.users.verification_sent" value="Verification Email sent."/>
 		<field name="msg.users.resend_verification" value="Resend Email Activation"/>
+		<field name="msg.users.noaccess" value="Access to this page is denied"/>
+		<field name="msg.users.email_not_found" value="Email was not found"/>
+		<field name="msg.users.reg_success" value="Successfully registered"/>
 		<field name="users.goto_account" value="To Account"/>
 		<field name="users.activate_account" value="Activate Account"/>
+		<field name="users.password_reset" value="Enter your email address that you used to register. We'll send you an email with your username and a link to reset your password."/>
+		<field name="users.form.password_reset" value="Reset Password"/>
 		<field name="users.form.email" value="Email"/>
 		<field name="users.form.password" value="Password"/>
 		<field name="users.form.remember_me" value="Remember me"/>

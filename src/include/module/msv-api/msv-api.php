@@ -669,7 +669,7 @@ function API_itemAdd($table, $fields, $lang = LANG) {
 	
 	$tablesList = MSV_get("website.tables");
 	$infoTable = $tablesList[$table];
-	
+    $filter = "";
 	
 	// check for dublicate
 	$tableIndex = $infoTable["index"];
@@ -767,6 +767,16 @@ function API_itemAdd($table, $fields, $lang = LANG) {
 					$valueEscaped = " '".MSV_SQLEscape($value)."' ";
 				}
 			break;
+            case "date":
+            case "datetime":
+                if (is_numeric($value)) {
+                    $valueEscaped = "'".date("Y-m-d H:i:s", $value)."'";
+                } elseif (!empty($value)) {
+                    $valueEscaped = " '".MSV_SQLEscape($value)."' ";
+                } else {
+                    $valueEscaped = " '0000-00-00 00:00:00' ";
+                }
+                break;
 			default:
 				$valueEscaped = " '".MSV_SQLEscape($value)."' ";
 			break;

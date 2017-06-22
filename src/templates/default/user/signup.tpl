@@ -43,8 +43,7 @@
 <div class="alert alert-danger">
 Registration is not allowed. 
 {if $admin_email}
-<br>Please contact website administrator at
-<a href="mailto:{$admin_email}">{$admin_email}</a>
+  <br>Please contact <a href="/contacts/">website administrator</a>
 {/if}
 </div>
 

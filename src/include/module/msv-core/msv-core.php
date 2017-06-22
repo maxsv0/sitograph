@@ -870,6 +870,7 @@ function MSV_DataFormat($table, $dataRow) {
 			case "multiselect":
 				$dataRow[$field["name"]] = unserialize($value);
 			break;
+			case "updated":
 			case "date":
 			case "datetime":
 				if (!empty($value) && $value !== "0000-00-00 00:00:00") {
@@ -953,7 +954,12 @@ function MSV_SQLEscape($string) {
  * @return string|integer
  */
 function MSV_storeFile($url, $type = "jpg", $name = "", $table = "", $field = "") {
-	
+
+    $typeExt = MSV_formatMimeType($type);
+    if (!empty($typeExt)) {
+        $type = $typeExt;
+    }
+
 	if (empty($url)) {
 		return false;
 	}
@@ -1041,7 +1047,12 @@ function MSV_storeFile($url, $type = "jpg", $name = "", $table = "", $field = ""
  * @return string|integer
  */
 function MSV_storePic($url, $type = "jpg", $name = "", $table = "", $field = "") {
-	
+
+    $typeExt = MSV_formatMimeType($type);
+    if (!empty($typeExt)) {
+        $type = $typeExt;
+    }
+
 	// store original file
 	$fileResult = MSV_storeFile($url, $type, $name, $table, $field);
 	
@@ -1132,7 +1143,7 @@ function MSV_storePic($url, $type = "jpg", $name = "", $table = "", $field = "")
  * @param string $param Optional Name/path of the object to be returned; defaults to 'website'
  * @return mixed
  */
-function MSV_get($param = "website") {
+function &MSV_get($param = "website") {
 
 	global $website;
 	if (empty($website)) {
@@ -1147,9 +1158,9 @@ function MSV_get($param = "website") {
 		
 		$item = $arPath[1];
 		
-		$returnObj = $website->{$item};
+		$returnObj =& $website->{$item};
 	} else {
-		$returnObj = $website;
+		$returnObj =& $website;
 	}
 	
 	return $returnObj;
@@ -1338,7 +1349,7 @@ function MSV_redirect($url) {
 function MSV_outputAdminMenu() {
 	$website = MSV_get("website");
 	
-    $strOut  .='<table width="100%" cellpadding="0" cellspacing="0" class="admin_panel">';
+    $strOut  ='<table width="100%" cellpadding="0" cellspacing="0" class="admin_panel">';
     $strOut  .='<tbody><tr><td width="50%" align="right" style="padding-right:10px;">';
     $strOut  .='<p>'._t("title.back_to_admin").'</p></td>';
     $strOut  .='<td align="left">';
@@ -1774,7 +1785,7 @@ function MSV_EmailTemplate($template, $mailTo, $data = array(), $message = true,
 	// get template
 	$resultMail = API_getDBItem(TABLE_MAIL_TEMPLATES, " `name` = '".MSV_SQLEscape($template)."'", $lang);
 
-	if ($resultMail["ok"]) {
+	if ($resultMail["ok"] && !empty($resultMail["data"])) {
 		$mailSubject = $resultMail["data"]["subject"];
 		$mailBody = $resultMail["data"]["text"];
 		
@@ -1782,46 +1793,43 @@ function MSV_EmailTemplate($template, $mailTo, $data = array(), $message = true,
 		
 		// replace pattern:
 		// {email} into $data["email"]
+        $mailBody = preg_replace_callback(
+            '~\{(\w+?)\}~sU',
+            create_function('$t','
+            $r = MSV_getConfig("dataTemplate");
+            $retText = $t[0];
+            if (defined($t[1])) {
+                $retText = constant($t[1]);
+            }
+            if (array_key_exists($t[1], $r)) {
+                $retText = $r[$t[1]];
+            } 
+            return $retText;
+	        '), $mailBody);
 
-		$mailBody = preg_replace_callback(
-		    '~\{(\w+?)\}~sU',
-		    create_function('$t','
-		   	 $r = MSV_getConfig("dataTemplate");
-		     return $r[$t[1]];
-		    '),
-		    $mailBody);
+        $mailSubject = preg_replace_callback(
+            '~\{(\w+?)\}~sU',
+            create_function('$t','
+            $r = MSV_getConfig("dataTemplate");
+            $retText = $t[0];
+            if (defined($t[1])) {
+                $retText = constant($t[1]);
+            }
+            if (array_key_exists($t[1], $r)) {
+                $retText = $r[$t[1]];
+            } 
+            return $retText;
+	        '), $mailSubject);
 
-		$mailSubject = preg_replace_callback(
-		    '~\{(\w+?)\}~sU',
-		    create_function('$t','
-		   	 $r = MSV_getConfig("dataTemplate");
-		     return $r[$t[1]];
-		    '),
-		    $mailSubject);
-		    
-		    
 		// add header HTML to a body
 		if (!empty($resultMail["data"]["header"])) {
 			$mailBody = $resultMail["data"]["header"].$mailBody;
 		}
-		 
-		$r = MSV_Email($mailTo, $mailSubject, $mailBody);
-		
-		if ($r) {
-			if ($message) {
-				MSV_MessageOK(_t("msg.email_sent_to")."<b>$mailTo</b>");
-			}
-		} else {
-			if ($message) {
-				MSV_MessageError(_t("msg.email_sending_error"));
-			}
-		}
-		
+
+		return MSV_Email($mailTo, $mailSubject, $mailBody);
 	} else {
 		return false;
 	}
-	
-	return true;
 }
 
 /**
@@ -1930,6 +1938,29 @@ function MSV_HighlightText($s, $text, $c) {
 }
 
 
+function MSV_formatMimeType($mimeType) {
+    $mapping = array(
+        'pdf'	=>	array('application/pdf', 'application/force-download', 'application/x-download', 'binary/octet-stream'),
+        'swf'	=>	'application/x-shockwave-flash',
+        'zip'	=>	array('application/x-zip', 'application/zip', 'application/x-zip-compressed', 'application/s-compressed', 'multipart/x-zip'),
+        'rar'	=>	array('application/x-rar', 'application/rar', 'application/x-rar-compressed'),
+        'gif'	=>	'image/gif',
+        'jpeg'	=>	array('image/jpeg', 'image/pjpeg'),
+        'png'	=>	array('image/png',  'image/x-png'),
+        'tif'	=>	'image/tiff',
+    );
+    if (($ext = array_search($mimeType, $mapping, TRUE))) {
+        return $ext;
+    }
+    foreach ($mapping as $ext => $mimeList) {
+        if (is_array($mimeList) && in_array($mimeType, $mimeList)) {
+            return $ext;
+        }
+    }
+    return false;
+}
+
+
 // ********** Install Script ********
 
 /**
@@ -1952,10 +1983,13 @@ function CoreInstall($module) {
 	MSV_setConfig("message_ok", "", true, "*");
 	MSV_setConfig("message_error", "", true, "*");
 	
-	// mailing options
+	// FROM field for all emails send by app
 	MSV_setConfig("email_from", "admin@localhost", true, "*");
 	MSV_setConfig("email_fromname", "Website", true, "*");
 	
+	// email accounts used by app
+	MSV_setConfig("admin_email", "admin@localhost", true, "*");
+	MSV_setConfig("support_email", "admin@localhost", true, "*");
 }
 
 

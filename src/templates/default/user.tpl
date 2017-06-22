@@ -17,6 +17,8 @@
     
     <div class="col-lg-8 col-md-7 col-sm-12">
     	{$document.text}
+
+        {include file="$themePath/widget/messages.tpl"}
         {if $user.id}
         	{include file="$themePath/user/homepage.tpl"}
         {else}

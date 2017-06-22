@@ -138,7 +138,10 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
 		// create superadmin account
 		if (!empty($_REQUEST["admin_create"])) {
 			if (!empty($_REQUEST["admin_login"]) && !empty($_REQUEST["admin_password"])) {
+				// during install to not send emails
+				MSV_setConfig("users_registration_email", false);
 				
+				// add admin account
 				$resultUser = UserAdd($_REQUEST["admin_login"], 1, $_REQUEST["admin_password"], "admin", "", "superadmin", "install");
 				if ($resultUser["ok"] && !empty($resultUser["insert_id"])) {
 					$_SESSION['user_id'] = $resultUser["insert_id"];
@@ -146,6 +149,7 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
 					
 					// store website admin email
 					MSV_setConfig("admin_email", $_REQUEST["admin_login"], true, "*");
+					MSV_setConfig("support_email", $_REQUEST["admin_login"], true, "*");
 				} else {
 					$website->messages["error"][] = "Error adding administrator account: ".$resultUser["msg"];
 				}

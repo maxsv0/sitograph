@@ -1,1 +1,0 @@
-<h1>user-password-reset.tpl</h1>

@@ -16,7 +16,7 @@
 	    <div class="col-sm-8">
 	      <input type="email" class="form-control" id="inputEmail" value="{$user.email}" placeholder="{_t("users.form.email")}" name="user_email" aria-describedby="inputSuccess2Status">
 	      <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
-	      <small class="text-warning">{_t("verification_sent")} <a href="/settings/?doVerify">{_t("resend_verification")}</a></small>
+	      <small class="text-warning">{_t("verification_sent")} <a href="/settings/?doSendVerify">{_t("resend_verification")}</a></small>
 	    </div>
 	</div>
 {/if}

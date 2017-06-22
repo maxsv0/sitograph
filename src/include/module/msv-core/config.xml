@@ -63,7 +63,7 @@
 		<field name="lang" type="lang"/>
 		<field name="name" type="str"/>
 		<field name="subject" type="str"/>
-		<field name="text" type="doc"/>
+		<field name="text" type="text"/>
 		<field name="header" type="text"/>
 	</table>
 	<table name="menu" index="id" title="name">
@@ -373,8 +373,8 @@
 		<field name="msg.saved_ok" value="Saved successfuly"/>
 		<field name="msg.save_error" value="Error during saving"/>
 		<field name="msg.development_version" value="This is development version. Readonly mode."/>
-		<field name="msg.email_sent_to" value="Письмо успешно отправлено на email"/>
-		<field name="msg.email_sending_error" value="Ошибка отправки письма на email "/>
+		<field name="msg.email_sent_to" value="Email was successfully sent to"/>
+		<field name="msg.email_sending_error" value="Error sending email"/>
 		
 		<field name="structure.homepage" value="Homepage"/>
 		<field name="structure.page1" value="Example page"/>
