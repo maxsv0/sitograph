@@ -299,6 +299,9 @@ function MSV_userLoad($userID) {
 	
 	$_SESSION["user_id"] = $userID;
 	$_SESSION["user_email"] = $rowUser["email"];
+	if (empty($rowUser["email_verified"])) {
+        MSV_MessageError(_t("msg.users.verification_needed"));
+    }
 }
 
 function loadUserSession($module) {

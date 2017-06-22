@@ -127,6 +127,7 @@
 		<field name="msg.users.error_sending" value="Ошибка отправки сообщения"/>
 		<field name="msg.users.email_verified" value="Email is verified"/>
 		<field name="msg.users.verification_sent" value="Verification Email sent."/>
+		<field name="msg.users.verification_needed" value="Подтвердите ваш Email."/>
 		<field name="msg.users.resend_verification" value="Resend Email Activation"/>
 		<field name="msg.users.noaccess" value="Доступ к этой странице запрещен"/>
 		<field name="msg.users.reg_success" value="Вы успешно зарегистрировались на сайте"/>
@@ -195,6 +196,7 @@
 		<field name="msg.users.error_sending" value="Error sending email"/>
 		<field name="msg.users.email_verified" value="Email is verified"/>
 		<field name="msg.users.verification_sent" value="Verification Email sent."/>
+		<field name="msg.users.verification_needed" value="To complete and confirm your registration, you’ll need to verify your email address."/>
 		<field name="msg.users.resend_verification" value="Resend Email Activation"/>
 		<field name="msg.users.noaccess" value="Access to this page is denied"/>
 		<field name="msg.users.email_not_found" value="Email was not found"/>
