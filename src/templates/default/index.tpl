@@ -47,7 +47,10 @@
 	</div><!-- row -->
 </div>
 
-
-
+<div class="container content-block">
+	<div class="row">
+        {include file="$themePath/widget/feedback_sticked.tpl"}
+	</div><!-- row -->
+</div>
 
 {include file="$themePath/widget/footer.tpl"}

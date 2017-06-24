@@ -82,11 +82,7 @@
     </div>
   </div>
   <div class="form-group">
-    <div class="col-lg-6 col-sm-6">
-      <button class="login-btn" type="reset"><span class="glyphicon glyphicon-ban-circle">&nbsp;</span>{$t["btn.reset"]}</button>
-      
-    </div>
-    <div class="col-lg-6 col-sm-6">
+    <div class="col-sm-12 text-center">
     <button type="submit" name="doSave" value="1" class="btn btn-primary"><span class="glyphicon glyphicon-ok">&nbsp;</span>{$t["btn.save"]}</button>
     </div>
     

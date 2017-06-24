@@ -46,6 +46,23 @@
 </install>
 
 <locales>
+	<locale name="en">
+		<field name="module.search" value="Search results"/>
+		<field name="table.search" value="Search logs"/>
+		<field name="table.search.id" value="ID"/>
+		<field name="table.search.published" value="Published"/>
+		<field name="table.search.deleted" value="Deleted"/>
+		<field name="table.search.author" value="Author"/>
+		<field name="table.search.updated" value="Updated"/>
+		<field name="table.search.lang" value="Lang"/>
+		<field name="table.search.ip" value="IP"/>
+		<field name="table.search.search_txt" value="Search request"/>
+		<field name="table.search.count" value="Results count"/>
+		<field name="search.btn_search" value="Search"/>
+		<field name="search.label_search_err" value="Nothing was found using keyword «search_str»."/>
+		<field name="search.more_search" value="More results"/>
+		<field name="search.label_search_count" value="Results found:"/>
+	</locale>
 	<locale name="ru">
 		<field name="module.search" value="Результаты поиска"/>
 		<field name="table.search" value="Поисковые запросы"/>
@@ -62,7 +79,6 @@
 		<field name="search.label_search_err" value="По ключевому слову «search_str» ничего не найдено."/>
 		<field name="search.more_search" value="Больше результатов поиска"/>
 		<field name="search.label_search_count" value="Найдено результатов:"/>
-        
 	</locale>
     <locale name="ua">
 		<field name="module.search" value="Результаты поиска"/>

@@ -26,11 +26,11 @@
 			<field name="date" type="date"/>
 			<field name="email" type="str"/>
 			<field name="name" type="str"/>
-			<field name="name_title" type="str"/>
-			<field name="text" type="doc" listskip="1"/>
+			<field name="name_title" type="str" listskip="1"/>
+			<field name="text" type="doc"/>
 			<field name="pic" type="pic" max-width="1200" max-height="900" listskip="1"/>
-			<field name="stars" type="int"/>
-			<field name="ip" type="str"/>
+			<field name="stars" type="int" listskip="1"/>
+			<field name="ip" type="str" listskip="1"/>
 		</table>
 	</config>
 
@@ -64,6 +64,7 @@
 			<field name="table.feedback.lang" value="Lang"/>
 			<field name="table.feedback.sticked" value="Sticked"/>
 			<field name="table.feedback.date" value="Date"/>
+			<field name="table.feedback.email" value="Email"/>
 			<field name="table.feedback.name" value="Name"/>
 			<field name="table.feedback.name_title" value="Name Title"/>
 			<field name="table.feedback.text" value="Text of comment"/>

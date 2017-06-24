@@ -42,8 +42,7 @@ function API_SQL($sqlCode) {
 	$query = mysqli_query($website->config["db"], $sqlCode);
 	
 	$result["data"] = $query;
-	$result["link"] = $website->config["db"];
-	
+
 	if ($query) {
 		
 		$result["insert_id"] = mysqli_insert_id($website->config["db"]);

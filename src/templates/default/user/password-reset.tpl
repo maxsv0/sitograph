@@ -1,7 +1,7 @@
 
 <form class="form-horizontal" method="POST" action="{$lang_url}/password-reset/">
   <div class="form-group">
-    <div class="col-sm-10 col-sm-offset-1 lead">
+    <div class="col-sm-10 col-sm-offset-1">
       {_t("users.password_reset")}
     </div>
   </div>

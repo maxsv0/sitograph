@@ -150,7 +150,7 @@ function MSV_Include($filePath, $url = '', $access = 'everyone') {
  * @return boolean
  */
 function MSV_IncludeCSSFile($filePath, $url = '', $access = 'everyone') {
-	$website = MSV_get("website");
+	$website =& MSV_get("website");
 
 	//TODO check $filePath if correct path/url
 
@@ -175,7 +175,7 @@ function MSV_IncludeCSSFile($filePath, $url = '', $access = 'everyone') {
  * @return boolean
  */
 function MSV_IncludeJSFile($filePath, $url = '', $access = 'everyone') {
-	$website = MSV_get("website");
+	$website =& MSV_get("website");
 
 	//TODO check $filePath if correct path/url
 
@@ -199,7 +199,7 @@ function MSV_IncludeJSFile($filePath, $url = '', $access = 'everyone') {
  * @return boolean
  */
 function MSV_checkInclude($url = '', $access = 'everyone') {
-	$website = MSV_get("website");
+	$website =& MSV_get("website");
 	
 	if (!empty($url)) {
 		if (strpos($website->requestUrl, $url) !== 0) {
@@ -224,7 +224,7 @@ function MSV_checkInclude($url = '', $access = 'everyone') {
  * @return boolean
  */
 function MSV_IncludeCSS($cssCode, $url = '', $access = 'everyone') {
-	$website = MSV_get("website");
+	$website =& MSV_get("website");
 
 	if (!MSV_checkInclude($url, $access)) {
 		return false;
@@ -245,7 +245,7 @@ function MSV_IncludeCSS($cssCode, $url = '', $access = 'everyone') {
  * @return boolean
  */
 function MSV_IncludeJS($jsCode, $url = '', $access = 'everyone') {
-	$website = MSV_get("website");
+	$website =& MSV_get("website");
 
 	if (!MSV_checkInclude($url, $access)) {
 		return false;
@@ -266,7 +266,7 @@ function MSV_IncludeJS($jsCode, $url = '', $access = 'everyone') {
  * @return boolean
  */
 function MSV_IncludeHTML($htmlCode, $url = '', $access = 'everyone') {
-	$website = MSV_get("website");
+	$website =& MSV_get("website");
 
 	if (!MSV_checkInclude($url, $access)) {
 		return false;
@@ -278,7 +278,7 @@ function MSV_IncludeHTML($htmlCode, $url = '', $access = 'everyone') {
 }
 
 function MSV_Log($logText = "", $type = "warning") {
-	$website = MSV_get("website");
+	$website =& MSV_get("website");
 	
 	$website->log($logText, $type);
 	
@@ -294,7 +294,7 @@ function MSV_Log($logText = "", $type = "warning") {
 function MSV_MessageOK($messageText = "") {
 	if (empty($messageText)) return false;
 	
-	$website = MSV_get("website");
+	$website =& MSV_get("website");
 	$website->messages["success"][] = $messageText;
 	
 	return true;
@@ -309,7 +309,7 @@ function MSV_MessageOK($messageText = "") {
 function MSV_MessageError($messageText = "") {
 	if (empty($messageText)) return false;
 	
-	$website = MSV_get("website");
+	$website =& MSV_get("website");
 	$website->messages["error"][] = $messageText;
 	
 	return true;
@@ -467,14 +467,8 @@ function MSV_LoadSiteSettings() {
 	}
 }
 
-/**
- * Searches for config value with name $param
- *
- * @param string $param Name of the config parameter
- * @return mixed
- */
 function MSV_setConfig($param, $value, $updateDB = false, $lang = LANG) {
-	$website = MSV_get("website");
+	$website =& MSV_get("website");
 	
 	// TODO : CHECK ... 
 	if (array_key_exists($param, $website->config)) {
@@ -483,7 +477,6 @@ function MSV_setConfig($param, $value, $updateDB = false, $lang = LANG) {
 		if ($updateDB) {
 			return API_updateDBItem(TABLE_SETTINGS, "value", "'".MSV_SQLEscape($value)."'", " `param` = '".$param."'");
 		}
-		
 	} else {
 		$website->config[$param] = $value;
 		
@@ -501,6 +494,12 @@ function MSV_setConfig($param, $value, $updateDB = false, $lang = LANG) {
 	return true;
 }
 
+/**
+ * Searches for config value with name $param
+ *
+ * @param string $param Name of the config parameter
+ * @return mixed
+ */
 function MSV_getConfig($param) {
 	$website = MSV_get("website");
 	
@@ -1760,7 +1759,7 @@ function MSV_EmailDefault($to = "", $subject = "", $body = "", $header = "") {
  * @return boolean 
  */
 function MSV_Email($to = "", $subject = "", $body = "", $header = "") {
-	
+	// get Mailer function
 	$mailer = MSV_getConfig("mailer");
 
 	return call_user_func_array($mailer, array($to, $subject, $body, $header));
@@ -1801,6 +1800,10 @@ function MSV_EmailTemplate($template, $mailTo, $data = array(), $message = true,
             if (defined($t[1])) {
                 $retText = constant($t[1]);
             }
+            $config = MSV_getConfig($t[1]);
+            if (!empty($config)) {
+                $retText = $config;
+            }
             if (array_key_exists($t[1], $r)) {
                 $retText = $r[$t[1]];
             } 
@@ -1814,6 +1817,10 @@ function MSV_EmailTemplate($template, $mailTo, $data = array(), $message = true,
             $retText = $t[0];
             if (defined($t[1])) {
                 $retText = constant($t[1]);
+            }
+            $config = MSV_getConfig($t[1]);
+            if (!empty($config)) {
+                $retText = $config;
             }
             if (array_key_exists($t[1], $r)) {
                 $retText = $r[$t[1]];
