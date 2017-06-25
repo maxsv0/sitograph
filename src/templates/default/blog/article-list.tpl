@@ -1,7 +1,7 @@
 {if $article.sections}
 <div class="category-block">
 {foreach from=$article.sections item=category name=loop} 
-<h4><a href="{$lang_url}/blog/?{$blog.categoryUrlParam}={$category.url}">{$category.title}</a></h4>
+<h4><a href="{$lang_url}{$blog.baseUrl}?{$blog.categoryUrlParam}={$category.url}">{$category.title}</a></h4>
 {if !$smarty.foreach.loop.last} / {/if}
 {/foreach}
 </div>
@@ -10,11 +10,11 @@
 
 <div class="articles-block">
 
-<h2><a href="{$lang_url}/blog/{$article.url}/">{$article.title}</a></h2>
+<h2><a href="{$lang_url}{$blog.baseUrl}{$article.url}/">{$article.title}</a></h2>
 
 <div class="row article-info-block">
 	<div class="col-sm-6 text-muted small">
-	<a href="{$lang_url}/blog/?{$blog.authorUrlParam}={$article.author}">{$article.author}</a> 
+	<a href="{$lang_url}{$blog.baseUrl}?{$blog.authorUrlParam}={$article.author}">{$article.author}</a>
 	posted on {$article.date}
 	</div>
 	
@@ -36,7 +36,7 @@
 
 {if $article.pic_preview}
 <div class="article-media-block">
-<a href="{$lang_url}/blog/{$article.url}/">
+<a href="{$lang_url}{$blog.baseUrl}{$article.url}/">
 <img src="{$article.pic_preview}" alt="" class="thumbnail img-responsive"/>
 </a>
 </div>
@@ -49,7 +49,7 @@
 </div>
 
 <div class="article-more-block">
-<a href="{$lang_url}/blog/{$article.url}/" class="btn btn-primary">{_t("blog.continue_reading")}</a>
+<a href="{$lang_url}{$blog.baseUrl}{$article.url}/" class="btn btn-primary">{_t("blog.continue_reading")}</a>
 </div>
 
 

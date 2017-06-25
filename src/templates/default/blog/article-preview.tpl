@@ -1,13 +1,13 @@
 
 <div class="article-title-block">
-<h2><a href="/blog/{$article.url}/">{$article.title}</a></h2>
+<h2><a href="{$blog.baseUrl}{$article.url}/">{$article.title}</a></h2>
 </div>
 
 
 <div class="article-info-block">
 	<div class="row">
 	<div class="col-sm-6 text-muted small">
-		<a href="{$lang_url}/blog/?{$blog.authorUrlParam}={$article.author}">{$article.author}</a> 
+		<a href="{$lang_url}{$blog.baseUrl}?{$blog.authorUrlParam}={$article.author}">{$article.author}</a>
 		posted on {$article.date}
 		</div>
 		
@@ -32,7 +32,7 @@
 
 {if $article.pic_preview}
 <div class="article-media-block">
-<a href="/blog/{$article.url}/" title="{$article.title}">
+<a href="{$blog.baseUrl}{$article.url}/" title="{$article.title}">
 <img src="{$article.pic_preview}" alt="{$article.title}" class="thumbnail img-responsive">
 </a>
 </div>

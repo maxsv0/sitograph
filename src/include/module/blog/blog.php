@@ -35,6 +35,9 @@ function BlogLoadArticles($blog) {
     		$sqlFilter .= "$v like '%$sn%' or ";
     	}
     	$sqlFilter = substr($sqlFilter, 0, -3).") ";
+
+        MSV_assignData("blog_articles_search", 1);
+        MSV_assignData("blog_articles_search_keyword", $_GET[$blog->searchUrlParam]);
     }
     if (!empty($_GET[$blog->authorUrlParam])) {
     	$sn = MSV_SQLEscape($_GET[$blog->authorUrlParam]);

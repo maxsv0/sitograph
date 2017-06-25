@@ -1,6 +1,6 @@
 <div class="container">
 
-<h3><a href="/gallery/{$album.url}/">{$album.title}</a></h3>
+<h3><a href="{$gallery.baseUrl}{$album.url}/">{$album.title}</a></h3>
 
 <div class="row">	
 <div class="col-sm-3">Author: <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {$album.author}</div>

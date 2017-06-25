@@ -2,7 +2,7 @@
 {if $blog_article_details.sections}
 <div class="category-block">
 {foreach from=$blog_article_details.sections item=category name=loop} 
-<h4><a href="{$lang_url}/blog/?{$blog.categoryUrlParam}={$category.url}">{$category.title}</a></h4>
+<h4><a href="{$lang_url}{$blog.baseUrl}?{$blog.categoryUrlParam}={$category.url}">{$category.title}</a></h4>
 {if !$smarty.foreach.loop.last} / {/if}
 {/foreach}
 </div>
@@ -12,7 +12,7 @@
 <div class="article-info-block">
 	<div class="row">
 	<div class="col-sm-6 text-muted small">
-		<a href="{$lang_url}/blog/?{$blog.authorUrlParam}={$blog_article_details.author}">{$blog_article_details.author}</a> 
+		<a href="{$lang_url}{$blog.baseUrl}?{$blog.authorUrlParam}={$blog_article_details.author}">{$blog_article_details.author}</a>
 		posted on {$blog_article_details.date}
 		</div>
 		
@@ -47,7 +47,7 @@
 {if $blog_article_details.categories}
 <div class="category2-block">
 {foreach from=$blog_article_details.categories item=category} 
-<a href="/blog/?{$blog.categoryUrlParam}={$category.url}" class="btn btn-default">{$category.title}</a>
+<a href="{$blog.baseUrl}?{$blog.categoryUrlParam}={$category.url}" class="btn btn-default">{$category.title}</a>
 {/foreach}
 </div>
 {/if}
@@ -82,11 +82,11 @@
 <div class="col-sm-6 col-md-4 rowItem">
 {if $article.pic_preview}
 <div class="article-media-block">
-	<a href="{$lang_url}/blog/{$article.url}/"><img src="{$article.pic_preview}" alt="{$article.title}" class="img-responsive"></a>
+	<a href="{$lang_url}{$blog.baseUrl}{$article.url}/"><img src="{$article.pic_preview}" alt="{$article.title}" class="img-responsive"></a>
 </div>
 {/if}
 <div class="article-title-block">  
-    <a href="{$lang_url}/blog/{$article.url}/"><h4 class="media-heading">{$article.title}</h4></a>
+    <a href="{$lang_url}{$blog.baseUrl}{$article.url}/"><h4 class="media-heading">{$article.title}</h4></a>
 </div>  
 {if !$article.pic_preview}
 <p>
@@ -107,14 +107,14 @@
 <div class="media">
 {if $article.pic_preview}
   <div class="media-left">
-    <a href="{$lang_url}/blog/{$article.url}/">
+    <a href="{$lang_url}{$blog.baseUrl}{$article.url}/">
       <img class="media-object" src="{$article.pic_preview}" alt="{$article.title}" width="120">
 
     </a>
   </div>
 {/if}
   <div class="media-body">
-    <h4 class="media-heading"><a href="{$lang_url}/blog/{$article.url}/">{$article.title}</a></h4>
+    <h4 class="media-heading"><a href="{$lang_url}{$blog.baseUrl}{$article.url}/">{$article.title}</a></h4>
     
  	{if $article.description}
 	<p>{$article.description}</p>

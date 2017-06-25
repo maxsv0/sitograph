@@ -18,13 +18,13 @@
 <div class="media">
 {if $article.pic_preview}
   <div class="media-left">
-    <a href="{$lang_url}/blog/{$article.url}/">
+    <a href="{$lang_url}{$blog.baseUrl}{$article.url}/">
       <img class="media-object" src="{$article.pic_preview}" alt="{$article.title}" width="64">
     </a>
   </div>
 {/if}
   <div class="media-body">
-    <a href="{$lang_url}/blog/{$article.url}/">{$article.title}</a>
+    <a href="{$lang_url}{$blog.baseUrl}{$article.url}/">{$article.title}</a>
   </div>
 </div>
 

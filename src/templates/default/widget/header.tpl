@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{LANG}">
 <head>
 	<meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -30,7 +30,7 @@
 		</div>
 		<div class="col-sm-4">
 			<div class="search-block">
-				<form action="{$lang_url}/search/?search" method="post">
+				<form action="{$lang_url}{$search.baseUrl}?search" method="post">
 					<input type="text" name="keyword" class="input-sm" value="{$search_str}" placeholder="{_t("form.search_lable")}"/>
 					<button type="submit" value="search" class="btn btn-sm">{_t("btn.search")}</button>
 				</form>
@@ -43,7 +43,7 @@
 				
 				<a href="/sitemap/" class="sitemap-ico"></a>
 				<span class="top-delimiter"></span>
-				<a href="/contacts/" class="mail-ico"></a>
+				<a href="{$feedback.baseUrl}" class="mail-ico"></a>
 				<span class="top-delimiter"></span>
 		</p>
 				

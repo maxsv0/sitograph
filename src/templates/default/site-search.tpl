@@ -19,7 +19,7 @@
             {$document.text}
 
             <h4>{_t("blog.label_search")}</h4>
-            <form class="row" action="{$lang_url}/search/?search" method="post">
+            <form class="row" action="{$lang_url}{$search.baseUrl}?search" method="post">
                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-7">
                     <input type="text" id="inputSearch" name="keyword" value="{$search_str}" placeholder="{_t("search.btn_search")}" class="form-control"/>
                 </div>
