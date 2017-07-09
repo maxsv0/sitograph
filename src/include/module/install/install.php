@@ -140,9 +140,18 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
 			if (!empty($_REQUEST["admin_login"]) && !empty($_REQUEST["admin_password"])) {
 				// during install to not send emails
 				MSV_setConfig("users_registration_email", false);
-				
+
+				$item = array(
+				    "email" => $_REQUEST["admin_login"],
+				    "password" => $_REQUEST["admin_password"],
+				    "email_verified" => 1,
+				    "name" => "Admin",
+				    "access" => "superadmin",
+                    "iss" => "install",
+                );
+
 				// add admin account
-				$resultUser = UserAdd($_REQUEST["admin_login"], 1, $_REQUEST["admin_password"], "admin", "", "superadmin", "install");
+				$resultUser = User_Add($item, 0, 0);
 				if ($resultUser["ok"] && !empty($resultUser["insert_id"])) {
 					$_SESSION['user_id'] = $resultUser["insert_id"];
 					$_SESSION['user_email'] = $_REQUEST["admin_login"];

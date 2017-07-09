@@ -43,10 +43,6 @@ a:hover, .add_link:hover {
 }
 /* ----------------- */
 
-.admin_mode_link:hover {
-    color: #ffffff;
-}
-
 
 #login_form {
 }
@@ -135,11 +131,13 @@ a:hover, .add_link:hover {
 }
 /* ----------------- */
 .admin_mode_link {
-    font-size: 10px; 
+    font-size: 16px;
+    line-height:18px;
     color: #FFFFFF;
 }
 .admin_mode_link:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    color:#ed2a45;
 } 
 
 #menu_left div, #menu_left div div {
@@ -243,11 +241,6 @@ h1,h4 {
     width:100%; 
     margin-left:0px;
     padding: 10px 0;
-}
-
-.highlight {
-    font-weight:bold;
-    background-color: yellow;
 }
 
 

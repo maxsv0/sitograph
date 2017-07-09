@@ -17,10 +17,8 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
 		if ($tableInfo["useseo"]) {
 			// make item Url
 			$itemUrl = $sectionObj->baseUrl.$_POST["form_url"];
-			if (FORSE_TRAILING_SLASH) {
-				$itemUrl .= "/";
-			}
-			
+			$itemUrl .= "/";
+
 			// save seo
 			$resultQuerySEO = API_getDBItem(TABLE_SEO, "`url` = '".MSV_SQLescape($itemUrl)."'");
 			if ($resultQuerySEO["ok"] && !empty($resultQuerySEO["data"])) {
@@ -33,7 +31,12 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
 				$resultSave = API_updateDBItemRow(TABLE_SEO, $rowSEO);
                 MSV_SitemapGenegate();
 			} else {
-				$resultSave = SEO_add($itemUrl, $_POST["form_seo_title"], $_POST["form_seo_description"], $_POST["form_seo_keywords"],($_POST["form_published"] == 1 ? 1:0));
+                // extract data from request for corresponding table
+                $item = MSV_proccessTableData(TABLE_SEO, "form_seo_");
+
+                // execute request
+                $resultSave = SEO_add($item);
+
                 if ($_POST["form_published"] == 1) {
                     MSV_SitemapGenegate();
                 }
@@ -60,10 +63,8 @@ if (!empty($_REQUEST["edit"])) {
 		
 		// make item Url
 		$itemUrl = $sectionObj->baseUrl.$resultQueryItem["data"]["url"];
-		if (FORSE_TRAILING_SLASH) {
-			$itemUrl .= "/";
-		}
-		
+		$itemUrl .= "/";
+
 		// get item SEO
 		$resultQuerySEO = API_getDBItem(TABLE_SEO, "`url` = '".MSV_SQLescape($itemUrl)."'");
 		if ($resultQuerySEO["ok"]) {

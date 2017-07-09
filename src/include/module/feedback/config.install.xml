@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+<install>
+	<param name="name" value="feedback"/>
+	<param name="version" value="1.0"/>
+	<param name="date" value="09.07.2017"/>
+	<param name="installHook" value="FeedbackInstall"/>
+	<param name="title" value="Feedback module"/>
+	<param name="description" value="Users feedback, contacts form, use cases for website"/>
+
+	<dependency module="msv-core" version="1.0" />
+	<dependency module="msv-api" version="1.0" />
+
+	<file dir="module" path="feedback/feedback.php"/>
+	<file dir="module" path="feedback/config.xml"/>
+	<file dir="template" path="default/main-feedback.tpl"/>
+	<file dir="template" path="default/feedback/main.tpl"/>
+	<file dir="template" path="default/widget/feedback-sticked.tpl"/>
+</install>
+</document>

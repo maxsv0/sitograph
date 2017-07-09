@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+	<install>
+	<param name="name" value="msv-users"/>
+	<param name="version" value="1.2"/>
+	<param name="date" value="09.07.2017"/>
+	<param name="installHook" value="UsersInstall"/>
+	<param name="title" value="MSVUsers"/>
+	<param name="description" value="Users auth functions for MSV"/>
+	
+	<dependency module="msv-core" version="1.0" />
+	<dependency module="msv-api" version="1.0" />
+	
+	<file dir="module" path="msv-users/msv-users.php"/>
+	<file dir="module" path="msv-users/config.xml"/>
+
+	<file dir="template" path="default/user.tpl"/>
+	<file dir="template" path="default/user-login.tpl"/>
+	<file dir="template" path="default/user-signup.tpl"/>
+	<file dir="template" path="default/user-password-reset.tpl"/>
+	<file dir="template" path="default/user-settings.tpl"/>
+	<file dir="template" path="default/user/homepage.tpl"/>
+	<file dir="template" path="default/user/login.tpl"/>
+	<file dir="template" path="default/user/signup.tpl"/>
+	<file dir="template" path="default/user/settings.tpl"/>
+	<file dir="template" path="default/user/user-password-reset.tpl"/>
+	<file dir="template" path="default/widget/menu-user.tpl"/>
+</install>
+
+</document>

@@ -1,0 +1,30 @@
+<h3>Basic folder structure</h3>
+<pre>
+/
+├── content/
+│   ├── css/
+│   ├── fonts/
+│   ├── images/
+│   └── js/
+├── include/
+│   ├── custom/
+│   └── module/
+└── templates/
+    ├── default/
+    └── custom/
+</pre>
+<h3>Purpose and usage of folders</h3>
+<li><code>content/</code> is a File Storage. Files from this folder are sent directly to a browser. <br>CSS, JS, fonts, images and other files can be placed here.</li>
+<li><code>include/</code> is a main application folder. <br>Module controllers and settings are stored in <code>include/module</code>. </li>
+<li><code>templates/</code> folder stores UI templates for the website and CMS.</li>
+</ul>
+<br>
+<p>
+    The MSV application is build using Model-View-Controller pattern.
+</p>
+<ul>
+    <li><b>The Model</b> contains two classes <code>class.msv.php</code>, <code>class.module.php</code>.</li>
+    <li><b>The View</b> is a set of *.tpl files stored in <code>templates/</code> folder together with *.css/*.js stored in <code>content/</code>.</li>
+    <li><b>The Controller</b> is a set of modules that implements website functionality and can be found in <code>include/module.</code></li>
+</ul>
+<br>

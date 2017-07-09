@@ -21,12 +21,11 @@
 					<span class="glyphicon glyphicon-earphone" style="color: #FFF;"></span>
 					</td>
 					<td style="font-size: 13px; white-space: nowrap; color: #FFF;">
-					+380 (44) 536-00-66<br/>
-					+380 (93) 898-33-70
+                        {$theme_header_contacts}
 					</td>
 				</tr>
 				</table>
-            </div>  
+            </div>
 		</div>
 		<div class="col-sm-4">
 			<div class="search-block">

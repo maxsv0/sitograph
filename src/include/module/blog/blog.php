@@ -1,4 +1,7 @@
 <?php
+// admin user features
+MSV_addAdminEdit(".articles-block", "blog", TABLE_BLOG_ARTICLES);
+
 function BlogLoadPreview($blog) {
 	 $resultQuery = API_getDBList(TABLE_BLOG_ARTICLES, "", "`views` desc, `date` desc", $blog->previewItemsCount, "");
 	 if ($resultQuery["ok"]) {
@@ -41,7 +44,7 @@ function BlogLoadArticles($blog) {
     }
     if (!empty($_GET[$blog->authorUrlParam])) {
     	$sn = MSV_SQLEscape($_GET[$blog->authorUrlParam]);
-    	$sqlFilter .= " and author like '$sn' ";
+    	$sqlFilter .= " and email like '$sn' ";
     }
     // ************************************
     
@@ -102,8 +105,15 @@ function BlogLoadArticles($blog) {
 	} 
 	
 	// get a list of albums from API result
-	$listItems = $resultQuery["data"];
-	
+	$listItems = array();
+	foreach ($resultQuery["data"] as $id => $item) {
+        if (!empty($_GET[$blog->searchUrlParam])) {
+            $item["title"] = MSV_HighlightText($_GET[$blog->searchUrlParam], $item["title"], 10);
+            $item["description"] = MSV_HighlightText($_GET[$blog->searchUrlParam], $item["description"], 10);
+        }
+        $listItems[$id] = $item;
+    }
+
 	// get a list of pages from API result
 	$listPages = $resultQuery["pages"];
 	
@@ -233,100 +243,3 @@ function BlogLoadArticleDetails($blog) {
 	// assign data to template
 	MSV_assignData("blog_article_details", $article);
 }
-
-
-
-
-function BlogInstall($module) {
-
-	MSV_Structure_add("all", $module->baseUrl, "Blog", "custom", "main-blog.tpl", 1, "top", 10, "everyone");
-	
-}
-
-
-function Blog_add($url, $post_date = "", $post_title = "", $post_description = "", $post_content = "", $pic = "", $pic_preview = "", $views = 0, $shares = 0, $lang = LANG) {
-	if (empty($post_date)) {
-		$post_date = "NOW()";
-	}
-	
-	// url for attached files
-	$picPath = $picPathPreview = "";
-	
-	// save photo file
-	if (!empty($pic)) {
-		$fileResult = MSV_storePic($pic, "jpg", "", TABLE_BLOG_ARTICLES, "pic");
-		
-		// if result is number - some error occurred
-		if (!is_numeric($fileResult)) {
-			$picPath = $fileResult;
-		}
-	}
-	
-	// save preview file
-	if (!empty($pic_preview)) {
-		$fileResult = MSV_storePic($pic_preview, "jpg", "", TABLE_BLOG_ARTICLES, "pic_preview");
-		
-		// if result is number - some error occurred
-		if (!is_numeric($fileResult)) {
-			$picPathPreview = $fileResult;
-		}
-	}
-	
-	// prepare data for insertion
-	$item = array(
-		"published" => 1,
-		"url" => $url,
-		"date" => $post_date,
-		"title" => $post_title,
-		"description" => $post_description,
-		"text" => $post_content,
-		"pic" => $picPath,
-		"pic_preview" => $picPathPreview,
-		"views" => $views,
-		"shares" => $shares,
-	);
-	
-	// add items to database
-	$result = API_itemAdd(TABLE_BLOG_ARTICLES, $item, $lang);
-	
-	if ($result["ok"]) {
-		$blog = MSV_get("website.blog");
-		SEO_add($blog->baseUrl.$url."/", $post_title, $post_title, $post_title, 1, $lang);
-	}
-	
-	return $result;
-}
-
-
-function ajaxBlogRequest($module) {
-	
-	$request = MSV_get('website.requestUrlMatch');
-	$apiType = $request[2];
-	
-	switch ($apiType) {
-		case "list":
-			$resultQuery = API_getDBList(TABLE_BLOG_ARTICLES, "", "`date` desc", 999, "");
-			break;
-		case "category":
-			$resultQuery = API_getDBList(TABLE_BLOG_ARTICLE_CATEGORIES, "", "", 999, "");
-			break;
-		case "details":
-			$articleID = (int)$request[3];
-			$resultQuery = API_getDBItem(TABLE_BLOG_ARTICLES, " id = '".$articleID."'");
-			break;
-		default:
-			$resultQuery = array(
-	            "ok" => false,
-	            "data" => array(),
-	            "msg" => "Wrong API call",
-	        );
-			break;
-	}
-	
-	// do not output sql for security reasons
-	unset($resultQuery["sql"]);
-	
-	// output result as JSON
-    return json_encode($resultQuery);
-}
-

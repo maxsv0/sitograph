@@ -33,7 +33,7 @@
 <install>
 	<param name="name" value="search"/>
 	<param name="version" value="1.0"/>
-	<param name="date" value="04.01.2017"/>
+	<param name="date" value="09.07.2017"/>
 	<param name="title" value="Поиск по сайту"/>
 	<param name="description" value="Поиск по сайту"/>
 	

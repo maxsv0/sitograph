@@ -10,14 +10,13 @@
 				<div class="col-sm-3">Git Repository</div>
 				<div class="col-sm-9">
 					<p>
-					<a href="https://github.com/maxsv0/sitograph" target="_blank">github.com/maxsv0/sitograph</a>  <small>CMS</small><br>
-					<a href="https://github.com/maxsv0/msv" target="_blank">github.com/maxsv0/msv</a> <small>PHP Framework</small>
+					<a href="https://github.com/maxsv0/sitograph" target="_blank">github.com/maxsv0/sitograph</a>
 					</p>
 				</div>
 				
 				<div class="col-sm-3">Report a problem</div>
 				<div class="col-sm-9">
-						<p>info@sitograph.com or <a href="/contacts/">feedback form</a></p>
+						<p>info@sitograph.com or <a href="https://support.sitograph.com">sitograph.com</a></p>
 				</div>
 			</div>	
  		</div>
@@ -37,7 +36,6 @@
 
 
 {$htmlFooter}
-{$admin_menu}
 
 </body>
 </html>

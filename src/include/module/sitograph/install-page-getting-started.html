@@ -1,0 +1,342 @@
+<h3>Default Sitograph Website</h3>
+<p>Website Structure is stored in table <code>TABLE_STRUCTURE</code></p>
+<p>Default website structure is presented in table below.</p>
+<table class="table">
+    <tr>
+        <th class="col-sm-3">URL</th>
+        <th class="col-sm-3">Template</th>
+        <th class="col-sm-1">Access</th>
+        <th class="col-sm-5">Description</th>
+    </tr>
+    <tr>
+        <td><a href="/" target="_blank">/</a></td>
+        <td>index.tpl</td>
+        <td>everyone</td>
+        <td>Homepage</td>
+    </tr>
+    <tr>
+        <td><a href="/example-page/" target="_blank">/example-page/</a></td>
+        <td>custom/main.tpl</td>
+        <td>everyone</td>
+        <td>Simple text page</td>
+    </tr>
+    <tr>
+        <td><a href="/sitograph/getting-started/" target="_blank">/sitograph/getting-started/</a></td>
+        <td>custom/main-sideblock.tpl</td>
+        <td>everyone</td>
+        <td>Getting Started with Sitograph</td>
+    </tr>
+    <tr>
+        <td><a href="/sitograph/file-structure/" target="_blank">/sitograph/file-structure/</a></td>
+        <td>custom/main-sideblock.tpl</td>
+        <td>everyone</td>
+        <td>Sitograph File structure</td>
+    </tr>
+    <tr>
+        <td><a href="/sitograph/modules/" target="_blank">/sitograph/modules/</a></td>
+        <td>custom/main-modules.tpl</td>
+        <td>everyone</td>
+        <td>Sitograph modules</td>
+    </tr>
+    <tr>
+        <td><a href="/sitograph/API/" target="_blank">/sitograph/API/</a></td>
+        <td>custom/main-sideblock.tpl</td>
+        <td>everyone</td>
+        <td>Website public API</td>
+    </tr>
+    <tr>
+        <td><a href="/blog/" target="_blank">/blog/*</a></td>
+        <td>custom/main-blog.tpl</td>
+        <td>everyone</td>
+        <td>Blog section: articles list, search, article details page</td>
+    </tr>
+    <tr>
+        <td><a href="/gallery/" target="_blank">/gallery/*</a></td>
+        <td>custom/main-gallery.tpl</td>
+        <td>everyone</td>
+        <td>Gallery section: albums list, search, album photops page</td>
+    </tr>
+    <tr>
+        <td><a href="/contacts/" target="_blank">/contacts/</a></td>
+        <td>custom/main-feedback.tpl</td>
+        <td>everyone</td>
+        <td>Form feedback for users</td>
+    </tr>
+    <tr>
+        <td><a href="/search/" target="_blank">/search/</a></td>
+        <td>custom/site-search.tpl</td>
+        <td>everyone</td>
+        <td>Results page for text search</td>
+    </tr>
+    <tr>
+        <td><a href="/sitemap/" target="_blank">/sitemap/</a></td>
+        <td>custom/sitemap.tpl</td>
+        <td>everyone</td>
+        <td>Public sitemap and content index</td>
+    </tr>
+    <tr>
+        <td><a href="/404/" target="_blank">/404/</a></td>
+        <td>custom/404.tpl</td>
+        <td>everyone</td>
+        <td>Error 404 page</td>
+    </tr>
+    <tr>
+        <td><a href="/signup/" target="_blank">/signup/</a></td>
+        <td>custom/user-signup.tpl</td><td>everyone</td>
+        <td>Form Registration for new users. <br><b>* Note.</b> registration is disabled by default</td>
+    </tr>
+    <tr>
+        <td><a href="/login/" target="_blank">/login/</a></td>
+        <td>custom/user-login.tpl</td>
+        <td>everyone</td>
+        <td>Form login for users</td>
+    </tr>
+    <tr>
+        <td><a href="/password-reset/" target="_blank">/password-reset/</a></td>
+        <td>custom/user-password-reset.tpl</td>
+        <td>everyone</td>
+        <td>Password reset form for users</td>
+    </tr>
+    <tr>
+        <td><a href="/settings/" target="_blank">/settings/</a></td>
+        <td>custom/user-settings.tpl</td>
+        <td>users</td>
+        <td>Form for editing personal settings for registered user</td>
+    </tr>
+    <tr>
+        <td><a href="/user/" target="_blank">/user/</a></td>
+        <td>custom/user.tpl</td>
+        <td>users</td>
+        <td>Registered user homepage</td>
+    </tr>
+    <tr>
+        <td><a href="/admin/" target="_blank">/admin/</a></td>
+        <td>custom/sitograph.tpl</td>
+        <td>administrators</td>
+        <td>CMS Homepage</td>
+    </tr>
+    <tr>
+        <td><a href="/admin/login/" target="_blank">/admin/login/</a></td>
+        <td>custom/sitograph-login.tpl</td>
+        <td>everyone</td>
+        <td>Login form for CMS</td>
+    </tr>
+</table>
+
+<h3>Website Navigation Menu</h3>
+<p>Navigation Menu is stored in table <code>TABLE_MENU</code>.</p>
+<p>Menu items are grouped by <b>Menu ID</b>.</p>
+<p>In case if <b>Parent ID</b> is specified, menu items will be displayed as dropdown menu.</p>
+<table class="table">
+    <tr>
+        <th class="col-sm-2">Menu ID</th>
+        <th class="col-sm-3">URL</th>
+        <th class="col-sm-3">Name</th>
+        <th class="col-sm-2">Order ID</th>
+        <th class="col-sm-2">Parent ID</th>
+    </tr>
+    <tr>
+        <td>top</td>
+        <td><a href="/">/</a></td>
+        <td>Homepage</td>
+        <td>1</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>top</td>
+        <td><a href="/example-page/">/example-page/</a></td>
+        <td>Example page</td>
+        <td>2</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>top</td>
+        <td>#</td>
+        <td>Sitograph</td>
+        <td>3</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>top</td>
+        <td><a href="/sitograph/getting-started/">/sitograph/getting-started/</a></td>
+        <td>Getting Started</td>
+        <td>5</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>top</td>
+        <td><a href="/sitograph/file-structure/">/sitograph/file-structure/</a></td>
+        <td>Sitograph File structure</td>
+        <td>10</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>top</td>
+        <td><a href="/sitograph/modules/">/sitograph/modules/</a></td>
+        <td>Sitograph Modules</td>
+        <td>15</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>top</td>
+        <td><a href="/sitograph/API/">/sitograph/API/</a></td>
+        <td>Website public API</td>
+        <td>20</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>top</td>
+        <td><a href="/blog/">/blog/</a></td>
+        <td>Blog</td>
+        <td>5</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>top</td>
+        <td><a href="/gallery/">/gallery/</a></td>
+        <td>Gallery</td>
+        <td>10</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>nouser</td>
+        <td><a href="/signup/">/signup/</a></td>
+        <td>Sing Up</td>
+        <td>1</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>nouser</td>
+        <td><a href="/login/">/login/</a></td>
+        <td>Log In</td>
+        <td>2</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>user</td>
+        <td><a href="/user/">/user/</a></td>
+        <td>My Account</td>
+        <td>1</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>user</td>
+        <td><a href="/settings/">/settings/</a></td>
+        <td>My settings</td>
+        <td>2</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>user</td>
+        <td><a href="/?logout">/?logout</a></td>
+        <td>Logout</td>
+        <td>100</td>
+        <td>0</td>
+    </tr>
+</table>
+
+<h3>Website Settings</h3>
+<p>Settings are stored in table <code>TABLE_SETTINGS</code>.</p>
+<p>Changing settings will have a global effect on the website. Consider before changing something.</p>
+<table class="table">
+    <tr>
+        <th class="col-sm-3">Name</th>
+        <th class="col-sm-5">Description</th>
+        <th class="col-sm-4">Value</th>
+    </tr>
+    <tr>
+        <td>theme_css_path</td>
+        <td>Path to a CSS file included globaly</td>
+        <td>/content/css/default.css</td>
+    </tr>
+    <tr>
+        <td>theme_js_path</td>
+        <td>Path to a JS file included globaly</td>
+        <td>/content/js/default.js</td>
+    </tr>
+    <tr>
+        <td>include_html_head</td>
+        <td>This HTML code is included to all pages, above &lt;body&gt; tag</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>theme_use_bootstrap</td>
+        <td>Include Bootstrap library globaly, values 0/1<br>*Note. Disabling of Bootstrap breaks out the layout of Admin UI</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>theme_use_jquery</td>
+        <td>Include jQuery library globaly, values 0/1<br><b>* Note.</b> Disabling of jQuery breaks out the layout of Admin UI</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>message_ok</td>
+        <td>Text for a success message displayed over website</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>message_error</td>
+        <td>Text for a error message displayed over website<br><b>* Note.</b> Enabling error message will prevent all website forms from submitting.</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>email_from</td>
+        <td>Email used in sent-by header</td>
+        <td>tech@sitograph.com</td>
+    </tr>
+    <tr>
+        <td>email_fromname</td>
+        <td>Name used in sent-by header</td>
+        <td>Sitograph</td>
+    </tr>
+    <tr>
+        <td>admin_email</td>
+        <td>Public Administrator e-mail</td>
+        <td>admin@sitograph.com</td>
+    </tr>
+    <tr>
+        <td>support_email</td>
+        <td>Public Support e-mail</td>
+        <td>admin@sitograph.com</td>
+    </tr>
+    <tr>
+        <td>users_registration_email</td>
+        <td>Trigger to enable emails to be sent to each registered user, values 0/1</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>users_registration_email_notify</td>
+        <td>Trigger to enable emails nitofication to be sent to admin_email, values 0/1</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>users_registration_allow</td>
+        <td>Enables Sign Up form for new registrations</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>theme_active</td>
+        <td>Name of a active theme</td>
+        <td>theme-default</td>
+    </tr>
+    <tr>
+        <td>theme_bg</td>
+        <td>Global background image URL used in design</td>
+        <td>/content/images/bg_full.jpg</td>
+    </tr>
+    <tr>
+        <td>theme_cms_favicon</td>
+        <td>Icon near homepage URL in admin UI</td>
+        <td>/content/images/sitograph/cms_favicon.gif</td>
+    </tr>
+    <tr>
+        <td>theme_logo</td>
+        <td>Global logo image URL used in design</td>
+        <td>/content/images/sitograph/sitograph-logo-dark-en.png</td>
+    </tr>
+    <tr>
+        <td>theme_copyright_text</td>
+        <td>Global text displayed in footer</td>
+        <td>2016-2017 &lt;a href='http://sitograph.com/' target='_blank'&gt;Sitograph&lt;/a&gt;</td>
+    </tr>
+</table>

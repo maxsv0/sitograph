@@ -17,7 +17,7 @@
 <install>
 	<param name="name" value="custom"/>
 	<param name="version" value="1.1"/>
-	<param name="date" value="29.12.2016"/>
+	<param name="date" value="09.07.2017"/>
 	<param name="installHook" value="CustomInstall"/>
 	<param name="title" value="Custom module"/>
 	<param name="description" value="Empty module. Template for custom module"/>

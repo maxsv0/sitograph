@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+<locales>
+	<locale name="en">
+		<field name="module.feedback" value="Feedback"/>
+		<field name="table.feedback" value="Feedback"/>
+		<field name="table.feedback.id" value="ID"/>
+		<field name="table.feedback.published" value="Published"/>
+		<field name="table.feedback.deleted" value="Deleted"/>
+		<field name="table.feedback.author" value="Author"/>
+		<field name="table.feedback.updated" value="Updated"/>
+		<field name="table.feedback.lang" value="Lang"/>
+		<field name="table.feedback.sticked" value="Sticked"/>
+		<field name="table.feedback.date" value="Date"/>
+		<field name="table.feedback.email" value="Email"/>
+		<field name="table.feedback.name" value="Name"/>
+		<field name="table.feedback.name_title" value="Name Title"/>
+		<field name="table.feedback.text" value="Text of comment"/>
+		<field name="table.feedback.pic" value="Picture Big"/>
+		<field name="table.feedback.stars" value="Stars (from 1 to 5)"/>
+		<field name="msg.feedback.noemail" value="Email can't be emptry"/>
+		<field name="msg.feedback.noname" value="Please enter your name"/>
+		<field name="msg.feedback.saved" value="Thanks you. Your request was successfully received."/>
+		<field name="feedback.form.email" value="Your Email"/>
+		<field name="feedback.form.name" value="Your name"/>
+		<field name="feedback.form.name_title" value="Name title"/>
+		<field name="feedback.form.text" value="Your comment"/>
+		<field name="feedback.form.pic" value="Attach image (jpg/png/gif)"/>
+		<field name="feedback.form.stars" value="Stars (from 1 to 5)"/>
+		<field name="feedback.form.send" value="Send request"/>
+	</locale>
+</locales>
+</document>

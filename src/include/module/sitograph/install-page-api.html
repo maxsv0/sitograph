@@ -1,0 +1,69 @@
+<h3>Sitograph API</h3>
+<p>Each module can implement an extension for API calls.</p>
+<p>API output is encoded with JSON.</p>
+<p>Example output:</p>
+<pre>
+{
+	"ok":true,
+	"data":[],
+	"msg":"Empty result"
+}
+</pre>
+<p>API functions installed by default</p>
+<table class="table">
+    <tr><th>URL</th><th>Module</th><th>PHP Function</th><th>Description</th></tr>
+    <tr>
+        <td><a href="/api/blog/list/" target="_blank">/api/blog/list/</a></td>
+        <td>blog</td>
+        <td><code>ajaxBlogRequest()</code></td>
+        <td>List of published articles</td>
+    </tr>
+    <tr>
+        <td><a href="/api/blog/category/" target="_blank">/api/blog/category/</a></td>
+        <td>blog</td>
+        <td><code>ajaxBlogRequest()</code></td>
+        <td>List of categories for articles</td>
+    </tr>
+    <tr>
+        <td><a href="/api/blog/details/12345/" target="_blank">/api/blog/details/12345/</a></td>
+        <td>blog</td>
+        <td><code>ajaxBlogRequest()</code></td>
+        <td>Details about article ID 12345</td>
+    </tr>
+    <tr>
+        <td><a href="/api/gallery/list/" target="_blank">/api/gallery/list/</a></td>
+        <td>gallery</td>
+        <td><code>ajaxGalleryRequest()</code></td>
+        <td>List of published albums</td>
+    </tr>
+    <tr>
+        <td><a href="/api/gallery/album/12345/" target="_blank">/api/gallery/album/12345/</a></td>
+        <td>gallery</td>
+        <td><code>ajaxGalleryRequest()</code></td>
+        <td>List of photos for an album ID 12345</td>
+    </tr>
+    <tr>
+        <td><a href="/api/feedback/list/" target="_blank">/api/feedback/list/</a></td>
+        <td>feedback</td>
+        <td><code>ajaxFeedbackRequest()</code></td>
+        <td>List of published feedback items</td>
+    </tr>
+    <tr>
+        <td><a href="/api/feedback/add" target="_blank">/api/feedback/add/</a></td>
+        <td>feedback</td>
+        <td><code>ajaxFeedbackRequest()</code></td>
+        <td>Publish new feedback.<br><b>* Note.</b> User level access required</td>
+    </tr>
+    <tr>
+        <td><a href="/api/uploadpic/" target="_blank">/api/uploadpic/</a></td>
+        <td>msv-core</td>
+        <td><code>ajaxUploadPicture()</code></td>
+        <td>Upload file to file storage.<br><b>* Note.</b> Admin level access required</td>
+    </tr>
+    <tr>
+        <td><a href="/api/more_search/" target="_blank">/api/more_search/</a></td>
+        <td>search</td>
+        <td><code>ajax_More_Search()</code></td>
+        <td>Get website text search results</td>
+    </tr>
+</table>

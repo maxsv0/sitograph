@@ -1,3 +1,127 @@
+jQuery(document).ready(function() {
+    setTimeout(function() {
+        $('.form-text-inline').submit(function (e) {
+            $form = $(this);
+            e.preventDefault();
+
+            msg = $form.find(".alert");
+            msg.removeClass("alert-success").removeClass("alert-danger");
+            msg.html("Loading ... ");
+            console.log($form.serialize());
+            $.ajax({
+                type: $form.attr('method'),
+                url: $form.attr('action'),
+                data: $form.serialize(),
+                success: function (data) {
+                    console.log('Submission was successful.');
+                    console.log(data);
+                    obj = JSON.parse(data);
+                    if(obj.ok) {
+                        msg.html("Successfully saved");
+                        msg.addClass("alert-success", {duration:200});
+                    } else {
+                        msg.html(obj.msg);
+                        msg.addClass("alert-danger", {duration:200});
+                    }
+                },
+                error: function (data) {
+                    msg.html('An error occurred.').addClass("alert-danger");
+
+                    console.log(data);
+                },
+            });
+        });
+    }, 100);
+
+    $('#admin-edit').submit(function (e) {
+        $form = $(this);
+
+        // find a button that was clicked
+        // following solution:
+        // https://stackoverflow.com/questions/2066162/how-can-i-get-the-button-that-caused-the-submit-from-the-form-submit-event
+        var $btn = $(document.activeElement);
+        if (!(
+                $btn.length &&
+                $form.has($btn) &&
+                $btn.is('button[type="submit"], input[type="submit"], input[type="image"]') &&
+                $btn.is('[name]')
+            )) {
+            // some error, continue form execution
+            return true;
+        }
+
+        e.preventDefault();
+
+        if ($btn.attr("name") == "cancel") {
+            // close modal if in inline edit mode
+            // or go to list in admin UI
+            if ($("#adminModal").lenght && $("#adminModal").data('bs.modal').isShown) {
+                $("#adminModal").modal('toggle');
+            } else {
+                window.location.href = "/admin/?section=" + $("#section").val() + "&table=" + $("#table").val() + "";
+            }
+
+            return false;
+        }
+
+        // add AJAX call marker
+        if (!$("#ajaxcall").length) {
+            var input = $("<input>")
+                .attr("type", "hidden")
+                .attr("name", "ajaxcall").val("1");
+            $form.append($(input));
+        }
+
+        // add save button to a form
+        if (!$("#save").length) {
+            var input = $("<input>")
+                .attr("type", "hidden")
+                .attr("name", "save").val("1");
+            $form.append($(input));
+        }
+
+        $.ajax({
+            type: $form.attr('method'),
+            url: $form.attr('action'),
+            data: $form.serialize(),
+            success: function (data) {
+                console.log('Submission was successful.');
+                obj = JSON.parse(data);
+                msg = $form.find(".alert");
+                msg.removeClass("alert-danger alert-success hide");
+                msg.html(obj.msg);
+
+                if(obj.ok) {
+                    msg.addClass("alert-success", {duration:100});
+
+                    // post action
+                    if ($btn.attr("name") == "save_exit") {
+
+                        // close modal if in inline edit mode
+                        // or go to list in admin UI
+                        if ($("#adminModal").lenght && $("#adminModal").data('bs.modal').isShown) {
+                            $("#adminModal").modal('toggle');
+                        } else {
+                            window.location.href = "/admin/?section=" + $("#section").val() + "&table=" + $("#table").val() + "";
+                        }
+                    }
+                } else {
+                    msg.addClass("alert-danger", {duration:100});
+                }
+
+            },
+            error: function (data) {
+                msg.html('An error occurred.').addClass("alert-danger");
+                console.log(data);
+            },
+        });
+
+        $form.remove("#ajaxcall");
+        $form.remove("#save");
+    });
+
+});
+
 $(document).ready(function() {
 
     // Admin menu
@@ -72,19 +196,19 @@ function removeLink(x) {
 function uploadFrameLoad(iframe) {
     var doc = iframe.contentDocument || iframe.contentWindow.document;
     var path = doc.body.innerHTML;
-    
+
     if (path) {
     	$("#uploadFilePath").val(path);
     	$("#uploadAlert").addClass("alert alert-success").html("File successfully saved");
-    	
+
     	$("#uploadPreview").removeClass("hide");
     	$("#uploadPreview img").attr("src", path);
-    	
+
     	$("#btnUploadSave").trigger('click');
     } else {
     	$("#uploadAlert").addClass("alert alert-danger").html("Error saving file");
     }
-    
+
     $("#uploadStatus").removeClass("hide");
 }
 

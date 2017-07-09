@@ -1,26 +1,13 @@
 <?php
+if (!MSV_checkAccessUser("admin")) {
+    return;
+}
+
 include(ABS_MODULE."/sitograph/config-menu.php");
 MSV_assignData("admin_menu", $menu_ar);
 
-MSV_IncludeJSFile("/content/js/sitograph.js");
-MSV_IncludeCSSFile("/content/css/sitograph.css");
-
 MSV_assignData("admin_title", $this->title." ".$this->version." <small>".$this->date."</small>");
 MSV_assignData("admin_title_page", $this->title." ".$this->description." ".$this->version."");
-
-function AdminLoad($admin) {
-	if (DEBUG_PAGE) {
-		$admin_notifications_count = 1;
-	}
-	
-	$website = MSV_get("website");
-	$website->outputDebug();
-	
-	$notificationsHtml = $website->config["debug_code"];
-	MSV_assignData("admin_notifications_count", $admin_notifications_count);
-	MSV_assignData("admin_notifications", $notificationsHtml);
-}
-
 
 $section = "index";
 $menuActive = "index";
@@ -76,14 +63,6 @@ if (!empty($admin_table)) {
 			$menuItem = $item["submenu"][$admin_table];
 		}
 	}
-}
-
-$website = MSV_get("website");
-
-// user with no access will be redirected by MSV class
-// but we check access level here to avoid any further file execution
-if (!$website->checkAccess($menuItem["access"], $website->user["access"])) {
-	return;
 }
 
 MSV_assignData("admin_section", $section);
@@ -285,95 +264,18 @@ if (!empty($section) && in_array($section, $menu_index)) {
 }
 
 
-function SitographInstall($module) {
-	MSV_Structure_add("*", "/admin/", _t("structure.admin_homepage"), "default", "sitograph.tpl", 0, "", 0, "admin");
-	MSV_Structure_add("*", "/admin/login/", _t("structure.admin_login"), "default", "sitograph-login.tpl", 0, "", 0, "everyone");
-	
-	// mailing options
-	MSV_setConfig("email_from", "tech@sitograph.com", true, "*");
-	MSV_setConfig("email_fromname", "Sitograph", true, "*");
-	
-	// add mail templates
-	
-	$header = '
-<style type="text/css">
-* {font-family: Arial, sans-serif; }
-strong {color:#bb233a;}
-a {color:#bb233a;}
-a:link {color:#bb233a;}
-a:visited {color:#bb233a;}
-a:hover {color:#bb233a;}
-a:active {color:#bb233a;}
-</style>
-';
-		
-	$templateHeader = '
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-<tbody>
-<tr>
-<td style="padding: 10px 0 30px 0;">
-<table style="background-color: #ffffff; width: 640px;" border="0" cellspacing="0" cellpadding="0" align="center">
-<tbody>
-<tr style="height: 52px;">
-<td style="width: 467px; height: 52px;">
-<table border="0" cellspacing="0" cellpadding="0">
-<tbody>
-<tr>
-<td bgcolor="#747474" width="20" height="50">&nbsp;</td>
-<td bgcolor="#747474" width="600" height="50">
-<img style="display: block;" src="{HOME_URL}content/images/sitograph/sitograph-logo-white-en.png" alt="Sitograph" width="265" height="80"/>
-</td>
-<td bgcolor="#747474" width="20" height="50">&nbsp;</td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-<tr style="height: 15px;">
-<td style="width: 467px; height: 15px;">&nbsp;</td>
-</tr>
-<tr style="height: 400px;">
-<td style="padding: 20px 20px 0px; color: #2c2c2c; font-size: 11pt; line-height: 140%; width: 467px; height: 400px;">
-Dear {name}, 
-<br /><br /> 
-';
-	$templateFooter = '
-<br /><br /> 
-Regards, <br /> 
-Sitograph Team
-</td>
-</tr>
-<tr style="height: 97px;">
-<td style="padding: 0px 20px; color: #777777; background-color: #eeeeee; font-size: 9pt; line-height: 140%; width: 467px; height: 90px;">
-<br /> 
-<strong>Sitograph Content Management System.</strong>
-Sitograph CMS is an online, open source website creation tool. 
-Sitograph is a set of solutions for any online business.
-It is simple and powerful content management system for website or online shop. 
-</td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-</tbody>
-</table>
-';
-    // update all Email Templates, adding Sitograph header and footer
-    $resultQuery = API_getDBList(TABLE_MAIL_TEMPLATES);
-    if ($resultQuery["ok"]) {
-        foreach ($resultQuery["data"] as $template) {
-            $templateBody = $templateHeader.$template["text"].$templateFooter;
+if (isset($_GET["toggle_edit_mode"])) {
+    $edit_mode = MSV_getConfig("edit_mode");
+    if ($edit_mode) {
+        MSV_setConfig("edit_mode", 0, true);
+    } else {
+        MSV_setConfig("edit_mode", 1, true);
+    }
 
-            $result = API_updateDBItem(TABLE_MAIL_TEMPLATES, "header", "'".MSV_SQLEscape($header)."'", " `id` = '".$template["id"]."'");
-            if (!$result["ok"]) {
-                MSV_MessageError($result["msg"]);
-            }
-
-            $result = API_updateDBItem(TABLE_MAIL_TEMPLATES, "text", "'".MSV_SQLEscape($templateBody)."'", " `id` = '".$template["id"]."'");
-            if (!$result["ok"]) {
-                MSV_MessageError($result["msg"]);
-            }
-        }
+    $ref = MSV_getConfig("referer");
+    if ($ref) {
+        MSV_redirect($ref);
+    } else {
+        MSV_redirect("/");
     }
 }

@@ -57,8 +57,7 @@ class MSV_Website {
 	
 	public $log				= "";									// 
 	public $logDebug		= "";									// 
-	public $smarty			= "";
-																	//  Smarty obj
+	public $templateEngine			= "";                           //  Template Engine obj
 	public $user			= array();								//  user info array
 	
 	
@@ -263,6 +262,7 @@ class MSV_Website {
 		$this->parseRequest();
 		$this->activateCustom();
 		$this->activateModules();
+        $this->startTemplateEngine();
 
 		// TODO: run all msv-* module?
 		// run core, api, seo
@@ -280,7 +280,7 @@ class MSV_Website {
 			"access" => "anonymous",
 			"pic" => CONTENT_URL."/images/icon-anonymous.png",
 		);
-		
+
 		return true;
 	}
 	
@@ -530,114 +530,117 @@ class MSV_Website {
 			$this->config["hasTrailingSlash"] = false;
 		}
 	}
-	
-	function initSmarty() {
-		if (!empty($this->smarty)) {
-			return false;
-		}
-		
-		$Smarty = new Smarty;
-		
-		if (!empty($this->page["debug"]) && $this->page["debug"] > 0) {
-			$Smarty->debugging = true;
-			
-			// TODO: 
-			//$this->debug = true;
-		} else {
-			$Smarty->debugging = false;
-		}
-		$Smarty->caching = false;
-		$Smarty->cache_lifetime = 120;
-		
-		$Smarty->template_dir = ABS_TEMPLATE;
-		$compile_dir = SMARTY_DIR."cache";
-		if (!is_writeable($compile_dir)) {
-			$this->outputError("Cant write to $compile_dir");
-		}
-		
-		$Smarty->compile_dir = $compile_dir;
-		$Smarty->compile_check = true;
-		
-		$Smarty->assign("themeDefaultPath", ABS_TEMPLATE."/default");
-		$Smarty->assign("themePath", ABS_TEMPLATE."/".$this->template);
-		$Smarty->assign("themeUrl", ABS_TEMPLATEs."/".$this->template);
-		$Smarty->assign("content_url", CONTENT_URL);
-		
-		
-		$this->includeCSS = array_reverse($this->includeCSS);
-		foreach ($this->includeCSS as $filePath) {
-			$this->includeHead[] = "<link href=\"$filePath\" rel=\"stylesheet\">";
-		}
-		
-		$this->includeHead = array_reverse($this->includeHead);
-		foreach ($this->includeHead as $line) {
-			$this->htmlHead .= $line."\n";
-		}
-		
-		$includeHTML = "";
-		foreach ($this->includeJS as $filePath) {
-			$includeHTML = $includeHTML."<script src=\"$filePath\"></script>\n";
-		}
-		if ($this->includeCSSCode) {
-			$includeHTML = "<style>\n".$this->includeCSSCode."</style>\n.$includeHTML";
-		}
-		
-		if ($this->includeJSCode) {
-			$includeHTML = $includeHTML."<script>\n".$this->includeJSCode."</script>\n";
-		}
-		if ($this->includeHTMLCode) {
-			$includeHTML = "\n".$this->includeHTMLCode.$includeHTML;
-		}
-		// include HTML to footer
-		//$this->htmlFooter = $includeHTML.$this->htmlFooter;
-		
-		// include HTML to head
-		$this->htmlHead = $this->htmlHead.$includeHTML;
 
-		$Smarty->assign("htmlHead", $this->htmlHead);
-		
-		$Smarty->assign("htmlFooter", $this->htmlFooter);
-		
-		$Smarty->assign("host", $this->host);
-		$Smarty->assign("masterhost", $this->masterhost);
-		$Smarty->assign("lang", $this->lang);
-		$Smarty->assign("navigation", $this->navigation);
-		
-		$Smarty->assign("menu", $this->menu);
-		$Smarty->assign("structure", $this->structure);
-		$Smarty->assign("page", $this->page);
-		$Smarty->assign("page_template", $this->page["page_template"]);
-		
-		// assign config values directly to templaye
-		foreach ($this->config as $param => $value) {
-			$Smarty->assign($param, $value);
-		}
-		
-		// also assign config as array 
-		$Smarty->assign("config", $this->config);
-		
-		// assign page messages
-		$messageError = implode("<br>\n", $this->messages["error"]);
-		$Smarty->assign("message_error", $messageError);
-		
-		$messageSuccess = implode("<br>\n", $this->messages["success"]);
-		$Smarty->assign("message_success", $messageSuccess);
-		
-		$Smarty->assign("document", $this->document);
-		$Smarty->assign("tables", $this->tables);
-		$Smarty->assign("user", $this->user);
-		
-		$Smarty->assign("t", $this->locales);
-		$Smarty->assign("rand", rand());
 
-		$Smarty->assign("request_url", $this->requestUrl);
-		$Smarty->assign("lang_url", $this->langUrl);
-		
-		$this->smarty = $Smarty;
-		
-		return true;
-	}
-		
+    function startTemplateEngine() {
+        if (!empty($this->templateEngine)) {
+            return false;
+        }
+
+        $Smarty = new Smarty;
+
+        if (!empty($this->page["debug"]) && $this->page["debug"] > 0) {
+            $Smarty->debugging = true;
+        } else {
+            $Smarty->debugging = false;
+        }
+        $Smarty->caching = false;
+        $Smarty->cache_lifetime = 120;
+
+        $Smarty->template_dir = ABS_TEMPLATE;
+        $Smarty->debug_tpl = "";
+        $compile_dir = SMARTY_DIR."cache";
+        if (!is_writeable($compile_dir)) {
+            $this->outputError("Cant write to $compile_dir");
+        }
+        $Smarty->compile_dir = $compile_dir;
+        $Smarty->compile_check = true;
+
+        $Smarty->assign("themeDefaultPath", ABS_TEMPLATE."/default");
+        $Smarty->assign("themePath", ABS_TEMPLATE."/".$this->template);
+        $Smarty->assign("themeUrl", ABS_TEMPLATE."/".$this->template);
+        $Smarty->assign("content_url", CONTENT_URL);
+
+        $this->templateEngine =& $Smarty;
+    }
+
+    function initTemplateEngine() {
+        if (empty($this->templateEngine)) {
+            $this->outputError("Template Engine not found");
+        }
+
+        $this->includeCSS = array_reverse($this->includeCSS);
+        foreach ($this->includeCSS as $filePath) {
+            $this->includeHead[] = "<link href=\"$filePath\" rel=\"stylesheet\">";
+        }
+
+        $this->includeHead = array_reverse($this->includeHead);
+        foreach ($this->includeHead as $line) {
+            $this->htmlHead .= $line."\n";
+        }
+
+        $includeHTML = "";
+        foreach ($this->includeJS as $filePath) {
+            $includeHTML = $includeHTML."<script src=\"$filePath\"></script>\n";
+        }
+        if ($this->includeCSSCode) {
+            $includeHTML = "<style>\n".$this->includeCSSCode."</style>\n.$includeHTML";
+        }
+
+        if ($this->includeJSCode) {
+            $includeHTML = $includeHTML."<script>\n".$this->includeJSCode."</script>\n";
+        }
+        if ($this->includeHTMLCode) {
+            $includeHTML = "\n".$this->includeHTMLCode.$includeHTML;
+        }
+        // include HTML to footer
+        //$this->htmlFooter = $includeHTML.$this->htmlFooter;
+
+        // include HTML to head
+        $this->htmlHead = $this->htmlHead.$includeHTML;
+
+        $this->templateEngine->assign("htmlHead", $this->htmlHead);
+
+        $this->templateEngine->assign("htmlFooter", $this->htmlFooter);
+
+        $this->templateEngine->assign("host", $this->host);
+        $this->templateEngine->assign("masterhost", $this->masterhost);
+        $this->templateEngine->assign("lang", $this->lang);
+        $this->templateEngine->assign("navigation", $this->navigation);
+
+        $this->templateEngine->assign("menu", $this->menu);
+        $this->templateEngine->assign("structure", $this->structure);
+        $this->templateEngine->assign("page", $this->page);
+        $this->templateEngine->assign("page_template", $this->page["page_template"]);
+
+        // assign config values directly to templaye
+        foreach ($this->config as $param => $value) {
+            $this->templateEngine->assign($param, $value);
+        }
+
+        // also assign config as array
+        $this->templateEngine->assign("config", $this->config);
+
+        // assign page messages
+        $messageError = implode("<br>\n", $this->messages["error"]);
+        $this->templateEngine->assign("message_error", $messageError);
+
+        $messageSuccess = implode("<br>\n", $this->messages["success"]);
+        $this->templateEngine->assign("message_success", $messageSuccess);
+
+        $this->templateEngine->assign("document", $this->document);
+        $this->templateEngine->assign("tables", $this->tables);
+        $this->templateEngine->assign("user", $this->user);
+
+        $this->templateEngine->assign("t", $this->locales);
+        $this->templateEngine->assign("rand", rand());
+
+        $this->templateEngine->assign("request_url", $this->requestUrl);
+        $this->templateEngine->assign("lang_url", $this->langUrl);
+
+        return true;
+    }
+
 	function output($output, $code = 200) {
 		if ($code === 200) {
 			echo $output;
@@ -744,7 +747,24 @@ class MSV_Website {
 		if ($this->instaled && $this->checkAccess("admin", $this->user["access"])) {
 			$this->proccessAdmin();
 		}
-		
+
+        if (!empty($_REQUEST["ajaxcall"])) {
+            if (!empty($this->messages["error"])) {
+                $result = array(
+                    "ok" => false,
+                    "msg" => implode("\n", $this->messages["error"]),
+                );
+            } else {
+                $result = array(
+                    "ok" => true,
+                    "msg" => implode("\n", $this->messages["success"]),
+                );
+            }
+
+            echo json_encode($result);
+            die;
+        }
+
 		// output debug console, if needed
 		if (defined("DEBUG_PAGE") && DEBUG_PAGE) {
 			$this->outputDebug();
@@ -755,13 +775,10 @@ class MSV_Website {
 		}
 		
 		// init smarty
-		$r = $this->initSmarty();
-		
-		if (empty($this->smarty)) {
-			$this->outputError("Template Engine not found");
-		}
-		// output current page, use Smarty object
-		$this->smarty->display($this->pageTemplatePath);
+		$this->initTemplateEngine();
+
+		// output current page, use Template Engine object
+		$this->templateEngine->display($this->pageTemplatePath);
 
 
 		// calculate script running time and log

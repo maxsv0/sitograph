@@ -1,3 +1,4 @@
+</br>
 <form class="form-horizontal" method="POST" action="{$lang_url}{$feedback.baseUrl}" enctype="multipart/form-data">
     <div class="form-group">
         <label for="inputEmail" class="col-sm-4 control-label">{_t("feedback.form.email")}</label>
@@ -20,7 +21,7 @@
     <div class="form-group">
         <label for="inputText" class="col-sm-4 control-label">{_t("feedback.form.text")}</label>
         <div class="col-sm-8">
-            <textarea class="form-control" id="inputText" name="feedback_text">{$feedback_text}</textarea>
+            <textarea class="form-control" id="inputText" name="feedback_text" rows="10">{$feedback_text}</textarea>
         </div>
     </div>
     <div class="form-group">
@@ -37,7 +38,7 @@
     </div>
     <div class="form-group">
         <div class="col-sm-12 text-center">
-            <button type="submit" name="doSendFeedback" value="1" class="btn btn-primary"><span class="glyphicon glyphicon-ok">&nbsp;</span>{_t("feedback.form.send")}</button>
+            <button type="submit" name="doSendFeedback" value="1" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-ok">&nbsp;</span>{_t("feedback.form.send")}</button>
         </div>
     </div>
 </form>

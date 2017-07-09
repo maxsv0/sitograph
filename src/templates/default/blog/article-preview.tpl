@@ -1,16 +1,15 @@
+<div class="articles-block" data-id="{$article.id}">
 
 <div class="article-title-block">
 <h2><a href="{$blog.baseUrl}{$article.url}/">{$article.title}</a></h2>
 </div>
 
-
 <div class="article-info-block">
 	<div class="row">
 	<div class="col-sm-6 text-muted small">
-		<a href="{$lang_url}{$blog.baseUrl}?{$blog.authorUrlParam}={$article.author}">{$article.author}</a>
+		<a href="{$lang_url}{$blog.baseUrl}?{$blog.authorUrlParam}={$article.email}">{$article.email}</a>
 		posted on {$article.date}
 		</div>
-		
 		
 		<div class="col-sm-6 text-right small">
 		{$article.shares} Shares 
@@ -29,7 +28,6 @@
 	</div>
 </div>
 
-
 {if $article.pic_preview}
 <div class="article-media-block">
 <a href="{$blog.baseUrl}{$article.url}/" title="{$article.title}">
@@ -42,3 +40,5 @@
 {if $article.description}
 	<p>{$article.description}</p>
 {/if}
+
+</div>

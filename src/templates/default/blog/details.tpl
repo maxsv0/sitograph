@@ -1,4 +1,3 @@
-
 {if $blog_article_details.sections}
 <div class="category-block">
 {foreach from=$blog_article_details.sections item=category name=loop} 
@@ -8,11 +7,12 @@
 </div>
 {/if}
 
+<div class="articles-block" data-id="{$blog_article_details.id}">
 
 <div class="article-info-block">
 	<div class="row">
 	<div class="col-sm-6 text-muted small">
-		<a href="{$lang_url}{$blog.baseUrl}?{$blog.authorUrlParam}={$blog_article_details.author}">{$blog_article_details.author}</a>
+		<a href="{$lang_url}{$blog.baseUrl}?{$blog.authorUrlParam}={$blog_article_details.email}">{$blog_article_details.email}</a>
 		posted on {$blog_article_details.date}
 		</div>
 		
@@ -34,6 +34,9 @@
 	</div>
 </div>
 
+{if $blog_article_details.description}
+	<p>{$blog_article_details.description}</p>
+{/if}
 
 {if $blog_article_details.pic_preview}
 <div class="article-media-block">
@@ -54,25 +57,23 @@
 	
 	
 {if $blog_article_details.album}
-<div class="row">
+<div class="row media-well">
 {foreach from=$blog_article_details.album.photos item=photo name=loop}
-<div class="hide">
+<div class="col-sm-3">
 <a class="thumbnail" rel="fancybox" title="{$blog_article_details.title}" href="{$photo.pic}"><img src="{$photo.pic_preview}" alt=""></a>
 </div>
 {/foreach}
+	<div class="col-sm-12">
+		Attached gallery: <a href="{$gallery.baseUrl}{$blog_article_details.album.url}/">{$blog_article_details.album.title}</a>
+	</div>
 </div>
 {/if}
 
-
 {if $blog_article_details.text}
 	<p>{$blog_article_details.text}</p>
-{elseif $blog_article_details.description}
-	<p>{$blog_article_details.description}</p>
 {/if}
 
-
 <hr/>
-
 
 {if $blog_articles_related}
 <h3>{_t("blog.label_related_posts")}</h3>
@@ -98,6 +99,7 @@
 </div>
 {/if}
 
+</div>
 
 {if $blog_articles_newest}
 
@@ -109,13 +111,15 @@
   <div class="media-left">
     <a href="{$lang_url}{$blog.baseUrl}{$article.url}/">
       <img class="media-object" src="{$article.pic_preview}" alt="{$article.title}" width="120">
-
     </a>
   </div>
 {/if}
   <div class="media-body">
     <h4 class="media-heading"><a href="{$lang_url}{$blog.baseUrl}{$article.url}/">{$article.title}</a></h4>
-    
+    <p class="text-muted small">
+		<a href="{$lang_url}{$blog.baseUrl}?{$blog.authorUrlParam}={$article.email}">{$article.email}</a>
+		posted on {$article.date}
+	</p>
  	{if $article.description}
 	<p>{$article.description}</p>
 	{/if}

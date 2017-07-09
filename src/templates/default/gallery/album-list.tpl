@@ -1,4 +1,4 @@
-<div class="thumbnail galleryAlbum">
+<div class="thumbnail galleryAlbum" data-id="{$album.id}">
 
 
 <a href="{$lang_url}{$gallery.baseUrl}{$album.url}/">

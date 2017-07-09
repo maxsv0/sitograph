@@ -45,15 +45,15 @@
     	<td>
     		<table cellpadding="0" cellspacing="0">
     		<tr>
-    			<td><img src="{$theme_cms_favicon}"/></td>
-    			<td style="padding-left: 10px;"><span style="font-size: 18px; color: #FFFFFF;" >{$host}</span></td>
+    			<td><a href="{$home_url}"><img src="{$theme_cms_favicon}"/></a></td>
+    			<td style="padding-left: 10px;"><a style="font-size: 18px; color: #FFFFFF;" href="{$home_url}">{$host}</a></td>
     		</tr>
     		</table>        
         </td>
 		<td>
     		<table cellpadding="0" cellspacing="0" width="120">
     		<tr>
-    			<td><img src="{$content_url}/images/sitograph/av_pic.gif"/></td>
+    			<td><a href="{$home_url}"><img src="{$content_url}/images/sitograph/av_pic.gif"/></a></td>
     			<td style="padding-left: 10px;"><a class="admin_mode_link" href="{$home_url}">{_t("admin.view_website")}</a></td>
     		</tr>
     		</table>        

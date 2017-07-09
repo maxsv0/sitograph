@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+<install>
+	<param name="name" value="gallery"/>
+	<param name="version" value="1.2"/>
+	<param name="date" value="09.07.2017"/>
+	<param name="title" value="Pictures Gallery"/>
+	<param name="description" value="Photos and Pictures management"/>
+	
+	<param name="installHook" value="GalleryInstall"/>
+	
+	<dependency module="msv-core" version="1.0"/>
+	<dependency module="fancybox" version="1.0"/>
+	
+	<file dir="module" path="gallery/gallery.php"/>
+	<file dir="module" path="gallery/config.xml"/>
+	<file dir="template" path="default/main-gallery.tpl"/>
+	<file dir="template" path="default/gallery/main.tpl"/>
+	<file dir="template" path="default/gallery/list.tpl"/>
+	<file dir="template" path="default/gallery/details.tpl"/>
+	<file dir="template" path="default/gallery/album-list.tpl"/>
+	<file dir="template" path="default/gallery/album-preview.tpl"/>
+</install>
+
+</document>

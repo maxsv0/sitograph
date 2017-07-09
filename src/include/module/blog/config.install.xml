@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+<install>
+	<param name="name" value="blog"/>
+	<param name="version" value="1.2"/>
+	<param name="date" value="09.07.2017"/>
+	<param name="title" value="Blog"/>
+	<param name="description" value="Blog and Publications module"/>
+	
+	<param name="installHook" value="BlogInstall"/>
+	
+	<dependency module="msv-core" version="1.0"/>
+	<dependency module="gallery" version="1.0"/>
+	
+	<file dir="module" path="blog/blog.php"/>
+	<file dir="module" path="blog/config.xml"/>
+	<file dir="template" path="default/main-blog.tpl"/>
+	<file dir="template" path="default/blog/article-list.tpl"/>
+	<file dir="template" path="default/blog/article-preview.tpl"/>
+	<file dir="template" path="default/blog/article-preview-short.tpl"/>
+	<file dir="template" path="default/blog/list.tpl"/>
+	<file dir="template" path="default/blog/details.tpl"/>
+	<file dir="template" path="default/blog/main.tpl"/>
+	<file dir="template" path="default/widget/sideblock-blog.tpl"/>
+</install>
+		
+</document>

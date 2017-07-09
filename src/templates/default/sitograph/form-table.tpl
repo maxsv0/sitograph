@@ -10,9 +10,7 @@
 {/foreach}
   </ul>
   
-<form action="{$lang_url}/admin/" class="form-horizontal" method="POST">
-<br>
-<br>
+<form action="{$lang_url}/admin/" class="form-horizontal" method="POST" id="admin-edit">
 
   <!-- Tab panes -->
   <div class="tab-content">
@@ -32,14 +30,16 @@
   
   </div>
  
-<input type="hidden" value="{$admin_section}" name="section">
-<input type="hidden" value="{$admin_table}" name="table">
+<input type="hidden" value="{$admin_section}" id="section" name="section">
+<input type="hidden" value="{$admin_table}" id="table" name="table">
 <input type="hidden" value="{$dataList.id}" id="itemID" name="itemID">
 <input type="hidden" value="{$admin_list_page}" id="p" name="p">
 
+<div class="alert hide">&nbsp;</div>
+
 <div class="form-group">
 <div class="text-left">
-	<button type="submit" class="btn btn-danger" type="button"><span class="glyphicon glyphicon-remove-circle">&nbsp;</span>{$t["btn.cancel"]}</button>
+	<button type="submit" class="btn btn-danger" name="cancel" id="cancel" type="button"><span class="glyphicon glyphicon-remove-circle">&nbsp;</span>{$t["btn.cancel"]}</button>
 	<button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-ban-circle">&nbsp;</span>{$t["btn.reset"]}</button>
 	<button type="submit" name="save" id="btnSave" value="1" class="btn btn-primary"><span class="glyphicon glyphicon-repeat">&nbsp;</span>{$t["btn.save"]}</button>
 	<button type="submit" name="save_exit" value="1" class="btn btn-primary"><span class="glyphicon glyphicon-ok">&nbsp;</span>{$t["btn.save_exit"]}</button>

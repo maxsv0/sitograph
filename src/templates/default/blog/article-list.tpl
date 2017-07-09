@@ -7,14 +7,13 @@
 </div>
 {/if}
 
-
-<div class="articles-block">
+<div class="articles-block" data-id="{$article.id}">
 
 <h2><a href="{$lang_url}{$blog.baseUrl}{$article.url}/">{$article.title}</a></h2>
 
 <div class="row article-info-block">
 	<div class="col-sm-6 text-muted small">
-	<a href="{$lang_url}{$blog.baseUrl}?{$blog.authorUrlParam}={$article.author}">{$article.author}</a>
+	<a href="{$lang_url}{$blog.baseUrl}?{$blog.authorUrlParam}={$article.email}">{$article.email}</a>
 	posted on {$article.date}
 	</div>
 	

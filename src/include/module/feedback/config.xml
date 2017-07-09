@@ -1,85 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document>
+<config>
+	<param name="activationLevel" value="5"/>
+	<param name="baseUrl" value="/contacts/"/>
+	<param name="activationUrl" value="*"/>
+	<param name="stickedItemsCount" value="5"/>
+	<param name="adminMenu" value="1"/>
+	<param name="adminMenuOrder" value="25"/>
 
-	<config>
-		<param name="activationLevel" value="5"/>
-		<param name="baseUrl" value="/contacts/"/>
-		<param name="activationUrl" value="*"/>
-		<param name="stickedItemsCount" value="5"/>
-		<param name="adminMenu" value="1"/>
-		<param name="adminMenuOrder" value="25"/>
+	<constant name="TABLE_FEEDBACK" value="feedback"/>
 
-		<constant name="TABLE_FEEDBACK" value="feedback"/>
+	<filter action="loadFeedback" url="*"/>
 
-		<filter action="loadFeedback" url="*"/>
+	<api name="feedback" action="ajaxFeedbackRequest"/>
 
-		<api name="feedback" action="ajaxFeedbackRequest"/>
-
-		<table name="feedback" index="id" title="name">
-			<field name="id" type="id"/>
-			<field name="published" type="published"/>
-			<field name="deleted" type="deleted"/>
-			<field name="author" type="author"/>
-			<field name="updated" type="updated"/>
-			<field name="lang" type="lang"/>
-			<field name="sticked" type="bool"/>
-			<field name="date" type="date"/>
-			<field name="email" type="str"/>
-			<field name="name" type="str"/>
-			<field name="name_title" type="str" listskip="1"/>
-			<field name="text" type="doc"/>
-			<field name="pic" type="pic" max-width="1200" max-height="900" listskip="1"/>
-			<field name="stars" type="int" listskip="1"/>
-			<field name="ip" type="str" listskip="1"/>
-		</table>
-	</config>
-
-	<install>
-		<param name="name" value="feedback"/>
-		<param name="version" value="1.0"/>
-		<param name="date" value="22.06.2017"/>
-		<param name="installHook" value="FeedbackInstall"/>
-		<param name="title" value="Feedback module"/>
-		<param name="description" value="Users feedback, contacts form, use cases for website"/>
-
-		<dependency module="msv-core" version="1.0" />
-		<dependency module="msv-api" version="1.0" />
-
-		<file dir="module" path="feedback/feedback.php"/>
-		<file dir="module" path="feedback/config.xml"/>
-		<file dir="template" path="default/main-feedback.tpl"/>
-		<file dir="template" path="default/feedback/main.tpl"/>
-		<file dir="template" path="default/widget/feedback-sticked.tpl"/>
-	</install>
-
-	<locales>
-		<locale name="en">
-			<field name="module.feedback" value="Feedback"/>
-			<field name="table.feedback" value="Feedback"/>
-			<field name="table.feedback.id" value="ID"/>
-			<field name="table.feedback.published" value="Published"/>
-			<field name="table.feedback.deleted" value="Deleted"/>
-			<field name="table.feedback.author" value="Author"/>
-			<field name="table.feedback.updated" value="Updated"/>
-			<field name="table.feedback.lang" value="Lang"/>
-			<field name="table.feedback.sticked" value="Sticked"/>
-			<field name="table.feedback.date" value="Date"/>
-			<field name="table.feedback.email" value="Email"/>
-			<field name="table.feedback.name" value="Name"/>
-			<field name="table.feedback.name_title" value="Name Title"/>
-			<field name="table.feedback.text" value="Text of comment"/>
-			<field name="table.feedback.pic" value="Picture Big"/>
-			<field name="table.feedback.stars" value="Stars (from 1 to 5)"/>
-			<field name="msg.feedback.noemail" value="Email can't be emptry"/>
-			<field name="msg.feedback.noname" value="Please enter your name"/>
-			<field name="msg.feedback.saved" value="Thanks you. Your request was successfully received."/>
-			<field name="feedback.form.email" value="Your Email"/>
-			<field name="feedback.form.name" value="Your name"/>
-			<field name="feedback.form.name_title" value="Name title"/>
-			<field name="feedback.form.text" value="Your comment"/>
-			<field name="feedback.form.pic" value="Attach image (jpg/png/gif)"/>
-			<field name="feedback.form.stars" value="Stars (from 1 to 5)"/>
-			<field name="feedback.form.send" value="Send request"/>
-		</locale>
-	</locales>
+	<table name="feedback" index="id" title="name">
+		<field name="id" type="id"/>
+		<field name="published" type="published"/>
+		<field name="deleted" type="deleted"/>
+		<field name="author" type="author"/>
+		<field name="updated" type="updated"/>
+		<field name="lang" type="lang"/>
+		<field name="sticked" type="bool"/>
+		<field name="date" type="date"/>
+		<field name="email" type="str"/>
+		<field name="name" type="str"/>
+		<field name="name_title" type="str" listskip="1"/>
+		<field name="text" type="doc"/>
+		<field name="pic" type="pic" max-width="1200" max-height="900" listskip="1"/>
+		<field name="stars" type="int" listskip="1"/>
+		<field name="ip" type="str" listskip="1"/>
+	</table>
+</config>
 </document>

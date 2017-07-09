@@ -16,7 +16,7 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
 	// save document
 	API_updateDBItem(TABLE_DOCUMENTS, "text", "'".MSV_SQLEscape($_POST["form_document_text"])."'", " `id` = '".(int)$_POST["form_page_document_id"]."'");
 	API_updateDBItem(TABLE_DOCUMENTS, "name", "'".MSV_SQLEscape($_POST["form_document_name"])."'", " `id` = '".(int)$_POST["form_page_document_id"]."'");
-	
+
 	// save seo
 	$resultQuerySEO = API_getDBItem(TABLE_SEO, "`url` = '".MSV_SQLescape($_POST["form_url"])."'");
 	if ($resultQuerySEO["ok"] && !empty($resultQuerySEO["data"])) {
@@ -65,7 +65,12 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
         
         MSV_SitemapGenegate(); 
 	} else {
-		$resultSave = SEO_add($_POST["form_url"], $_POST["form_seo_title"], $_POST["form_seo_description"], $_POST["form_seo_keywords"], 1);
+        // extract data from request for corresponding table
+        $item = MSV_proccessTableData(TABLE_SEO, "form_seo_");
+        $item["url"] = $_POST["form_url"];
+
+        // execute request
+        $resultSave = SEO_add($item);
 		if ($_POST["form_published"] == 1) {
             MSV_SitemapGenegate();
         }

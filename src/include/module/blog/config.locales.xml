@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+
+<locales>
+	<locale name="ru">
+		<field name="module.blog" value="Блог"/>
+		<field name="table.articles" value="Блог, статьи"/>
+		<field name="table.articles.id" value="ID"/>
+		<field name="table.articles.published" value="Активно"/>
+		<field name="table.articles.deleted" value="Удалено"/>
+		<field name="table.articles.author" value="Автор"/>
+		<field name="table.articles.updated" value="Обновлено"/>
+		<field name="table.articles.lang" value="Язык"/>
+		<field name="table.articles.sticked" value="Топ"/>
+		<field name="table.articles.url" value="URL"/>
+		<field name="table.articles.date" value="Дата"/>
+		<field name="table.articles.title" value="Заголовок"/>
+		<field name="table.articles.description" value="Краткий текст"/>
+		<field name="table.articles.text" value="Значение"/>
+		<field name="table.articles.pic" value="Изображение большое"/>
+		<field name="table.articles.pic_preview" value="Изображение"/>
+		<field name="table.articles.album_id" value="Альбом"/>
+		<field name="table.articles.views" value="Просмотров"/>
+		<field name="table.articles.shares" value="Публикаций"/>
+		<field name="table.articles.comments" value="Коментариев"/>
+		<field name="table.articles.seo_title" value="Title страницы"/>
+		<field name="table.articles.seo_description" value="Описание страницы"/>
+		<field name="table.articles.seo_keywords" value="Ключевые слова"/>
+		<field name="table.article_categories" value="Рубрики и теги"/>
+		<field name="table.article_categories.id" value="ID"/>
+		<field name="table.article_categories.published" value="Активно"/>
+		<field name="table.article_categories.deleted" value="Удалено"/>
+		<field name="table.article_categories.author" value="Автор"/>
+		<field name="table.article_categories.updated" value="Обновлено"/>
+		<field name="table.article_categories.lang" value="Язык"/>
+		<field name="table.article_categories.url" value="URL"/>
+		<field name="table.article_categories.article_id" value="Статья"/>
+		<field name="table.article_categories.title" value="Заголовок"/>
+        <field name="blog.continue_reading" value="Подробнее"/>
+        <field name="blog.label_search" value="Поиск:"/>
+        <field name="blog.label_popular_posts" value="Популярные"/>
+        <field name="blog.label_latest_posts" value="Последние публикации"/>
+        <field name="blog.label_related_posts" value="Связанные публикации"/>
+        <field name="blog.btn_search" value="Найти"/>
+        <field name="blog.search_no_result" value="Статьи не найдены."/>
+	</locale>
+    <locale name="ua">
+		<field name="module.blog" value="Блог"/>
+		<field name="table.articles" value="Блог, статті"/>
+		<field name="table.articles.id" value="ID"/>
+		<field name="table.articles.published" value="Активно"/>
+		<field name="table.articles.deleted" value="Вилучено"/>
+		<field name="table.articles.author" value="Автор"/>
+		<field name="table.articles.updated" value="Оновлене"/>
+		<field name="table.articles.lang" value="Мова"/>
+		<field name="table.articles.sticked" value="Топ"/>
+		<field name="table.articles.url" value="URL"/>
+		<field name="table.articles.date" value="Дата"/>
+		<field name="table.articles.title" value="Заголовок"/>
+		<field name="table.articles.description" value="Стислий текст"/>
+		<field name="table.articles.text" value="Значення"/>
+		<field name="table.articles.pic" value="Зображення велике"/>
+		<field name="table.articles.pic_preview" value="Зображення"/>
+		<field name="table.articles.album_id" value="Альбом"/>
+		<field name="table.articles.views" value="Переглядів"/>
+		<field name="table.articles.shares" value="Публікацій"/>
+		<field name="table.articles.comments" value="Коментарів"/>
+		<field name="table.articles.seo_title" value="Title сторінки"/>
+		<field name="table.articles.seo_description" value="Опис сторінки"/>
+		<field name="table.articles.seo_keywords" value="Ключові слова"/>
+		<field name="table.article_categories" value="Рубрики та теги"/>
+		<field name="table.article_categories.id" value="ID"/>
+		<field name="table.article_categories.published" value="Активно"/>
+		<field name="table.article_categories.deleted" value="Вилучено"/>
+		<field name="table.article_categories.author" value="Автор"/>
+		<field name="table.article_categories.updated" value="Оновлено"/>
+		<field name="table.article_categories.lang" value="Мова"/>
+		<field name="table.article_categories.url" value="URL"/>
+		<field name="table.article_categories.article_id" value="Стаття"/>
+		<field name="table.article_categories.title" value="Заголовок"/>
+        <field name="blog.continue_reading" value="Детальніше"/>
+        <field name="blog.label_search" value="Пошук:"/>
+        <field name="blog.label_popular_posts" value="Популярні"/>
+        <field name="blog.label_latest_posts" value="Останні публікації"/>
+        <field name="blog.label_related_posts" value="Пов'язані публікації"/>
+        <field name="blog.btn_search" value="Знайти"/>
+        <field name="blog.search_no_result" value="Статті не були знайдені."/>
+	</locale>
+	<locale name="en">
+		<field name="module.blog" value="Blog"/>
+		<field name="table.articles" value="Blog Publications"/>
+		<field name="table.articles.id" value="ID"/>
+		<field name="table.articles.published" value="Published"/>
+		<field name="table.articles.deleted" value="Deleted"/>
+		<field name="table.articles.author" value="Author"/>
+		<field name="table.articles.updated" value="Updated"/>
+		<field name="table.articles.lang" value="Lang"/>
+		<field name="table.articles.sticked" value="Sticked"/>
+		<field name="table.articles.url" value="URL"/>
+		<field name="table.articles.date" value="Date"/>
+		<field name="table.articles.title" value="Title"/>
+		<field name="table.articles.description" value="Short text"/>
+		<field name="table.articles.text" value="Article text"/>
+		<field name="table.articles.pic" value="Picture Big"/>
+		<field name="table.articles.pic_preview" value="Picture"/>
+		<field name="table.articles.album_id" value="Album"/>
+		<field name="table.articles.views" value="Views"/>
+		<field name="table.articles.shares" value="Shares"/>
+		<field name="table.articles.comments" value="Comments"/>
+		<field name="table.articles.seo_title" value="Page Title"/>
+		<field name="table.articles.seo_description" value="Description"/>
+		<field name="table.articles.seo_keywords" value="Keywords"/>
+		<field name="table.article_categories" value="Article Categories"/>
+		<field name="table.article_categories.id" value="ID"/>
+		<field name="table.article_categories.published" value="Published"/>
+		<field name="table.article_categories.deleted" value="Deleted"/>
+		<field name="table.article_categories.author" value="Author"/>
+		<field name="table.article_categories.updated" value="Updated"/>
+		<field name="table.article_categories.lang" value="Lang"/>
+		<field name="table.article_categories.url" value="URL"/>
+		<field name="table.article_categories.article_id" value="Article"/>
+		<field name="table.article_categories.title" value="Title"/>
+        <field name="blog.continue_reading" value="Continue Reading"/>
+        <field name="blog.label_search" value="Search Blog articles"/>
+        <field name="blog.label_popular_posts" value="Popular articles"/>
+        <field name="blog.label_latest_posts" value="Latest articles"/>
+        <field name="blog.label_related_posts" value="Related articles"/>
+        <field name="blog.btn_search" value="Search"/>
+        <field name="blog.search_no_result" value="No articles were found."/>
+	</locale>
+</locales>
+
+		
+</document>

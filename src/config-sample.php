@@ -1,6 +1,6 @@
 <?php 
 define("ABS", __DIR__);
-define("LANGUAGES", "en,ru,ua");
+define("LANGUAGES", "en");
 define("DB_HOST", "127.0.0.1");
 define("DB_LOGIN", "msv");
 define("DB_PASSWORD", "");
@@ -17,9 +17,9 @@ define("DEBUG_LOG", "");
 define("SITE_CLOSED", false);
 define("SHOW_ADMIN_MENU", 1);
 define("PHP_LOCALE", "en_US.UTF-8");
-define("PHP_TIMEZONE", "Europe/Kiev");
+define("PHP_TIMEZONE", "Europe/Berlin");
 define("DATABATE_ENCODING", "utf8");
-define("FORSE_TRAILING_SLASH", false);
+define("FORSE_TRAILING_SLASH", true);
 define("SUBDOMAIN_LANGUAGES", false);
 define("REP", "http://rep.msvhost.com/rep/main/");
 define("USER_HASH_PASSWORD", true);

@@ -12,8 +12,8 @@
 
 <install>
 	<param name="name" value="msv-api" />
-	<param name="version" value="1.1"/>
-	<param name="date" value="29.12.2016"/>
+	<param name="version" value="1.2"/>
+	<param name="date" value="09.07.2017"/>
 	<param name="title" value="MSVAPI"/>
 	<param name="description" value="API functions for MSV"/>
 	

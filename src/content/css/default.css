@@ -5,6 +5,16 @@
 .content-block {
 	background:#fff;
 }
+.promo-block {
+	background:#f5f5f5;
+	height:450px;
+}
+.feedback-block {
+	background:#84cfd5;
+}
+.phone-block, .phone-block a{
+	color:#fff;
+}
 .footer {
 	background:#333746;
 	padding-bottom: 10px;
@@ -49,7 +59,6 @@
 }
 .articles-block h2 {
 	display:inline-block;
-	margin-top: 5px;
     margin-bottom: 5px;
 }
 .article-title-block {
@@ -61,6 +70,15 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.media-well {
+	min-height: 20px;
+	padding: 19px;
+	margin-bottom: 20px;
+	background-color: #f5f5f5;
+	border: 1px solid #e3e3e3;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
 }
 .footer-copyright {
 	background: #74c4d4;
@@ -151,6 +169,7 @@
 	border-bottom: 2px solid transparent;
 }
 
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus,
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     background-color: transparent;
 	border-bottom: 2px solid #ed2a45;
@@ -203,34 +222,44 @@ div.navigation a:hover {
 	background: #ed2a45;
 	color: #FFFFFF;    
 }
-
+.dropdown-menu>li>a {
+	padding: 10px 20px;
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+	background-color:#ed2a45;
+	color:#fff;
+}
 .admin_pic {
 	display: inline-block;
 	background:url(/content/images/sitograph/admin_panel.png);
 	width:12px;
 	height:18px;
+	margin-left:10px;
 }
 .admin_panel {
 	position:absolute;
 	top: 0;
-	z-index:2000;
+	z-index:100;
 	background-color:#e6e6e6;
 	top:0px;
 	height:20px!important;
 	border-bottom:1px solid #ccc; 
 }
 .admin_panel tr td {
-    width: 50%;
     vertical-align: top;
     font-family: Verdana!important;
     padding-top: 3px;
     font-size: 13px;
+	line-height:18px;
+}
+.admin_panel tr td:first-child {
+    padding-left: 10px;
 }
 .admin_panel p {
     font-size: 13px;
     color: #666666;
     font-family: Verdana!important;
-    margin: 0px 0px 5px; 
+    margin: 0px 0px 5px;
 }
 .admin_panel a:hover {
     text-decoration:none;
@@ -280,4 +309,50 @@ div.navigation a:hover {
 }
 .btn_more:hover {
     text-decoration: underline;
+}
+.highlight {
+	font-weight:bold;
+	background-color: #f6f88c;
+}
+.form-text-inline .alert {
+	font-size: 12px;
+	padding: 8px 10px;
+	margin-left: 20px;
+}
+
+.editor-inline {
+	border: 1px dashed black;
+}
+.editor-inline-block {
+	box-shadow: 0px 0px 20px #f01735;
+}
+.admin_block {
+	position:relative;
+	z-index: 999;
+	background-color: #f6f88c;
+	background: rgba(246, 248, 140, 0.6);
+	padding: 5px 10px;
+	min-width: 600px;
+}
+#debugLog {
+	width:640px;
+	padding:10px;
+	position:absolute;
+	top:16px;
+	right:0;
+	z-index: 99999;
+}
+#debugLog pre {
+	font-size:11px;
+	white-space: pre-wrap;       /* Since CSS 2.1 */
+	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+	white-space: -pre-wrap;      /* Opera 4-6 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+	word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+.admin-edit-overlay {
+	position:absolute;
+	margin-top:-10px;
+	left:45%;
+	z-index:999;
 }

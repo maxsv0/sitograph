@@ -6,5 +6,3 @@ jQuery(this).find('.dropdown-menu').stop(true, true).hide();
 	jQuery(this).removeClass('open');
 	$(".popover").css("display", "none");
 });
-
-

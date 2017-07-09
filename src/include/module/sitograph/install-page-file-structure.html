@@ -1,0 +1,164 @@
+<h3>Root file structure</h3>
+<pre>
+/
+├── .htaccess
+├── index.php
+├── config.php
+├── config-sample.php
+├── load.php
+├── favicon.ico
+├── sitemap.xml
+├── robots.txt
+├── content/
+│   └── … [Files are sent directly to browser]
+├── include/
+│   └── … [PHP controllers and kernel]
+└── templates/
+    └── … [UI templates folder]
+</pre>
+<p>All requests are routed to <code>index.php</code> by mod_rewrite rules defined in <code>.htaccess</code>.</p>
+<p>Website configuration is stored in <code>config.php</code>. In case if <code>config.php</code> not found,
+    <code>config-sample.php</code> is loaded and '<u>install</u>' module is executed.</p>
+<p>Initially, <code>config.php</code> is created by '<u>install</u>' module wizard.
+    The installation process includes creations of database tables with initial content and simple website structure.</p>
+<p>Initialization of framework is done with <code>load.php</code></p>
+<p>Execution of any *.php files except <code>index.php</code> is prohibited in <code>.htaccess</code> for security reasons.
+    Direct access to include/* and templates/* is also blocked.</p>
+<hr>
+<h3>Content file structure</h3>
+<pre>
+content/
+├── css/
+│   ├── default.css
+│   ├── bootstrap.min.css
+│   ├── jquery.cropper.css
+│   ├── jquery.fancybox.css
+│   └── sitograph.css
+├── fonts/
+│   └── … [glyphicons set]
+├── images/
+│   ├── … [website images]
+│   ├── fancybox
+│   │   ├── … [fancybox images]
+│   └── sitograph
+│       └── … [CMS images]
+├── js/
+│   ├── default.js
+│   ├── bootstrap.min.js
+│   ├── jquery.cropper.js
+│   ├── jquery.fancybox.min.js
+│   ├── jquery.min.js
+│   ├── sitograph.min.js
+│   └── tinymce
+│       └── … [tinymce WYSIWYG Editor files]
+└── manual.html
+</pre>
+<p>Folder <b>content/css</b> is for *.css files, and <b>content/js</b> is for *.js respectively.</p>
+<p><code>default.css</code> is a global website CSS.</p>
+<p>Files <code>default.css</code> and <code>default.js</code>, <code>bootstrap.css</code> and <code>bootstrap.js</code> and <code>jquery.js</code> are included globally as a part of '<u>default</u>' theme.</p>
+<p>Module '<u>fancybox</u>' is activated globally (this leads to inclusion of <code>jquery.fancybox.css</code> and <code>jquery.fancybox.js</code> globally)</p>
+<p>CMS includes <code>sitograph.css</code> and <code>sitograph.js</code> for all admin pages.</p>
+<p>Modules '<u>cropper</u>' and '<u>tinymce</u>' are used by admin UI and loaded in /admin/* pages.</p>
+<p><code>content/manual.html</code> is a CMS manual displayed in 'Admin Dashboard -> Admin manual' section.</p>
+<hr>
+<h3>Templates file structure</h3>
+<pre>
+templates/
+├── custom/
+│   ├── 404.tpl
+│   ├── index.tpl
+│   ├── main.tpl
+│   ├── main-blog.tpl
+│   ├── main-gallery.tpl
+│   ├── user.tpl
+│   ├── sitograph.tpl
+│   ├── sitograph-login.tpl
+│   ├── .... [templates by page]
+│   ├── blog
+│   │   ├── article-list.tpl
+│   │   ├── article-preview-short.tpl
+│   │   ├── article-preview.tpl
+│   │   ├── details.tpl
+│   │   ├── list.tpl
+│   │   └── main.tpl
+│   ├── gallery
+│   │   └── .... [gallery related templates]
+│   ├── sitograph
+│   │   └── .... [CMS UI templates]
+│   ├── user
+│   │   └── .... [user related templates]
+│   ├── widget
+│   │   ├── header.tpl
+│   │   ├── messages.tpl
+│   │   ├── menu-top.tpl
+│   │   ├── menu-user.tpl
+│   │   ├── menu-bottom.tpl
+│   │   ├── navigation.tpl
+│   │   ├── pagination.tpl
+│   │   ├── sideblock.tpl
+│   │   ├── sideblock-blog.tpl
+│   │   └── footer.tpl
+└── default/
+    └── .... [copy of custom]
+</pre>
+<p>UI templates are separated in accordance with Theme name.</p>
+<p>The base application theme is called "<b>custom</b>" and placed in <b>templates/custom</b>.</p>
+<p>Initially, "<b>custom</b>" theme is created as copy of "<b>default</b>" upon installation.</p>
+<p>Each row in site structure is configured to use single theme + page template which, subsequently, includes other templates as page parts.</p>
+<p>Template file can be associated with single page in site structure, like: <code>index.tpl</code>, <code>main.tpl</code>, <code>main-blog.tpl</code>, <code>404.tpl</code>, etc. or can be included by other template.</p>
+<p class="well">For example, <code>main-blog.tpl</code> contains general layout for structure <b>/blog/</b>. Then it includes <code>blog/main.tpl</code> as a main content, which then includes <code>blog/list.tpl</code> or <code>blog/details.tpl</code> depending on user request.</p>
+<br>
+<p><b>* Note.</b> The application will try to fall back to "<b>default</b>" theme if page template is not found in specified theme folder.</p>
+<p>Folder <code>custom/widget</code> contains common page parts that are used in different places of website and CMS.</p>
+<p>Folders <code>custom/blog</code>, <code>custom/gallery</code> and <code>custom/user</code> contains templates for appropriate website structures.</p>
+<p>CMS UI files are stored in <code>custom/sitograph</code></p>
+<p>Common HTML widgets description:</p>
+<ul>
+    <li><code>header.tpl</code> - global website HTML header</li>
+    <li><code>footer.tpl</code> - global website footer</li>
+    <li><code>pagination.tpl</code> - template to render pagination for listing</li>
+    <li><code>navigation.tpl</code> - template for breadcrumbs</li>
+    <li><code>messages.tpl</code> - block to display error and success messages</li>
+    <li><code>menu-top.tpl</code> - website main navigation menu</li>
+    <li><code>menu-bottom.tpl</code> - footer menu </li>
+    <li><code>menu-user.tpl</code> - part of a menu that depends on authorized user session</li>
+    <li><code>sideblock.tpl</code> - global website side block</li>
+    <li><code>sideblock-blog.tpl</code> - part of sidemenu with blog articles preview</li>
+</ul>
+<hr>
+<h3>Include file structure</h3>
+<pre>
+include/
+├── class.msv.php
+├── class.module.php
+├── custom/
+│   ├── bootstrap.php
+│   ├── Google
+│   │   └── .... [Google API Client Library for PHP]
+│   └── smarty
+│       └── .... [Smarty Template Engine]
+└── module/
+    ├── blog
+    ├── gallery
+    ├── cropper
+    ├── fancybox
+	├── feedback
+    ├── google-analytics
+    ├── install
+    ├── msv-api
+    ├── msv-core
+    ├── msv-seo
+    ├── msv-users
+    ├── search
+    ├── sitograph
+    ├── theme-default
+    └── tinymce
+</pre>
+<br>
+<p><code>include/</code> is the main application folder.</p>
+<p>Controllers are separated as different modules and stored in <code>include/module</code> in folders with the name of a module.</p>
+<p>Each module consists of minimum two files: <code>config.xml</code> and <code>modulename.php</code>. Optional files are included if present.</p>
+<p>Optional config files are: <code>config.locales.xml</code>, <code>config.install.xml</code></p>
+<p>Optional controller files are: <code>modulename.api.php</code>, <code>modulename.install.php</code>, <code>modulename.functions.php</code></p>
+<p>Website Model is gathered in PHP class <code>class.msv.php</code>, creating module class instance (<code>class.module.php</code>) for each module. Module instance then attached to the parent class.</p>
+<p>Each *.php file from <code>include/custom</code> will be included at the initialization stage.</p>
