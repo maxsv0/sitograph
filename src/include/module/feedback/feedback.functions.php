@@ -1,6 +1,18 @@
 <?php
 
-function Feedback_Add($params, $options = array()) {
+/**
+ * Adds new feedback post
+ * Database table: TABLE_FEEDBACK
+ *
+ * checks for required fields and correct values
+ * $row["email"] is required, has to be valid email
+ * $row["name"] is required
+ *
+ * @param array $row Associative array with data to be inserted
+ * @param array $options Optional list of flags. Supported: EmailNotifyUser, EmailNotifyAdmin
+ * @return array Result of a API call
+ */
+function Feedback_Add($row, $options = array()) {
     $result = array(
         "ok" => false,
         "data" => array(),
@@ -8,48 +20,48 @@ function Feedback_Add($params, $options = array()) {
     );
 
     // check required fields
-    if (empty($params["email"])) {
+    if (empty($row["email"])) {
         $result["msg"] = _t("msg.feedback.noemail");
         return $result;
-    } elseif (!MSV_checkEmail($params["email"])) {
+    } elseif (!MSV_checkEmail($row["email"])) {
         $result["msg"] = _t("msg.wrong_email");
         return $result;
     }
-    if (empty($params["name"])) {
+    if (empty($row["name"])) {
         $result["msg"] = _t("msg.feedback.noname");
         return $result;
     }
 
     // set defaults
-    if (empty($params["sticked"])) {
-        $params["sticked"] = 0;
+    if (empty($row["sticked"])) {
+        $row["sticked"] = 0;
     } else {
-        $params["sticked"] = (int)$params["sticked"];
+        $row["sticked"] = (int)$row["sticked"];
     }
-    if (empty($params["published"])) {
-        $params["published"] = 1;
+    if (empty($row["published"])) {
+        $row["published"] = 1;
     } else {
-        $params["published"] = (int)$params["published"];
+        $row["published"] = (int)$row["published"];
     }
-    if (empty($params["date"])) {
-        $params["date"] = date("Y-m-d H:i:s");
+    if (empty($row["date"])) {
+        $row["date"] = date("Y-m-d H:i:s");
     }
-    if (empty($params["stars"])) {
-        $params["stars"] = 0;
+    if (empty($row["stars"])) {
+        $row["stars"] = 0;
     } else {
-        $params["stars"] = (int)$params["stars"];
-        if ($params["stars"] > 5 || $params["stars"] < 1) $params["stars"] = 0;
+        $row["stars"] = (int)$row["stars"];
+        if ($row["stars"] > 5 || $row["stars"] < 1) $row["stars"] = 0;
     }
-    if (empty($params["ip"])) {
-        $params["ip"] = MSV_GetIP();
+    if (empty($row["ip"])) {
+        $row["ip"] = MSV_GetIP();
     }
 
     // set empty fields
-    if (empty($params["name_title"])) $params["name_title"] = "";
-    if (empty($params["text"])) $params["text"] = "";
-    if (empty($params["pic"])) $params["pic"] = "";
+    if (empty($row["name_title"])) $row["name_title"] = "";
+    if (empty($row["text"])) $row["text"] = "";
+    if (empty($row["pic"])) $row["pic"] = "";
 
-    $result = API_itemAdd(TABLE_FEEDBACK, $params);
+    $result = API_itemAdd(TABLE_FEEDBACK, $row);
 
     if ($result["ok"]) {
         $result["msg"] = _t("msg.feedback.saved");
@@ -57,14 +69,14 @@ function Feedback_Add($params, $options = array()) {
         // send email to $email
         // email template: feedback_notify
         if (in_array("EmailNotifyUser", $options)) {
-            MSV_EmailTemplate("feedback_notify", $params["email"], $params);
+            MSV_EmailTemplate("feedback_notify", $row["email"], $row);
         }
 
         // send email to "admin_email"
         // email template: feedback_admin_notify
         if (in_array("EmailNotifyAdmin", $options)) {
             $emailAdmin = MSV_getConfig("admin_email");
-            MSV_EmailTemplate("feedback_admin_notify", $emailAdmin, $params);
+            MSV_EmailTemplate("feedback_admin_notify", $emailAdmin, $row);
         }
     }
 

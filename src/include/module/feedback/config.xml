@@ -8,6 +8,10 @@
 	<param name="adminMenu" value="1"/>
 	<param name="adminMenuOrder" value="25"/>
 
+	<param name="accessAPIList" value="everyone"/>
+	<param name="accessAPIAdd" value="everyone"/>
+	<param name="accessAPIEdit" value="admin"/>
+
 	<constant name="TABLE_FEEDBACK" value="feedback"/>
 
 	<filter action="loadFeedback" url="*"/>

@@ -34,6 +34,7 @@
 <input type="hidden" value="{$admin_table}" id="table" name="table">
 <input type="hidden" value="{$dataList.id}" id="itemID" name="itemID">
 <input type="hidden" value="{$admin_list_page}" id="p" name="p">
+<input type="hidden" value="{$referer}" id="referer" name="referer">
 
 <div class="alert hide">&nbsp;</div>
 

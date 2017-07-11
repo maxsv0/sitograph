@@ -4,66 +4,223 @@
 <p>Example output:</p>
 <pre>
 {
+  "ok": true,
+  "data": {
+    "2": {
+      "id": "2",
+      "published": "1",
+      "deleted": "0",
+      "author": "api",
+      "updated": "10.07.2017 11:53:30",
+      "lang": "en",
+      "sticked": "0",
+      "url": "the-beautiful-photo-gallery-is-attached-to-this-post",
+      "date": "07.07.2017 22:41:28",
+      "email": "cyhiso",
+      "title": "The Beautiful photo gallery is attached to this post",
+      "description": "",
+      "text": "....",
+      "pic": "/content/articles/2017/07/59634e99ef619-pic.jpg",
+      "pic_preview": "/content/articles/2017/07/59634e9a1b4c2-pic_preview.jpg",
+      "album_id": "1",
+      "views": "0",
+      "shares": "0",
+      "comments": "0"
+    },
+    "3": { .. },
+	"4": { .. },
+	..
+  },
+  "msg": ""
+}
+</pre>
+<p>Example of empty output:</p>
+<pre>
+{
 	"ok":true,
 	"data":[],
 	"msg":"Empty result"
 }
 </pre>
+<p>Example of error output:</p>
+<pre>
+{
+	"ok":false,
+	"data":[],
+	"msg":"Wrong API call"
+}
+</pre>
+
 <p>API functions installed by default</p>
+
+<h4>Module Blog</h4>
+
 <table class="table">
-    <tr><th>URL</th><th>Module</th><th>PHP Function</th><th>Description</th></tr>
+    <tr><th class="col-sm-3">URL</th><th class="col-sm-2">Access</th><th class="col-sm-3">PHP Function</th><th class="col-sm-4">Description</th></tr>
     <tr>
         <td><a href="/api/blog/list/" target="_blank">/api/blog/list/</a></td>
-        <td>blog</td>
+        <td class="text-success">everyone</td>
         <td><code>ajaxBlogRequest()</code></td>
         <td>List of published articles</td>
     </tr>
     <tr>
         <td><a href="/api/blog/category/" target="_blank">/api/blog/category/</a></td>
-        <td>blog</td>
+        <td class="text-success">everyone</td>
         <td><code>ajaxBlogRequest()</code></td>
         <td>List of categories for articles</td>
     </tr>
     <tr>
         <td><a href="/api/blog/details/12345/" target="_blank">/api/blog/details/12345/</a></td>
-        <td>blog</td>
+        <td class="text-success">everyone</td>
         <td><code>ajaxBlogRequest()</code></td>
         <td>Details about article ID 12345</td>
     </tr>
     <tr>
+        <td><a href="/api/blog/add/" target="_blank">/api/blog/add/</a></td>
+        <td class="text-warning">user</td>
+        <td><code>ajaxBlogRequest()</code></td>
+        <td>Publish new article</td>
+    </tr>
+    <tr>
+        <td><a href="/api/blog/edit/" target="_blank">/api/blog/edit/</a></td>
+        <td class="text-danger">admin</td>
+        <td><code>ajaxBlogRequest()</code></td>
+        <td>Edit article field</td>
+    </tr>
+</table>
+
+<h4>Module Gallery</h4>
+<table class="table">
+    <tr><th class="col-sm-3">URL</th><th class="col-sm-2">Access</th><th class="col-sm-3">PHP Function</th><th class="col-sm-4">Description</th></tr>
+    <tr>
         <td><a href="/api/gallery/list/" target="_blank">/api/gallery/list/</a></td>
-        <td>gallery</td>
+        <td class="text-success">everyone</td>
         <td><code>ajaxGalleryRequest()</code></td>
         <td>List of published albums</td>
     </tr>
     <tr>
         <td><a href="/api/gallery/album/12345/" target="_blank">/api/gallery/album/12345/</a></td>
-        <td>gallery</td>
+        <td class="text-success">everyone</td>
         <td><code>ajaxGalleryRequest()</code></td>
         <td>List of photos for an album ID 12345</td>
     </tr>
     <tr>
+        <td><a href="/api/gallery/add/" target="_blank">/api/gallery/add/</a></td>
+        <td class="text-warning">user</td>
+        <td><code>ajaxGalleryRequest()</code></td>
+        <td>Publish new album</td>
+    </tr>
+    <tr>
+        <td><a href="/api/gallery/edit-album/" target="_blank">/api/gallery/edit-album/</a></td>
+        <td class="text-danger">admin</td>
+        <td><code>ajaxGalleryRequest()</code></td>
+        <td>Edit album field</td>
+    </tr>
+    <tr>
+        <td><a href="/api/gallery/edit-photo/" target="_blank">/api/gallery/edit-photo/</a></td>
+        <td class="text-danger">admin</td>
+        <td><code>ajaxGalleryRequest()</code></td>
+        <td>Edit photo field</td>
+    </tr>
+</table>
+
+<h4>Module Feedback</h4>
+<table class="table">
+    <tr><th class="col-sm-3">URL</th><th class="col-sm-2">Access</th><th class="col-sm-3">PHP Function</th><th class="col-sm-4">Description</th></tr>
+    <tr>
         <td><a href="/api/feedback/list/" target="_blank">/api/feedback/list/</a></td>
-        <td>feedback</td>
+        <td class="text-success">everyone</td>
         <td><code>ajaxFeedbackRequest()</code></td>
         <td>List of published feedback items</td>
     </tr>
     <tr>
-        <td><a href="/api/feedback/add" target="_blank">/api/feedback/add/</a></td>
-        <td>feedback</td>
+        <td><a href="/api/feedback/add/" target="_blank">/api/feedback/add/</a></td>
+        <td class="text-success">everyone</td>
         <td><code>ajaxFeedbackRequest()</code></td>
-        <td>Publish new feedback.<br><b>* Note.</b> User level access required</td>
+        <td>Publish new feedback</td>
     </tr>
     <tr>
-        <td><a href="/api/uploadpic/" target="_blank">/api/uploadpic/</a></td>
-        <td>msv-core</td>
-        <td><code>ajaxUploadPicture()</code></td>
-        <td>Upload file to file storage.<br><b>* Note.</b> Admin level access required</td>
+        <td><a href="/api/feedback/edit/" target="_blank">/api/feedback/edit/</a></td>
+        <td class="text-danger">admin</td>
+        <td><code>ajaxFeedbackRequest()</code></td>
+        <td>Edit feedback field</td>
     </tr>
+</table>
+
+<h4>Module Search</h4>
+<table class="table">
+    <tr><th class="col-sm-3">URL</th><th class="col-sm-2">Access</th><th class="col-sm-3">PHP Function</th><th class="col-sm-4">Description</th></tr>
     <tr>
         <td><a href="/api/more_search/" target="_blank">/api/more_search/</a></td>
-        <td>search</td>
+        <td class="text-success">everyone</td>
         <td><code>ajax_More_Search()</code></td>
         <td>Get website text search results</td>
     </tr>
 </table>
+
+<h4>Module Core</h4>
+<table class="table">
+    <tr><th class="col-sm-3">URL</th><th class="col-sm-2">Access</th><th class="col-sm-3">PHP Function</th><th class="col-sm-4">Description</th></tr>
+    <tr>
+        <td><a href="/api/structure/list/" target="_blank">/api/structure/list/</a></td>
+        <td class="text-danger">admin</td>
+        <td><code>ajaxStructureRequest()</code></td>
+        <td>List data in structure table</td>
+    </tr>
+    <tr>
+        <td><a href="/api/structure/edit/" target="_blank">/api/structure/edit/</a></td>
+        <td class="text-danger">admin</td>
+        <td><code>ajaxStructureRequest()</code></td>
+        <td>Change field value in structure table</td>
+    </tr>
+    <tr>
+        <td><a href="/api/structure/add/" target="_blank">/api/structure/add/</a></td>
+        <td class="text-danger">admin</td>
+        <td><code>ajaxStructureRequest()</code></td>
+        <td>Add row to structure table</td>
+    </tr>
+    <tr>
+        <td><a href="/api/document/list/" target="_blank">/api/document/list/</a></td>
+        <td class="text-danger">admin</td>
+        <td><code>ajaxDocumentRequest()</code></td>
+        <td>List data in documents table</td>
+    </tr>
+    <tr>
+        <td><a href="/api/document/edit/" target="_blank">/api/document/edit/</a></td>
+        <td class="text-danger">admin</td>
+        <td><code>ajaxDocumentRequest()</code></td>
+        <td>Change field value in documents table</td>
+    </tr>
+    <tr>
+        <td><a href="/api/document/add/" target="_blank">/api/document/add/</a></td>
+        <td class="text-danger">admin</td>
+        <td><code>ajaxDocumentRequest()</code></td>
+        <td>Add row to documents table</td>
+    </tr>
+    <tr>
+        <td><a href="/api/settings/list/" target="_blank">/api/settings/list/</a></td>
+        <td class="text-danger">admin</td>
+        <td><code>ajaxSettingsRequest()</code></td>
+        <td>List website settings</td>
+    </tr>
+    <tr>
+        <td><a href="/api/settings/add/" target="_blank">/api/settings/add/</a></td>
+        <td class="text-danger">admin</td>
+        <td><code>ajaxSettingsRequest()</code></td>
+        <td>Add row to website settings</td>
+    </tr>
+    <tr>
+        <td><a href="/api/settings/edit/" target="_blank">/api/settings/edit/</a></td>
+        <td class="text-danger">admin</td>
+        <td><code>ajaxSettingsRequest()</code></td>
+        <td>Change field value in website settings</td>
+    </tr>
+    <tr>
+        <td><a href="/api/uploadpic/" target="_blank">/api/uploadpic/</a></td>
+        <td class="text-danger">admin</td>
+        <td><code>ajaxUploadPicture()</code></td>
+        <td>Upload file to file storage</td>
+    </tr>
+</table>
+
+<p>URL and access level can be configured in module XML</p>

@@ -1,6 +1,20 @@
 <?php
 
-function Blog_add($params, $options = array()) {
+/**
+ * Add new blog article
+ * Database table: TABLE_BLOG_ARTICLES
+ * SEO is updated in case of success
+ *
+ * checks for required fields and correct values
+ * $row["url"] is required
+ * $row["title"] is required
+ * $row["email"] is required
+ *
+ * @param array $row Associative array with data to be inserted
+ * @param array $options Optional list of flags. Supported: LoadPictures, EmailNotifyAdmin
+ * @return array Result of a API call
+ */
+function Blog_add($row, $options = array()) {
     $result = array(
         "ok" => false,
         "data" => array(),
@@ -8,85 +22,67 @@ function Blog_add($params, $options = array()) {
     );
 
     // check required fields
-    if (empty($params["url"])) {
+    if (empty($row["url"])) {
         $result["msg"] = _t("msg.blog.nourl");
         return $result;
     }
-    if (empty($params["title"])) {
+    if (empty($row["title"])) {
         $result["msg"] = _t("msg.blog.notitle");
         return $result;
     }
-    if (empty($params["email"])) {
+    if (empty($row["email"])) {
         $result["msg"] = _t("msg.blog.noemail");
         return $result;
     }
 
     // set defaults
-    if (empty($params["sticked"])) {
-        $params["sticked"] = 0;
+    if (empty($row["sticked"])) {
+        $row["sticked"] = 0;
     } else {
-        $params["sticked"] = (int)$params["sticked"];
+        $row["sticked"] = (int)$row["sticked"];
     }
-    if (empty($params["published"])) {
-        $params["published"] = 1;
+    if (empty($row["published"])) {
+        $row["published"] = 1;
     } else {
-        $params["published"] = (int)$params["published"];
+        $row["published"] = (int)$row["published"];
     }
-    if (empty($params["date"])) {
-        $params["date"] = date("Y-m-d H:i:s");
+    if (empty($row["date"])) {
+        $row["date"] = date("Y-m-d H:i:s");
     }
-    if (empty($params["album_id"])) {
-        $params["album_id"] = 0;
+    if (empty($row["album_id"])) {
+        $row["album_id"] = 0;
     } else {
-        $params["album_id"] = (int)$params["album_id"];
+        $row["album_id"] = (int)$row["album_id"];
     }
-    if (empty($params["views"])) {
-        $params["views"] = 0;
+    if (empty($row["views"])) {
+        $row["views"] = 0;
     } else {
-        $params["views"] = (int)$params["views"];
+        $row["views"] = (int)$row["views"];
     }
-    if (empty($params["shares"])) {
-        $params["shares"] = 0;
+    if (empty($row["shares"])) {
+        $row["shares"] = 0;
     } else {
-        $params["shares"] = (int)$params["shares"];
+        $row["shares"] = (int)$row["shares"];
     }
-    if (empty($params["comments"])) {
-        $params["comments"] = 0;
+    if (empty($row["comments"])) {
+        $row["comments"] = 0;
     } else {
-        $params["comments"] = (int)$params["comments"];
+        $row["comments"] = (int)$row["comments"];
     }
 
     // set empty fields
-    if (empty($params["description"])) $params["description"] = "";
-    if (empty($params["text"])) $params["text"] = "";
-    if (empty($params["pic"])) $params["pic"] = "";
-    if (empty($params["pic_preview"])) $params["pic_preview"] = "";
+    if (empty($row["description"])) $row["description"] = "";
+    if (empty($row["text"])) $row["text"] = "";
+    if (empty($row["pic"])) $row["pic"] = "";
+    if (empty($row["pic_preview"])) $row["pic_preview"] = "";
 
     if (in_array("LoadPictures", $options)) {
         // try to load files
-        if (!empty($params["pic"]) && is_readable(UPLOAD_FILES_PATH."/".$params["pic"])) {
-            $fileResult = MSV_storePic(UPLOAD_FILES_PATH."/".$params["pic"], "jpg", "", TABLE_BLOG_ARTICLES, "pic");
-            if (!is_numeric($fileResult)) {
-                $params["pic"] = $fileResult;
-            } else {
-                $params["pic"] = "";
-            }
-        } else {
-            $params["pic"] = "";
-        }
-        if (!empty($params["pic_preview"]) && is_readable(UPLOAD_FILES_PATH."/".$params["pic_preview"])) {
-            $fileResult = MSV_storePic(UPLOAD_FILES_PATH."/".$params["pic_preview"], "jpg", "", TABLE_BLOG_ARTICLES, "pic_preview");
-            if (!is_numeric($fileResult)) {
-                $params["pic_preview"] = $fileResult;
-            } else {
-                $params["pic_preview"] = "";
-            }
-        } else{
-            $params["pic_preview"] = "";
-        }
+        $row["pic"] = MSV_processUploadPic($row["pic"], TABLE_BLOG_ARTICLES, "pic");
+        $row["pic_preview"] = MSV_processUploadPic($row["pic_preview"], TABLE_BLOG_ARTICLES, "pic_preview");
     }
 
-    $result = API_itemAdd(TABLE_BLOG_ARTICLES, $params);
+    $result = API_itemAdd(TABLE_BLOG_ARTICLES, $row);
 
     if ($result["ok"]) {
         $result["msg"] = _t("msg.blog.saved");
@@ -94,20 +90,35 @@ function Blog_add($params, $options = array()) {
         $blog = MSV_get("website.blog");
 
         $item = array(
-            "url" => $blog->baseUrl.$params["url"]."/",
-            "title" => $params["title"],
-            "description" => $params["description"],
-            "keywords" => $params["description"],
-            "sitemap" => $params["published"],
+            "url" => $blog->baseUrl.$row["url"]."/",
+            "title" => $row["title"],
+            "description" => $row["description"],
+            "keywords" => $row["description"],
+            "sitemap" => $row["published"],
         );
 
         SEO_add($item);
+
+        $articleID = $result["insert_id"];
+
+        // attach article categories
+        if (!empty($row["category"]) && is_array($row["category"])) {
+            foreach ($row["category"] as $itemCat) {
+                $itemCat["published"] = 1;
+                $itemCat["article_id"] = $articleID;
+
+                $resultCat = API_itemAdd(TABLE_BLOG_ARTICLE_CATEGORIES, $itemCat);
+                if (!$resultCat["ok"]) {
+                    $result["msg"] .= $resultCat["msg"]."\n";
+                }
+            }
+        }
 
         // send email to "admin_email"
         // email template: blog_admin_notify
         if (in_array("EmailNotifyAdmin", $options)) {
             $emailAdmin = MSV_getConfig("admin_email");
-            MSV_EmailTemplate("blog_admin_notify", $emailAdmin, $params);
+            MSV_EmailTemplate("blog_admin_notify", $emailAdmin, $row);
         }
     }
     return $result;

@@ -4,8 +4,20 @@ function FeedbackInstall($module) {
 
     $docFeedbackTitle = "We are happy to receive your feedback";
     $docFeedbackText = "<img src='/content/images/contacts.png' class='img-responsive'>";
+
     // install website page with feedback form
-    MSV_Structure_add("all", $module->baseUrl, "Feedback", "custom", "main-feedback.tpl", 1, "", 0, "everyone", "", $docFeedbackTitle, $docFeedbackText);
+    $itemStructure = array(
+        "url" => $module->baseUrl,
+        "name" => "Feedback",
+        "template" => "custom",
+        "page_template" => "main-feedback.tpl",
+        "sitemap" => 1,
+        "menu" => "",
+        "menu_order" => 5,
+        "document_title" => $docFeedbackTitle,
+        "document_text" => $docFeedbackText,
+    );
+    MSV_Structure_add($itemStructure, array("lang" => "all"));
 
     // add Email Templates
     $templateFeedbackNotify = '
@@ -22,7 +34,14 @@ Text: <br />
 <br /><br />
 If you have any questions, please contact us via e-mail <a href="mailto:{support_email}">{support_email}</a>, or via the <a href="{HOME_URL}contacts/">Contact us form</a>.
 ';
-    MSV_MailTemplate_add("feedback_notify", "Your support ticket was received", $templateFeedbackNotify, "", "all");
+
+    // install website page with feedback form
+    $itemTemplate = array(
+        "name" => "feedback_notify",
+        "subject" => "Your support ticket was received",
+        "text" => $templateFeedbackNotify,
+    );
+    MSV_MailTemplate_add($itemTemplate, array("lang" => "all"));
 
     $templateFeedbackNotifyAdmin = '
 Feedback details:<br />
@@ -34,7 +53,12 @@ IP: <strong>{ip}</strong> <br />
 Text: <br />
 {text}<br />
 ';
-    MSV_MailTemplate_add("feedback_admin_notify", "New support ticket was received", $templateFeedbackNotifyAdmin, "", "all");
+    $itemTemplate = array(
+        "name" => "feedback_admin_notify",
+        "subject" => "New support ticket was received",
+        "text" => $templateFeedbackNotifyAdmin,
+    );
+    MSV_MailTemplate_add($itemTemplate, array("lang" => "all"));
 
     // add feedback items
     $item = array(
@@ -42,8 +66,8 @@ Text: <br />
         "email" => "tech@sitograph.com",
         "name" => "Sitograph Dev Team",
         "name_title" => "Lead Architect",
-        "text" => "<p>Sitograph was created to help maintain huge Web applications. 
-From one side with Sitograph it is easy to support and manage website content but from the other hand, 
+        "text" => "<p>Sitograph was created to help maintain huge Web applications.
+From one side with Sitograph it is easy to support and manage website content but from the other hand,
 developers have a full set of highly customizable tools for website management and configuration.</p>",
         "pic" => "images/feedback_1.png",
         "stars" => 5,

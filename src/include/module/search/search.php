@@ -351,8 +351,13 @@ function Get_Search_List($module)
 
 function SearchInstall($module) {
 
-	MSV_Structure_add("all", $module->baseUrl, "Site Search", "custom", "site-search.tpl", 1, "", 10, "everyone");
-	
-}
+    $itemStructure = array(
+        "url" => $module->baseUrl,
+        "name" => "Site Search",
+        "template" => "custom",
+        "page_template" => "site-search.tpl",
+        "sitemap" => 1,
+    );
+    MSV_Structure_add($itemStructure, array("lang" => "all"));
 
-?>
+}

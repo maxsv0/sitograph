@@ -158,7 +158,7 @@ function MSV_LoadPageDocument() {
         // if "edit_mode" is On, render save button under the text blocks and title
         $editMode = MSV_getConfig("edit_mode");
         if ($editMode) {
-            $documentNew = "<form action='/api/document/save/' method='post' class='form-text-inline'>";
+            $documentNew = "<form action='/api/document/edit/' method='post' class='form-text-inline'>";
             $documentNew .= "<div class='editor-inline'>" . $document["text"] . "</div>";
             $documentNew .= "<div class='clearfix well admin_block'>
 <button type='submit' class='btn btn-primary'><span class=\"glyphicon glyphicon-ok\">&nbsp;</span>Save Document</button>
@@ -170,7 +170,7 @@ function MSV_LoadPageDocument() {
             $documentNew .= "</form>";
             $document["text"] = $documentNew;
 
-            $documentNew = "<form action='/api/document/save/' method='post'  class='form-text-inline'>";
+            $documentNew = "<form action='/api/document/edit/' method='post'  class='form-text-inline'>";
             $documentNew .= "<div class='editor-inline' name='postValue'>" . $document["name"] . "</div>";
             $documentNew .= "<div class='clearfix well admin_block'>
 <button type='submit' class='btn btn-primary'><span class=\"glyphicon glyphicon-ok\">&nbsp;</span>Save Document Title</button>

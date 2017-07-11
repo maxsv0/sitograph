@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * API extension for module msv-core
+ * Allows to manage table TABLE_SETTINGS
+ * All calls require admin level access
+
+ * Allow URLs like:
+ * 		/api/settings/list/
+ * 		/api/settings/add/
+ * 		/api/settings/edit/
+ *
+ * @return string JSON encoded string containing API call result
+ */
 function ajaxSettingsRequest($module) {
     if (!MSV_checkAccessUser("admin")) {
         $resultQuery = array(
@@ -17,7 +29,11 @@ function ajaxSettingsRequest($module) {
         case "list":
             $resultQuery = API_getDBList(TABLE_SETTINGS, "", "`id` desc", 999, "");
             break;
-        case "save":
+        case "add":
+            $item = MSV_proccessTableData(TABLE_SETTINGS, "");
+            $resultQuery = API_itemAdd(TABLE_SETTINGS, $item);
+            break;
+        case "edit":
             if (empty($_REQUEST["updateName"]) || empty($_REQUEST["updateID"]) || !isset($_REQUEST["updateValue"]) ) {
                 $resultQuery = array(
                     "ok" => false,
@@ -44,7 +60,18 @@ function ajaxSettingsRequest($module) {
     return json_encode($resultQuery);
 }
 
+/**
+ * API extension for module msv-core
+ * Allows to manage table TABLE_STRUCTURE
+ * All calls require admin level access
 
+ * Allow URLs like:
+ * 		/api/structure/list/
+ * 		/api/structure/add/
+ * 		/api/structure/edit/
+ *
+ * @return string JSON encoded string containing API call result
+ */
 function ajaxStructureRequest($module) {
     if (!MSV_checkAccessUser("admin")) {
         $resultQuery = array(
@@ -62,7 +89,11 @@ function ajaxStructureRequest($module) {
         case "list":
             $resultQuery = API_getDBList(TABLE_STRUCTURE, "", "`id` desc", 999, "");
             break;
-        case "save":
+        case "add":
+            $item = MSV_proccessTableData(TABLE_STRUCTURE, "");
+            $resultQuery = API_itemAdd(TABLE_STRUCTURE, $item);
+            break;
+        case "edit":
             if (empty($_REQUEST["updateName"]) || empty($_REQUEST["updateID"]) || !isset($_REQUEST["updateValue"]) ) {
                 $resultQuery = array(
                     "ok" => false,
@@ -89,7 +120,18 @@ function ajaxStructureRequest($module) {
     return json_encode($resultQuery);
 }
 
+/**
+ * API extension for module msv-core
+ * Allows to manage table TABLE_DOCUMENTS
+ * All calls require admin level access
 
+ * Allow URLs like:
+ * 		/api/document/list/
+ * 		/api/document/add/
+ * 		/api/document/edit/
+ *
+ * @return string JSON encoded string containing API call result
+ */
 function ajaxDocumentRequest($module) {
     if (!MSV_checkAccessUser("admin")) {
         $resultQuery = array(
@@ -107,7 +149,11 @@ function ajaxDocumentRequest($module) {
         case "list":
             $resultQuery = API_getDBList(TABLE_DOCUMENTS, "", "`id` desc", 999, "");
             break;
-        case "save":
+        case "add":
+            $item = MSV_proccessTableData(TABLE_DOCUMENTS, "");
+            $resultQuery = API_itemAdd(TABLE_DOCUMENTS, $item);
+            break;
+        case "edit":
             if (empty($_REQUEST["updateName"]) || empty($_REQUEST["updateID"]) || !isset($_REQUEST["updateValue"]) ) {
                 $resultQuery = array(
                     "ok" => false,
@@ -134,8 +180,14 @@ function ajaxDocumentRequest($module) {
     return json_encode($resultQuery);
 }
 
+/**
+ * API extension for module msv-core to upload file to File Storage
+ * Requires admin level access
 
-
+ * URL: /api/uploadpic/
+ *
+ * @return string Path of a stored file in case of success, error code otherwise.
+ */
 function ajaxUploadPicture() {
     if (!MSV_checkAccessUser("admin")) {
         return "No access";
@@ -183,9 +235,9 @@ function ajaxUploadPicture() {
 }
 
 
+// *********** TODO: rework everything below
 
 // TODO: + use languages
-
 function ajax_Get_Translit($module) {
     $res = array();
 
@@ -199,11 +251,11 @@ function ajax_Get_Translit($module) {
         }
     }
     if (!empty($_REQUEST['code_str'])) {
-        $res 	= array('success' 	=> 'ok',
-            'code_str' 		=> translit_encode(str_trunc(((!empty($index)? $index.'-':'').$_REQUEST['code_str']),150)));
+        $res    = array('success'       => 'ok',
+            'code_str'          => translit_encode(str_trunc(((!empty($index)? $index.'-':'').$_REQUEST['code_str']),150)));
     } else {
-        $res 	= array('success' 	=> '',
-            'code_str' 		=> '');
+        $res    = array('success'       => '',
+            'code_str'          => '');
     }
 
 

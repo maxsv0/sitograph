@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Add CSS or JS file directly to website output
  * File is only added if MSV_checkInclude($url, $access) is passed
@@ -871,8 +872,8 @@ function _t($textID) {
         $retStr = preg_replace_callback(
             '~\{(\w+?)\}~sU',
             create_function('$t','
-		        return constant($t[1]);
-		    '),
+                        return constant($t[1]);
+                    '),
             $retStr);
 
         return $retStr;
@@ -881,42 +882,107 @@ function _t($textID) {
     }
 }
 
-function MSV_Structure_add($lang, $url, $name = "", $template = "", $page_template = "", $sitemap = "", $menu = "", $menu_order = 0, $access, $parent_url = "", $document_title = "", $document_text = "") {
+/**
+ * Add new structure item
+ * Database table: TABLE_STRUCTURE
+ * SEO is updated in case of success
+ * Document is updated
+ * Menu item is updated
+ *
+ * checks for required fields and correct values
+ * $row["url"] is required
+ * $row["name"] is required
+ * supports lang = "all" for recursive call
+ *
+ * @param array $row Associative array with data to be inserted
+ * @param array $options Optional list of flags. Supported: lang
+ * @return array Result of a API call
+ */
+function MSV_Structure_add($row, $options = array()) {
+    $result = array(
+        "ok" => false,
+        "data" => array(),
+        "msg" => "",
+    );
 
+    // check required fields
+    if (empty($row["url"])) {
+        $result["msg"] = _t("msg.structure.nourl");
+        return $result;
+    }
+    if (empty($row["name"])) {
+        $result["msg"] = _t("msg.structure.noname");
+        return $result;
+    }
+
+    // get lang if present
+    if (!empty($options["lang"])) {
+        $lang = $options["lang"];
+    } else {
+        $lang = LANG;
+    }
 
     // run recursively and exit
     if ($lang === "all") {
-
         $website = MSV_get("website");
 
+        $n = 0;
         foreach ($website->languages as $langID) {
-            MSV_Structure_add($langID, $url, $name, $template, $page_template, $sitemap, $menu, $menu_order, $access, $parent_url, $document_title, $document_text);
+            $optionsLang = $options;
+            $optionsLang["lang"] = $langID;
+            MSV_Structure_add($row, $optionsLang);
+            $n++;
         }
 
-        return true;
+        $result["msg"] = "Recursively called $n times";
+        $result["ok"] = true;
+        return $result;
     }
 
     $parent_id = 0;
-    if (!empty($parent_url)) {
-        $resultParent = API_getDBItem(TABLE_STRUCTURE, "`url` = '".MSV_SQLEscape($parent_url)."'", $lang);
+    if (!empty($row["parent_url"])) {
+        $resultParent = API_getDBItem(TABLE_STRUCTURE, "`url` = '".MSV_SQLEscape($row["parent_url"])."'", $lang);
         if ($resultParent["ok"] && !empty($resultParent["data"])) {
-            $parent_id = $resultParent["data"]["id"];
+            $row["parent_id"] = $resultParent["data"]["id"];
         }
     }
 
+    // set defaults
+    if (empty($row["parent_id"])) {
+        $row["parent_id"] = 0;
+    } else {
+        $row["parent_id"] = (int)$row["parent_id"];
+    }
+    if (empty($row["published"])) {
+        $row["published"] = 1;
+    } else {
+        $row["published"] = (int)$row["published"];
+    }
+    if (empty($row["sitemap"])) {
+        $row["sitemap"] = 0;
+    } else {
+        $row["sitemap"] = (int)$row["sitemap"];
+    }
+    if (empty($row["menu_order"])) {
+        $row["menu_order"] = 0;
+    } else {
+        $row["menu_order"] = (int)$row["menu_order"];
+    }
+    if (empty($row["menu_parent_id"])) {
+        $row["menu_parent_id"] = 0;
+    } else {
+        $row["menu_parent_id"] = (int)$row["menu_parent_id"];
+    }
 
-    $item = array(
-        "published" => 1,
-        "url" => $url,
-        "parent_id" => $parent_id,
-        "name" => $name,
-        "template" => $template,
-        "page_template" => $page_template,
-        "sitemap" => $sitemap,
-        "access" => $access,
-    );
+    // set empty fields
+    if (empty($row["template"])) $row["template"] = "";
+    if (empty($row["page_template"])) $row["page_template"] = "";
+    if (empty($row["access"])) $row["access"] = "everyone";
+    if (empty($row["menu"])) $row["menu"] = "";
+    if (empty($row["document_title"])) $row["document_title"] = "";
+    if (empty($row["document_text"])) $row["document_text"] = "";
 
-    $result = API_itemAdd(TABLE_STRUCTURE, $item, $lang);
+    $result = API_itemAdd(TABLE_STRUCTURE, $row, $lang);
 
     if ($result["ok"]) {
         // get net structure id
@@ -924,36 +990,37 @@ function MSV_Structure_add($lang, $url, $name = "", $template = "", $page_templa
 
         // add seo
         $itemSEO = array(
-            "url" => $url,
-            "title" => $name,
-            "description" => $name,
-            "keywords" => $name,
-            "sitemap" => $sitemap,
+            "url" => $row["url"],
+            "title" => $row["name"],
+            "description" => $row["name"],
+            "keywords" => $row["name"],
+            "sitemap" => $row["sitemap"],
         );
-        SEO_add($itemSEO, $lang);
-
-
-        // set document title if it was not provided
-        if (empty($document_title)) {
-            $document_title = $name;
-        }
+        SEO_add($itemSEO, array("lang" => $lang));
 
         // add document
-        $resultDocument = MSV_Document_add($document_title, $document_text, "", $lang);
+        if (!empty($row["document_title"]) || !empty($row["document_text"])) {
+            $itemDocument = array(
+                "name" => $row["document_title"],
+                "text" => $row["document_text"],
+            );
+            $resultDocument = MSV_Document_add($itemDocument, array("lang" => $lang));
 
-        // update structure=>set document
-        if ($resultDocument["ok"]) {
-            API_updateDBItem(TABLE_STRUCTURE, "page_document_id", $resultDocument["insert_id"], " id = '".$structure_id."'");
+            // update structure=>set document
+            if ($resultDocument["ok"]) {
+                API_updateDBItem(TABLE_STRUCTURE, "page_document_id", $resultDocument["insert_id"], " id = '".$structure_id."'");
+            }
         }
 
-        if (!empty($menu)) {
+        if (!empty($row["menu"])) {
             $item = array(
                 "published" => 1,
-                "url" => $url,
-                "name" => $name,
-                "menu_id" => $menu,
+                "url" => $row["url"],
+                "name" => $row["name"],
+                "menu_id" => $row["menu"],
                 "structure_id" => $structure_id,
-                "order_id" => $menu_order,
+                "order_id" => $row["menu_order"],
+                "parent_id" => $row["menu_parent_id"],
             );
             API_itemAdd(TABLE_MENU, $item, $lang);
         }
@@ -962,33 +1029,64 @@ function MSV_Structure_add($lang, $url, $name = "", $template = "", $page_templa
     return $result;
 }
 
+/**
+ * Add new dcument
+ * Database table: TABLE_DOCUMENTS
+ *
+ * @param array $row Associative array with data to be inserted
+ * @param array $options Optional list of flags. Supported: lang
+ * @return array Result of a API call
+ */
+function MSV_Document_add($row, $options = array()) {
+    // set defaults
+    if (!empty($row["published"])) {
+        $row["published"] = (int)$row["published"];
+    } else {
+        $row["published"] = 1;
+    }
+    if (!empty($options["lang"])) {
+        $lang = $options["lang"];
+    } else {
+        $lang = LANG;
+    }
 
-function MSV_Document_add($name = "", $text = "", $ext_link = "", $lang = LANG) {
+    // set empty fields
+    if (empty($row["name"])) $row["name"] = "";
+    if (empty($row["text"])) $row["text"] = "";
 
-    $item = array(
-        "published" => 1,
-        "name" => $name,
-        "text" => $text,
-        "ext_link" => $ext_link,
-    );
-
-    $result = API_itemAdd(TABLE_DOCUMENTS, $item, $lang);
+    $result = API_itemAdd(TABLE_DOCUMENTS, $row, $lang);
 
     return $result;
 }
 
+/**
+ * Add new mail template
+ * Database table: TABLE_MAIL_TEMPLATES
+ *
+ * @param array $row Associative array with data to be inserted
+ * @param array $options Optional list of flags. Supported: lang
+ * @return array Result of a API call
+ */
+function MSV_MailTemplate_add($row, $options = array()) {
+    // set defaults
+    if (!empty($row["published"])) {
+        $row["published"] = (int)$row["published"];
+    } else {
+        $row["published"] = 1;
+    }
+    if (!empty($options["lang"])) {
+        $lang = $options["lang"];
+    } else {
+        $lang = LANG;
+    }
 
-function MSV_MailTemplate_add($name = "", $subject = "", $text = "", $header = "", $lang = LANG) {
+    // set empty fields
+    if (empty($row["name"])) $row["name"] = "";
+    if (empty($row["text"])) $row["text"] = "";
+    if (empty($row["subject"])) $row["subject"] = "";
+    if (empty($row["header"])) $row["header"] = "";
 
-    $item = array(
-        "published" => 1,
-        "name" => $name,
-        "subject" => $subject,
-        "text" => $text,
-        "header" => $header,
-    );
-
-    $result = API_itemAdd(TABLE_MAIL_TEMPLATES, $item, $lang);
+    $result = API_itemAdd(TABLE_MAIL_TEMPLATES, $row, $lang);
 
     return $result;
 }
@@ -1081,9 +1179,9 @@ function MSV_EmailTemplate($template, $mailTo, $data = array(), $message = true,
             }
             if (array_key_exists($t[1], $r)) {
                 $retText = $r[$t[1]];
-            } 
+            }
             return $retText;
-	        '), $mailBody);
+                '), $mailBody);
 
         $mailSubject = preg_replace_callback(
             '~\{(\w+?)\}~sU',
@@ -1099,9 +1197,9 @@ function MSV_EmailTemplate($template, $mailTo, $data = array(), $message = true,
             }
             if (array_key_exists($t[1], $r)) {
                 $retText = $r[$t[1]];
-            } 
+            }
             return $retText;
-	        '), $mailSubject);
+                '), $mailSubject);
 
         // add header HTML to a body
         if (!empty($resultMail["data"]["header"])) {
@@ -1222,14 +1320,14 @@ function MSV_HighlightText($s, $text, $c) {
 
 function MSV_formatMimeType($mimeType) {
     $mapping = array(
-        'pdf'	=>	array('application/pdf', 'application/force-download', 'application/x-download', 'binary/octet-stream'),
-        'swf'	=>	'application/x-shockwave-flash',
-        'zip'	=>	array('application/x-zip', 'application/zip', 'application/x-zip-compressed', 'application/s-compressed', 'multipart/x-zip'),
-        'rar'	=>	array('application/x-rar', 'application/rar', 'application/x-rar-compressed'),
-        'gif'	=>	'image/gif',
-        'jpg'	=>	array('image/jpeg', 'image/pjpeg'),
-        'png'	=>	array('image/png',  'image/x-png'),
-        'tif'	=>	'image/tiff',
+        'pdf'   =>      array('application/pdf', 'application/force-download', 'application/x-download', 'binary/octet-stream'),
+        'swf'   =>      'application/x-shockwave-flash',
+        'zip'   =>      array('application/x-zip', 'application/zip', 'application/x-zip-compressed', 'application/s-compressed', 'multipart/x-zip'),
+        'rar'   =>      array('application/x-rar', 'application/rar', 'application/x-rar-compressed'),
+        'gif'   =>      'image/gif',
+        'jpg'   =>      array('image/jpeg', 'image/pjpeg'),
+        'png'   =>      array('image/png',  'image/x-png'),
+        'tif'   =>      'image/tiff',
     );
     if (($ext = array_search($mimeType, $mapping, TRUE))) {
         return $ext;
@@ -1344,4 +1442,46 @@ $(document).ready(function() {
 ");
 
     return true;
+}
+
+
+function MSV_processUploadPic($path, $table = "", $field = "") {
+    $fileResult = "";
+    $mimetype = "";
+
+    if (empty($path)) {
+        return "";
+    }
+
+    if (strpos($path, "http") === 0) {
+        // this is remote file
+        $pathLoad = $path;
+
+        $headers = get_headers($path);
+        if(strpos($headers[0],'200') === false) {
+            foreach ($headers as $line) {
+                if(strpos($line,'Content-Type: ') === 0) {
+                    $mimetype = substr($line, 15);
+                }
+            }
+        }
+    } else {
+        // local file
+        $pathLoad = UPLOAD_FILES_PATH."/".$path;
+
+        if (is_readable($pathLoad)) {
+            $mimetype = mime_content_type($pathLoad);
+        }
+    }
+
+    if (empty($mimetype)) {
+        return "";
+    }
+
+    $fileResult = MSV_storePic($pathLoad, $mimetype, "", $table, $field);
+    if (!is_numeric($fileResult)) {
+        return $fileResult;
+    }
+
+    return "";
 }

@@ -2,7 +2,16 @@
 
 function GalleryInstall($module) {
     // create website structure item
-    MSV_Structure_add("all", $module->baseUrl, "Gallery", "custom", "main-gallery.tpl", 1, "top", 10, "everyone", "");
+    $itemStructure = array(
+        "url" => $module->baseUrl,
+        "name" => "Gallery",
+        "template" => "custom",
+        "page_template" => "main-gallery.tpl",
+        "sitemap" => 1,
+        "menu" => "top",
+        "menu_order" => 10,
+    );
+    MSV_Structure_add($itemStructure, array("lang" => "all"));
 
     // add sample gallery
     $item = array(

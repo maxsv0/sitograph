@@ -2,7 +2,16 @@
 
 function BlogInstall($module) {
     // create website structure item
-    MSV_Structure_add("all", $module->baseUrl, "Blog", "custom", "main-blog.tpl", 1, "top", 10, "everyone");
+    $itemStructure = array(
+        "url" => $module->baseUrl,
+        "name" => "Blog",
+        "template" => "custom",
+        "page_template" => "main-blog.tpl",
+        "sitemap" => 1,
+        "menu" => "top",
+        "menu_order" => 10,
+    );
+    MSV_Structure_add($itemStructure, array("lang" => "all"));
 
     // add email notify template
     $templateBlogNotifyAdmin = '
@@ -14,7 +23,12 @@ IP: <strong>{ip}</strong> <br />
 Text: <br />
 {text}<br />
 ';
-    MSV_MailTemplate_add("blog_admin_notify", "New blog article", $templateBlogNotifyAdmin, "", "all");
+    $itemTemplate = array(
+        "name" => "blog_admin_notify",
+        "subject" => "New blog article",
+        "text" => $templateBlogNotifyAdmin,
+    );
+    MSV_MailTemplate_add($itemTemplate, array("lang" => "all"));
 
     // add sample article
     $docContent = file_get_contents($module->pathModule."install-blog-folder-structure.html");

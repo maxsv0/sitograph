@@ -1,6 +1,19 @@
 <?php
 
-function Gallery_Add($params, $options = array()) {
+/**
+ * Add new album with photos
+ * Database table: TABLE_GALLERY_ALBUM, TABLE_GALLERY_PHOTOS
+ * SEO is updated in case of success
+ *
+ * checks for required fields and correct values
+ * $row["url"] is required
+ * $row["photos"] is a list of photos for album
+ *
+ * @param array $row Associative array with data to be inserted
+ * @param array $options Optional list of flags. Supported: LoadPictures
+ * @return array Result of a API call
+ */
+function Gallery_Add($row, $options = array()) {
     $result = array(
         "ok" => false,
         "data" => array(),
@@ -8,62 +21,49 @@ function Gallery_Add($params, $options = array()) {
     );
 
     // check required fields
-    if (empty($params["url"])) {
+    if (empty($row["url"])) {
         $result["msg"] = _t("msg.gallery.nourl");
-        return $result;
-    }
-    if (empty($params["title"])) {
-        $result["msg"] = _t("msg.gallery.notitle");
         return $result;
     }
 
     // set defaults
-    if (empty($params["published"])) {
-        $params["published"] = 1;
+    if (empty($row["published"])) {
+        $row["published"] = 1;
     } else {
-        $params["published"] = (int)$params["published"];
+        $row["published"] = (int)$row["published"];
     }
-    if (empty($params["date"])) {
-        $params["date"] = date("Y-m-d H:i:s");
+    if (empty($row["date"])) {
+        $row["date"] = date("Y-m-d H:i:s");
     }
-    if (empty($params["views"])) {
-        $params["views"] = 0;
+    if (empty($row["views"])) {
+        $row["views"] = 0;
     } else {
-        $params["views"] = (int)$params["views"];
+        $row["views"] = (int)$row["views"];
     }
-    if (empty($params["shares"])) {
-        $params["shares"] = 0;
+    if (empty($row["shares"])) {
+        $row["shares"] = 0;
     } else {
-        $params["shares"] = (int)$params["shares"];
+        $row["shares"] = (int)$row["shares"];
     }
-    if (empty($params["comments"])) {
-        $params["comments"] = 0;
+    if (empty($row["comments"])) {
+        $row["comments"] = 0;
     } else {
-        $params["comments"] = (int)$params["comments"];
+        $row["comments"] = (int)$row["comments"];
     }
 
     // set empty fields
-    if (empty($params["description"])) $params["description"] = "";
-    if (empty($params["pic"])) $params["pic"] = "";
-    if (empty($params["pic_preview"])) $params["pic_preview"] = "";
+    if (empty($row["title"])) $row["title"] = "";
+    if (empty($row["description"])) $row["description"] = "";
+    if (empty($row["pic"])) $row["pic"] = "";
+    if (empty($row["pic_preview"])) $row["pic_preview"] = "";
 
     if (in_array("LoadPictures", $options)) {
         // try to load files
-        if (!empty($params["pic"]) && is_readable(UPLOAD_FILES_PATH."/".$params["pic"])) {
-            $fileResult = MSV_storePic(UPLOAD_FILES_PATH."/".$params["pic"], "jpg", "", TABLE_GALLERY_ALBUM, "pic");
-            if (!is_numeric($fileResult)) {
-                $params["pic"] = $fileResult;
-            }
-        }
-        if (!empty($params["pic_preview"]) && is_readable(UPLOAD_FILES_PATH."/".$params["pic_preview"])) {
-            $fileResult = MSV_storePic(UPLOAD_FILES_PATH."/".$params["pic_preview"], "jpg", "", TABLE_GALLERY_ALBUM, "pic_preview");
-            if (!is_numeric($fileResult)) {
-                $params["pic_preview"] = $fileResult;
-            }
-        }
+        $row["pic"] = MSV_processUploadPic($row["pic"], TABLE_GALLERY_ALBUM, "pic");
+        $row["pic_preview"] = MSV_processUploadPic($row["pic_preview"], TABLE_GALLERY_ALBUM, "pic_preview");
     }
 
-    $result = API_itemAdd(TABLE_GALLERY_ALBUM, $params);
+    $result = API_itemAdd(TABLE_GALLERY_ALBUM, $row);
 
     if ($result["ok"]) {
         $result["msg"] = _t("msg.gallery.saved");
@@ -71,39 +71,31 @@ function Gallery_Add($params, $options = array()) {
         $gallery = MSV_get("website.gallery");
 
         $item = array(
-            "url" => $gallery->baseUrl.$params["url"]."/",
-            "title" => $params["title"],
-            "description" => $params["description"],
-            "keywords" => $params["description"],
-            "sitemap" => $params["published"],
+            "url" => $gallery->baseUrl.$row["url"]."/",
+            "title" => $row["title"],
+            "description" => $row["description"],
+            "keywords" => $row["description"],
+            "sitemap" => $row["published"],
         );
 
         SEO_add($item);
 
         $albumID = $result["insert_id"];
-        if (!empty($params["photos"]) && is_array($params["photos"])) {
-            foreach ($params["photos"] as $itemPhoto) {
+
+        // attach album photos
+        if (!empty($row["photos"]) && is_array($row["photos"])) {
+            foreach ($row["photos"] as $itemPhoto) {
                 $itemPhoto["published"] = 1;
                 $itemPhoto["album_id"] = $albumID;
 
                 if (in_array("LoadPictures", $options)) {
                     // try to load files
-                    if (!empty($itemPhoto["pic"]) && is_readable(UPLOAD_FILES_PATH . "/" . $itemPhoto["pic"])) {
-                        $fileResult = MSV_storePic(UPLOAD_FILES_PATH . "/" . $itemPhoto["pic"], "jpg", "", TABLE_GALLERY_PHOTOS, "pic");
-                        if (!is_numeric($fileResult)) {
-                            $itemPhoto["pic"] = $fileResult;
-                        }
-                    }
-                    if (!empty($itemPhoto["pic_preview"]) && is_readable(UPLOAD_FILES_PATH . "/" . $itemPhoto["pic_preview"])) {
-                        $fileResult = MSV_storePic(UPLOAD_FILES_PATH . "/" . $itemPhoto["pic_preview"], "jpg", "", TABLE_GALLERY_PHOTOS, "pic_preview");
-                        if (!is_numeric($fileResult)) {
-                            $itemPhoto["pic_preview"] = $fileResult;
-                        }
-                    }
+                    $itemPhoto["pic"] = MSV_processUploadPic($itemPhoto["pic"], TABLE_GALLERY_PHOTOS, "pic");
+                    $itemPhoto["pic_preview"] = MSV_processUploadPic($itemPhoto["pic_preview"], TABLE_GALLERY_PHOTOS, "pic_preview");
                 }
                 $resultPhoto = API_itemAdd(TABLE_GALLERY_PHOTOS, $itemPhoto);
                 if (!$resultPhoto["ok"]) {
-                    MSV_MessageError($resultPhoto["msg"]);
+                    $result["msg"] .= $resultPhoto["msg"]."\n";
                 }
             }
         }

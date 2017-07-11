@@ -1,25 +1,27 @@
 <?php
 
 function SitographInstall($module) {
-    MSV_Structure_add("*", "/admin/", _t("structure.admin_homepage"), "custom", "sitograph.tpl", 0, "", 0, "admin");
-    MSV_Structure_add("*", "/admin/login/", _t("structure.admin_login"), "custom", "sitograph-login.tpl", 0, "", 0, "everyone");
 
-    $docContent = file_get_contents($module->pathModule."install-page-getting-started.html");
-    MSV_Structure_add("*", "/sitograph/getting-started/", "Getting Started", "custom", "main-sideblock.tpl", 1, "", 5, "everyone", "", "Getting Started", $docContent);
+    // create Admin UI pages
+    $itemStructure = array(
+        "url" => "/admin/",
+        "name" => _t("structure.admin_homepage"),
+        "template" => "custom",
+        "page_template" => "sitograph.tpl",
+        "access" => "admin",
+    );
+    MSV_Structure_add($itemStructure, array("lang" => "*"));
 
-    $docContent = file_get_contents($module->pathModule."install-page-file-structure.html");
-    MSV_Structure_add("*", "/sitograph/file-structure/", "Sitograph File structure", "custom", "main-sideblock.tpl", 1, "", 5, "everyone", "", "Sitograph File structure", $docContent);
+    $itemStructure = array(
+        "url" => "/admin/login/",
+        "name" => _t("structure.admin_login"),
+        "template" => "custom",
+        "page_template" => "sitograph-login.tpl",
+        "access" => "everyone",
+    );
+    MSV_Structure_add($itemStructure, array("lang" => "*"));
 
-    MSV_Structure_add("*", "/sitograph/modules/", "Sitograph Modules", "custom", "main-modules.tpl", 1, "", 5, "everyone");
-
-    $docContent = file_get_contents($module->pathModule."install-page-api.html");
-    MSV_Structure_add("*", "/sitograph/API/", "Website API", "custom", "main-sideblock.tpl", 1, "", 5, "everyone", "", "Website API", $docContent);
-
-    // mailing options
-    MSV_setConfig("email_from", "tech@sitograph.com", true, "*");
-    MSV_setConfig("email_fromname", "Sitograph", true, "*");
-
-    // add MENU items
+    // add top MENU item
     $item = array(
         "published" => 1,
         "url" => "#",
@@ -28,48 +30,65 @@ function SitographInstall($module) {
         "order_id" => 3,
     );
     $result = API_itemAdd(TABLE_MENU, $item);
-    $parent_id = $result["insert_id"];
+    $menu_parent_id = $result["insert_id"];
 
-    $item = array(
-        "published" => 1,
+    // create sample site structure
+    $docContent = file_get_contents($module->pathModule."install-page-getting-started.html");
+    $itemStructure = array(
         "url" => "/sitograph/getting-started/",
         "name" => "Getting Started",
-        "menu_id" => "top",
-        "order_id" => 5,
-        "parent_id" => $parent_id,
+        "template" => "custom",
+        "page_template" => "main-sideblock.tpl",
+        "menu" => "top",
+        "menu_order" => 5,
+        "menu_parent_id" => $menu_parent_id,
+        "document_title" => "Getting Started",
+        "document_text" => $docContent,
     );
-    API_itemAdd(TABLE_MENU, $item);
+    MSV_Structure_add($itemStructure, array("lang" => "*"));
 
-    $item = array(
-        "published" => 1,
+    $docContent = file_get_contents($module->pathModule."install-page-file-structure.html");
+    $itemStructure = array(
         "url" => "/sitograph/file-structure/",
         "name" => "Sitograph File structure",
-        "menu_id" => "top",
-        "order_id" => 10,
-        "parent_id" => $parent_id,
+        "template" => "custom",
+        "page_template" => "main-sideblock.tpl",
+        "menu" => "top",
+        "menu_order" => 10,
+        "menu_parent_id" => $menu_parent_id,
+        "document_title" => "Getting Started",
+        "document_text" => $docContent,
     );
-    API_itemAdd(TABLE_MENU, $item);
+    MSV_Structure_add($itemStructure, array("lang" => "*"));
 
-    $item = array(
-        "published" => 1,
-        "url" => "/sitograph/modules/",
-        "name" => "Sitograph Modules",
-        "menu_id" => "top",
-        "order_id" => 15,
-        "parent_id" => $parent_id,
-    );
-    API_itemAdd(TABLE_MENU, $item);
-
-    $item = array(
-        "published" => 1,
+    $docContent = file_get_contents($module->pathModule."install-page-api.html");
+    $itemStructure = array(
         "url" => "/sitograph/API/",
         "name" => "Website API",
-        "menu_id" => "top",
-        "order_id" => 20,
-        "parent_id" => $parent_id,
+        "template" => "custom",
+        "page_template" => "main-sideblock.tpl",
+        "menu" => "top",
+        "menu_order" => 15,
+        "menu_parent_id" => $menu_parent_id,
+        "document_title" => "Getting Started",
+        "document_text" => $docContent,
     );
-    API_itemAdd(TABLE_MENU, $item);
+    MSV_Structure_add($itemStructure, array("lang" => "*"));
 
+    $itemStructure = array(
+        "url" => "/sitograph/modules/",
+        "name" => "Sitograph Modules",
+        "template" => "custom",
+        "page_template" => "main-modules.tpl",
+        "menu" => "top",
+        "menu_order" => 20,
+        "menu_parent_id" => $menu_parent_id,
+    );
+    MSV_Structure_add($itemStructure, array("lang" => "*"));
+
+    // mailing options
+    MSV_setConfig("email_from", "tech@sitograph.com", true, "*");
+    MSV_setConfig("email_fromname", "Sitograph", true, "*");
 
     // add mail templates
     $header = '
@@ -111,22 +130,22 @@ a:active {color:#bb233a;}
 </tr>
 <tr style="height: 400px;">
 <td style="padding: 20px 20px 0px; color: #2c2c2c; font-size: 11pt; line-height: 140%; width: 467px; height: 400px;">
-Dear {name}, 
-<br /><br /> 
+Dear {name},
+<br /><br />
 ';
     $templateFooter = '
-<br /><br /> 
-Regards, <br /> 
+<br /><br />
+Regards, <br />
 Sitograph Team
 </td>
 </tr>
 <tr style="height: 97px;">
 <td style="padding: 0px 20px; color: #777777; background-color: #eeeeee; font-size: 9pt; line-height: 140%; width: 467px; height: 90px;">
-<br /> 
+<br />
 <strong>Sitograph Content Management System.</strong>
-Sitograph CMS is an online, open source website creation tool. 
+Sitograph CMS is an online, open source website creation tool.
 Sitograph is a set of solutions for any online business.
-It is simple and powerful content management system for website or online shop. 
+It is simple and powerful content management system for website or online shop.
 </td>
 </tr>
 </tbody>

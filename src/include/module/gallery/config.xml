@@ -11,7 +11,12 @@
 	<param name="previewItemsCount" value="2"/>
 	<param name="adminMenu" value="true"/>
 	<param name="adminMenuOrder" value="29"/>
-	
+
+	<param name="accessAPIList" value="everyone"/>
+	<param name="accessAPIAlbum" value="everyone"/>
+	<param name="accessAPIAdd" value="admin"/>
+	<param name="accessAPIEdit" value="admin"/>
+
 	<constant name="TABLE_GALLERY_ALBUM" value="gallery_album"/>
 	<constant name="TABLE_GALLERY_PHOTOS" value="gallery_photos"/>
 	

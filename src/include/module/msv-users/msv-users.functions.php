@@ -1,6 +1,19 @@
 <?php
 
-function User_Add($params, $doEmailNotify = false, $doEmailNotifyAdmin = false) {
+/**
+ * Register new user
+ * Database table: TABLE_USERS
+ *
+ * checks for required fields and correct values
+ * $row["email"] is required, has to be valid email and not used
+ * unverified emails will receive link to confirm email
+ * message will be generated in case if email was sent
+ *
+ * @param array $row Associative array with data to be inserted
+ * @param array $options Optional list of flags. Supported: EmailNotifyUser, EmailNotifyAdmin
+ * @return array Result of a API call
+ */
+function User_Add($row, $options = array()) {
     $result = array(
         "ok" => false,
         "data" => array(),
@@ -8,65 +21,67 @@ function User_Add($params, $doEmailNotify = false, $doEmailNotifyAdmin = false) 
     );
 
     // check required fields
-    if (empty($params["email"])) {
+    if (empty($row["email"])) {
         $result["msg"] = _t("msg.users.noemail");
         return $result;
-    } elseif (!MSV_checkEmail($params["email"])) {
+    } elseif (!MSV_checkEmail($row["email"])) {
         $result["msg"] = _t("msg.wrong_email");
         return $result;
     }
 
     // check if user already exists
-    $resultCheck = API_getDBItem(TABLE_USERS, " `email` = '".MSV_SQLEscape($params["email"])."'");
+    $resultCheck = API_getDBItem(TABLE_USERS, " `email` = '".MSV_SQLEscape($row["email"])."'");
     if ($resultCheck["ok"] && !empty($resultCheck["data"])) {
         $result["msg"] = _t("msg.users.email_exists");
         return $result;
     }
 
     // set defaults
-    if (!empty($params["email_verified"])) {
-        $params["email_verified"] = (int)$params["email_verified"];
+    if (empty($row["email_verified"])) {
+        $row["email_verified"] = 0;
     } else {
-        $params["email_verified"] = 0;
+        $row["email_verified"] = (int)$row["email_verified"];
     }
-    if (!empty($params["published"])) {
-        $params["published"] = (int)$params["published"];
+    if (empty($row["published"])) {
+        $row["published"] = 1;
     } else {
-        $params["published"] = 1;
+        $row["published"] = (int)$row["published"];
     }
 
     // set empty fields
-    if (empty($params["password"])) {
+    if (empty($row["password"])) {
         // do not allow empty password
-        $params["password"] = MSV_PasswordGenerate();
+        $row["password"] = MSV_PasswordGenerate();
     }
-    if (empty($params["access"])) $params["access"] = "user";
-    if (empty($params["iss"])) $params["iss"] = "local";
-    if (empty($params["name"])) $params["name"] = "";
-    if (empty($params["phone"])) $params["phone"] = "";
-    if (empty($params["pic"])) $params["pic"] = "";
-    if (empty($params["verify_token"])) $params["verify_token"] = "";
-    if (empty($params["access_token"])) $params["access_token"] = "";
-    if (empty($params["email_verified"])) {
-        $params["verify_token"] = substr(md5(microtime().rand()), 0, 10);
+    if (empty($row["access"])) $row["access"] = "user";
+    if (empty($row["iss"])) $row["iss"] = "local";
+    if (empty($row["name"])) $row["name"] = "";
+    if (empty($row["phone"])) $row["phone"] = "";
+    if (empty($row["pic"])) $row["pic"] = "";
+    if (empty($row["verify_token"])) $row["verify_token"] = "";
+    if (empty($row["access_token"])) $row["access_token"] = "";
+    if (empty($row["email_verified"])) {
+        $row["verify_token"] = substr(md5(microtime().rand()), 0, 10);
     }
 
     // replace password with hash
-    $params["password_orig"] = $params["password"];
+    $row["password_orig"] = $row["password"];
     if (USER_HASH_PASSWORD) {
-        $params["password"] = password_hash($params["password"], PASSWORD_DEFAULT);
+        $row["password"] = password_hash($row["password"], PASSWORD_DEFAULT);
     }
 
     // assign user to each language (*)
-    $result = API_itemAdd(TABLE_USERS, $params, "*");
+    $result = API_itemAdd(TABLE_USERS, $row, "*");
 
     if ($result["ok"]) {
-        $userInfo = $params;
+        $result["msg"] = _t("msg.users.reg_success");
+
+        $userInfo = $row;
         $userInfo["password"] = $userInfo["password_orig"];
         $userInfo["verify_link"] = HOME_URL."settings/?verify_token=".$userInfo["verify_token"];
 
-        if ($doEmailNotify) {
-            if ($params["email_verified"] > 0) {
+        if (in_array("EmailNotifyUser", $options)) {
+            if ($row["email_verified"] > 0) {
                 $resultMail = MSV_EmailTemplate("user_registration", $userInfo["email"], $userInfo);
             } else {
                 $resultMail = MSV_EmailTemplate("user_registration_verify", $userInfo["email"], $userInfo);
@@ -78,7 +93,7 @@ function User_Add($params, $doEmailNotify = false, $doEmailNotifyAdmin = false) 
             }
         }
 
-        if ($doEmailNotifyAdmin) {
+        if (in_array("EmailNotifyAdmin", $options)) {
             $emailAdmin = MSV_getConfig("admin_email");
             MSV_EmailTemplate("user_registration_notify", $emailAdmin, $userInfo);
         }

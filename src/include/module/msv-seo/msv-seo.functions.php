@@ -1,6 +1,17 @@
 <?php
 
-function SEO_add($params, $lang = LANG) {
+/**
+ * Add new SEO item
+ * Database table: TABLE_SEO
+ *
+ * checks for required fields and correct values
+ * $row["url"] is required
+ *
+ * @param array $row Associative array with data to be inserted
+ * @param array $options Optional list of flags. Supported: lang
+ * @return array Result of a API call
+ */
+function SEO_add($row, $options = array()) {
     $result = array(
         "ok" => false,
         "data" => array(),
@@ -8,29 +19,34 @@ function SEO_add($params, $lang = LANG) {
     );
 
     // check required fields
-    if (empty($params["url"])) {
+    if (empty($row["url"])) {
         $result["msg"] = _t("msg.seo.nourl");
         return $result;
     }
 
     // set defaults
-    if (empty($params["sitemap"])) {
-        $params["sitemap"] = 0;
+    if (empty($row["sitemap"])) {
+        $row["sitemap"] = 0;
     } else {
-        $params["sitemap"] = (int)$params["sitemap"];
+        $row["sitemap"] = (int)$row["sitemap"];
     }
-    if (empty($params["published"])) {
-        $params["published"] = 1;
+    if (empty($row["published"])) {
+        $row["published"] = 1;
     } else {
-        $params["published"] = (int)$params["published"];
+        $row["published"] = (int)$row["published"];
+    }
+    if (!empty($options["lang"])) {
+        $lang = $options["lang"];
+    } else {
+        $lang = LANG;
     }
 
     // set empty fields
-    if (empty($params["title"])) $params["title"] = "";
-    if (empty($params["description"])) $params["description"] = "";
-    if (empty($params["keywords"])) $params["keywords"] = "";
+    if (empty($row["title"])) $row["title"] = "";
+    if (empty($row["description"])) $row["description"] = "";
+    if (empty($row["keywords"])) $row["keywords"] = "";
 
-    $result = API_itemAdd(TABLE_SEO, $params, $lang);
+    $result = API_itemAdd(TABLE_SEO, $row, $lang);
 
     if ($result["ok"]) {
         $result["msg"] = _t("msg.seo.saved");

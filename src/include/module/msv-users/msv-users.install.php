@@ -2,11 +2,67 @@
 
 function UsersInstall($module) {
 
-    MSV_Structure_add("all", "/user/", _t("structure.users.account"), "custom", "user.tpl", 1, "user", 1, "user");
-    MSV_Structure_add("all", "/signup/", _t("structure.users.signup"), "custom", "user-signup.tpl", 1, "nouser", 1, "everyone", "/user/");
-    MSV_Structure_add("all", "/login/", _t("structure.users.login"), "custom", "user-login.tpl", 1, "nouser", 2, "everyone", "/user/");
-    MSV_Structure_add("all", "/password-reset/", _t("structure.users.password_reset"), "custom", "user-password-reset.tpl", 1, "", 0, "everyone", "/user/");
-    MSV_Structure_add("all", "/settings/", _t("structure.users.settings"), "custom", "user-settings.tpl", 1, "user", 2, "user", "/user/");
+    $itemStructure = array(
+        "url" => "/user/",
+        "name" =>  _t("structure.users.account"),
+        "template" => "custom",
+        "page_template" => "user.tpl",
+        "sitemap" => 1,
+        "access" => "user",
+        "menu" => "user",
+        "menu_order" => 1,
+    );
+    MSV_Structure_add($itemStructure, array("lang" => "all"));
+
+    $itemStructure = array(
+        "url" => "/signup/",
+        "name" =>  _t("structure.users.signup"),
+        "parent_url" => "/user/",
+        "template" => "custom",
+        "page_template" => "user-signup.tpl",
+        "sitemap" => 1,
+        "access" => "everyone",
+        "menu" => "nouser",
+        "menu_order" => 1,
+    );
+    MSV_Structure_add($itemStructure, array("lang" => "all"));
+
+    $itemStructure = array(
+        "url" => "/login/",
+        "name" =>  _t("structure.users.login"),
+        "parent_url" => "/user/",
+        "template" => "custom",
+        "page_template" => "user-login.tpl",
+        "sitemap" => 1,
+        "access" => "everyone",
+        "menu" => "nouser",
+        "menu_order" => 1,
+    );
+    MSV_Structure_add($itemStructure, array("lang" => "all"));
+
+    $itemStructure = array(
+        "url" => "/password-reset/",
+        "name" =>  _t("structure.users.password_reset"),
+        "parent_url" => "/user/",
+        "template" => "custom",
+        "page_template" => "user-password-reset.tpl",
+        "sitemap" => 1,
+        "access" => "everyone",
+    );
+    MSV_Structure_add($itemStructure, array("lang" => "all"));
+
+    $itemStructure = array(
+        "url" => "/settings/",
+        "name" =>  _t("structure.users.settings"),
+        "parent_url" => "/user/",
+        "template" => "custom",
+        "page_template" => "user-settings.tpl",
+        "sitemap" => 1,
+        "access" => "user",
+        "menu" => "user",
+        "menu_order" => 5,
+    );
+    MSV_Structure_add($itemStructure, array("lang" => "all"));
 
     $item = array(
         "published" => 1,
@@ -113,10 +169,51 @@ If you’re having trouble clicking the "Verify Email" button, copy and paste th
 <a href="{verify_link}">{verify_link}</a>
 ';
 
-    MSV_MailTemplate_add("user_registration", "Welcome to {HOST}", $templateRegister, $header, "all");
-    MSV_MailTemplate_add("user_registration_verify", "Welcome to {HOST}", $templateRegisterConfirm, $header, "all");
-    MSV_MailTemplate_add("user_registration_notify", "New user {HOST}", $templateRegisterNotify, $header, "all");
-    MSV_MailTemplate_add("user_verify", "Verify Email", $templateVerify, $header, "all");
-    MSV_MailTemplate_add("user_password_reset", "New Password", $templatePasswordReset, $header, "all");
-    MSV_MailTemplate_add("user_password_reset_confirm", "Reset Password", $templatePasswordResetConfirm, $header, "all");
+    $itemTemplate = array(
+        "name" => "user_registration",
+        "subject" => "Welcome to {HOST}",
+        "text" => $templateRegister,
+        "header" => $header,
+    );
+    MSV_MailTemplate_add($itemTemplate, array("lang" => "all"));
+
+    $itemTemplate = array(
+        "name" => "user_registration_verify",
+        "subject" => "Welcome to {HOST}",
+        "text" => $templateRegisterConfirm,
+        "header" => $header,
+    );
+    MSV_MailTemplate_add($itemTemplate, array("lang" => "all"));
+
+    $itemTemplate = array(
+        "name" => "user_registration_notify",
+        "subject" => "New user {HOST}",
+        "text" => $templateRegisterNotify,
+        "header" => $header,
+    );
+    MSV_MailTemplate_add($itemTemplate, array("lang" => "all"));
+
+    $itemTemplate = array(
+        "name" => "user_verify",
+        "subject" => "Verify Email",
+        "text" => $templateVerify,
+        "header" => $header,
+    );
+    MSV_MailTemplate_add($itemTemplate, array("lang" => "all"));
+
+    $itemTemplate = array(
+        "name" => "user_password_reset",
+        "subject" => "New Password",
+        "text" => $templatePasswordReset,
+        "header" => $header,
+    );
+    MSV_MailTemplate_add($itemTemplate, array("lang" => "all"));
+
+    $itemTemplate = array(
+        "name" => "user_password_reset_confirm",
+        "subject" => "Reset Password",
+        "text" => $templatePasswordResetConfirm,
+        "header" => $header,
+    );
+    MSV_MailTemplate_add($itemTemplate, array("lang" => "all"));
 }

@@ -24,10 +24,50 @@ function ThemeDefaultInstall($module) {
 </div>';
 
     // create basic site structure
-    MSV_Structure_add("all", "/", _t("structure.homepage"), "custom", "index.tpl", 1, "top", 1, "everyone", "", "", $docHomepageText);
-    MSV_Structure_add("all", "/example-page/", _t("structure.page1"), "custom", "main.tpl", 1, "top", 2, "everyone", "", $docExampleTitle, $docExampleText);
-    MSV_Structure_add("all", "/sitemap/", _t("structure.sitemap"), "custom", "sitemap.tpl", 0, "", 0, "everyone", "");
-    MSV_Structure_add("all", "/404/", _t("structure.404"), "custom", "404.tpl", 0, "", 0, "everyone", "", $doc404Title, $doc404Text);
+    $itemStructure = array(
+        "url" => "/",
+        "name" => _t("structure.homepage"),
+        "template" => "custom",
+        "page_template" => "index.tpl",
+        "sitemap" => 1,
+        "menu" => "top",
+        "menu_order" => 1,
+        "document_text" => $docHomepageText,
+    );
+    MSV_Structure_add($itemStructure, array("lang" => "all"));
+
+    $itemStructure = array(
+        "url" => "/example-page/",
+        "name" => _t("structure.page1"),
+        "template" => "custom",
+        "page_template" => "main.tpl",
+        "sitemap" => 1,
+        "menu" => "top",
+        "menu_order" => 2,
+        "document_title" => $docExampleTitle,
+        "document_text" => $docExampleText,
+    );
+    MSV_Structure_add($itemStructure, array("lang" => "all"));
+
+    $itemStructure = array(
+        "url" => "/sitemap/",
+        "name" => _t("structure.sitemap"),
+        "template" => "custom",
+        "page_template" => "sitemap.tpl",
+        "sitemap" => 0,
+    );
+    MSV_Structure_add($itemStructure, array("lang" => "all"));
+
+    $itemStructure = array(
+        "url" => "/404/",
+        "name" => _t("structure.404"),
+        "template" => "custom",
+        "page_template" => "404.tpl",
+        "sitemap" => 0,
+        "document_title" => $doc404Title,
+        "document_text" => $doc404Text,
+    );
+    MSV_Structure_add($itemStructure, array("lang" => "all"));
 
     // theme options
     MSV_setConfig("theme_active", "theme-default", true, "*");
