@@ -14,9 +14,10 @@
 	<param name="date" value="09.07.2017"/>
 	<param name="title" value="Google: Analytics"/>
 	<param name="description" value="Google Analytics Integration"/>
-	
+	<param name="installHook" value="GoogleAnalyticsInstall"/>
+
 	<dependency module="msv-core" version="1.0" />
-	
+
 	<file dir="module" path="google-analytics/google-analytics.php"/>
 	<file dir="module" path="google-analytics/config.xml"/>
 </install>

@@ -27,6 +27,9 @@
 .logo-block img {
 	max-width:100%;
 }
+.content-offset {
+	padding: 50px 0;
+}
 .category-block {
 	color: #bbb;
 	font-size: 18px;

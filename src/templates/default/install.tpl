@@ -52,14 +52,13 @@
                 {else}
 				<div class="form-group">
                     {/if}
-
 					<label for="imsv_{$configName}" class="col-sm-4 control-label">{$configName}</label>
 					<div class="col-sm-8">
 						<input type="text" class="form-control" name="msv_{$configName}" id="imsv_{$configName}" value="{$configValue}" style="width:95%;">
 					</div>
 				</div>
-
                 {/foreach}
+
 				<p class="text-right">
 					<a href="#" data-toggle="collapse" data-target=".form-group.collapse">More settings</a>
 				</p>
@@ -68,7 +67,6 @@
 					<input type="submit" value="Continue" class="btn btn-lg btp-primary">
 					<input type="hidden" name="install_step" value="3">
 				</p>
-
 
                 {elseif $install_step === 3}
 
@@ -90,7 +88,6 @@
                         {/foreach}
 					</div>
 
-
 					<div style="text-align:left;float:left;width:50%;">
 						<p><u>Remote modules to install</u>: </p>
                         {foreach from=$modulesListRemote item=moduleName}
@@ -102,7 +99,6 @@
 				</div>
 
 				<br style="clear:both;">
-
 				<hr>
 
 				<h2 class="text-center">Create Administrator account</h2>
@@ -110,8 +106,12 @@
 				<div class="form-group">
 					<div class="col-sm-offset-5 col-sm-7">
 						<div class="checkbox">
-							<label>
-								<input type="checkbox" name="admin_create" value="1" checked> Add Admin Account
+							<label for="admin_create">
+								<input type="checkbox" id="admin_create" name="admin_create" value="1" checked> Add Admin Account
+							</label>
+							<br>
+							<label for="admin_notify">
+								<input type="checkbox" id="admin_notify" name="admin_notify" value="1"> Email Admin
 							</label>
 						</div>
 					</div>
@@ -140,29 +140,35 @@
 
 				<h1>Congratulations. Installation was successful!</h1>
 
+                {foreach from=$settings item=config name=loop}
+					<div class="form-group collapse">
+						<label for="is_{$config['param']}" class="col-sm-4 control-label">{$config['param']}</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" name="s_{$config['param']}" id="is_{$config['param']}" value="{$config['value']}" style="width:95%;">
+						</div>
+					</div>
+                {/foreach}
+				<p class="text-right">
+					<a href="#" data-toggle="collapse" data-target=".form-group.collapse">Configure settings</a>
+				</p>
+
 				<p class="text-center">
-					<input type="submit" value="Reload page to start using website" class="btn btn-lg btp-primary">
+					<input type="submit" value="Reload page and start using website" class="btn btn-lg btp-primary">
 					<input type="hidden" name="install_step" value="5">
 				</p>
 
                 {else}
 
-
 				something went wrong
-
 
                 {/if}
 
-
 		</form>
-
 
 		<p class="text-muted">
 			Step: {$install_step}
 		</p>
-
 	</div>
-
 
     {if $install_step > 1}
 		<p>
@@ -172,7 +178,6 @@
 		</form>
 		</p>
     {/if}
-
 
 </div>
 

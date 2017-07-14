@@ -270,7 +270,7 @@ function MSV_setNavigation($name, $url = "", $pos = false) {
 
 }
 
-function MSV_setConfig($param, $value, $updateDB = false, $lang = LANG) {
+function MSV_setConfig($param, $value, $updateDB = false, $lang = LANG, $desc = "") {
     $website =& MSV_get("website");
 
     // TODO : CHECK ...
@@ -288,6 +288,7 @@ function MSV_setConfig($param, $value, $updateDB = false, $lang = LANG) {
                 "published" => 1,
                 "value" => $value,
                 "param" => $param,
+                "description" => $desc,
             );
 
             return API_itemAdd(TABLE_SETTINGS, $item, $lang);

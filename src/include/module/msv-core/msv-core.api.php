@@ -6,9 +6,9 @@
  * All calls require admin level access
 
  * Allow URLs like:
- * 		/api/settings/list/
- * 		/api/settings/add/
- * 		/api/settings/edit/
+ *              /api/settings/list/
+ *              /api/settings/add/
+ *              /api/settings/edit/
  *
  * @return string JSON encoded string containing API call result
  */
@@ -66,9 +66,9 @@ function ajaxSettingsRequest($module) {
  * All calls require admin level access
 
  * Allow URLs like:
- * 		/api/structure/list/
- * 		/api/structure/add/
- * 		/api/structure/edit/
+ *              /api/structure/list/
+ *              /api/structure/add/
+ *              /api/structure/edit/
  *
  * @return string JSON encoded string containing API call result
  */
@@ -91,7 +91,7 @@ function ajaxStructureRequest($module) {
             break;
         case "add":
             $item = MSV_proccessTableData(TABLE_STRUCTURE, "");
-            $resultQuery = API_itemAdd(TABLE_STRUCTURE, $item);
+            $resultQuery = MSV_Structure_add($item);
             break;
         case "edit":
             if (empty($_REQUEST["updateName"]) || empty($_REQUEST["updateID"]) || !isset($_REQUEST["updateValue"]) ) {
@@ -126,9 +126,9 @@ function ajaxStructureRequest($module) {
  * All calls require admin level access
 
  * Allow URLs like:
- * 		/api/document/list/
- * 		/api/document/add/
- * 		/api/document/edit/
+ *              /api/document/list/
+ *              /api/document/add/
+ *              /api/document/edit/
  *
  * @return string JSON encoded string containing API call result
  */
@@ -151,7 +151,7 @@ function ajaxDocumentRequest($module) {
             break;
         case "add":
             $item = MSV_proccessTableData(TABLE_DOCUMENTS, "");
-            $resultQuery = API_itemAdd(TABLE_DOCUMENTS, $item);
+            $resultQuery = MSV_Document_add($item);
             break;
         case "edit":
             if (empty($_REQUEST["updateName"]) || empty($_REQUEST["updateID"]) || !isset($_REQUEST["updateValue"]) ) {
@@ -188,7 +188,7 @@ function ajaxDocumentRequest($module) {
  *
  * @return string Path of a stored file in case of success, error code otherwise.
  */
-function ajaxUploadPicture() {
+function ajaxUploadPicture($module) {
     if (!MSV_checkAccessUser("admin")) {
         return "No access";
     }
