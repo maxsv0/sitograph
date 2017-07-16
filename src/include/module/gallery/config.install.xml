@@ -14,7 +14,12 @@
 	<dependency module="fancybox" version="1.0"/>
 	
 	<file dir="module" path="gallery/gallery.php"/>
+	<file dir="module" path="gallery/gallery.api.php"/>
+	<file dir="module" path="gallery/gallery.install.php"/>
+	<file dir="module" path="gallery/gallery.functions.php"/>
 	<file dir="module" path="gallery/config.xml"/>
+	<file dir="module" path="gallery/config.locales.xml"/>
+	<file dir="module" path="gallery/config.install.xml"/>
 	<file dir="template" path="default/main-gallery.tpl"/>
 	<file dir="template" path="default/gallery/main.tpl"/>
 	<file dir="template" path="default/gallery/list.tpl"/>

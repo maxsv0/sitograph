@@ -44,7 +44,7 @@
 
 <div class="container feedback-block">
 	<div class="row">
-        {include file="$themePath/widget/feedback_sticked.tpl"}
+        {include file="$themePath/widget/feedback-sticked.tpl"}
 	</div><!-- row -->
 </div>
 

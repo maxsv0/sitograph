@@ -13,7 +13,11 @@
 	<dependency module="msv-api" version="1.0" />
 	
 	<file dir="module" path="msv-users/msv-users.php"/>
+	<file dir="module" path="msv-users/msv-users.install.php"/>
+	<file dir="module" path="msv-users/msv-users.functions.php"/>
 	<file dir="module" path="msv-users/config.xml"/>
+	<file dir="module" path="msv-users/config.install.xml"/>
+	<file dir="module" path="msv-users/config.locales.xml"/>
 
 	<file dir="template" path="default/user.tpl"/>
 	<file dir="template" path="default/user-login.tpl"/>

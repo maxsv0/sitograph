@@ -12,7 +12,12 @@
 	<dependency module="msv-api" version="1.0" />
 
 	<file dir="module" path="feedback/feedback.php"/>
+	<file dir="module" path="feedback/feedback.api.php"/>
+	<file dir="module" path="feedback/feedback.install.php"/>
+	<file dir="module" path="feedback/feedback.functions.php"/>
 	<file dir="module" path="feedback/config.xml"/>
+	<file dir="module" path="feedback/config.locales.xml"/>
+	<file dir="module" path="feedback/config.install.xml"/>
 	<file dir="template" path="default/main-feedback.tpl"/>
 	<file dir="template" path="default/feedback/main.tpl"/>
 	<file dir="template" path="default/widget/feedback-sticked.tpl"/>

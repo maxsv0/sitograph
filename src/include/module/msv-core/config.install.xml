@@ -18,7 +18,12 @@
 	<file dir="include" path="class.module.php"/>
 	<file dir="module" path="index.php"/>
 	<file dir="module" path="msv-core/msv-core.php"/>
+	<file dir="module" path="msv-core/msv-core.api.php"/>
+	<file dir="module" path="msv-core/msv-core.install.php"/>
+	<file dir="module" path="msv-core/msv-core.functions.php"/>
 	<file dir="module" path="msv-core/config.xml"/>
+	<file dir="module" path="msv-core/config.install.xml"/>
+	<file dir="module" path="msv-core/config.locales.xml"/>
 	<file dir="content" path="images/msv-logo.png"/>
 </install>
 </document>

@@ -14,7 +14,15 @@
 	<dependency module="gallery" version="1.0"/>
 	
 	<file dir="module" path="blog/blog.php"/>
+	<file dir="module" path="blog/blog.api.php"/>
+	<file dir="module" path="blog/blog.install.php"/>
+	<file dir="module" path="blog/blog.functions.php"/>
 	<file dir="module" path="blog/config.xml"/>
+	<file dir="module" path="blog/config.locales.xml"/>
+	<file dir="module" path="blog/config.install.xml"/>
+	<file dir="module" path="blog/install-blog-folder-structure.html"/>
+	<file dir="module" path="blog/install-blog-gallery.html"/>
+	<file dir="module" path="blog/install-blog-layers.html"/>
 	<file dir="template" path="default/main-blog.tpl"/>
 	<file dir="template" path="default/blog/article-list.tpl"/>
 	<file dir="template" path="default/blog/article-preview.tpl"/>

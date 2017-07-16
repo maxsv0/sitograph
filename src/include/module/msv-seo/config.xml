@@ -36,6 +36,7 @@
 	<dependency module="msv-core" version="1.0" />
 	
 	<file dir="module" path="msv-seo/msv-seo.php"/>
+	<file dir="module" path="msv-seo/msv-seo.functions.php"/>
 	<file dir="module" path="msv-seo/config.xml"/>
 </install>
 

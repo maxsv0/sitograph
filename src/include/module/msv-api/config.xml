@@ -20,6 +20,8 @@
 	<dependency module="msv-core" version="1.0" />
 	
 	<file dir="module" path="msv-api/msv-api.php"/>
+	<file dir="module" path="msv-api/msv-api.api.php"/>
+	<file dir="module" path="msv-api/msv-api.functions.php"/>
 	<file dir="module" path="msv-api/config.xml"/>
 </install>
 
