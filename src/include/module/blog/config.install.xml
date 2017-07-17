@@ -23,6 +23,8 @@
 	<file dir="module" path="blog/install-blog-folder-structure.html"/>
 	<file dir="module" path="blog/install-blog-gallery.html"/>
 	<file dir="module" path="blog/install-blog-layers.html"/>
+	<file dir="content" path="images/blog_2.jpg"/>
+	<file dir="content" path="images/blog_3.jpg"/>
 	<file dir="template" path="default/main-blog.tpl"/>
 	<file dir="template" path="default/blog/article-list.tpl"/>
 	<file dir="template" path="default/blog/article-preview.tpl"/>

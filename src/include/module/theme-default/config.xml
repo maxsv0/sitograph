@@ -20,6 +20,11 @@
 	
 	<file dir="module" path="theme-default/theme-default.php"/>
 	<file dir="module" path="theme-default/config.xml"/>
+	<file dir="content" path="images/bg_full.jpg"/>
+	<file dir="content" path="images/mail_ico.png"/>
+	<file dir="content" path="images/search_ico.png"/>
+	<file dir="content" path="images/sitemap_ico.png"/>
+	<file dir="content" path="images/menu_bg.png"/>
 	<file dir="template" path="default/404.tpl"/>
 	<file dir="template" path="default/sitemap.tpl"/>
 	<file dir="template" path="default/main.tpl"/>

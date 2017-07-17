@@ -21,5 +21,9 @@
 	<file dir="template" path="default/main-feedback.tpl"/>
 	<file dir="template" path="default/feedback/main.tpl"/>
 	<file dir="template" path="default/widget/feedback-sticked.tpl"/>
+	<file dir="content" path="images/contacts.png"/>
+	<file dir="content" path="images/feedback_1.png"/>
+	<file dir="content" path="images/feedback_2.png"/>
+	<file dir="content" path="images/feedback_3.png"/>
 </install>
 </document>

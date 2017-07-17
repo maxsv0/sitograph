@@ -13,6 +13,7 @@
 	<file dir="abs" path="robots.txt"/>
 	<file dir="abs" path="index.php"/>
 	<file dir="abs" path="load.php"/>
+	<file dir="abs" path="config-sample.php"/>
 	<file dir="include" path="index.php"/>
 	<file dir="include" path="class.msv.php"/>
 	<file dir="include" path="class.module.php"/>
@@ -24,6 +25,5 @@
 	<file dir="module" path="msv-core/config.xml"/>
 	<file dir="module" path="msv-core/config.install.xml"/>
 	<file dir="module" path="msv-core/config.locales.xml"/>
-	<file dir="content" path="images/msv-logo.png"/>
 </install>
 </document>

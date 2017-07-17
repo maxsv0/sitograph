@@ -26,6 +26,16 @@
 	<file dir="template" path="default/gallery/details.tpl"/>
 	<file dir="template" path="default/gallery/album-list.tpl"/>
 	<file dir="template" path="default/gallery/album-preview.tpl"/>
+	<file dir="content" path="images/gallery1_photo1.jpg"/>
+	<file dir="content" path="images/gallery1_photo2.jpg"/>
+	<file dir="content" path="images/gallery1_photo3.jpg"/>
+	<file dir="content" path="images/gallery_1.jpg"/>
+	<file dir="content" path="images/gallery_2.jpg"/>
+	<file dir="content" path="images/gallery_photo1_1.jpg"/>
+	<file dir="content" path="images/gallery_photo1_3.jpg"/>
+	<file dir="content" path="images/gallery_photo1_4.jpg"/>
+	<file dir="content" path="images/gallery_photo1_5.jpg"/>
+	<file dir="content" path="images/gallery_photo1_6.jpg"/>
 </install>
 
 </document>

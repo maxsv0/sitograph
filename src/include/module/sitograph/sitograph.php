@@ -282,3 +282,8 @@ if (isset($_GET["toggle_edit_mode"])) {
         MSV_redirect("/");
     }
 }
+
+if (isset($_GET["check_files"])) {
+    MSV_checkFiles();
+    die;
+}
