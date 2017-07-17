@@ -19,7 +19,7 @@ function CoreInstall($module) {
 
     // add messages to default output
     MSV_setConfig("message_ok", "", true, "*", "Text for a success message displayed over website	");
-    MSV_setConfig("message_error", "", true, "*", "Text for a error message displayed over website");
+    MSV_setConfig("message_error", "", true, "*", "Text for a error message displayed over website. Enabling error message will prevent all website forms from submitting.");
 
     // FROM field for all emails send by app
     MSV_setConfig("email_from", "admin@localhost", true, "*", "Email used in sent-by header");

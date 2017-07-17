@@ -1,86 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document>
 
-<config>
-	<param name="activationUrl" value="*"/>
-	<param name="adminMenu" value="0"/>
-	
-	<constant name="TABLE_STRUCTURE" value="structure"/>
-	<constant name="TABLE_DOCUMENTS" value="documents"/>
-	<constant name="TABLE_SETTINGS" value="settings"/>
-	<constant name="TABLE_MAIL_TEMPLATES" value="mail_templates"/>
-	<constant name="TABLE_MENU" value="menu"/>
-	
-	<api name="structure" action="ajaxStructureRequest"/>
-	<api name="document" action="ajaxDocumentRequest"/>
-	<api name="settings" action="ajaxSettingsRequest"/>
-	<api name="uploadpic" action="ajaxUploadPicture"/>
-	
-	<table name="structure" index="url" title="name" useseo="true">
-		<field name="id" type="id"/>
-		<field name="published" type="published"/>
-		<field name="deleted" type="deleted"/>
-		<field name="author" type="author"/>
-		<field name="updated" type="updated"/>
-		<field name="lang" type="lang"/>
-		<field name="url" type="url"/>
-		<field name="parent_id" type="int" select-from="table:structure"/>
-		<field name="name" type="str"/>
-		<field name="template" type="str"/>
-		<field name="page_template" type="str"/>
-		<field name="page_document_id" type="int"/>
-		<field name="sitemap" type="str"/>
-		<field name="debug" type="bool"/>
-		<field name="access" type="str" select-from="list:everyone,user,admin,superadmin"/>
-		<field name="access_users" type="array" selectlist="table:users"/>
-	</table>
-	<table name="documents" index="id" title="id">
-		<field name="id" type="id"/>
-		<field name="published" type="published"/>
-		<field name="deleted" type="deleted"/>
-		<field name="author" type="author"/>
-		<field name="updated" type="updated"/>
-		<field name="lang" type="lang"/>
-		<field name="name" type="text"/>
-		<field name="text" type="doc"/>
-		<field name="external_link" type="str"/>
-	</table>
-	<table name="settings" index="param" title="param">
-		<field name="id" type="id"/>
-		<field name="published" type="published"/>
-		<field name="deleted" type="deleted"/>
-		<field name="author" type="author"/>
-		<field name="updated" type="updated"/>
-		<field name="lang" type="lang"/>
-		<field name="param" type="str"/>
-		<field name="value" type="str"/>
-		<field name="description" type="str"/>
-	</table>
-	<table name="mail_templates" index="id" title="name">
-		<field name="id" type="id"/>
-		<field name="published" type="published"/>
-		<field name="deleted" type="deleted"/>
-		<field name="author" type="author"/>
-		<field name="updated" type="updated"/>
-		<field name="lang" type="lang"/>
-		<field name="name" type="str"/>
-		<field name="subject" type="str"/>
-		<field name="text" type="text"/>
-		<field name="header" type="text"/>
-	</table>
-	<table name="menu" index="id" title="name">
-		<field name="id" type="id"/>
-		<field name="published" type="published"/>
-		<field name="deleted" type="deleted"/>
-		<field name="author" type="author"/>
-		<field name="updated" type="updated"/>
-		<field name="lang" type="lang"/>
-		<field name="menu_id" type="str"/>
-		<field name="structure_id" type="int" select-from="table:structure"/>
-		<field name="name" type="str"/>
-		<field name="url" type="url"/>
-		<field name="order_id" type="int"/>
-		<field name="parent_id" type="int" select-from="table:menu"/>
-	</table>
-</config>
+	<config>
+		<param name="activationUrl" value="*"/>
+		<param name="adminMenu" value="0"/>
+
+		<param name="accessAPIStatus" value="everyone"/>
+		<param name="accessAPIUpdateAll" value="superadmin"/>
+
+		<constant name="TABLE_STRUCTURE" value="structure"/>
+		<constant name="TABLE_DOCUMENTS" value="documents"/>
+		<constant name="TABLE_SETTINGS" value="settings"/>
+		<constant name="TABLE_MAIL_TEMPLATES" value="mail_templates"/>
+		<constant name="TABLE_MENU" value="menu"/>
+		<constant name="TABLE_CRONJOBS" value="cronjobs"/>
+		<constant name="TABLE_CRONJOBS_LOGS" value="cronjobs_logs"/>
+
+		<api name="structure" action="apiStructureRequest"/>
+		<api name="document" action="apiDocumentRequest"/>
+		<api name="settings" action="apiSettingsRequest"/>
+		<api name="uploadpic" action="ajaxUploadPicture"/>
+		<api name="cron" action="apiCronRequest"/>
+		<api name="core" action="apiCore"/>
+
+		<table name="structure" index="url" title="name" useseo="true">
+			<field name="id" type="id"/>
+			<field name="published" type="published"/>
+			<field name="deleted" type="deleted"/>
+			<field name="author" type="author"/>
+			<field name="updated" type="updated"/>
+			<field name="lang" type="lang"/>
+			<field name="url" type="url"/>
+			<field name="parent_id" type="int" select-from="table:structure"/>
+			<field name="name" type="str"/>
+			<field name="template" type="str"/>
+			<field name="page_template" type="str"/>
+			<field name="page_document_id" type="int"/>
+			<field name="sitemap" type="str"/>
+			<field name="debug" type="bool"/>
+			<field name="access" type="str" select-from="list:everyone,user,admin,superadmin"/>
+			<field name="access_users" type="array" selectlist="table:users"/>
+		</table>
+		<table name="documents" index="id" title="id">
+			<field name="id" type="id"/>
+			<field name="published" type="published"/>
+			<field name="deleted" type="deleted"/>
+			<field name="author" type="author"/>
+			<field name="updated" type="updated"/>
+			<field name="lang" type="lang"/>
+			<field name="name" type="text"/>
+			<field name="text" type="doc"/>
+			<field name="external_link" type="str"/>
+		</table>
+		<table name="settings" index="param" title="param">
+			<field name="id" type="id"/>
+			<field name="published" type="published"/>
+			<field name="deleted" type="deleted"/>
+			<field name="author" type="author"/>
+			<field name="updated" type="updated"/>
+			<field name="lang" type="lang"/>
+			<field name="param" type="str"/>
+			<field name="value" type="str"/>
+			<field name="description" type="str"/>
+		</table>
+		<table name="mail_templates" index="id" title="name">
+			<field name="id" type="id"/>
+			<field name="published" type="published"/>
+			<field name="deleted" type="deleted"/>
+			<field name="author" type="author"/>
+			<field name="updated" type="updated"/>
+			<field name="lang" type="lang"/>
+			<field name="name" type="str"/>
+			<field name="subject" type="str"/>
+			<field name="text" type="text"/>
+			<field name="header" type="text"/>
+		</table>
+		<table name="menu" index="id" title="name">
+			<field name="id" type="id"/>
+			<field name="published" type="published"/>
+			<field name="deleted" type="deleted"/>
+			<field name="author" type="author"/>
+			<field name="updated" type="updated"/>
+			<field name="lang" type="lang"/>
+			<field name="menu_id" type="str"/>
+			<field name="structure_id" type="int" select-from="table:structure"/>
+			<field name="name" type="str"/>
+			<field name="url" type="url"/>
+			<field name="order_id" type="int"/>
+			<field name="parent_id" type="int" select-from="table:menu"/>
+		</table>
+		<table name="cronjobs" index="id" title="name">
+			<field name="id" type="id"/>
+			<field name="published" type="published"/>
+			<field name="deleted" type="deleted"/>
+			<field name="author" type="author"/>
+			<field name="updated" type="updated"/>
+			<field name="lang" type="lang"/>
+			<field name="name" type="str"/>
+			<field name="status" type="str"/>
+			<field name="type" type="str"/>
+			<field name="code" type="text"/>
+			<field name="last_run" type="date"/>
+			<field name="last_result" type="bool"/>
+		</table>
+		<table name="cronjobs_logs" index="id" title="id">
+			<field name="id" type="id"/>
+			<field name="published" type="published"/>
+			<field name="deleted" type="deleted"/>
+			<field name="author" type="author"/>
+			<field name="updated" type="updated"/>
+			<field name="lang" type="lang"/>
+			<field name="cronjob_id" type="int" select-from="table:cronjobs"/>
+			<field name="time_start" type="datetime"/>
+			<field name="time_end" type="datetime"/>
+			<field name="result_ok" type="bool"/>
+			<field name="result_msg" type="text"/>
+		</table>
+	</config>
 </document>

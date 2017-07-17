@@ -1486,3 +1486,4 @@ function MSV_processUploadPic($path, $table = "", $field = "") {
 
     return "";
 }
+

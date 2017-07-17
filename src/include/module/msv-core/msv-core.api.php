@@ -1,6 +1,175 @@
 <?php
 
 /**
+ * Website Core API calls
+ *
+ * Allow URLs like:
+ *              /api/core/status/				=> access required: accessAPIStatus
+ *              /api/core/update-all/			=> access required: accessAPIUpdateAll
+ *
+ *
+ * @return string JSON encoded string containing API call result
+ */
+function apiCore($module) {
+    $request = MSV_get('website.requestUrlMatch');
+    $apiType = $request[2];
+
+    // get jobs depending on request
+    switch ($apiType) {
+        case "status":
+            if (!MSV_checkAccessUser($module->accessAPIVersion)) {
+                $resultQuery = array(
+                    "ok" => false,
+                    "data" => array(),
+                    "msg" => "No access",
+                );
+
+            } else {
+
+                $websiteFunctions = array();
+                $list = get_defined_functions();
+                foreach($list["user"] as $fnName)  {
+                    $prefix = substr($fnName, strpos($fnName, "_"));
+
+                    if ($prefix === "msv" || $prefix === "api" || $prefix === "ajax") {
+                        $websiteFunctions[$prefix] = $fnName;
+                    }
+                }
+
+                // TODO: add data here
+                $resultQuery = array(
+                    "ok" => true,
+                    "data" => array(
+                        "functions" => $websiteFunctions,
+                    ),
+                    "msg" => "Success",
+                );
+            }
+            break;
+        case "update-all":
+            if (!MSV_checkAccessUser($module->accessAPIUpdateAll)) {
+                $resultQuery = array(
+                    "ok" => false,
+                    "data" => array(),
+                    "msg" => "No access",
+                );
+
+            } else {
+                $r = updateAllModules();
+
+                $resultQuery = array(
+                    "ok" => true,
+                    "data" => array(),
+                    "msg" => $r ? "Success" : "Something went wrong",
+                );
+            }
+            break;
+        default:
+            $resultQuery = array(
+                "ok" => false,
+                "data" => array(),
+                "msg" => "Wrong API call",
+            );
+            break;
+    }
+
+    // output result as JSON
+    return json_encode($resultQuery);
+}
+
+
+/**
+ * Allows to run cron jobs
+ * All calls require admin level access
+ *
+ * Allow URLs like:
+ *              /api/cron/weekly/
+ *              /api/cron/daily/
+ *              /api/cron/hourly/
+ *
+ * @return string JSON encoded string containing API call result
+ */
+function apiCronRequest($module) {
+    if (!MSV_checkAccessUser("admin")) {
+        $resultQuery = array(
+            "ok" => false,
+            "data" => array(),
+            "msg" => "No access",
+        );
+        return json_encode($resultQuery);
+    }
+
+    $request = MSV_get('website.requestUrlMatch');
+    $apiType = $request[2];
+
+    // get jobs depending on request
+    switch ($apiType) {
+        case "weekly":
+        case "daily":
+        case "hourly":
+            $resultQuery = API_getDBList(TABLE_CRONJOBS, " `status` = 'active' and `type` = '".$apiType."'", "`id` desc", 999, "");
+            break;
+        default:
+            $resultQuery = array(
+                "ok" => false,
+                "data" => array(),
+                "msg" => "Wrong API call",
+            );
+            break;
+    }
+
+    // run selected jobs
+    if (!empty($resultQuery["data"])) {
+
+        $resultCron = array();
+        foreach($resultQuery["data"] as $rowJob) {
+            $code = $rowJob["code"];
+            $result = array(
+                "ok" => false,
+                "msg" => "unknown",
+            );
+            $tm_start = time();
+
+            if (!empty($rowJob["url_local"])) {
+                $url = "http://localhost".$rowJob["url_local"]."&ajaxcall=1";
+                $cont = file_get_contents($url);
+                $result = json_decode($cont, true);
+            } else {
+                eval($code);
+            }
+
+            $tm_end = time();
+
+            $item = array(
+                "published" => 1,
+                "job_id" => $rowJob["id"],
+                "job_name" => $rowJob["name"],
+                "time_start" => $tm_start,
+                "time_end" => $tm_end,
+                "result_ok" => @(string)$result["ok"],
+                "result_msg" => @(string)$result["msg"],
+            );
+
+            $resultRun = API_itemAdd(TABLE_CRONJOBS_LOGS, $item);
+            API_updateDBItem(TABLE_CRONJOBS, "last_run", "NOW()", "`id` = ".$rowJob["id"]);
+            API_updateDBItem(TABLE_CRONJOBS, "last_result", "'".(int)$resultRun["ok"]."'", "`id` = ".$rowJob["id"]);
+
+            $rowJob["run_result"] = $item;
+
+            $resultCron[] = $rowJob;
+        }
+
+        $resultQuery["data"] = $resultCron;
+    }
+
+    // do not output sql for security reasons
+    unset($resultQuery["sql"]);
+
+    // output result as JSON
+    return json_encode($resultQuery);
+}
+
+/**
  * API extension for module msv-core
  * Allows to manage table TABLE_SETTINGS
  * All calls require admin level access
@@ -12,7 +181,7 @@
  *
  * @return string JSON encoded string containing API call result
  */
-function ajaxSettingsRequest($module) {
+function apiSettingsRequest($module) {
     if (!MSV_checkAccessUser("admin")) {
         $resultQuery = array(
             "ok" => false,
@@ -72,7 +241,7 @@ function ajaxSettingsRequest($module) {
  *
  * @return string JSON encoded string containing API call result
  */
-function ajaxStructureRequest($module) {
+function apiStructureRequest($module) {
     if (!MSV_checkAccessUser("admin")) {
         $resultQuery = array(
             "ok" => false,
@@ -132,7 +301,7 @@ function ajaxStructureRequest($module) {
  *
  * @return string JSON encoded string containing API call result
  */
-function ajaxDocumentRequest($module) {
+function apiDocumentRequest($module) {
     if (!MSV_checkAccessUser("admin")) {
         $resultQuery = array(
             "ok" => false,
