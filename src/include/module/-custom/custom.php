@@ -24,7 +24,7 @@ function loadCustomFunctionHomepage() {
 
 
 
-function CustomInstall($module) {
+function Install_Custom($module) {
 	
 	// 
 	// custom install function

@@ -1,6 +1,6 @@
 <?php
 
-function FeedbackInstall($module) {
+function Install_Feedback($module) {
 
     $docFeedbackTitle = "We are happy to receive your feedback";
     $docFeedbackText = "<img src='/content/images/contacts.png' class='img-responsive'>";

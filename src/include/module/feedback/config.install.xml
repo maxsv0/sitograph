@@ -4,7 +4,7 @@
 	<param name="name" value="feedback"/>
 	<param name="version" value="1.0"/>
 	<param name="date" value="09.07.2017"/>
-	<param name="installHook" value="FeedbackInstall"/>
+	<param name="installHook" value="Install_Feedback"/>
 	<param name="title" value="Feedback module"/>
 	<param name="description" value="Users feedback, contacts form, use cases for website"/>
 

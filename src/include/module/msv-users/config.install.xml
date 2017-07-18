@@ -5,8 +5,8 @@
 	<param name="name" value="msv-users"/>
 	<param name="version" value="1.2"/>
 	<param name="date" value="09.07.2017"/>
-	<param name="installHook" value="UsersInstall"/>
-	<param name="title" value="MSVUsers"/>
+	<param name="installHook" value="Install_Users"/>
+	<param name="title" value="MSV Users"/>
 	<param name="description" value="Users auth functions for MSV"/>
 	
 	<dependency module="msv-core" version="1.0" />

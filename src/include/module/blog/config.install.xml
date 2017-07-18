@@ -8,7 +8,7 @@
 	<param name="title" value="Blog"/>
 	<param name="description" value="Blog and Publications module"/>
 	
-	<param name="installHook" value="BlogInstall"/>
+	<param name="installHook" value="Install_Blog"/>
 	
 	<dependency module="msv-core" version="1.0"/>
 	<dependency module="gallery" version="1.0"/>

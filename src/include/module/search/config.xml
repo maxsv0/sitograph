@@ -12,7 +12,7 @@
     
     <api name="more_search" action="ajax_More_Search"/>
     
-    <param name="installHook" value="SearchInstall"/>
+    <param name="installHook" value="Install_Search"/>
     
     <constant name="TABLE_SEARCH" value="search"/>
     
@@ -34,8 +34,8 @@
 	<param name="name" value="search"/>
 	<param name="version" value="1.0"/>
 	<param name="date" value="09.07.2017"/>
-	<param name="title" value="Поиск по сайту"/>
-	<param name="description" value="Поиск по сайту"/>
+	<param name="title" value="Site search"/>
+	<param name="description" value="Text site search"/>
 	
 	<dependency module="core" version="1.0" />
     

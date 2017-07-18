@@ -14,7 +14,7 @@
 	<param name="date" value="09.07.2017"/>
 	<param name="title" value="Google: Analytics"/>
 	<param name="description" value="Google Analytics Integration"/>
-	<param name="installHook" value="GoogleAnalyticsInstall"/>
+	<param name="installHook" value="Install_GoogleAnalytics"/>
 
 	<dependency module="msv-core" version="1.0" />
 

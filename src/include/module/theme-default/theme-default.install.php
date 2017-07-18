@@ -1,6 +1,6 @@
 <?php
 
-function ThemeDefaultInstall($module) {
+function Install_ThemeDefault($module) {
 
     //
     // install function

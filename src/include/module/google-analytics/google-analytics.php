@@ -49,7 +49,7 @@ if (!empty($googleservice_auth_json)) {
 
 
 
-function GoogleAnalyticsInstall($module) {
+function Install_GoogleAnalytics($module) {
 	
 	// 
 	// install function

@@ -7,7 +7,7 @@
 	<param name="title" value="Sitograph"/>
 	<param name="description" value="Content Management System. CMS Sitograph"/>
 	
-	<param name="installHook" value="SitographInstall"/>
+	<param name="installHook" value="Install_Sitograph"/>
 	
 	<dependency module="msv-core" version="1.0"/>
 	<dependency module="msv-api" version="1.0"/>

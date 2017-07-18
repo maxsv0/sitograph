@@ -1,6 +1,6 @@
 <?php
 
-function UsersInstall($module) {
+function Install_Users($module) {
 
     $itemStructure = array(
         "url" => "/user/",

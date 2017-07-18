@@ -8,7 +8,7 @@
 	<param name="title" value="Pictures Gallery"/>
 	<param name="description" value="Photos and Pictures management"/>
 	
-	<param name="installHook" value="GalleryInstall"/>
+	<param name="installHook" value="Install_Gallery"/>
 	
 	<dependency module="msv-core" version="1.0"/>
 	<dependency module="fancybox" version="1.0"/>

@@ -30,7 +30,7 @@
 	<param name="name" value="msv-seo"/>
 	<param name="version" value="1.2"/>
 	<param name="date" value="09.07.2017"/>
-	<param name="title" value="MSVSEO"/>
+	<param name="title" value="MSV SEO"/>
 	<param name="description" value="SEO and social functions for MSV"/>
 	
 	<dependency module="msv-core" version="1.0" />

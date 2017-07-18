@@ -1,6 +1,6 @@
 <?php
 
-function GalleryInstall($module) {
+function Install_Gallery($module) {
     // create website structure item
     $itemStructure = array(
         "url" => $module->baseUrl,

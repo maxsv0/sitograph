@@ -7,7 +7,7 @@
  * @param object $module Module object
  * @return void
  */
-function CoreInstall($module) {
+function Install_Core($module) {
 
     // add site settings
     MSV_setConfig("include_html_head", "", true, "*", "This HTML code is included to all pages, above <body> tag");

@@ -1,6 +1,6 @@
 <?php
 
-function SitographInstall($module) {
+function Install_Sitograph($module) {
 
     // create Admin UI pages
     $itemStructure = array(

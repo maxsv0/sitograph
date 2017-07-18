@@ -349,7 +349,7 @@ function Get_Search_List($module)
     }
 }
 
-function SearchInstall($module) {
+function Install_Search($module) {
 
     $itemStructure = array(
         "url" => $module->baseUrl,

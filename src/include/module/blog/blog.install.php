@@ -1,6 +1,6 @@
 <?php
 
-function BlogInstall($module) {
+function Install_Blog($module) {
     // create website structure item
     $itemStructure = array(
         "url" => $module->baseUrl,
