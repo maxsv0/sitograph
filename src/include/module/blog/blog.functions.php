@@ -14,7 +14,7 @@
  * @param array $options Optional list of flags. Supported: LoadPictures, EmailNotifyAdmin
  * @return array Result of a API call
  */
-function Blog_add($row, $options = array()) {
+function MSV_Blog_add($row, $options = array()) {
     $result = array(
         "ok" => false,
         "data" => array(),
@@ -97,7 +97,7 @@ function Blog_add($row, $options = array()) {
             "sitemap" => $row["published"],
         );
 
-        SEO_add($item);
+        MSV_SEO_add($item);
 
         $articleID = $result["insert_id"];
 

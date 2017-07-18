@@ -856,14 +856,6 @@ class MSV_Website {
 
             MSV_reinstallModule($_GET["table_action"], false);
         }
-
-
-        if (isset($_GET["module_update_all"])) {
-			foreach ($this->modules as $module) {
-				MSV_reinstallModule($module, false);
-			}
-			$this->messages["success"][] = "Update ALL successfully";
-		}
 		
 		if (!empty($_GET["module_install"])) {
 			// TODO: check $_GET["module_install"]

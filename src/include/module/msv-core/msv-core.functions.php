@@ -997,7 +997,7 @@ function MSV_Structure_add($row, $options = array()) {
             "keywords" => $row["name"],
             "sitemap" => $row["sitemap"],
         );
-        SEO_add($itemSEO, array("lang" => $lang));
+        MSV_SEO_add($itemSEO, array("lang" => $lang));
 
         // add document
         if (!empty($row["document_title"]) || !empty($row["document_text"])) {
@@ -1487,3 +1487,78 @@ function MSV_processUploadPic($path, $table = "", $field = "") {
     return "";
 }
 
+/**
+ * Add new cron job
+ * Database table: TABLE_CRONJOBS, TABLE_CRONJOBS_LOGS
+ *
+ * checks for required fields and correct values
+ * $row["name"] is required
+ * $row["url_local"] or $row["code"] is required
+ *
+ * @param array $row Associative array with data to be inserted
+ * @param array $options Optional list of flags. Supported: none
+ * @return array Result of a API call
+ */
+function MSV_Cron_add($row, $options = array()) {
+    $result = array(
+        "ok" => false,
+        "data" => array(),
+        "msg" => "",
+    );
+
+    // check required fields
+    if (empty($row["name"])) {
+        $result["msg"] = _t("msg.cron.noname");
+        return $result;
+    }
+    if (empty($row["url_local"]) && empty($row["code"])) {
+        $result["msg"] = _t("msg.cron.noaction");
+        return $result;
+    }
+
+    // set defaults
+    if (empty($row["published"])) {
+        $row["published"] = 1;
+    } else {
+        $row["published"] = (int)$row["published"];
+    }
+
+    // set empty fields
+    if (empty($row["url_local"])) $row["url_local"] = "";
+    if (empty($row["code"])) $row["code"] = "";
+    if (empty($row["status"])) $row["status"] = "disabled";
+    if (empty($row["type"])) $row["type"] = "";
+
+    $result = API_itemAdd(TABLE_CRONJOBS, $row);
+
+    if ($result["ok"]) {
+        $result["msg"] = _t("msg.cron.saved");
+    }
+
+    // write to a cron log
+    $itemLog = array(
+        "published" => 1,
+        "job_id" => (int)$result["insert_id"],
+        "job_name" => $row["name"],
+        "result_ok" => $result["ok"],
+        "result_msg" => $result["msg"],
+    );
+
+    API_itemAdd(TABLE_CRONJOBS_LOGS, $itemLog);
+
+    return $result;
+}
+
+function updateAllModules($module) {
+    if (!MSV_checkAccessUser("superadmin")) {
+        return false;
+    }
+
+    $list = MSV_get("website.modules");
+    foreach($list as $module) {
+        //MSV_reinstallModule($module, false);
+    }
+
+    MSV_MessageOK("Update ALL successfully");
+    return true;
+}

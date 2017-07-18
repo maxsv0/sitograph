@@ -145,6 +145,8 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
         if (!empty($_REQUEST["admin_create"])) {
             if (!empty($_REQUEST["admin_login"]) && !empty($_REQUEST["admin_password"])) {
 
+                $access_token = substr(md5(time()), 0, 16);
+
                 $item = array(
                     "email" => $_REQUEST["admin_login"],
                     "password" => $_REQUEST["admin_password"],
@@ -152,6 +154,7 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
                     "name" => "Admin",
                     "access" => "superadmin",
                     "iss" => "install",
+                    "access_token" => $access_token,
                 );
 
                 $options = array();
@@ -160,7 +163,7 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
                 }
 
                 // add admin account
-                $resultUser = User_Add($item, $options);
+                $resultUser = MSV_User_Add($item, $options);
                 if ($resultUser["ok"] && !empty($resultUser["insert_id"])) {
                     $_SESSION['user_id'] = $resultUser["insert_id"];
                     $_SESSION['user_email'] = $_REQUEST["admin_login"];
@@ -168,6 +171,17 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
                     // store website admin email
                     MSV_setConfig("admin_email", $_REQUEST["admin_login"], true, "*");
                     MSV_setConfig("support_email", $_REQUEST["admin_login"], true, "*");
+
+                    // add cron job:
+                    $item = array(
+                        "name" => "Update All Modules",
+                        "url_local" => "/api/core/update-all/?access_token=".$access_token,
+                        "status" => "active",
+                        "type" => "daily",
+                    );
+                    $resultRun = MSV_Cron_add($item);
+
+
                 } else {
                     $website->messages["error"][] = "Error adding administrator account: ".$resultUser["msg"];
                 }

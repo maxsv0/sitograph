@@ -19,7 +19,7 @@
 		<api name="structure" action="apiStructureRequest"/>
 		<api name="document" action="apiDocumentRequest"/>
 		<api name="settings" action="apiSettingsRequest"/>
-		<api name="uploadpic" action="ajaxUploadPicture"/>
+		<api name="uploadpic" action="apiUploadPicture"/>
 		<api name="cron" action="apiCronRequest"/>
 		<api name="core" action="apiCore"/>
 
@@ -110,7 +110,8 @@
 			<field name="author" type="author"/>
 			<field name="updated" type="updated"/>
 			<field name="lang" type="lang"/>
-			<field name="cronjob_id" type="int" select-from="table:cronjobs"/>
+			<field name="job_id" type="int" select-from="table:cronjobs"/>
+			<field name="job_name" type="str"/>
 			<field name="time_start" type="datetime"/>
 			<field name="time_end" type="datetime"/>
 			<field name="result_ok" type="bool"/>

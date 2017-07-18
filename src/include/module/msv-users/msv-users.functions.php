@@ -13,7 +13,7 @@
  * @param array $options Optional list of flags. Supported: EmailNotifyUser, EmailNotifyAdmin
  * @return array Result of a API call
  */
-function User_Add($row, $options = array()) {
+function MSV_User_Add($row, $options = array()) {
     $result = array(
         "ok" => false,
         "data" => array(),

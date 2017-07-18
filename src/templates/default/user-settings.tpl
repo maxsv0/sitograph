@@ -9,7 +9,7 @@
 {include file="$themePath/widget/navigation.tpl"}
 
 <div class="container">
-	<div class="row content-block">
+	<div class="row content-block content-offset">
 
     <div class="col-md-12">
     	{if $document.name}

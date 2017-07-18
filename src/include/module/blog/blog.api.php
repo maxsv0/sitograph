@@ -61,7 +61,7 @@ function ajaxBlogRequest($module) {
                 );
             } else {
                 $item = MSV_proccessTableData(TABLE_BLOG_ARTICLES, "");
-                $resultQuery = Blog_add($item, array("LoadPictures", "EmailNotifyAdmin"));
+                $resultQuery = MSV_Blog_add($item, array("LoadPictures", "EmailNotifyAdmin"));
             }
             break;
         case "edit":

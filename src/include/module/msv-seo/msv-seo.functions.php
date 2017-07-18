@@ -11,7 +11,7 @@
  * @param array $options Optional list of flags. Supported: lang
  * @return array Result of a API call
  */
-function SEO_add($row, $options = array()) {
+function MSV_SEO_add($row, $options = array()) {
     $result = array(
         "ok" => false,
         "data" => array(),

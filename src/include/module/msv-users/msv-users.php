@@ -121,7 +121,7 @@ if ($allowSingUp && !empty($_REQUEST["doSingUp"])) {
         $item = MSV_proccessTableData(TABLE_USERS, "");
 
         // execute request
-        $result = User_Add($item, $options);
+        $result = MSV_User_Add($item, $options);
 
         if ($result["ok"]) {
             $userID = $result["insert_id"];

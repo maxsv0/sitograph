@@ -55,12 +55,12 @@ function apiCore($module) {
                 );
 
             } else {
-                $r = updateAllModules();
+                $r = updateAllModules($module);
 
                 $resultQuery = array(
                     "ok" => true,
                     "data" => array(),
-                    "msg" => $r ? "Success" : "Something went wrong",
+                    "msg" => $r ? "Successfully updated" : "Something went wrong",
                 );
             }
             break;
@@ -357,7 +357,7 @@ function apiDocumentRequest($module) {
  *
  * @return string Path of a stored file in case of success, error code otherwise.
  */
-function ajaxUploadPicture($module) {
+function apiUploadPicture($module) {
     if (!MSV_checkAccessUser("admin")) {
         return "No access";
     }

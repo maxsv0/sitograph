@@ -43,7 +43,7 @@ Text: <br />
         "pic" => "images/blog_1.jpg",
         "pic_preview" => "images/blog_1.jpg",
     );
-    $result = Blog_Add($item, array("LoadPictures"));
+    $result = MSV_Blog_add($item, array("LoadPictures"));
 
     // add sample article
     $docContent = file_get_contents($module->pathModule."install-blog-gallery.html");
@@ -59,7 +59,7 @@ Text: <br />
         "pic" => "images/blog_2.jpg",
         "pic_preview" => "images/blog_2.jpg",
     );
-    $result = Blog_Add($item, array("LoadPictures"));
+    $result = MSV_Blog_add($item, array("LoadPictures"));
 
     // add sample article
     $docContent = file_get_contents($module->pathModule."install-blog-layers.html");
@@ -74,6 +74,6 @@ Text: <br />
         "pic" => "images/blog_3.jpg",
         "pic_preview" => "images/blog_3.jpg",
     );
-    $result = Blog_Add($item, array("LoadPictures"));
+    $result = MSV_Blog_add($item, array("LoadPictures"));
 
 }

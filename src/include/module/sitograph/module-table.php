@@ -35,7 +35,7 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
                 $item = MSV_proccessTableData(TABLE_SEO, "form_seo_");
 
                 // execute request
-                $resultSave = SEO_add($item);
+                $resultSave = MSV_SEO_add($item);
 
                 if ($_POST["form_published"] == 1) {
                     MSV_SitemapGenegate();

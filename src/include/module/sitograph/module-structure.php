@@ -69,7 +69,7 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
         $item["url"] = $_POST["form_url"];
 
         // execute request
-        $resultSave = SEO_add($item);
+        $resultSave = MSV_SEO_add($item);
         if ($_POST["form_published"] == 1) {
             MSV_SitemapGenegate();
         }

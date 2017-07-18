@@ -579,7 +579,6 @@ function MSV_outputAdminMenu() {
     $scriptTime = $timestampEnd - $timestampStart;
     $scriptTime = round($scriptTime, 6);
 
-    $docInfo = "<a href='/admin/?section=structure&table=structure&edit=".$website->page["id"]."'>page setup</a>";
     $templateInfo = $website->template."/".$website->pageTemplate;
     $pageInfo = $scriptTime." sec";
 
@@ -590,7 +589,7 @@ function MSV_outputAdminMenu() {
     $edit_mode = MSV_getConfig("edit_mode");
     if ($edit_mode) {
         $strOut .= '<span class="label label-success">ON</span>';
-        $strOut .= ' <small>'.$docInfo.'</small>';
+        $strOut .= ' <small>'."<a href='/admin/?section=structure&table=structure&edit=".$website->page["id"]."'>settings</a>".' <span class=\'glyphicon glyphicon-edit\'></span></small>';
     } else {
         $strOut .= '<span class="label label-danger">OFF</span>';
     }
@@ -603,7 +602,8 @@ function MSV_outputAdminMenu() {
     $strOut .= '</p></td>';
     $strOut .= '<td align="center" width="200">';
     if ($edit_mode) {
-        $strOut .= "<small>$templateInfo</small>";
+        $strOut .= "<a href='/admin/?section=editor&edit_file=/templates/".$templateInfo."&edit_mode'>";
+        $strOut .= "<small>$templateInfo <span class='glyphicon glyphicon-edit'></span></small></a>";
     }
     $strOut .=' <td align="center" width="100">';
     if ($edit_mode) {

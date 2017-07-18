@@ -78,7 +78,7 @@ function Gallery_Add($row, $options = array()) {
             "sitemap" => $row["published"],
         );
 
-        SEO_add($item);
+        MSV_SEO_add($item);
 
         $albumID = $result["insert_id"];
 

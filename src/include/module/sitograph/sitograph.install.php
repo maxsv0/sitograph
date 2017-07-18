@@ -243,7 +243,7 @@ It is simple and powerful content management system for website or online shop.
         "pic" => "images/blog_sitograph_1.jpg",
         "pic_preview" => "images/blog_sitograph_1.jpg",
     );
-    Blog_Add($item, array("LoadPictures"));
+    MSV_Blog_add($item, array("LoadPictures"));
 
     $docContent = file_get_contents($module->pathModule."install-blog-install.html");
     $item = array(
@@ -257,7 +257,7 @@ It is simple and powerful content management system for website or online shop.
         "pic" => "images/blog_sitograph_2.jpg",
         "pic_preview" => "images/blog_sitograph_2.jpg",
     );
-    Blog_Add($item, array("LoadPictures"));
+    MSV_Blog_add($item, array("LoadPictures"));
 
     $docContent = file_get_contents($module->pathModule."install-blog-release.html");
     $item = array(
@@ -271,7 +271,7 @@ It is simple and powerful content management system for website or online shop.
         "pic" => "images/blog_sitograph_3.jpg",
         "pic_preview" => "images/blog_sitograph_3.jpg",
     );
-    Blog_Add($item, array("LoadPictures"));
+    MSV_Blog_add($item, array("LoadPictures"));
 
 
 }
