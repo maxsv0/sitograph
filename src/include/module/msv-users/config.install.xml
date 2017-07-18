@@ -28,7 +28,7 @@
 	<file dir="template" path="default/user/login.tpl"/>
 	<file dir="template" path="default/user/signup.tpl"/>
 	<file dir="template" path="default/user/settings.tpl"/>
-	<file dir="template" path="default/user/user-password-reset.tpl"/>
+	<file dir="template" path="default/user/password-reset.tpl"/>
 	<file dir="template" path="default/widget/menu-user.tpl"/>
 </install>
 
