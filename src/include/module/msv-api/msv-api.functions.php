@@ -23,10 +23,17 @@ function API_SQL($sqlCode) {
     $result["data"] = $query;
 
     if ($query) {
+        $result["msg"] = "Success.";
 
         $result["insert_id"] = mysqli_insert_id($website->config["db"]);
         $result["affected"] = mysqli_affected_rows($website->config["db"]);
 
+        if (!empty($result["insert_id"])) {
+           $result["msg"] .= " Insert ID ".$result["insert_id"].".";
+        }
+        if (!empty($result["affected"])) {
+           $result["msg"] .= " Affected rows: ".$result["affected"].".";
+        }
     } else {
         $result["ok"] = false;
         $result["msg"] = mysqli_error($website->config["db"]);
