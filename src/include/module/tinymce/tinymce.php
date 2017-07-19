@@ -1,9 +1,9 @@
 <?php
 
-MSV_IncludeJSFile("/content/js/tinymce/tinymce.min.js", "", "admin");
+msv_include_jsfile("/content/js/tinymce/tinymce.min.js", "", "admin");
 
 // include this code only in admin pages: /admin/*
-MSV_includeJS("
+msv_include_js("
 $(document).ready(function() {
 	tinymce.init({
 		selector: '.editor',
@@ -27,7 +27,7 @@ $(document).ready(function() {
 ", "/admin/", "admin");
 
 // include this code globaly, if admin logged
-MSV_includeJS("
+msv_include_js("
 $(document).ready(function() {
 	tinymce.init({
 		selector: '.editor-inline',

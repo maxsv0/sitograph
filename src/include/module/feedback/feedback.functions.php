@@ -12,7 +12,7 @@
  * @param array $options Optional list of flags. Supported: EmailNotifyUser, EmailNotifyAdmin
  * @return array Result of a API call
  */
-function Feedback_Add($row, $options = array()) {
+function msv_add_feedback($row, $options = array()) {
     $result = array(
         "ok" => false,
         "data" => array(),
@@ -23,7 +23,7 @@ function Feedback_Add($row, $options = array()) {
     if (empty($row["email"])) {
         $result["msg"] = _t("msg.feedback.noemail");
         return $result;
-    } elseif (!MSV_checkEmail($row["email"])) {
+    } elseif (!msv_check_email($row["email"])) {
         $result["msg"] = _t("msg.wrong_email");
         return $result;
     }
@@ -53,7 +53,7 @@ function Feedback_Add($row, $options = array()) {
         if ($row["stars"] > 5 || $row["stars"] < 1) $row["stars"] = 0;
     }
     if (empty($row["ip"])) {
-        $row["ip"] = MSV_GetIP();
+        $row["ip"] = msv_get_ip();
     }
 
     // set empty fields
@@ -61,7 +61,7 @@ function Feedback_Add($row, $options = array()) {
     if (empty($row["text"])) $row["text"] = "";
     if (empty($row["pic"])) $row["pic"] = "";
 
-    $result = API_itemAdd(TABLE_FEEDBACK, $row);
+    $result = db_add(TABLE_FEEDBACK, $row);
 
     if ($result["ok"]) {
         $result["msg"] = _t("msg.feedback.saved");
@@ -69,14 +69,14 @@ function Feedback_Add($row, $options = array()) {
         // send email to $email
         // email template: feedback_notify
         if (in_array("EmailNotifyUser", $options)) {
-            MSV_EmailTemplate("feedback_notify", $row["email"], $row);
+            msv_email_template("feedback_notify", $row["email"], $row);
         }
 
         // send email to "admin_email"
         // email template: feedback_admin_notify
         if (in_array("EmailNotifyAdmin", $options)) {
-            $emailAdmin = MSV_getConfig("admin_email");
-            MSV_EmailTemplate("feedback_admin_notify", $emailAdmin, $row);
+            $emailAdmin = msv_get_config("admin_email");
+            msv_email_template("feedback_admin_notify", $emailAdmin, $row);
         }
     }
 

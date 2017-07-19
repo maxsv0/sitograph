@@ -11,7 +11,7 @@ function Install_Gallery($module) {
         "menu" => "top",
         "menu_order" => 10,
     );
-    MSV_Structure_add($itemStructure, array("lang" => "all"));
+    msv_add_structure($itemStructure, array("lang" => "all"));
 
     // add sample gallery
     $item = array(
@@ -36,6 +36,6 @@ function Install_Gallery($module) {
             ),
         )
     );
-    $result = Gallery_Add($item, array("LoadPictures"));
+    $result = msv_add_gallery($item, array("LoadPictures"));
 }
 

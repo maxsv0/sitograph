@@ -14,7 +14,7 @@
  * @param array $options Optional list of flags. Supported: LoadPictures, EmailNotifyAdmin
  * @return array Result of a API call
  */
-function MSV_Blog_add($row, $options = array()) {
+function msv_add_blog($row, $options = array()) {
     $result = array(
         "ok" => false,
         "data" => array(),
@@ -78,16 +78,16 @@ function MSV_Blog_add($row, $options = array()) {
 
     if (in_array("LoadPictures", $options)) {
         // try to load files
-        $row["pic"] = MSV_processUploadPic($row["pic"], TABLE_BLOG_ARTICLES, "pic");
-        $row["pic_preview"] = MSV_processUploadPic($row["pic_preview"], TABLE_BLOG_ARTICLES, "pic_preview");
+        $row["pic"] = msv_process_uploadpic($row["pic"], TABLE_BLOG_ARTICLES, "pic");
+        $row["pic_preview"] = msv_process_uploadpic($row["pic_preview"], TABLE_BLOG_ARTICLES, "pic_preview");
     }
 
-    $result = API_itemAdd(TABLE_BLOG_ARTICLES, $row);
+    $result = db_add(TABLE_BLOG_ARTICLES, $row);
 
     if ($result["ok"]) {
         $result["msg"] = _t("msg.blog.saved");
 
-        $blog = MSV_get("website.blog");
+        $blog = msv_get("website.blog");
 
         $item = array(
             "url" => $blog->baseUrl.$row["url"]."/",
@@ -97,7 +97,7 @@ function MSV_Blog_add($row, $options = array()) {
             "sitemap" => $row["published"],
         );
 
-        MSV_SEO_add($item);
+        msv_add_seo($item);
 
         $articleID = $result["insert_id"];
 
@@ -107,7 +107,7 @@ function MSV_Blog_add($row, $options = array()) {
                 $itemCat["published"] = 1;
                 $itemCat["article_id"] = $articleID;
 
-                $resultCat = API_itemAdd(TABLE_BLOG_ARTICLE_CATEGORIES, $itemCat);
+                $resultCat = db_add(TABLE_BLOG_ARTICLE_CATEGORIES, $itemCat);
                 if (!$resultCat["ok"]) {
                     $result["msg"] .= $resultCat["msg"]."\n";
                 }
@@ -117,8 +117,8 @@ function MSV_Blog_add($row, $options = array()) {
         // send email to "admin_email"
         // email template: blog_admin_notify
         if (in_array("EmailNotifyAdmin", $options)) {
-            $emailAdmin = MSV_getConfig("admin_email");
-            MSV_EmailTemplate("blog_admin_notify", $emailAdmin, $row);
+            $emailAdmin = msv_get_config("admin_email");
+            msv_email_template("blog_admin_notify", $emailAdmin, $row);
         }
     }
     return $result;

@@ -32,7 +32,7 @@ if (isset($_GET['search'])) {
                  "'&#(\d+);'i"); 
                  
            $_POST['keyword'] = strip_tags(preg_replace($search,"",$_POST['keyword']));
-           $tables_info = MSV_get("website.tables");
+           $tables_info = msv_get("website.tables");
           
            foreach ($tables_info as $v=>$db_tables_info) {
                     $filter ='';
@@ -61,9 +61,9 @@ if (isset($_GET['search'])) {
                          $filter = substr($filter,0,-2);
                          $field_str = implode(',',$field_list);
                          $sqlCode = "select * from ".$v." where (".$filter.") and `lang`='".LANG."'";
-                         $result = API_SQL($sqlCode);
+                         $result = db_sql($sqlCode);
                          if (!$result["ok"]) {
-                        		API_callError($result["msg"]);
+                             msv_message_error($result["msg"]);
                          }
                          
                          if (!empty($menu_ar[$db_tables_info['name']]['name'])) {
@@ -84,9 +84,9 @@ if (isset($_GET['search'])) {
                          }
                          $index_name = $title;
 
-                         $title = MSV_HighlightText($_POST['keyword'], $title, 10);
+                         $title = msv_highlight_text($_POST['keyword'], $title, 10);
                          $i=0;
-                         while ($row = MSV_SQLRow($result["data"])) {
+                         while ($row = db_fetch_row($result["data"])) {
                                 $ar2 = array();
                                 
                                 $ar2["title"] = $title;
@@ -107,7 +107,7 @@ if (isset($_GET['search'])) {
                                 $text = substr($text, $a - 300, 300);
                                 $text = strip_tags($text);
                                 
-                                $ar2["text"] = MSV_HighlightText($_POST['keyword'], $text, 50);
+                                $ar2["text"] = msv_highlight_text($_POST['keyword'], $text, 50);
                                 $ar2["url"] = $url."&edit=".$row["id"];
                                 $i++;                          
                            $module_search[$index_name][]=$ar2;
@@ -119,13 +119,13 @@ if (isset($_GET['search'])) {
            }    
            
        } 
-      if (!empty($module_search)) {
-           MSV_assignData("module_search", $module_search);
-           MSV_assignData("module_search_num", $module_search_num); 
-      }
-      
-      MSV_assignData("search", 1); 
-      MSV_assignData("keyword", $_POST['keyword']); 
+    if (!empty($module_search)) {
+      msv_assign_data("module_search", $module_search);
+      msv_assign_data("module_search_num", $module_search_num);
+    }
+
+    msv_assign_data("search", 1);
+    msv_assign_data("keyword", $_POST['keyword']);
        
 } 
 

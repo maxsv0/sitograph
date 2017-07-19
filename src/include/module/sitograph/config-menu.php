@@ -117,7 +117,7 @@ $menu_ar["media_library"] = array(
 
 
 foreach ($this->website->modules as $module) {
-    $module = MSV_get("website.".$module);
+    $module = msv_get("website.".$module);
     if (!empty($module->adminMenu) && $module->adminMenu) {
 
         $submenu = array();

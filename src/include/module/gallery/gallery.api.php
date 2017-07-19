@@ -13,25 +13,25 @@
  * @param object $module Current module object
  * @return string JSON encoded string containing API call result
  */
-function ajaxGalleryRequest($module) {
+function api_request_gallery($module) {
 
-    $request = MSV_get('website.requestUrlMatch');
+    $request = msv_get('website.requestUrlMatch');
     $apiType = $request[2];
 
     switch ($apiType) {
         case "list":
-            if (!MSV_checkAccessUser($module->accessAPIList)) {
+            if (!msv_check_accessuser($module->accessAPIList)) {
                 $resultQuery = array(
                     "ok" => false,
                     "data" => array(),
                     "msg" => "No access",
                 );
             } else {
-                $resultQuery = API_getDBList(TABLE_GALLERY_ALBUM, "", "`date` desc", 999, "");
+                $resultQuery = db_get_list(TABLE_GALLERY_ALBUM, "", "`date` desc", 999, "");
             }
             break;
         case "album":
-            if (!MSV_checkAccessUser($module->accessAPIAlbum)) {
+            if (!msv_check_accessuser($module->accessAPIAlbum)) {
                 $resultQuery = array(
                     "ok" => false,
                     "data" => array(),
@@ -39,23 +39,23 @@ function ajaxGalleryRequest($module) {
                 );
             } else {
                 $albumID = (int)$request[3];
-                $resultQuery = API_getDBList(TABLE_GALLERY_PHOTOS, "`album_id` = ".$albumID, "`date` desc", 999, "");
+                $resultQuery = db_get_list(TABLE_GALLERY_PHOTOS, "`album_id` = ".$albumID, "`date` desc", 999, "");
             }
             break;
         case "add":
-            if (!MSV_checkAccessUser($module->accessAPIAdd)) {
+            if (!msv_check_accessuser($module->accessAPIAdd)) {
                 $resultQuery = array(
                     "ok" => false,
                     "data" => array(),
                     "msg" => "No access",
                 );
             } else {
-                $item = MSV_proccessTableData(TABLE_GALLERY_ALBUM, "");
-                $resultQuery = Gallery_Add($item, array("LoadPictures"));
+                $item = msv_process_tabledata(TABLE_GALLERY_ALBUM, "");
+                $resultQuery = msv_add_gallery($item, array("LoadPictures"));
             }
             break;
         case "edit-album":
-            if (!MSV_checkAccessUser($module->accessAPIEdit)) {
+            if (!msv_check_accessuser($module->accessAPIEdit)) {
                 $resultQuery = array(
                     "ok" => false,
                     "data" => array(),
@@ -69,12 +69,12 @@ function ajaxGalleryRequest($module) {
                         "msg" => "Wrong Input",
                     );
                 } else {
-                    $resultQuery = API_updateDBItem(TABLE_GALLERY_ALBUM, $_REQUEST["updateName"], "'".MSV_SQLEscape($_REQUEST["updateValue"])."'", "`id` = ".(int)$_REQUEST["updateID"]);
+                    $resultQuery = db_update(TABLE_GALLERY_ALBUM, $_REQUEST["updateName"], "'".db_escape($_REQUEST["updateValue"])."'", "`id` = ".(int)$_REQUEST["updateID"]);
                 }
             }
             break;
         case "edit-photo":
-            if (!MSV_checkAccessUser($module->accessAPIEdit)) {
+            if (!msv_check_accessuser($module->accessAPIEdit)) {
                 $resultQuery = array(
                     "ok" => false,
                     "data" => array(),
@@ -88,7 +88,7 @@ function ajaxGalleryRequest($module) {
                         "msg" => "Wrong Input",
                     );
                 } else {
-                    $resultQuery = API_updateDBItem(TABLE_GALLERY_PHOTOS, $_REQUEST["updateName"], "'".MSV_SQLEscape($_REQUEST["updateValue"])."'", "`id` = ".(int)$_REQUEST["updateID"]);
+                    $resultQuery = db_update(TABLE_GALLERY_PHOTOS, $_REQUEST["updateName"], "'".db_escape($_REQUEST["updateValue"])."'", "`id` = ".(int)$_REQUEST["updateID"]);
                 }
             }
             break;

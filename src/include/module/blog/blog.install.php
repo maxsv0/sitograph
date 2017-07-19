@@ -11,7 +11,7 @@ function Install_Blog($module) {
         "menu" => "top",
         "menu_order" => 10,
     );
-    MSV_Structure_add($itemStructure, array("lang" => "all"));
+    msv_add_structure($itemStructure, array("lang" => "all"));
 
     // add email notify template
     $templateBlogNotifyAdmin = '
@@ -28,7 +28,7 @@ Text: <br />
         "subject" => "New blog article",
         "text" => $templateBlogNotifyAdmin,
     );
-    MSV_MailTemplate_add($itemTemplate, array("lang" => "all"));
+    msv_add_mailtemplate($itemTemplate, array("lang" => "all"));
 
     // add sample article
     $docContent = file_get_contents($module->pathModule."install-blog-folder-structure.html");
@@ -43,7 +43,7 @@ Text: <br />
         "pic" => "images/blog_1.jpg",
         "pic_preview" => "images/blog_1.jpg",
     );
-    $result = MSV_Blog_add($item, array("LoadPictures"));
+    $result = msv_add_blog($item, array("LoadPictures"));
 
     // add sample article
     $docContent = file_get_contents($module->pathModule."install-blog-gallery.html");
@@ -59,7 +59,7 @@ Text: <br />
         "pic" => "images/blog_2.jpg",
         "pic_preview" => "images/blog_2.jpg",
     );
-    $result = MSV_Blog_add($item, array("LoadPictures"));
+    $result = msv_add_blog($item, array("LoadPictures"));
 
     // add sample article
     $docContent = file_get_contents($module->pathModule."install-blog-layers.html");
@@ -74,6 +74,6 @@ Text: <br />
         "pic" => "images/blog_3.jpg",
         "pic_preview" => "images/blog_3.jpg",
     );
-    $result = MSV_Blog_add($item, array("LoadPictures"));
+    $result = msv_add_blog($item, array("LoadPictures"));
 
 }

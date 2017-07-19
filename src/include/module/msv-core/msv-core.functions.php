@@ -2,15 +2,15 @@
 
 /**
  * Add CSS or JS file directly to website output
- * File is only added if MSV_checkInclude($url, $access) is passed
+ * File is only added if msv_check_include($url, $access) is passed
  *
  * @param string $filePath
  * @param string $url Optional URL where this code should be added
  * @param string $access Optional Level of access; defaults to 'everyone'
  * @return boolean
  */
-function MSV_Include($filePath, $url = '', $access = 'everyone') {
-    if (!MSV_checkInclude($url, $access)) {
+function msv_include($filePath, $url = '', $access = 'everyone') {
+    if (!msv_check_include($url, $access)) {
         return false;
     }
 
@@ -25,11 +25,11 @@ function MSV_Include($filePath, $url = '', $access = 'everyone') {
 
     switch ($type) {
         case "css":
-            MSV_IncludeCSSFile($filePath, $url, $access);
+            msv_include_cssfile($filePath, $url, $access);
             break;
 
         case "js":
-            MSV_IncludeJSFile($filePath, $url, $access);
+            msv_include_jsfile($filePath, $url, $access);
             break;
 
         default:
@@ -41,19 +41,19 @@ function MSV_Include($filePath, $url = '', $access = 'everyone') {
 
 /**
  * Add CSS file directly to website output
- * File is only added if MSV_checkInclude($url, $access) is passed
+ * File is only added if msv_check_include($url, $access) is passed
  *
  * @param string $filePath
  * @param string $url Optional URL where this code should be added
  * @param string $access Optional Level of access; defaults to 'everyone'
  * @return boolean
  */
-function MSV_IncludeCSSFile($filePath, $url = '', $access = 'everyone') {
-    $website =& MSV_get("website");
+function msv_include_cssfile($filePath, $url = '', $access = 'everyone') {
+    $website =& msv_get("website");
 
     //TODO check $filePath if correct path/url
 
-    if (!MSV_checkInclude($url, $access)) {
+    if (!msv_check_include($url, $access)) {
         return false;
     }
 
@@ -66,19 +66,19 @@ function MSV_IncludeCSSFile($filePath, $url = '', $access = 'everyone') {
 
 /**
  * Add JS file directly to website output
- * File is only added if MSV_checkInclude($url, $access) is passed
+ * File is only added if msv_check_include($url, $access) is passed
  *
  * @param string $filePath
  * @param string $url Optional URL where this code should be added
  * @param string $access Optional Level of access; defaults to 'everyone'
  * @return boolean
  */
-function MSV_IncludeJSFile($filePath, $url = '', $access = 'everyone') {
-    $website =& MSV_get("website");
+function msv_include_jsfile($filePath, $url = '', $access = 'everyone') {
+    $website =& msv_get("website");
 
     //TODO check $filePath if correct path/url
 
-    if (!MSV_checkInclude($url, $access)) {
+    if (!msv_check_include($url, $access)) {
         return false;
     }
 
@@ -97,8 +97,8 @@ function MSV_IncludeJSFile($filePath, $url = '', $access = 'everyone') {
  * @param string $access Optional Level of access; defaults to 'everyone'
  * @return boolean
  */
-function MSV_checkInclude($url = '', $access = 'everyone') {
-    $website =& MSV_get("website");
+function msv_check_include($url = '', $access = 'everyone') {
+    $website =& msv_get("website");
 
     if (!empty($url)) {
         if (strpos($website->requestUrl, $url) !== 0) {
@@ -115,17 +115,17 @@ function MSV_checkInclude($url = '', $access = 'everyone') {
 
 /**
  * Add CSS code directly to website output
- * code is only added if MSV_checkInclude($url, $access) is passed
+ * code is only added if msv_check_include($url, $access) is passed
  *
  * @param string $cssCode
  * @param string $url Optional URL where this code should be added
  * @param string $access Optional Level of access; defaults to 'everyone'
  * @return boolean
  */
-function MSV_IncludeCSS($cssCode, $url = '', $access = 'everyone') {
-    $website =& MSV_get("website");
+function msv_include_css($cssCode, $url = '', $access = 'everyone') {
+    $website =& msv_get("website");
 
-    if (!MSV_checkInclude($url, $access)) {
+    if (!msv_check_include($url, $access)) {
         return false;
     }
 
@@ -136,17 +136,17 @@ function MSV_IncludeCSS($cssCode, $url = '', $access = 'everyone') {
 
 /**
  * Add JS code directly to website output
- * code is only added if MSV_checkInclude($url, $access) is passed
+ * code is only added if msv_check_include($url, $access) is passed
  *
  * @param string $jsCode
  * @param string $url Optional URL where this code should be added
  * @param string $access Optional Level of access; defaults to 'everyone'
  * @return boolean
  */
-function MSV_IncludeJS($jsCode, $url = '', $access = 'everyone') {
-    $website =& MSV_get("website");
+function msv_include_js($jsCode, $url = '', $access = 'everyone') {
+    $website =& msv_get("website");
 
-    if (!MSV_checkInclude($url, $access)) {
+    if (!msv_check_include($url, $access)) {
         return false;
     }
 
@@ -157,17 +157,17 @@ function MSV_IncludeJS($jsCode, $url = '', $access = 'everyone') {
 
 /**
  * Add HTML code directly to website output
- * code is only added if MSV_checkInclude($url, $access) is passed
+ * code is only added if msv_check_include($url, $access) is passed
  *
  * @param string $htmlCode
  * @param string $url Optional URL where this code should be added
  * @param string $access Optional Level of access; defaults to 'everyone'
  * @return boolean
  */
-function MSV_IncludeHTML($htmlCode, $url = '', $access = 'everyone') {
-    $website =& MSV_get("website");
+function msv_include_html($htmlCode, $url = '', $access = 'everyone') {
+    $website =& msv_get("website");
 
-    if (!MSV_checkInclude($url, $access)) {
+    if (!msv_check_include($url, $access)) {
         return false;
     }
 
@@ -176,8 +176,8 @@ function MSV_IncludeHTML($htmlCode, $url = '', $access = 'everyone') {
     return true;
 }
 
-function MSV_Log($logText = "", $type = "warning") {
-    $website =& MSV_get("website");
+function msv_log($logText = "", $type = "warning") {
+    $website =& msv_get("website");
 
     $website->log($logText, $type);
 
@@ -190,10 +190,10 @@ function MSV_Log($logText = "", $type = "warning") {
  * @param string $messageText Optional Text of a message
  * @return boolean
  */
-function MSV_MessageOK($messageText = "") {
+function msv_message_ok($messageText = "") {
     if (empty($messageText)) return false;
 
-    $website =& MSV_get("website");
+    $website =& msv_get("website");
     $website->messages["success"][] = $messageText;
 
     return true;
@@ -205,24 +205,25 @@ function MSV_MessageOK($messageText = "") {
  * @param string $messageText Optional Text of a message
  * @return boolean
  */
-function MSV_MessageError($messageText = "") {
+function msv_message_error($messageText = "") {
     if (empty($messageText)) return false;
 
-    $website =& MSV_get("website");
+    $website =& msv_get("website");
     $website->messages["error"][] = $messageText;
 
     return true;
 }
 
 /**
- * Returns true if website has any 'error' messages
+ * Returns true if website has any messages of given type.
  *
+ * @param string $type Optional Type of message defaults to "error"
  * @return boolean
  */
-function MSV_HasMessageError() {
-    $website = MSV_get("website");
+function msv_has_messages($type = "error") {
+    $website = msv_get("website");
 
-    if (!empty($website->messages["error"])) {
+    if (!empty($website->messages[$type])) {
         return true;
     }
 
@@ -235,8 +236,8 @@ function MSV_HasMessageError() {
  * @param string $errorText Optional Text of a message
  * @return boolean
  */
-function MSV_Error($errorText = "") {
-    $website = MSV_get("website");
+function msv_error($errorText = "") {
+    $website = msv_get("website");
 
     //TODO: make log
 
@@ -253,8 +254,8 @@ function MSV_Error($errorText = "") {
  * @param boolean $pos Optional Add new element to the beginning of an Navigation array; defaults to false
  * @return void
  */
-function MSV_setNavigation($name, $url = "", $pos = false) {
-    $website = MSV_get("website");
+function msv_set_navigation($name, $url = "", $pos = false) {
+    $website =& msv_get("website");
 
     // TODO : CHECK ...
 
@@ -268,17 +269,18 @@ function MSV_setNavigation($name, $url = "", $pos = false) {
         $website->navigation[] = $ar;
     }
 
+    return true;
 }
 
-function MSV_setConfig($param, $value, $updateDB = false, $lang = LANG, $desc = "") {
-    $website =& MSV_get("website");
+function msv_set_config($param, $value, $updateDB = false, $lang = LANG, $desc = "") {
+    $website =& msv_get("website");
 
     // TODO : CHECK ...
     if (array_key_exists($param, $website->config)) {
         $website->config[$param] = $value;
 
         if ($updateDB) {
-            return API_updateDBItem(TABLE_SETTINGS, "value", "'".MSV_SQLEscape($value)."'", " `param` = '".$param."'");
+            return db_update(TABLE_SETTINGS, "value", "'".db_escape($value)."'", " `param` = '".$param."'");
         }
     } else {
         $website->config[$param] = $value;
@@ -291,11 +293,11 @@ function MSV_setConfig($param, $value, $updateDB = false, $lang = LANG, $desc = 
                 "description" => $desc,
             );
 
-            return API_itemAdd(TABLE_SETTINGS, $item, $lang);
+            return db_add(TABLE_SETTINGS, $item, $lang);
         }
     }
 
-    return true;
+    return false;
 }
 
 /**
@@ -304,10 +306,11 @@ function MSV_setConfig($param, $value, $updateDB = false, $lang = LANG, $desc = 
  * @param string $param Name of the config parameter
  * @return mixed
  */
-function MSV_getConfig($param) {
-    $website = MSV_get("website");
+function msv_get_config($param) {
+    $website = msv_get("website");
 
     // TODO : CHECK ...
+
     if (array_key_exists($param, $website->config)) {
 
         return $website->config[$param];
@@ -324,10 +327,10 @@ function MSV_getConfig($param) {
  * @param string $table Name of the table
  * @return array
  */
-function MSV_getTableConfig($table) {
+function msv_get_config_table($table) {
     //TODO  add some check
 
-    $tablesList = MSV_get("website.tables");
+    $tablesList = msv_get("website.tables");
 
     if (!array_key_exists($table, $tablesList)) {
         return false;
@@ -344,7 +347,7 @@ function MSV_getTableConfig($table) {
  * @param object $sqlQuery mysqli_result
  * @return array
  */
-function MSV_SQLRow($sqlQuery) {
+function db_fetch_row($sqlQuery) {
 
     $row = mysqli_fetch_assoc($sqlQuery);
 
@@ -357,9 +360,9 @@ function MSV_SQLRow($sqlQuery) {
  * @param string $string SQL code
  * @return string
  */
-function MSV_SQLEscape($string) {
+function db_escape($string) {
 
-    $website = MSV_get("website");
+    $website = msv_get("website");
 
     $string = (string)$string;
 
@@ -384,9 +387,9 @@ function MSV_SQLEscape($string) {
  * @param string $field Optional Name of field in table where this file is stored
  * @return string|integer
  */
-function MSV_storeFile($url, $type = "jpg", $name = "", $table = "", $field = "") {
+function msv_store_file($url, $type = "jpg", $name = "", $table = "", $field = "") {
 
-    $typeExt = MSV_formatMimeType($type);
+    $typeExt = msv_format_mimetype($type);
     if (!empty($typeExt)) {
         $type = $typeExt;
     }
@@ -465,7 +468,7 @@ function MSV_storeFile($url, $type = "jpg", $name = "", $table = "", $field = ""
  * Stores picture in filesystem
  * Picture will be resized according to $table/$field settings
  *
- * Original file is stored using MSV_storeFile function
+ * Original file is stored using msv_store_file function
  * In case if $table and $field are specified picture will be resized
  * according to max-width/max-height settings for $field in $table
  * Resized file is saved with $type file type
@@ -477,15 +480,15 @@ function MSV_storeFile($url, $type = "jpg", $name = "", $table = "", $field = ""
  * @param string $field Optional Name of field in table where this file is stored
  * @return string|integer
  */
-function MSV_storePic($url, $type = "jpg", $name = "", $table = "", $field = "") {
+function msv_store_pic($url, $type = "jpg", $name = "", $table = "", $field = "") {
 
-    $typeExt = MSV_formatMimeType($type);
+    $typeExt = msv_format_mimetype($type);
     if (!empty($typeExt)) {
         $type = $typeExt;
     }
 
     // store original file
-    $fileResult = MSV_storeFile($url, $type, $name, $table, $field);
+    $fileResult = msv_store_file($url, $type, $name, $table, $field);
 
     if (is_numeric($fileResult)) {
         // result is error
@@ -504,7 +507,7 @@ function MSV_storePic($url, $type = "jpg", $name = "", $table = "", $field = "")
         }
 
         // get table info
-        $tablesList = MSV_get("website.tables");
+        $tablesList = msv_get("website.tables");
         $infoTable = $tablesList[$table];
 
         $infoField = $infoTable["fields"][$field];
@@ -565,12 +568,12 @@ function MSV_storePic($url, $type = "jpg", $name = "", $table = "", $field = "")
 /**
  * Returns an child of $website object that corresponds to path in $param
  * path is exploded with '.'
- * usage: MSV_get('website.tables'), MSV_get('website.api')
+ * usage: msv_get('website.tables'), msv_get('website.api')
  *
  * @param string $param Optional Name/path of the object to be returned; defaults to 'website'
  * @return mixed
  */
-function &MSV_get($param = "website") {
+function &msv_get($param = "website") {
 
     global $website;
     if (empty($website)) {
@@ -593,8 +596,8 @@ function &MSV_get($param = "website") {
     return $returnObj;
 }
 
-function MSV_checkFiles() {
-    $website = MSV_get("website");
+function msv_check_files() {
+    $website = msv_get("website");
 
 
     $di = new RecursiveDirectoryIterator(ABS, RecursiveDirectoryIterator::SKIP_DOTS);
@@ -635,8 +638,8 @@ function MSV_checkFiles() {
  * @param string $prefix Optional; defaults to ''
  * @return boolean Result of the action
  */
-function MSV_assignTableData($table, $prefix = "") {
-    $tableInfo = MSV_getTableConfig($table);
+function msv_assign_tabledata($table, $prefix = "") {
+    $tableInfo = msv_get_config_table($table);
 
     if (empty($tableInfo)) {
         return false;
@@ -644,17 +647,17 @@ function MSV_assignTableData($table, $prefix = "") {
 
     foreach ($tableInfo["fields"] as $item) {
         if (!array_key_exists($prefix.$item["name"], $_REQUEST)) {
-            MSV_assignData($prefix.$item["name"], $_REQUEST[$prefix.$item["name"]]);
+            msv_assign_data($prefix.$item["name"], $_REQUEST[$prefix.$item["name"]]);
         }
     }
 
     return true;
 }
 
-function MSV_DataFormat($table, $dataRow) {
+function msv_format_data($table, $dataRow) {
     //TODO ...
 
-    $tablesList = MSV_get("website.tables");
+    $tablesList = msv_get("website.tables");
 
     if (!array_key_exists($table, $tablesList)) {
         return $dataRow;
@@ -695,8 +698,8 @@ function MSV_DataFormat($table, $dataRow) {
     return $dataRow;
 }
 
-function MSV_proccessTableData($table, $prefix = "") {
-    $tableInfo = MSV_getTableConfig($table);
+function msv_process_tabledata($table, $prefix = "") {
+    $tableInfo = msv_get_config_table($table);
     if (empty($tableInfo)) return false;
 
     // array to be returned
@@ -734,7 +737,7 @@ function MSV_proccessTableData($table, $prefix = "") {
             case "author":
                 // TODO: check session user access lvl to avoid author field change
                 if (empty($value)) {
-                    $rowInfo = MSV_get("website.user");
+                    $rowInfo = msv_get("website.user");
                     if (!empty($rowInfo["email"])) {
                         $dataItem[$item["name"]] = $rowInfo["email"];
                     } else {
@@ -758,13 +761,13 @@ function MSV_proccessTableData($table, $prefix = "") {
                         $type = $_FILES[$prefix.$item["name"]]["type"];
                         $path = $_FILES[$prefix.$item["name"]]["tmp_name"];
                         $name = $_FILES[$prefix.$item["name"]]["name"];
-                        $typeExt = MSV_formatMimeType($type);
+                        $typeExt = msv_format_mimetype($type);
                         if (!empty($typeExt)) {
                             // store file
                             if ($item["type"] === "pic") {
-                                $fileResult = MSV_storePic($path, $typeExt, $name, $table, $item["name"]);
+                                $fileResult = msv_store_pic($path, $typeExt, $name, $table, $item["name"]);
                             } else {
-                                $fileResult = MSV_storeFile($path, $typeExt, $name, $table, $item["name"]);
+                                $fileResult = msv_store_file($path, $typeExt, $name, $table, $item["name"]);
                             }
                             if (!is_numeric($fileResult)) {
                                 $dataItem[$item["name"]] = $fileResult;
@@ -802,7 +805,7 @@ function MSV_proccessTableData($table, $prefix = "") {
                 $dataItem[$item["name"]] = (string)$value;
                 break;
             default:
-                MSV_MessageError("Unknown data type: ".$item["type"]);
+                msv_message_error("Unknown data type: ".$item["type"]);
                 break;
         }
     }
@@ -810,7 +813,7 @@ function MSV_proccessTableData($table, $prefix = "") {
     return $dataItem;
 }
 
-function MSV_proccessUpdateTable($table, $prefix = "") {
+function msv_process_updatetable($table, $prefix = "") {
     $result = array(
         "ok" => false,
         "data" => array(),
@@ -818,14 +821,14 @@ function MSV_proccessUpdateTable($table, $prefix = "") {
     );
 
     // extract data from request for corresponding table
-    $item = MSV_proccessTableData($table, $prefix);
+    $item = msv_process_tabledata($table, $prefix);
 
     if (empty($item)) {
         $result["msg"] = "Can't validate input data";
         return $result;
     }
 
-    $result = API_updateDBItemRow($table, $item);
+    $result = db_update_row($table, $item);
     return $result;
 }
 
@@ -836,7 +839,7 @@ function MSV_proccessUpdateTable($table, $prefix = "") {
  * @param integer $size Size in bytes to be formatted
  * @return string Formatted string
  */
-function MSV_formatSize($size) {
+function msv_format_size($size) {
     if ($size >= 1073741824) {
         $text = number_format($size / 1073741824, 2) . ' GB';
     } elseif ($size >= 1048576) {
@@ -861,7 +864,7 @@ function MSV_formatSize($size) {
  * @return string
  */
 function _t($textID) {
-    $website = MSV_get("website");
+    $website = msv_get("website");
 
     if (array_key_exists($textID, $website->locales)) {
         $retStr = $website->locales[$textID];
@@ -899,7 +902,7 @@ function _t($textID) {
  * @param array $options Optional list of flags. Supported: lang
  * @return array Result of a API call
  */
-function MSV_Structure_add($row, $options = array()) {
+function msv_add_structure($row, $options = array()) {
     $result = array(
         "ok" => false,
         "data" => array(),
@@ -925,13 +928,13 @@ function MSV_Structure_add($row, $options = array()) {
 
     // run recursively and exit
     if ($lang === "all") {
-        $website = MSV_get("website");
+        $website = msv_get("website");
 
         $n = 0;
         foreach ($website->languages as $langID) {
             $optionsLang = $options;
             $optionsLang["lang"] = $langID;
-            MSV_Structure_add($row, $optionsLang);
+            msv_add_structure($row, $optionsLang);
             $n++;
         }
 
@@ -942,7 +945,7 @@ function MSV_Structure_add($row, $options = array()) {
 
     $parent_id = 0;
     if (!empty($row["parent_url"])) {
-        $resultParent = API_getDBItem(TABLE_STRUCTURE, "`url` = '".MSV_SQLEscape($row["parent_url"])."'", $lang);
+        $resultParent = db_get(TABLE_STRUCTURE, "`url` = '".db_escape($row["parent_url"])."'", $lang);
         if ($resultParent["ok"] && !empty($resultParent["data"])) {
             $row["parent_id"] = $resultParent["data"]["id"];
         }
@@ -983,7 +986,7 @@ function MSV_Structure_add($row, $options = array()) {
     if (empty($row["document_title"])) $row["document_title"] = "";
     if (empty($row["document_text"])) $row["document_text"] = "";
 
-    $result = API_itemAdd(TABLE_STRUCTURE, $row, $lang);
+    $result = db_add(TABLE_STRUCTURE, $row, $lang);
 
     if ($result["ok"]) {
         // get net structure id
@@ -997,7 +1000,7 @@ function MSV_Structure_add($row, $options = array()) {
             "keywords" => $row["name"],
             "sitemap" => $row["sitemap"],
         );
-        MSV_SEO_add($itemSEO, array("lang" => $lang));
+        msv_add_seo($itemSEO, array("lang" => $lang));
 
         // add document
         if (!empty($row["document_title"]) || !empty($row["document_text"])) {
@@ -1005,11 +1008,11 @@ function MSV_Structure_add($row, $options = array()) {
                 "name" => $row["document_title"],
                 "text" => $row["document_text"],
             );
-            $resultDocument = MSV_Document_add($itemDocument, array("lang" => $lang));
+            $resultDocument = msv_add_document($itemDocument, array("lang" => $lang));
 
             // update structure=>set document
             if ($resultDocument["ok"]) {
-                API_updateDBItem(TABLE_STRUCTURE, "page_document_id", $resultDocument["insert_id"], " id = '".$structure_id."'");
+                db_update(TABLE_STRUCTURE, "page_document_id", $resultDocument["insert_id"], " id = '".$structure_id."'");
             }
         }
 
@@ -1023,7 +1026,7 @@ function MSV_Structure_add($row, $options = array()) {
                 "order_id" => $row["menu_order"],
                 "parent_id" => $row["menu_parent_id"],
             );
-            API_itemAdd(TABLE_MENU, $item, $lang);
+            db_add(TABLE_MENU, $item, $lang);
         }
     }
 
@@ -1038,7 +1041,7 @@ function MSV_Structure_add($row, $options = array()) {
  * @param array $options Optional list of flags. Supported: lang
  * @return array Result of a API call
  */
-function MSV_Document_add($row, $options = array()) {
+function msv_add_document($row, $options = array()) {
     // set defaults
     if (!empty($row["published"])) {
         $row["published"] = (int)$row["published"];
@@ -1055,7 +1058,7 @@ function MSV_Document_add($row, $options = array()) {
     if (empty($row["name"])) $row["name"] = "";
     if (empty($row["text"])) $row["text"] = "";
 
-    $result = API_itemAdd(TABLE_DOCUMENTS, $row, $lang);
+    $result = db_add(TABLE_DOCUMENTS, $row, $lang);
 
     return $result;
 }
@@ -1068,7 +1071,7 @@ function MSV_Document_add($row, $options = array()) {
  * @param array $options Optional list of flags. Supported: lang
  * @return array Result of a API call
  */
-function MSV_MailTemplate_add($row, $options = array()) {
+function msv_add_mailtemplate($row, $options = array()) {
     // set defaults
     if (!empty($row["published"])) {
         $row["published"] = (int)$row["published"];
@@ -1087,14 +1090,14 @@ function MSV_MailTemplate_add($row, $options = array()) {
     if (empty($row["subject"])) $row["subject"] = "";
     if (empty($row["header"])) $row["header"] = "";
 
-    $result = API_itemAdd(TABLE_MAIL_TEMPLATES, $row, $lang);
+    $result = db_add(TABLE_MAIL_TEMPLATES, $row, $lang);
 
     return $result;
 }
 
 /**
  * Send an email using mail() function
- * MSV_getConfig("email_from") and MSV_getConfig("email_fromname") is used in FROM field
+ * msv_get_config("email_from") and msv_get_config("email_fromname") is used in FROM field
  * Additional header is added with $header
  * Content-type is set to text/html
  *
@@ -1104,10 +1107,10 @@ function MSV_MailTemplate_add($row, $options = array()) {
  * @param string $header Optional Additional header
  * @return boolean
  */
-function MSV_EmailDefault($to = "", $subject = "", $body = "", $header = "") {
+function msv_email_default($to = "", $subject = "", $body = "", $header = "") {
 
-    $emailFrom = MSV_getConfig("email_from");
-    $emailFromName = MSV_getConfig("email_fromname");
+    $emailFrom = msv_get_config("email_from");
+    $emailFromName = msv_get_config("email_fromname");
     if (!empty($emailFromName)) {
         $emailFromHeader = $emailFromName." <".$emailFrom.">";
     } else {
@@ -1123,7 +1126,7 @@ function MSV_EmailDefault($to = "", $subject = "", $body = "", $header = "") {
 
 /**
  * Send an email using current email provider.
- * MSV_getConfig("email_from") and MSV_getConfig("email_fromname") is used in FROM field
+ * msv_get_config("email_from") and msv_get_config("email_fromname") is used in FROM field
  * Additional header is added with $header
  *
  * @param string $to Send to this email
@@ -1132,9 +1135,9 @@ function MSV_EmailDefault($to = "", $subject = "", $body = "", $header = "") {
  * @param string $header Optional Additional header
  * @return boolean
  */
-function MSV_Email($to = "", $subject = "", $body = "", $header = "") {
+function msv_email($to = "", $subject = "", $body = "", $header = "") {
     // get Mailer function
-    $mailer = MSV_getConfig("mailer");
+    $mailer = msv_get_config("mailer");
 
     return call_user_func_array($mailer, array($to, $subject, $body, $header));
 }
@@ -1153,28 +1156,28 @@ function MSV_Email($to = "", $subject = "", $body = "", $header = "") {
  * @param string $lang Optional Language of a template; defaults to LANG
  * @return boolean
  */
-function MSV_EmailTemplate($template, $mailTo, $data = array(), $message = true, $lang = LANG) {
+function msv_email_template($template, $mailTo, $data = array(), $message = true, $lang = LANG) {
 
     // get template
-    $resultMail = API_getDBItem(TABLE_MAIL_TEMPLATES, " `name` = '".MSV_SQLEscape($template)."'", $lang);
+    $resultMail = db_get(TABLE_MAIL_TEMPLATES, " `name` = '".db_escape($template)."'", $lang);
 
     if ($resultMail["ok"] && !empty($resultMail["data"])) {
         $mailSubject = $resultMail["data"]["subject"];
         $mailBody = $resultMail["data"]["text"];
 
-        MSV_setConfig("dataTemplate", $data);
+        msv_set_config("dataTemplate", $data);
 
         // replace pattern:
         // {email} into $data["email"]
         $mailBody = preg_replace_callback(
             '~\{(\w+?)\}~sU',
             create_function('$t','
-            $r = MSV_getConfig("dataTemplate");
+            $r = msv_get_config("dataTemplate");
             $retText = $t[0];
             if (defined($t[1])) {
                 $retText = constant($t[1]);
             }
-            $config = MSV_getConfig($t[1]);
+            $config = msv_get_config($t[1]);
             if (!empty($config)) {
                 $retText = $config;
             }
@@ -1187,12 +1190,12 @@ function MSV_EmailTemplate($template, $mailTo, $data = array(), $message = true,
         $mailSubject = preg_replace_callback(
             '~\{(\w+?)\}~sU',
             create_function('$t','
-            $r = MSV_getConfig("dataTemplate");
+            $r = msv_get_config("dataTemplate");
             $retText = $t[0];
             if (defined($t[1])) {
                 $retText = constant($t[1]);
             }
-            $config = MSV_getConfig($t[1]);
+            $config = msv_get_config($t[1]);
             if (!empty($config)) {
                 $retText = $config;
             }
@@ -1207,7 +1210,7 @@ function MSV_EmailTemplate($template, $mailTo, $data = array(), $message = true,
             $mailBody = $resultMail["data"]["header"].$mailBody;
         }
 
-        return MSV_Email($mailTo, $mailSubject, $mailBody);
+        return msv_email($mailTo, $mailSubject, $mailBody);
     } else {
         return false;
     }
@@ -1219,7 +1222,7 @@ function MSV_EmailTemplate($template, $mailTo, $data = array(), $message = true,
  * @param integer $length Length of password in characters
  * @return string Random password
  */
-function MSV_PasswordGenerate($length = 12) {
+function msv_generate_password($length = 12) {
     $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     $count = mb_strlen($chars);
 
@@ -1237,7 +1240,7 @@ function MSV_PasswordGenerate($length = 12) {
  *
  * @return string
  */
-function MSV_GetIP() {
+function msv_get_ip() {
 
     if (!empty($_SERVER['HTTP_CLIENT_IP'])){
         $ip = $_SERVER['HTTP_CLIENT_IP'];
@@ -1256,11 +1259,11 @@ function MSV_GetIP() {
  *
  * @return boolean
  */
-function MSV_SitemapGenegate() {
+function msv_genegate_sitemap() {
     $sitemapPath = ABS."/sitemap.xml";
 
     if (!is_writable($sitemapPath)) {
-        MSV_MessageError("Can't write to $sitemapPath");
+        msv_message_error("Can't write to $sitemapPath");
         return false;
     }
 
@@ -1269,10 +1272,10 @@ function MSV_SitemapGenegate() {
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://www.google.com/schemas/sitemap/0.84 http://www.google.com/schemas/sitemap/0.84/sitemap.xsd">
 ';
-    $website = MSV_get("website");
+    $website = msv_get("website");
 
     foreach ($website->languages as $langID) {
-        $query = API_getDBList(TABLE_SEO, "`sitemap` > 0", "`url` asc", 10000, 0,  $langID);
+        $query = db_get_list(TABLE_SEO, "`sitemap` > 0", "`url` asc", 10000, 0,  $langID);
         if ($query["ok"] && $query["data"]) {
             foreach ($query["data"] as $item) {
                 $sitemapXML .= "
@@ -1290,7 +1293,7 @@ xsi:schemaLocation="http://www.google.com/schemas/sitemap/0.84 http://www.google
 }
 
 
-function MSV_HighlightText($s, $text, $c) {
+function msv_highlight_text($s, $text, $c) {
     $text = strip_tags($text);
     $text = str_replace(array("&nbsp;","\n"), " ", $text);
     $text = array_map("trim", explode(" ", $text));
@@ -1319,7 +1322,7 @@ function MSV_HighlightText($s, $text, $c) {
 }
 
 
-function MSV_formatMimeType($mimeType) {
+function msv_format_mimetype($mimeType) {
     $mapping = array(
         'pdf'   =>      array('application/pdf', 'application/force-download', 'application/x-download', 'binary/octet-stream'),
         'swf'   =>      'application/x-shockwave-flash',
@@ -1346,8 +1349,8 @@ function MSV_formatMimeType($mimeType) {
  *
  * @param string $url URL to redirect
  */
-function MSV_redirect($url) {
-    $website = MSV_get("website");
+function msv_redirect($url) {
+    $website = msv_get("website");
 
     // check lang URL
     if (!empty($website->langUrl)) {
@@ -1362,7 +1365,7 @@ function MSV_redirect($url) {
     $website->outputRedirect($url);
 }
 
-function MSV_checkEmail($email) {
+function msv_check_email($email) {
     return filter_var($email, FILTER_VALIDATE_EMAIL)
         && preg_match('/@.+\./', $email);
 }
@@ -1376,20 +1379,20 @@ function MSV_checkEmail($email) {
  * @param string $dataValue
  * @return boolean Result of the action
  */
-function MSV_assignData($dataName, $dataValue) {
-    $website = MSV_get("website");
+function msv_assign_data($dataName, $dataValue) {
+    $website = msv_get("website");
     if (!$website) return false;
 
     $website->config[$dataName] = $dataValue;
     return true;
 }
 
-function MSV_checkAccessUser($pageAccess) {
-    $rowUser = MSV_get("website.user");
+function msv_check_accessuser($pageAccess) {
+    $rowUser = msv_get("website.user");
     if (empty($rowUser)) {
         return false;
     }
-    $website = MSV_get("website");
+    $website = msv_get("website");
     return $website->checkAccess($pageAccess, $rowUser["access"]);
 }
 
@@ -1402,15 +1405,15 @@ function MSV_checkAccessUser($pageAccess) {
  * @param string $table
  * @return boolean Result of the action
  */
-function MSV_addAdminEdit($selector, $section, $table) {
-    if (!MSV_checkAccessUser("admin")) return false;
+function msv_admin_editbtn($selector, $section, $table) {
+    if (!msv_check_accessuser("admin")) return false;
 
 
 
-    $edit_mode = MSV_getConfig("edit_mode");
+    $edit_mode = msv_get_config("edit_mode");
     if (!$edit_mode) return false;
 
-    MSV_IncludeJS("
+    msv_include_js("
 $(document).ready(function() {
     $('".$selector."').hover(function() {
        $(this).addClass('editor-inline-block').prepend('<a href=\"/admin/?section=".$section."&table=".$table."&edit='+$(this).attr('data-id')+'\" id=\"admin-edit-btn\">Click to edit</a>');
@@ -1427,7 +1430,7 @@ $(document).ready(function() {
     // this is not yet working
     return true;
 
-    MSV_IncludeJS("
+    msv_include_js("
 $(document).ready(function() {
     $('".$selector."').hover(function() {
        $(this).addClass('editor-inline-block').prepend('<a href=\"/api/form/?section=".$section."&table=".$table."&edit='+$(this).attr('data-id')+'\" id=\"admin-edit-btn\">Click to edit</a>');
@@ -1446,7 +1449,7 @@ $(document).ready(function() {
 }
 
 
-function MSV_processUploadPic($path, $table = "", $field = "") {
+function msv_process_uploadpic($path, $table = "", $field = "") {
     $fileResult = "";
     $mimetype = "";
 
@@ -1479,7 +1482,7 @@ function MSV_processUploadPic($path, $table = "", $field = "") {
         return "";
     }
 
-    $fileResult = MSV_storePic($pathLoad, $mimetype, "", $table, $field);
+    $fileResult = msv_store_pic($pathLoad, $mimetype, "", $table, $field);
     if (!is_numeric($fileResult)) {
         return $fileResult;
     }
@@ -1499,7 +1502,7 @@ function MSV_processUploadPic($path, $table = "", $field = "") {
  * @param array $options Optional list of flags. Supported: none
  * @return array Result of a API call
  */
-function MSV_Cron_add($row, $options = array()) {
+function msv_add_cron($row, $options = array()) {
     $result = array(
         "ok" => false,
         "data" => array(),
@@ -1529,7 +1532,7 @@ function MSV_Cron_add($row, $options = array()) {
     if (empty($row["status"])) $row["status"] = "disabled";
     if (empty($row["type"])) $row["type"] = "";
 
-    $result = API_itemAdd(TABLE_CRONJOBS, $row);
+    $result = db_add(TABLE_CRONJOBS, $row);
 
     if ($result["ok"]) {
         $result["msg"] = _t("msg.cron.saved");
@@ -1544,21 +1547,86 @@ function MSV_Cron_add($row, $options = array()) {
         "result_msg" => $result["msg"],
     );
 
-    API_itemAdd(TABLE_CRONJOBS_LOGS, $itemLog);
+    db_add(TABLE_CRONJOBS_LOGS, $itemLog);
 
     return $result;
 }
 
-function updateAllModules($module) {
-    if (!MSV_checkAccessUser("superadmin")) {
+function msv_update_allmodules($module) {
+    if (!msv_check_accessuser("superadmin")) {
         return false;
     }
 
-    $list = MSV_get("website.modules");
+    $list = msv_get("website.modules");
     foreach($list as $module) {
-        //MSV_reinstallModule($module, false);
+        //msv_reinstall_module($module, false);
     }
 
-    MSV_MessageOK("Update ALL successfully");
+    msv_message_ok("Update ALL successfully");
     return true;
+}
+
+/**
+ * Format string to create an URL
+ * translits cyrilic and skip all non latic chars.
+ *
+ * @param string $string Input string
+ * @return string Formated string
+ */
+function msv_format_url($string) {
+    $trans_fwd = array(
+        'а'=>'a','б'=>'b','в'=>'v','г'=>'g','д'=>'d',
+        'е'=>'e','є'=>'e','ё'=>'e','ж'=>'zh','з'=>'z',
+        'и'=>'i','і'=>'i','ї'=>'i','й'=>'y','к'=>'k',
+        'л'=>'l','м'=>'m','н'=>'n','о'=>'o','п'=>'p',
+        'р'=>'r','с'=>'s','т'=>'t','у'=>'u','ф'=>'f',
+        'х'=>'h','ц'=>'c','ч'=>'ch','ш'=>'sh','щ'=>'sch',
+        'ъ'=>'','ы'=>'i','ь'=>'','э'=>'e','ю'=>'yu',
+        'я'=>'ya',' '=>'-','-'=>'-','0'=>'0','1'=>'1',
+        '2'=>'2','3'=>'3','4'=>'4','5'=>'5','6'=>'6',
+        '7'=>'7','8'=>'8','9'=>'9','_'=>'-','('=>'',
+        ')'=>'','a'=>'a','b'=>'b','c'=>'c','d'=>'d',
+        'e'=>'e','f'=>'f','g'=>'g','h'=>'h','i'=>'i',
+        'j'=>'j','k'=>'k','l'=>'l','m'=>'m','n'=>'n',
+        'o'=>'o','p'=>'p','q'=>'q','r'=>'r','s'=>'s',
+        't'=>'t','u'=>'u','v'=>'v','w'=>'w','x'=>'x',
+        'y'=>'y','z'=>'z'
+    );
+    $result = '';
+    $string = mb_strtolower($string, 'utf-8');
+    for ($i = 0; $i < mb_strlen($string, 'utf-8'); $i++) {
+        $letter = mb_substr($string, $i, 1, 'utf-8');
+        if ($trans_fwd[$letter] !== NULL) {
+            $result .= $trans_fwd[$letter];
+        } else {
+            $result .= '';
+        }
+    }
+    return $result;
+}
+
+/**
+ * 'Smart' string truncate
+ * tryes to find space or coma near to a cut possition to avoid word break
+ *
+ * @param string $str Input string
+ * @param int $max_chars Chars limit
+ * @return string Truncated string
+ */
+function msv_truncate_text($str, $max_chars = 30) {
+    $max_chars_tr = (int)round($max_chars*0.8);
+    $sep = array(",", " ", ";", "(", "\\", "/", "-", ".");
+
+    $s = $str;
+    if (strlen($s) > $max_chars) {
+        foreach ($sep as $v) {
+            $a = strpos($s, $v, $max_chars_tr);
+            if ($a !== false && $a < $max_chars) {
+                return substr($s, 0, $a);
+            }
+        }
+        return substr($s, 0, $max_chars);
+    } else {
+        return $s;
+    }
 }

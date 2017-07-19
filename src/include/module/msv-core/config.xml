@@ -5,7 +5,7 @@
 		<param name="activationUrl" value="*"/>
 		<param name="adminMenu" value="0"/>
 
-		<param name="accessAPIStatus" value="everyone"/>
+		<param name="accessAPIStatus" value="admin"/>
 		<param name="accessAPIUpdateAll" value="superadmin"/>
 
 		<constant name="TABLE_STRUCTURE" value="structure"/>
@@ -16,12 +16,12 @@
 		<constant name="TABLE_CRONJOBS" value="cronjobs"/>
 		<constant name="TABLE_CRONJOBS_LOGS" value="cronjobs_logs"/>
 
-		<api name="structure" action="apiStructureRequest"/>
-		<api name="document" action="apiDocumentRequest"/>
-		<api name="settings" action="apiSettingsRequest"/>
-		<api name="uploadpic" action="apiUploadPicture"/>
-		<api name="cron" action="apiCronRequest"/>
-		<api name="core" action="apiCore"/>
+		<api name="structure" action="api_request_structure"/>
+		<api name="document" action="api_request_document"/>
+		<api name="settings" action="api_request_settings"/>
+		<api name="uploadpic" action="api_upload_picture"/>
+		<api name="cron" action="api_request_cron"/>
+		<api name="core" action="api_request_core"/>
 
 		<table name="structure" index="url" title="name" useseo="true">
 			<field name="id" type="id"/>

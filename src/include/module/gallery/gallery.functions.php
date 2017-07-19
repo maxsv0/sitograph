@@ -13,7 +13,7 @@
  * @param array $options Optional list of flags. Supported: LoadPictures
  * @return array Result of a API call
  */
-function Gallery_Add($row, $options = array()) {
+function msv_add_gallery($row, $options = array()) {
     $result = array(
         "ok" => false,
         "data" => array(),
@@ -59,16 +59,16 @@ function Gallery_Add($row, $options = array()) {
 
     if (in_array("LoadPictures", $options)) {
         // try to load files
-        $row["pic"] = MSV_processUploadPic($row["pic"], TABLE_GALLERY_ALBUM, "pic");
-        $row["pic_preview"] = MSV_processUploadPic($row["pic_preview"], TABLE_GALLERY_ALBUM, "pic_preview");
+        $row["pic"] = msv_process_uploadpic($row["pic"], TABLE_GALLERY_ALBUM, "pic");
+        $row["pic_preview"] = msv_process_uploadpic($row["pic_preview"], TABLE_GALLERY_ALBUM, "pic_preview");
     }
 
-    $result = API_itemAdd(TABLE_GALLERY_ALBUM, $row);
+    $result = db_add(TABLE_GALLERY_ALBUM, $row);
 
     if ($result["ok"]) {
         $result["msg"] = _t("msg.gallery.saved");
 
-        $gallery = MSV_get("website.gallery");
+        $gallery = msv_get("website.gallery");
 
         $item = array(
             "url" => $gallery->baseUrl.$row["url"]."/",
@@ -78,7 +78,7 @@ function Gallery_Add($row, $options = array()) {
             "sitemap" => $row["published"],
         );
 
-        MSV_SEO_add($item);
+        msv_add_seo($item);
 
         $albumID = $result["insert_id"];
 
@@ -90,10 +90,10 @@ function Gallery_Add($row, $options = array()) {
 
                 if (in_array("LoadPictures", $options)) {
                     // try to load files
-                    $itemPhoto["pic"] = MSV_processUploadPic($itemPhoto["pic"], TABLE_GALLERY_PHOTOS, "pic");
-                    $itemPhoto["pic_preview"] = MSV_processUploadPic($itemPhoto["pic_preview"], TABLE_GALLERY_PHOTOS, "pic_preview");
+                    $itemPhoto["pic"] = msv_process_uploadpic($itemPhoto["pic"], TABLE_GALLERY_PHOTOS, "pic");
+                    $itemPhoto["pic_preview"] = msv_process_uploadpic($itemPhoto["pic_preview"], TABLE_GALLERY_PHOTOS, "pic_preview");
                 }
-                $resultPhoto = API_itemAdd(TABLE_GALLERY_PHOTOS, $itemPhoto);
+                $resultPhoto = db_add(TABLE_GALLERY_PHOTOS, $itemPhoto);
                 if (!$resultPhoto["ok"]) {
                     $result["msg"] .= $resultPhoto["msg"]."\n";
                 }

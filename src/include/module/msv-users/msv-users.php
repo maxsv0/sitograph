@@ -7,35 +7,35 @@ if (isset($_REQUEST['logout'])) {
 
 // add message to page
 if (isset($_REQUEST['registered'])) {
-    MSV_MessageOK(_t("msg.users.reg_success"));
+    msv_message_ok(_t("msg.users.reg_success"));
 }
 
 // load user info, if session already registered
 if (!empty($_SESSION["user_id"])) {
-    MSV_userLoad($_SESSION["user_id"]);
+    msv_load_user($_SESSION["user_id"]);
 }
 
 // handle email verify link
 // load user session using $_REQUEST["verify_token"]
 // directly access user account and register session
 if (!empty($_REQUEST["verify_token"])) {
-    $result = API_getDBItem(TABLE_USERS, " `verify_token` = '".MSV_SQLEscape($_REQUEST["verify_token"])."'");
+    $result = db_get(TABLE_USERS, " `verify_token` = '".db_escape($_REQUEST["verify_token"])."'");
     $rowUser = $result["data"];
     if ($result["ok"] && !empty($rowUser)) {
         // remove single use verify token
-        API_updateDBItem(TABLE_USERS, "verify_token", "''", " `id` = '".$rowUser["id"]."'");
+        db_update(TABLE_USERS, "verify_token", "''", " `id` = '".$rowUser["id"]."'");
         // verify email
-        API_updateDBItem(TABLE_USERS, "email_verified", "1", " `id` = '".$rowUser["id"]."'");
+        db_update(TABLE_USERS, "email_verified", "1", " `id` = '".$rowUser["id"]."'");
         //reload user info
-        MSV_userLoad($rowUser["id"]);
+        msv_load_user($rowUser["id"]);
 
         // clear msg error message from stack
         // TODO: check if this working
-        //$rowMessage =& MSV_get("website.messages");
+        //$rowMessage =& msv_get("website.messages");
         //$rowMessage["error"] = array();
 
         // // $website
-        MSV_MessageOK(_t("msg.users.email_verified"));
+        msv_message_ok(_t("msg.users.email_verified"));
     }
 }
 
@@ -43,17 +43,17 @@ if (!empty($_REQUEST["verify_token"])) {
 // load user session using $_REQUEST["access_token"]
 // directly access user account and register session
 if (!empty($_REQUEST["access_token"])) {
-    $result = API_getDBItem(TABLE_USERS, " `access_token` = '".MSV_SQLEscape($_REQUEST["access_token"])."'");
+    $result = db_get(TABLE_USERS, " `access_token` = '".db_escape($_REQUEST["access_token"])."'");
     $rowUser = $result["data"];
     if ($result["ok"] && !empty($rowUser)) {
         // load user info, register user session
-        MSV_userLoad($rowUser["id"]);
+        msv_load_user($rowUser["id"]);
 
         //  token will never expire
-        if (!MSV_HasMessageError()) {
+        if (!msv_has_messages()) {
             // TODO: work with token lifetime. it should expire in 24h or ..
             // do expire token
-            //API_updateDBItem(TABLE_USERS, "access_token", "''", " `id` = '".$rowUser["id"]."'");
+            //db_update(TABLE_USERS, "access_token", "''", " `id` = '".$rowUser["id"]."'");
         }
     }
 }
@@ -62,27 +62,27 @@ if (!empty($_REQUEST["access_token"])) {
 // will send email with new password in case of success
 if (!empty($_REQUEST["reset_token"])) {
     // try to find user with specified token
-    $result = API_getDBItem(TABLE_USERS, " `reset_token` = '".MSV_SQLEscape($_REQUEST["reset_token"])."'");
+    $result = db_get(TABLE_USERS, " `reset_token` = '".db_escape($_REQUEST["reset_token"])."'");
     $rowUser = $result["data"];
     if ($result["ok"] && !empty($rowUser)) {
         // make new password
-        $rowUser["password"] = MSV_PasswordGenerate();
+        $rowUser["password"] = msv_generate_password();
         if (USER_HASH_PASSWORD) {
             $passwordHash = password_hash($rowUser["password"], PASSWORD_DEFAULT);
         } else {
             $passwordHash = $rowUser["password"];
         }
         // update DB password
-        API_updateDBItem(TABLE_USERS, "password", "'".MSV_SQLEscape($passwordHash)."'", " `id` = '".$rowUser["id"]."'");
+        db_update(TABLE_USERS, "password", "'".db_escape($passwordHash)."'", " `id` = '".$rowUser["id"]."'");
         // expire reset token
-        API_updateDBItem(TABLE_USERS, "reset_token", "''", " `id` = '".$rowUser["id"]."'");
+        db_update(TABLE_USERS, "reset_token", "''", " `id` = '".$rowUser["id"]."'");
 
         // send email with new password
-        $resultMail = MSV_EmailTemplate("user_password_reset", $rowUser["email"], $rowUser);
+        $resultMail = msv_email_template("user_password_reset", $rowUser["email"], $rowUser);
         if ($resultMail) {
-            MSV_MessageOK(_t("msg.email_sent_to")." <b>".$rowUser["email"]."</b>");
+            msv_message_ok(_t("msg.email_sent_to")." <b>".$rowUser["email"]."</b>");
         } else {
-            MSV_MessageError(_t("msg.email_sending_error"));
+            msv_message_error(_t("msg.email_sending_error"));
         }
     }
 }
@@ -90,25 +90,25 @@ if (!empty($_REQUEST["reset_token"])) {
 // handle SingUp btn
 // will redirect to /user/?registered in case of success
 // proceed only if registration is allowed
-$allowSingUp = MSV_getConfig("users_registration_allow");
+$allowSingUp = msv_get_config("users_registration_allow");
 if ($allowSingUp && !empty($_REQUEST["doSingUp"])) {
     if (empty($_REQUEST["email"])) {
-        MSV_MessageError(_t("msg.users.noemail"));
+        msv_message_error(_t("msg.users.noemail"));
     }
     if (empty($_REQUEST["password"])) {
-        MSV_MessageError(_t("msg.users.nopassword"));
+        msv_message_error(_t("msg.users.nopassword"));
     }
     if (!empty($_REQUEST["password"]) && empty($_REQUEST["password2"])) {
-        MSV_MessageError(_t("msg.users.nopassword2"));
+        msv_message_error(_t("msg.users.nopassword2"));
     }
-    if (!MSV_HasMessageError() && $_REQUEST["password"] !== $_REQUEST["password2"]) {
-        MSV_MessageError(_t("msg.users.password_notmatch"));
+    if (!msv_has_messages() && $_REQUEST["password"] !== $_REQUEST["password2"]) {
+        msv_message_error(_t("msg.users.password_notmatch"));
     }
 
-    if (!MSV_HasMessageError()) {
+    if (!msv_has_messages()) {
         // apply site settings
-        $doEmailNotify = MSV_getConfig("users_registration_email");
-        $doEmailNotifyAdmin = MSV_getConfig("users_registration_email_notify");
+        $doEmailNotify = msv_get_config("users_registration_email");
+        $doEmailNotifyAdmin = msv_get_config("users_registration_email_notify");
         $options = array();
         if ($doEmailNotify) {
             $options[] = "EmailNotifyUser";
@@ -118,39 +118,39 @@ if ($allowSingUp && !empty($_REQUEST["doSingUp"])) {
         }
 
         // extract data from request for corresponding table
-        $item = MSV_proccessTableData(TABLE_USERS, "");
+        $item = msv_process_tabledata(TABLE_USERS, "");
 
         // execute request
-        $result = MSV_User_Add($item, $options);
+        $result = msv_add_user($item, $options);
 
         if ($result["ok"]) {
             $userID = $result["insert_id"];
             // load user info and register session
-            MSV_userLoad($userID);
+            msv_load_user($userID);
 
-            MSV_redirect("/user/?registered");
+            msv_redirect("/user/?registered");
         } else {
-            MSV_MessageError($result["msg"]);
+            msv_message_error($result["msg"]);
         }
     }
 
-    if (MSV_HasMessageError()) {
+    if (msv_has_messages()) {
         // pass data from request to template to autofill the form
-        MSV_assignTableData(TABLE_USERS, "");
+        msv_assign_tabledata(TABLE_USERS, "");
     }
 }
 
 // handle Login btn
 // will redirect in case of success
-// 	redirect to _SESSION["redirect_url"] if present
-//	redirect to /admin/ if admin is logged
-//	redirect to /user/ in other cases
+//      redirect to _SESSION["redirect_url"] if present
+//      redirect to /admin/ if admin is logged
+//      redirect to /user/ in other cases
 //
 // WARNING! When USER_IGNORE_PRIVILEGES is true,
-// 			user will be able to login with any password
+//                      user will be able to login with any password
 if (!empty($_REQUEST["doLogin"]) && !empty($_REQUEST["email"]) && !empty($_REQUEST["password"])) {
 
-    $result = API_getDBItem(TABLE_USERS, " `email` = '".MSV_SQLEscape($_REQUEST["email"])."'");
+    $result = db_get(TABLE_USERS, " `email` = '".db_escape($_REQUEST["email"])."'");
     if ($result["ok"] && !empty($result["data"])) {
         // user access flag
         $login = false;
@@ -172,7 +172,7 @@ if (!empty($_REQUEST["doLogin"]) && !empty($_REQUEST["email"]) && !empty($_REQUE
 
         if ($login) {
             // load user info and register session
-            MSV_userLoad($result["data"]["id"]);
+            msv_load_user($result["data"]["id"]);
 
             $redirect_uri = "/user/";
 
@@ -190,20 +190,20 @@ if (!empty($_REQUEST["doLogin"]) && !empty($_REQUEST["email"]) && !empty($_REQUE
         }
     }
 
-    MSV_MessageError(_t("msg.users.wrong_password"));
+    msv_message_error(_t("msg.users.wrong_password"));
 }
 
 // handle Save btn
 // will show message in case of success
 // if email was changed, verify flag is set to 0
 if (!empty($_REQUEST["doSave"])) {
-    $userInfo = MSV_get("website.user");
+    $userInfo = msv_get("website.user");
 
     if (empty($userInfo['id'])) {
-        MSV_MessageError(_t("msg.users.noaccess"));
+        msv_message_error(_t("msg.users.noaccess"));
     }
 
-    if (!MSV_HasMessageError()) {
+    if (!msv_has_messages()) {
         // set user id
         $_REQUEST["user_id"] = $userInfo['id'];
 
@@ -213,14 +213,14 @@ if (!empty($_REQUEST["doSave"])) {
         }
 
         // process update
-        $result = MSV_proccessUpdateTable(TABLE_USERS, "user_");
+        $result = msv_process_updatetable(TABLE_USERS, "user_");
         if ($result["ok"]) {
-            MSV_MessageOK(_t("msg.users.saved"));
+            msv_message_ok(_t("msg.users.saved"));
 
             //reload user info
-            MSV_userLoad($userInfo['id']);
+            msv_load_user($userInfo['id']);
         } else {
-            MSV_MessageError($result["msg"]);
+            msv_message_error($result["msg"]);
         }
     }
 }
@@ -228,55 +228,55 @@ if (!empty($_REQUEST["doSave"])) {
 // handle Password Reset btn
 // will show message in case of success
 // TODO: apply some checks:
-//			- allow password c change once 24h
+//                      - allow password c change once 24h
 if (!empty($_REQUEST["doPasswordReset"])) {
-    $result = API_getDBItem(TABLE_USERS, " `email` = '".MSV_SQLEscape($_REQUEST["email"])."'");
+    $result = db_get(TABLE_USERS, " `email` = '".db_escape($_REQUEST["email"])."'");
     $rowUser = $result["data"];
     if ($result["ok"] && !empty($rowUser)) {
         $reset_token = substr(md5(time()), 0, 10);
 
-        $result = API_updateDBItem(TABLE_USERS, "reset_token", "'".MSV_SQLEscape($reset_token)."'", " `id` = '".$rowUser['id']."'");
+        $result = db_update(TABLE_USERS, "reset_token", "'".db_escape($reset_token)."'", " `id` = '".$rowUser['id']."'");
         if ($result["ok"]) {
             $rowUser["reset_link"] = HOME_URL."login/?reset_token=".$reset_token;
-            $resultMail = MSV_EmailTemplate("user_password_reset_confirm", $rowUser["email"], $rowUser);
+            $resultMail = msv_email_template("user_password_reset_confirm", $rowUser["email"], $rowUser);
 
             if ($resultMail) {
-                MSV_MessageOK(_t("msg.email_sent_to")." <b>".$rowUser["email"]."</b>");
+                msv_message_ok(_t("msg.email_sent_to")." <b>".$rowUser["email"]."</b>");
             } else {
-                MSV_MessageError(_t("msg.email_sending_error"));
+                msv_message_error(_t("msg.email_sending_error"));
             }
         } else {
-            MSV_MessageError(_t("msg.save_error"));
+            msv_message_error(_t("msg.save_error"));
         }
     } else {
-        MSV_MessageError(_t("msg.users.email_not_found"));
+        msv_message_error(_t("msg.users.email_not_found"));
     }
 }
 
 // handle Send Verify btn
 // will show message in case of success
 // TODO: apply some checks:
-//			- apply emails limit
+//                      - apply emails limit
 if (isset($_REQUEST["doSendVerify"])) {
-    $rowUser = MSV_get("website.user");
+    $rowUser = msv_get("website.user");
 
     if (!empty($rowUser["id"])) {
         $verify_token = substr(md5(time()), 0, 10);
-        $result = API_updateDBItem(TABLE_USERS, "verify_token", "'".MSV_SQLEscape($verify_token)."'", " `id` = '".$rowUser['id']."'");
+        $result = db_update(TABLE_USERS, "verify_token", "'".db_escape($verify_token)."'", " `id` = '".$rowUser['id']."'");
         if ($result["ok"]) {
             $rowUser["verify_link"] = HOME_URL."settings/?verify_token=".$verify_token;
-            $resultMail = MSV_EmailTemplate("user_verify", $rowUser["email"], $rowUser);
+            $resultMail = msv_email_template("user_verify", $rowUser["email"], $rowUser);
 
             if ($resultMail) {
-                MSV_MessageOK(_t("msg.users.verification_sent"));
+                msv_message_ok(_t("msg.users.verification_sent"));
             } else {
-                MSV_MessageError(_t("msg.email_sending_error"));
+                msv_message_error(_t("msg.email_sending_error"));
             }
         } else {
-            MSV_MessageError(_t("msg.save_error"));
+            msv_message_error(_t("msg.save_error"));
         }
     } else {
-        MSV_MessageError(_t("msg.users.noaccess"));
+        msv_message_error(_t("msg.users.noaccess"));
     }
 }
 
@@ -288,12 +288,12 @@ if (isset($_REQUEST["doSendVerify"])) {
  * @param integer $userID
  * @return null
  */
-function MSV_userLoad($userID) {
-    $rowUser =& MSV_get("website.user");
+function msv_load_user($userID) {
+    $rowUser =& msv_get("website.user");
 
-    $result = API_getDBItem(TABLE_USERS, " `id` = '".(int)$userID."' and `access` != 'closed'");
+    $result = db_get(TABLE_USERS, " `id` = '".(int)$userID."' and `access` != 'closed'");
     if (!$result["ok"]) {
-        MSV_MessageError($result["msg"]);
+        msv_message_error($result["msg"]);
     } else {
         // TODO: why this is needed?
         $rowUser["user_id"] = (int)$userID;
@@ -305,6 +305,6 @@ function MSV_userLoad($userID) {
     $_SESSION["user_id"] = $userID;
     $_SESSION["user_email"] = $rowUser["email"];
     if (empty($rowUser["email_verified"])) {
-        MSV_MessageError(_t("msg.users.verification_needed"));
+        msv_message_error(_t("msg.users.verification_needed"));
     }
 }

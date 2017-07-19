@@ -5,7 +5,7 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
      !empty($_REQUEST["form_module"]) ? $_REQUEST["module"] = $_REQUEST["form_module"]:'';
      !empty($_REQUEST["form_name"]) && !empty($_REQUEST["form_module"]) ? $_POST["itemID"] = $_REQUEST["form_name"]:'';
      
-     $moduleObj = MSV_get("website.".$_REQUEST["module"]);   
+     $moduleObj = msv_get("website.".$_REQUEST["module"]);
      $config_path = $moduleObj->pathConfig;
      
      $_SESSION['location_active'] = $_REQUEST["module"];
@@ -13,7 +13,7 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
      $configXML = simplexml_load_file($config_path); 
      
      if (!is_writable($config_path)) {
-		MSV_MessageError("Can't write to file '$config_path'");
+         msv_message_error("Can't write to file '$config_path'");
 		unset($_POST["save"]);
 		return;
      }
@@ -53,7 +53,7 @@ if (!empty($_POST["save"])) {
 if (!empty($_REQUEST["delete"])) {
     if (!empty($_REQUEST["module"])) {
         $_SESSION['location_active'] = $_REQUEST["module"];
-        $moduleObj = MSV_get("website.".$_REQUEST["module"]);   
+        $moduleObj = msv_get("website.".$_REQUEST["module"]);
         $config_path = $moduleObj->pathConfig;
         $configXML = simplexml_load_file($config_path); 
         foreach ($configXML->locales->locale as $loc) {
@@ -65,7 +65,7 @@ if (!empty($_REQUEST["delete"])) {
      //  echo("<pre>".htmlspecialchars($configXML->asXML())."</pre>");
        $configXML->asXml($config_path);       
     }
-	MSV_redirect($this->website->langUrl."/admin/?section=$section");
+    msv_redirect($this->website->langUrl."/admin/?section=$section");
 }
 
 
@@ -99,13 +99,13 @@ if (isset($_REQUEST["add_new"])) {
     'type' =>'str',
     'value' =>'',
     );
-    
-    MSV_assignData("admin_edit", $admin_edit);
-    MSV_assignData("add", 1);
+
+    msv_assign_data("admin_edit", $admin_edit);
+    msv_assign_data("add", 1);
     
 } elseif (isset($_REQUEST["edit"])) {
    
-    $moduleObj = MSV_get("website.".$_REQUEST["module"]);
+    $moduleObj = msv_get("website.".$_REQUEST["module"]);
     $itemField = array(
     'name' =>'',
     'field_name' =>'value',
@@ -116,16 +116,16 @@ if (isset($_REQUEST["add_new"])) {
     );
     
   //   var_dump($moduleObj->locales[$_REQUEST["edit"]]);
-    MSV_assignData("itemField", $itemField);
-    MSV_assignData("edit", 1);
+    msv_assign_data("itemField", $itemField);
+    msv_assign_data("edit", 1);
 } else {
     $module_locales = array();
     foreach ($this->website->modules as $module) {
-    	$moduleObj = MSV_get("website.".$module);
+    	$moduleObj = msv_get("website.".$module);
     	$module_locales[$module] = $moduleObj->locales;
     }
-   
-    MSV_assignData("admin_module_locales", $module_locales);
-    MSV_assignData("admin_locales", $this->website->locales);
-    MSV_assignData("locales_active", $_SESSION['location_active']);
+
+    msv_assign_data("admin_module_locales", $module_locales);
+    msv_assign_data("admin_locales", $this->website->locales);
+    msv_assign_data("locales_active", $_SESSION['location_active']);
 }

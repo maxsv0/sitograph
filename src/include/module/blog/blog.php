@@ -1,24 +1,24 @@
 <?php
 // admin user features
-MSV_addAdminEdit(".articles-block", "blog", TABLE_BLOG_ARTICLES);
+msv_admin_editbtn(".articles-block", "blog", TABLE_BLOG_ARTICLES);
 
 function BlogLoadPreview($blog) {
-	 $resultQuery = API_getDBList(TABLE_BLOG_ARTICLES, "", "`views` desc, `date` desc", $blog->previewItemsCount, "");
+	 $resultQuery = db_get_list(TABLE_BLOG_ARTICLES, "", "`views` desc, `date` desc", $blog->previewItemsCount, "");
 	 if ($resultQuery["ok"]) {
 		// get a list of albums from API result
 		$listItems = $resultQuery["data"];
 	
 		// assign data to template
-		MSV_assignData("blog_articles_topviews", $listItems);
+         msv_assign_data("blog_articles_topviews", $listItems);
 	}
 	
-	$resultQuery = API_getDBList(TABLE_BLOG_ARTICLES, "", "`date` desc", $blog->newestItemsCount, "");
+	$resultQuery = db_get_list(TABLE_BLOG_ARTICLES, "", "`date` desc", $blog->newestItemsCount, "");
 	if ($resultQuery["ok"]) {
 		// get a list of albums from API result
 		$listItems = $resultQuery["data"];
 	
 		// assign data to template
-		MSV_assignData("blog_articles_newest", $listItems);
+        msv_assign_data("blog_articles_newest", $listItems);
 	}
 	
 }
@@ -31,7 +31,7 @@ function BlogLoadArticles($blog) {
 	
     if (!empty($_GET[$blog->searchUrlParam])) {
     	$arSearch = array("title", "description", "text");
-    	$sn = MSV_SQLEscape($_GET[$blog->searchUrlParam]);
+    	$sn = db_escape($_GET[$blog->searchUrlParam]);
 
     	$sqlFilter .= " and ( ";
     	foreach ($arSearch as $v) {
@@ -39,11 +39,11 @@ function BlogLoadArticles($blog) {
     	}
     	$sqlFilter = substr($sqlFilter, 0, -3).") ";
 
-        MSV_assignData("blog_articles_search", 1);
-        MSV_assignData("blog_articles_search_keyword", $_GET[$blog->searchUrlParam]);
+        msv_assign_data("blog_articles_search", 1);
+        msv_assign_data("blog_articles_search_keyword", $_GET[$blog->searchUrlParam]);
     }
     if (!empty($_GET[$blog->authorUrlParam])) {
-    	$sn = MSV_SQLEscape($_GET[$blog->authorUrlParam]);
+    	$sn = db_escape($_GET[$blog->authorUrlParam]);
     	$sqlFilter .= " and email like '$sn' ";
     }
     // ************************************
@@ -55,12 +55,12 @@ function BlogLoadArticles($blog) {
     	$section = $subsection = "";
     	
     	if (preg_match("/^([-a-zA-Z0-9]+)\/([-a-zA-Z0-9]+)$/", $category)) {
-    		$sn = MSV_SQLEscape($category);
+    		$sn = db_escape($category);
     		
     		list($section, $subsection) = explode("/", $category);
     		
     	} elseif (preg_match("/^[-a-zA-Z0-9]+$/", $category)) {
-    		$sn = MSV_SQLEscape($category."/%");
+    		$sn = db_escape($category."/%");
     		
     		$section = $category;
     	} else {
@@ -71,22 +71,22 @@ function BlogLoadArticles($blog) {
     	if (!empty($section)) {
     		$sectionUrl = $blog->baseUrl."?category=$section";
     		
-    		$navQuery = API_getDBItem(TABLE_BLOG_ARTICLE_CATEGORIES, " url = '".$section."/".$section."'");
+    		$navQuery = db_get(TABLE_BLOG_ARTICLE_CATEGORIES, " url = '".$section."/".$section."'");
 			if ($navQuery["ok"]) {
 				$categoryRow = $navQuery["data"];
-				MSV_setNavigation($categoryRow["title"], $sectionUrl);
+                msv_set_navigation($categoryRow["title"], $sectionUrl);
 			} 
     	}
     	
     	if (!empty($subsection)) {
-    		$navQuery = API_getDBItem(TABLE_BLOG_ARTICLE_CATEGORIES, " url = '".$category."'");
+    		$navQuery = db_get(TABLE_BLOG_ARTICLE_CATEGORIES, " url = '".$category."'");
 			if ($navQuery["ok"]) {
 				$categoryRow = $navQuery["data"];
-				MSV_setNavigation($categoryRow["title"]);
+                msv_set_navigation($categoryRow["title"]);
 			} 
     	}
 			
-    	$resultCategories = API_getDBList(TABLE_BLOG_ARTICLE_CATEGORIES, " `url` like '".$sn."' ", "`article_id`");
+    	$resultCategories = db_get_list(TABLE_BLOG_ARTICLE_CATEGORIES, " `url` like '".$sn."' ", "`article_id`");
     	if ($resultCategories["ok"]) {
     		$listItemsID = array();
 			foreach ($resultCategories["data"] as $item) {
@@ -96,11 +96,11 @@ function BlogLoadArticles($blog) {
 		}
     }
   	
-    $resultQuery = API_getDBListPaged(TABLE_BLOG_ARTICLES, $sqlFilter, "`date` desc", $blog->itemsPerPage, $blog->pageUrlParam);
+    $resultQuery = db_get_listpaged(TABLE_BLOG_ARTICLES, $sqlFilter, "`date` desc", $blog->itemsPerPage, $blog->pageUrlParam);
     
 	// Display message in case of error
 	if (!$resultQuery["ok"]) {
-		API_callError($resultQuery["msg"]);
+        msv_message_error($resultQuery["msg"]);
 		return false;
 	} 
 	
@@ -108,8 +108,8 @@ function BlogLoadArticles($blog) {
 	$listItems = array();
 	foreach ($resultQuery["data"] as $id => $item) {
         if (!empty($_GET[$blog->searchUrlParam])) {
-            $item["title"] = MSV_HighlightText($_GET[$blog->searchUrlParam], $item["title"], 10);
-            $item["description"] = MSV_HighlightText($_GET[$blog->searchUrlParam], $item["description"], 10);
+            $item["title"] = msv_highlight_text($_GET[$blog->searchUrlParam], $item["title"], 10);
+            $item["description"] = msv_highlight_text($_GET[$blog->searchUrlParam], $item["description"], 10);
         }
         $listItems[$id] = $item;
     }
@@ -122,7 +122,7 @@ function BlogLoadArticles($blog) {
 		$listItemsID = array_keys($listItems);
 		
 		// Load categories for article
-		$resultCategories = API_getDBList(TABLE_BLOG_ARTICLE_CATEGORIES, " `article_id` IN (".implode(",",$listItemsID).")", "`url`");
+		$resultCategories = db_get_list(TABLE_BLOG_ARTICLE_CATEGORIES, " `article_id` IN (".implode(",",$listItemsID).")", "`url`");
 		if ($resultCategories["ok"]) {
 			
 			foreach ($resultCategories["data"] as $item) {
@@ -149,31 +149,31 @@ function BlogLoadArticles($blog) {
 	}
 	
 	// assign data to template
-	MSV_assignData("blog_articles", $listItems);
-	MSV_assignData("blog_pages", $listPages);
+    msv_assign_data("blog_articles", $listItems);
+    msv_assign_data("blog_pages", $listPages);
 }
 
 function BlogLoadArticleDetails($blog) {
 	
 	$articleUrl = $blog->website->requestUrlMatch[1];
 	if (empty($articleUrl)) {
-		MSV_Output404();
+        msv_output404();
 	}
 
-	$resultQuery = API_getDBItem(TABLE_BLOG_ARTICLES, " url = '".$articleUrl."'");
+	$resultQuery = db_get(TABLE_BLOG_ARTICLES, " url = '".$articleUrl."'");
 	if (!$resultQuery["ok"]) {
-		MSV_MessageError($resultQuery["msg"]);
+        msv_message_error($resultQuery["msg"]);
 		return false;
 	} 
 	$article = $resultQuery["data"];
 
 	//exit if no articles where found
 	if (empty($article)) {
-		MSV_Output404();
+        msv_output404();
 	}
 	
 	// Load categories for article
-	$resultCategories = API_getDBList(TABLE_BLOG_ARTICLE_CATEGORIES, " `article_id` = ".$article["id"]."", "`url`");
+	$resultCategories = db_get_list(TABLE_BLOG_ARTICLE_CATEGORIES, " `article_id` = ".$article["id"]."", "`url`");
 	if ($resultCategories["ok"]) {
 		
 		$article["sections"] = array();
@@ -194,10 +194,10 @@ function BlogLoadArticleDetails($blog) {
 	}	
 	
 	if (!empty($article["album_id"])) {
-		$result = API_getDBItem(TABLE_GALLERY_ALBUM, " id = '".$article["album_id"]."'");
+		$result = db_get(TABLE_GALLERY_ALBUM, " id = '".$article["album_id"]."'");
 		if ($result["ok"]) {
 			$album = $result["data"];
-			$resultAlbum = API_getDBList(TABLE_GALLERY_PHOTOS, "album_id = ".$album["id"], "order_id asc", 100000);
+			$resultAlbum = db_get_list(TABLE_GALLERY_PHOTOS, "album_id = ".$album["id"], "order_id asc", 100000);
 			if ($resultAlbum["ok"]) {
 				$album["photos"] = $resultAlbum["data"];
 			}
@@ -213,7 +213,7 @@ function BlogLoadArticleDetails($blog) {
 		}
 		$sqlFilter = substr($sqlFilter, 0, -3).")";
 		
-		$resultCategories = API_getDBList(TABLE_BLOG_ARTICLE_CATEGORIES, $sqlFilter);
+		$resultCategories = db_get_list(TABLE_BLOG_ARTICLE_CATEGORIES, $sqlFilter);
 		
 		foreach ($resultCategories["data"] as $item) {
 			// skip current article
@@ -224,22 +224,22 @@ function BlogLoadArticleDetails($blog) {
 		}
     	$sqlFilter = " `id` IN (".implode(",",$listItemsID).") ";
     	
-    	$resultQuery = API_getDBListPaged(TABLE_BLOG_ARTICLES, $sqlFilter, "", $blog->relatedItemsCount);
+    	$resultQuery = db_get_listpaged(TABLE_BLOG_ARTICLES, $sqlFilter, "", $blog->relatedItemsCount);
 	
 		// get a list of albums from API result
 		$listItems = $resultQuery["data"];
 
 		// assign data to template
-		MSV_assignData("blog_articles_related", $listItems);
+        msv_assign_data("blog_articles_related", $listItems);
 	}
 
 	
 	// update views / +1
-	API_updateDBItem(TABLE_BLOG_ARTICLES, "views", "views+1", " url = '".$articleUrl."'");
+    db_update(TABLE_BLOG_ARTICLES, "views", "views+1", " url = '".$articleUrl."'");
 	
 	// add item to page nativation line
-	MSV_setNavigation($article["title"], $article["url"]);
+    msv_set_navigation($article["title"], $article["url"]);
 	
 	// assign data to template
-	MSV_assignData("blog_article_details", $article);
+    msv_assign_data("blog_article_details", $article);
 }

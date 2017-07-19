@@ -8,7 +8,7 @@ function loadCustomFunction() {
 	// runs when url "*" is opened
 	// 
 	
-	//MSV_MessageOK("Custom Function called");
+	//msv_message_ok("Custom Function called");
 }
 
 
@@ -19,7 +19,7 @@ function loadCustomFunctionHomepage() {
 	// runs when url "/" is opened
 	// 
 	
-	//MSV_MessageOK("Homepage is opened");
+	//msv_message_ok("Homepage is opened");
 }
 
 

@@ -17,7 +17,7 @@ function Install_Feedback($module) {
         "document_title" => $docFeedbackTitle,
         "document_text" => $docFeedbackText,
     );
-    MSV_Structure_add($itemStructure, array("lang" => "all"));
+    msv_add_structure($itemStructure, array("lang" => "all"));
 
     // add Email Templates
     $templateFeedbackNotify = '
@@ -41,7 +41,7 @@ If you have any questions, please contact us via e-mail <a href="mailto:{support
         "subject" => "Your support ticket was received",
         "text" => $templateFeedbackNotify,
     );
-    MSV_MailTemplate_add($itemTemplate, array("lang" => "all"));
+    msv_add_mailtemplate($itemTemplate, array("lang" => "all"));
 
     $templateFeedbackNotifyAdmin = '
 Feedback details:<br />
@@ -58,7 +58,7 @@ Text: <br />
         "subject" => "New support ticket was received",
         "text" => $templateFeedbackNotifyAdmin,
     );
-    MSV_MailTemplate_add($itemTemplate, array("lang" => "all"));
+    msv_add_mailtemplate($itemTemplate, array("lang" => "all"));
 
     // add feedback items
     $item = array(
@@ -72,7 +72,7 @@ developers have a full set of highly customizable tools for website management a
         "pic" => "images/feedback_1.png",
         "stars" => 5,
     );
-    $result = Feedback_Add($item);
+    $result = msv_add_feedback($item);
 
     $item = array(
         "sticked" => 1,
@@ -84,7 +84,7 @@ developers have a full set of highly customizable tools for website management a
         "pic" => "images/feedback_2.png",
         "stars" => 5,
     );
-    $result = Feedback_Add($item);
+    $result = msv_add_feedback($item);
 
     $item = array(
         "sticked" => 1,
@@ -96,5 +96,5 @@ developers have a full set of highly customizable tools for website management a
         "pic" => "images/feedback_3.png",
         "stars" => 5,
     );
-    $result = Feedback_Add($item);
+    $result = msv_add_feedback($item);
 }

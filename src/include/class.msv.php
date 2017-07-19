@@ -257,7 +257,7 @@ class MSV_Website {
 		}
 		
 		// link default mail function
-		$this->config["mailer"] = "MSV_EmailDefault";
+		$this->config["mailer"] = "msv_email_default";
 		
 		$this->parseRequest();
 		$this->activateCustom();
@@ -710,7 +710,7 @@ class MSV_Website {
 			$this->loadPage("/404/");
 
 			// reload page document
-			MSV_LoadPageDocument();
+            msv_load_pagedocument();
 
 			header("HTTP/1.0 404 Not Found");
 
@@ -721,8 +721,6 @@ class MSV_Website {
 		$userAccess = $this->user["access"];
 		$pageAccess = $this->page["access"];
 		if (!$this->checkAccess($pageAccess, $userAccess)) {
-
-
 			// set redirect url to return after login
 			$_SESSION["redirect_url"] = $this->requestUrlRaw;
 			
@@ -740,12 +738,6 @@ class MSV_Website {
 			!is_readable($this->pageTemplatePath) || 
 			!is_file($this->pageTemplatePath)) {
 			$this->outputError("Page template not found: ".$this->pageTemplatePath);
-		}
-		
-		// proccess post/get admin functions  
-		// TODO: check user rights?? 
-		if ($this->instaled && $this->checkAccess("admin", $this->user["access"])) {
-			$this->proccessAdmin();
 		}
 
         if (!empty($_REQUEST["ajaxcall"])) {
@@ -809,92 +801,7 @@ class MSV_Website {
 		$this->config["debug_code"] = $debugHTML;
 		return true;
 	}
-	
-	/// proccess admin functions
-	function proccessAdmin() {
-		if (!$this->checkAccess("admin", $this->user["access"])) {
-			return false;
-		}
-		
-		if (!empty($_GET["module_remove"])) {
-			// TODO: DO
-			// TODO: check $_GET["module_remove"]
-			//MSV_removeModule($_GET["module_remove"]);
-		}
-		if (!empty($_GET["module_disable"])) {
-			// TODO: check $_GET["module_disable"]
-			MSV_disableModule($_GET["module_disable"]);
-		}
-		
-		if (!empty($_GET["module_enable"])) {
-			// TODO: check $_GET["module_enable"]
-			MSV_enableModule($_GET["module_enable"]);
-		}
-		
-		if (!empty($_GET["module_reinstall"])) {
-			// TODO: check $_GET["module_reinstall"]
-			MSV_reinstallModule($_GET["module_reinstall"], false);
-		}
 
-        if (!empty($_GET["table_action"])) {
-            // TODO: check $_GET["module"]
-            // TODO: check $_GET["table"]
-
-            if ($_GET["table_action"] === "create") {
-
-                API_createTable($_GET["module_table"]);
-
-            } elseif ($_GET["table_action"] === "truncate") {
-
-                API_emptyTable($_GET["module_table"]);
-
-            } elseif ($_GET["table_action"] === "remove") {
-
-                API_removeTable($_GET["module_table"]);
-
-            }
-
-            MSV_reinstallModule($_GET["table_action"], false);
-        }
-		
-		if (!empty($_GET["module_install"])) {
-			// TODO: check $_GET["module_install"]
-			$module = $_GET["module_install"];
-			
-			MSV_installModule($module);
-		}
-		
-		if (!empty($_GET["install_ok"])) {
-			$this->messages["success"][] = "<b>{$_GET["install_ok"]}</b> installed successfully";
-		}
-		if (!empty($_GET["install_hook"])) {
-			// TODO: check $_GET["install_hook"]
-
-			$module = $_GET["install_hook"];
-			$obj = $this->{$module};
-			
-			if (!$obj) {
-				// 
-				$this->messages["error"][] = "Error while installing {$module}";
-				
-			} else {
-				if (!empty($obj->tables)) {
-					$tableList = $obj->tables;
-					if (!empty($tableList)) {
-						foreach ($tableList as $tableName => $tableInfo) {
-							$result = API_createTable($tableName);
-						}
-					}
-				}
-				$obj->runInstallHook();
-				
-				$this->outputRedirect("/admin/?section=module_settings&install_ok=".$module."&module=".$module."&module_install");
-			}
-		}
-		
-		return true;
-	}
-	
 	function log($logText = "", $type = "warning") {
 		$date = date("Y-m-d H:i:s").substr((string)microtime(), 1, 8);
 		$logLine = $date." ".$logText."\n";

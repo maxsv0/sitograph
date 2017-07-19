@@ -50,6 +50,6 @@ if (is_readable(DEBUG_LOG)) {
 	}
 
 	arsort($listActions);
-	
-	MSV_assignData("debug_log_actions", $listActions);
+
+    msv_assign_data("debug_log_actions", $listActions);
 }

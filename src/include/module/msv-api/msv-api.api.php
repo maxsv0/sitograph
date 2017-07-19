@@ -18,7 +18,7 @@ function apiRequest($module) {
     foreach ($module->website->api as $apiInfo) {
         if ($apiInfo["name"] === $apiRequest) {
             if (function_exists($apiInfo["action"])) {
-                $moduleObj = MSV_get("website.".$apiInfo["module"]);
+                $moduleObj = msv_get("website.".$apiInfo["module"]);
 
                 // run pre hook
                 $hookFn = $apiInfo["action"]."_pre";
@@ -41,7 +41,7 @@ function apiRequest($module) {
                 // output result
                 echo $result;
             } else {
-                MSV_Error("Function not found: ".$apiInfo["action"]);
+                msv_error("Function not found: ".$apiInfo["action"]);
             }
         }
     }

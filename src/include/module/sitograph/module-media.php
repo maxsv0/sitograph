@@ -1,6 +1,6 @@
 <?php
 if (!is_writable(UPLOAD_FILES_PATH)) {
-	MSV_MessageError("Can't write to ".UPLOAD_FILES_PATH);
+    msv_message_error("Can't write to ".UPLOAD_FILES_PATH);
 }
 
 $media_list = array(
@@ -19,10 +19,10 @@ if (!empty($_REQUEST["media"]) && array_key_exists($_REQUEST["media"], $media_li
 		$media_dir = substr($_REQUEST["mediapath"], strlen(CONTENT_URL)-1);
 		$media_list[$_REQUEST["media"]]["path"] = $media_dir;
 	}
-	
-	MSV_assignData("admin_media_active", $_REQUEST["media"]);
+
+    msv_assign_data("admin_media_active", $_REQUEST["media"]);
 } else {
-	MSV_assignData("admin_media_active", "images");
+    msv_assign_data("admin_media_active", "images");
 }
 
 
@@ -31,13 +31,13 @@ foreach ($media_list as $k => $v) {
 	$media_list[$k]["url"] = CONTENT_URL.$v["path"];
 }
 
-MSV_assignData("admin_media_list", $media_list);
+msv_assign_data("admin_media_list", $media_list);
 
 
-$service_folder_id = MSV_getConfig("service_folder_id");
+$service_folder_id = msv_get_config("service_folder_id");
 if (!empty($service_folder_id)) {
-	MSV_assignData("service_folder_manager", '<iframe src="https://drive.google.com/embeddedfolderview?id='.$service_folder_id.'#grid" style="width:100%; height:300px; border:0;"></iframe>');
-	MSV_assignData("service_folder_link", 'https://drive.google.com/drive/folders/'.$service_folder_id.'');
+    msv_assign_data("service_folder_manager", '<iframe src="https://drive.google.com/embeddedfolderview?id='.$service_folder_id.'#grid" style="width:100%; height:300px; border:0;"></iframe>');
+    msv_assign_data("service_folder_link", 'https://drive.google.com/drive/folders/'.$service_folder_id.'');
 }
 
 

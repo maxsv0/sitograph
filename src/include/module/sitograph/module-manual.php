@@ -6,12 +6,12 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
 }
 if (file_exists($manualPath)) {
 	$manualCont = file_get_contents($manualPath);
-	MSV_assignData("admin_manual", $manualCont);
+    msv_assign_data("admin_manual", $manualCont);
 }
 if (isset($_REQUEST["edit_mode"])) {
-	MSV_assignData("admin_manual_edit_mode", true);
+    msv_assign_data("admin_manual_edit_mode", true);
 }
 if (!empty($_POST["save"])) {
-	MSV_assignData("admin_manual_edit_mode", true);
+    msv_assign_data("admin_manual_edit_mode", true);
 	// add message : ok saved
 }

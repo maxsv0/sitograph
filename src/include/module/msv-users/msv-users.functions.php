@@ -13,7 +13,7 @@
  * @param array $options Optional list of flags. Supported: EmailNotifyUser, EmailNotifyAdmin
  * @return array Result of a API call
  */
-function MSV_User_Add($row, $options = array()) {
+function msv_add_user($row, $options = array()) {
     $result = array(
         "ok" => false,
         "data" => array(),
@@ -24,13 +24,13 @@ function MSV_User_Add($row, $options = array()) {
     if (empty($row["email"])) {
         $result["msg"] = _t("msg.users.noemail");
         return $result;
-    } elseif (!MSV_checkEmail($row["email"])) {
+    } elseif (!msv_check_email($row["email"])) {
         $result["msg"] = _t("msg.wrong_email");
         return $result;
     }
 
     // check if user already exists
-    $resultCheck = API_getDBItem(TABLE_USERS, " `email` = '".MSV_SQLEscape($row["email"])."'");
+    $resultCheck = db_get(TABLE_USERS, " `email` = '".db_escape($row["email"])."'");
     if ($resultCheck["ok"] && !empty($resultCheck["data"])) {
         $result["msg"] = _t("msg.users.email_exists");
         return $result;
@@ -51,7 +51,7 @@ function MSV_User_Add($row, $options = array()) {
     // set empty fields
     if (empty($row["password"])) {
         // do not allow empty password
-        $row["password"] = MSV_PasswordGenerate();
+        $row["password"] = msv_generate_password();
     }
     if (empty($row["access"])) $row["access"] = "user";
     if (empty($row["iss"])) $row["iss"] = "local";
@@ -71,7 +71,7 @@ function MSV_User_Add($row, $options = array()) {
     }
 
     // assign user to each language (*)
-    $result = API_itemAdd(TABLE_USERS, $row, "*");
+    $result = db_add(TABLE_USERS, $row, "*");
 
     if ($result["ok"]) {
         $result["msg"] = _t("msg.users.reg_success");
@@ -82,20 +82,20 @@ function MSV_User_Add($row, $options = array()) {
 
         if (in_array("EmailNotifyUser", $options)) {
             if ($row["email_verified"] > 0) {
-                $resultMail = MSV_EmailTemplate("user_registration", $userInfo["email"], $userInfo);
+                $resultMail = msv_email_template("user_registration", $userInfo["email"], $userInfo);
             } else {
-                $resultMail = MSV_EmailTemplate("user_registration_verify", $userInfo["email"], $userInfo);
+                $resultMail = msv_email_template("user_registration_verify", $userInfo["email"], $userInfo);
             }
             if ($resultMail) {
-                MSV_MessageOK(_t("msg.email_sent_to")." <b>".$userInfo["email"]."</b>");
+                msv_message_ok(_t("msg.email_sent_to")." <b>".$userInfo["email"]."</b>");
             } else {
-                MSV_MessageError(_t("msg.email_sending_error"));
+                msv_message_error(_t("msg.email_sending_error"));
             }
         }
 
         if (in_array("EmailNotifyAdmin", $options)) {
-            $emailAdmin = MSV_getConfig("admin_email");
-            MSV_EmailTemplate("user_registration_notify", $emailAdmin, $userInfo);
+            $emailAdmin = msv_get_config("admin_email");
+            msv_email_template("user_registration_notify", $emailAdmin, $userInfo);
         }
     }
 

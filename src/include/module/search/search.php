@@ -28,8 +28,8 @@ function ajax_More_Search($module)
                 "'&(copy|#169);'i",
                 "'&#(\d+);'i");
             $_REQUEST['keyword'] = strip_tags(preg_replace($search, "", $_REQUEST['keyword']));
-            $tables_info = MSV_get("website.tables");
-            $website = MSV_get("website");
+            $tables_info = msv_get("website.tables");
+            $website = msv_get("website");
             
             $ignore_tables = array(
                 'settings',
@@ -85,19 +85,19 @@ function ajax_More_Search($module)
                     $field_str = implode(',', $field_list);
                     $sqlCode = "select * from " . $v . " where (" . $filter . ") and `lang`='" .
                         LANG . "'";
-                    $result = API_SQL($sqlCode);
+                    $result = db_sql($sqlCode);
                     if (!$result["ok"])
                     {
-                        API_callError($result["msg"]);
+                        msv_message_error($result["msg"]);
                     }
                     $i = 0;
-                    while ($row = MSV_SQLRow($result["data"]))
+                    while ($row = db_fetch_row($result["data"]))
                     {
                         
                         $url = '';
                         if ($v == 'documents')
                         {
-                            $structure_row = API_getDBItem('structure', " `page_document_id` = '" . $row['id'] .
+                            $structure_row = db_get('structure', " `page_document_id` = '" . $row['id'] .
                                 "' and `lang`='" . LANG . "'");
                             if (!empty($structure_row['data']))
                             {
@@ -110,7 +110,7 @@ function ajax_More_Search($module)
                             $title = $row['name'];
                         } else
                         {
-                            $title = MSV_HighlightText($_REQUEST['keyword'], $row[$modules_base_url[$v]['title']], 10);
+                            $title = msv_highlight_text($_REQUEST['keyword'], $row[$modules_base_url[$v]['title']], 10);
                             $url = $modules_base_url[$v]['url'] . (!empty($row['url']) ? $row['url'] . '/' :
                                 '');
                         }
@@ -141,7 +141,7 @@ function ajax_More_Search($module)
                             }
                             $text = strip_tags(preg_replace($search, "", $text));
                             $text = mb_substr($text, $a - 300, 300);
-                            $ar2["text"] = MSV_HighlightText($_REQUEST['keyword'], $text, 50);
+                            $ar2["text"] = msv_highlight_text($_REQUEST['keyword'], $text, 50);
                             $ar2["url"] = $url;
                             $module_search[] = $ar2;
                             $i++;
@@ -205,7 +205,7 @@ function Get_Search_List($module)
                 "'&(copy|#169);'i",
                 "'&#(\d+);'i");
             $_POST['keyword'] = strip_tags(preg_replace($search, "", $_POST['keyword']));
-            $tables_info = MSV_get("website.tables");
+            $tables_info = msv_get("website.tables");
             $ignore_tables = array(
                 'settings',
                 'mail_templates',
@@ -259,18 +259,18 @@ function Get_Search_List($module)
                     $field_str = implode(',', $field_list);
                     $sqlCode = "select * from " . $v . " where (" . $filter . ") and `lang`='" .
                         LANG . "'";
-                    $result = API_SQL($sqlCode);
+                    $result = db_sql($sqlCode);
                     if (!$result["ok"])
                     {
-                        API_callError($result["msg"]);
+                        msv_message_error($result["msg"]);
                     }
                     $i = 0;
-                    while ($row = MSV_SQLRow($result["data"]))
+                    while ($row = db_fetch_row($result["data"]))
                     {
                         $url = '';
                         if ($v == 'documents')
                         {
-                            $structure_row = API_getDBItem('structure', " `page_document_id` = '" . $row['id'] .
+                            $structure_row = db_get('structure', " `page_document_id` = '" . $row['id'] .
                                 "' and `lang`='" . LANG . "'");
                             if (!empty($structure_row['data']))
                             {
@@ -283,7 +283,7 @@ function Get_Search_List($module)
                             $title = $row['name'];
                         } else
                         {
-                            $title = MSV_HighlightText($_POST['keyword'], $row[$modules_base_url[$v]['title']], 10);
+                            $title = msv_highlight_text($_POST['keyword'], $row[$modules_base_url[$v]['title']], 10);
                             $url = $modules_base_url[$v]['url'] . (!empty($row['url']) ? $row['url'] . '/' :
                                 '');
                         }
@@ -314,7 +314,7 @@ function Get_Search_List($module)
                             }
                             $text = strip_tags($text);
                             $text = mb_substr($text, $a - 300, 300);
-                            $ar2["text"] = MSV_HighlightText($_POST['keyword'], $text, 50);
+                            $ar2["text"] = msv_highlight_text($_POST['keyword'], $text, 50);
                             $ar2["url"] = $url;
                             $module_search[] = $ar2;
                             $i++;
@@ -328,23 +328,23 @@ function Get_Search_List($module)
         {
             if (count($module_search) > $items_per_page)
             {
-                MSV_assignData("set_more", 1);
+                msv_assign_data("set_more", 1);
             }
-            MSV_assignData("search_result", array_slice($module_search, 0, $items_per_page));
-            MSV_assignData("search_count", count($module_search));
+            msv_assign_data("search_result", array_slice($module_search, 0, $items_per_page));
+            msv_assign_data("search_count", count($module_search));
         } else
         {
-            MSV_assignData("search_count", 0);
+            msv_assign_data("search_count", 0);
         }
-        MSV_assignData("search_str", $_REQUEST['keyword']);
+        msv_assign_data("search_str", $_REQUEST['keyword']);
         // запись в таблицу результатов запросов    
             	$item = array(
-            		"ip" => MSV_GetIP(),
+            		"ip" => msv_get_ip(),
             		"search_txt" => $_REQUEST['keyword'],
             		"count" => (count($module_search)>0? 1:0),
             		"published" => 1,
             	);
-        	    $result = API_itemAdd(TABLE_SEARCH, $item);
+        	    $result = db_add(TABLE_SEARCH, $item);
         // запись в таблицу результатов запросов    
     }
 }
@@ -358,6 +358,6 @@ function Install_Search($module) {
         "page_template" => "site-search.tpl",
         "sitemap" => 1,
     );
-    MSV_Structure_add($itemStructure, array("lang" => "all"));
+    msv_add_structure($itemStructure, array("lang" => "all"));
 
 }

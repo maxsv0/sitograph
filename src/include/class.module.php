@@ -66,10 +66,10 @@ class MSV_Module {
 
         // scan for Controllers
         $namesController = array(
-            $module.".php",
-            $module.".api.php",
-            $module.".functions.php",
             $module.".install.php",
+            $module.".functions.php",
+            $module.".api.php",
+            $module.".php",
         );
         foreach ($namesController as $fileName) {
             $pathModuleController = $pathModule.$fileName;

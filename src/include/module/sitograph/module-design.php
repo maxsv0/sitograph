@@ -5,51 +5,51 @@ $designs = array();
 foreach ($this->website->modules as $module) {
 	if (strpos($module, "theme-") !== 0) continue;
 	
-	$moduleObj = MSV_get("website.".$module);
+	$moduleObj = msv_get("website.".$module);
 	$designs[$module] = (array)$moduleObj;
 }
-MSV_assignData("admin_designs", $designs);
+msv_assign_data("admin_designs", $designs);
 
-//$config = MSV_get("website.config");
+//$config = msv_get("website.config");
 //$themeConfig = array();
 //foreach ($config as $key => $value) {
 //	if (strpos($key, "theme_") === 0) {
 //		$themeConfig[$key] = $value;
 //	}
 //}
-//MSV_assignData("admin_design_config", $themeConfig);
+//msv_assign_data("admin_design_config", $themeConfig);
 
 if (!empty($_GET["design_activate"])) {
 	$themeName = $_GET["design_activate"];
 	
 	if (strpos($themeName, "theme-") === 0) {
 		$themeID = substr($themeName, 6);
-		$moduleObj = MSV_get("website.".$themeName);
+		$moduleObj = msv_get("website.".$themeName);
 
 		if (!empty($moduleObj)) {
 
-			$website = MSV_get("website");
+			$website = msv_get("website");
 			foreach ($website->structure as $item) {
 				
 				if ($item["template"] !== $themeID) {
-					$r = API_updateDBItem(TABLE_STRUCTURE, "template", "'".MSV_SQLEscape($themeID)."'", " id = '".$item["id"]."'");
+					$r = db_update(TABLE_STRUCTURE, "template", "'".db_escape($themeID)."'", " id = '".$item["id"]."'");
 					
 					if ($r["ok"]) {
-						MSV_MessageOK("Design $themeID set => ".$item["name"]." => OK");
+                        msv_message_ok("Design $themeID set => ".$item["name"]." => OK");
 					} else {
-						MSV_MessageError($r["msg"]);
+                        msv_message_error($r["msg"]);
 					}
 				} else {
-					MSV_MessageOK($item["name"]." already activated");
+                    msv_message_ok($item["name"]." already activated");
 				}
 			}
-			
-			MSV_setConfig("theme_active", $themeName, true, "*");
+
+            msv_set_config("theme_active", $themeName, true, "*");
 		} else {
-			MSV_MessageError("Cant activate $themeName");
+            msv_message_error("Cant activate $themeName");
 		}
 	} else {
-		MSV_MessageError("Unrecognized theme $themeName");
+        msv_message_error("Unrecognized theme $themeName");
 	}
 	
 	

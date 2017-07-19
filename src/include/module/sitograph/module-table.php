@@ -6,11 +6,11 @@ if (empty($section)) {
 	return false;
 }
 
-$tableInfo = MSV_getTableConfig($table);
-MSV_assignData("admin_table_info", $tableInfo);
+$tableInfo = msv_get_config_table($table);
+msv_assign_data("admin_table_info", $tableInfo);
 
 if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
-	$result = MSV_proccessUpdateTable($table, "form_");
+	$result = msv_process_updatetable($table, "form_");
 	if ($result["ok"]) {
 		
 		// update SEO
@@ -20,7 +20,7 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
 			$itemUrl .= "/";
 
 			// save seo
-			$resultQuerySEO = API_getDBItem(TABLE_SEO, "`url` = '".MSV_SQLescape($itemUrl)."'");
+			$resultQuerySEO = db_get(TABLE_SEO, "`url` = '".db_escape($itemUrl)."'");
 			if ($resultQuerySEO["ok"] && !empty($resultQuerySEO["data"])) {
 				$rowSEO = $resultQuerySEO["data"];
 				$rowSEO["title"] = $_POST["form_seo_title"];
@@ -28,29 +28,29 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
 				$rowSEO["keywords"] = $_POST["form_seo_keywords"];
                 $rowSEO["sitemap"] = $_POST["form_published"] == 1 ? 1:0;
 				
-				$resultSave = API_updateDBItemRow(TABLE_SEO, $rowSEO);
-                MSV_SitemapGenegate();
+				$resultSave = db_update_row(TABLE_SEO, $rowSEO);
+                msv_genegate_sitemap();
 			} else {
                 // extract data from request for corresponding table
-                $item = MSV_proccessTableData(TABLE_SEO, "form_seo_");
+                $item = msv_process_tabledata(TABLE_SEO, "form_seo_");
 
                 // execute request
-                $resultSave = MSV_SEO_add($item);
+                $resultSave = msv_add_seo($item);
 
                 if ($_POST["form_published"] == 1) {
-                    MSV_SitemapGenegate();
+                    msv_genegate_sitemap();
                 }
 			}
 		}
 	} else {
-		MSV_redirect("/admin/?section=$section&table=$admin_table&save_error=".$result["msg"]);
+        msv_redirect("/admin/?section=$section&table=$admin_table&save_error=".$result["msg"]);
 	}
 }
 if (!empty($_POST["save"])) {
 	$_REQUEST["edit"] = $_POST["form_id"];
 }
 if (!empty($_REQUEST["edit_key"])) {
-	$resultQueryItem = API_getDBItem($table, "`param` like '".MSV_SQLEscape($_REQUEST["edit_key"])."'");
+	$resultQueryItem = db_get($table, "`param` like '".db_escape($_REQUEST["edit_key"])."'");
 	if ($resultQueryItem["ok"] && !empty($resultQueryItem["data"])) {
 		$_REQUEST["edit"] = $resultQueryItem["data"]["id"];
 	} else {
@@ -58,7 +58,7 @@ if (!empty($_REQUEST["edit_key"])) {
 	}
 }
 if (!empty($_REQUEST["edit"])) {
-	$resultQueryItem = API_getDBItem($table, "`id` = '".(int)$_REQUEST["edit"]."'");
+	$resultQueryItem = db_get($table, "`id` = '".(int)$_REQUEST["edit"]."'");
 	if ($resultQueryItem["ok"]) {
 		
 		// make item Url
@@ -66,26 +66,26 @@ if (!empty($_REQUEST["edit"])) {
 		$itemUrl .= "/";
 
 		// get item SEO
-		$resultQuerySEO = API_getDBItem(TABLE_SEO, "`url` = '".MSV_SQLescape($itemUrl)."'");
+		$resultQuerySEO = db_get(TABLE_SEO, "`url` = '".db_escape($itemUrl)."'");
 		if ($resultQuerySEO["ok"]) {
 			$resultQueryItem["data"]["seo_title"] = $resultQuerySEO["data"]["title"];
 			$resultQueryItem["data"]["seo_description"] = $resultQuerySEO["data"]["description"];
 			$resultQueryItem["data"]["seo_keywords"] = $resultQuerySEO["data"]["keywords"];
 		}
-		
-		MSV_assignData("admin_edit", $resultQueryItem["data"]);
+
+        msv_assign_data("admin_edit", $resultQueryItem["data"]);
 	}
 }
 if (!empty($_REQUEST["duplicate"])) {
-	$resultQueryItem = API_getDBItem($table, "`id` = '".(int)$_REQUEST["duplicate"]."'");
+	$resultQueryItem = db_get($table, "`id` = '".(int)$_REQUEST["duplicate"]."'");
 	if ($resultQueryItem["ok"]) {
 		$resultQueryItem["data"]["id"] = "";
-		MSV_assignData("admin_edit", $resultQueryItem["data"]);
+        msv_assign_data("admin_edit", $resultQueryItem["data"]);
 	}
 }
 if (!empty($_REQUEST["delete"])) {
-	$resultQueryDelete = API_deleteDBItem($table, "`id` = '".(int)$_REQUEST["delete"]."'");
-	MSV_MessageOK(_t("msg.deleted_ok"));
+	$resultQueryDelete = db_delete($table, "`id` = '".(int)$_REQUEST["delete"]."'");
+    msv_message_ok(_t("msg.deleted_ok"));
 }
 if (isset($_REQUEST["add_new"])) {
 	$item = array(
@@ -98,7 +98,7 @@ if (isset($_REQUEST["add_new"])) {
 		// toDO: support multi index
 		$item[$tableInfo["index"]] = $_REQUEST["edit_key"];
 	}
-	MSV_assignData("admin_edit", $item);
+    msv_assign_data("admin_edit", $item);
 }
 
 if (!empty($_REQUEST["sort"])) {
@@ -121,9 +121,9 @@ if (!empty($_REQUEST["sortd"])) {
 	$sortd_rev = "desc";
 }
 
-MSV_assignData("table_sort", $sort);
-MSV_assignData("table_sortd", $sortd);
-MSV_assignData("table_sortd_rev", $sortd_rev);
+msv_assign_data("table_sort", $sort);
+msv_assign_data("table_sortd", $sortd);
+msv_assign_data("table_sortd_rev", $sortd_rev);
 
 $listLimit = 100;
 
@@ -132,13 +132,13 @@ if (isset($_GET["export"])) {
 	$listLimit = 65000;
 }
 
-$resultQuery = API_getDBListPaged($table, "", "`$sort` $sortd", $listLimit, "p");
+$resultQuery = db_get_listpaged($table, "", "`$sort` $sortd", $listLimit, "p");
 if ($resultQuery["ok"]) {
-	MSV_assignData("admin_list", $resultQuery["data"]);
+    msv_assign_data("admin_list", $resultQuery["data"]);
 	
 	$adminList = $resultQuery["data"];
 	$listPages = $resultQuery["pages"];
-	MSV_assignData("admin_list_pages", $listPages);
+    msv_assign_data("admin_list_pages", $listPages);
 	
 	$adminListSkipFields = array();
 	$adminListSkipFields[] = "deleted";
@@ -155,13 +155,13 @@ if ($resultQuery["ok"]) {
 			$field["type"] = "select";
 			
 			if ($field["select-from"]["source"] === "table") {
-				$cfg = MSV_getTableConfig($field["select-from"]["name"]);
+				$cfg = msv_get_config_table($field["select-from"]["name"]);
 				// TODO: multi index support
 				// index from config?
 				$index = "id";
 				$title = $cfg["title"];
 				
-				$queryData = API_getDBList($field["select-from"]["name"], "", "`$title` asc");
+				$queryData = db_get_list($field["select-from"]["name"], "", "`$title` asc");
 				if ($queryData["ok"]) {
 					$arData = array();
 					foreach ($queryData["data"] as $item) {
@@ -200,7 +200,7 @@ if ($resultQuery["ok"]) {
 			$adminList = $adminListFiltered;
 		}
 	}
-	
-	MSV_assignData("admin_list_skip", $adminListSkipFields);
-	MSV_assignData("admin_list", $adminList);
+
+    msv_assign_data("admin_list_skip", $adminListSkipFields);
+    msv_assign_data("admin_list", $adminList);
 }

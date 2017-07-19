@@ -1,7 +1,7 @@
 <?php
 
 // embed Google Analytics Code to all webpage
-$code = MSV_getConfig("google_analytics_tracking_id");
+$code = msv_get_config("google_analytics_tracking_id");
 if ($code) {
 	$includeCode = "
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -10,18 +10,18 @@ if ($code) {
 	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 	  ";
 	$includeCode .= "ga('create', '$code', 'auto');\n";
-	$rowUser = MSV_get("website.user");
+	$rowUser = msv_get("website.user");
 	if (empty($rowUser["user_id"])) {
 		$includeCode .= "ga('set', 'userId', ".$rowUser["user_id"].");\n";
 	}
 	$includeCode .= "ga('send', 'pageview');\n";
-	
-	MSV_IncludeJS($includeCode);
+
+    msv_include_js($includeCode);
 } 
 
 
 // Google Service Account auth for server-server usage
-$googleservice_auth_json = MSV_getConfig("google_service_auth_json");
+$googleservice_auth_json = msv_get_config("google_service_auth_json");
 if (!empty($googleservice_auth_json)) {
 	$clientGA = new Google_Client();
 	
@@ -41,9 +41,9 @@ if (!empty($googleservice_auth_json)) {
 		$service = new Google_Service_Analytics($clientGA);
 		$ar = json_decode($clientGA->getAccessToken());
 		$token = $ar->access_token;
-		MSV_assignData("GA_access_token", $token);
+        msv_assign_data("GA_access_token", $token);
 	} else {
-		MSV_MessageError("Invalid Google Service Auth JSON file");
+        msv_message_error("Invalid Google Service Auth JSON file");
 	}
 }
 
@@ -56,7 +56,7 @@ function Install_GoogleAnalytics($module) {
 	// run when module in installed
 	
 	// Google Analytics options
-	MSV_setConfig("google_analytics_tracking_id", "xxxxxxx", true, "*");
-	MSV_setConfig("google_service_auth_json", "", true, "*");
+    msv_set_config("google_analytics_tracking_id", "xxxxxxx", true, "*");
+    msv_set_config("google_service_auth_json", "", true, "*");
 	
 }

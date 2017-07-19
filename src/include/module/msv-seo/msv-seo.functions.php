@@ -11,7 +11,7 @@
  * @param array $options Optional list of flags. Supported: lang
  * @return array Result of a API call
  */
-function MSV_SEO_add($row, $options = array()) {
+function msv_add_seo($row, $options = array()) {
     $result = array(
         "ok" => false,
         "data" => array(),
@@ -46,7 +46,7 @@ function MSV_SEO_add($row, $options = array()) {
     if (empty($row["description"])) $row["description"] = "";
     if (empty($row["keywords"])) $row["keywords"] = "";
 
-    $result = API_itemAdd(TABLE_SEO, $row, $lang);
+    $result = db_add(TABLE_SEO, $row, $lang);
 
     if ($result["ok"]) {
         $result["msg"] = _t("msg.seo.saved");

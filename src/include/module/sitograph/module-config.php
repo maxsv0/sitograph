@@ -1,6 +1,6 @@
 <?php
 
-MSV_MessageError("<b>WARNING!</b> PLEASE NOTE: After clicking the <b>Save</b> button changes will be made directly to the <b>config.php</b> file. <br><b>THIS CAN CAUSE WEBSITE STOP FUNCTIONING.</b>");
+msv_message_error("<b>WARNING!</b> PLEASE NOTE: After clicking the <b>Save</b> button changes will be made directly to the <b>config.php</b> file. <br><b>THIS CAN CAUSE WEBSITE STOP FUNCTIONING.</b>");
 
 $configListNames = array(
     "LANGUAGES",
@@ -59,13 +59,13 @@ if (!empty($_POST["save"])) {
 	
 	if (is_writable(ABS."/config.php")) {
 		file_put_contents(ABS."/config.php", $configPHP);
-		
-		MSV_MessageOK("".ABS."/config.php updated");
+
+        msv_message_ok("".ABS."/config.php updated");
 	} else {
-		
-		MSV_MessageError("Can't write to ".ABS."/config.php");
+
+        msv_message_error("Can't write to ".ABS."/config.php");
 	}
 }
 
 
-MSV_assignData("admin_config_list", $configList);
+msv_assign_data("admin_config_list", $configList);

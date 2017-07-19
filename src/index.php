@@ -7,16 +7,16 @@ include("load.php");
 
 
 
-MSV_Start();
+msv_start();
 
 
 // MODULES
-MSV_Load();
+msv_load();
 
 
 
 
-MSV_Output();
+msv_output();
 
 
 

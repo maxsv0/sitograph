@@ -1,19 +1,19 @@
 <?php
-if (!MSV_checkAccessUser("admin")) {
+if (!msv_check_accessuser("admin")) {
     return;
 }
 
 // include JS for inline edit
-$edit_mode = MSV_getConfig("edit_mode");
+$edit_mode = msv_get_config("edit_mode");
 if ($edit_mode) {
-    MSV_IncludeJSFile("/content/js/sitograph.js");
+    msv_include_jsfile("/content/js/sitograph.js");
 }
 
 include(ABS_MODULE."/sitograph/config-menu.php");
-MSV_assignData("admin_menu", $menu_ar);
+msv_assign_data("admin_menu", $menu_ar);
 
-MSV_assignData("admin_title", $this->title." ".$this->version." <small>".$this->date."</small>");
-MSV_assignData("admin_title_page", $this->title." ".$this->description." ".$this->version."");
+msv_assign_data("admin_title", $this->title." ".$this->version." <small>".$this->date."</small>");
+msv_assign_data("admin_title_page", $this->title." ".$this->description." ".$this->version."");
 
 $section = "index";
 $menuActive = "index";
@@ -33,7 +33,7 @@ if (!empty($_REQUEST["p"])) {
 } else {
     $admin_list_page = 0;
 }
-MSV_assignData("admin_list_page", $admin_list_page);
+msv_assign_data("admin_list_page", $admin_list_page);
 
 $menuItem = array();
 $menuActive = $menuSubActive = "";
@@ -71,11 +71,11 @@ if (!empty($admin_table)) {
     }
 }
 
-MSV_assignData("admin_section", $section);
-MSV_assignData("admin_menu_active", $menuActive);
-MSV_assignData("admin_submenu_active", $menuSubActive);
-MSV_assignData("admin_menu_item", $menuItem);
-MSV_assignData("admin_table", $admin_table);
+msv_assign_data("admin_section", $section);
+msv_assign_data("admin_menu_active", $menuActive);
+msv_assign_data("admin_submenu_active", $menuSubActive);
+msv_assign_data("admin_menu_item", $menuItem);
+msv_assign_data("admin_table", $admin_table);
 
 if (!empty($menuItem)) {
     $admin_page_title = $menuItem["title"];
@@ -91,20 +91,20 @@ if ($section === "module_search") {
     if (file_exists($handlerPath)) {
         include($handlerPath);
     } else {
-        MSV_MessageError("Search handler not found at path <b>$handlerPath</b>");
+        msv_message_error("Search handler not found at path <b>$handlerPath</b>");
     }
     $admin_page_title = "Search Website";
     $admin_page_template = "search.tpl";
 }
 
-MSV_assignData("admin_page_title", $admin_page_title);
-MSV_assignData("admin_page_template", $admin_page_template);
+msv_assign_data("admin_page_title", $admin_page_title);
+msv_assign_data("admin_page_template", $admin_page_template);
 
 if (!empty($section) && in_array($section, $menu_index)) {
 
     // TODO: remove not needed lines
     // get module object
-    // $sectionObj = MSV_get("website.$section");
+    // $sectionObj = msv_get("website.$section");
 
     // set admin section hendler
     $handler = $menuItem["handler"];
@@ -116,28 +116,28 @@ if (!empty($section) && in_array($section, $menu_index)) {
             $table = $menuItem["table"];
             include($handlerPath);
         } else {
-            MSV_MessageError("Module handler not found <b>$handler</b>");
+            msv_message_error("Module handler not found <b>$handler</b>");
         }
     }
 
     if (!empty($_POST["save_exit"])) {
-        MSV_redirect("/admin/?section=$section&table=$admin_table&saved&p=".$admin_list_page);
+        msv_redirect("/admin/?section=$section&table=$admin_table&saved&p=".$admin_list_page);
     }
     if (!empty($_POST["save"])) {
-        MSV_MessageOK(_t("msg.saved_ok"));
+        msv_message_ok(_t("msg.saved_ok"));
 
         // TODO: remove this?
         //MSV_redirect("/admin/?section=$section&table=$admin_table&edit=".$_POST["form_id"]."&saved");
     }
     if (isset($_GET["saved"])) {
-        MSV_MessageOK(_t("msg.saved_ok"));
+        msv_message_ok(_t("msg.saved_ok"));
     }
     if (!empty($_GET["save_error"])) {
-        MSV_MessageError(_t("msg.save_error").": ".$_GET["save_error"]);
+        msv_message_error(_t("msg.save_error").": ".$_GET["save_error"]);
     }
 
     if (!empty($_REQUEST["edit"]) || !empty($_REQUEST["duplicate"]) || !empty($_REQUEST["add_child"]) || isset($_REQUEST["add_new"])) {
-        $table_edit = MSV_getConfig("admin_edit");
+        $table_edit = msv_get_config("admin_edit");
 
         $tabs = array();
         $tabs["home"] = array("title" => _t("tab.home"), "fields" => array());
@@ -147,10 +147,10 @@ if (!empty($section) && in_array($section, $menu_index)) {
         $tabs["access"] = array("title" => _t("tab.access"), "fields" => array());
         $tabs["history"] = array("title" => _t("tab.history"), "fields" => array());
 
-        $table_info = MSV_getConfig("admin_table_info");
+        $table_info = msv_get_config("admin_table_info");
         if (!empty($table_info)) {
             if ($table_info["useseo"]) {
-                $infoSEO = MSV_getTableConfig(TABLE_SEO);
+                $infoSEO = msv_get_config_table(TABLE_SEO);
 
                 $fieldTitle = $infoSEO["fields"]["title"];
                 $fieldTitle["name"] = "seo_title";
@@ -175,7 +175,7 @@ if (!empty($section) && in_array($section, $menu_index)) {
 
                     if ($field["select-from"]["source"] === "table") {
 
-                        $cfg = MSV_getTableConfig($field["select-from"]["name"]);
+                        $cfg = msv_get_config_table($field["select-from"]["name"]);
                         // TODO: multi index support
                         // index from config?
                         $index = "id";
@@ -186,7 +186,7 @@ if (!empty($section) && in_array($section, $menu_index)) {
                             $order = "`$title` asc";
                         }
 
-                        $queryData = API_getDBList($field["select-from"]["name"], $filter, $order);
+                        $queryData = db_get_list($field["select-from"]["name"], $filter, $order);
                         if ($queryData["ok"]) {
                             $arData = array();
                             foreach ($queryData["data"] as $item) {
@@ -229,8 +229,8 @@ if (!empty($section) && in_array($section, $menu_index)) {
                 }
             }
         }
-        MSV_assignData("admin_edit_tabs", $tabs);
-        MSV_assignData("admin_edit", $table_edit);
+        msv_assign_data("admin_edit_tabs", $tabs);
+        msv_assign_data("admin_edit", $table_edit);
     }
 
     if (isset($_GET["export"])) {
@@ -241,7 +241,7 @@ if (!empty($section) && in_array($section, $menu_index)) {
         $out = fopen('php://output', 'w');
         fputs($out, "\xEF\xBB\xBF");
 
-        $table_info = MSV_getConfig("admin_table_info");
+        $table_info = msv_get_config("admin_table_info");
         $rowShort = array();
         foreach ($table_info["fields"] as $field) {
             if (!in_array($field["name"], $adminListSkipFields)) {
@@ -268,22 +268,22 @@ if (!empty($section) && in_array($section, $menu_index)) {
 }
 
 if (isset($_GET["toggle_edit_mode"])) {
-    $edit_mode = MSV_getConfig("edit_mode");
+    $edit_mode = msv_get_config("edit_mode");
     if ($edit_mode) {
-        MSV_setConfig("edit_mode", 0, true);
+        msv_set_config("edit_mode", 0, true);
     } else {
-        MSV_setConfig("edit_mode", 1, true);
+        msv_set_config("edit_mode", 1, true);
     }
 
-    $ref = MSV_getConfig("referer");
+    $ref = msv_get_config("referer");
     if ($ref) {
-        MSV_redirect($ref);
+        msv_redirect($ref);
     } else {
-        MSV_redirect("/");
+        msv_redirect("/");
     }
 }
 
 if (isset($_GET["check_files"])) {
-    MSV_checkFiles();
+    msv_check_files();
     die;
 }

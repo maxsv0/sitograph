@@ -6,13 +6,13 @@
         var_dump($_FILES);
         //die;
         // Загрузка файла
-      $file = MSV_storePic($_FILES["catalog"]["tmp_name"],'xml');
+      $file = msv_store_pic($_FILES["catalog"]["tmp_name"],'xml');
          if ($file > 0) {
             $loadedfile = UPLOAD_FILES_PATH."/".$file;
             
-            $resultQuery = API_getDBList(TABLE_RODS_FORMATION, "");
+            $resultQuery = db_get_list(TABLE_RODS_FORMATION, "");
         	if (!$resultQuery["ok"]) {
-        		API_callError($result["msg"]);
+                msv_message_error($result["msg"]);
         	} 
             
             $formation_type = array();
@@ -91,7 +91,7 @@
                  $data['lang'] = 'ru';
                  $data['author'] = $_SESSION["user_email"];
                  
-                 $result = API_getDBItem(TABLE_RODS_MODELS, " `product_code` = '".$data['product_code']."'");
+                 $result = db_get(TABLE_RODS_MODELS, " `product_code` = '".$data['product_code']."'");
                  if ($result["ok"] && !empty($result["data"])) {
                     $sqlCode = "update `".TABLE_RODS_MODELS."`  ";
                 	$sqlCode .= " set ";
@@ -102,15 +102,15 @@
                 	$sqlCode .= " where";
                 	$sqlCode .= " `product_code` = '".$data['product_code']."'";
                     
-                   	$result_update = API_SQL($sqlCode);
+                   	$result_update = db_sql($sqlCode);
                     //var_dump($data['price']);
                 	if (!$result_update["ok"]) {
-                		API_callError($result_update["msg"]);
+                        msv_message_error($result_update["msg"]);
                 	}
                     // проверка таблицы удилища
                     
                     if ($result["data"]["rods_id"] > 0) {
-                       $result_roads = API_getDBItem(TABLE_RODS, " `id` = '".$result["data"]["rods_id"]."'");
+                       $result_roads = db_get(TABLE_RODS, " `id` = '".$result["data"]["rods_id"]."'");
                       
                        if ($result_roads["ok"] && !empty($result_roads["data"])) {
                          
@@ -129,7 +129,7 @@
                         	$sqlCode .= " where";
                         	$sqlCode .= " `id` = '".$result["data"]["rods_id"]."'";
                             
-                           	$result_update = API_SQL($sqlCode);
+                           	$result_update = db_sql($sqlCode);
                            
                          }
                        } 
@@ -137,9 +137,9 @@
                     // проверка таблицы удилища
                     
                  } else {
-                    $insert_result = API_updateDBItemRow(TABLE_RODS_MODELS, $data);
+                    $insert_result = db_update_row(TABLE_RODS_MODELS, $data);
                     if (!$insert_result["ok"]) {
-                		API_callError($result["msg"]);
+                        msv_message_error($result["msg"]);
                 	}
                  }
         
@@ -181,7 +181,7 @@
                                  $data['lang'] = 'ru';
                                  $data['author'] = $_SESSION["user_email"];
                                  
-                                 $result = API_getDBItem(TABLE_REELS_MODELS, " `product_code` = '".$data['product_code']."'");
+                                 $result = db_get(TABLE_REELS_MODELS, " `product_code` = '".$data['product_code']."'");
                                  if ($result["ok"] && !empty($result["data"])) {
                                     $sqlCode = "update `".TABLE_REELS_MODELS."`  ";
                                 	$sqlCode .= " set ";
@@ -192,15 +192,15 @@
                                 	$sqlCode .= " where";
                                 	$sqlCode .= " `product_code` = '".$data['product_code']."'";
                                     
-                                   	$result_update = API_SQL($sqlCode);
+                                   	$result_update = db_sql($sqlCode);
                                     //var_dump($data['price']);
                                 	if (!$result_update["ok"]) {
-                                		API_callError($result_update["msg"]);
+                                        msv_message_error($result_update["msg"]);
                                 	}
                                     // проверка таблицы катушки 
                                     
                                     if ($result["data"]["reels_id"] > 0) {
-                                       $result_roads = API_getDBItem(TABLE_REELS, " `id` = '".$result["data"]["reels_id"]."'");
+                                       $result_roads = db_get(TABLE_REELS, " `id` = '".$result["data"]["reels_id"]."'");
                                       
                                        if ($result_roads["ok"] && !empty($result_roads["data"])) {
                                          
@@ -219,7 +219,7 @@
                                         	$sqlCode .= " where";
                                         	$sqlCode .= " `id` = '".$result["data"]["reels_id"]."'";
                                             
-                                           	$result_update = API_SQL($sqlCode);
+                                           	$result_update = db_sql($sqlCode);
                                            
                                          }
                                        } 
@@ -227,9 +227,9 @@
                                     // проверка таблицы катушки
                                     
                                  } else {
-                                    $insert_result = API_updateDBItemRow(TABLE_REELS_MODELS, $data);
+                                    $insert_result = db_update_row(TABLE_REELS_MODELS, $data);
                                     if (!$insert_result["ok"]) {
-                                		API_callError($result["msg"]);
+                                        msv_message_error($result["msg"]);
                                 	}
                                  }
        /////////////////////////////////////////////////////////////////////////////////////         

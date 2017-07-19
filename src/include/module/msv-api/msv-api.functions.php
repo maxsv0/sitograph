@@ -1,6 +1,14 @@
 <?php
 
-function API_SQL($sqlCode) {
+/**
+ * Execute SQL code
+ * Current DB connection is used
+ * In case of success returns insert_id and affected rows number
+ *
+ * @param string $sqlCode SQL code to execute
+ * @return array API result of action
+ */
+function db_sql($sqlCode) {
     // function returns $result
     $result = array(
         "ok" => true,
@@ -8,9 +16,9 @@ function API_SQL($sqlCode) {
         "msg" => "",
     );
 
-    MSV_Log("SQL: $sqlCode", "debug");
+    msv_log("SQL: $sqlCode", "debug");
 
-    $website = MSV_get("website");
+    $website = msv_get("website");
 
     // exit if DB connection doest not exist
     if (!$website->config["db"]) {
@@ -29,10 +37,10 @@ function API_SQL($sqlCode) {
         $result["affected"] = mysqli_affected_rows($website->config["db"]);
 
         if (!empty($result["insert_id"])) {
-           $result["msg"] .= " Insert ID ".$result["insert_id"].".";
+            $result["msg"] .= " Insert ID ".$result["insert_id"].".";
         }
         if (!empty($result["affected"])) {
-           $result["msg"] .= " Affected rows: ".$result["affected"].".";
+            $result["msg"] .= " Affected rows: ".$result["affected"].".";
         }
     } else {
         $result["ok"] = false;
@@ -40,7 +48,7 @@ function API_SQL($sqlCode) {
 
         if (DEBUG) {
             $str = "*** ERROR: ".$result["msg"];
-            MSV_Log($str, "debug");
+            msv_log($str, "debug");
         }
     }
 
@@ -48,29 +56,23 @@ function API_SQL($sqlCode) {
     return $result;
 }
 
-
-function API_getConfig($param) {
-    // function returns $result
-    $result = array(
-        "ok" => true,
-        "data" => array(),
-        "msg" => "",
-    );
-
-    $website = MSV_get("website");
-
-    // TODO: check
-    if (array_key_exists($param, $website->config)) {
-        $value = $website->config[$param];
-        $result["data"] = $value;
-    } else {
-        $result["ok"] = false;
-    }
-
-    return $result;
-}
-
-function API_updateDBItemRow($table, $row) {
+/**
+ * Update row in database
+ *
+ * SQL template:
+INSERT into `$table` (
+...
+values (
+...
+)
+ON DUPLICATE KEY UPDATE
+...
+ *
+ * @param string $table Table name in database
+ * @param array $row Associative array with data
+ * @return array API result of action
+ */
+function db_update_row($table, $row) {
     // function returns $result
     $result = array(
         "ok" => true,
@@ -79,7 +81,7 @@ function API_updateDBItemRow($table, $row) {
     );
 
     // get list of tables and check $table
-    $tablesList = MSV_get("website.tables");
+    $tablesList = msv_get("website.tables");
     if (!array_key_exists($table, $tablesList)) {
         $result["ok"] = false;
         $result["msg"] = _t("msg.table_not_found").": $table";
@@ -107,6 +109,11 @@ function API_updateDBItemRow($table, $row) {
         if ($type === "url" && empty($value)) {
             if (empty($indexValue)) {
                 $value = "----------";
+                if (!empty($row["name"])) {
+                    $value = msv_format_url($row["name"]);
+                } elseif (!empty($row["title"])) {
+                    $value = msv_format_url($row["title"]);
+                }
             } else {
                 $value = $indexValue;
             }
@@ -115,24 +122,23 @@ function API_updateDBItemRow($table, $row) {
             $value = serialize($value);
         }
 
-        if ($type === "bool"		 ||
-            $type === "int" 		 ||
-            $type === "select" 		 ||
-            $type === "published" 	 ||
-            $type === "deleted" 	 ||
+        if ($type === "bool"             ||
+            $type === "int"              ||
+            $type === "select"           ||
+            $type === "published"        ||
+            $type === "deleted"          ||
             $type === "int"
         ) {
             $sqlCodeValue .= "".(int)$value.",";
             $sqlCodeUpdate .= " `".$field."` = ".(int)$value.", ";
         } else {
-            $sqlCodeValue .= "'".MSV_SQLEscape($value)."',";
-            $sqlCodeUpdate .= " `".$field."` = '".MSV_SQLEscape($value)."', ";
+            $sqlCodeValue .= "'".db_escape($value)."',";
+            $sqlCodeUpdate .= " `".$field."` = '".db_escape($value)."', ";
         }
     }
     $sqlCodeField = substr($sqlCodeField, 0, -1)." ) ";
     $sqlCodeValue = substr($sqlCodeValue, 0, -1)." ) ";
     $sqlCodeUpdate = substr($sqlCodeUpdate, 0, -2)." ; ";
-
 
     // Build SQL query
     $sqlCode = "INSERT into `$table` ( ";
@@ -142,12 +148,28 @@ function API_updateDBItemRow($table, $row) {
     $sqlCode .= " ON DUPLICATE KEY UPDATE ";
     $sqlCode .= $sqlCodeUpdate;
 
-    MSV_Log("API_updateDBItemRow for table $table");
+    msv_log("db_update_row for table $table");
 
-    return API_SQL($sqlCode);
+    return db_sql($sqlCode);
 }
 
-function API_updateDBItem($table, $param, $value, $filter = "", $lang = LANG) {
+/**
+ * Update single value for table in database
+ *
+ * SQL template:
+update `$table`
+set
+`$param` = $value
+where
+$filter
+ *
+ * @param string $table Table name in database
+ * @param string $param Name of a field in DB
+ * @param string $value Value to insert into DB
+ * @param string $filter SQL code after `where` clause
+ * @return array API result of action
+ */
+function db_update($table, $param, $value, $filter = "", $lang = LANG) {
     // function returns $result
     $result = array(
         "ok" => true,
@@ -161,27 +183,40 @@ function API_updateDBItem($table, $param, $value, $filter = "", $lang = LANG) {
     $sqlCode .= " set ";
     $sqlCode .= " `$param` = ".$value." ";
     $sqlCode .= " where";
-    $sqlCode .= " `published` > 0 and ";
     $sqlCode .= " (`lang` = '".$lang."' or `lang` = '*') ";
     if (!empty($filter)) {
         $sqlCode .= " and ";
         $sqlCode .= $filter;
     }
 
-    MSV_Log("API_updateDBItem for table $table, $param, $value, $filter");
+    msv_log("db_update for table $table, $param, $value, $filter");
 
-    return API_SQL($sqlCode);
+    return db_sql($sqlCode);
 }
 
+/**
+ * Update row in DB to mark it as deleted
+ *
+ * @param string $table Table name in database
+ * @param string $filter SQL code after `where` clause
+ * @return array API result of action
+ */
+function db_delete($table, $filter = "") {
 
-function API_deleteDBItem($table, $filter = "") {
-
-    return API_updateDBItem($table, "deleted", 1, $filter);
+    return db_update($table, "deleted", 1, $filter);
 }
 
-
-
-function API_getDBListPaged($table, $filter = "", $orderby = "", $items_per_page = 10, $page_url_param = "p") {
+/**
+ * Get list of data from database, splitted into pages
+ *
+ * @param string $table Table name in database
+ * @param string $filter SQL code after `where` clause
+ * @param string $orderby SQL code after `order by` clause
+ * @param int $items_per_page Number of items to retrieve
+ * @param string $page_url_param URL parameter of paging list
+ * @return array API result of action
+ */
+function db_get_listpaged($table, $filter = "", $orderby = "", $items_per_page = 10, $page_url_param = "p") {
     // function returns $result
     $result = array(
         "ok" => true,
@@ -199,7 +234,7 @@ function API_getDBListPaged($table, $filter = "", $orderby = "", $items_per_page
     $currentPage = (int)$_GET[$page_url_param]+1;
     $skip = ($currentPage - 1)*$items_per_page;
 
-    $resultCount = API_getDBCount($table, $filter);
+    $resultCount = db_get_count($table, $filter);
     if (!$resultCount["ok"]) {
         return $resultCount;
     }
@@ -209,7 +244,7 @@ function API_getDBListPaged($table, $filter = "", $orderby = "", $items_per_page
     }
 
 
-    $resultList = API_getDBList($table, $filter, $orderby, $items_per_page, $skip);
+    $resultList = db_get_list($table, $filter, $orderby, $items_per_page, $skip);
     if (!$resultList["ok"]) {
         return $resultList;
     }
@@ -277,9 +312,15 @@ function API_getDBListPaged($table, $filter = "", $orderby = "", $items_per_page
     return $result;
 }
 
-
-
-function API_getDBItem($table, $filter = "", $lang = LANG) {
+/**
+ * Get row of data from DB
+ *
+ * @param string $table Table name in database
+ * @param string $filter SQL code after `where` clause
+ * @param string $lang LANG of data
+ * @return array API result of action
+ */
+function db_get($table, $filter = "", $lang = LANG) {
     // function returns $result
     $result = array(
         "ok" => true,
@@ -292,7 +333,7 @@ function API_getDBItem($table, $filter = "", $lang = LANG) {
 
     $sqlCode = "select * from `$table` where ";
 
-    $user = MSV_get("website.user");
+    $user = msv_get("website.user");
     if (!($user["access"] === "superadmin" || $user["access"] === "admin")) {
         $sqlCode .= " `published` > 0 and ";
     }
@@ -305,7 +346,7 @@ function API_getDBItem($table, $filter = "", $lang = LANG) {
         $sqlCode .= $filter;
     }
 
-    $resultQuery = API_SQL($sqlCode);
+    $resultQuery = db_sql($sqlCode);
     if (!$resultQuery["ok"]) {
         $result["ok"] = false;
         $result["msg"] = _t("msg.cant_load_table_data")." `$table`. ";
@@ -322,24 +363,29 @@ function API_getDBItem($table, $filter = "", $lang = LANG) {
         return $result;
     }
 
-    $resultRow = MSV_SQLRow($resultQuery["data"]);
+    $resultRow = db_fetch_row($resultQuery["data"]);
     if (!$resultRow) {
         $result["ok"] = false;
         $result["msg"] = _t("msg.cant_get_table_data")." `$table`";
         return $result;
     }
 
-    $rowFormated = MSV_DataFormat($table, $resultRow);
+    $rowFormated = msv_format_data($table, $resultRow);
 
     $result["data"] = $rowFormated;
 
     return $result;
 }
 
-
-
-
-function API_getDBCount($table, $filter, $lang = LANG) {
+/**
+ * Get count of rows in table
+ *
+ * @param string $table Table name in database
+ * @param string $filter SQL code after `where` clause
+ * @param string $lang LANG of data
+ * @return array API result of action
+ */
+function db_get_count($table, $filter, $lang = LANG) {
     // function returns $result
     $result = array(
         "ok" => true,
@@ -349,7 +395,7 @@ function API_getDBCount($table, $filter, $lang = LANG) {
 
     $sqlCode = "select count(*) total from `$table` where";
 
-    $user = MSV_get("website.user");
+    $user = msv_get("website.user");
     if (!($user["access"] === "superadmin" || $user["access"] === "admin")) {
         $sqlCode .= " `published` > 0 and ";
     }
@@ -361,7 +407,7 @@ function API_getDBCount($table, $filter, $lang = LANG) {
         $sqlCode .= $filter;
     }
 
-    $resultQuery = API_SQL($sqlCode);
+    $resultQuery = db_sql($sqlCode);
     if (!$resultQuery["ok"]) {
         $result["ok"] = false;
         $result["msg"] = "Can't get table count `$table`";
@@ -373,8 +419,18 @@ function API_getDBCount($table, $filter, $lang = LANG) {
     return $result;
 }
 
-
-function API_getDBList($table, $filter = "", $orderby = "", $limit = 1000000, $skip = 0, $lang = LANG) {
+/**
+ * Get list of data from database
+ *
+ * @param string $table Table name in database
+ * @param string $filter SQL code after `where` clause
+ * @param string $orderby SQL code after `order by` clause
+ * @param int $limit Number of items to retrieve
+ * @param int $skip Number of items to skip from start
+ * @param string $lang LANG of data
+ * @return array API result of action
+ */
+function db_get_list($table, $filter = "", $orderby = "", $limit = 1000000, $skip = 0, $lang = LANG) {
     // function returns $result
     $result = array(
         "ok" => true,
@@ -388,7 +444,7 @@ function API_getDBList($table, $filter = "", $orderby = "", $limit = 1000000, $s
         return $result;
     }
 
-    $tablesList = MSV_get("website.tables");
+    $tablesList = msv_get("website.tables");
     if (!array_key_exists($table, $tablesList)) {
         $result["msg"] = "Table not found $table";
         $result["data"] = array();
@@ -402,7 +458,7 @@ function API_getDBList($table, $filter = "", $orderby = "", $limit = 1000000, $s
 
     $sqlCode = "select * from `$table` where";
 
-    $user = MSV_get("website.user");
+    $user = msv_get("website.user");
     if (!($user["access"] === "superadmin" || $user["access"] === "admin")) {
         $sqlCode .= " `published` > 0 and ";
     }
@@ -429,7 +485,7 @@ function API_getDBList($table, $filter = "", $orderby = "", $limit = 1000000, $s
 
     $result["sql"] = $sqlCode;
 
-    $resultQuery = API_SQL($sqlCode);
+    $resultQuery = db_sql($sqlCode);
     if (!$resultQuery["ok"]) {
         $result["ok"] = false;
         $result["msg"] = _t("msg.cant_load_table_data")." `$table`. ".$resultQuery["msg"];
@@ -443,9 +499,9 @@ function API_getDBList($table, $filter = "", $orderby = "", $limit = 1000000, $s
     }
 
     $listItem = array();
-    while ($resultRow = MSV_SQLRow($resultQuery["data"])) {
+    while ($resultRow = db_fetch_row($resultQuery["data"])) {
         // format row
-        $rowFormated = MSV_DataFormat($table, $resultRow);
+        $rowFormated = msv_format_data($table, $resultRow);
 
         // add formated row to list
         $listItem[$rowFormated["id"]] = $rowFormated;
@@ -455,39 +511,14 @@ function API_getDBList($table, $filter = "", $orderby = "", $limit = 1000000, $s
     return $result;
 }
 
-function API_setStructure($row) {
-    $website = MSV_get("website");
-
-    // TODO : CHECK ...
-    $website->structure[] = $row;
-}
-function API_setMenu($menuID, $row) {
-    $website = MSV_get("website");
-
-    // TODO : CHECK input
-
-    // parse sub-level structure, based on parent_id
-    $menu = array();
-
-    // build 0 level menu
-    foreach ($row as $item) {
-        if ($item["parent_id"] > 0) continue;
-        $menu[$item["id"]] = $item;
-    }
-
-    // build first level submenu
-    foreach ($row as $itemSub) {
-        if ($itemSub["parent_id"] > 0) {
-            $menu[$itemSub["parent_id"]]["sub"][$itemSub["id"]] = $itemSub;
-        }
-    }
-
-    $website->menu[$menuID] = array_values($menu);
-}
-
-
-function API_removeTable($table) {
-    $tablesList = MSV_get("website.tables");
+/**
+ * Drop table
+ *
+ * @param string $table Table name in database
+ * @return array API result of action
+ */
+function db_remove_table($table) {
+    $tablesList = msv_get("website.tables");
     $infoTable = $tablesList[$table];
     if (empty($infoTable)) {
         return false;
@@ -495,13 +526,19 @@ function API_removeTable($table) {
 
     $sqlCode = "DROP TABLE `$table`";
 
-    $result = API_SQL($sqlCode);
+    $result = db_sql($sqlCode);
 
     return $result;
 }
 
-function API_emptyTable($table) {
-    $tablesList = MSV_get("website.tables");
+/**
+ * Truncate table
+ *
+ * @param string $table Table name in database
+ * @return array API result of action
+ */
+function db_empty_table($table) {
+    $tablesList = msv_get("website.tables");
     $infoTable = $tablesList[$table];
     if (empty($infoTable)) {
         return false;
@@ -509,13 +546,19 @@ function API_emptyTable($table) {
 
     $sqlCode = "TRUNCATE TABLE `$table`";
 
-    $result = API_SQL($sqlCode);
+    $result = db_sql($sqlCode);
 
     return $result;
 }
 
-function API_createTable($table) {
-    $tablesList = MSV_get("website.tables");
+/**
+ * Create table with indexes
+ *
+ * @param string $table Table name in database
+ * @return array API result of action
+ */
+function db_create_table($table) {
+    $tablesList = msv_get("website.tables");
     $infoTable = $tablesList[$table];
     if (empty($infoTable)) {
         return false;
@@ -593,31 +636,39 @@ function API_createTable($table) {
         }
     }
 
-    $result = API_SQL($sqlCode);
+    $result = db_sql($sqlCode);
     if ($result["ok"]) {
         foreach ($tableIndexes as $field) {
-            API_SQL("ALTER TABLE `$table` ADD INDEX `$field` (`$field` ASC)");
+            db_sql("ALTER TABLE `$table` ADD INDEX `$field` (`$field` ASC)");
         }
     }
 
     return $result;
 }
 
-function API_itemAdd($table, $fields, $lang = LANG) {
+/**
+ * Add data to database
+ *
+ * @param string $table Table name in database
+ * @param array $fields Associative array with data
+ * @param string $lang LANG of data, support ALL
+ * @return array API result of action
+ */
+function db_add($table, $fields, $lang = LANG) {
 
     // run recursively and exit
     if ($lang === "all") {
 
-        $website = MSV_get("website");
+        $website = msv_get("website");
 
         foreach ($website->languages as $langID) {
-            API_itemAdd($table, $fields, $langID);
+            db_add($table, $fields, $langID);
         }
 
         return true;
     }
 
-    $tablesList = MSV_get("website.tables");
+    $tablesList = msv_get("website.tables");
     $infoTable = $tablesList[$table];
     $filter = "";
 
@@ -635,7 +686,7 @@ function API_itemAdd($table, $fields, $lang = LANG) {
     }
 
     // get count
-    $resultQuery = API_getDBCount($table, $filter, $lang);
+    $resultQuery = db_get_count($table, $filter, $lang);
     if ($resultQuery["data"] > 0) {
         // no need to add, item already exists
 
@@ -647,7 +698,7 @@ function API_itemAdd($table, $fields, $lang = LANG) {
         return $result;
     }
 
-    $tablesList = MSV_get("website.tables");
+    $tablesList = msv_get("website.tables");
     $infoTable = $tablesList[$table];
 
     $fields["deleted"] = 0;
@@ -702,19 +753,19 @@ function API_itemAdd($table, $fields, $lang = LANG) {
                 break;
             case "multiselect":
             case "array":
-                $valueEscaped = " '".MSV_SQLEscape(serialize($value))."' ";
+                $valueEscaped = " '".db_escape(serialize($value))."' ";
                 break;
             case "pic":
-                $valueEscaped = " '".MSV_SQLEscape($value)."' ";
+                $valueEscaped = " '".db_escape($value)."' ";
                 break;
             case "url":
                 // if url is empty set: url = id
                 if (empty($value) && empty($indexValue)) {
                     $valueEscaped = " '----------' ";
                 } elseif (empty($value)) {
-                    $valueEscaped = " '".MSV_SQLEscape($indexValue)."' ";
+                    $valueEscaped = " '".db_escape($indexValue)."' ";
                 } else {
-                    $valueEscaped = " '".MSV_SQLEscape($value)."' ";
+                    $valueEscaped = " '".db_escape($value)."' ";
                 }
                 break;
             case "date":
@@ -722,13 +773,13 @@ function API_itemAdd($table, $fields, $lang = LANG) {
                 if (is_numeric($value)) {
                     $valueEscaped = "'".date("Y-m-d H:i:s", $value)."'";
                 } elseif (!empty($value)) {
-                    $valueEscaped = " '".MSV_SQLEscape($value)."' ";
+                    $valueEscaped = " '".db_escape($value)."' ";
                 } else {
                     $valueEscaped = " now() ";
                 }
                 break;
             default:
-                $valueEscaped = " '".MSV_SQLEscape($value)."' ";
+                $valueEscaped = " '".db_escape($value)."' ";
                 break;
         }
 
@@ -737,5 +788,20 @@ function API_itemAdd($table, $fields, $lang = LANG) {
 
     $sqlCode = substr($sqlCode, 0, -1)." ) ";
 
-    return API_SQL($sqlCode);
+    return db_sql($sqlCode);
+}
+
+/**
+ * get value of next auto increment ID
+ *
+ * @param string $table Table name in database
+ * @return int Auto_increment. ID of a next row in DB
+ */
+function db_get_autoincrement($table) {
+    $sql = "SHOW TABLE STATUS FROM `".DB_NAME."` LIKE '$table'";
+
+    $result = db_sql($sql);
+    $resultRow = db_fetch_row($result["data"]);
+
+    return $resultRow['Auto_increment'];
 }

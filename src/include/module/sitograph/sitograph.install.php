@@ -10,7 +10,7 @@ function Install_Sitograph($module) {
         "page_template" => "sitograph.tpl",
         "access" => "admin",
     );
-    MSV_Structure_add($itemStructure, array("lang" => "*"));
+    msv_add_structure($itemStructure, array("lang" => "*"));
 
     $itemStructure = array(
         "url" => "/admin/login/",
@@ -19,7 +19,7 @@ function Install_Sitograph($module) {
         "page_template" => "sitograph-login.tpl",
         "access" => "everyone",
     );
-    MSV_Structure_add($itemStructure, array("lang" => "*"));
+    msv_add_structure($itemStructure, array("lang" => "*"));
 
     // add top MENU item
     $item = array(
@@ -29,7 +29,7 @@ function Install_Sitograph($module) {
         "menu_id" => "top",
         "order_id" => 3,
     );
-    $result = API_itemAdd(TABLE_MENU, $item);
+    $result = db_add(TABLE_MENU, $item);
     $menu_parent_id = $result["insert_id"];
 
     // create sample site structure
@@ -45,7 +45,7 @@ function Install_Sitograph($module) {
         "document_title" => "Getting Started",
         "document_text" => $docContent,
     );
-    MSV_Structure_add($itemStructure, array("lang" => "*"));
+    msv_add_structure($itemStructure, array("lang" => "*"));
 
     $docContent = file_get_contents($module->pathModule."install-page-file-structure.html");
     $itemStructure = array(
@@ -59,7 +59,7 @@ function Install_Sitograph($module) {
         "document_title" => "Getting Started",
         "document_text" => $docContent,
     );
-    MSV_Structure_add($itemStructure, array("lang" => "*"));
+    msv_add_structure($itemStructure, array("lang" => "*"));
 
     $docContent = file_get_contents($module->pathModule."install-page-api.html");
     $itemStructure = array(
@@ -73,7 +73,7 @@ function Install_Sitograph($module) {
         "document_title" => "Getting Started",
         "document_text" => $docContent,
     );
-    MSV_Structure_add($itemStructure, array("lang" => "*"));
+    msv_add_structure($itemStructure, array("lang" => "*"));
 
     $itemStructure = array(
         "url" => "/sitograph/modules/",
@@ -84,11 +84,11 @@ function Install_Sitograph($module) {
         "menu_order" => 20,
         "menu_parent_id" => $menu_parent_id,
     );
-    MSV_Structure_add($itemStructure, array("lang" => "*"));
+    msv_add_structure($itemStructure, array("lang" => "*"));
 
     // mailing options
-    MSV_setConfig("email_from", "tech@sitograph.com", true, "*");
-    MSV_setConfig("email_fromname", "Sitograph", true, "*");
+    msv_set_config("email_from", "tech@sitograph.com", true, "*");
+    msv_set_config("email_fromname", "Sitograph", true, "*");
 
     // add mail templates
     $header = '
@@ -156,19 +156,19 @@ It is simple and powerful content management system for website or online shop.
 </table>
 ';
     // update all Email Templates, adding Sitograph header and footer
-    $resultQuery = API_getDBList(TABLE_MAIL_TEMPLATES);
+    $resultQuery = db_get_list(TABLE_MAIL_TEMPLATES);
     if ($resultQuery["ok"]) {
         foreach ($resultQuery["data"] as $template) {
             $templateBody = $templateHeader.$template["text"].$templateFooter;
 
-            $result = API_updateDBItem(TABLE_MAIL_TEMPLATES, "header", "'".MSV_SQLEscape($header)."'", " `id` = '".$template["id"]."'");
+            $result = db_update(TABLE_MAIL_TEMPLATES, "header", "'".db_escape($header)."'", " `id` = '".$template["id"]."'");
             if (!$result["ok"]) {
-                MSV_MessageError($result["msg"]);
+                msv_message_error($result["msg"]);
             }
 
-            $result = API_updateDBItem(TABLE_MAIL_TEMPLATES, "text", "'".MSV_SQLEscape($templateBody)."'", " `id` = '".$template["id"]."'");
+            $result = db_update(TABLE_MAIL_TEMPLATES, "text", "'".db_escape($templateBody)."'", " `id` = '".$template["id"]."'");
             if (!$result["ok"]) {
-                MSV_MessageError($result["msg"]);
+                msv_message_error($result["msg"]);
             }
         }
     }
@@ -226,7 +226,7 @@ It is simple and powerful content management system for website or online shop.
             ),
         )
     );
-    $result = Gallery_Add($item, array("LoadPictures"));
+    $result = msv_add_gallery($item, array("LoadPictures"));
     $album_id = $result["insert_id"];
 
     // add blog posts
@@ -243,7 +243,7 @@ It is simple and powerful content management system for website or online shop.
         "pic" => "images/blog_sitograph_1.jpg",
         "pic_preview" => "images/blog_sitograph_1.jpg",
     );
-    MSV_Blog_add($item, array("LoadPictures"));
+    msv_add_blog($item, array("LoadPictures"));
 
     $docContent = file_get_contents($module->pathModule."install-blog-install.html");
     $item = array(
@@ -257,7 +257,7 @@ It is simple and powerful content management system for website or online shop.
         "pic" => "images/blog_sitograph_2.jpg",
         "pic_preview" => "images/blog_sitograph_2.jpg",
     );
-    MSV_Blog_add($item, array("LoadPictures"));
+    msv_add_blog($item, array("LoadPictures"));
 
     $docContent = file_get_contents($module->pathModule."install-blog-release.html");
     $item = array(
@@ -271,7 +271,7 @@ It is simple and powerful content management system for website or online shop.
         "pic" => "images/blog_sitograph_3.jpg",
         "pic_preview" => "images/blog_sitograph_3.jpg",
     );
-    MSV_Blog_add($item, array("LoadPictures"));
+    msv_add_blog($item, array("LoadPictures"));
 
 
 }

@@ -2,8 +2,8 @@
 
 // ******** API procedures **********
 
-function ajaxFormRequest() {
-    $website = MSV_get("website");
+function api_request_form() {
+    $website = msv_get("website");
 
     $templatePath = ABS_TEMPLATE."/default/sitograph/form-inline.tpl";
 
@@ -18,27 +18,27 @@ function ajaxFormRequest() {
 
 
 function AdminLoadUI($admin) {
-    MSV_IncludeJSFile("/content/js/sitograph.js");
-    MSV_IncludeCSSFile("/content/css/sitograph.css");
+    msv_include_jsfile("/content/js/sitograph.js");
+    msv_include_cssfile("/content/css/sitograph.css");
 }
 
 
 function SitographLoadModules($module) {
-    $list = MSV_listModules();
-    MSV_assignData("modules_list", $list);
+    $list = msv_list_modules();
+    msv_assign_data("modules_list", $list);
 
-    $list = MSV_get("website.modules");
-    MSV_assignData("modules_installed_list", $list);
-    $list = MSV_get("website.modulesActive");
-    MSV_assignData("modules_active_list", $list);
+    $list = msv_get("website.modules");
+    msv_assign_data("modules_installed_list", $list);
+    $list = msv_get("website.modulesActive");
+    msv_assign_data("modules_active_list", $list);
     
     $urlInfo = parse_url(REP);
-    MSV_assignData("rep_url", $urlInfo["scheme"]."://".$urlInfo["host"]);
+    msv_assign_data("rep_url", $urlInfo["scheme"]."://".$urlInfo["host"]);
 
     $headers = get_headers(REP);
     if(strpos($headers[0],'200')===false) {
-        MSV_assignData("rep_status", "offline");
+        msv_assign_data("rep_status", "offline");
     } else {
-        MSV_assignData("rep_status", "online");
+        msv_assign_data("rep_status", "online");
     }
 }

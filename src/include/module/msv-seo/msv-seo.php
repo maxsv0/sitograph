@@ -1,10 +1,10 @@
 <?php
 
 function setPageSEO($seo) {
-	$result = API_getDBItem(TABLE_SEO, " `url` = '".$seo->website->requestUrlRaw."' ");
+	$result = db_get(TABLE_SEO, " `url` = '".$seo->website->requestUrlRaw."' ");
 	if (!$result["ok"]) {
-		API_callError($result["msg"]);
-	} 
+	    msv_message_error($result["msg"]);
+	}
 	$row = $result["data"];
 	if (empty($row)) return false;
 
@@ -13,9 +13,9 @@ function setPageSEO($seo) {
 
 
 function SEO_set($title = "", $description = "", $keywords = "") {
-	MSV_Log("Module:SEO -> Set: $title");
+    msv_log("Module:SEO -> Set: $title");
 	
-	$website = MSV_get("website");
+	$website = msv_get("website");
 	
 	$website->page["title"] = $title;
 	$website->page["keywords"] = $description;

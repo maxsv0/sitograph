@@ -12,7 +12,7 @@ function Install_Users($module) {
         "menu" => "user",
         "menu_order" => 1,
     );
-    MSV_Structure_add($itemStructure, array("lang" => "all"));
+    msv_add_structure($itemStructure, array("lang" => "all"));
 
     $itemStructure = array(
         "url" => "/signup/",
@@ -25,7 +25,7 @@ function Install_Users($module) {
         "menu" => "nouser",
         "menu_order" => 1,
     );
-    MSV_Structure_add($itemStructure, array("lang" => "all"));
+    msv_add_structure($itemStructure, array("lang" => "all"));
 
     $itemStructure = array(
         "url" => "/login/",
@@ -38,7 +38,7 @@ function Install_Users($module) {
         "menu" => "nouser",
         "menu_order" => 1,
     );
-    MSV_Structure_add($itemStructure, array("lang" => "all"));
+    msv_add_structure($itemStructure, array("lang" => "all"));
 
     $itemStructure = array(
         "url" => "/password-reset/",
@@ -49,7 +49,7 @@ function Install_Users($module) {
         "sitemap" => 1,
         "access" => "everyone",
     );
-    MSV_Structure_add($itemStructure, array("lang" => "all"));
+    msv_add_structure($itemStructure, array("lang" => "all"));
 
     $itemStructure = array(
         "url" => "/settings/",
@@ -62,7 +62,7 @@ function Install_Users($module) {
         "menu" => "user",
         "menu_order" => 5,
     );
-    MSV_Structure_add($itemStructure, array("lang" => "all"));
+    msv_add_structure($itemStructure, array("lang" => "all"));
 
     $item = array(
         "published" => 1,
@@ -71,18 +71,18 @@ function Install_Users($module) {
         "menu_id" => "user",
         "order_id" => 100,
     );
-    API_itemAdd(TABLE_MENU, $item, "all");
+    db_add(TABLE_MENU, $item, "all");
 
     // trigger email sending on user registration
     // default value: 1 => each user will receive email on registration
-    MSV_setConfig("users_registration_email", 1, true, "*");
+    msv_set_config("users_registration_email", 1, true, "*");
 
     // send email notification to "admin_email"
-    MSV_setConfig("users_registration_email_notify", 1, true, "*");
+    msv_set_config("users_registration_email_notify", 1, true, "*");
 
     // allow user registration on website using form
     // default value: 0 => users can't register himself
-    MSV_setConfig("users_registration_allow", 0, true, "*");
+    msv_set_config("users_registration_allow", 0, true, "*");
 
     // install emails
     $header = "";
@@ -175,7 +175,7 @@ If you’re having trouble clicking the "Verify Email" button, copy and paste th
         "text" => $templateRegister,
         "header" => $header,
     );
-    MSV_MailTemplate_add($itemTemplate, array("lang" => "all"));
+    msv_add_mailtemplate($itemTemplate, array("lang" => "all"));
 
     $itemTemplate = array(
         "name" => "user_registration_verify",
@@ -183,7 +183,7 @@ If you’re having trouble clicking the "Verify Email" button, copy and paste th
         "text" => $templateRegisterConfirm,
         "header" => $header,
     );
-    MSV_MailTemplate_add($itemTemplate, array("lang" => "all"));
+    msv_add_mailtemplate($itemTemplate, array("lang" => "all"));
 
     $itemTemplate = array(
         "name" => "user_registration_notify",
@@ -191,7 +191,7 @@ If you’re having trouble clicking the "Verify Email" button, copy and paste th
         "text" => $templateRegisterNotify,
         "header" => $header,
     );
-    MSV_MailTemplate_add($itemTemplate, array("lang" => "all"));
+    msv_add_mailtemplate($itemTemplate, array("lang" => "all"));
 
     $itemTemplate = array(
         "name" => "user_verify",
@@ -199,7 +199,7 @@ If you’re having trouble clicking the "Verify Email" button, copy and paste th
         "text" => $templateVerify,
         "header" => $header,
     );
-    MSV_MailTemplate_add($itemTemplate, array("lang" => "all"));
+    msv_add_mailtemplate($itemTemplate, array("lang" => "all"));
 
     $itemTemplate = array(
         "name" => "user_password_reset",
@@ -207,7 +207,7 @@ If you’re having trouble clicking the "Verify Email" button, copy and paste th
         "text" => $templatePasswordReset,
         "header" => $header,
     );
-    MSV_MailTemplate_add($itemTemplate, array("lang" => "all"));
+    msv_add_mailtemplate($itemTemplate, array("lang" => "all"));
 
     $itemTemplate = array(
         "name" => "user_password_reset_confirm",
@@ -215,5 +215,5 @@ If you’re having trouble clicking the "Verify Email" button, copy and paste th
         "text" => $templatePasswordResetConfirm,
         "header" => $header,
     );
-    MSV_MailTemplate_add($itemTemplate, array("lang" => "all"));
+    msv_add_mailtemplate($itemTemplate, array("lang" => "all"));
 }

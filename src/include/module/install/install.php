@@ -19,9 +19,9 @@ $website->pageTemplate = "install.tpl";
 $website->pageTemplatePath = ABS_TEMPLATE."/default/install.tpl";
 
 // include extra JS/CSS
-MSV_Include("/content/js/jquery.min.js");
-MSV_Include("/content/css/bootstrap.min.css");
-MSV_Include("/content/js/bootstrap.min.js");
+msv_include("/content/js/jquery.min.js");
+msv_include("/content/css/bootstrap.min.css");
+msv_include("/content/js/bootstrap.min.js");
 
 $configListNames = array(
     "LANGUAGES",
@@ -120,7 +120,7 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
                     if (!empty($tableList)) {
 
                         foreach ($tableList as $tableName => $tableInfo) {
-                            $result = API_createTable($tableName);
+                            $result = db_create_table($tableName);
                         }
                     }
                 }
@@ -132,7 +132,7 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
 
             if(!empty($_REQUEST["modules_remote"]) && is_array($_REQUEST["modules_remote"])) {
                 foreach ($_REQUEST["modules_remote"] as $module) {
-                    MSV_installModule($module, false);
+                    msv_install_module($module, false);
                 }
             }
 
@@ -163,14 +163,14 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
                 }
 
                 // add admin account
-                $resultUser = MSV_User_Add($item, $options);
+                $resultUser = msv_add_user($item, $options);
                 if ($resultUser["ok"] && !empty($resultUser["insert_id"])) {
                     $_SESSION['user_id'] = $resultUser["insert_id"];
                     $_SESSION['user_email'] = $_REQUEST["admin_login"];
 
                     // store website admin email
-                    MSV_setConfig("admin_email", $_REQUEST["admin_login"], true, "*");
-                    MSV_setConfig("support_email", $_REQUEST["admin_login"], true, "*");
+                    msv_set_config("admin_email", $_REQUEST["admin_login"], true, "*");
+                    msv_set_config("support_email", $_REQUEST["admin_login"], true, "*");
 
                     // add cron job:
                     $item = array(
@@ -179,7 +179,7 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
                         "status" => "active",
                         "type" => "daily",
                     );
-                    $resultRun = MSV_Cron_add($item);
+                    $resultRun = msv_add_cron($item);
 
 
                 } else {
@@ -198,7 +198,7 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
 
         // finish installation
         // update settings
-        $result = API_getDBList(TABLE_SETTINGS);
+        $result = db_get_list(TABLE_SETTINGS);
         $list = $result["data"];
         foreach ($list as $row) {
             $name = $row["param"];
@@ -207,7 +207,7 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
                 $value = $_REQUEST["s_".$name];
 
                 if ($valueCurrent !== $value) {
-                    API_updateDBItem(TABLE_SETTINGS, "value", "'".MSV_SQLEscape($value)."'", " `param` = '".$name."'");
+                    db_update(TABLE_SETTINGS, "value", "'".db_escape($value)."'", " `param` = '".$name."'");
                 }
             }
         }
@@ -300,12 +300,12 @@ if ($install_step === 3) {
         $website->config["admin_login"] = "admin@".HOST;
     }
 
-    $website->config["admin_password"] = MSV_PasswordGenerate();
+    $website->config["admin_password"] = msv_generate_password();
 }
 
 // prepare initial data, step 4
 if ($install_step === 4) {
-    $result = API_getDBList(TABLE_SETTINGS);
+    $result = db_get_list(TABLE_SETTINGS);
     $list = $result["data"];
     $website->config["settings"] = $list;
 }

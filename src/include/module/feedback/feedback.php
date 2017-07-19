@@ -1,32 +1,32 @@
 <?php
 // admin user features
-MSV_addAdminEdit(".feedbackItem", "feedback", TABLE_FEEDBACK);
+msv_admin_editbtn(".feedbackItem", "feedback", TABLE_FEEDBACK);
 
 if (!empty($_REQUEST["doSendFeedback"])) {
     // extract data from request for corresponding table
-    $item = MSV_proccessTableData(TABLE_FEEDBACK, "feedback_");
+    $item = msv_process_tabledata(TABLE_FEEDBACK, "feedback_");
 
     // execute request
-    $result = Feedback_Add($item, array("EmailNotifyUser", "EmailNotifyAdmin"));
+    $result = msv_add_feedback($item, array("EmailNotifyUser", "EmailNotifyAdmin"));
     if ($result["ok"]) {
-        MSV_MessageOK($result["msg"]);
+        msv_message_ok($result["msg"]);
     } else {
-        MSV_MessageError($result["msg"]);
+        msv_message_error($result["msg"]);
     }
 
-    if (MSV_HasMessageError()) {
+    if (msv_has_messages()) {
         // pass data from request to template to autofill the form
-        MSV_assignTableData(TABLE_FEEDBACK, "feedback_");
+        msv_assign_tabledata(TABLE_FEEDBACK, "feedback_");
     }
 }
 
 function loadFeedback($module) {
     // load 'sticked' items from feedback table
-    $resultQuery = API_getDBList(TABLE_FEEDBACK, "`sticked` > 0", "`date` desc", $module->stickedItemsCount, "");
+    $resultQuery = db_get_list(TABLE_FEEDBACK, "`sticked` > 0", "`date` desc", $module->stickedItemsCount, "");
     if ($resultQuery["ok"]) {
         // get a list of items from API result
         $listItems = $resultQuery["data"];
         // assign data to template
-        MSV_assignData("feedback_sticked", $listItems);
+        msv_assign_data("feedback_sticked", $listItems);
     }
 }

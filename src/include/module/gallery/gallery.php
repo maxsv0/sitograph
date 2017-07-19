@@ -1,14 +1,14 @@
 <?php
 // admin user features
-MSV_addAdminEdit(".galleryAlbum", "gallery", TABLE_GALLERY_ALBUM);
+msv_admin_editbtn(".galleryAlbum", "gallery", TABLE_GALLERY_ALBUM);
 
 function GalleryLoadPreview($gallery) {
 	// Load list of albums
-	$resultQuery = API_getDBList(TABLE_GALLERY_ALBUM, "", "views desc", $gallery->previewItemsCount);
+	$resultQuery = db_get_list(TABLE_GALLERY_ALBUM, "", "views desc", $gallery->previewItemsCount);
 
 	// Display message in case of error
 	if (!$resultQuery["ok"]) {
-		API_callError($resultQuery["msg"]);
+        msv_message_error($resultQuery["msg"]);
 		return false;
 	} 
 	
@@ -19,11 +19,11 @@ function GalleryLoadPreview($gallery) {
 	$listItemsID = array_keys($listItems);
 	
 	// Load photos for albums
-	$resultPhotos = API_getDBList(TABLE_GALLERY_PHOTOS, " `album_id` IN (".implode(",",$listItemsID).")", "order_id asc");
+	$resultPhotos = db_get_list(TABLE_GALLERY_PHOTOS, " `album_id` IN (".implode(",",$listItemsID).")", "order_id asc");
 	
 	// Display message in case of error
 	if (!$resultPhotos["ok"]) {
-		API_callError($resultPhotos["msg"]);
+        msv_message_error($resultPhotos["msg"]);
 		return false;
 	} 
 	
@@ -44,7 +44,7 @@ function GalleryLoadPreview($gallery) {
 	}
 
 	// assign data to template
-	MSV_assignData("gallery_albums_preview", $gallery_albums);
+    msv_assign_data("gallery_albums_preview", $gallery_albums);
 }
 
 
@@ -53,7 +53,7 @@ function GalleryLoad($gallery) {
 	
     if (!empty($_GET[$gallery->searchUrlParam])) {
     	$arSearch = array("title", "description", "text", "url");
-    	$sn = MSV_SQLEscape($_GET[$gallery->searchUrlParam]);
+    	$sn = db_escape($_GET[$gallery->searchUrlParam]);
 
     	$sqlFilter .= " and ( ";
     	foreach ($arSearch as $v) {
@@ -64,11 +64,11 @@ function GalleryLoad($gallery) {
 	
 	
 	// Load list of albums
-	$resultQuery = API_getDBListPaged(TABLE_GALLERY_ALBUM, $sqlFilter, "`date` desc", $gallery->itemsPerPage, $gallery->pageUrlParam);
+	$resultQuery = db_get_listpaged(TABLE_GALLERY_ALBUM, $sqlFilter, "`date` desc", $gallery->itemsPerPage, $gallery->pageUrlParam);
 
 	// Display message in case of error
 	if (!$resultQuery["ok"]) {
-		API_callError($resultQuery["msg"]);
+        msv_message_error($resultQuery["msg"]);
 		return false;
 	} 
 	
@@ -87,11 +87,11 @@ function GalleryLoad($gallery) {
 		}
 		
 		// Load photos for albums
-		$resultPhotos = API_getDBList(TABLE_GALLERY_PHOTOS, "album_id IN (".implode(",",$listItemsID).")", "order_id asc");
+		$resultPhotos = db_get_list(TABLE_GALLERY_PHOTOS, "album_id IN (".implode(",",$listItemsID).")", "order_id asc");
 		
 		// Display message in case of error
 		if (!$resultPhotos["ok"]) {
-			API_callError($resultPhotos["msg"]);
+            msv_message_error($resultPhotos["msg"]);
 			return false;
 		} 
 		
@@ -112,8 +112,8 @@ function GalleryLoad($gallery) {
 	}
 
 	// assign data to template
-	MSV_assignData("gallery_albums", $gallery_albums);
-	MSV_assignData("gallery_pages", $listPages);
+    msv_assign_data("gallery_albums", $gallery_albums);
+    msv_assign_data("gallery_pages", $listPages);
 }
 
 
@@ -121,30 +121,30 @@ function GalleryLoad($gallery) {
 function GalleryLoadAlbum($gallery) {
 	$albumUrl = $gallery->website->requestUrlMatch[1];
 	if (empty($albumUrl)) {
-		API_callError("album Url not set");
+        msv_message_error("album Url not set");
 		return false;
 	}
-	
-	
-	$result = API_getDBItem(TABLE_GALLERY_ALBUM, " url = '".$albumUrl."'");
+
+
+	$result = db_get(TABLE_GALLERY_ALBUM, " url = '".$albumUrl."'");
 	if (!$result["ok"]) {
-		API_callError($result["msg"]);
+        msv_message_error($result["msg"]);
 		return false;
-	} 
+	}
 	$album = $result["data"];
-	
-	
-	$resultAlbum = API_getDBList(TABLE_GALLERY_PHOTOS, "album_id = ".$album["id"], "order_id asc", 100000);
+
+
+	$resultAlbum = db_get_list(TABLE_GALLERY_PHOTOS, "album_id = ".$album["id"], "order_id asc", 100000);
 	if ($resultAlbum["ok"]) {
 		$album["photos"] = $resultAlbum["data"];
 	}
 
 	// assign data to template
-	MSV_assignData("gallery_album_details", $album);
-	
+    msv_assign_data("gallery_album_details", $album);
+
 	// update views / +1
-	API_updateDBItem(TABLE_GALLERY_ALBUM, "views", "views+1", " url = '".$albumUrl."'");
-	
+    db_update(TABLE_GALLERY_ALBUM, "views", "views+1", " url = '".$albumUrl."'");
+
 	// add item to page nativation line
-	MSV_setNavigation($album["title"], $album["url"]);
+    msv_set_navigation($album["title"], $album["url"]);
 }
