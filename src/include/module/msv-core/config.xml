@@ -99,6 +99,7 @@
 			<field name="name" type="str"/>
 			<field name="status" type="str"/>
 			<field name="type" type="str"/>
+			<field name="url_local" type="str"/>
 			<field name="code" type="text"/>
 			<field name="last_run" type="date"/>
 			<field name="last_result" type="bool"/>

@@ -105,11 +105,25 @@ function api_request_cron($module) {
     $request = msv_get('website.requestUrlMatch');
     $apiType = $request[2];
 
+    $tm_start = time();
+    $item = array(
+        "published" => 1,
+        "job_id" => 0,
+        "job_name" => "cron ".$apiType,
+        "time_start" => $tm_start,
+        "result_ok" => 0,
+        "result_msg" => "started",
+    );
+    $resultLog = db_add(TABLE_CRONJOBS_LOGS, $item);
+    $logID = $resultLog["insert_id"];
+    $jobIndex = 0;
+
     // get jobs depending on request
     switch ($apiType) {
         case "weekly":
         case "daily":
         case "hourly":
+        case "minutely":
             $resultQuery = db_get_list(TABLE_CRONJOBS, " `status` = 'active' and `type` = '".$apiType."'", "`id` desc", 999, "");
             break;
         default:
@@ -123,9 +137,9 @@ function api_request_cron($module) {
 
     // run selected jobs
     if (!empty($resultQuery["data"])) {
-
         $resultCron = array();
         foreach($resultQuery["data"] as $rowJob) {
+            $jobIndex++;
             $code = $rowJob["code"];
             $result = array(
                 "ok" => false,
@@ -157,13 +171,18 @@ function api_request_cron($module) {
             db_update(TABLE_CRONJOBS, "last_run", "NOW()", "`id` = ".$rowJob["id"]);
             db_update(TABLE_CRONJOBS, "last_result", "'".(int)$resultRun["ok"]."'", "`id` = ".$rowJob["id"]);
 
-            $rowJob["run_result"] = $item;
+            $rowJob["run_result"] = $result["msg"];
 
             $resultCron[] = $rowJob;
         }
 
         $resultQuery["data"] = $resultCron;
     }
+
+    $tm_end = time();
+    db_update(TABLE_CRONJOBS_LOGS, "result_ok", $jobIndex, "`id` = ".$logID);
+    db_update(TABLE_CRONJOBS_LOGS, "time_end", $tm_end, "`id` = ".$logID);
+    db_update(TABLE_CRONJOBS_LOGS, "result_msg", "'finished'", "`id` = ".$logID);
 
     // do not output sql for security reasons
     unset($resultQuery["sql"]);
