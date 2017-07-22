@@ -186,6 +186,26 @@ $submenu["locales"] = array(
         "title" => _t("admin.locales_title")
 );
 */
+$submenu["cronjobs"] = array(
+    "name" => _t("admin.cronjobs"),
+    "access" => "superadmin",
+    "handler" => "module-table.php",
+    "table" => TABLE_CRONJOBS,
+    "url" => "/admin/?section=cronjobs",
+    "file" => "cronjobs.tpl",
+    "title" => _t("admin.cronjobs_title"),
+    "orderID" => 101,
+);
+$submenu["cronjobslog"] = array(
+    "name" => _t("admin.cronjobslog"),
+    "access" => "superadmin",
+    "handler" => "module-table.php",
+    "table" => TABLE_CRONJOBS_LOGS,
+    "url" => "/admin/?section=cronjobslog",
+    "file" => "cronjobs.tpl",
+    "title" => _t("admin.cronjobslog_title"),
+    "orderID" => 102,
+);
 $submenu["robots"] = array(
     "name" => _t("admin.robots"),
     "access" => "superadmin",
