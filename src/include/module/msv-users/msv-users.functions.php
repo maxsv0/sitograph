@@ -101,3 +101,35 @@ function msv_add_user($row, $options = array()) {
 
     return $result;
 }
+
+/**
+ * Register user session
+ * update $_SESSION to save user_id
+ * add user row to $website->user
+ *
+ * @param integer $userID
+ * @param bool $session register user at session?
+ * @return null
+ */
+function msv_load_user($userID, $session = true) {
+    $rowUser =& msv_get("website.user");
+
+    $result = db_get(TABLE_USERS, " `id` = '".(int)$userID."' and `access` != 'closed'");
+    if (!$result["ok"]) {
+        msv_message_error($result["msg"]);
+    } else {
+        // TODO: why this is needed?
+        $rowUser["user_id"] = (int)$userID;
+
+        // add info to user row
+        $rowUser = array_merge($rowUser, $result["data"]);
+    }
+
+    if ($session) {
+        $_SESSION["user_id"] = $userID;
+        $_SESSION["user_email"] = $rowUser["email"];
+    }
+    if (empty($rowUser["email_verified"])) {
+        msv_message_error(_t("msg.users.verification_needed"));
+    }
+}

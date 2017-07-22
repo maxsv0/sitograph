@@ -1558,8 +1558,8 @@ function msv_update_allmodules($module) {
     }
 
     $list = msv_get("website.modules");
-    foreach($list as $module) {
-        //msv_reinstall_module($module, false);
+    foreach($list as $moduleName) {
+        msv_reinstall_module($moduleName, false);
     }
 
     msv_message_ok("Update ALL successfully");

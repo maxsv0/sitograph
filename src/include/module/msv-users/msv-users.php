@@ -47,7 +47,7 @@ if (!empty($_REQUEST["access_token"])) {
     $rowUser = $result["data"];
     if ($result["ok"] && !empty($rowUser)) {
         // load user info, register user session
-        msv_load_user($rowUser["id"]);
+        msv_load_user($rowUser["id"], false);
 
         //  token will never expire
         if (!msv_has_messages()) {
@@ -277,34 +277,5 @@ if (isset($_REQUEST["doSendVerify"])) {
         }
     } else {
         msv_message_error(_t("msg.users.noaccess"));
-    }
-}
-
-/**
- * Register user session
- * update $_SESSION to save user_id
- * add user row to $website->user
- *
- * @param integer $userID
- * @return null
- */
-function msv_load_user($userID) {
-    $rowUser =& msv_get("website.user");
-
-    $result = db_get(TABLE_USERS, " `id` = '".(int)$userID."' and `access` != 'closed'");
-    if (!$result["ok"]) {
-        msv_message_error($result["msg"]);
-    } else {
-        // TODO: why this is needed?
-        $rowUser["user_id"] = (int)$userID;
-
-        // add info to user row
-        $rowUser = array_merge($rowUser, $result["data"]);
-    }
-
-    $_SESSION["user_id"] = $userID;
-    $_SESSION["user_email"] = $rowUser["email"];
-    if (empty($rowUser["email_verified"])) {
-        msv_message_error(_t("msg.users.verification_needed"));
     }
 }
