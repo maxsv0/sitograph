@@ -78,7 +78,11 @@
 {elseif $item_type === "multiselect"}
 
 	{include "$themePath/sitograph/fields/field-multiselect.tpl"}
-	
+
+{elseif $item_type === "array"}
+
+	{include "$themePath/sitograph/fields/field-array.tpl"}
+
 {else}
 
 	{include "$themePath/sitograph/fields/field-default.tpl"}
