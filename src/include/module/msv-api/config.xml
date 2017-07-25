@@ -8,6 +8,7 @@
 	<filter action="apiRequest" url="/api/*"/>
 	<filter action="apiRequest" url="/api/*/*"/>
 	<filter action="apiRequest" url="/api/*/*/*"/>
+	<filter action="apiRequest" url="/api/*/*/*/*"/>
 </config>
 
 <install>

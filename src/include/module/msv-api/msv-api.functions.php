@@ -788,7 +788,14 @@ function db_add($table, $fields, $lang = LANG) {
 
     $sqlCode = substr($sqlCode, 0, -1)." ) ";
 
-    return db_sql($sqlCode);
+    $result = db_sql($sqlCode);
+
+    if (!empty($result["insert_id"])) {
+        $fields["id"] = $result["insert_id"];
+        $result["data"] = $fields;
+    }
+
+    return $result;
 }
 
 /**
