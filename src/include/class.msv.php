@@ -557,8 +557,6 @@ class MSV_Website {
         $Smarty->compile_check = true;
 
         $Smarty->assign("themeDefaultPath", ABS_TEMPLATE."/default");
-        $Smarty->assign("themePath", ABS_TEMPLATE."/".$this->template);
-        $Smarty->assign("themeUrl", ABS_TEMPLATE."/".$this->template);
         $Smarty->assign("content_url", CONTENT_URL);
 
         $this->templateEngine =& $Smarty;
@@ -612,6 +610,7 @@ class MSV_Website {
         $this->templateEngine->assign("structure", $this->structure);
         $this->templateEngine->assign("page", $this->page);
         $this->templateEngine->assign("page_template", $this->page["page_template"]);
+        $this->templateEngine->assign("themePath", ABS_TEMPLATE."/".$this->template);
 
         // assign config values directly to templaye
         foreach ($this->config as $param => $value) {
@@ -776,7 +775,7 @@ class MSV_Website {
 		// calculate script running time and log
 		$tm = time() + (float)substr((string)microtime(), 1, 8);
 		$this->config["timestampEnd"] = $tm;
-		$scriptTime = $this->config["timestampEnd"] - $this->config["timestampStart"];
+		$scriptTime = $this->config["timestampEnd"] - $this->config["timestampT"];
 		$scriptTime = round($scriptTime, 6);
 		$this->log("Run time: $scriptTime sec");
 			
