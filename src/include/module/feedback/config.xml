@@ -16,7 +16,7 @@
 
 	<filter action="loadFeedback" url="*"/>
 
-	<api name="feedback" action="ajaxFeedbackRequest"/>
+	<api name="feedback" action="api_request_feedback"/>
 
 	<table name="feedback" index="id" title="name">
 		<field name="id" type="id"/>

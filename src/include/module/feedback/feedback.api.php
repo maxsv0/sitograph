@@ -11,7 +11,7 @@
  * @param object $module Current module object
  * @return string JSON encoded string containing API call result
  */
-function ajaxFeedbackRequest($module) {
+function api_request_feedback($module) {
     $request = msv_get('website.requestUrlMatch');
     $apiType = $request[2];
 
