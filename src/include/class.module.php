@@ -143,7 +143,7 @@ class MSV_Module {
         if ($filter["url"] === "*") {
             $patternUrl = "(.*)";
         } else {
-            $patternUrl = str_replace("*", "([-_a-z0-9A-Z\\.]+)", $filter["url"]);
+            $patternUrl = str_replace("*", "([-_a-z0-9A-Z\\.@!$%^&*()]+)", $filter["url"]);
             $patternUrl = str_replace("/", "\\/", $patternUrl);
         }
 
