@@ -12,7 +12,7 @@
  * @param object $module Current Module object
  * @return null
  */
-function apiRequest($module) {
+function api_request($module) {
     $apiRequest = $module->website->requestUrlMatch[1];
 
     foreach ($module->website->api as $apiInfo) {
