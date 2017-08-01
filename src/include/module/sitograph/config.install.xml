@@ -2,7 +2,7 @@
 <document>
 <install>
 	<param name="name" value="sitograph"/>
-	<param name="version" value="1.0.2"/>
+	<param name="version" value="1.0.3"/>
 	<param name="date" value="01.08.2017"/>
 	<param name="title" value="Sitograph"/>
 	<param name="description" value="Content Management System. CMS Sitograph"/>
@@ -151,9 +151,9 @@
 	<file dir="content" path="images/sitograph/menu_left_img_top_1.gif"/>
 	<file dir="content" path="images/sitograph/menu_left_img_top_2.gif"/>
 	<file dir="content" path="images/sitograph/table_bg_1.gif"/>
-	<file dir="content" path="images/blog_sitograph_1.jpg"/>
-	<file dir="content" path="images/blog_sitograph_2.jpg"/>
-	<file dir="content" path="images/blog_sitograph_3.jpg"/>
+	<file dir="content" path="images/blog/blog_sitograph_1.jpg"/>
+	<file dir="content" path="images/blog/blog_sitograph_2.jpg"/>
+	<file dir="content" path="images/blog/blog_sitograph_3.jpg"/>
 	<file dir="content" path="images/promo-top.png"/>
 	<file dir="content" path="images/gallery/gallery_2.jpg"/>
 	<file dir="content" path="images/gallery/gallery_photo1_1.jpg"/>

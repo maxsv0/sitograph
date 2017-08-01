@@ -240,8 +240,8 @@ It is simple and powerful content management system for website or online shop.
         "title" => "Sitograph CMS Screenshots",
         "description" => "Sitograph CMS Admin UI",
         "text" => "<p>User Interface screenshots for website administrator</p>",
-        "pic" => "images/blog_sitograph_1.jpg",
-        "pic_preview" => "images/blog_sitograph_1.jpg",
+        "pic" => "images/blog/blog_sitograph_1.jpg",
+        "pic_preview" => "images/blog/blog_sitograph_1.jpg",
     );
     api_blog_add($item, array("LoadPictures"));
 
@@ -254,8 +254,8 @@ It is simple and powerful content management system for website or online shop.
         "title" => "Installing Sitograph CMS",
         "description" => "",
         "text" => $docContent,
-        "pic" => "images/blog_sitograph_2.jpg",
-        "pic_preview" => "images/blog_sitograph_2.jpg",
+        "pic" => "images/blog/blog_sitograph_2.jpg",
+        "pic_preview" => "images/blog/blog_sitograph_2.jpg",
     );
     api_blog_add($item, array("LoadPictures"));
 
@@ -268,8 +268,8 @@ It is simple and powerful content management system for website or online shop.
         "title" => "Sitograph CMS v.1.0.beta released",
         "description" => "Sitograph version 1.0.beta was released July 2017!",
         "text" => $docContent,
-        "pic" => "images/blog_sitograph_3.jpg",
-        "pic_preview" => "images/blog_sitograph_3.jpg",
+        "pic" => "images/blog/blog_sitograph_3.jpg",
+        "pic_preview" => "images/blog/blog_sitograph_3.jpg",
     );
     api_blog_add($item, array("LoadPictures"));
 

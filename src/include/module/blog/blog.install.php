@@ -40,8 +40,8 @@ Text: <br />
         "title" => "Folder structure and usage",
         "description" => "",
         "text" => $docContent,
-        "pic" => "images/blog_1.jpg",
-        "pic_preview" => "images/blog_1.jpg",
+        "pic" => "images/blog/blog_1.jpg",
+        "pic_preview" => "images/blog/blog_1.jpg",
     );
     $result = api_blog_add($item, array("LoadPictures"));
 
@@ -56,8 +56,8 @@ Text: <br />
         "title" => "The Beautiful photo gallery is attached to this post",
         "description" => "",
         "text" => $docContent,
-        "pic" => "images/blog_2.jpg",
-        "pic_preview" => "images/blog_2.jpg",
+        "pic" => "images/blog/blog_2.jpg",
+        "pic_preview" => "images/blog/blog_2.jpg",
     );
     $result = api_blog_add($item, array("LoadPictures"));
 
@@ -71,8 +71,8 @@ Text: <br />
         "title" => "PHP Framework Layers",
         "description" => "",
         "text" => $docContent,
-        "pic" => "images/blog_3.jpg",
-        "pic_preview" => "images/blog_3.jpg",
+        "pic" => "images/blog/blog_3.jpg",
+        "pic_preview" => "images/blog/blog_3.jpg",
     );
     $result = api_blog_add($item, array("LoadPictures"));
 
