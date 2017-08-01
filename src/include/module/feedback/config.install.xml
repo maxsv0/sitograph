@@ -2,13 +2,14 @@
 <document>
 <install>
 	<param name="name" value="feedback"/>
-	<param name="version" value="1.1"/>
+	<param name="version" value="1.1.1"/>
 	<param name="date" value="29.07.2017"/>
 	<param name="installHook" value="Install_Feedback"/>
 	<param name="title" value="Feedback and contacts"/>
 	<param name="description" value="Contact form, user feedback and testimonials for website"/>
 	<param name="tags" value="feedback,testimonials,contact form"/>
 	<param name="author" value="max@msvhost.com"/>
+	<param name="preview" value="images/feedback/module_preview.jpg"/>
 
 	<dependency module="msv-core" version="1.0" />
 	<dependency module="msv-api" version="1.0" />
@@ -24,8 +25,8 @@
 	<file dir="template" path="default/feedback/main.tpl"/>
 	<file dir="template" path="default/widget/feedback-sticked.tpl"/>
 	<file dir="content" path="images/contacts.png"/>
-	<file dir="content" path="images/feedback_1.png"/>
-	<file dir="content" path="images/feedback_2.png"/>
-	<file dir="content" path="images/feedback_3.png"/>
+	<file dir="content" path="images/feedback/feedback_1.png"/>
+	<file dir="content" path="images/feedback/feedback_2.png"/>
+	<file dir="content" path="images/feedback/feedback_3.png"/>
 </install>
 </document>

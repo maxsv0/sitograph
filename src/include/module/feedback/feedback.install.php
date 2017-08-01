@@ -69,7 +69,7 @@ Text: <br />
         "text" => "<p>Sitograph was created to help maintain huge Web applications.
 From one side with Sitograph it is easy to support and manage website content but from the other hand,
 developers have a full set of highly customizable tools for website management and configuration.</p>",
-        "pic" => "images/feedback_1.png",
+        "pic" => "images/feedback/feedback_1.png",
         "stars" => 5,
     );
     $result = msv_add_feedback($item);
@@ -81,7 +81,7 @@ developers have a full set of highly customizable tools for website management a
         "name_title" => "Release Manager",
         "text" => "<p>Open Source Repository created to support Sitograph CMS makes updating process as easy as possible.
  Just two clicks to add new feature on your website!</p>",
-        "pic" => "images/feedback_2.png",
+        "pic" => "images/feedback/feedback_2.png",
         "stars" => 5,
     );
     $result = msv_add_feedback($item);
@@ -93,7 +93,7 @@ developers have a full set of highly customizable tools for website management a
         "name_title" => "CEO",
         "text" => "<p>Sitograph is the perfectly flexible tool that suits any type of Internet Application. Rich catalog
  of extensions together with automated deployment pipeline makes it the best choice for both developers and business owners.</p>",
-        "pic" => "images/feedback_3.png",
+        "pic" => "images/feedback/feedback_3.png",
         "stars" => 5,
     );
     $result = msv_add_feedback($item);
