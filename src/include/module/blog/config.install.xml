@@ -3,20 +3,19 @@
 
 <install>
 	<param name="name" value="blog"/>
-	<param name="version" value="1.2"/>
-	<param name="date" value="09.07.2017"/>
+	<param name="version" value="1.3"/>
+	<param name="date" value="01.08.2017"/>
 	<param name="title" value="Blog"/>
-	<param name="description" value="Blog and Publications module"/>
+	<param name="description" value="Simple Blog or News feature for a website. Supports categories, search filters"/>
 	
 	<param name="installHook" value="Install_Blog"/>
 	
-	<dependency module="msv-core" version="1.0"/>
+	<dependency module="msv-core" version="1.4"/>
 	<dependency module="gallery" version="1.0"/>
 	
 	<file dir="module" path="blog/blog.php"/>
 	<file dir="module" path="blog/blog.api.php"/>
 	<file dir="module" path="blog/blog.install.php"/>
-	<file dir="module" path="blog/blog.functions.php"/>
 	<file dir="module" path="blog/config.xml"/>
 	<file dir="module" path="blog/config.locales.xml"/>
 	<file dir="module" path="blog/config.install.xml"/>
