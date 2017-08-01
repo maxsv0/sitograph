@@ -3,11 +3,14 @@
 
 <install>
 	<param name="name" value="gallery"/>
-	<param name="version" value="1.2"/>
-	<param name="date" value="09.07.2017"/>
+	<param name="version" value="1.3"/>
+	<param name="date" value="01.08.2017"/>
 	<param name="title" value="Pictures Gallery"/>
-	<param name="description" value="Photos and Pictures management"/>
-	
+	<param name="description" value="Photos and Pictures management. Supports albums, integration with the blog."/>
+	<param name="tags" value="gallery,photography,photo album"/>
+	<param name="author" value="max@msvhost.com"/>
+	<param name="preview" value="images/gallery/module_preview.jpg"/>
+
 	<param name="installHook" value="Install_Gallery"/>
 	
 	<dependency module="msv-core" version="1.0"/>
@@ -16,7 +19,6 @@
 	<file dir="module" path="gallery/gallery.php"/>
 	<file dir="module" path="gallery/gallery.api.php"/>
 	<file dir="module" path="gallery/gallery.install.php"/>
-	<file dir="module" path="gallery/gallery.functions.php"/>
 	<file dir="module" path="gallery/config.xml"/>
 	<file dir="module" path="gallery/config.locales.xml"/>
 	<file dir="module" path="gallery/config.install.xml"/>
@@ -26,16 +28,11 @@
 	<file dir="template" path="default/gallery/details.tpl"/>
 	<file dir="template" path="default/gallery/album-list.tpl"/>
 	<file dir="template" path="default/gallery/album-preview.tpl"/>
-	<file dir="content" path="images/gallery1_photo1.jpg"/>
-	<file dir="content" path="images/gallery1_photo2.jpg"/>
-	<file dir="content" path="images/gallery1_photo3.jpg"/>
-	<file dir="content" path="images/gallery_1.jpg"/>
-	<file dir="content" path="images/gallery_2.jpg"/>
-	<file dir="content" path="images/gallery_photo1_1.jpg"/>
-	<file dir="content" path="images/gallery_photo1_3.jpg"/>
-	<file dir="content" path="images/gallery_photo1_4.jpg"/>
-	<file dir="content" path="images/gallery_photo1_5.jpg"/>
-	<file dir="content" path="images/gallery_photo1_6.jpg"/>
+	<file dir="content" path="images/gallery/gallery1_photo1.jpg"/>
+	<file dir="content" path="images/gallery/gallery1_photo2.jpg"/>
+	<file dir="content" path="images/gallery/gallery1_photo3.jpg"/>
+	<file dir="content" path="images/gallery/gallery_1.jpg"/>
+	<file dir="content" path="images/gallery/module_preview.jpg"/>
 </install>
 
 </document>

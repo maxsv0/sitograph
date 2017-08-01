@@ -19,23 +19,23 @@ function Install_Gallery($module) {
         "url" => "the-beautiful-photo-gallery",
         "title" => "The Beautiful photo gallery",
         "description" => "The Beautiful photo gallery",
-        "pic" => "images/gallery_1.jpg",
-        "pic_preview" => "images/gallery_1.jpg",
+        "pic" => "images/gallery/gallery_1.jpg",
+        "pic_preview" => "images/gallery/gallery_1.jpg",
         "photos" => array(
             array(
-                "pic" => "images/gallery1_photo1.jpg",
-                "pic_preview" => "images/gallery1_photo1.jpg",
+                "pic" => "images/gallery/gallery1_photo1.jpg",
+                "pic_preview" => "images/gallery/gallery1_photo1.jpg",
             ),
             array(
-                "pic" => "images/gallery1_photo2.jpg",
-                "pic_preview" => "images/gallery1_photo2.jpg",
+                "pic" => "images/gallery/gallery1_photo2.jpg",
+                "pic_preview" => "images/gallery/gallery1_photo2.jpg",
             ),
             array(
-                "pic" => "images/gallery1_photo3.jpg",
-                "pic_preview" => "images/gallery1_photo3.jpg",
+                "pic" => "images/gallery/gallery1_photo3.jpg",
+                "pic_preview" => "images/gallery/gallery1_photo3.jpg",
             ),
         )
     );
-    $result = msv_add_gallery($item, array("LoadPictures"));
+    $result = api_gallery_add($item, array("LoadPictures"));
 }
 

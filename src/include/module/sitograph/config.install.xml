@@ -2,11 +2,14 @@
 <document>
 <install>
 	<param name="name" value="sitograph"/>
-	<param name="version" value="1.0"/>
-	<param name="date" value="09.07.2017"/>
+	<param name="version" value="1.0.1"/>
+	<param name="date" value="01.08.2017"/>
 	<param name="title" value="Sitograph"/>
 	<param name="description" value="Content Management System. CMS Sitograph"/>
-	
+	<param name="tags" value="CMS"/>
+	<param name="author" value="dev@sitograph.com"/>
+	<param name="preview" value="images/sitograph/module_preview.jpg"/>
+
 	<param name="installHook" value="Install_Sitograph"/>
 	
 	<dependency module="msv-core" version="1.0"/>
@@ -152,6 +155,13 @@
 	<file dir="content" path="images/blog_sitograph_2.jpg"/>
 	<file dir="content" path="images/blog_sitograph_3.jpg"/>
 	<file dir="content" path="images/promo-top.png"/>
+	<file dir="content" path="images/gallery/gallery_2.jpg"/>
+	<file dir="content" path="images/gallery/gallery_photo1_1.jpg"/>
+	<file dir="content" path="images/gallery/gallery_photo1_3.jpg"/>
+	<file dir="content" path="images/gallery/gallery_photo1_4.jpg"/>
+	<file dir="content" path="images/gallery/gallery_photo1_5.jpg"/>
+	<file dir="content" path="images/gallery/gallery_photo1_6.jpg"/>
+	<file dir="content" path="images/sitograph/module_preview.jpg"/>
 	<file dir="abs" path="favicon.ico"/>
 </install>
 </document>
