@@ -12,6 +12,13 @@ $submenu["realtime"] = array(
     "file" => "index.tpl",
     "title" => _t("admin.realtime"),
 );
+$submenu["leads"] = array(
+    "name" => _t("admin.leads"),
+    "access" => "admin",
+    "url" => "/admin/?section=leads",
+    "file" => "leads.tpl",
+    "title" => _t("admin.leads"),
+);
 $submenu["analytics"] = array(
     "name" => _t("admin.analytics"),
     "access" => "admin",
@@ -19,13 +26,13 @@ $submenu["analytics"] = array(
     "file" => "analytics.tpl",
     "title" => _t("admin.analytics")
 );
-$submenu["social"] = array(
-    "name" => _t("admin.social"),
-    "access" => "admin",
-    "url" => "/admin/?section=social",
-    "file" => "social.tpl",
-    "title" => _t("admin.social"),
-);
+//$submenu["social"] = array(
+//    "name" => _t("admin.social"),
+//    "access" => "admin",
+//    "url" => "/admin/?section=social",
+//    "file" => "social.tpl",
+//    "title" => _t("admin.social"),
+//);
 $submenu["manual"] = array(
     "name" => _t("admin.manual"),
     "access" => "admin",

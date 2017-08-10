@@ -338,10 +338,6 @@ ul.nav li a:hover {
    background: #eeeeee;
    border-bottom:1px solid #bd2037;
 }
-ul.nav li.active a {
-    background: #eeeeee;
-    border-color: transparent; 
-}
 
 .form-horizontal {
     background: rgba(0, 0, 0, 0) url("/content/images/sitograph/table_bg_1.gif") no-repeat scroll 0 0;

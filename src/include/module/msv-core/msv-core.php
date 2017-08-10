@@ -853,19 +853,31 @@ function msv_process_admin() {
         // TODO: check $_GET["module"]
         // TODO: check $_GET["table"]
 
+        $result = array();
         if ($_GET["table_action"] === "create") {
 
-            db_create_table($_GET["module_table"]);
+            $result = db_create_table($_GET["module_table"]);
 
         } elseif ($_GET["table_action"] === "truncate") {
 
-            db_empty_table($_GET["module_table"]);
+            $result = db_empty_table($_GET["module_table"]);
 
         } elseif ($_GET["table_action"] === "remove") {
 
-            db_remove_table($_GET["module_table"]);
+            $result = db_remove_table($_GET["module_table"]);
 
         }
+
+        if (!empty($result)) {
+            if ($result["ok"]) {
+                msv_message_ok($result["sql"]);
+                msv_message_ok($result["msg"]);
+            } else {
+                msv_message_error($result["sql"]);
+                msv_message_error($result["msg"]);
+            }
+        }
+
     }
 
     if (!empty($_GET["module_install"])) {
