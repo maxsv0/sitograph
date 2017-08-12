@@ -60,7 +60,7 @@
 <div class="row media-well">
 {foreach from=$blog_article_details.album.photos item=photo name=loop}
 <div class="col-sm-3">
-<a class="thumbnail" rel="fancybox" title="{$blog_article_details.title}" href="{$photo.pic}"><img src="{$photo.pic_preview}" alt=""></a>
+<a class="thumbnail" rel="fancybox" title="{$blog_article_details.description}" href="{$photo.pic}"><img src="{$photo.pic_preview}" alt="{$blog_article_details.title}"></a>
 </div>
 {/foreach}
 	<div class="col-sm-12">

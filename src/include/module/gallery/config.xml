@@ -53,7 +53,7 @@
 		<field name="order_id" type="int"/>
 		<field name="date" type="date"/>
 		<field name="title" type="str"/>
-		<field name="description" type="doc"/>
+		<field name="description" type="str"/>
 		<field name="pic" type="pic" max-width="1600" max-height="1200"/>
 		<field name="pic_preview" type="pic" max-width="800" max-height="600"/>
 	</table>

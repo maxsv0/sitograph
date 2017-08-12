@@ -20,8 +20,9 @@ posted by {$gallery_album_details.author}, at {$gallery_album_details.date}
 <div class="row rowItems">
 {foreach from=$gallery_album_details['photos'] item=photo} 
 <div class="col-sm-3 rowItem">
-<a class="thumbnail" rel="fancybox" href="{$photo.pic}">
-<img src="{$photo.pic_preview}" alt=""></a>
+<a class="thumbnail" rel="fancybox" href="{$photo.pic}" title="{$photo.description}">
+<img src="{$photo.pic_preview}" alt="{$photo.title}">
+<span>{$photo.title}</span></a>
 </div>
 {foreachelse} 
 <div class="alert alert-info" style="margin-top:20px">No photos were published into this album yet.</div>

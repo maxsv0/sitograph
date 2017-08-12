@@ -10,8 +10,8 @@
 
 <install>
 	<param name="name" value="install" />
-	<param name="version" value="1.2"/>
-	<param name="date" value="09.07.2017"/>
+	<param name="version" value="1.2.1"/>
+	<param name="date" value="12.08.2017"/>
 	<param name="title" value="Sitograph Install"/>
 	<param name="description" value="Sitograph Installer"/>
 	

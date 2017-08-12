@@ -130,6 +130,10 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
                 $obj->runInstallHook();
             }
 
+            if (!empty($_REQUEST["modules_remote_str"])) {
+                $_REQUEST["modules_remote"] = array_merge($_REQUEST["modules_remote"], explode(",", $_REQUEST["modules_remote_str"]));
+            }
+
             if(!empty($_REQUEST["modules_remote"]) && is_array($_REQUEST["modules_remote"])) {
                 foreach ($_REQUEST["modules_remote"] as $module) {
                     msv_install_module($module, false);
@@ -240,7 +244,7 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
 // validation, step 2
 if ($install_step === 2) {
     if (file_exists(ABS."/config.php")) {
-        $website->messages["error"][] = "ERROR: <b>".ABS."/config.php</b> already exists and will be overwritten!";
+        $website->messages["error"][] = "Warning: <b>".ABS."/config.php</b> will be overwritten";
 
         if (!is_writable(ABS."/config.php")) {
             $website->messages["error"][] = "ERROR: <b>".ABS."/config.php</b> is not writable";

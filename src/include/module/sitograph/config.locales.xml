@@ -140,7 +140,7 @@
 		<field name="form.server_path" value="Server path"/>
 		<field name="form.select_file" value="Select file"/>
 		<field name="form.image_max_size" value="Image max size"/>
-		<field name="form.search_placeholder" value="Найти"/>
+		<field name="form.search_placeholder" value="Search"/>
 		
 		<field name="admin.filename" value="Name"/>
 		<field name="admin.filetype" value="Type"/>
