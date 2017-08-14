@@ -28,5 +28,6 @@
 	<file dir="content" path="images/feedback/feedback_1.png"/>
 	<file dir="content" path="images/feedback/feedback_2.png"/>
 	<file dir="content" path="images/feedback/feedback_3.png"/>
+	<file dir="content" path="images/feedback/module_preview.jpg"/>
 </install>
 </document>

@@ -10,17 +10,21 @@
 
 <install>
 	<param name="name" value="cropper" />
-	<param name="version" value="1.0"/>
-	<param name="date" value="01.06.2016"/>
+	<param name="version" value="1.0.1"/>
+	<param name="date" value="12.08.2017"/>
 	<param name="title" value="jQuery.Cropper"/>
 	<param name="description" value="A simple jQuery image cropping plugin v2.3.2"/>
-	
+	<param name="tags" value="editor,jquery"/>
+	<param name="author" value="max@msvhost.com"/>
+	<param name="preview" value="images/module_preview_cropper.jpg"/>
+
 	<dependency module="msv-core" version="1.0" />
 	
 	<file dir="module" path="cropper/cropper.php"/>
 	<file dir="module" path="cropper/config.xml"/>
 	<file dir="content" path="css/jquery.cropper.css"/>
 	<file dir="content" path="js/jquery.cropper.js"/>
+	<file dir="content" path="images/module_preview_cropper.jpg"/>
 </install>
 <locales>
 	<locale name="ru">

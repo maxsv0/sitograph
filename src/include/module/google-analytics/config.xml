@@ -10,16 +10,21 @@
 
 <install>
 	<param name="name" value="ga" />
-	<param name="version" value="1.1"/>
-	<param name="date" value="22.07.2017"/>
+	<param name="version" value="1.1.1"/>
+	<param name="date" value="12.08.2017"/>
 	<param name="title" value="Google: Analytics"/>
 	<param name="description" value="Google Analytics Integration"/>
+	<param name="tags" value="google,analytics"/>
+	<param name="author" value="max@msvhost.com"/>
+	<param name="preview" value="images/module_preview_ga.jpg"/>
+
 	<param name="installHook" value="Install_GoogleAnalytics"/>
 
 	<dependency module="msv-core" version="1.0" />
 
 	<file dir="module" path="google-analytics/google-analytics.php"/>
 	<file dir="module" path="google-analytics/config.xml"/>
+	<file dir="content" path="images/module_preview_ga.jpg"/>
 </install>
 
 </document>

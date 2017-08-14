@@ -19,7 +19,7 @@ posted by {$gallery_album_details.author}, at {$gallery_album_details.date}
 
 <div class="row rowItems">
 {foreach from=$gallery_album_details['photos'] item=photo} 
-<div class="col-sm-3 rowItem">
+<div class="col-lg-4 col-md-6 col-sm-12 rowItem">
 <a class="thumbnail" rel="fancybox" href="{$photo.pic}" title="{$photo.description}">
 <img src="{$photo.pic_preview}" alt="{$photo.title}">
 <span>{$photo.title}</span></a>

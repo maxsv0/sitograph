@@ -3,12 +3,15 @@
 
 	<install>
 	<param name="name" value="msv-users"/>
-	<param name="version" value="1.2"/>
+	<param name="version" value="1.2.1"/>
 	<param name="date" value="09.07.2017"/>
 	<param name="installHook" value="Install_Users"/>
 	<param name="title" value="MSV Users"/>
 	<param name="description" value="Users auth functions for MSV"/>
-	
+	<param name="tags" value="kernel,users,profile"/>
+	<param name="author" value="max@msvhost.com"/>
+	<param name="preview" value="images/module_preview_msv-users.jpg"/>
+
 	<dependency module="msv-core" version="1.0" />
 	<dependency module="msv-api" version="1.0" />
 	
@@ -30,6 +33,8 @@
 	<file dir="template" path="default/user/settings.tpl"/>
 	<file dir="template" path="default/user/password-reset.tpl"/>
 	<file dir="template" path="default/widget/menu-user.tpl"/>
+
+	<file dir="content" path="images/module_preview_msv-users.jpg"/>
 </install>
 
 </document>

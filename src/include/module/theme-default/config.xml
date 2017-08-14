@@ -10,12 +10,15 @@
 
 <install>
 	<param name="name" value="theme-default"/>
-	<param name="version" value="1.3"/>
-	<param name="date" value="23.07.2017"/>
+	<param name="version" value="1.3.1"/>
+	<param name="date" value="12.08.2017"/>
 	<param name="installHook" value="Install_ThemeDefault"/>
 	<param name="title" value="Theme - Default"/>
 	<param name="description" value="Default theme for MSV"/>
-	
+	<param name="tags" value="theme,design"/>
+	<param name="author" value="max@msvhost.com"/>
+	<param name="preview" value="images/module_preview_theme-default.jpg"/>
+
 	<dependency module="msv-core" version="1.0" />
 	
 	<file dir="module" path="theme-default/theme-default.php"/>
@@ -25,6 +28,7 @@
 	<file dir="content" path="images/search_ico.png"/>
 	<file dir="content" path="images/sitemap_ico.png"/>
 	<file dir="content" path="images/menu_bg.png"/>
+	<file dir="content" path="images/module_preview_theme-default.jpg"/>
 	<file dir="template" path="default/404.tpl"/>
 	<file dir="template" path="default/sitemap.tpl"/>
 	<file dir="template" path="default/main.tpl"/>

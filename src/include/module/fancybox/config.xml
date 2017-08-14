@@ -10,11 +10,14 @@
 
 <install>
 	<param name="name" value="fancybox" />
-	<param name="version" value="1.0"/>
-	<param name="date" value="01.06.2016"/>
+	<param name="version" value="1.0.1"/>
+	<param name="date" value="12.07.2017"/>
 	<param name="title" value="jQuery.Fancybox"/>
 	<param name="description" value="jQuery Fancybox v2.1.5"/>
-	
+	<param name="tags" value="gallery,jquery"/>
+	<param name="author" value="max@msvhost.com"/>
+	<param name="preview" value="images/fancybox/module_preview.jpg"/>
+
 	<dependency module="msv-core" version="1.0" />
 	
 	<file dir="module" path="fancybox/fancybox.php"/>
@@ -27,6 +30,7 @@
 	<file dir="content" path="images/fancybox/fancybox_overlay.png"/>
 	<file dir="content" path="images/fancybox/fancybox_sprite.png"/>
 	<file dir="content" path="images/fancybox/fancybox_sprite@2x.png"/>
+	<file dir="content" path="images/fancybox/module_preview.jpg"/>
 </install>
 <locales>
 	<locale name="ru">

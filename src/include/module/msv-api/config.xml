@@ -13,12 +13,13 @@
 
 <install>
 	<param name="name" value="msv-api" />
-	<param name="version" value="1.3.1"/>
-	<param name="date" value="23.07.2017"/>
+	<param name="version" value="1.3.2"/>
+	<param name="date" value="12.08.2017"/>
 	<param name="title" value="MSV API"/>
 	<param name="description" value="API functions for MSV Website Framework"/>
-	<param name="tags" value="kernel"/>
+	<param name="tags" value="kernel,database,api"/>
 	<param name="author" value="max@msvhost.com"/>
+	<param name="preview" value="images/module_preview_msv-api.jpg"/>
 
 	<dependency module="msv-core" version="1.4" />
 	
@@ -26,6 +27,7 @@
 	<file dir="module" path="msv-api/msv-api.api.php"/>
 	<file dir="module" path="msv-api/msv-api.functions.php"/>
 	<file dir="module" path="msv-api/config.xml"/>
+	<file dir="content" path="images/module_preview_msv-api.jpg"/>
 </install>
 
 <locales>

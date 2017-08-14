@@ -11,11 +11,14 @@
 
 <install>
 	<param name="name" value="tinymce" />
-	<param name="version" value="1.1"/>
-	<param name="date" value="09.07.2017"/>
+	<param name="version" value="1.1.1"/>
+	<param name="date" value="12.08.2017"/>
 	<param name="title" value="TinyMCE"/>
 	<param name="description" value="TinyMCE Editor v. 4.3.12"/>
-	
+	<param name="tags" value="wysiwyg,editor,jquery"/>
+	<param name="author" value="max@msvhost.com"/>
+	<param name="preview" value="images/module_preview_tinymce.jpg"/>
+
 	<dependency module="msv-core" version="1.0" />
 
 	<file dir="module" path="tinymce/tinymce.php"/>
@@ -109,6 +112,7 @@
 	<file dir="content" path="js/tinymce/langs/ru.js"/>
 	<file dir="content" path="js/tinymce/langs/ru_RU.js"/>
 	<file dir="content" path="js/tinymce/themes/modern/theme.min.js"/>
+	<file dir="content" path="images/module_preview_tinymce.jpg"/>
 </install>
 <locales>
 	<locale name="ru">

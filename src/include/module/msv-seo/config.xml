@@ -48,16 +48,20 @@
 
 	<install>
 		<param name="name" value="msv-seo"/>
-		<param name="version" value="1.2"/>
+		<param name="version" value="1.2.1"/>
 		<param name="date" value="09.07.2017"/>
 		<param name="title" value="MSV SEO"/>
 		<param name="description" value="SEO and social functions for MSV"/>
+		<param name="tags" value="kernel,seo,social,advertisement"/>
+		<param name="author" value="max@msvhost.com"/>
+		<param name="preview" value="images/module_preview_msv-seo.jpg"/>
 
 		<dependency module="msv-core" version="1.0" />
 
 		<file dir="module" path="msv-seo/msv-seo.php"/>
 		<file dir="module" path="msv-seo/msv-seo.functions.php"/>
 		<file dir="module" path="msv-seo/config.xml"/>
+		<file dir="content" path="images/module_preview_msv-seo.jpg"/>
 	</install>
 
 
