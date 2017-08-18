@@ -30,3 +30,5 @@ posted by {$gallery_album_details.author}, at {$gallery_album_details.date}
 </div>
 
 
+
+<div style="height:100px;"></div>

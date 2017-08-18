@@ -10,7 +10,7 @@
 	height:450px;
 }
 .feedback-block {
-	background:#84cfd5;
+	background:none;
 }
 .phone-block, .phone-block a{
 	color:#fff;
@@ -73,6 +73,18 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.module-block {
+	padding:10px;
+	margin-bottom:15px;
+}
+.module-block:hover {
+	background:#74c4d4;
+	cursor:pointer;
+}
+.module-star-rating {
+	font-size: 14px;
+	color: #ed2a45;
 }
 .media-well {
 	min-height: 20px;

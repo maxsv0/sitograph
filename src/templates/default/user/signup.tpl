@@ -41,9 +41,9 @@
 {else}
 
 <div class="alert alert-danger">
-Registration is not allowed. 
+  Registration is disabled by website settings.
 {if $admin_email}
-  <br>Please contact <a href="/contacts/">website administrator</a>
+  <br>Please contact <a href="/contacts/">website administrator</a>.
 {/if}
 </div>
 
