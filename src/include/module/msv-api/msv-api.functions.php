@@ -409,14 +409,16 @@ function db_get_count($table, $filter, $lang = LANG) {
 
     $resultQuery = db_sql($sqlCode);
     if (!$resultQuery["ok"]) {
-        $result["ok"] = false;
-        $result["msg"] = "Can't get table count `$table`";
-        return $result;
+        $resultQuery["msg"] .= "Can't get table count `$table`";
+        return $resultQuery;
     }
-    $row = mysqli_fetch_assoc($resultQuery["data"]);
-    $result["data"] = (int)$row["total"];
 
-    return $result;
+    $row = mysqli_fetch_assoc($resultQuery["data"]);
+    
+    // replace 'data' with actual count
+    $resultQuery["data"] = (int)$row["total"];
+
+    return $resultQuery;
 }
 
 /**
