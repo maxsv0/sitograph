@@ -414,7 +414,7 @@ function db_get_count($table, $filter, $lang = LANG) {
     }
 
     $row = mysqli_fetch_assoc($resultQuery["data"]);
-    
+
     // replace 'data' with actual count
     $resultQuery["data"] = (int)$row["total"];
 
