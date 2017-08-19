@@ -11,7 +11,7 @@
 
         <div class="row">
             <div class="col-sm-8">
-                <h4 class="module-title">{$module.title} <small>v.{$module.version}</small></h4>
+                <h4 class="module-title">{$module.title}</h4>
 
                 {if $module.tags}
                     <p class="hide module-tags">
@@ -23,7 +23,7 @@
                 {/if}
 
                 <p class="small module-postdate">
-                    Posted <span class="text-muted">{$module.date}</span>
+                    {$module.name} v.{$module.version} <span class="text-muted">posted</span> {$module.date}
                 </p>
             </div>
             <div class="col-sm-4 text-right">
@@ -50,8 +50,14 @@
         <p class="module-description">{$module.description}</p>
 
         <p class="small text-muted module-buildinfo">
-            Date build: {$module.date}, {$module.files|count} files<br>
-            {$module.download_url}
+            Date build: {$module.date}<br>
+            Link: {$module.download_url}
+        </p>
+        <p class="hide module-buildfiles">
+            {$module.files|count} files:<br>
+            {foreach from=$module.files item=$file name=loop}
+                {if $file.dir != "abs"}{$file.dir}{/if}/{$file.path}<br>
+            {/foreach}
         </p>
 
         <a class="hide module-btnload" href="{$module.download_url}"><span class="glyphicon glyphicon-download-alt"></span> Download {$module.name}.zip</a>

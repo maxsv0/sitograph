@@ -28,6 +28,7 @@ jQuery(document).ready(function() {
         $("#moduleModal").find(".module-description").html($(this).find(".module-description").html());
         $("#moduleModal").find(".module-buildinfo").html($(this).find(".module-buildinfo").html());
         $("#moduleModal").find(".module-btnload").html($(this).find(".module-btnload").html());
+        $("#moduleModal").find(".module-buildfiles").html($(this).find(".module-buildfiles").html());
         $("#moduleModal").find(".module-btnload").attr("href", $(this).find(".module-btnload").attr("href"));
         $("#moduleModal").modal();
     });

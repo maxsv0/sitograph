@@ -86,6 +86,10 @@
 	font-size: 14px;
 	color: #ed2a45;
 }
+.module-buildfiles {
+	max-height:100px;
+	overflow-y: auto;
+}
 .media-well {
 	min-height: 20px;
 	padding: 19px;

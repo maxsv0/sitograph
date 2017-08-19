@@ -41,16 +41,17 @@
                     <div class="module-files">
                     </div>
 
+                    <br>
+                    <p class="text-muted small module-buildinfo"></p>
 
-                    <p class="well module-buildinfo"></p>
-
+                    <p class="well small module-buildfiles"></p>
                 </div>
 
 
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
-                <button type="submit" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus-sign"></span> Add to your website</button>
+                <button type="button" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus-sign"></span> Add to your website</button>
                 <a type="button" class="btn btn-primary pull-right module-btnload"></a>
             </div>
         </div>
