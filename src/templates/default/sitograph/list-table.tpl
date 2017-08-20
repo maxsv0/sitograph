@@ -44,7 +44,7 @@
 {elseif $type === "doc"}
 <td>{$itemField|htmlspecialchars|truncate:300:".."}</td>
 {elseif $type === "array"}
-<td>{$itemField|@print_r}</td>
+<td><pre class="small">{$itemField|@print_r}</pre></td>
 {else}
 <td>{$itemField|htmlspecialchars|truncate:60:".."}</td>
 {/if}
