@@ -170,8 +170,8 @@
 		<field name="admin.seo_title" value="SEO for {HOST}"/>
 		<field name="admin.robots" value="Manage robots.txt"/>
 		<field name="admin.robots_title" value="Content of robots.txt"/>
-		<field name="admin.module_settings" value="Modules Settings"/>
-		<field name="admin.module_settings_title" value="Settings and updates"/>
+		<field name="admin.module_settings" value="Module Settings"/>
+		<field name="admin.module_settings_title" value="Module Settings and updates"/>
 		<field name="admin.design" value="Designs"/>
 		<field name="admin.design_title" value="Designs"/>
 		<field name="admin.history" value="History"/>

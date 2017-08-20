@@ -178,7 +178,7 @@ if (!empty($section) && in_array($section, $menu_index)) {
                         $cfg = msv_get_config_table($field["select-from"]["name"]);
                         // TODO: multi index support
                         // index from config?
-                        $index = "id";
+                        $index = $cfg["index"];
                         $title = $cfg["title"];
                         $filter = $field["select-from"]["filter"];
                         $order = $field["select-from"]["order"];

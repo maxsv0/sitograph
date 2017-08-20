@@ -1,4 +1,5 @@
 <div class="row module-block">
+<input type="hidden" value="{$module.name}" name="module_name[]">
 
 {if $module.preview}
     <div class="col-xs-6 col-sm-4">
@@ -51,7 +52,9 @@
 
         <p class="small text-muted module-buildinfo">
             Date build: {$module.date}<br>
-            Link: {$module.download_url}
+        </p>
+        <p class="small text-muted module-btnpage">
+           {$rep_url}/module/{$module.name}/
         </p>
         <p class="hide module-buildfiles">
             {$module.files|count} files:<br>

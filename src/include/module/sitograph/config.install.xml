@@ -2,8 +2,8 @@
 <document>
 <install>
 	<param name="name" value="sitograph"/>
-	<param name="version" value="1.0.4"/>
-	<param name="date" value="12.08.2017"/>
+	<param name="version" value="1.0.5"/>
+	<param name="date" value="20.08.2017"/>
 	<param name="title" value="Sitograph"/>
 	<param name="description" value="Content Management System. CMS Sitograph"/>
 	<param name="tags" value="CMS"/>

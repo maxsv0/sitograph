@@ -9,9 +9,9 @@
 
 
 <install>
-	<param name="name" value="ga" />
-	<param name="version" value="1.1.1"/>
-	<param name="date" value="12.08.2017"/>
+	<param name="name" value="google-analytics" />
+	<param name="version" value="1.1.2"/>
+	<param name="date" value="20.08.2017"/>
 	<param name="title" value="Google: Analytics"/>
 	<param name="description" value="Google Analytics Integration"/>
 	<param name="tags" value="google,analytics"/>

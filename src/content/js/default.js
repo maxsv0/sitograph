@@ -30,6 +30,15 @@ jQuery(document).ready(function() {
         $("#moduleModal").find(".module-btnload").html($(this).find(".module-btnload").html());
         $("#moduleModal").find(".module-buildfiles").html($(this).find(".module-buildfiles").html());
         $("#moduleModal").find(".module-btnload").attr("href", $(this).find(".module-btnload").attr("href"));
+        $("#moduleModal").find(".module-btnpage").attr("href", $(this).find(".module-btnpage").html());
+        $("#moduleModal").find(".module-btnadd").val($(this).find("input[name='module_name[]']").val());
+
+        $("#moduleModal").find(".module-btnadd").click(function() {
+            alert("To add this module to your website go to Admin -> Module Settings and click 'install new' -> click '"+$(this).val()+"' -> click 'install'\n" +
+                "OR open link [your website]/admin/?module_install="+$(this).val());
+        });
+
+
         $("#moduleModal").modal();
     });
 
