@@ -43,6 +43,8 @@
 </td>
 {elseif $type === "doc"}
 <td>{$itemField|htmlspecialchars|truncate:300:".."}</td>
+{elseif $type === "array"}
+<td>{$itemField|@print_r}</td>
 {else}
 <td>{$itemField|htmlspecialchars|truncate:60:".."}</td>
 {/if}
