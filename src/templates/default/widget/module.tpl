@@ -1,4 +1,4 @@
-<div class="row module-block">
+<div class="row module-block" data-id="{$module.id}">
 <input type="hidden" value="{$module.name}" name="module_name[]">
 
 {if $module.preview}
