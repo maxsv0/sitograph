@@ -53,7 +53,7 @@
         <p class="small text-muted module-buildinfo">
             Date build: {$module.date}<br>
         </p>
-        <p class="small text-muted module-btnpage">
+        <p class="hide module-btnpage">
            {$rep_url}/module/{$module.name}/
         </p>
         <p class="hide module-buildfiles">

@@ -86,10 +86,14 @@
 .module-star-rating {
 	font-size: 14px;
 	color: #ed2a45;
+	margin:0;
 }
 .module-buildfiles {
 	max-height:100px;
 	overflow-y: auto;
+}
+.module-reviews {
+	margin:0;
 }
 .media-well {
 	min-height: 20px;
@@ -196,19 +200,20 @@
     color:  #000;
 	height: 38px 
 }
+.navbar-default .navbar-collapse, .navbar-default .navbar-form, .navbar-default {
+	border-color: transparent;
+	background-color: transparent
+}
 .navbar-collapse {
 	overflow: hidden
 }
 .nav > li > a:hover, .nav > li > a:focus {
-	background-color: transparent;
-	border-bottom: 2px solid #ed2a45;
-	color:#000;
-	height: 38px 
+	background-color: #ed2a45;
+	color:#fff;
 }
-
-.navbar-default .navbar-collapse, .navbar-default .navbar-form, .navbar-default {
-    border-color: transparent;
-	background-color: transparent
+.nav .open>a, .nav .open>a:hover, .nav .open>a:focus {
+	background-color: #bc0d25;
+	border-color: #fff;
 }
 .navbar-toggle {
     background-color: transparent;
