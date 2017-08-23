@@ -10,59 +10,58 @@
         <td>ID</td>
         <td>Status</td>
         <td>Date</td>
-        <td>UserID</td>
-        <td>IP</td>
+        <td>User</td>
         <td>Device</td>
-        <td>Browser</td>
-        <td>OS</td>
-        <td>Actions</td>
+        <td>IP</td>
+        <td>IP info</td>
+        <td>UA</td>
+        <td>UA info</td>
     </tr>
 
     {foreach from=$lead_list item=lead name=loop}
 
         <tr>
-            <td>{$lead.id}</td>
-            <td>
+            <td class="col-sm-1">{$lead.id}</td>
+            <td class="col-sm-1">
                 {if $lead.status == "online"}
                     <span class="label label-success">online</span>
                 {else}
                     <span class="label label-default">offline</span>
                 {/if}
+            </td>
+            <td class="col-sm-2">{$lead.last_action}</td>
+            <td class="col-sm-1">
+{if $lead.user_id}
+    <p>ID: {$lead.user_id}</p>
+    <p><a href="/admin/?section=users&table=users&edit={$lead.user_id}">edit user</a></p>
+{else}
+           <i>anonymous</i>
+{/if}
+            </td>
+            <td class="col-sm-1">{$lead.device_type}</td>
+            <td class="col-sm-2">
+{if $lead.ip_info && false}
+
+    {include "$themePath/sitograph/seo/lead_ipinfo.tpl" info=$lead.ip_info}
+
+{else}
+    <a href="/api/lead/loadip/{$lead.id}/" onclick="load_ajax(this);return false;">Load IP Info</a>
+{/if}
 
             </td>
-            <td>{$lead.last_action}</td>
-            <td>{$lead.user_id}</td>
-            <td>{$lead.ip}</td>
-            <td>
-                {if $lead.ua_info && $lead.ua_info.device_type}
-                    {$lead.ua_info.device_type}
+            <td class="col-sm-1">{$lead.ip}</td>
+            <td class="col-sm-3">
+                {if $lead.ua_info}
 
-                    {if $lead.ua_info && $lead.ua_info.device_brand}
-                        <br>
-                        {$lead.ua_info.device_brand}
-                    {/if}
-                    {if $lead.ua_info && $lead.ua_info.device_model}
-                        {$lead.ua_info.device_model}
-                    {/if}
+                    {include "$themePath/sitograph/seo/lead_uainfo.tpl" info=$lead.ua_info}
 
+                {else}
+                    <a href="/api/lead/loadua/{$lead.id}/" onclick="load_ajax(this);return false;">Load UA Info</a>
                 {/if}
             </td>
-            <td>
-                {if $lead.ua_info && $lead.ua_info.browser}
-                    {$lead.ua_info.browser}
-
-    {if $lead.ua_info.browser_version != "Unknown"}
-                    {$lead.ua_info.browser_version}
-    {/if}
-                {/if}
+            <td class="small" style="max-width:100px; overflow: auto; white-space: nowrap;">
+                {$lead.ua}
             </td>
-            <td>
-                {if $lead.ua_info && $lead.ua_info.os}
-                    {$lead.ua_info.os}
-                    {$lead.ua_info.os_version}
-                {/if}
-            </td>
-            <td><a href="/admin/?section=leads&range={$admin_range}&allinfo={$lead.id}">more info</a></td>
         </tr>
 
     {/foreach}

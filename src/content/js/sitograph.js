@@ -449,3 +449,19 @@ function Get_More_Search (e) {
         }
     });
 }
+
+function load_ajax(dest) {
+    console.log($(dest).attr("href"));
+
+    $.ajax({
+        type     : "GET",
+        dataType : 'json',
+        async    : false,
+        url      : $(dest).attr("href") + "?tohtml",
+        success: function(data){
+            $(dest).html(data);
+            return false;
+        }
+    });
+    return false;
+}

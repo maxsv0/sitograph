@@ -39,7 +39,8 @@ a:hover, .add_link:hover {
     font-family: Verdana;
     font-size: 36px;
     line-height: 36px;
-    margin-left: 50px;    
+    margin-left: 50px;  
+    text-shadow: 1px 1px #fff;  
 }
 /* ----------------- */
 

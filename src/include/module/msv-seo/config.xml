@@ -14,6 +14,8 @@
 		<filter action="msv_seo_setlead" url="*"/>
 		<filter action="msv_seo_showleads" url="/admin/"/>
 
+		<api name="lead" action="api_request_lead"/>
+
 		<table name="leads" index="id" title="id">
 			<field name="id" type="id"/>
 			<field name="published" type="published"/>
@@ -22,6 +24,7 @@
 			<field name="updated" type="updated"/>
 			<field name="lang" type="lang"/>
 			<field name="user_id" type="int"/>
+			<field name="device_type" type="str"/>
 			<field name="ip" type="str"/>
 			<field name="ip_info" type="text"/>
 			<field name="ua" type="str"/>
@@ -59,69 +62,10 @@
 		<dependency module="msv-core" version="1.0" />
 
 		<file dir="module" path="msv-seo/msv-seo.php"/>
+		<file dir="module" path="msv-seo/msv-seo.api.php"/>
 		<file dir="module" path="msv-seo/msv-seo.functions.php"/>
 		<file dir="module" path="msv-seo/config.xml"/>
+		<file dir="module" path="msv-seo/config.locales.xml"/>
 		<file dir="content" path="images/module_preview_msv-seo.jpg"/>
 	</install>
-
-
-
-	<locales>
-		<locale name="ru">
-			<field name="table.seo" value="SEO"/>
-			<field name="table.seo.id" value="ID"/>
-			<field name="table.seo.published" value="Активно"/>
-			<field name="table.seo.deleted" value="Удалено"/>
-			<field name="table.seo.author" value="Автор"/>
-			<field name="table.seo.updated" value="Обновлено"/>
-			<field name="table.seo.lang" value="Язык"/>
-			<field name="table.seo.url" value="URL"/>
-			<field name="table.seo.title" value="Meta: Title"/>
-			<field name="table.seo.description" value="Meta: Description"/>
-			<field name="table.seo.keywords" value="Meta: Keywords"/>
-			<field name="table.seo.sitemap" value="Карта сайта"/>
-		</locale>
-		<locale name="en">
-			<field name="table.seo" value="SEO"/>
-			<field name="table.seo.id" value="ID"/>
-			<field name="table.seo.published" value="Published"/>
-			<field name="table.seo.deleted" value="Deleted"/>
-			<field name="table.seo.author" value="Author"/>
-			<field name="table.seo.updated" value="Updated"/>
-			<field name="table.seo.lang" value="Lang"/>
-			<field name="table.seo.url" value="URL"/>
-			<field name="table.seo.title" value="Meta: Title"/>
-			<field name="table.seo.description" value="Meta: Description"/>
-			<field name="table.seo.keywords" value="Meta: Keywords"/>
-			<field name="table.seo.sitemap" value="Карта сайта"/>
-		</locale>
-		<locale name="de">
-			<field name="table.seo" value="SEO"/>
-			<field name="table.seo.id" value="ID"/>
-			<field name="table.seo.published" value="Published"/>
-			<field name="table.seo.deleted" value="Deleted"/>
-			<field name="table.seo.author" value="Author"/>
-			<field name="table.seo.updated" value="Updated"/>
-			<field name="table.seo.lang" value="Lang"/>
-			<field name="table.seo.url" value="URL"/>
-			<field name="table.seo.title" value="Meta: Title"/>
-			<field name="table.seo.description" value="Meta: Description"/>
-			<field name="table.seo.keywords" value="Meta: Keywords"/>
-			<field name="table.seo.sitemap" value="Карта сайта"/>
-		</locale>
-		<locale name="ua">
-			<field name="table.seo" value="SEO"/>
-			<field name="table.seo.id" value="ID"/>
-			<field name="table.seo.published" value="Активно"/>
-			<field name="table.seo.deleted" value="Видалено"/>
-			<field name="table.seo.author" value="Автор"/>
-			<field name="table.seo.updated" value="Оновлено"/>
-			<field name="table.seo.lang" value="Мова"/>
-			<field name="table.seo.url" value="URL"/>
-			<field name="table.seo.title" value="Meta: Title"/>
-			<field name="table.seo.description" value="Meta: Description"/>
-			<field name="table.seo.keywords" value="Meta: Keywords"/>
-			<field name="table.seo.sitemap" value="Мапа сайту"/>
-		</locale>
-	</locales>
 </document>

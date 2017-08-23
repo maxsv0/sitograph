@@ -22,9 +22,10 @@
 	<file dir="module" path="blog/config.xml"/>
 	<file dir="module" path="blog/config.locales.xml"/>
 	<file dir="module" path="blog/config.install.xml"/>
-	<file dir="module" path="blog/install-blog-folder-structure.html"/>
-	<file dir="module" path="blog/install-blog-gallery.html"/>
-	<file dir="module" path="blog/install-blog-layers.html"/>
+	<file dir="module" path="blog/doc/en-blog-folder-structure.html"/>
+	<file dir="module" path="blog/doc/en-blog-gallery.html"/>
+	<file dir="module" path="blog/doc/en-blog-layers.html"/>
+	<file dir="module" path="blog/doc/en-mail_template_admin_notify.html"/>
 	<file dir="content" path="images/blog/blog_2.jpg"/>
 	<file dir="content" path="images/blog/blog_3.jpg"/>
 	<file dir="content" path="images/blog/module_preview.jpg"/>

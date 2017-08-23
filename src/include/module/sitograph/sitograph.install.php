@@ -33,51 +33,51 @@ function Install_Sitograph($module) {
     $menu_parent_id = $result["insert_id"];
 
     // create sample site structure
-    $docContent = file_get_contents($module->pathModule."install-page-getting-started.html");
+    $docContent = msv_load_module_doc($module->pathModule, "page-getting-started");
     $itemStructure = array(
         "url" => "/sitograph/getting-started/",
-        "name" => "Getting Started",
+        "name" => _t("structure.getting_started"),
         "template" => "custom",
         "page_template" => "main-sideblock.tpl",
         "menu" => "top",
         "menu_order" => 5,
         "menu_parent_id" => $menu_parent_id,
-        "document_title" => "Getting Started",
+        "document_title" => _t("structure.getting_started"),
         "document_text" => $docContent,
     );
     msv_add_structure($itemStructure, array("lang" => "*"));
 
-    $docContent = file_get_contents($module->pathModule."install-page-file-structure.html");
+    $docContent = msv_load_module_doc($module->pathModule, "page-file-structure");
     $itemStructure = array(
         "url" => "/sitograph/file-structure/",
-        "name" => "Sitograph File structure",
+        "name" => _t("structure.file_structure"),
         "template" => "custom",
         "page_template" => "main-sideblock.tpl",
         "menu" => "top",
         "menu_order" => 10,
         "menu_parent_id" => $menu_parent_id,
-        "document_title" => "Getting Started",
+        "document_title" => _t("structure.file_structure"),
         "document_text" => $docContent,
     );
     msv_add_structure($itemStructure, array("lang" => "*"));
 
-    $docContent = file_get_contents($module->pathModule."install-page-api.html");
+    $docContent = msv_load_module_doc($module->pathModule, "page-api");
     $itemStructure = array(
         "url" => "/sitograph/API/",
-        "name" => "Website API",
+        "name" => _t("structure.api"),
         "template" => "custom",
         "page_template" => "main-sideblock.tpl",
         "menu" => "top",
         "menu_order" => 15,
         "menu_parent_id" => $menu_parent_id,
-        "document_title" => "Getting Started",
+        "document_title" => _t("structure.api"),
         "document_text" => $docContent,
     );
     msv_add_structure($itemStructure, array("lang" => "*"));
 
     $itemStructure = array(
         "url" => "/sitograph/modules/",
-        "name" => "Sitograph Modules",
+        "name" => _t("structure.sitograph_modules"),
         "template" => "custom",
         "page_template" => "main-modules.tpl",
         "menu" => "top",
@@ -86,9 +86,40 @@ function Install_Sitograph($module) {
     );
     msv_add_structure($itemStructure, array("lang" => "*"));
 
+    // update homepage doc
+    $resultQuery = db_get_list(TABLE_STRUCTURE, "`url` like '/'");
+    if ($resultQuery["ok"]) {
+        foreach ($resultQuery["data"] as $structure) {
+            if (empty($structure["page_document_id"])) {
+                continue;
+            }
+
+            $docContent = msv_load_module_doc($module->pathModule, "page-homepage");
+
+            $result = db_update(TABLE_DOCUMENTS, "text", "'" . db_escape($docContent) . "'", " `id` = '" . $structure["page_document_id"] . "'");
+            if (!$result["ok"]) {
+                msv_message_error($result["msg"]);
+            }
+        }
+    }
+
     // mailing options
     msv_set_config("email_from", "tech@sitograph.com", true, "*");
     msv_set_config("email_fromname", "Sitograph", true, "*");
+
+    msv_set_config("theme_copyright_text", "2016-2017 <a href='http://sitograph.com/' target='_blank'>Sitograph</a>", true, "*");
+    msv_set_config("theme_header_contacts", "<a href='https://discord.gg/tPusyxP'>Join Discord channel</a><br>Skype: max.svistunov", true, "*");
+
+    msv_set_config("service_ua_info", "curl -X POST -H 'Content-Type: application/json' -d '{\'useragent\':\'{ua}\'}' https://useragentinfo.co/device", true, "*");
+    msv_set_config("service_ip_info", "curl -X POST -H 'Content-Type: application/json' -d '{\'ip\':\'{ip}\'}' https://useragentinfo.co/ip", true, "*");
+
+    if (LANG === "ru" || LANG === "ua") {
+        msv_set_config("theme_logo", "/content/images/sitograph/sitograph-logo-dark-ru.png", true, "*");
+    } else {
+        msv_set_config("theme_logo", "/content/images/sitograph/sitograph-logo-dark-en.png", true, "*");
+    }
+    msv_set_config("theme_bg", "/content/images/bg_full.jpg", true, "*");
+    msv_set_config("theme_cms_favicon", "/content/images/sitograph/cms_favicon.gif", true, "*");
 
     // add mail templates
     $header = '
@@ -103,58 +134,9 @@ a:active {color:#bb233a;}
 </style>
 ';
 
-    $templateHeader = '
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-<tbody>
-<tr>
-<td style="padding: 10px 0 30px 0;">
-<table style="background-color: #ffffff; width: 640px;" border="0" cellspacing="0" cellpadding="0" align="center">
-<tbody>
-<tr style="height: 52px;">
-<td style="width: 467px; height: 52px;">
-<table border="0" cellspacing="0" cellpadding="0">
-<tbody>
-<tr>
-<td bgcolor="#747474" width="20" height="50">&nbsp;</td>
-<td bgcolor="#747474" width="600" height="50">
-<img style="display: block;" src="{HOME_URL}content/images/sitograph/sitograph-logo-white-en.png" alt="Sitograph" width="265" height="80"/>
-</td>
-<td bgcolor="#747474" width="20" height="50">&nbsp;</td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-<tr style="height: 15px;">
-<td style="width: 467px; height: 15px;">&nbsp;</td>
-</tr>
-<tr style="height: 400px;">
-<td style="padding: 20px 20px 0px; color: #2c2c2c; font-size: 11pt; line-height: 140%; width: 467px; height: 400px;">
-Dear {name},
-<br /><br />
-';
-    $templateFooter = '
-<br /><br />
-Regards, <br />
-Sitograph Team
-</td>
-</tr>
-<tr style="height: 97px;">
-<td style="padding: 0px 20px; color: #777777; background-color: #eeeeee; font-size: 9pt; line-height: 140%; width: 467px; height: 90px;">
-<br />
-<strong>Sitograph Content Management System.</strong>
-Sitograph CMS is an online, open source website creation tool.
-Sitograph is a set of solutions for any online business.
-It is simple and powerful content management system for website or online shop.
-</td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-</tbody>
-</table>
-';
+    $templateHeader = msv_load_module_doc($module->pathModule, "mail_template_header");
+    $templateFooter = msv_load_module_doc($module->pathModule, "mail_template_footer");
+
     // update all Email Templates, adding Sitograph header and footer
     $resultQuery = db_get_list(TABLE_MAIL_TEMPLATES);
     if ($resultQuery["ok"]) {
@@ -288,7 +270,7 @@ It is simple and powerful content management system for website or online shop.
     $result = api_gallery_add($item, array("LoadPictures"));
     $album_id = $result["insert_id"];
 
-    $docContent = file_get_contents($module->pathModule."install-blog-install.html");
+    $docContent = msv_load_module_doc($module->pathModule, "blog-install");
     $item = array(
         "sticked" => 0,
         "album_id" => $album_id,
@@ -303,7 +285,7 @@ It is simple and powerful content management system for website or online shop.
     );
     api_blog_add($item, array("LoadPictures"));
 
-    $docContent = file_get_contents($module->pathModule."install-blog-release.html");
+    $docContent = msv_load_module_doc($module->pathModule, "blog-release");
     $item = array(
         "sticked" => 0,
         "date" => "2017-07-07 23:58:59",
@@ -316,13 +298,6 @@ It is simple and powerful content management system for website or online shop.
         "pic_preview" => "images/blog/blog_sitograph_3.jpg",
     );
     api_blog_add($item, array("LoadPictures"));
-
-
-
-
-
-    //
-
 
 
 }

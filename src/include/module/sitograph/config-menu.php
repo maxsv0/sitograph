@@ -9,7 +9,7 @@ $submenu["realtime"] = array(
     "name" => _t("admin.realtime"),
     "access" => "admin",
     "url" => "/admin/?section=realtime",
-    "file" => "index.tpl",
+    "file" => "realtime.tpl",
     "title" => _t("admin.realtime"),
 );
 $submenu["leads"] = array(
@@ -17,7 +17,7 @@ $submenu["leads"] = array(
     "access" => "admin",
     "url" => "/admin/?section=leads",
     "file" => "leads.tpl",
-    "title" => _t("admin.leads"),
+    "title" => _t("admin.leads_title"),
 );
 $submenu["analytics"] = array(
     "name" => _t("admin.analytics"),
@@ -184,6 +184,7 @@ $submenu = array();
 /*
 TODO: rework locales
 		not working now, cause config.xml was split
+*/
 $submenu["locales"] = array(
         "name" => _t("admin.locales"),
         "access" => "superadmin",
@@ -192,7 +193,6 @@ $submenu["locales"] = array(
         "file" => "locales.tpl",
         "title" => _t("admin.locales_title")
 );
-*/
 $submenu["cronjobs"] = array(
     "name" => _t("admin.cronjobs"),
     "access" => "superadmin",
@@ -270,7 +270,7 @@ $menu_ar["site_settings"] = array(
 
 $menu_ar["history"] = array(
     "name" => _t("admin.history"),
-    "access" => "admin",
+    "access" => "superadmin",
     "handler" => "module-history.php",
     "url" => "/admin/?section=history",
     "file" => "history.tpl",

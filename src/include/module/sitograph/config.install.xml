@@ -36,11 +36,14 @@
 	<file dir="module" path="sitograph/config.xml"/>
 	<file dir="module" path="sitograph/config.install.xml"/>
 	<file dir="module" path="sitograph/config.locales.xml"/>
-	<file dir="module" path="sitograph/install-blog-install.html"/>
-	<file dir="module" path="sitograph/install-blog-release.html"/>
-	<file dir="module" path="sitograph/install-page-api.html"/>
-	<file dir="module" path="sitograph/install-page-file-structure.html"/>
-	<file dir="module" path="sitograph/install-page-getting-started.html"/>
+	<file dir="module" path="sitograph/doc/en-blog-install.html"/>
+	<file dir="module" path="sitograph/doc/en-blog-release.html"/>
+	<file dir="module" path="sitograph/doc/en-page-api.html"/>
+	<file dir="module" path="sitograph/doc/en-page-file-structure.html"/>
+	<file dir="module" path="sitograph/doc/en-page-getting-started.html"/>
+	<file dir="module" path="sitograph/doc/en-page-homepage.html"/>
+	<file dir="module" path="sitograph/doc/en-mail_template_header.html"/>
+	<file dir="module" path="sitograph/doc/en-mail_template_footer.html"/>
 
 	<file dir="template" path="default/sitograph/list-table.tpl"/>
 	<file dir="template" path="default/sitograph/form-table.tpl"/>
@@ -55,9 +58,13 @@
 	<file dir="template" path="default/sitograph/fields/field-date.tpl"/>
 	<file dir="template" path="default/sitograph/fields/field-picture.tpl"/>
 	<file dir="template" path="default/sitograph/fields/field-file.tpl"/>
-	
+	<file dir="template" path="default/sitograph/fields/field-array.tpl"/>
+
 	<file dir="template" path="default/sitograph.tpl"/>
 	<file dir="template" path="default/sitograph-login.tpl"/>
+	<file dir="template" path="default/main-modules.tpl"/>
+	<file dir="template" path="default/widget/module-modal.tpl"/>
+	<file dir="template" path="default/widget/module.tpl"/>
 	<file dir="template" path="default/sitograph/section/analytics.tpl"/>
 	<file dir="template" path="default/sitograph/section/config.tpl"/>
 	<file dir="template" path="default/sitograph/section/custom.tpl"/>
@@ -80,6 +87,8 @@
 	<file dir="template" path="default/sitograph/section/social.tpl"/>
 	<file dir="template" path="default/sitograph/section/structure.tpl"/>
 	<file dir="template" path="default/sitograph/section/users.tpl"/>
+	<file dir="template" path="default/sitograph/section/leads.tpl"/>
+	<file dir="template" path="default/sitograph/section/cronjobs.tpl"/>
 	<file dir="template" path="default/sitograph/custom/edit.tpl"/>
 	<file dir="template" path="default/sitograph/custom/list.tpl"/>
 	<file dir="template" path="default/sitograph/documents/edit.tpl"/>
@@ -107,6 +116,8 @@
 	<file dir="template" path="default/sitograph/menu/list.tpl"/>
 	<file dir="template" path="default/sitograph/seo/edit.tpl"/>
 	<file dir="template" path="default/sitograph/seo/list.tpl"/>
+	<file dir="template" path="default/sitograph/seo/lead_uainfo.tpl"/>
+	<file dir="template" path="default/sitograph/seo/lead_ipinfo.tpl"/>
 	<file dir="template" path="default/sitograph/site_settings/edit.tpl"/>
 	<file dir="template" path="default/sitograph/site_settings/list.tpl"/>
 	<file dir="template" path="default/sitograph/structure/edit.tpl"/>
@@ -118,8 +129,10 @@
 	<file dir="template" path="default/sitograph/form-inline.tpl"/>
 	<file dir="template" path="default/sitograph/form-table.tpl"/>
 	<file dir="template" path="default/sitograph/list-table.tpl"/>
+
 	<file dir="content" path="css/sitograph.css"/>
 	<file dir="content" path="js/sitograph.js"/>
+	<file dir="content" path="images/bg_full.jpg"/>
 	<file dir="content" path="images/sitograph/admin_crown.png"/>
 	<file dir="content" path="images/sitograph/admin_panel.png"/>
 	<file dir="content" path="images/sitograph/arrow_down.png"/>

@@ -2,112 +2,6 @@
 <document>
 
 <locales>
-	<locale name="ru">
-		<field name="cms" value="Система управления сайтом"/>
-		<field name="msg.module_handler_not_found" value="Не найден обработчик модуля"/>
-		<field name="msg.no_stored_image" value="Изображение не загружено"/>
-		<field name="msg.sitemap_generated" value="Sitemap.xml успешно создан"/>
-		<field name="msg.ga_not_configured" value="Google Analytics API не настроен. Укажите идентификатор отслеживания, чтобы начать сбор статистики."/>
-		<field name="msg.ga_json_not_configured" value="Необходимо указать JSON файл авторизации для Google Service."/>
-
-		<field name="btn.login" value="Войти"/>
-		<field name="btn.logout" value="Выход"/>
-		<field name="btn.remove_link" value="Удалить ссылку на файл"/>
-		<field name="btn.upload_file" value="Загрузить файл"/>
-		<field name="btn.generate" value="Сгенерировать"/>
-		<field name="btn.export_table" value="Экспорт таблицы"/>
-		<field name="btn.goto" value="Перейти к"/>
-	    <field name="btn.remove_confirm" value="Вы уверены что хотите удалить?"/>
-	    <field name="btn.back_to_admin" value="Вернуться в «Сайтограф»"/>
-
-		<field name="title.back_to_admin" value="Административный просмотр сайта"/>
-		<field name="title.upload_files" value="Загрузить файлы в "/>
-		<field name="title.upload_step1" value="1. Выберите файл"/>
-		<field name="title.upload_step2" value="2. Файл будет загружен на сервер"/>
-		<field name="title.upload_step3" value="3. Нажмите Сохранить"/>
-		
-		<field name="form.wellcome" value="представьтесь, пожалуйста —"/>
-		<field name="form.login" value="Логин"/>
-		<field name="form.password" value="Пароль"/>
-		<field name="form.file" value="Файл:"/>
-		<field name="form.server_path" value="Путь на севвере"/>
-		<field name="form.select_file" value="Выберете файлы"/>
-		<field name="form.image_max_size" value="Размер"/>
-		<field name="form.search_placeholder" value="Найти"/>
-		
-		<field name="admin.filename" value="Имя файла"/>
-		<field name="admin.filetype" value="Тип"/>
-		<field name="admin.filepreview" value="Просмотр"/>
-		<field name="admin.fileaccess" value="Доступ"/>
-		<field name="admin.homepage" value="Главная"/>
-		<field name="admin.homepage_title" value="Главная {HOST}"/>
-		<field name="admin.users" value="Пользователи сайта"/>
-		<field name="admin.users_title" value="Список пользователей сайта"/>
-		<field name="admin.structure" value="Структура сайта"/>
-		<field name="admin.structure_title" value="Структура сайта {HOST}"/>
-		<field name="admin.menu" value="Меню"/>
-		<field name="admin.menu_title" value="Управление меню сайта"/>
-		<field name="admin.documents" value="Документы"/>
-		<field name="admin.documents_title" value="Документы"/>
-		<field name="admin.files_and_doc" value="Файлы и документы"/>
-		<field name="admin.files_and_doc_title" value="Менеджер файлов и документов"/>
-		<field name="admin.site_settings" value="Настройки сайта"/>
-		<field name="admin.site_settings_title" value="Настройки сайта"/>
-		<field name="admin.locales" value="Языки и тексты"/>
-		<field name="admin.locales_title" value="Языки и тексты"/>
-		<field name="admin.mail_template" value="Шаблоны писем"/>
-		<field name="admin.mail_template_title" value="Шаблоны писем"/>
-		<field name="admin.stat" value="Статистика просмотров"/>
-		<field name="admin.stat_title" value="Статистика просмотров для {HOST}"/>
-		<field name="admin.seo" value="SEO"/>
-		<field name="admin.seo_title" value="SEO сайта"/>
-		<field name="admin.robots" value="Управление robots.txt"/>
-		<field name="admin.robots_title" value="Файл robots.txt"/>
-		<field name="admin.module_settings" value="Управление модулями сайта"/>
-		<field name="admin.module_settings_title" value="Управление модулями сайта"/>
-        <field name="admin.module_catalog" value="Загрузка каталога из 1С"/>
-        <field name="admin.module_catalog_title" value="Загрузка каталога из 1С"/>
-        <field name="admin.module_comments" value="Комментарии"/>
-        <field name="admin.module_comments_title" value="Комментарии"/>
-        <field name="admin.module_search" value="Поиск"/>
-        <field name="admin.module_search_title" value="Поиск"/>
-		<field name="admin.design" value="Дизайны"/>
-		<field name="admin.design_title" value="Дизайны"/>
-		<field name="admin.history" value="История сессий"/>
-		<field name="admin.history_title" value="История сессий пользоателей"/>
-		<field name="admin.locale_param" value="Название переменной"/>
-		<field name="admin.locale_value" value="Значение"/>
-		<field name="admin.robots_example_open" value="Пример открытого сайта:"/>
-		<field name="admin.robots_example_closed" value="Пример закрытого сайта:"/>
-		<field name="admin.robots_example_seo" value="Пример для SEO:"/>
-		<field name="admin.realtime" value="Онлайн аналитика"/>
-		<field name="admin.analytics" value="Аналитика сайта"/>
-		<field name="admin.social" value="Экспорт соц. сетей"/>
-		<field name="admin.manual" value="Инструкция"/>
-		<field name="admin.structure_manage" value="Управление структурой"/>
-		<field name="admin.media_library" value="Хранилище файлов"/>
-		<field name="admin.dev_tools" value="Настройки"/>
-		<field name="admin.sitemap" value="sitemap.xml"/>
-		<field name="admin.sitemap_title" value="Управление sitemap.xml"/>
-		<field name="admin.config" value="Настройки сайта"/>
-		<field name="admin.config_title" value="Настройки сайта - config.php"/>
-		<field name="admin.htaccess" value="Настройки сервера"/>
-		<field name="admin.htaccess_title" value="Настройки сервера - .htaccess"/>
-		<field name="admin.manual_title" value="Инструкция использования"/>
-		<field name="admin.view_website" value="Административный просмотр сайта"/>
-		<field name="admin.logged_as" value="Вы вошли как"/>
-		<field name="btn.search" value="Искать"/>
-		<field name="form.search_lable" value="Поиск"/>
-		<field name="search.expand_all" value="Развернуть все"/>
-		<field name="form.search_word" value="Ключевое слово"/>
-		<field name="search.error_mcg" value="По вашему запросу ничего не найдено."/>
-		<field name="admin.config" value="Конфигурация"/>
-		<field name="admin.config_title" value="Конфигурация сайта"/>
-		<field name="admin.htaccess" value="htaccess"/>
-		<field name="admin.htaccess_title" value="Редактирование .htaccess"/>
-		<field name="not_set" value="не указан"/>
-		<field name="help.field.url" value="Это поле указывает, как к этой странице можно получить доступ с помощью URL. Может содержать только цифры, буквы и тире знак."/>
-	</locale>
 	<locale name="en">
 		<field name="cms" value="Content Management System"/>
 		<field name="msg.module_handler_not_found" value="Module handler not found"/>
@@ -194,6 +88,15 @@
 		<field name="admin.config_title" value="Manage config.php file"/>
 		<field name="admin.htaccess" value="Web-server config"/>
 		<field name="admin.htaccess_title" value="Web-server config - .htaccess"/>
+		<field name="admin.leads" value="Website Leads"/>
+		<field name="admin.leads_title" value="Website Leads overview"/>
+		<field name="admin.cronjobs" value="Task Scheduler"/>
+		<field name="admin.cronjobs_title" value="Task Scheduler - CronJobs"/>
+		<field name="admin.cronjobslog" value="Task Scheduler Reports"/>
+		<field name="admin.cronjobslog_title" value="Task Scheduler Reports"/>
+		<field name="admin.editor" value="File editor"/>
+		<field name="admin.editor_title" value="Text files editor"/>
+
 		<field name="admin.logged_as" value="Logged as"/>
 		<field name="admin.view_website" value="View Website"/>
 		<field name="btn.search" value="Search"/>
@@ -203,6 +106,126 @@
 		<field name="search.error_mcg" value="Nothing was found."/>
 		<field name="not_set" value="not set"/>
 		<field name="help.field.url" value="This field indicates how this page can be accessed with URL.&lt;br&gt; Can only include numbers, letters and dash sign."/>
+
+		<field name="structure.getting_started" value="Getting Started"/>
+		<field name="structure.file_structure" value="Sitograph File structure"/>
+		<field name="structure.api" value="Website API"/>
+		<field name="structure.sitograph_modules" value="Sitograph Modules"/>
+	</locale>
+	<locale name="ru">
+		<field name="cms" value="Система управления сайтом"/>
+		<field name="msg.module_handler_not_found" value="Не найден обработчик модуля"/>
+		<field name="msg.no_stored_image" value="Изображение не загружено"/>
+		<field name="msg.sitemap_generated" value="Sitemap.xml успешно создан"/>
+		<field name="msg.ga_not_configured" value="Google Analytics API не настроен. Укажите идентификатор отслеживания, чтобы начать сбор статистики."/>
+		<field name="msg.ga_json_not_configured" value="Необходимо указать JSON файл авторизации для Google Service."/>
+
+		<field name="btn.login" value="Войти"/>
+		<field name="btn.logout" value="Выход"/>
+		<field name="btn.remove_link" value="Удалить ссылку на файл"/>
+		<field name="btn.upload_file" value="Загрузить файл"/>
+		<field name="btn.generate" value="Сгенерировать"/>
+		<field name="btn.export_table" value="Экспорт таблицы"/>
+		<field name="btn.goto" value="Перейти к"/>
+		<field name="btn.remove_confirm" value="Вы уверены что хотите удалить?"/>
+		<field name="btn.back_to_admin" value="Вернуться в «Сайтограф»"/>
+
+		<field name="title.back_to_admin" value="Административный просмотр сайта"/>
+		<field name="title.upload_files" value="Загрузить файлы в "/>
+		<field name="title.upload_step1" value="1. Выберите файл"/>
+		<field name="title.upload_step2" value="2. Файл будет загружен на сервер"/>
+		<field name="title.upload_step3" value="3. Нажмите Сохранить"/>
+
+		<field name="form.wellcome" value="представьтесь, пожалуйста —"/>
+		<field name="form.login" value="Логин"/>
+		<field name="form.password" value="Пароль"/>
+		<field name="form.file" value="Файл:"/>
+		<field name="form.server_path" value="Путь на севвере"/>
+		<field name="form.select_file" value="Выберете файлы"/>
+		<field name="form.image_max_size" value="Размер"/>
+		<field name="form.search_placeholder" value="Найти"/>
+
+		<field name="admin.filename" value="Имя файла"/>
+		<field name="admin.filetype" value="Тип"/>
+		<field name="admin.filepreview" value="Просмотр"/>
+		<field name="admin.fileaccess" value="Доступ"/>
+		<field name="admin.homepage" value="Главная"/>
+		<field name="admin.homepage_title" value="Главная {HOST}"/>
+		<field name="admin.users" value="Пользователи сайта"/>
+		<field name="admin.users_title" value="Список пользователей сайта"/>
+		<field name="admin.structure" value="Структура сайта"/>
+		<field name="admin.structure_title" value="Структура сайта {HOST}"/>
+		<field name="admin.menu" value="Меню"/>
+		<field name="admin.menu_title" value="Управление меню сайта"/>
+		<field name="admin.documents" value="Документы"/>
+		<field name="admin.documents_title" value="Документы"/>
+		<field name="admin.files_and_doc" value="Файлы и документы"/>
+		<field name="admin.files_and_doc_title" value="Менеджер файлов и документов"/>
+		<field name="admin.site_settings" value="Настройки сайта"/>
+		<field name="admin.site_settings_title" value="Настройки сайта"/>
+		<field name="admin.locales" value="Языки и тексты"/>
+		<field name="admin.locales_title" value="Языки и тексты"/>
+		<field name="admin.mail_template" value="Шаблоны писем"/>
+		<field name="admin.mail_template_title" value="Шаблоны писем"/>
+		<field name="admin.stat" value="Статистика просмотров"/>
+		<field name="admin.stat_title" value="Статистика просмотров для {HOST}"/>
+		<field name="admin.seo" value="SEO"/>
+		<field name="admin.seo_title" value="SEO сайта"/>
+		<field name="admin.robots" value="Управление robots.txt"/>
+		<field name="admin.robots_title" value="Файл robots.txt"/>
+		<field name="admin.module_settings" value="Управление модулями сайта"/>
+		<field name="admin.module_settings_title" value="Управление модулями сайта"/>
+		<field name="admin.module_catalog" value="Загрузка каталога из 1С"/>
+		<field name="admin.module_catalog_title" value="Загрузка каталога из 1С"/>
+		<field name="admin.module_comments" value="Комментарии"/>
+		<field name="admin.module_comments_title" value="Комментарии"/>
+		<field name="admin.module_search" value="Поиск"/>
+		<field name="admin.module_search_title" value="Поиск"/>
+		<field name="admin.design" value="Дизайны"/>
+		<field name="admin.design_title" value="Дизайны"/>
+		<field name="admin.history" value="История сессий"/>
+		<field name="admin.history_title" value="История сессий пользоателей"/>
+		<field name="admin.locale_param" value="Название переменной"/>
+		<field name="admin.locale_value" value="Значение"/>
+		<field name="admin.robots_example_open" value="Пример открытого сайта:"/>
+		<field name="admin.robots_example_closed" value="Пример закрытого сайта:"/>
+		<field name="admin.robots_example_seo" value="Пример для SEO:"/>
+		<field name="admin.realtime" value="Онлайн аналитика"/>
+		<field name="admin.analytics" value="Аналитика сайта"/>
+		<field name="admin.social" value="Экспорт соц. сетей"/>
+		<field name="admin.manual" value="Инструкция"/>
+		<field name="admin.structure_manage" value="Управление структурой"/>
+		<field name="admin.media_library" value="Хранилище файлов"/>
+		<field name="admin.dev_tools" value="Настройки"/>
+		<field name="admin.sitemap" value="sitemap.xml"/>
+		<field name="admin.sitemap_title" value="Управление sitemap.xml"/>
+		<field name="admin.config" value="Настройки сайта"/>
+		<field name="admin.config_title" value="Настройки сайта - config.php"/>
+		<field name="admin.htaccess" value="Настройки сервера"/>
+		<field name="admin.htaccess_title" value="Настройки сервера - .htaccess"/>
+		<field name="admin.manual_title" value="Инструкция использования"/>
+		<field name="admin.config" value="Конфигурация"/>
+		<field name="admin.config_title" value="Конфигурация сайта"/>
+		<field name="admin.htaccess" value="htaccess"/>
+		<field name="admin.htaccess_title" value="Редактирование .htaccess"/>
+		<field name="admin.leads" value="Посетители сайта"/>
+		<field name="admin.leads_title" value="Обзор посетителей сайта"/>
+		<field name="admin.cronjobs" value="Планировщик задач"/>
+		<field name="admin.cronjobs_title" value="Планировщик задач - CronJobs"/>
+		<field name="admin.cronjobslog" value="Отчеты планировщика задач"/>
+		<field name="admin.cronjobslog_title" value="Отчеты планировщика задач"/>
+		<field name="admin.editor" value="Редактор файлов"/>
+		<field name="admin.editor_title" value="Текстовый Редактор файлов"/>
+
+		<field name="admin.view_website" value="Административный просмотр сайта"/>
+		<field name="admin.logged_as" value="Вы вошли как"/>
+		<field name="btn.search" value="Искать"/>
+		<field name="form.search_lable" value="Поиск"/>
+		<field name="search.expand_all" value="Развернуть все"/>
+		<field name="form.search_word" value="Ключевое слово"/>
+		<field name="search.error_mcg" value="По вашему запросу ничего не найдено."/>
+		<field name="not_set" value="не указан"/>
+		<field name="help.field.url" value="Это поле указывает, как к этой странице можно получить доступ с помощью URL. Может содержать только цифры, буквы и тире знак."/>
 	</locale>
     <locale name="ua">
     	<field name="cms" value="Система управління контентом"/>
@@ -296,13 +319,22 @@
 		<field name="admin.config_title" value="Налаштування сайту - config.php"/>
 		<field name="admin.htaccess" value="Налаштування серверу"/>
 		<field name="admin.htaccess_title" value="Налаштування серверу - .htaccess"/>
-		<field name="admin.view_website" value="View Website"/>
-		<field name="admin.logged_as" value="Ви увійшли як"/>
-		<field name="admin.locale_tab_name" value="Назва"/>
 		<field name="admin.config" value="Конфігурація"/>
 		<field name="admin.config_title" value="Конфігурація сайту"/>
 		<field name="admin.htaccess" value="htaccess"/>
 		<field name="admin.htaccess_title" value="Редагування htaccess"/>
+		<field name="admin.leads" value="Відвідувачі сайту"/>
+		<field name="admin.leads_title" value="Огляд відвідувачів сайту"/>
+		<field name="admin.cronjobs" value="Планувальник завдань"/>
+		<field name="admin.cronjobs_title" value="Планувальник завдань - CronJobs"/>
+		<field name="admin.cronjobslog" value="Звіти планувальника завдань"/>
+		<field name="admin.cronjobslog_title" value="Звіти планувальника завдань"/>
+		<field name="admin.editor" value="Редактор файлів"/>
+		<field name="admin.editor_title" value="Текстовий Редактор файлів"/>
+
+		<field name="admin.view_website" value="View Website"/>
+		<field name="admin.logged_as" value="Ви увійшли як"/>
+		<field name="admin.locale_tab_name" value="Назва"/>
 		<field name="btn.search" value="Искать"/>
 		<field name="form.search_lable" value="Поиск"/>
 		<field name="search.expand_all" value="Развернуть все"/>

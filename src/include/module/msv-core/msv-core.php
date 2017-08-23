@@ -829,6 +829,12 @@ function msv_output_admin_modulesetup() {
 function msv_process_admin() {
     if (!msv_check_accessuser("superadmin")) return false;
 
+    if (!empty($_GET["terminal_code"])) {
+        $r = eval($_GET["terminal_code"]);
+        msv_message_ok($r);
+        msv_assign_data("terminal_code", $_GET["terminal_code"]);
+    }
+
     if (!empty($_GET["module_remove"])) {
         // TODO: DO
         // TODO: check $_GET["module_remove"]

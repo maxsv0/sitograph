@@ -1630,3 +1630,31 @@ function msv_truncate_text($str, $max_chars = 30) {
         return $s;
     }
 }
+
+function msv_load_module_doc($pathModule, $docName) {
+    $content = "";
+
+    $path = $pathModule."doc/".LANG."-".$docName.".html";
+
+    // try to fall back to eng
+    if (!is_readable($path)) {
+        $path = $pathModule."doc/en-".$docName.".html";
+    }
+
+    if (is_readable($path)) {
+        $content = file_get_contents($path);
+
+        $content = preg_replace_callback(
+            '~\{(\w+?)\}~sU',
+            create_function('$t','
+                        return constant($t[1]);
+                    '),
+            $content);
+
+        return $content;
+    } else {
+        msv_message_error("File not found: $path");
+    }
+
+    return $content;
+}

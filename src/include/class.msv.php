@@ -759,10 +759,6 @@ class MSV_Website {
 		// output debug console, if needed
 		if (defined("DEBUG_PAGE") && DEBUG_PAGE) {
 			$this->outputDebug();
-			// TODO: move??
-			if (!empty($_GET["debugCode"])) {
-				eval($_GET["debugCode"]);
-			}
 		}
 		
 		// init smarty

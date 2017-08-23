@@ -1,17 +1,20 @@
 
-<div class="admin-main-msv hide">
-    <ul class="admin-main-msv-list">
-        <li>
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="admin-main-msv-title">Blog</span>
-        </li>
-         <li>
-        <span class="glyphicon glyphicon-picture"></span>
-        <span class="admin-main-msv-title">Gallery</span>
-        </li>
+{if $user.access == "superadmin"}
 
-    </ul>
-</div>
+<form action="/admin/" class="well">
+    <fieldset>
+        <legend>Sitograph Terminal</legend>
+        <p>Exec PHP code:</p>
+        <p>
+            <textarea class="form-control" name="terminal_code">{$terminal_code}</textarea>
+        </p>
+        <p>
+            <input class="btn btn-default" type="submit" value="Submit Request" onclick="if(!confirm('Are you sure you want to execute this code? This action cannot be undone.')) return false;">
+        </p>
+    </fieldset>
+</form>
+
+{/if}
 
 
 {if !$google_analytics_tracking_id}
@@ -21,15 +24,4 @@
 	</div>
 {/if}
 
-{if $GA_access_token}
-
-	{include "$themePath/sitograph/section/realtime.tpl"}
-
-{else}
-
-	<div class="alert alert-danger">
-	<b>{_t("msg.ga_api_not_configured")}</b><br>
-	{_t("msg.ga_json_not_configured")} <br>
-	<a href="/admin/?section=site_settings&edit_key=google_service_auth_json">{_t("admin.site_settings")} (google_service_auth_json)</a>.
-	</div>
-{/if}
+{include "$themePath/sitograph/section/realtime.tpl"}

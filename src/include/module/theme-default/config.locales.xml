@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+<locales>
+	<locale name="en">
+		<field name="theme.bg" value="Website Background Image"/>
+		<field name="theme.logo" value="Logo Image"/>
+		<field name="theme.css_path" value="Global CSS file"/>
+		<field name="theme.js_path" value="Global JavaScript file"/>
+		<field name="theme.include_font" value="Font included globaly"/>
+		<field name="theme.copyright_text" value="Сopyright text line"/>
+
+		<field name="structure.homepage" value="Homepage"/>
+		<field name="structure.page1" value="Example page"/>
+		<field name="structure.sitemap" value="Sitemap"/>
+		<field name="structure.404" value="Error 404"/>
+		<field name="structure.404_doc" value="Page not found"/>
+		<field name="structure.admin_homepage" value="Admin Homepage"/>
+		<field name="structure.admin_login" value="Admin Login"/>
+	</locale>
+	<locale name="ru">
+		<field name="theme.bg" value="Фон сайта, картинка"/>
+		<field name="theme.logo" value="Логотип, картинка"/>
+		<field name="theme.css_path" value="Общий CSS файл"/>
+		<field name="theme.js_path" value="Общий JavaScript файл"/>
+		<field name="theme.include_font" value="Шрифт сайта"/>
+		<field name="theme.copyright_text" value="Сopyright text line"/>
+
+		<field name="structure.homepage" value="Главная"/>
+		<field name="structure.page1" value="Тестовая страница"/>
+		<field name="structure.sitemap" value="Карта сайта"/>
+		<field name="structure.404" value="Ошибка 404"/>
+		<field name="structure.404_doc" value="Страница не найдена"/>
+		<field name="structure.admin_homepage" value="Панель управления"/>
+		<field name="structure.admin_login" value="Вход в Панель управления"/>
+	</locale>
+	<locale name="ua">
+		<field name="theme.bg" value="Фон сайта, картинка"/>
+		<field name="theme.logo" value="Логотип, картинка"/>
+		<field name="theme.css_path" value="Общий CSS файл"/>
+		<field name="theme.js_path" value="Общий JavaScript файл"/>
+		<field name="theme.include_font" value="Шрифт сайта"/>
+		<field name="theme.copyright_text" value="Сopyright text line"/>
+
+		<field name="structure.homepage" value="Головна"/>
+		<field name="structure.page1" value="Тестова сторінка"/>
+		<field name="structure.sitemap" value="Мапа сайту"/>
+		<field name="structure.404" value="Помилка 404"/>
+		<field name="structure.404_doc" value="Сторінка не знайдена"/>
+		<field name="structure.admin_homepage" value="Панель управління"/>
+		<field name="structure.admin_login" value="Вхід в Панель управління"/>
+	</locale>
+</locales>
+</document>

@@ -1,14 +1,14 @@
 <?php
 
 function msv_seo_setseo($seo) {
-	$result = db_get(TABLE_SEO, " `url` = '".$seo->website->requestUrlRaw."' ");
-	if (!$result["ok"]) {
-	    msv_message_error($result["msg"]);
-	}
-	$row = $result["data"];
-	if (empty($row)) return false;
+    $result = db_get(TABLE_SEO, " `url` = '".$seo->website->requestUrlRaw."' ");
+    if (!$result["ok"]) {
+        msv_message_error($result["msg"]);
+    }
+    $row = $result["data"];
+    if (empty($row)) return false;
 
-	return SEO_set($row["title"], $row["keywords"], $row["description"]);
+    return SEO_set($row["title"], $row["keywords"], $row["description"]);
 }
 
 
@@ -119,11 +119,6 @@ function msv_seo_showleads($seo) {
 
         $lead["ua_info"] = unserialize($lead["ua_info"]);
 
-        if ($_REQUEST["section"] === "leads") {
-            load_seo_lead_uainfo($lead);
-            load_seo_lead_ipinfo($lead);
-        }
-
         $listLeads[] = $lead;
     }
 
@@ -151,12 +146,14 @@ function load_seo_lead_ipinfo($lead) {
             $lead["ua_info"] = $result;
         }
     }
+
+    return $lead;
 }
 
 function load_seo_lead_uainfo($lead) {
     if (empty($lead["id"])) return false;
 
-    if (!empty($lead["ua"]) && empty($lead["ua_info"])) {
+    if (!empty($lead["ua"])) {
 
         $execUA = msv_get_config("service_ua_info");
         if (!empty($execUA)) {
@@ -171,24 +168,25 @@ function load_seo_lead_uainfo($lead) {
 
             db_update(TABLE_LEADS, "ua_info", "'".db_escape(serialize($result))."'", " `id` = '".$lead["id"]."'");
 
+            if (!empty($result["device_type"])) {
+                db_update(TABLE_LEADS, "device_type", "'".db_escape($result["device_type"])."'", " `id` = '".$lead["id"]."'");
+            }
+
             $lead["ua_info"] = $result;
         }
     }
+
+    return $lead;
 }
 
 function SEO_set($title = "", $description = "", $keywords = "") {
     msv_log("Module:SEO -> Set: $title");
-	
-	$website = msv_get("website");
-	
-	$website->page["title"] = $title;
-	$website->page["keywords"] = $description;
-	$website->page["description"] = $keywords;
-	
-	return true;
+
+    $website = msv_get("website");
+
+    $website->page["title"] = $title;
+    $website->page["keywords"] = $description;
+    $website->page["description"] = $keywords;
+
+    return true;
 }
-
-
-		
-		
-		

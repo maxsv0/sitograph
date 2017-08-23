@@ -1,3 +1,12 @@
+{if !$GA_access_token}
+  <div class="alert alert-danger">
+    <b>{_t("msg.ga_api_not_configured")}</b><br>
+      {_t("msg.ga_json_not_configured")} <br>
+    <a href="/admin/?section=site_settings&edit_key=google_service_auth_json">{_t("admin.site_settings")} (google_service_auth_json)</a>.
+  </div>
+{/if}
+
+
 <div class="Dashboard Dashboard--full">
   <header class="Dashboard-header">
     <ul class="FlexGrid">

@@ -282,16 +282,30 @@ if ($install_step === 2) {
 // prepare initial data, step 3
 if ($install_step === 3) {
     $modulesList = array();
-    foreach ($website->modules as $module) {
-        if ($module === "install") continue;
-        $modulesList[$module] = array();
+
+    // sort modules according to activationLevel
+    // this is needed cause modules will be installed in same order
+    for ($i = 1; $i <= 10; $i++) {
+        foreach ($website->modules as $module) {
+            if ($module === "install") continue;
+
+            $objModule = msv_get("website.".$module);
+            if (empty($objModule)) {
+                continue;
+            }
+            $lvl = $objModule->activationLevel;
+
+            if ($lvl == $i) {
+                $modulesList[$module] = array();
+            }
+        }
     }
 
     $modulesListRemote = array(
     );
 
     // sort lists
-    ksort($modulesList);
+    //ksort($modulesList);
     ksort($modulesListRemote);
 
     $website->config["modulesList"] = $modulesList;

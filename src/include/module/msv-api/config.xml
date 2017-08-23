@@ -27,36 +27,8 @@
 	<file dir="module" path="msv-api/msv-api.api.php"/>
 	<file dir="module" path="msv-api/msv-api.functions.php"/>
 	<file dir="module" path="msv-api/config.xml"/>
+	<file dir="module" path="msv-api/config.locales.xml"/>
 	<file dir="content" path="images/module_preview_msv-api.jpg"/>
 </install>
-
-<locales>
-	<locale name="ru">
-		<field name="msg.cant_load_table_data" value="Не удалось прочитать из таблицы"/>
-		<field name="msg.cant_get_table_data" value="Не удалось извлечь данные из таблицы"/>
-		<field name="msg.cant_get_table_count" value="Не удалось получить количество записей в таблице"/>
-		<field name="msg.error_input" value="Неверный ввод"/>
-		<field name="msg.empty_result" value="Пустой результат"/>
-		<field name="msg.table_not_found" value="Таблица не найдена"/>
-	</locale>
-	<locale name="en">
-		<field name="msg.cant_load_table_data" value="Can't load from table"/>
-		<field name="msg.cant_get_table_data" value="Can't get data from table"/>
-		<field name="msg.cant_get_table_count" value="Can't get table count"/>
-		<field name="msg.error_input" value="Error input"/>
-		<field name="msg.empty_result" value="Empty result"/>
-		<field name="msg.table_not_found" value="Table not found"/>
-	</locale>
-    <locale name="ua">
-		<field name="msg.cant_load_table_data" value="Не вдалося прочитати з таблиці"/>
-		<field name="msg.cant_get_table_data" value="Не вдалося витягти дані з таблиці"/>
-		<field name="msg.cant_get_table_count" value="Не вдалося получити кількість записів в таблиці"/>
-		<field name="msg.error_input" value="Невірне введення"/>
-		<field name="msg.empty_result" value="Порожній результат"/>
-		<field name="msg.table_not_found" value="Table not found"/>
-	</locale>
-</locales>
-
-
 
 </document>

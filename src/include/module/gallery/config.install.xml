@@ -31,6 +31,9 @@
 	<file dir="content" path="images/gallery/gallery1_photo1.jpg"/>
 	<file dir="content" path="images/gallery/gallery1_photo2.jpg"/>
 	<file dir="content" path="images/gallery/gallery1_photo3.jpg"/>
+	<file dir="content" path="images/gallery/gallery1_photo4.jpg"/>
+	<file dir="content" path="images/gallery/gallery1_photo5.jpg"/>
+	<file dir="content" path="images/gallery/gallery1_photo6.jpg"/>
 	<file dir="content" path="images/gallery/gallery_1.jpg"/>
 	<file dir="content" path="images/gallery/module_preview.jpg"/>
 </install>

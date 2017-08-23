@@ -22,8 +22,11 @@
 	<dependency module="msv-core" version="1.0" />
 	
 	<file dir="module" path="theme-default/theme-default.php"/>
+	<file dir="module" path="theme-default/theme-default.install.php"/>
 	<file dir="module" path="theme-default/config.xml"/>
-	<file dir="content" path="images/bg_full.jpg"/>
+	<file dir="module" path="theme-default/config.locales.xml"/>
+	<file dir="module" path="theme-default/doc/en-example-page.html"/>
+	<file dir="module" path="theme-default/doc/ru-example-page.html"/>
 	<file dir="content" path="images/mail_ico.png"/>
 	<file dir="content" path="images/search_ico.png"/>
 	<file dir="content" path="images/sitemap_ico.png"/>
@@ -43,23 +46,4 @@
 	<file dir="template" path="default/widget/menu-top.tpl"/>
 	<file dir="template" path="default/widget/menu-bottom.tpl"/>
 </install>
-
-<locales>
-        <locale name="ru">
-                <field name="theme.bg" value="Фон сайта, картинка"/>
-                <field name="theme.logo" value="Логотип, картинка"/>
-				<field name="theme.css_path" value="Общий CSS файл"/>
-				<field name="theme.js_path" value="Общий JavaScript файл"/>
-				<field name="theme.include_font" value="Шрифт сайта"/>
-				<field name="theme.copyright_text" value="Сopyright text line"/>
-        </locale>
-        <locale name="en">
-                <field name="theme.bg" value="Website Background Image"/>
-                <field name="theme.logo" value="Logo Image"/>
-				<field name="theme.css_path" value="Global CSS file"/>
-				<field name="theme.js_path" value="Global JavaScript file"/>
-				<field name="theme.include_font" value="Font included globaly"/>
-				<field name="theme.copyright_text" value="Сopyright text line"/>
-        </locale>
-</locales>
 </document>

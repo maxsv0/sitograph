@@ -120,7 +120,36 @@
 		<field name="table.menu.url" value="Ссылка"/>
 		<field name="table.menu.order_id" value="Номер"/>
 		<field name="table.menu.parent_id" value="Родительский ID"/>
-		
+
+		<field name="table.cronjobs" value="Отчеты планировщика задач"/>
+		<field name="table.cronjobs.id" value="ID"/>
+		<field name="table.cronjobs.published" value="Активно"/>
+		<field name="table.cronjobs.deleted" value="Удалено"/>
+		<field name="table.cronjobs.author" value="Автор"/>
+		<field name="table.cronjobs.updated" value="Обновлено"/>
+		<field name="table.cronjobs.lang" value="Язык"/>
+		<field name="table.cronjobs.name" value="Название"/>
+		<field name="table.cronjobs.status" value="Статус"/>
+		<field name="table.cronjobs.type" value="Тип"/>
+		<field name="table.cronjobs.url_local" value="URL локальный"/>
+		<field name="table.cronjobs.code" value="PHP код"/>
+		<field name="table.cronjobs.last_run" value="Последний запуск"/>
+		<field name="table.cronjobs.parent_id" value="Результат"/>
+
+		<field name="table.cronjobs_logs" value="Меню сайта"/>
+		<field name="table.cronjobs_logs.id" value="ID"/>
+		<field name="table.cronjobs_logs.published" value="Активно"/>
+		<field name="table.cronjobs_logs.deleted" value="Удалено"/>
+		<field name="table.cronjobs_logs.author" value="Автор"/>
+		<field name="table.cronjobs_logs.updated" value="Обновлено"/>
+		<field name="table.cronjobs_logs.lang" value="Язык"/>
+		<field name="table.cronjobs_logs.job_id" value="Задача"/>
+		<field name="table.cronjobs_logs.structure_id" value="Название Задачи"/>
+		<field name="table.cronjobs_logs.time_start" value="Время старта"/>
+		<field name="table.cronjobs_logs.time_end" value="Время завершения"/>
+		<field name="table.cronjobs_logs.result_ok" value="Результат"/>
+		<field name="table.cronjobs_logs.result_msg" value="Сообщение"/>
+
 		<field name="msg.error_remove_active" value="Невозможно удалить активный модуль"/>
 		<field name="msg.removed" value="удален"/>
 		<field name="msg.no_repository" value="Репозиторий не найден"/>
@@ -132,13 +161,7 @@
 		<field name="msg.save_error" value="Ошибка сохранения"/>
 		<field name="msg.development_version" value="Это бета версия MSV Website. Режим чтения."/>
 		<field name="msg.wrong_email" value="Неверный Email"/>
-
-		<field name="structure.homepage" value="Главная"/>
-		<field name="structure.page1" value="Тестовая страница"/>
-		<field name="structure.sitemap" value="Карта сайта"/>
-		<field name="structure.404" value="Ошибка 404"/>
-		<field name="structure.admin_homepage" value="Панель управления"/>
-		<field name="structure.admin_login" value="Вход в Панель управления"/>
+		<field name="msg.cron.saved" value="CronJob Saved successfuly"/>
 	</locale>
 	<locale name="en">
 		<field name="actions" value="Actions"/>
@@ -259,7 +282,36 @@
 		<field name="table.mail_templates.subject" value="Email subject"/>
 		<field name="table.mail_templates.text" value="Email body"/>
 		<field name="table.mail_templates.header" value="Header HTML"/>
-		
+
+		<field name="table.cronjobs" value="Task Scheduler"/>
+		<field name="table.cronjobs.id" value="ID"/>
+		<field name="table.cronjobs.published" value="Published"/>
+		<field name="table.cronjobs.deleted" value="Deleted"/>
+		<field name="table.cronjobs.author" value="Author"/>
+		<field name="table.cronjobs.updated" value="Updated"/>
+		<field name="table.cronjobs.lang" value="Lang"/>
+		<field name="table.cronjobs.name" value="Name"/>
+		<field name="table.cronjobs.status" value="Status"/>
+		<field name="table.cronjobs.type" value="Type"/>
+		<field name="table.cronjobs.url_local" value="Local URL"/>
+		<field name="table.cronjobs.code" value="Exec PHP Code"/>
+		<field name="table.cronjobs.last_run" value="Last run date"/>
+		<field name="table.cronjobs.last_result" value="Last result"/>
+
+		<field name="table.cronjobs_logs" value="Task Scheduler Logs"/>
+		<field name="table.cronjobs_logs.id" value="ID"/>
+		<field name="table.cronjobs_logs.published" value="Published"/>
+		<field name="table.cronjobs_logs.deleted" value="Deleted"/>
+		<field name="table.cronjobs_logs.author" value="Author"/>
+		<field name="table.cronjobs_logs.updated" value="Updated"/>
+		<field name="table.cronjobs_logs.lang" value="Lang"/>
+		<field name="table.cronjobs_logs.job_id" value="Task"/>
+		<field name="table.cronjobs_logs.job_name" value="Task Name"/>
+		<field name="table.cronjobs_logs.time_start" value="Time Start"/>
+		<field name="table.cronjobs_logs.time_end" value="Time End"/>
+		<field name="table.cronjobs_logs.result_ok" value="Result"/>
+		<field name="table.cronjobs_logs.result_msg" value="Result Message"/>
+
 		<field name="msg.error_remove_active" value="Can't remove active module"/>
 		<field name="msg.removed" value="removed"/>
 		<field name="msg.no_repository" value="Repository not found"/>
@@ -273,13 +325,7 @@
 		<field name="msg.email_sent_to" value="Email was successfully sent to"/>
 		<field name="msg.email_sending_error" value="Error sending email"/>
 		<field name="msg.wrong_email" value="Wrong Email"/>
-
-		<field name="structure.homepage" value="Homepage"/>
-		<field name="structure.page1" value="Example page"/>
-		<field name="structure.sitemap" value="Sitemap"/>
-		<field name="structure.404" value="Error 404"/>
-		<field name="structure.admin_homepage" value="Admin Homepage"/>
-		<field name="structure.admin_login" value="Admin Login"/>
+		<field name="msg.cron.saved" value="CronJob Saved successfuly"/>
 	</locale>
     <locale name="ua">
         <field name="actions" value="Дії"/>
@@ -431,7 +477,37 @@
 		<field name="table.menu.name" value="Назва"/>
 		<field name="table.menu.url" value="Ссылка"/>
 		<field name="table.menu.order_id" value="Номер"/>
-		
+
+
+		<field name="table.cronjobs" value="Планувальник завдань"/>
+		<field name="table.cronjobs.id" value="ID"/>
+		<field name="table.cronjobs.published" value="Активно"/>
+		<field name="table.cronjobs.deleted" value="Удалено"/>
+		<field name="table.cronjobs.author" value="Автор"/>
+		<field name="table.cronjobs.updated" value="Обновлено"/>
+		<field name="table.cronjobs.lang" value="Язык"/>
+		<field name="table.cronjobs.name" value="Название"/>
+		<field name="table.cronjobs.status" value="Статус"/>
+		<field name="table.cronjobs.type" value="Тип"/>
+		<field name="table.cronjobs.url_local" value="URL локальный"/>
+		<field name="table.cronjobs.code" value="PHP код"/>
+		<field name="table.cronjobs.last_run" value="Последний запуск"/>
+		<field name="table.cronjobs.parent_id" value="Результат"/>
+
+		<field name="table.cronjobs_logs" value="Звіти планувальника завдань"/>
+		<field name="table.cronjobs_logs.id" value="ID"/>
+		<field name="table.cronjobs_logs.published" value="Активно"/>
+		<field name="table.cronjobs_logs.deleted" value="Удалено"/>
+		<field name="table.cronjobs_logs.author" value="Автор"/>
+		<field name="table.cronjobs_logs.updated" value="Обновлено"/>
+		<field name="table.cronjobs_logs.lang" value="Язык"/>
+		<field name="table.cronjobs_logs.job_id" value="Задача"/>
+		<field name="table.cronjobs_logs.structure_id" value="Название Задачи"/>
+		<field name="table.cronjobs_logs.time_start" value="Время старта"/>
+		<field name="table.cronjobs_logs.time_end" value="Время завершения"/>
+		<field name="table.cronjobs_logs.result_ok" value="Результат"/>
+		<field name="table.cronjobs_logs.result_msg" value="Сообщение"/>
+
 		<field name="msg.error_remove_active" value="Неможливо видалити активный модуль"/>
 		<field name="msg.removed" value="видалене"/>
 		<field name="msg.repository_not_found" value="не знайден в репозитории"/>
@@ -442,14 +518,8 @@
 		<field name="msg.save_error" value="Помилка збереження"/> 
 		<field name="msg.development_version" value="This is development version. Readonly mode."/>
 		<field name="msg.email_sent_to" value="Письмо успешно отправлено на email"/>
-		<field name="msg.email_sending_error" value="Ошибка отправки письма на email "/> 
-		
-		<field name="structure.homepage" value="Homepage"/>
-		<field name="structure.page1" value="Example page"/>
-		<field name="structure.sitemap" value="Sitemap"/>
-		<field name="structure.404" value="Error 404"/>
-		<field name="structure.admin_homepage" value="Admin Homepage"/>
-		<field name="structure.admin_login" value="Admin Login"/>
+		<field name="msg.email_sending_error" value="Ошибка отправки письма на email "/>
+		<field name="msg.cron.saved" value="CronJob Saved successfuly"/>
     </locale>
 </locales>
 </document>
