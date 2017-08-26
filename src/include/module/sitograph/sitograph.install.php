@@ -38,7 +38,7 @@ function Install_Sitograph($module) {
         "url" => "/sitograph/getting-started/",
         "name" => _t("structure.getting_started"),
         "template" => "custom",
-        "page_template" => "main-sideblock.tpl",
+        "page_template" => "main.tpl",
         "menu" => "top",
         "menu_order" => 5,
         "menu_parent_id" => $menu_parent_id,
