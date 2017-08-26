@@ -56,7 +56,7 @@ function Install_GoogleAnalytics($module) {
 	// run when module in installed
 	
 	// Google Analytics options
-    msv_set_config("google_analytics_tracking_id", "xxxxxxx", true, "*");
+    msv_set_config("google_analytics_tracking_id", "", true, "*");
     msv_set_config("google_service_auth_json", "", true, "*");
 	
 }

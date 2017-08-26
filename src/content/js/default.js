@@ -1,14 +1,19 @@
-jQuery('ul.nav li.dropdown').hover(function() {
-	jQuery(this).find('.dropdown-menu').stop(true, true).show();
-	jQuery(this).addClass('open');
-}, function() {
-jQuery(this).find('.dropdown-menu').stop(true, true).hide();
-	jQuery(this).removeClass('open');
-	$(".popover").css("display", "none");
-});
-
-
 jQuery(document).ready(function() {
+    // add slidedown animation
+    $('.dropdown').on('show.bs.dropdown', function(e){
+        $(this).find('.dropdown-menu').first().stop(true, true).slideDown(200);
+    });
+
+    // add slideup animation
+    $('.dropdown').on('hide.bs.dropdown', function(e){
+        e.preventDefault();
+        $(this).removeClass('open');
+        $(this).find('.dropdown-menu').first().stop(true, true).slideUp(400, function(){
+            //On Complete, we reset all active dropdown classes and attributes
+            //This fixes the visual bug associated with the open class being removed too fast
+            $('.dropdown').find('.dropdown-toggle').attr('aria-expanded','false');
+        });
+    });
 
     $(".module-block").click(function (){
 

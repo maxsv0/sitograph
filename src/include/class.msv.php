@@ -505,8 +505,8 @@ class MSV_Website {
 		
 		// fix homepage of non-default language
 		foreach ($this->languages as $langName) {
-			if ($requestUrl === "/".$langName."/") {
-				$requestUrl = "/";
+            if (substr($requestUrl, 0, 4) === "/".$langName."/") {
+				$requestUrl = substr($requestUrl, 3);
 				
 				// if default language is used in URL -> redirect
 				if ($langName === $this->langDefault) {
