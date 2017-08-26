@@ -117,8 +117,6 @@ function msv_seo_showleads($seo) {
             $lead["status"] = "offline";
         }
 
-        $lead["ua_info"] = unserialize($lead["ua_info"]);
-
         $listLeads[] = $lead;
     }
 

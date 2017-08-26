@@ -450,17 +450,32 @@ function Get_More_Search (e) {
     });
 }
 
-function load_ajax(dest) {
-    console.log($(dest).attr("href"));
+function load_ajax(btn, dest) {
+    var destObj = $(dest);
+    destObj.html("please wait..");
+
+    var btnObj = $(btn);
+    btnObj.find(".glyphicon").addClass("spin");
+    urlLoad = btn.href + "?tohtml";
 
     $.ajax({
         type     : "GET",
         dataType : 'json',
-        async    : false,
-        url      : $(dest).attr("href") + "?tohtml",
+        async    : true,
+        url      : urlLoad,
         success: function(data){
-            $(dest).html(data);
-            return false;
+            console.log("ok!");
+            console.log(destObj);
+            destObj.html(data.responseText);
+            btnObj.find(".glyphicon-repeat").removeClass("spin");
+            return true;
+        },
+        error: function(data){
+            console.log("error?");
+            console.log(destObj);
+            destObj.html(data.responseText);
+            btnObj.find(".glyphicon").removeClass("spin");
+            return true;
         }
     });
     return false;

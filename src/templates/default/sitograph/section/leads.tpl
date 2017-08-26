@@ -39,29 +39,42 @@
 {/if}
             </td>
             <td class="col-sm-1">{$lead.device_type}</td>
+            <td class="col-sm-1">
+                <p>
+                    <a href="/api/lead/loadip/{$lead.id}/" class="btn btn-default btn-sm" onclick="load_ajax(this, $('#ipinfo{$lead.id}'));return false;"><span class="glyphicon glyphicon-refresh"></span> Load Info</a>
+                </p>
+                <p>
+                    {$lead.ip}
+                </p>
+            </td>
             <td class="col-sm-2">
-{if $lead.ip_info && false}
-
-    {include "$themePath/sitograph/seo/lead_ipinfo.tpl" info=$lead.ip_info}
-
+                <div class="infowell" id="ipinfo{$lead.id}">
+{if $lead.ip_info}
+        {include "$themePath/sitograph/seo/lead_ipinfo.tpl" info=$lead.ip_info}
 {else}
-    <a href="/api/lead/loadip/{$lead.id}/" onclick="load_ajax(this);return false;">Load IP Info</a>
+    <i>empty</i>
 {/if}
+                </div>
 
             </td>
-            <td class="col-sm-1">{$lead.ip}</td>
+            <td class="col-sm-1">
+                <p>
+                    <a href="/api/lead/loadua/{$lead.id}/" class="btn btn-default btn-sm"  onclick="load_ajax(this, $('#uainfo{$lead.id}'));return false;"><span class="glyphicon glyphicon-refresh"></span> Load Info</a>
+                </p>
+                <p class="small" style="max-width:100px; overflow: auto; white-space: nowrap;">
+                    {$lead.ua}
+                </p>
+            </td>
             <td class="col-sm-3">
-                {if $lead.ua_info}
-
-                    {include "$themePath/sitograph/seo/lead_uainfo.tpl" info=$lead.ua_info}
-
-                {else}
-                    <a href="/api/lead/loadua/{$lead.id}/" onclick="load_ajax(this);return false;">Load UA Info</a>
-                {/if}
+                <div class="infowell" id="uainfo{$lead.id}">
+{if $lead.ua_info}
+        {include "$themePath/sitograph/seo/lead_uainfo.tpl" info=$lead.ua_info}
+{else}
+        <i>empty</i>
+{/if}
+                </div>
             </td>
-            <td class="small" style="max-width:100px; overflow: auto; white-space: nowrap;">
-                {$lead.ua}
-            </td>
+
         </tr>
 
     {/foreach}

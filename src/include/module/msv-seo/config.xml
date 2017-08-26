@@ -26,9 +26,9 @@
 			<field name="user_id" type="int"/>
 			<field name="device_type" type="str"/>
 			<field name="ip" type="str"/>
-			<field name="ip_info" type="text"/>
+			<field name="ip_info" type="array"/>
 			<field name="ua" type="str"/>
-			<field name="ua_info" type="text"/>
+			<field name="ua_info" type="array"/>
 			<field name="referrer" type="str"/>
 			<field name="phpid" type="text"/>
 			<field name="last_action" type="date"/>

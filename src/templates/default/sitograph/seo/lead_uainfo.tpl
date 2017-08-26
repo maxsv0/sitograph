@@ -1,3 +1,5 @@
+{if $info}
+
 {if $info.browser}
     <p>
         {if $info.browser == "Chrome"}
@@ -33,3 +35,6 @@
     </p>
 {/if}
 
+{else}
+    <i>empty</i>
+{/if}
