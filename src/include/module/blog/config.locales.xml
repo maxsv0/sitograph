@@ -4,6 +4,7 @@
 <locales>
 	<locale name="en">
 		<field name="module.blog" value="Blog"/>
+		<field name="structure.blog" value="Blog"/>
 		<field name="table.articles" value="Blog Publications"/>
 		<field name="table.articles.id" value="ID"/>
 		<field name="table.articles.published" value="Published"/>
@@ -14,6 +15,7 @@
 		<field name="table.articles.sticked" value="Sticked"/>
 		<field name="table.articles.url" value="URL"/>
 		<field name="table.articles.date" value="Date"/>
+		<field name="table.articles.email" value="Author Email"/>
 		<field name="table.articles.title" value="Title"/>
 		<field name="table.articles.description" value="Short text"/>
 		<field name="table.articles.text" value="Article text"/>
@@ -46,9 +48,16 @@
 		<field name="blog.post1" value="Folder structure and usage"/>
 		<field name="blog.post2" value="The Beautiful photo gallery is attached to this post"/>
 		<field name="blog.post3" value="PHP Framework Layers"/>
+		<field name="blog.posted_on" value="posted on"/>
+		<field name="blog.views" value="Views"/>
+		<field name="blog.shares" value="Shares"/>
+		<field name="blog.comments" value="Comments"/>
+		<field name="blog.attached_gallery" value="Attached gallery:"/>
+		<field name="email.blog_admin_notify" value="New article was added"/>
 	</locale>
 	<locale name="ru">
 		<field name="module.blog" value="Блог"/>
+		<field name="structure.blog" value="Блог"/>
 		<field name="table.articles" value="Блог, статьи"/>
 		<field name="table.articles.id" value="ID"/>
 		<field name="table.articles.published" value="Активно"/>
@@ -59,6 +68,7 @@
 		<field name="table.articles.sticked" value="Топ"/>
 		<field name="table.articles.url" value="URL"/>
 		<field name="table.articles.date" value="Дата"/>
+		<field name="table.articles.email" value="Email автора"/>
 		<field name="table.articles.title" value="Заголовок"/>
 		<field name="table.articles.description" value="Краткий текст"/>
 		<field name="table.articles.text" value="Значение"/>
@@ -91,9 +101,16 @@
 		<field name="blog.post1" value="Структура папок и их использование"/>
 		<field name="blog.post2" value="Красивая фотогалерея прикреплена к этому сообщению"/>
 		<field name="blog.post3" value="PHP Framework Layers"/>
+		<field name="blog.posted_on" value="опубликовал в"/>
+		<field name="blog.views" value="Просмотров"/>
+		<field name="blog.shares" value="Публикаций"/>
+		<field name="blog.comments" value="Коментариев"/>
+		<field name="blog.attached_gallery" value="Прикрепленная галерея:"/>
+		<field name="email.blog_admin_notify" value="New article was added"/>
 	</locale>
     <locale name="ua">
 		<field name="module.blog" value="Блог"/>
+		<field name="structure.blog" value="Блог"/>
 		<field name="table.articles" value="Блог, статті"/>
 		<field name="table.articles.id" value="ID"/>
 		<field name="table.articles.published" value="Активно"/>
@@ -104,6 +121,7 @@
 		<field name="table.articles.sticked" value="Топ"/>
 		<field name="table.articles.url" value="URL"/>
 		<field name="table.articles.date" value="Дата"/>
+		<field name="table.articles.email" value="Email автора"/>
 		<field name="table.articles.title" value="Заголовок"/>
 		<field name="table.articles.description" value="Стислий текст"/>
 		<field name="table.articles.text" value="Значення"/>
@@ -136,6 +154,12 @@
 		<field name="blog.post1" value="Структура папок и их использование"/>
 		<field name="blog.post2" value="Красивая фотогалерея прикреплена к этому сообщению"/>
 		<field name="blog.post3" value="PHP Framework Layers"/>
+		<field name="blog.posted_on" value="опубликовал в"/>
+		<field name="blog.views" value="Переглядів"/>
+		<field name="blog.shares" value="Публікацій"/>
+		<field name="blog.comments" value="Коментарів"/>
+		<field name="blog.attached_gallery" value="Прикріплена галерея:"/>
+		<field name="email.blog_admin_notify" value="New article was added"/>
 	</locale>
 
 </locales>

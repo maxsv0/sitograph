@@ -342,7 +342,7 @@ ul.nav li a:hover {
 
 .form-horizontal {
     background: rgba(0, 0, 0, 0) url("/content/images/sitograph/table_bg_1.gif") no-repeat scroll 0 0;
-    padding: 10px 10px 10px 20px;
+    padding: 20px 10px 10px 20px;
 }
 
 .form-horizontal input[type="text"] {
@@ -355,6 +355,11 @@ ul.nav li a:hover {
     font-family: Verdana;
     font-size: 12px;
     border-radius: 4px;
+}
+
+.form-group-btn {
+    text-align: left;
+    margin-top: 20px;
 }
 
 /* Ð§ÐµÐºÐ±Ð¾ÐºÑÑ‹ */

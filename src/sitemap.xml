@@ -4,140 +4,122 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://www.google.com/schemas/sitemap/0.84 http://www.google.com/schemas/sitemap/0.84/sitemap.xsd">
 
 <url>
-<loc>http://localhost/</loc>
+<loc>http://192.168.56.109/</loc>
 <priority>1</priority>
-<lastmod>2017-07-09</lastmod>
+<lastmod>2017-08-24</lastmod>
 </url>
 
 <url>
-<loc>http://localhost/blog/</loc>
+<loc>http://192.168.56.109/blog/</loc>
 <priority>1</priority>
-<lastmod>2017-07-09</lastmod>
+<lastmod>2017-08-24</lastmod>
 </url>
 
 <url>
-<loc>http://localhost/blog/folder-structure-and-usage/</loc>
+<loc>http://192.168.56.109/blog/folder-structure-and-usage/</loc>
 <priority>1</priority>
-<lastmod>2017-07-09</lastmod>
+<lastmod>2017-08-24</lastmod>
 </url>
 
 <url>
-<loc>http://localhost/blog/installing-sitograph-cms/</loc>
+<loc>http://192.168.56.109/blog/installing-sitograph-cms/</loc>
 <priority>1</priority>
-<lastmod>2017-07-09</lastmod>
+<lastmod>2017-08-24</lastmod>
 </url>
 
 <url>
-<loc>http://localhost/blog/php-framework-layers/</loc>
+<loc>http://192.168.56.109/blog/php-framework-layers/</loc>
 <priority>1</priority>
-<lastmod>2017-07-09</lastmod>
+<lastmod>2017-08-24</lastmod>
 </url>
 
 <url>
-<loc>http://localhost/blog/Sitograph-CMS-Screenshots/</loc>
+<loc>http://192.168.56.109/blog/Sitograph-CMS-Screenshots/</loc>
 <priority>1</priority>
-<lastmod>2017-07-09</lastmod>
+<lastmod>2017-08-24</lastmod>
 </url>
 
 <url>
-<loc>http://localhost/blog/Sitograph-v.1.0.beta-released/</loc>
+<loc>http://192.168.56.109/blog/Sitograph-v.1.0.beta-released/</loc>
 <priority>1</priority>
-<lastmod>2017-07-09</lastmod>
+<lastmod>2017-08-24</lastmod>
 </url>
 
 <url>
-<loc>http://localhost/blog/the-beautiful-photo-gallery-is-attached-to-this-post/</loc>
+<loc>http://192.168.56.109/blog/the-beautiful-photo-gallery-is-attached-to-this-post/</loc>
 <priority>1</priority>
-<lastmod>2017-07-09</lastmod>
+<lastmod>2017-08-24</lastmod>
 </url>
 
 <url>
-<loc>http://localhost/contacts/</loc>
+<loc>http://192.168.56.109/contacts/</loc>
 <priority>1</priority>
-<lastmod>2017-07-09</lastmod>
+<lastmod>2017-08-24</lastmod>
 </url>
 
 <url>
-<loc>http://localhost/example-page/</loc>
+<loc>http://192.168.56.109/example-page/</loc>
 <priority>1</priority>
-<lastmod>2017-07-09</lastmod>
+<lastmod>2017-08-24</lastmod>
 </url>
 
 <url>
-<loc>http://localhost/gallery/</loc>
+<loc>http://192.168.56.109/gallery/</loc>
 <priority>1</priority>
-<lastmod>2017-07-09</lastmod>
+<lastmod>2017-08-24</lastmod>
 </url>
 
 <url>
-<loc>http://localhost/gallery/Sitograph-CMS-Screenshots/</loc>
+<loc>http://192.168.56.109/gallery/Sitograph-CMS-Screenshots/</loc>
 <priority>1</priority>
-<lastmod>2017-07-09</lastmod>
+<lastmod>2017-08-24</lastmod>
 </url>
 
 <url>
-<loc>http://localhost/gallery/the-beautiful-photo-gallery/</loc>
+<loc>http://192.168.56.109/gallery/sitograph-installation-wizard/</loc>
 <priority>1</priority>
-<lastmod>2017-07-09</lastmod>
+<lastmod>2017-08-24</lastmod>
 </url>
 
 <url>
-<loc>http://localhost/login/</loc>
+<loc>http://192.168.56.109/gallery/the-beautiful-photo-gallery/</loc>
 <priority>1</priority>
-<lastmod>2017-07-09</lastmod>
+<lastmod>2017-08-24</lastmod>
 </url>
 
 <url>
-<loc>http://localhost/password-reset/</loc>
+<loc>http://192.168.56.109/login/</loc>
 <priority>1</priority>
-<lastmod>2017-07-09</lastmod>
+<lastmod>2017-08-24</lastmod>
 </url>
 
 <url>
-<loc>http://localhost/search/</loc>
+<loc>http://192.168.56.109/password-reset/</loc>
 <priority>1</priority>
-<lastmod>2017-07-09</lastmod>
+<lastmod>2017-08-24</lastmod>
 </url>
 
 <url>
-<loc>http://localhost/settings/</loc>
+<loc>http://192.168.56.109/search/</loc>
 <priority>1</priority>
-<lastmod>2017-07-09</lastmod>
+<lastmod>2017-08-24</lastmod>
 </url>
 
 <url>
-<loc>http://localhost/signup/</loc>
+<loc>http://192.168.56.109/settings/</loc>
 <priority>1</priority>
-<lastmod>2017-07-09</lastmod>
+<lastmod>2017-08-24</lastmod>
 </url>
 
 <url>
-<loc>http://localhost/sitograph/API/</loc>
+<loc>http://192.168.56.109/signup/</loc>
 <priority>1</priority>
-<lastmod>2017-07-09</lastmod>
+<lastmod>2017-08-24</lastmod>
 </url>
 
 <url>
-<loc>http://localhost/sitograph/file-structure/</loc>
+<loc>http://192.168.56.109/user/</loc>
 <priority>1</priority>
-<lastmod>2017-07-09</lastmod>
-</url>
-
-<url>
-<loc>http://localhost/sitograph/getting-started/</loc>
-<priority>1</priority>
-<lastmod>2017-07-09</lastmod>
-</url>
-
-<url>
-<loc>http://localhost/sitograph/modules/</loc>
-<priority>1</priority>
-<lastmod>2017-07-09</lastmod>
-</url>
-
-<url>
-<loc>http://localhost/user/</loc>
-<priority>1</priority>
-<lastmod>2017-07-09</lastmod>
+<lastmod>2017-08-24</lastmod>
 </url>
 </urlset>

@@ -17,6 +17,8 @@
 		<field name="structure.404_doc" value="Page not found"/>
 		<field name="structure.admin_homepage" value="Admin Homepage"/>
 		<field name="structure.admin_login" value="Admin Login"/>
+
+		<field name="title.advertisment" value="advertisment"/>
 	</locale>
 	<locale name="ru">
 		<field name="theme.bg" value="Фон сайта, картинка"/>
@@ -33,6 +35,8 @@
 		<field name="structure.404_doc" value="Страница не найдена"/>
 		<field name="structure.admin_homepage" value="Панель управления"/>
 		<field name="structure.admin_login" value="Вход в Панель управления"/>
+
+		<field name="title.advertisment" value="реклама"/>
 	</locale>
 	<locale name="ua">
 		<field name="theme.bg" value="Фон сайта, картинка"/>
@@ -49,6 +53,8 @@
 		<field name="structure.404_doc" value="Сторінка не знайдена"/>
 		<field name="structure.admin_homepage" value="Панель управління"/>
 		<field name="structure.admin_login" value="Вхід в Панель управління"/>
+
+		<field name="title.advertisment" value="реклама"/>
 	</locale>
 </locales>
 </document>

@@ -83,7 +83,7 @@
   </div>
   <div class="form-group">
     <div class="col-sm-12 text-center">
-    <button type="submit" name="doSave" value="1" class="btn btn-primary"><span class="glyphicon glyphicon-ok">&nbsp;</span>{$t["btn.save"]}</button>
+    <button type="submit" name="doSave" value="1" class="btn btn-primary"><span class="glyphicon glyphicon-ok">&nbsp;</span>{_t("btn.save")}</button>
     </div>
     
   </div>
@@ -98,26 +98,26 @@
 <form class="form-horizontal" method="POST" >
   
   <div class="form-group">
-    <label for="inputName" class="col-sm-6 control-label">Current Password</label>
+    <label for="inputPassCurrent" class="col-sm-6 control-label">{_t("users.form.current_password")}</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="inputName" value="" placeholder="Password" name="password">
+      <input type="text" class="form-control" id="inputPassCurrent" value="" placeholder="{_t("users.form.current_password")}" name="password">
     </div>
   </div>
   <div class="form-group">
-    <label for="inputName" class="col-sm-6 control-label">New Password</label>
+    <label for="inputPassNew" class="col-sm-6 control-label">{_t("users.form.new_password")}</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="inputName" value="" placeholder="Password" name="password">
+      <input type="text" class="form-control" id="inputPassNew" value="" placeholder="{_t("users.form.new_password")}" name="password">
     </div>
   </div>
   <div class="form-group">
-    <label for="inputPhone" class="col-sm-6 control-label">Password confirmation</label>
+    <label for="inputPassNew2" class="col-sm-6 control-label">{_t("users.form.password_confirmation")}</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="inputPhone" value="" placeholder="Phone" name="password2">
+      <input type="text" class="form-control" id="inputPassNew2" value="" placeholder="{_t("users.form.new_password")}" name="password2">
     </div>
   </div>
   <div class="form-group">
     <div class="col-sm-offset-6 col-sm-6">
-      <button type="submit" class="btn btn-primary" name="password_save" value="1">Save changes</button>
+      <button type="submit" class="btn btn-primary" name="password_save" value="1">{_t("btn.save")}</button>
     </div>
   </div>
 </form>

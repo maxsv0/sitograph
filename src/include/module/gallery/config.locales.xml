@@ -2,90 +2,9 @@
 <document>
 
 <locales>
-	<locale name="ru">
-		<field name="module.gallery" value="Фотогалерея"/>
-		<field name="table.gallery_album" value="Альбомы"/>
-		<field name="table.gallery_album.id" value="ID"/>
-		<field name="table.gallery_album.published" value="Активно"/>
-		<field name="table.gallery_album.deleted" value="Удалено"/>
-		<field name="table.gallery_album.author" value="Автор"/>
-		<field name="table.gallery_album.updated" value="Обновлено"/>
-		<field name="table.gallery_album.lang" value="Язык"/>
-		<field name="table.gallery_album.url" value="URL"/>
-		<field name="table.gallery_album.date" value="Дата"/>
-		<field name="table.gallery_album.title" value="Заголовок"/>
-		<field name="table.gallery_album.description" value="Краткий текст"/>
-		<field name="table.gallery_album.pic" value="Изображение большое"/>
-		<field name="table.gallery_album.pic_preview" value="Изображение"/>
-		<field name="table.gallery_album.views" value="Просмотров"/>
-		<field name="table.gallery_album.shares" value="Публикаций"/>
-		<field name="table.gallery_album.comments" value="Коментариев"/>
-		<field name="table.gallery_album.seo_title" value="Title страницы"/>
-		<field name="table.gallery_album.seo_description" value="Описание страницы"/>
-		<field name="table.gallery_album.seo_keywords" value="Ключевые слова"/>
-		<field name="table.gallery_photos" value="Фотографии"/>
-		<field name="table.gallery_photos.id" value="ID"/>
-		<field name="table.gallery_photos.published" value="Активно"/>
-		<field name="table.gallery_photos.deleted" value="Удалено"/>
-		<field name="table.gallery_photos.author" value="Автор"/>
-		<field name="table.gallery_photos.updated" value="Обновлено"/>
-		<field name="table.gallery_photos.lang" value="Язык"/>
-		<field name="table.gallery_photos.album_id" value="Альбом"/>
-		<field name="table.gallery_photos.order_id" value="Order ID"/>
-		<field name="table.gallery_photos.date" value="Дата"/>
-		<field name="table.gallery_photos.title" value="Заголовок"/>
-		<field name="table.gallery_photos.description" value="Краткий текст"/>
-		<field name="table.gallery_photos.pic" value="Изображение большое"/>
-		<field name="table.gallery_photos.pic_preview" value="Изображение"/>
-		
-		<field name="table.gallery_photos.url" value="URL"/>
-		<field name="table.gallery_photos.article_id" value="Статья"/>
-		<field name="table.gallery_photos.title" value="Заголовок"/>
-	</locale>
-    
-	<locale name="ua">
-		<field name="module.gallery" value="Фотогалерея"/>
-		<field name="table.gallery_album" value="Альбомы"/>
-		<field name="table.gallery_album.id" value="ID"/>
-		<field name="table.gallery_album.published" value="Активно"/>
-		<field name="table.gallery_album.deleted" value="Вилучено"/>
-		<field name="table.gallery_album.author" value="Автор"/>
-		<field name="table.gallery_album.updated" value="Оновлене"/>
-		<field name="table.gallery_album.lang" value="Мова"/>
-		<field name="table.gallery_album.url" value="URL"/>
-		<field name="table.gallery_album.date" value="Дата"/>
-		<field name="table.gallery_album.title" value="Заголовок"/>
-		<field name="table.gallery_album.description" value="Стислий текст"/>
-		<field name="table.gallery_album.pic" value="Зображення велике"/>
-		<field name="table.gallery_album.pic_preview" value="Зображення"/>
-		<field name="table.gallery_album.views" value="Переглядів"/>
-		<field name="table.gallery_album.shares" value="Публікацій"/>
-		<field name="table.gallery_album.comments" value="Коментарів"/>
-		<field name="table.gallery_album.seo_title" value="Title сторінки"/>
-		<field name="table.gallery_album.seo_description" value="Опис сторінки"/>
-		<field name="table.gallery_album.seo_keywords" value="Ключові слова"/>
-		<field name="table.gallery_photos" value="Фотографії"/>
-		<field name="table.gallery_photos.id" value="ID"/>
-		<field name="table.gallery_photos.published" value="Активно"/>
-		<field name="table.gallery_photos.deleted" value="Вилучено"/>
-		<field name="table.gallery_photos.author" value="Автор"/>
-		<field name="table.gallery_photos.updated" value="Оновлене"/>
-		<field name="table.gallery_photos.lang" value="Мова"/>
-		<field name="table.gallery_photos.album_id" value="Альбом"/>
-		<field name="table.gallery_photos.order_id" value="Order ID"/>
-		<field name="table.gallery_photos.date" value="Дата"/>
-		<field name="table.gallery_photos.title" value="Заголовок"/>
-		<field name="table.gallery_photos.description" value="Стислий текст"/>
-		<field name="table.gallery_photos.pic" value="Зображення велике"/>
-		<field name="table.gallery_photos.pic_preview" value="Зображення"/>
-		
-		<field name="table.gallery_photos.url" value="URL"/>
-		<field name="table.gallery_photos.article_id" value="Стаття"/>
-		<field name="table.gallery_photos.title" value="Заголовок"/>
-		<field name="gallery.search_no_result" value="Альбомы не найдены."/>
-	</locale>    
 	<locale name="en">
 		<field name="module.gallery" value="Photo Gallery"/>
+		<field name="structure.gallery" value="Gallery"/>
 		<field name="table.gallery_album" value="Albums"/>
 		<field name="table.gallery_album.id" value="ID"/>
 		<field name="table.gallery_album.published" value="Published"/>
@@ -120,44 +39,119 @@
 		<field name="table.gallery_photos.pic" value="Picture Big"/>
 		<field name="table.gallery_photos.pic_preview" value="Picture"/>
 		<field name="gallery.search_no_result" value="No albums were found."/>
+		<field name="gallery.gallery1" value="The Beautiful photo gallery"/>
+		<field name="gallery.posted_by" value="posted by"/>
+		<field name="gallery.photos" value="Photos"/>
+		<field name="gallery.views" value="Views"/>
+		<field name="gallery.shares" value="Shares"/>
+		<field name="gallery.comments" value="Comments"/>
+		<field name="gallery.album_details" value="Album details"/>
+		<field name="gallery.author" value="Author:"/>
+		<field name="gallery.published" value="Published:"/>
+		<field name="gallery.no_photos" value="No photos were added to this album yet."/>
 	</locale>
-	<locale name="de">
-		<field name="module.gallery" value="Photo Gallery"/>
-		<field name="table.gallery_album" value="Albums"/>
+	<locale name="ru">
+		<field name="module.gallery" value="Фотогалерея"/>
+		<field name="structure.gallery" value="Фотогалерея"/>
+		<field name="table.gallery_album" value="Альбомы"/>
 		<field name="table.gallery_album.id" value="ID"/>
-		<field name="table.gallery_album.published" value="Published"/>
-		<field name="table.gallery_album.deleted" value="Deleted"/>
-		<field name="table.gallery_album.author" value="Author"/>
-		<field name="table.gallery_album.updated" value="Updated"/>
-		<field name="table.gallery_album.lang" value="Lang"/>
+		<field name="table.gallery_album.published" value="Активно"/>
+		<field name="table.gallery_album.deleted" value="Удалено"/>
+		<field name="table.gallery_album.author" value="Автор"/>
+		<field name="table.gallery_album.updated" value="Обновлено"/>
+		<field name="table.gallery_album.lang" value="Язык"/>
 		<field name="table.gallery_album.url" value="URL"/>
-		<field name="table.gallery_album.date" value="Date"/>
-		<field name="table.gallery_album.title" value="Title"/>
-		<field name="table.gallery_album.description" value="Short text"/>
-		<field name="table.gallery_album.pic" value="Picture Big"/>
-		<field name="table.gallery_album.pic_preview" value="Picture"/>
-		<field name="table.gallery_album.views" value="Views"/>
-		<field name="table.gallery_album.shares" value="Shares"/>
-		<field name="table.gallery_album.comments" value="Comments"/>
-		<field name="table.gallery_album.seo_title" value="Page Title"/>
-		<field name="table.gallery_album.seo_description" value="Description"/>
-		<field name="table.gallery_album.seo_keywords" value="Keywords"/>
-		<field name="table.gallery_photos" value="Photos"/>
+		<field name="table.gallery_album.date" value="Дата"/>
+		<field name="table.gallery_album.title" value="Заголовок"/>
+		<field name="table.gallery_album.description" value="Краткий текст"/>
+		<field name="table.gallery_album.pic" value="Изображение большое"/>
+		<field name="table.gallery_album.pic_preview" value="Изображение"/>
+		<field name="table.gallery_album.views" value="Просмотров"/>
+		<field name="table.gallery_album.shares" value="Публикаций"/>
+		<field name="table.gallery_album.comments" value="Коментариев"/>
+		<field name="table.gallery_album.seo_title" value="Title страницы"/>
+		<field name="table.gallery_album.seo_description" value="Описание страницы"/>
+		<field name="table.gallery_album.seo_keywords" value="Ключевые слова"/>
+		<field name="table.gallery_photos" value="Фотографии"/>
 		<field name="table.gallery_photos.id" value="ID"/>
-		<field name="table.gallery_photos.published" value="Published"/>
-		<field name="table.gallery_photos.deleted" value="Deleted"/>
-		<field name="table.gallery_photos.author" value="Author"/>
-		<field name="table.gallery_photos.updated" value="Updated"/>
-		<field name="table.gallery_photos.lang" value="Lang"/>
-		<field name="table.gallery_photos.album_id" value="Album"/>
+		<field name="table.gallery_photos.published" value="Активно"/>
+		<field name="table.gallery_photos.deleted" value="Удалено"/>
+		<field name="table.gallery_photos.author" value="Автор"/>
+		<field name="table.gallery_photos.updated" value="Обновлено"/>
+		<field name="table.gallery_photos.lang" value="Язык"/>
+		<field name="table.gallery_photos.album_id" value="Альбом"/>
 		<field name="table.gallery_photos.order_id" value="Order ID"/>
-		<field name="table.gallery_photos.date" value="Date"/>
-		<field name="table.gallery_photos.title" value="Title"/>
-		<field name="table.gallery_photos.description" value="Short text"/>
-		<field name="table.gallery_photos.pic" value="Picture Big"/>
-		<field name="table.gallery_photos.pic_preview" value="Picture"/>
+		<field name="table.gallery_photos.date" value="Дата"/>
+		<field name="table.gallery_photos.title" value="Заголовок"/>
+		<field name="table.gallery_photos.description" value="Краткий текст"/>
+		<field name="table.gallery_photos.pic" value="Изображение большое"/>
+		<field name="table.gallery_photos.pic_preview" value="Изображение"/>
+		<field name="table.gallery_photos.url" value="URL"/>
+		<field name="table.gallery_photos.article_id" value="Статья"/>
+		<field name="table.gallery_photos.title" value="Заголовок"/>
+		<field name="gallery.search_no_result" value="Альбомы не найдены."/>
+		<field name="gallery.gallery1" value="The Beautiful photo gallery"/>
+		<field name="gallery.posted_by" value="размещено"/>
+		<field name="gallery.photos" value="Фото"/>
+		<field name="gallery.views" value="Просмотров"/>
+		<field name="gallery.shares" value="Поделились"/>
+		<field name="gallery.comments" value="Комментариев"/>
+		<field name="gallery.album_details" value="Открыть альбом"/>
+		<field name="gallery.author" value="Автор:"/>
+		<field name="gallery.published" value="Опубликовано:"/>
+		<field name="gallery.no_photos" value="В этом альбоме еще нет фотографий."/>
+	</locale>
+	<locale name="ua">
+		<field name="module.gallery" value="Фотогалерея"/>
+		<field name="structure.gallery" value="Фотогалерея"/>
+		<field name="table.gallery_album" value="Альбомы"/>
+		<field name="table.gallery_album.id" value="ID"/>
+		<field name="table.gallery_album.published" value="Активно"/>
+		<field name="table.gallery_album.deleted" value="Вилучено"/>
+		<field name="table.gallery_album.author" value="Автор"/>
+		<field name="table.gallery_album.updated" value="Оновлене"/>
+		<field name="table.gallery_album.lang" value="Мова"/>
+		<field name="table.gallery_album.url" value="URL"/>
+		<field name="table.gallery_album.date" value="Дата"/>
+		<field name="table.gallery_album.title" value="Заголовок"/>
+		<field name="table.gallery_album.description" value="Стислий текст"/>
+		<field name="table.gallery_album.pic" value="Зображення велике"/>
+		<field name="table.gallery_album.pic_preview" value="Зображення"/>
+		<field name="table.gallery_album.views" value="Переглядів"/>
+		<field name="table.gallery_album.shares" value="Публікацій"/>
+		<field name="table.gallery_album.comments" value="Коментарів"/>
+		<field name="table.gallery_album.seo_title" value="Title сторінки"/>
+		<field name="table.gallery_album.seo_description" value="Опис сторінки"/>
+		<field name="table.gallery_album.seo_keywords" value="Ключові слова"/>
+		<field name="table.gallery_photos" value="Фотографії"/>
+		<field name="table.gallery_photos.id" value="ID"/>
+		<field name="table.gallery_photos.published" value="Активно"/>
+		<field name="table.gallery_photos.deleted" value="Вилучено"/>
+		<field name="table.gallery_photos.author" value="Автор"/>
+		<field name="table.gallery_photos.updated" value="Оновлене"/>
+		<field name="table.gallery_photos.lang" value="Мова"/>
+		<field name="table.gallery_photos.album_id" value="Альбом"/>
+		<field name="table.gallery_photos.order_id" value="Order ID"/>
+		<field name="table.gallery_photos.date" value="Дата"/>
+		<field name="table.gallery_photos.title" value="Заголовок"/>
+		<field name="table.gallery_photos.description" value="Стислий текст"/>
+		<field name="table.gallery_photos.pic" value="Зображення велике"/>
+		<field name="table.gallery_photos.pic_preview" value="Зображення"/>
+		<field name="table.gallery_photos.url" value="URL"/>
+		<field name="table.gallery_photos.article_id" value="Стаття"/>
+		<field name="table.gallery_photos.title" value="Заголовок"/>
+		<field name="gallery.search_no_result" value="Альбомы не найдены."/>
+		<field name="gallery.gallery1" value="The Beautiful photo gallery"/>
+		<field name="gallery.posted_by" value="розміщено"/>
+		<field name="gallery.photos" value="Фото"/>
+		<field name="gallery.views" value="Переглядів"/>
+		<field name="gallery.shares" value="Поділилися"/>
+		<field name="gallery.comments" value="Коментарів"/>
+		<field name="gallery.album_details" value="Відкрити альбом"/>
+		<field name="gallery.author" value="Автор:"/>
+		<field name="gallery.published" value="Опубліковано:"/>
+		<field name="gallery.no_photos" value="В  цьому альбомі ще немає фотографій."/>
 	</locale>
 </locales>
 
-		
 </document>

@@ -114,12 +114,12 @@ $menu_ar["users"] = array(
 
 $menu_ar["media_library"] = array(
     "name" =>  _t("admin.media_library"),
-    "access" => "admin",
+    "access" => "superadmin",
     "handler" => "module-media.php",
     "url" => "/admin/?section=media_library",
     "file" => "media_library.tpl",
     "title" =>  _t("admin.media_library"),
-    "orderID" => 40,
+    "orderID" => 106,
 );
 
 

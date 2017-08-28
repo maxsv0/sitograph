@@ -8,22 +8,22 @@
 	<div class="row">
 	<div class="col-sm-6 text-muted small">
 		<a href="{$lang_url}{$blog.baseUrl}?{$blog.authorUrlParam}={$article.email}">{$article.email}</a>
-		posted on {$article.date}
+        {_t("blog.posted_on")} {$article.date}
 		</div>
 		
 		<div class="col-sm-6 text-right small">
-		{$article.shares} Shares 
+		{$article.shares} {_t("blog.shares")}
 		&nbsp;&nbsp;&nbsp;
-		<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+		<span class="glyphicon glyphicon-eye-open" aria-hidden="true" title="{_t("blog.views")}"></span>
 		
 {if $article.views < 4000}
 	{$article.views}
 {else}
 	{math equation="x / 1000" x=$article.views format="%.2f"}K
 {/if}		
-		Views
+		{_t("blog.views")}
 		&nbsp;&nbsp;&nbsp;
-		<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> {$article.comments}
+		<span class="glyphicon glyphicon-comment" aria-hidden="true" title="{_t("blog.comments")}"></span> {$article.comments}
 	</div>
 	</div>
 </div>

@@ -3,13 +3,13 @@
 <h3><a href="{$gallery.baseUrl}{$album.url}/">{$album.title}</a></h3>
 
 <div class="row">	
-<div class="col-sm-3">Author: <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {$album.author}</div>
-<div class="col-sm-4">Published: {$album.date}</div>
+<div class="col-sm-3">{_t("gallery.author")} <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {$album.author}</div>
+<div class="col-sm-4">{_t("gallery.published")} {$album.date}</div>
 <div class="col-sm-5">
-{$album.photos|count} photos, 
-{$album.views} views, 
-{$album.shares} shares, 
-{$album.comments} comments
+    {$album.photos|count} {_t("gallery.photos")},
+    {$album.views} {_t("gallery.views")},
+    {$album.shares} {_t("gallery.shares")},
+    {$album.comments} {_t("gallery.comments")}
 </div>
 </div>
 

@@ -8,17 +8,17 @@
 <div class="caption">
 	<h4>{$album.title}</h4>
 	<p>
-	posted by {$album.author}, at {$album.date}
+	{_t("gallery.posted_by")} {$album.author}, at {$album.date}
 	</p>
 	
 	<p class="text-muted">
-	{$album.photos|count} photos, 
-	{$album.views} views, 
-	{$album.shares} shares, 
-	{$album.comments} comments
+	{$album.photos|count} {_t("gallery.photos")},
+	{$album.views} {_t("gallery.views")},
+	{$album.shares} {_t("gallery.shares")},
+	{$album.comments} {_t("gallery.comments")}
 	</p>
 	<br />
-	<p><a href="{$lang_url}{$gallery.baseUrl}{$album.url}/" class="btn btn-primary" role="button">Album details</a></p>
+	<p><a href="{$lang_url}{$gallery.baseUrl}{$album.url}/" class="btn btn-primary" role="button">{_t("gallery.album_details")}</a></p>
 </div>
 
 

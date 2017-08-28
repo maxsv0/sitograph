@@ -21,6 +21,14 @@
 	<file dir="module" path="feedback/config.xml"/>
 	<file dir="module" path="feedback/config.locales.xml"/>
 	<file dir="module" path="feedback/config.install.xml"/>
+	<file dir="module" path="feedback/doc/en-feedback-1.html"/>
+	<file dir="module" path="feedback/doc/en-feedback-2.html"/>
+	<file dir="module" path="feedback/doc/en-feedback-3.html"/>
+	<file dir="module" path="feedback/doc/en-email-notify.html"/>
+	<file dir="module" path="feedback/doc/en-email-admin-notify.html"/>
+	<file dir="module" path="feedback/doc/ru-feedback-1.html"/>
+	<file dir="module" path="feedback/doc/ru-feedback-2.html"/>
+	<file dir="module" path="feedback/doc/ru-feedback-3.html"/>
 	<file dir="template" path="default/main-feedback.tpl"/>
 	<file dir="template" path="default/feedback/main.tpl"/>
 	<file dir="template" path="default/widget/feedback-sticked.tpl"/>

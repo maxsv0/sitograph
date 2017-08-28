@@ -23,7 +23,9 @@
 		<field name="btn.edit_settings" value="Настройки"/>
 		<field name="btn.edit_document" value="Документы"/>
 		<field name="btn.edit_seo" value="SEO страницы"/>
-		
+		<field name="btn.previous" value="Предыдущая"/>
+		<field name="btn.next" value="Следующая"/>
+
 		<field name="tab.home" value="Основное"/>
 		<field name="tab.document" value="Документ"/>
 		<field name="tab.seo" value="SEO"/>
@@ -134,7 +136,7 @@
 		<field name="table.cronjobs.url_local" value="URL локальный"/>
 		<field name="table.cronjobs.code" value="PHP код"/>
 		<field name="table.cronjobs.last_run" value="Последний запуск"/>
-		<field name="table.cronjobs.parent_id" value="Результат"/>
+		<field name="table.cronjobs.last_result" value="Результат"/>
 
 		<field name="table.cronjobs_logs" value="Меню сайта"/>
 		<field name="table.cronjobs_logs.id" value="ID"/>
@@ -144,6 +146,7 @@
 		<field name="table.cronjobs_logs.updated" value="Обновлено"/>
 		<field name="table.cronjobs_logs.lang" value="Язык"/>
 		<field name="table.cronjobs_logs.job_id" value="Задача"/>
+		<field name="table.cronjobs_logs.job_name" value="Задача"/>
 		<field name="table.cronjobs_logs.structure_id" value="Название Задачи"/>
 		<field name="table.cronjobs_logs.time_start" value="Время старта"/>
 		<field name="table.cronjobs_logs.time_end" value="Время завершения"/>
@@ -185,7 +188,9 @@
 		<field name="btn.edit_settings" value="Edit Settings"/>
 		<field name="btn.edit_document" value="Edit Document"/>
 		<field name="btn.edit_seo" value="Edit SEO"/>
-		
+		<field name="btn.previous" value="Previous"/>
+		<field name="btn.next" value="Next"/>
+
 		<field name="tab.home" value="General"/>
 		<field name="tab.document" value="Document"/>
 		<field name="tab.seo" value="SEO"/>
@@ -345,7 +350,9 @@
 		<field name="btn.save_exit" value="Зберігти і вийти"/>
 		<field name="btn.add_child" value="Добдати подрозділ"/>
         <field name="btn.generate" value="Генерувати"/>
-		
+		<field name="btn.previous" value="Попередня"/>
+		<field name="btn.next" value="Наступна"/>
+
 		<field name="tab.home" value="Головне"/>
 		<field name="tab.document" value="Документ"/>
 		<field name="tab.seo" value="SEO"/>
@@ -492,7 +499,7 @@
 		<field name="table.cronjobs.url_local" value="URL локальный"/>
 		<field name="table.cronjobs.code" value="PHP код"/>
 		<field name="table.cronjobs.last_run" value="Последний запуск"/>
-		<field name="table.cronjobs.parent_id" value="Результат"/>
+		<field name="table.cronjobs.last_result" value="Результат"/>
 
 		<field name="table.cronjobs_logs" value="Звіти планувальника завдань"/>
 		<field name="table.cronjobs_logs.id" value="ID"/>
@@ -502,6 +509,7 @@
 		<field name="table.cronjobs_logs.updated" value="Обновлено"/>
 		<field name="table.cronjobs_logs.lang" value="Язык"/>
 		<field name="table.cronjobs_logs.job_id" value="Задача"/>
+		<field name="table.cronjobs_logs.job_name" value="Задача"/>
 		<field name="table.cronjobs_logs.structure_id" value="Название Задачи"/>
 		<field name="table.cronjobs_logs.time_start" value="Время старта"/>
 		<field name="table.cronjobs_logs.time_end" value="Время завершения"/>

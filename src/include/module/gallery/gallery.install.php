@@ -4,7 +4,7 @@ function Install_Gallery($module) {
     // create website structure item
     $itemStructure = array(
         "url" => $module->baseUrl,
-        "name" => "Gallery",
+        "name" => _t("structure.gallery"),
         "template" => "custom",
         "page_template" => "main-gallery.tpl",
         "sitemap" => 1,
@@ -17,8 +17,8 @@ function Install_Gallery($module) {
     $item = array(
         "date" => "2017-07-01 13:25:11",
         "url" => "the-beautiful-photo-gallery",
-        "title" => "The Beautiful photo gallery",
-        "description" => "The Beautiful photo gallery taken from <a href='https://500px.com/cyhiso'>500px.com/cyhiso</a>",
+        "title" => _t("gallery.gallery1"),
+        "description" => msv_load_module_doc($module->pathModule, "gallery-1"),
         "pic" => "images/gallery/gallery_1.jpg",
         "pic_preview" => "images/gallery/gallery_1.jpg",
         "photos" => array(

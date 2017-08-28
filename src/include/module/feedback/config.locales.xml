@@ -3,7 +3,9 @@
 <locales>
 	<locale name="en">
 		<field name="module.feedback" value="Feedback"/>
-		<field name="table.feedback" value="Feedback"/>
+		<field name="structure.feedback" value="Feedback"/>
+		<field name="structure.feedback_title" value="We are happy to receive your feedback"/>
+		<field name="table.feedback" value="Customer Feedback"/>
 		<field name="table.feedback.id" value="ID"/>
 		<field name="table.feedback.published" value="Published"/>
 		<field name="table.feedback.deleted" value="Deleted"/>
@@ -18,7 +20,8 @@
 		<field name="table.feedback.text" value="Text of comment"/>
 		<field name="table.feedback.pic" value="Picture Big"/>
 		<field name="table.feedback.stars" value="Stars (from 1 to 5)"/>
-		<field name="msg.feedback.noemail" value="Email can't be emptry"/>
+		<field name="table.feedback.ip" value="IP"/>
+		<field name="msg.feedback.noemail" value="Email can't be emtry"/>
 		<field name="msg.feedback.noname" value="Please enter your name"/>
 		<field name="msg.feedback.saved" value="Thanks you. Your request was successfully received."/>
 		<field name="feedback.form.email" value="Your Email"/>
@@ -28,6 +31,41 @@
 		<field name="feedback.form.pic" value="Attach image (jpg/png/gif)"/>
 		<field name="feedback.form.stars" value="Stars (from 1 to 5)"/>
 		<field name="feedback.form.send" value="Send request"/>
+		<field name="email.feedback_notify" value="Your support ticket was received"/>
+		<field name="email.feedback_admin_notify" value="New support ticket was received"/>
+	</locale>
+	<locale name="ru">
+		<field name="module.feedback" value="Обратная связь"/>
+		<field name="structure.feedback" value="Обратная связь"/>
+		<field name="structure.feedback_title" value="Мы будем рады получить ваш отзыв"/>
+		<field name="table.feedback" value="Отзывы клиентов"/>
+		<field name="table.feedback.id" value="ID"/>
+		<field name="table.feedback.published" value="Активно"/>
+		<field name="table.feedback.deleted" value="Удалено"/>
+		<field name="table.feedback.author" value="Автор"/>
+		<field name="table.feedback.updated" value="Обновлено"/>
+		<field name="table.feedback.lang" value="Язык"/>
+		<field name="table.feedback.sticked" value="Прикрепить"/>
+		<field name="table.feedback.date" value="Дата"/>
+		<field name="table.feedback.email" value="Email"/>
+		<field name="table.feedback.name" value="Имя"/>
+		<field name="table.feedback.name_title" value="Должность"/>
+		<field name="table.feedback.text" value="Текст комментария"/>
+		<field name="table.feedback.pic" value="Изображение"/>
+		<field name="table.feedback.stars" value="Рейтинг (от 1 до 5)"/>
+		<field name="table.feedback.ip" value="IP"/>
+		<field name="msg.feedback.noemail" value="Укажите Email"/>
+		<field name="msg.feedback.noname" value="Укажите ваше имя"/>
+		<field name="msg.feedback.saved" value="Спасибо, ваш запрос успешно отправлен."/>
+		<field name="feedback.form.email" value="Ваш Email"/>
+		<field name="feedback.form.name" value="Ваше имя"/>
+		<field name="feedback.form.name_title" value="Должность"/>
+		<field name="feedback.form.text" value="Комментарий"/>
+		<field name="feedback.form.pic" value="Прикрепить изображение (jpg/png/gif)"/>
+		<field name="feedback.form.stars" value="Рейтинг (от 1 до 5)"/>
+		<field name="feedback.form.send" value="Отправить запрос"/>
+		<field name="email.feedback_notify" value="Ваш запрос успешно получен"/>
+		<field name="email.feedback_admin_notify" value="Новый запрос в форму обратной связи"/>
 	</locale>
 </locales>
 </document>

@@ -1,4 +1,3 @@
-</br>
 <form class="form-horizontal" method="POST" action="{$lang_url}{$feedback.baseUrl}" enctype="multipart/form-data">
     <div class="form-group">
         <label for="inputEmail" class="col-sm-4 control-label">{_t("feedback.form.email")}</label>
@@ -42,3 +41,5 @@
         </div>
     </div>
 </form>
+
+<div style="height:100px;"></div>

@@ -69,11 +69,11 @@
 			<field name="deleted" type="deleted"/>
 			<field name="author" type="author"/>
 			<field name="updated" type="updated"/>
-			<field name="lang" type="lang"/>
+			<field name="lang" type="lang" listskip="1"/>
 			<field name="name" type="str"/>
 			<field name="subject" type="str"/>
 			<field name="text" type="text"/>
-			<field name="header" type="text"/>
+			<field name="header" type="text" listskip="1"/>
 		</table>
 		<table name="menu" index="id" title="name">
 			<field name="id" type="id"/>
@@ -95,12 +95,12 @@
 			<field name="deleted" type="deleted"/>
 			<field name="author" type="author"/>
 			<field name="updated" type="updated"/>
-			<field name="lang" type="lang"/>
+			<field name="lang" type="lang" listskip="1"/>
 			<field name="name" type="str"/>
 			<field name="status" type="str"/>
 			<field name="type" type="str"/>
-			<field name="url_local" type="str"/>
-			<field name="code" type="text"/>
+			<field name="url_local" type="str" listskip="1"/>
+			<field name="code" type="text" listskip="1"/>
 			<field name="last_run" type="date"/>
 			<field name="last_result" type="bool"/>
 		</table>
@@ -110,8 +110,8 @@
 			<field name="deleted" type="deleted"/>
 			<field name="author" type="author"/>
 			<field name="updated" type="updated"/>
-			<field name="lang" type="lang"/>
-			<field name="job_id" type="int" select-from="table:cronjobs"/>
+			<field name="lang" type="lang" listskip="1"/>
+			<field name="job_id" type="int" select-from="table:cronjobs" listskip="1"/>
 			<field name="job_name" type="str"/>
 			<field name="time_start" type="datetime"/>
 			<field name="time_end" type="datetime"/>

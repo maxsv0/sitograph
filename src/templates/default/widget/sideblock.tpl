@@ -6,7 +6,7 @@
 
 <p class="text-center">
 <div style="width:320px; height:320px; background: #c0c0c0;"></div>
-<small class="text-muted">advertisment</small>
+<small class="text-muted">{_t("title.advertisment")}</small>
 </p>
 
 

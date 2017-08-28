@@ -13,12 +13,12 @@
 	<div class="row">
 	<div class="col-sm-6 text-muted small">
 		<a href="{$lang_url}{$blog.baseUrl}?{$blog.authorUrlParam}={$blog_article_details.email}">{$blog_article_details.email}</a>
-		posted on {$blog_article_details.date}
+		{_t("blog.posted_on")} {$blog_article_details.date}
 		</div>
 		
 		
 		<div class="col-sm-6 text-right small">
-		{$blog_article_details.shares} Shares 
+		{$blog_article_details.shares} {_t("table.articles.shares")}
 		&nbsp;&nbsp;&nbsp;
 		<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
 		
@@ -26,8 +26,8 @@
 	{$blog_article_details.views}
 {else}
 	{math equation="x / 1000" x=$blog_article_details.views format="%.2f"}K
-{/if}		
-		Views
+{/if}
+        {_t("blog.views")}
 		&nbsp;&nbsp;&nbsp;
 		<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> {$blog_article_details.comments}
 	</div>
@@ -64,7 +64,7 @@
 </div>
 {/foreach}
 	<div class="col-sm-12">
-		Attached gallery: <a href="{$gallery.baseUrl}{$blog_article_details.album.url}/">{$blog_article_details.album.title}</a>
+		{_t("blog.attached_gallery")} <a href="{$gallery.baseUrl}{$blog_article_details.album.url}/">{$blog_article_details.album.title}</a>
 	</div>
 </div>
 {/if}
@@ -118,7 +118,7 @@
     <h4 class="media-heading"><a href="{$lang_url}{$blog.baseUrl}{$article.url}/">{$article.title}</a></h4>
     <p class="text-muted small">
 		<a href="{$lang_url}{$blog.baseUrl}?{$blog.authorUrlParam}={$article.email}">{$article.email}</a>
-		posted on {$article.date}
+        {_t("blog.posted_on")} {$article.date}
 	</p>
  	{if $article.description}
 	<p>{$article.description}</p>

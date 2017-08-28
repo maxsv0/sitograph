@@ -46,7 +46,7 @@
 {elseif $type === "array"}
 <td><pre class="small">{$itemField|@print_r}</pre></td>
 {else}
-<td>{$itemField|htmlspecialchars|truncate:60:".."}</td>
+<td>{$itemField|htmlspecialchars|truncate:200:".."}</td>
 {/if}
 {/if}
 {/foreach}

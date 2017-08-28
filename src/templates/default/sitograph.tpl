@@ -24,10 +24,10 @@
 		<td height="25">
 		<div style="padding-bottom: 4px; padding-left: 10px; font-size: 10px; color: #4F4F4F;">{$admin_title}</div>
 		</td>
-		<td width="340">
+		<td width="400">
 		<div style="padding-bottom: 4px; font-size: 11px; color: #D9D9D9;">{_t("admin.logged_as")} {$user.email}</div>
 		</td>
-		<td width="293">
+		<td width="300">
 		<div style="padding-bottom: 4px;">
 		<table cellpadding="0" cellspacing="0" width="100%">
 		<tr>

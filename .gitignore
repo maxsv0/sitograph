@@ -5,3 +5,4 @@ src/content/articles/
 src/content/gallery_album/
 src/content/gallery_photos/
 src/include/custom/smarty/cache/
+src/sitemap.xml

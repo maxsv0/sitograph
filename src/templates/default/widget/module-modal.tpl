@@ -50,7 +50,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-danger pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> Close</button>
+                <button type="submit" class="btn btn-danger pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> {_t("btn.close")}</button>
                 <button type="button" class="btn btn-primary pull-right module-btnadd" value=""><span class="glyphicon glyphicon-plus-sign"></span> Add to your website</button>
                 <a type="button" class="btn btn-default pull-right module-btnload"></a>
                 <a href="#" class="btn btn-default pull-right module-btnpage" target="_blank"><span class="glyphicon glyphicon-new-window"></span> Open Module page</a>
