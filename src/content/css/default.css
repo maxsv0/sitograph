@@ -211,6 +211,10 @@
 	border-color: transparent;
 	background-color: transparent
 }
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+	color: #333;
+	background-color: rgba(255, 255, 255, 0.3);
+}
 .navbar-collapse {
 	overflow: hidden
 }

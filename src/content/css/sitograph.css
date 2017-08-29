@@ -1241,15 +1241,16 @@ legend.legend {
 .img-container img {
 	max-width:100%;
 	max-height:600px;
+    border: 1px dashed #333746;
+    box-shadow: 1px 1px 1px #333746;
+    margin-bottom:10px;
 }
-
 
 #uploadPreview {
-padding:5px;
-background-color:#bebebe;
-overflow:scroll;
+    padding:5px;
+    background-color:#bebebe;
+    overflow:scroll;
 }
-
 
 #uploadModal .modal-dialog, #libraryModal .modal-dialog {
    width:auto;

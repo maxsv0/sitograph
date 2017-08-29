@@ -13,7 +13,7 @@
 		
 		<field name="btn.login" value="Login"/>
 		<field name="btn.logout" value="Logout"/>
-		<field name="btn.remove_link" value="Remove Link"/>
+		<field name="btn.remove_link" value="Remove File"/>
 		<field name="btn.upload_file" value="Upload file"/>
 		<field name="btn.generate" value="Generate"/>
 		<field name="btn.export_table" value="Export table"/>

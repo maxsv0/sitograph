@@ -25,3 +25,17 @@
 {/if}
 
 {include "$themePath/sitograph/section/realtime.tpl"}
+
+
+<form action="/admin/" class="well">
+    <fieldset>
+        <legend>Sitograph Support</legend>
+        <p>Send message directly to :</p>
+        <p>
+            <textarea class="form-control" name="terminal_code">{$terminal_code}</textarea>
+        </p>
+        <p>
+            <input class="btn btn-default" type="submit" value="Submit Request" onclick="if(!confirm('Are you sure you want to execute this code? This action cannot be undone.')) return false;">
+        </p>
+    </fieldset>
+</form>
