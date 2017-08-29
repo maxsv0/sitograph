@@ -104,7 +104,7 @@ $menu_ar["structure_docs"] = array(
 $menu_ar["users"] = array(
     "name" => _t("admin.users"),
     "access" => "admin",
-    "handler" => "module-table.php",
+    "handler" => "module-users.php",
     "table" => TABLE_USERS,
     "url" => "/admin/?section=users",
     "file" => "users.tpl",
@@ -119,7 +119,7 @@ $menu_ar["media_library"] = array(
     "url" => "/admin/?section=media_library",
     "file" => "media_library.tpl",
     "title" =>  _t("admin.media_library"),
-    "orderID" => 106,
+    "orderID" => 190,
 );
 
 
@@ -158,7 +158,40 @@ foreach ($this->website->modules as $module) {
 }
 
 
-$menu_ar["mail_template"] = array(
+
+
+
+$menu_ar["module_settings"] = array(
+    "name" => _t("admin.module_settings"),
+    "access" => "superadmin",
+    "url" => "/admin/?section=module_settings",
+    "file" => "module_settings.tpl",
+    "title" => _t("admin.module_settings_title"),
+    "orderID" => 150,
+);
+
+// Submenu for 'emails'
+$submenu = array();
+$submenu["send_email"] = array(
+    "name" => _t("admin.send_email"),
+    "access" => "admin",
+    "handler" => "module-email.php",
+    "url" => "/admin/?section=send_email",
+    "file" => "send_email.tpl",
+    "title" => _t("admin.send_email_title"),
+    "orderID" => 10,
+);
+$submenu["maillog"] = array(
+    "name" => _t("admin.maillog"),
+    "access" => "admin",
+    "handler" => "module-table.php",
+    "table" => TABLE_MAIL_LOG,
+    "url" => "/admin/?section=maillog",
+    "file" => "custom.tpl",
+    "title" => _t("admin.maillog_title"),
+    "orderID" => 50,
+);
+$submenu["mail_template"] = array(
     "name" => _t("admin.mail_template"),
     "access" => "admin",
     "handler" => "module-table.php",
@@ -169,16 +202,16 @@ $menu_ar["mail_template"] = array(
     "orderID" => 100,
 );
 
-
-$menu_ar["module_settings"] = array(
-    "name" => _t("admin.module_settings"),
-    "access" => "superadmin",
-    "url" => "/admin/?section=module_settings",
-    "file" => "module_settings.tpl",
-    "title" => _t("admin.module_settings_title"),
+// attach 'emails' to menu
+$menu_ar["emails"] = array(
+    "name" => _t("admin.emails"),
+    "access" => "admin",
+    "title" => _t("admin.emails"),
+    "submenu" => $submenu,
     "orderID" => 110,
 );
-
+$menu_index = array_merge($menu_index, array_keys($submenu));
+// attached
 
 $submenu = array();
 /*
@@ -209,7 +242,7 @@ $submenu["cronjobslog"] = array(
     "handler" => "module-table.php",
     "table" => TABLE_CRONJOBS_LOGS,
     "url" => "/admin/?section=cronjobslog",
-    "file" => "cronjobs.tpl",
+    "file" => "custom.tpl",
     "title" => _t("admin.cronjobslog_title"),
     "orderID" => 102,
 );

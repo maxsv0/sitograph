@@ -122,8 +122,8 @@ if (!empty($_REQUEST["sortd"])) {
 		$sortd_rev = "desc";
 	}
 } else {
-	$sortd = "asc";
-	$sortd_rev = "desc";
+	$sortd = "desc";
+	$sortd_rev = "asc";
 }
 
 msv_assign_data("table_sort", $sort);
@@ -140,7 +140,7 @@ if (isset($_GET["export"])) {
 $resultQuery = db_get_listpaged($table, "", "`$sort` $sortd", $listLimit, "p");
 if ($resultQuery["ok"]) {
     msv_assign_data("admin_list", $resultQuery["data"]);
-	
+
 	$adminList = $resultQuery["data"];
 	$listPages = $resultQuery["pages"];
     msv_assign_data("admin_list_pages", $listPages);

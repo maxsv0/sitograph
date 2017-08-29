@@ -110,17 +110,22 @@ function msv_seo_showleads($seo) {
     $listLeads = array();
 
     foreach ($list as $lead) {
-        $tm = strtotime($lead["last_action"]);
-        if (time() - $tm < 60*5) {
-            $lead["status"] = "online";
-        } else {
-            $lead["status"] = "offline";
-        }
-
+        $lead["status"] = msv_get_leadstatus($lead);
         $listLeads[] = $lead;
     }
 
     msv_assign_data("lead_list", $listLeads);
+}
+
+function msv_get_leadstatus($lead) {
+    $tm = strtotime($lead["last_action"]);
+    if (time() - $tm < 60*5) {
+        $status = "online";
+    } else {
+        $status = "offline";
+    }
+
+    return $status;
 }
 
 function load_seo_lead_ipinfo($lead) {

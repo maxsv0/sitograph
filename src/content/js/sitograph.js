@@ -480,3 +480,12 @@ function load_ajax(btn, dest) {
     });
     return false;
 }
+
+function prompt_password(link) {
+    var newpass = prompt("Enter a new password", "");
+    if (newpass != null) {
+        url = link.href;
+		window.location.href = url+"&new_password="+newpass;
+    }
+    return false;
+}

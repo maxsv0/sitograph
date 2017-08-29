@@ -7,7 +7,6 @@
 	<param name="adminMenu" value="0"/>
 </config>
 
-
 <install>
 	<param name="name" value="google-analytics" />
 	<param name="version" value="1.1.2"/>
@@ -27,4 +26,16 @@
 	<file dir="content" path="images/module_preview_ga.jpg"/>
 </install>
 
+<locales>
+	<locale name="en">
+		<field name="msg.invalid_google_service_auth_file" value="Invalid Google Service Auth JSON file"/>
+		<field name="settings.google_analytics_tracking_id" value="Google Analytics Tracking ID"/>
+		<field name="settings.google_service_auth_json" value="Google Service server-server authentication JSON file path"/>
+	</locale>
+	<locale name="ru">
+		<field name="msg.invalid_google_service_auth_file" value="Ошибка в файле авторизации Google Service Auth"/>
+		<field name="settings.google_analytics_tracking_id" value="Google Analytics Tracking ID"/>
+		<field name="settings.google_service_auth_json" value="Путь к JSON файлу авторизации Google Service server-server"/>
+	</locale>
+</locales>
 </document>

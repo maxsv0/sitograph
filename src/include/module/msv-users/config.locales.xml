@@ -29,7 +29,7 @@
 		<field name="table.users.pic" value="Picture"/>
 		<field name="table.users.lang_default" value="User Language"/>
 		<field name="table.users.access" value="Access"/>
-		<field name="table.users.iss" value="Sourse"/>
+		<field name="table.users.iss" value="Source"/>
 		<field name="table.users.reset_token" value="Reset Token"/>
 		<field name="table.users.verify_token" value="Verify Token"/>
 		<field name="table.users.access_token" value="Access Token"/>
@@ -42,12 +42,15 @@
 		<field name="msg.users.saved" value="Successfully saved"/>
 		<field name="msg.users.error_sending" value="Error sending email"/>
 		<field name="msg.users.email_verified" value="Email is verified"/>
+		<field name="msg.users.email_notverified" value="Email is not verified"/>
 		<field name="msg.users.verification_sent" value="Verification Email sent."/>
 		<field name="msg.users.verification_needed" value="To complete and confirm your registration, you’ll need to verify your email address."/>
 		<field name="msg.users.resend_verification" value="Resend Email Activation"/>
 		<field name="msg.users.noaccess" value="Access to this page is denied"/>
 		<field name="msg.users.email_not_found" value="Email was not found"/>
 		<field name="msg.users.reg_success" value="Successfully registered"/>
+		<field name="msg.users.password_update_ok" value="Password successfully updated"/>
+		<field name="msg.email_sending_error" value="Error sending email"/>
 		<field name="users.hello" value="Hello,"/>
 		<field name="users.goto_account" value="To Account"/>
 		<field name="users.activate_account" value="Activate Account"/>
@@ -73,6 +76,9 @@
 		<field name="users.form.current_password" value="Current Password"/>
 		<field name="users.form.new_password" value="New Password"/>
 		<field name="users.form.password_confirmation" value="Password confirmation"/>
+		<field name="users.status" value="Status"/>
+		<field name="users.online" value="online"/>
+		<field name="users.offline" value="offline"/>
 	</locale>
 	<locale name="ru">
 		<field name="structure.users.account" value="My Account"/>
@@ -115,12 +121,15 @@
 		<field name="msg.users.saved" value="Пользователь успешно обновлен"/>
 		<field name="msg.users.error_sending" value="Ошибка отправки сообщения"/>
 		<field name="msg.users.email_verified" value="Email is verified"/>
+		<field name="msg.users.email_notverified" value="Email is not verified"/>
 		<field name="msg.users.verification_sent" value="Verification Email sent."/>
 		<field name="msg.users.verification_needed" value="Подтвердите ваш Email."/>
 		<field name="msg.users.resend_verification" value="Resend Email Activation"/>
 		<field name="msg.users.noaccess" value="Доступ к этой странице запрещен"/>
 		<field name="msg.users.reg_success" value="Вы успешно зарегистрировались на сайте"/>
 		<field name="msg.users.email_not_found" value="Указанный вами Email не найден"/>
+		<field name="msg.users.password_update_ok" value="Пароль успешно обновлен"/>
+		<field name="msg.email_sending_error" value="Ошибка отправки сообщения"/>
 		<field name="users.hello" value="Добро пожаловать,"/>
 		<field name="users.goto_account" value="Перейти в аккаунт"/>
 		<field name="users.activate_account" value="Активировать аккаунт"/>
@@ -146,6 +155,9 @@
 		<field name="users.form.current_password" value="Текущий пароль"/>
 		<field name="users.form.new_password" value="Новйы пароль"/>
 		<field name="users.form.password_confirmation" value="Подтверждение пароля"/>
+		<field name="users.status" value="Статус"/>
+		<field name="users.online" value="Онлайн"/>
+		<field name="users.offline" value="Не в сети"/>
 	</locale>
 </locales>
 </document>

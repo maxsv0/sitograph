@@ -11,8 +11,8 @@ if ($code) {
 	  ";
 	$includeCode .= "ga('create', '$code', 'auto');\n";
 	$rowUser = msv_get("website.user");
-	if (empty($rowUser["user_id"])) {
-		$includeCode .= "ga('set', 'userId', ".$rowUser["user_id"].");\n";
+	if (empty($rowUser["id"])) {
+		$includeCode .= "ga('set', 'userId', ".$rowUser["id"].");\n";
 	}
 	$includeCode .= "ga('send', 'pageview');\n";
 
@@ -43,7 +43,7 @@ if (!empty($googleservice_auth_json)) {
 		$token = $ar->access_token;
         msv_assign_data("GA_access_token", $token);
 	} else {
-        msv_message_error("Invalid Google Service Auth JSON file");
+        msv_message_error(_t("msg.invalid_google_service_auth_file"));
 	}
 }
 
@@ -56,7 +56,6 @@ function Install_GoogleAnalytics($module) {
 	// run when module in installed
 	
 	// Google Analytics options
-    msv_set_config("google_analytics_tracking_id", "", true, "*");
-    msv_set_config("google_service_auth_json", "", true, "*");
-	
+    msv_set_config("google_analytics_tracking_id", "", true, "*", _t("settings.google_analytics_tracking_id"));
+    msv_set_config("google_service_auth_json", "", true, "*", _t("settings.google_service_auth_json"));
 }

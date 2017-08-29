@@ -331,6 +331,19 @@
 		<field name="msg.email_sending_error" value="Error sending email"/>
 		<field name="msg.wrong_email" value="Wrong Email"/>
 		<field name="msg.cron.saved" value="CronJob Saved successfuly"/>
+
+		<field name="settings.include_html_head" value="This HTML code is included to all pages, above 'body' tag"/>
+		<field name="settings.theme_css_path" value="Path to a CSS file included globaly"/>
+		<field name="settings.theme_js_path" value="Path to a JS file included globaly"/>
+		<field name="settings.theme_use_bootstrap" value="Include Bootstrap library globaly, values 0/1"/>
+		<field name="settings.theme_use_jquery" value="Include jQuery library globaly, values 0/1"/>
+		<field name="settings.edit_mode" value="Admin 'Edit Mode' defined globaly, values 0/1"/>
+		<field name="settings.message_ok" value="Text for a success message displayed over website"/>
+		<field name="settings.message_error" value="Text for a error message displayed over website. Enabling error message will prevent all website forms from submitting."/>
+		<field name="settings.email_from" value="Email used in sent-by header"/>
+		<field name="settings.email_fromname" value="Name used in sent-by header"/>
+		<field name="settings.admin_email" value="Public Administrator e-mail"/>
+		<field name="settings.support_email" value="Public Support e-mail"/>
 	</locale>
     <locale name="ua">
         <field name="actions" value="Дії"/>

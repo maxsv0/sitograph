@@ -15,6 +15,7 @@
 		<constant name="TABLE_MENU" value="menu"/>
 		<constant name="TABLE_CRONJOBS" value="cronjobs"/>
 		<constant name="TABLE_CRONJOBS_LOGS" value="cronjobs_logs"/>
+		<constant name="TABLE_MAIL_LOG" value="mail_log"/>
 
 		<api name="structure" action="api_request_structure"/>
 		<api name="document" action="api_request_document"/>
@@ -58,7 +59,7 @@
 			<field name="deleted" type="deleted"/>
 			<field name="author" type="author"/>
 			<field name="updated" type="updated"/>
-			<field name="lang" type="lang"/>
+			<field name="lang" type="lang" listskip="1"/>
 			<field name="param" type="str"/>
 			<field name="value" type="str"/>
 			<field name="description" type="str"/>
@@ -117,6 +118,21 @@
 			<field name="time_end" type="datetime"/>
 			<field name="result_ok" type="bool"/>
 			<field name="result_msg" type="text"/>
+		</table>
+		<table name="mail_log" index="id" title="id">
+			<field name="id" type="id"/>
+			<field name="published" type="published"/>
+			<field name="deleted" type="deleted"/>
+			<field name="author" type="author"/>
+			<field name="updated" type="updated"/>
+			<field name="lang" type="lang" listskip="1"/>
+			<field name="user_id" type="int" select-from="table:users" listskip="1"/>
+			<field name="date" type="datetime"/>
+			<field name="to" type="str"/>
+			<field name="subject" type="str"/>
+			<field name="body" type="doc" listskip="1"/>
+			<field name="header" type="doc" listskip="1"/>
+			<field name="result" type="str"/>
 		</table>
 	</config>
 </document>

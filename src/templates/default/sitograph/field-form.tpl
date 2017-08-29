@@ -13,13 +13,13 @@
 {if $itemField["max-width"]}
     {$itemField["max-width"]} px
 {else}
-    any
+    -
 {/if}
     	<small class="text-muted">x</small> 
 {if $itemField["max-height"]}
     {$itemField["max-height"]} px
 {else}
-    any
+    -
 {/if}
     </span>
     	
@@ -92,13 +92,13 @@
     <label for="i{$item_id}" class="col-sm-6 control-label">
     
     {if $item_name}{_t("table.$admin_table.$item_name")}{/if}
-    
+
 {if $item_type === "url"}
 <small class="field-help">
 {_t("help.field.url")}
 </small>
 {/if}
-    
+
     <small class="text-muted" style="color:#fff;">
 	{$t["type.$item_type"]}
 	</small>

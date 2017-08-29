@@ -1139,7 +1139,28 @@ function msv_email($to = "", $subject = "", $body = "", $header = "") {
     // get Mailer function
     $mailer = msv_get_config("mailer");
 
-    return call_user_func_array($mailer, array($to, $subject, $body, $header));
+    $result = call_user_func_array($mailer, array($to, $subject, $body, $header));
+
+    if (!$result) {
+        $resultStr = "fail";
+    } else {
+        $resultStr = $result;
+    }
+    // log message
+    db_add(
+        TABLE_MAIL_LOG,
+        array(
+            "published" => 1,
+            "user_id" => $_SESSION["user_id"],
+            "to" => $to,
+            "subject" => $subject,
+            "body" => $body,
+            "header" => $header,
+            "result" => $resultStr,
+        )
+    );
+
+    return $result;
 }
 
 /**
@@ -1647,7 +1668,11 @@ function msv_load_module_doc($pathModule, $docName) {
         $content = preg_replace_callback(
             '~\{(\w+?)\}~sU',
             create_function('$t','
-                        return constant($t[1]);
+                        if (defined($t[1])) {
+                            return constant($t[1]);
+                        } else {
+                            return "{".$t[1]."}";
+                        };
                     '),
             $content);
 

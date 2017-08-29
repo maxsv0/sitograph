@@ -427,17 +427,16 @@ table.table-module .colactive {
 }
 
 .table-module .btn {
-    background-color: transparent;
-    border-color: transparent;
     color: #747474;
-    padding:0px 3px;
-    font-size: 15px;
+    padding:0px 5px;
+    font-size: 12px;
+    margin: 2px 0px 2px 10px;
 }
 .table-module .btn:hover, .table-module .btn:active,
 .table-module .btn:focus
 {
     background-color: transparent;
-    border-color: transparent;
+    border-color: #ed2a45;
     color:#ed2a45;
 }
 .form-horizontal .control-label {

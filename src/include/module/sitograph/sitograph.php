@@ -104,7 +104,10 @@ if (!empty($section) && in_array($section, $menu_index)) {
 
     // TODO: remove not needed lines
     // get module object
-    // $sectionObj = msv_get("website.$section");
+    $sectionObj = msv_get("website.$section");
+
+    // assign module base url
+    msv_assign_data("module_base_url", $sectionObj->baseUrl);
 
     // set admin section hendler
     $handler = $menuItem["handler"];

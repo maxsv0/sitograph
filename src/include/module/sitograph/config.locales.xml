@@ -96,7 +96,11 @@
 		<field name="admin.cronjobslog_title" value="Task Scheduler Reports"/>
 		<field name="admin.editor" value="File editor"/>
 		<field name="admin.editor_title" value="Text files editor"/>
-
+		<field name="admin.maillog" value="Email Reports"/>
+		<field name="admin.maillog_title" value="Emails Sent from Website"/>
+		<field name="admin.send_email" value="Send Email"/>
+		<field name="admin.send_email_title" value="Send Email from Website"/>
+		<field name="admin.emails" value="Manage Emails"/>
 		<field name="admin.logged_as" value="Logged as"/>
 		<field name="admin.view_website" value="View Website"/>
 		<field name="btn.search" value="Search"/>
@@ -216,7 +220,11 @@
 		<field name="admin.cronjobslog_title" value="Отчеты планировщика задач"/>
 		<field name="admin.editor" value="Редактор файлов"/>
 		<field name="admin.editor_title" value="Текстовый Редактор файлов"/>
-
+		<field name="admin.maillog" value="Отчеты Email"/>
+		<field name="admin.maillog_title" value="Отправленные письма"/>
+		<field name="admin.send_email" value="Отправка Email"/>
+		<field name="admin.send_email_title" value="Отправка Email с сайта"/>
+		<field name="admin.emails" value="Управление Email"/>
 		<field name="admin.view_website" value="Административный просмотр сайта"/>
 		<field name="admin.logged_as" value="Вы вошли как"/>
 		<field name="btn.search" value="Искать"/>
@@ -331,7 +339,11 @@
 		<field name="admin.cronjobslog_title" value="Звіти планувальника завдань"/>
 		<field name="admin.editor" value="Редактор файлів"/>
 		<field name="admin.editor_title" value="Текстовий Редактор файлів"/>
-
+		<field name="admin.maillog" value="Звіти Email"/>
+		<field name="admin.maillog_title" value="Надіслані листи"/>
+		<field name="admin.send_email" value="Відправка Email"/>
+		<field name="admin.send_email_title" value="Відправка Email з сайту"/>
+		<field name="admin.emails" value="Управление Email"/>
 		<field name="admin.view_website" value="View Website"/>
 		<field name="admin.logged_as" value="Ви увійшли як"/>
 		<field name="admin.locale_tab_name" value="Назва"/>

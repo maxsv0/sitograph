@@ -300,11 +300,11 @@ class MSV_Website {
 		
 		// redirect if FORSE_TRAILING_SLASH 
 		// if page is NOT found
-		if (empty($this->page) && defined("FORSE_TRAILING_SLASH") && FORSE_TRAILING_SLASH) {
-			if (!$this->config["hasTrailingSlash"]) {
-				$this->outputRedirect($this->requestUrl."/");
-			}
-		}
+//		if (empty($this->page) && defined("FORSE_TRAILING_SLASH") && FORSE_TRAILING_SLASH) {
+//			if (!$this->config["hasTrailingSlash"]) {
+//				$this->outputRedirect($this->requestUrl."/");
+//			}
+//		}
 		
 		// apply filters
 		$this->runFilters();

@@ -32,7 +32,7 @@
 		<field name="author" type="author"/>
 		<field name="updated" type="updated"/>
 		<field name="lang" type="lang" listskip="1"/>
-		<field name="url" type="url" listskip="1"/>
+		<field name="url" type="url"/>
 		<field name="date" type="date"/>
 		<field name="title" type="str"/>
 		<field name="description" type="doc"/>
