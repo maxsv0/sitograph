@@ -165,6 +165,21 @@ $(document).ready(function() {
         });
     }
 
+
+    $('.bool-switch').html(function() {
+        var str = '';
+        if ($(this).data("value") > 0) {
+            str = '<label class="switch"><input type="checkbox" checked onclick="';
+            value_set = 0;
+        } else {
+            str = '<label class="switch"><input type="checkbox" onclick="';
+            value_set = 1;
+        }
+        str += 'list_toggle_submit(\''+$(this).data("section")+'\',\''+$(this).data("table")+'\',\''+$(this).data("id")+'\',\''+$(this).data("field")+'\',\''+value_set+'\');';
+        str += '"><span class="slider round"></span></label>';
+        return str;
+    });
+
     // TODO: find out why is this here
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         $('.tab-content').resize();
@@ -488,4 +503,33 @@ function prompt_password(link) {
 		window.location.href = url+"&new_password="+newpass;
     }
     return false;
+}
+
+function list_toggle_submit(section, table, id, field, value) {
+    console.log(section, table, id, field, value);
+
+    $form = $('<form>' +
+        '<input type="hidden" value="'+section+'" name="section">'+
+        '<input type="hidden" value="'+table+'" name="table">'+
+        '<input type="hidden" value="'+id+'" name="itemID">'+
+        '<input type="hidden" value="'+id+'" name="form_id">'+
+        '<input type="hidden" value="'+value+'" name="form_'+field+'">'+
+        '<input type="hidden" value="1" name="ajaxcall">'+
+        '<input type="hidden" value="1" name="save">'+
+        '</form>');
+
+    $.ajax({
+        type: "post",
+        url: "/admin/",
+        data: $form.serialize(),
+        success: function (data) {
+            console.log('Submission was successful.');
+            obj = JSON.parse(data);
+            console.log(obj);
+
+        },
+        error: function (data) {
+            console.log(data);
+        },
+    });
 }

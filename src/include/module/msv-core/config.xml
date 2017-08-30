@@ -37,7 +37,7 @@
 			<field name="template" type="str"/>
 			<field name="page_template" type="str"/>
 			<field name="page_document_id" type="int"/>
-			<field name="sitemap" type="str"/>
+			<field name="sitemap" type="bool"/>
 			<field name="debug" type="bool"/>
 			<field name="access" type="str" select-from="list:everyone,user,admin,superadmin"/>
 			<field name="access_users" type="array" selectlist="table:users"/>

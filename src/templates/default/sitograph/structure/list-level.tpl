@@ -20,18 +20,18 @@
 
 
 
-<td class="text-nowrap">
+<td class="col-sm-2">
 {section name=index start=1 loop=$level step=1}
 <span>»</span>&nbsp;
 {/section}
 <span>{$item.name|strip_tags|truncate:200:".."}{if $item.debug} <span class="badge">debug</span>{/if}</span>
 </td>
 
-<td class="text-nowrap">
-<a href="{$item.url}" target="_blank" style="text-decoration:none;">{$item.url} <span class="glyphicon glyphicon-new-window"></span></a>
+<td class="col-sm-2">
+<a href="{$item.url}" target="_blank">{$item.url}<span class="glyphicon glyphicon-new-window"></span></a>
 </td>
 
-<td class="text-nowrap">
+<td class="col-sm-2">
 <small>
 {if $item.template}
 {if $item.template === "default"}
@@ -43,7 +43,7 @@
 <span class="label label-danger">{_t("not_set")}</span>
 {/if}
 
-/
+<br>
 
 {if $item.page_template}
 {$item.page_template}
@@ -53,7 +53,7 @@
 </small>
 </td>
 
-<td class="text-nowrap text-center">
+<td class="col-sm-1 text-center">
 {if $item.access === "everyone"}
 	<span class="text-success">{$item.access_data}</span>
 {elseif $item.access === "user"}
@@ -66,42 +66,36 @@
 	{$item.access_data}
 {/if}
 </td>
-<td class="text-nowrap text-center">
-<form>
-	{if $item.sitemap}
-		<label class="switch">
-			<input type="checkbox" checked>
-			<span class="slider round"></span>
-		</label>
-	{else}
-		<label class="switch">
-			<input type="checkbox">
-			<span class="slider round"></span>
-		</label>
-	{/if}
-</form>
+<td class="text-center col-sm-1">
+{if $item.sitemap}
+	<span class="text-success bool-switch" data-id="{$item.id}" data-section="{$admin_section}" data-table="{$admin_table}" data-field="sitemap" data-value="1">{$t["yes"]}</span>
+{else}
+	<span class="text-danger bool-switch" data-id="{$item.id}" data-section="{$admin_section}" data-table="{$admin_table}" data-field="sitemap" data-value="0">{$t["no"]}</span>
+{/if}
 </td>
-<td class="text-nowrap text-center">
-<form>
-	{if $item.published}
-		<label class="switch">
-			<input type="checkbox" checked>
-			<span class="slider round"></span>
-		</label>
-	{else}
-		<label class="switch">
-			<input type="checkbox">
-			<span class="slider round"></span>
-		</label>
-	{/if}
-</form>
+<td class="text-center col-sm-1">
+{if $item.published}
+	<span class="text-success bool-switch" data-id="{$item.id}" data-section="{$admin_section}" data-table="{$admin_table}" data-field="published" data-value="1">{$t["yes"]}</span>
+{else}
+	<span class="text-danger bool-switch" data-id="{$item.id}" data-section="{$admin_section}" data-table="{$admin_table}" data-field="published" data-value="0">{$t["no"]}</span>
+{/if}
 </td>
 
-<td class="text-nowrap">
-	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&edit={$item.id}" title="{$t['btn.edit']}" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
-	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&add_child={$item.id}" title="{$t['btn.add_child']}" class="btn btn-warning"><span class="glyphicon glyphicon-plus"></span></a>
-	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&duplicate={$item.id}" title="{$t['btn.duplicate']}" class="btn btn-warning"><span class="glyphicon glyphicon-duplicate"></span></a>
-	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&delete={$item.id}" onclick="if (!confirm('{$t["btn.remove_confirm"]}')) return false;" title="{$t['btn.delete']}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+<td class="col-sm-3">
+<ul class="list-inline">
+	<li>
+		<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&edit={$item.id}" title="{$t['btn.edit']}" class="btn btn-primary">{$t['btn.edit']} <span class="glyphicon glyphicon-edit"></span></a>
+	</li>
+	<li>
+		<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&add_child={$item.id}" title="{$t['btn.add_child']}" class="btn btn-warning">{$t['btn.add_child']} <span class="glyphicon glyphicon-plus"></span></a>
+	</li>
+	<li>
+		<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&duplicate={$item.id}" title="{$t['btn.duplicate']}" class="btn btn-warning">{$t['btn.duplicate']} <span class="glyphicon glyphicon-duplicate"></span></a>
+	</li>
+	<li>
+		<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&delete={$item.id}" onclick="if (!confirm('{$t["btn.remove_confirm"]}')) return false;" title="{$t['btn.delete']}" class="btn btn-danger">{$t['btn.delete']} <span class="glyphicon glyphicon-remove"></span></a>
+	</li>
+</ul>
 </td>
 </tr>
 

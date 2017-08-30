@@ -35,19 +35,11 @@
 <td><small>{$itemField}</small></td>
 {elseif $type === "bool"}
 <td class="col-sm-1">
-<form>
 {if $itemField}
-<label class="switch">
-	<input type="checkbox" checked>
-	<span class="slider round"></span>
-</label>
+	<span class="text-success bool-switch" data-id="{$item.id}" data-section="{$admin_section}" data-table="{$admin_table}" data-field="{$itemFieldID}" data-value="{$itemField}">{$t["yes"]}</span>
 {else}
-<label class="switch">
-	<input type="checkbox">
-	<span class="slider round"></span>
-</label>
+	<span class="text-danger bool-switch" data-id="{$item.id}" data-section="{$admin_section}" data-table="{$admin_table}" data-field="{$itemFieldID}" data-value="{$itemField}">{$t["no"]}</span>
 {/if}
-</form>
 </td>
 {elseif $type === "doc"}
 <td>{$itemField|htmlspecialchars|truncate:300:".."}</td>
@@ -70,9 +62,17 @@
 {/foreach}
 
 <td class="text-nowrap col-sm-1">
-	<p><a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&edit={$item.id}&p={$admin_list_page}" title="{$t['btn.edit']}" class="btn btn-primary btn-sm">{$t['btn.edit']} <span class="glyphicon glyphicon-edit"></span></a></p>
-	<p><a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&duplicate={$item.id}&p={$admin_list_page}" title="{$t['btn.duplicate']}" class="btn btn-warning btn-sm">{$t['btn.duplicate']} <span class="glyphicon glyphicon-duplicate"></span></a></p>
-	<p><a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&delete={$item.id}&p={$admin_list_page}" title="{$t['btn.delete']}" class="btn btn-danger btn-sm" onclick="if (!confirm('{$t["btn.remove_confirm"]}')) return false;">{$t['btn.delete']} <span class="glyphicon glyphicon-remove"></span></a></p>
+    <ul class="list-unstyled">
+        <li>
+            <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&edit={$item.id}&p={$admin_list_page}" title="{$t['btn.edit']}" class="btn btn-primary btn-sm">{$t['btn.edit']} <span class="glyphicon glyphicon-edit"></span></a>
+        </li>
+        <li>
+            <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&duplicate={$item.id}&p={$admin_list_page}" title="{$t['btn.duplicate']}" class="btn btn-warning btn-sm">{$t['btn.duplicate']} <span class="glyphicon glyphicon-duplicate"></span></a>
+        </li>
+        <li>
+            <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&delete={$item.id}&p={$admin_list_page}" title="{$t['btn.delete']}" class="btn btn-danger btn-sm" onclick="if (!confirm('{$t["btn.remove_confirm"]}')) return false;">{$t['btn.delete']} <span class="glyphicon glyphicon-remove"></span></a>
+        </li>
+    </ul>
 </td>
 
 
