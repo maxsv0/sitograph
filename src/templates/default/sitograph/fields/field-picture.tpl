@@ -2,7 +2,7 @@
 <p>
 {if $value}
 <div class="img-container">
-<img class="img-responsive" src="{$value}?{$rand}" id="img-{$item_id}">
+<img class="img-responsive" src="{$value}?{$rand}" id="img-{$item_id}" onclick="openUploadModal('{$item_id}');">
 </div>
 {else}
 <div class="alert alert-danger" id="alert-{$item_id}">{_t("msg.no_stored_image")}</div>

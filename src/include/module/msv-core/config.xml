@@ -82,9 +82,9 @@
 			<field name="deleted" type="deleted"/>
 			<field name="author" type="author"/>
 			<field name="updated" type="updated"/>
-			<field name="lang" type="lang"/>
+			<field name="lang" type="lang" listskip="1"/>
 			<field name="menu_id" type="str"/>
-			<field name="structure_id" type="int" select-from="table:structure"/>
+			<field name="structure_id" type="int" select-from="table:structure" listskip="1"/>
 			<field name="name" type="str"/>
 			<field name="url" type="url"/>
 			<field name="order_id" type="int"/>

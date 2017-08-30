@@ -8,7 +8,7 @@ $(document).ready(function() {
 	tinymce.init({
 		selector: '.editor',
 		language: '".LANG."',
-		height: 500,
+		height: 250,
 		verify_html : false,
 		convert_urls : false,
 		menubar: false,

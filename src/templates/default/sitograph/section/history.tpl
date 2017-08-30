@@ -32,3 +32,8 @@
 </tr>
 {/foreach}
 </table>
+
+{if !$debug_log_actions}
+	<div class="alert alert-danger">DEBUG_LOG has to be set to a correct path to enable Website History<br>
+		Please go to website <a href="/admin/?section=config#DEBUG_LOG">config.php to edit</a></div>
+{/if}

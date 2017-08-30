@@ -28,10 +28,6 @@
 <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=published&sortd={$table_sortd_rev}">{$t["table.structure.published"]}</a>
 {if $table_sort == "published"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
 </th>
-<th{if $table_sort == "updated"} class='colactive'{/if}>
-<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=updated&sortd={$table_sortd_rev}">{$t["table.structure.updated"]}</a>
-{if $table_sort == "updated"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
-</th>
 <th>{$t["actions"]}</th>
 </tr>
 

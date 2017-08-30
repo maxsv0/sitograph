@@ -3,7 +3,7 @@
 <table class="table">
 
 {foreach from=$admin_config_list key=dataName item=dataValue}
-<tr>
+<tr id="{$dataName}">
 	<td>{$dataName}</td>
 	<td><input type="text" value="{$dataValue}" name="config_{$dataName}" class="form-control"></td>
 </tr>

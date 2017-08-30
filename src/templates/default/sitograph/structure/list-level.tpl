@@ -3,7 +3,13 @@
 {if $show_parent_id == 0}
 {assign var=level value=1}    
 {/if}
-<tr {if $item.debug}class="danger"{/if} data-index="{$item.parent_id}" data-level="{$level}" {if $structure_show && $structure_show[$item.parent_id] == $level && !empty($listTable[$item.id])}data-show="{$item.id}" class="selected"{/if}>
+
+{if $structure_show && $structure_show[$item.parent_id] == $level && !empty($listTable[$item.id])}
+
+	<tr class="selected{if !$item.published} danger{/if}"  data-index="{$item.parent_id}" data-level="{$level}" data-show="{$item.id}">
+{else}
+	<tr class="{if !$item.published}danger{/if}" data-index="{$item.parent_id}" data-level="{$level}" >
+{/if}
 
 <td>
 {if !empty($listTable[$item.id])}
@@ -18,10 +24,7 @@
 {section name=index start=1 loop=$level step=1}
 <span>»</span>&nbsp;
 {/section}
-<span>{$item.name|strip_tags|truncate:200:".."}</span>
-{if $item.debug}
-<div><span class="badge">debug</span></div>
-{/if}
+<span>{$item.name|strip_tags|truncate:200:".."}{if $item.debug} <span class="badge">debug</span>{/if}</span>
 </td>
 
 <td class="text-nowrap">
@@ -64,21 +67,35 @@
 {/if}
 </td>
 <td class="text-nowrap text-center">
-{if $item.sitemap}
-<span class="text-success">{$t["yes"]}</span>
-{else}
-<span class="text-danger">{$t["no"]}</span>
-{/if}
+<form>
+	{if $item.sitemap}
+		<label class="switch">
+			<input type="checkbox" checked>
+			<span class="slider round"></span>
+		</label>
+	{else}
+		<label class="switch">
+			<input type="checkbox">
+			<span class="slider round"></span>
+		</label>
+	{/if}
+</form>
 </td>
 <td class="text-nowrap text-center">
-{if $item.published}
-<span class="text-success">{$t["yes"]}</span>
-{else}
-<span class="text-danger">{$t["no"]}</span>
-{/if}
+<form>
+	{if $item.published}
+		<label class="switch">
+			<input type="checkbox" checked>
+			<span class="slider round"></span>
+		</label>
+	{else}
+		<label class="switch">
+			<input type="checkbox">
+			<span class="slider round"></span>
+		</label>
+	{/if}
+</form>
 </td>
-
-<td><small>{$item.updated|substr:0:10}</small></td>
 
 <td class="text-nowrap">
 	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&edit={$item.id}" title="{$t['btn.edit']}" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></a>

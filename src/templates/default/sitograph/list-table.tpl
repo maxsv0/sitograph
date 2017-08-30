@@ -35,18 +35,28 @@
 <td><small>{$itemField}</small></td>
 {elseif $type === "bool"}
 <td class="col-sm-1">
+<form>
 {if $itemField}
-<span class="text-success">{$t["yes"]}</span>
+<label class="switch">
+	<input type="checkbox" checked>
+	<span class="slider round"></span>
+</label>
 {else}
-<span class="text-danger">{$t["no"]}</span>
+<label class="switch">
+	<input type="checkbox">
+	<span class="slider round"></span>
+</label>
 {/if}
+</form>
 </td>
 {elseif $type === "doc"}
 <td>{$itemField|htmlspecialchars|truncate:300:".."}</td>
 {elseif $type === "url"}
 <td class="col-sm-2">
 {if $module_base_url}
-	<a href="{$module_base_url}{$itemField}/" target="_blank">{$itemField} <span class="glyphicon glyphicon-new-window"></span></a>
+	<a href="{$module_base_url}{$itemField}/" target="_blank">{$module_base_url}{$itemField}/ <span class="glyphicon glyphicon-new-window"></span></a>
+{elseif $itemField != "#"}
+	<a href="{$itemField}" target="_blank">{$itemField} <span class="glyphicon glyphicon-new-window"></span></a>
 {else}
     {$itemField}
 {/if}

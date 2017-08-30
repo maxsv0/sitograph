@@ -139,7 +139,7 @@ foreach ($this->website->modules as $module) {
                 "handler" => "module-table.php",
                 "url" => "/admin/?section=".$module->name."&table=".$name,
                 "file" => "custom.tpl",
-                "title" => _t("table.".$name)." - ".$name
+                "title" => _t("module.".$module->name)." - "._t("table.".$name)
             );
         }
         $menu_ar[$module->name] = array(

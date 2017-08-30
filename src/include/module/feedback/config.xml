@@ -25,9 +25,9 @@
 		<field name="author" type="author"/>
 		<field name="updated" type="updated"/>
 		<field name="lang" type="lang" listskip="1"/>
-		<field name="sticked" type="bool" listskip="1"/>
+		<field name="sticked" type="bool"/>
 		<field name="date" type="date"/>
-		<field name="email" type="str"/>
+		<field name="email" type="str" listskip="1"/>
 		<field name="name" type="str"/>
 		<field name="name_title" type="str" listskip="1"/>
 		<field name="text" type="doc"/>

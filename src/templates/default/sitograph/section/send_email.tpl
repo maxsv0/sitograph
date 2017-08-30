@@ -43,7 +43,7 @@
 {else}
 
 <form method="POST" action="{$lang_url}/admin/" class="form-horizontal">
-    <h1>Step 1/2. Send custom email</h1>
+    <h1>Step 1/2. Sending New Message</h1>
     <br>
     <div class="form-group">
         <label for="inputEmailFrom" class="col-sm-4 control-label">
