@@ -46,9 +46,9 @@
 {elseif $type === "url"}
 <td class="col-sm-2">
 {if $module_base_url}
-	<a href="{$module_base_url}{$itemField}/" target="_blank">{$module_base_url}{$itemField}/ <span class="glyphicon glyphicon-new-window"></span></a>
+	<a href="{$module_base_url}{$itemField}/" target="_blank">{$module_base_url}{$itemField}/<span class="glyphicon glyphicon-new-window"></span></a>
 {elseif $itemField != "#"}
-	<a href="{$itemField}" target="_blank">{$itemField} <span class="glyphicon glyphicon-new-window"></span></a>
+	<a href="{$itemField}" target="_blank">{$itemField}<span class="glyphicon glyphicon-new-window"></span></a>
 {else}
     {$itemField}
 {/if}

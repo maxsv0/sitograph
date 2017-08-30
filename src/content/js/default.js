@@ -15,6 +15,36 @@ jQuery(document).ready(function() {
         });
     });
 
+    // load inline editor in 0.1 sec after page is loaded
+    setTimeout(function() {
+       // add top promo animation
+        var index = 0;
+        $('.img-promo').each(function(e){
+            $(this).fadeIn(250*index);
+            index++;
+
+            if (index == 1) {
+
+            } else if (index == 2) {
+                $(this).addClass("img-promo-spin-1");
+            } else if (index == 3) {
+                $(this).addClass("img-promo-spin-1");
+            } else if (index == 4) {
+                $(this).addClass("img-promo-spin-1");
+            } else if (index == 5) {
+                $(this).addClass("img-promo-spin-2");
+            } else if (index == 6) {
+                $(this).addClass("img-promo-spin-2");
+            } else if (index == 7) {
+                $(this).addClass("img-promo-spin-3");
+            } else if (index == 8) {
+                $(this).addClass("img-promo-spin-4");
+            }
+        });
+    }, 100);
+
+
+
     $(".module-block").click(function (){
 
     	if ($(this).find(".module-preview").attr("src")) {

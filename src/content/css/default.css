@@ -7,7 +7,7 @@
 }
 .promo-block {
 	background:#f5f5f5;
-	height:450px;
+	min-height:450px;
 }
 .feedback-block {
 	background:none;
@@ -117,6 +117,8 @@
 }
 .top-menu {
 	background:#74c4d4;
+	z-index:100;
+	position: relative;
 }
 
 .album-title-block {
@@ -391,4 +393,28 @@ div.navigation a:hover {
 	margin-top:-10px;
 	left:45%;
 	z-index:999;
+}
+.img-promo {
+	margin-top: -25px;
+	height:450px;
+	position:absolute;
+	display:none;
+	-webkit-transition: -webkit-transform 1.0s ease-in-out;
+	transition:         transform 1.0s ease-in-out;
+}
+.img-promo-spin-1 {
+	-webkit-transform: rotate(360deg);
+	transform: rotate(360deg);
+}
+.img-promo-spin-2 {
+	-webkit-transform: rotate(-360deg);
+	transform: rotate(-360deg);
+}
+.img-promo-spin-3 {
+	-webkit-transform: rotate(720deg);
+	transform: rotate(720deg);
+}
+.img-promo-spin-4 {
+	-webkit-transform: rotate(-720deg);
+	transform: rotate(-720deg);
 }

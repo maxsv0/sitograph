@@ -32,7 +32,6 @@
 </td>
 
 <td class="col-sm-2">
-<small>
 {if $item.template}
 {if $item.template === "default"}
 	<span class="text-muted">{$item.template}</span>
@@ -50,7 +49,6 @@
 {else}
 <span class="label label-danger">{_t("not_set")}</span>
 {/if}
-</small>
 </td>
 
 <td class="col-sm-1 text-center">
