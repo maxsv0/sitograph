@@ -60,9 +60,9 @@
 			<field name="author" type="author"/>
 			<field name="updated" type="updated"/>
 			<field name="lang" type="lang" listskip="1"/>
-			<field name="param" type="str"/>
-			<field name="value" type="str"/>
 			<field name="description" type="str"/>
+			<field name="param" type="str" listskip="1"/>
+			<field name="value" type="str"/>
 		</table>
 		<table name="mail_templates" index="id" title="name">
 			<field name="id" type="id"/>

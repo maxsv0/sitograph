@@ -11,6 +11,7 @@
 		<field name="settings.theme_copyright_text" value="Сopyright text line"/>
 		<field name="settings.theme_cms_favicon" value="Favicon for Admin UI"/>
 		<field name="settings.theme_header_contacts" value="Header contacts"/>
+		<field name="settings.theme_active" value="Name of a active theme"/>
 
 		<field name="structure.homepage" value="Homepage"/>
 		<field name="structure.page1" value="Example page"/>
@@ -31,6 +32,7 @@
 		<field name="settings.theme_copyright_text" value="Сopyright строка"/>
 		<field name="settings.theme_cms_favicon" value="Favicon для CMS"/>
 		<field name="settings.theme_header_contacts" value="Блок с контактами"/>
+		<field name="settings.theme_active" value="Активная тема (название шаблона)"/>
 
 		<field name="structure.homepage" value="Главная"/>
 		<field name="structure.page1" value="Тестовая страница"/>
@@ -51,6 +53,7 @@
 		<field name="settings.theme_copyright_text" value="Сopyright строка"/>
 		<field name="settings.theme_cms_favicon" value="Favicon для Admin UI"/>
 		<field name="settings.theme_header_contacts" value="Блок з контактами"/>
+		<field name="settings.theme_active" value="Активна тема (назва шаблону)"/>
 
 		<field name="structure.homepage" value="Головна"/>
 		<field name="structure.page1" value="Тестова сторінка"/>

@@ -1,11 +1,12 @@
 <?php
 
-function Install_Users($module) {
+function Install_Users($module)
+{
 
     msv_add_structure(
         array(
             "url" => "/user/",
-            "name" =>  _t("structure.users.account"),
+            "name" => _t("structure.users.account"),
             "template" => "custom",
             "page_template" => "user.tpl",
             "sitemap" => 1,
@@ -21,7 +22,7 @@ function Install_Users($module) {
     msv_add_structure(
         array(
             "url" => "/signup/",
-            "name" =>  _t("structure.users.signup"),
+            "name" => _t("structure.users.signup"),
             "parent_url" => "/user/",
             "template" => "custom",
             "page_template" => "user-signup.tpl",
@@ -37,7 +38,7 @@ function Install_Users($module) {
     msv_add_structure(
         array(
             "url" => "/login/",
-            "name" =>  _t("structure.users.login"),
+            "name" => _t("structure.users.login"),
             "parent_url" => "/user/",
             "template" => "custom",
             "page_template" => "user-login.tpl",
@@ -54,7 +55,7 @@ function Install_Users($module) {
     msv_add_structure(
         array(
             "url" => "/password-reset/",
-            "name" =>  _t("structure.users.password_reset"),
+            "name" => _t("structure.users.password_reset"),
             "parent_url" => "/user/",
             "template" => "custom",
             "page_template" => "user-password-reset.tpl",
@@ -69,7 +70,7 @@ function Install_Users($module) {
     msv_add_structure(
         array(
             "url" => "/settings/",
-            "name" =>  _t("structure.users.settings"),
+            "name" => _t("structure.users.settings"),
             "parent_url" => "/user/",
             "template" => "custom",
             "page_template" => "user-settings.tpl",
@@ -88,7 +89,7 @@ function Install_Users($module) {
         array(
             "published" => 1,
             "url" => "/?logout",
-            "name" => "Logout",
+            "name" => _t("users.logout"),
             "menu_id" => "user",
             "order_id" => 100,
         ),
@@ -101,7 +102,8 @@ function Install_Users($module) {
         "users_registration_email",
         1,
         true,
-        "*"
+        "*",
+        _t("settings.users_registration_email")
     );
 
     // send email notification to "admin_email"
@@ -109,7 +111,8 @@ function Install_Users($module) {
         "users_registration_email_notify",
         1,
         true,
-        "*"
+        "*",
+        _t("settings.users_registration_email_notify")
     );
 
     // allow user registration on website using form
@@ -118,7 +121,8 @@ function Install_Users($module) {
         "users_registration_allow",
         0,
         true,
-        "*"
+        "*",
+        _t("settings.users_registration_allow")
     );
 
     // install emails
@@ -127,7 +131,7 @@ function Install_Users($module) {
     msv_add_mailtemplate(
         array(
             "name" => "user_registration",
-            "subject" => "Welcome to {HOST}",
+            "subject" => _t("email.user_registration"),
             "text" => msv_load_module_doc($module->pathModule, "email-registration"),
             "header" => $header,
         ),
@@ -139,7 +143,7 @@ function Install_Users($module) {
     msv_add_mailtemplate(
         array(
             "name" => "user_registration_verify",
-            "subject" => "Welcome to {HOST}",
+            "subject" => _t("email.user_registration_verify"),
             "text" => msv_load_module_doc($module->pathModule, "email-registration-verify"),
             "header" => $header,
         ),
@@ -151,7 +155,7 @@ function Install_Users($module) {
     msv_add_mailtemplate(
         array(
             "name" => "user_registration_notify",
-            "subject" => "New user {HOST}",
+            "subject" => _t("email.user_registration_notify"),
             "text" => msv_load_module_doc($module->pathModule, "email-registration-notify"),
             "header" => $header,
         ),
@@ -163,7 +167,7 @@ function Install_Users($module) {
     msv_add_mailtemplate(
         array(
             "name" => "user_verify",
-            "subject" => "Verify Email",
+            "subject" => _t("email.user_verify"),
             "text" => msv_load_module_doc($module->pathModule, "email-verify"),
             "header" => $header,
         ),
@@ -175,7 +179,7 @@ function Install_Users($module) {
     msv_add_mailtemplate(
         array(
             "name" => "user_password_reset",
-            "subject" => "New Password",
+            "subject" => _t("email.user_password_reset"),
             "text" => msv_load_module_doc($module->pathModule, "email-password-reset"),
             "header" => $header,
         ),
@@ -187,7 +191,7 @@ function Install_Users($module) {
     msv_add_mailtemplate(
         array(
             "name" => "user_password_reset_confirm",
-            "subject" => "Reset Password",
+            "subject" => _t("email.user_password_reset_confirm"),
             "text" => msv_load_module_doc($module->pathModule, "email-password-reset-confirm"),
             "header" => $header,
         ),

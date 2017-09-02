@@ -115,6 +115,10 @@
 		<field name="structure.file_structure" value="Sitograph File structure"/>
 		<field name="structure.api" value="Website API"/>
 		<field name="structure.sitograph_modules" value="Sitograph Modules"/>
+		<field name="settings.email_from" value="'From' header for all emails send from website"/>
+		<field name="settings.email_fromname" value="Name for 'From' header for all emails send from website"/>
+		<field name="settings.service_ua_info" value="External service for parsing User Agent"/>
+		<field name="settings.service_ip_info" value="External service for getting information about IP"/>
 	</locale>
 	<locale name="ru">
 		<field name="cms" value="Система управления сайтом"/>
@@ -234,6 +238,15 @@
 		<field name="search.error_mcg" value="По вашему запросу ничего не найдено."/>
 		<field name="not_set" value="не указан"/>
 		<field name="help.field.url" value="Это поле указывает, как к этой странице можно получить доступ с помощью URL. Может содержать только цифры, буквы и тире знак."/>
+
+		<field name="structure.getting_started" value="Getting Started"/>
+		<field name="structure.file_structure" value="Sitograph File structure"/>
+		<field name="structure.api" value="Website API"/>
+		<field name="structure.sitograph_modules" value="Sitograph Modules"/>
+		<field name="settings.email_from" value="'From' header for all emails send from website"/>
+		<field name="settings.email_fromname" value="Name for 'From' header for all emails send from website"/>
+		<field name="settings.service_ua_info" value="External service for parsing User Agent"/>
+		<field name="settings.service_ip_info" value="External service for getting information about IP"/>
 	</locale>
     <locale name="ua">
     	<field name="cms" value="Система управління контентом"/>

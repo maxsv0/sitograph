@@ -497,6 +497,7 @@ class MSV_Website {
 		
 		$this->requestUrl = $url;
 	}
+
 	function parseRequest() {
 		// handle request URL
 		// using REQUEST_URI according to discussion at:
@@ -531,24 +532,22 @@ class MSV_Website {
 		}
 	}
 
-
     function startTemplateEngine() {
         if (!empty($this->templateEngine)) {
             return false;
         }
 
         $Smarty = new Smarty;
+        $Smarty->debugging = false;
 
-        if (!empty($this->page["debug"]) && $this->page["debug"] > 0) {
-            $Smarty->debugging = true;
-        } else {
-            $Smarty->debugging = false;
-        }
         $Smarty->caching = false;
         $Smarty->cache_lifetime = 120;
 
         $Smarty->template_dir = ABS_TEMPLATE;
-        $Smarty->debug_tpl = "";
+
+        // TODO: set custom debug template
+        //$Smarty->debug_tpl = "";
+
         $compile_dir = SMARTY_DIR."cache";
         if (!is_writeable($compile_dir)) {
             $this->outputError("Cant write to $compile_dir");
@@ -565,6 +564,11 @@ class MSV_Website {
     function initTemplateEngine() {
         if (empty($this->templateEngine)) {
             $this->outputError("Template Engine not found");
+        }
+
+        // enable debug if DEBUG_PAGE is true
+        if (defined("DEBUG_PAGE") && DEBUG_PAGE) {
+            $this->templateEngine->debugging = true;
         }
 
         $this->includeCSS = array_reverse($this->includeCSS);
@@ -761,7 +765,7 @@ class MSV_Website {
 			$this->outputDebug();
 		}
 		
-		// init smarty
+		// init Template Engine
 		$this->initTemplateEngine();
 
 		// output current page, use Template Engine object
@@ -785,12 +789,6 @@ class MSV_Website {
 		$debugHTML .= "<pre class='pre-scrollable'>";
 		$debugHTML .= $this->logDebug;
 		$debugHTML .= "</pre>";
-		
-		if (DEBUG && DEBUG_PAGE) {
-			$debugHTML .= "<form style='padding:5px 20px;' id='debugConsole'>";
-			$debugHTML .= "Run PHP code: <input type=text size=50 name='debugCode'> <input type='submit' value='Send'>";
-			$debugHTML .= '</form>';
-		}
 		$debugHTML .= '</div>';
 		
 		$this->config["debug_code"] = $debugHTML;

@@ -79,6 +79,16 @@
 		<field name="users.status" value="Status"/>
 		<field name="users.online" value="online"/>
 		<field name="users.offline" value="offline"/>
+		<field name="users.logout" value="Logout"/>
+		<field name="settings.users_registration_email" value="Send email to user upon registration"/>
+		<field name="settings.users_registration_email_notify" value="Send email to 'admin_email' upon registration"/>
+		<field name="settings.users_registration_allow" value="Allow users registration using Signup form"/>
+		<field name="email.user_registration" value="Welcome to {HOST}"/>
+		<field name="email.user_registration_verify" value="Welcome to {HOST}"/>
+		<field name="email.user_registration_notify" value="New user {HOST}"/>
+		<field name="email.user_verify" value="Verify Email"/>
+		<field name="email.user_password_reset" value="New Password"/>
+		<field name="email.user_password_reset_confirm" value="Reset Password"/>
 	</locale>
 	<locale name="ru">
 		<field name="structure.users.account" value="My Account"/>
@@ -158,6 +168,16 @@
 		<field name="users.status" value="Статус"/>
 		<field name="users.online" value="Онлайн"/>
 		<field name="users.offline" value="Не в сети"/>
+		<field name="users.logout" value="Выход"/>
+		<field name="settings.users_registration_email" value="Отправить электронное письмо пользователю при регистрации"/>
+		<field name="settings.users_registration_email_notify" value="Отправить письмо на 'admin_email' при регистрации нового пользователя"/>
+		<field name="settings.users_registration_allow" value="Разрешить регистрацию пользователей с помощью формы регистрации на сайте"/>
+		<field name="email.user_registration" value="Добро пожаловать в {HOST}"/>
+		<field name="email.user_registration_verify" value="Добро пожаловать в {HOST}"/>
+		<field name="email.user_registration_notify" value="Новый пользователь - {HOST}"/>
+		<field name="email.user_verify" value="Подтвердите Email"/>
+		<field name="email.user_password_reset" value="Ваш новый пароль"/>
+		<field name="email.user_password_reset_confirm" value="Сброс пароля"/>
 	</locale>
 </locales>
 </document>
