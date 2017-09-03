@@ -19,29 +19,38 @@ jQuery(document).ready(function() {
     setTimeout(function() {
        // add top promo animation
         var index = 0;
+        var promo_img = [];
+        var promo_img_deg = [];
+
+        function rotate(obj, degree, timer, acc) {
+            obj.css({ WebkitTransform: 'rotate(' + degree + 'deg)'});
+            obj.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
+            obj.css('transform','rotate('+degree+'deg)');
+            timer = setTimeout(function() {
+                degree = degree - acc;
+                acc = acc + 1;
+                if (degree > 0) {
+                    rotate(obj, degree, timer, acc);
+                } else {
+                    rotate(obj, 0, timer, 0);
+                }
+            },3);
+        }
+
         $('.img-promo').each(function(e){
+            promo_img[index] = $(this);
+            promo_img_deg[index] = Math.floor((Math.floor(Math.random() * 25) + 60)*index);
+
+            var timer;
+            rotate(promo_img[index], promo_img_deg[index], timer, 1);
+
             $(this).fadeIn(250*index);
             index++;
-
-            if (index == 1) {
-
-            } else if (index == 2) {
-                $(this).addClass("img-promo-spin-1");
-            } else if (index == 3) {
-                $(this).addClass("img-promo-spin-1");
-            } else if (index == 4) {
-                $(this).addClass("img-promo-spin-1");
-            } else if (index == 5) {
-                $(this).addClass("img-promo-spin-2");
-            } else if (index == 6) {
-                $(this).addClass("img-promo-spin-2");
-            } else if (index == 7) {
-                $(this).addClass("img-promo-spin-3");
-            } else if (index == 8) {
-                $(this).addClass("img-promo-spin-4");
-            }
         });
+
+        console.log(promo_img_deg);
     }, 100);
+
 
 
 
@@ -78,3 +87,21 @@ jQuery(document).ready(function() {
     });
 
 });
+
+function animate_promo() {
+    $('.img-promo-spin-4').each(function(){
+        $(this).removeClass("img-promo-spin-4").addClass("img-promo-spin-2");
+    });
+    $('.img-promo-spin-3').each(function(){
+         $(this).removeClass("img-promo-spin-3").addClass("img-promo-spin-0");
+    });
+    $('.img-promo-spin-2').each(function(){
+        $(this).removeClass("img-promo-spin-2").addClass("img-promo-spin-0");
+    });
+    $('.img-promo-spin-1').each(function(){
+        $(this).removeClass("img-promo-spin-1").addClass("img-promo-spin-3");
+    });
+    $('.img-promo-spin-0').each(function(){
+        $(this).removeClass("img-promo-spin-0").addClass("img-promo-spin-1");
+    });
+}

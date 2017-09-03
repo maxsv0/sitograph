@@ -402,19 +402,3 @@ div.navigation a:hover {
 	-webkit-transition: -webkit-transform 1.0s ease-in-out;
 	transition:         transform 1.0s ease-in-out;
 }
-.img-promo-spin-1 {
-	-webkit-transform: rotate(360deg);
-	transform: rotate(360deg);
-}
-.img-promo-spin-2 {
-	-webkit-transform: rotate(-360deg);
-	transform: rotate(-360deg);
-}
-.img-promo-spin-3 {
-	-webkit-transform: rotate(720deg);
-	transform: rotate(720deg);
-}
-.img-promo-spin-4 {
-	-webkit-transform: rotate(-720deg);
-	transform: rotate(-720deg);
-}
