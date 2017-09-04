@@ -96,7 +96,7 @@ function BlogLoadArticles($blog) {
 		}
     }
   	
-    $resultQuery = db_get_listpaged(TABLE_BLOG_ARTICLES, $sqlFilter, "`date` desc", $blog->itemsPerPage, $blog->pageUrlParam);
+    $resultQuery = db_get_listpaged(TABLE_BLOG_ARTICLES, $sqlFilter, "`sticked` desc, `date` desc", $blog->itemsPerPage, $blog->pageUrlParam);
     
 	// Display message in case of error
 	if (!$resultQuery["ok"]) {
