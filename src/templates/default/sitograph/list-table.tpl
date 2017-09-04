@@ -69,8 +69,8 @@
 {/if}
 {/foreach}
 
-<td class="text-nowrap col-sm-1">
-    <ul class="list-unstyled">
+<td class="col-sm-1">
+    <ul class="list-btn">
         <li>
             <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&edit={$item.id}&p={$admin_list_page}" title="{$t['btn.edit']}" class="btn btn-primary btn-sm">{$t['btn.edit']} <span class="glyphicon glyphicon-edit"></span></a>
         </li>

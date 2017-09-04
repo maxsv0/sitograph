@@ -419,6 +419,15 @@ table.table-module .colactive {
 
 .form-control {
 	background-color: #f9f9f9;
+    box-shadow: 1px 1px 1px #eeeeee;
+}
+
+.mce-tinymce {
+    border: 1px dashed #333746!important;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px #eeeeee !important;;
 }
 
 .table-module .btn {
@@ -434,6 +443,17 @@ table.table-module .colactive {
     border-color: #ed2a45;
     color:#ed2a45;
 }
+
+.list-btn {
+    padding-left: 0;
+    list-style: none;
+    margin-left: -5px;
+    margin-bottom: 2px;
+}
+.list-btn>li {
+    display: inline-block;
+}
+
 .form-horizontal .control-label {
     font-family: Verdana;
     font-size: 12px;
@@ -1210,10 +1230,6 @@ limitations under the License.
 }
 
 
-
-.mce-panel {
-border:0!important;
-}
 
 
 fieldset.legend {

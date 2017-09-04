@@ -80,7 +80,7 @@
 </td>
 
 <td class="col-sm-3">
-<ul class="list-inline">
+<ul class="list-btn">
 	<li>
 		<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&edit={$item.id}" title="{$t['btn.edit']}" class="btn btn-primary">{$t['btn.edit']} <span class="glyphicon glyphicon-edit"></span></a>
 	</li>
