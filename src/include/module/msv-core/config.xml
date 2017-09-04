@@ -50,8 +50,8 @@
 			<field name="updated" type="updated" readonly="1"/>
 			<field name="lang" type="lang"/>
 			<field name="name" type="text"/>
-			<field name="text" type="doc"/>
-			<field name="external_link" type="str"/>
+			<field name="text" type="doc" listskip="1"/>
+			<field name="external_link" type="str" listskip="1"/>
 		</table>
 		<table name="settings" index="param" title="param">
 			<field name="id" type="id"/>
