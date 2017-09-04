@@ -36,11 +36,10 @@ unzip sitograph-v1.0.zip
 cd sitograph-1.0
 
 # Copy Sitograph files
-./scripts/install.sh /var/www/html
+sh scripts/install.sh /var/www/html
 
 # Create MySQL database
-chmod +x scripts/mysqlcreate.sh
-scripts/mysqlcreate.sh root $MASTER_PASS sitograph $DB_PASS
+sh scripts/mysqlcreate.sh root $MASTER_PASS sitograph $DB_PASS
 
 # Enable Apache configuration and modules
 cp scripts/sitograph.conf  /etc/apache2/conf-available/
