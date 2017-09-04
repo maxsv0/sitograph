@@ -87,6 +87,8 @@ class MSV_Website {
 	
 	
 	function start() {
+	    $this->test_compatibility();
+
 		// set languages
 		if (defined("LANGUAGES")) {
 			$this->languages = explode(",", LANGUAGES);
@@ -806,5 +808,19 @@ class MSV_Website {
 			$this->logDebug .= $logLine;
 		}
 	}
-	
+
+	function test_compatibility() {
+        if (!function_exists("simplexml_load_file")) {
+            $this->outputError("Required function not found: <b>simplexml_load_file</b>");
+        }
+        if (!function_exists("mysqli_connect")) {
+            $this->outputError("Required function not found: <b>mysqli_connect</b>");
+        }
+
+        if(function_exists("apache_get_modules")) {
+            if (!in_array('mod_rewrite', apache_get_modules())) {
+                $this->outputError("Required module not found: <b>mod_rewrite</b>");
+            }
+        }
+    }
 }
