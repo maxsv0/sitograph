@@ -423,7 +423,7 @@ table.table-module .colactive {
 
 .table-module .btn {
     color: #747474;
-    padding:0px 5px;
+    padding:2px 8px;
     font-size: 12px;
     margin: 2px 0px 2px 5px;
 }
@@ -1403,8 +1403,8 @@ legend.legend {
 .switch {
     position: relative;
     display: inline-block;
-    width: 40px;
-    height: 24px;
+    width: 22px;
+    height: 14px;
 }
 
 /* Hide default HTML checkbox */
@@ -1426,10 +1426,10 @@ legend.legend {
 .slider:before {
     position: absolute;
     content: "";
-    height: 16px;
-    width: 16px;
-    left: 4px;
-    bottom: 4px;
+    height: 9px;
+    width: 9px;
+    left: 1px;
+    bottom: 3px;
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
@@ -1444,14 +1444,14 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-    -webkit-transform: translateX(16px);
-    -ms-transform: translateX(16px);
-    transform: translateX(16px);
+    -webkit-transsform: translateX(11px);
+    -ms-transform: translateX(11px);
+    transform: translateX(11px);
 }
 
 /* Rounded sliders */
 .slider.round {
-    border-radius: 24px;
+    border-radius: 16px;
 }
 
 .slider.round:before {
