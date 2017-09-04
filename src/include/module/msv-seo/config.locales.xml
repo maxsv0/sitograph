@@ -27,7 +27,7 @@
 		<field name="table.seo.title" value="Meta: Title"/>
 		<field name="table.seo.description" value="Meta: Description"/>
 		<field name="table.seo.keywords" value="Meta: Keywords"/>
-		<field name="table.seo.sitemap" value="Карта сайта"/>
+		<field name="table.seo.sitemap" value="Sitemap.xml"/>
 	</locale>
 	<locale name="de">
 		<field name="table.seo" value="SEO"/>
