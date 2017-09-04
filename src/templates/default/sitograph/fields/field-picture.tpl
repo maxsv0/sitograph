@@ -23,6 +23,7 @@
 {/if}
 </span>
 
+{if !$readonly}
 {if $value}
 <input type="button" class="btn btn-danger btn-xs" value="{_t("btn.remove_link")}" onclick="removeLink('{$item_id}');">
 {/if}
@@ -34,7 +35,7 @@
 {/if}
 <input type="button" class="btn btn-warning" value="{_t("btn.upload_file")}" onclick="openUploadModal('{$item_id}');">
 </p>
-
+{/if}
 
 <input type="text" class="hide" name="{$form_id}_{$item_id}" id="path-{$item_id}" value="{$value}">
 <input type="text" class="hide" id="aspectRatio-{$item_id}" value="{$itemField["max-width"]/$itemField["max-height"]}">

@@ -21,7 +21,7 @@
 <div role="tabpanel" class="tab-pane {if $smarty.foreach.loop.first}active{/if}" id="{$tabID}">
 
 {foreach from=$tabInfo.fields item=itemField}
-{include "$themePath/sitograph/field-form.tpl" form_id="form" item_type=$itemField.type item_id=$itemField.name item_name=$itemField.name value=$dataList[$itemField.name]}
+{include "$themePath/sitograph/field-form.tpl" form_id="form" item_type=$itemField.type item_id=$itemField.name item_name=$itemField.name value=$dataList[$itemField.name] readonly=$itemField.readonly}
 {/foreach}
 
 </div>

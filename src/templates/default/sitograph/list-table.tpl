@@ -35,10 +35,18 @@
 <td><small>{$itemField}</small></td>
 {elseif $type === "bool"}
 <td class="col-sm-1">
-{if $itemField}
-	<span class="text-success bool-switch" data-id="{$item.id}" data-section="{$admin_section}" data-table="{$admin_table}" data-field="{$itemFieldID}" data-value="{$itemField}">{$t["yes"]}</span>
+{if $admin_table_info.fields.$itemFieldID.readonly}
+    {if $itemField}
+        <span class="text-success">{$t["yes"]}</span>
+    {else}
+        <span class="text-danger">{$t["no"]}</span>
+    {/if}
 {else}
-	<span class="text-danger bool-switch" data-id="{$item.id}" data-section="{$admin_section}" data-table="{$admin_table}" data-field="{$itemFieldID}" data-value="{$itemField}">{$t["no"]}</span>
+    {if $itemField}
+        <span class="text-success bool-switch" data-id="{$item.id}" data-section="{$admin_section}" data-table="{$admin_table}" data-field="{$itemFieldID}" data-value="{$itemField}">{$t["yes"]}</span>
+    {else}
+        <span class="text-danger bool-switch" data-id="{$item.id}" data-section="{$admin_section}" data-table="{$admin_table}" data-field="{$itemFieldID}" data-value="{$itemField}">{$t["no"]}</span>
+    {/if}
 {/if}
 </td>
 {elseif $type === "doc"}

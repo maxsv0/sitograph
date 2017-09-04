@@ -328,6 +328,7 @@ class MSV_Module {
                         $type = (string)$attributes["type"];
                         $selectfrom = (string)$attributes["select-from"];
                         $listskip = (string)$attributes["listskip"];
+                        $readonly = (string)$attributes["readonly"];
 
                         $fieldAr = array(
                             "name" => $name,
@@ -348,6 +349,10 @@ class MSV_Module {
                                 "filter" => $filter,
                                 "order" => $order,
                             );
+                        }
+
+                        if (!empty($readonly)) {
+                            $fieldAr["readonly"] = (int)$readonly;
                         }
 
                         if (!empty($listskip)) {
