@@ -429,7 +429,6 @@ function msv_list_modules() {
 
     if ($result["ok"]) {
         $mosulesList = $result["data"];
-        uasort($mosulesList, "cmp_modules_list");
 
         msv_log("Website -> listModules OK");
 
@@ -439,10 +438,6 @@ function msv_list_modules() {
     }
 
     return false;
-}
-
-function cmp_modules_list($a, $b) {
-    return strcmp($a["title"], $b["title"]);
 }
 
 /**
@@ -465,8 +460,12 @@ function msv_install_module($module, $redirect = true) {
         msv_message_error("installModule -> $module "._t("msg.no_repository"));
         return false;
     }
-
-    $moduleInfo = $list[$module];
+    $moduleInfo = array();
+    foreach ($list as $info) {
+        if ($info["name"] == $module) {
+            $moduleInfo = $info;
+        }
+    }
     if (empty($moduleInfo)) {
         msv_message_error("installModule -> $module "._t("msg.repository_not_found"));
         return false;
