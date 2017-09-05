@@ -3,8 +3,8 @@
 
 	<install>
 	<param name="name" value="msv-users"/>
-	<param name="version" value="1.2.1"/>
-	<param name="date" value="09.07.2017"/>
+	<param name="version" value="1.2.2"/>
+	<param name="date" value="05.09.2017"/>
 	<param name="installHook" value="Install_Users"/>
 	<param name="title" value="MSV Users"/>
 	<param name="description" value="Users auth functions for MSV"/>
@@ -21,6 +21,12 @@
 	<file dir="module" path="msv-users/config.xml"/>
 	<file dir="module" path="msv-users/config.install.xml"/>
 	<file dir="module" path="msv-users/config.locales.xml"/>
+	<file dir="module" path="msv-users/doc/en-email-password-reset-confirm.html"/>
+	<file dir="module" path="msv-users/doc/en-email-password-reset.html"/>
+	<file dir="module" path="msv-users/doc/en-email-registration-notify.html"/>
+	<file dir="module" path="msv-users/doc/en-email-registration-verify.html"/>
+	<file dir="module" path="msv-users/doc/en-email-registration.html"/>
+	<file dir="module" path="msv-users/doc/en-email-verify.html"/>
 
 	<file dir="template" path="default/user.tpl"/>
 	<file dir="template" path="default/user-login.tpl"/>
