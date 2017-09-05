@@ -202,22 +202,6 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
     // action for step 5
     if ($_REQUEST["install_step"] === 5) {
 
-        // finish installation
-        // update settings
-        $result = db_get_list(TABLE_SETTINGS);
-        $list = $result["data"];
-        foreach ($list as $row) {
-            $name = $row["param"];
-            $valueCurrent = $row["value"];
-            if (array_key_exists("s_".$name, $_REQUEST)) {
-                $value = $_REQUEST["s_".$name];
-
-                if ($valueCurrent !== $value) {
-                    db_update(TABLE_SETTINGS, "value", "'".db_escape($value)."'", " `param` = '".$name."'");
-                }
-            }
-        }
-
         // run install hooks for remote_installed modules
         if (!empty($_REQUEST["remote_installed"])) {
             $list = explode(",", $_REQUEST["remote_installed"]);
@@ -242,6 +226,22 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
                 foreach ($list as $module) {
                     $obj = $website->{$module};
                     $obj->runInstallHook();
+                }
+            }
+        }
+
+        // finish installation
+        // update settings
+        $result = db_get_list(TABLE_SETTINGS);
+        $list = $result["data"];
+        foreach ($list as $row) {
+            $name = $row["param"];
+            $valueCurrent = $row["value"];
+            if (array_key_exists("s_".$name, $_REQUEST)) {
+                $value = $_REQUEST["s_".$name];
+
+                if ($valueCurrent !== $value) {
+                    db_update(TABLE_SETTINGS, "value", "'".db_escape($value)."'", " `param` = '".$name."'");
                 }
             }
         }
