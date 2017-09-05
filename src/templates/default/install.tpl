@@ -161,6 +161,7 @@
 				<p class="text-center">
 					<input type="submit" value="Reload page and start using Website" class="btn btn-lg btn-primary">
 					<input type="hidden" name="install_step" value="5">
+					<input type="hidden" name="remote_installed" value="{$remote_installed}">
 				</p>
 
                 {else}

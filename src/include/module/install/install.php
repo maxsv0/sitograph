@@ -131,13 +131,15 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
             }
 
             if (!empty($_REQUEST["modules_remote_str"])) {
-                $_REQUEST["modules_remote"] = array_merge($_REQUEST["modules_remote"], explode(",", $_REQUEST["modules_remote_str"]));
+                $_REQUEST["modules_remote"] = array_merge((array)$_REQUEST["modules_remote"], explode(",", $_REQUEST["modules_remote_str"]));
             }
 
+            $remoteInstalled = "";
             if(!empty($_REQUEST["modules_remote"]) && is_array($_REQUEST["modules_remote"])) {
                 foreach ($_REQUEST["modules_remote"] as $module) {
                     msv_install_module($module, false);
                 }
+                $remoteInstalled = implode(",", $_REQUEST["modules_remote"]);
             }
 
         } else {
@@ -215,6 +217,35 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
                 }
             }
         }
+
+        // run install hooks for remote_installed modules
+        if (!empty($_REQUEST["remote_installed"])) {
+            $list = explode(",", $_REQUEST["remote_installed"]);
+            if (!empty($list)) {
+                foreach ($list as $module) {
+                    $obj = $website->{$module};
+
+                    if (!$obj->started) {
+                        $website->runModule($module);
+                    }
+                    if (!empty($obj->tables)) {
+                        $tableList = $obj->tables;
+
+                        if (!empty($tableList)) {
+
+                            foreach ($tableList as $tableName => $tableInfo) {
+                                $result = db_create_table($tableName);
+                            }
+                        }
+                    }
+                }
+                foreach ($list as $module) {
+                    $obj = $website->{$module};
+                    $obj->runInstallHook();
+                }
+            }
+        }
+
         // reset step
         $_SESSION["msv_install_step"] = $install_step = 0;
 
@@ -235,7 +266,11 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
 
             $website->outputRedirect("/?".$queryString);
         } else {
-            $website->outputRedirect("/");
+            if (!empty($remoteInstalled)) {
+                $website->outputRedirect("/?remote_installed=".$remoteInstalled);
+            } else {
+                $website->outputRedirect("/");
+            }
         }
 
     }
@@ -326,6 +361,10 @@ if ($install_step === 4) {
     $result = db_get_list(TABLE_SETTINGS);
     $list = $result["data"];
     $website->config["settings"] = $list;
+
+    if (!empty($_REQUEST["remote_installed"])) {
+        $website->config["remote_installed"] = $_REQUEST["remote_installed"];
+    }
 }
 
 if (!empty($install_step)) {
