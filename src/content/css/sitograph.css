@@ -1452,11 +1452,11 @@ legend.legend {
 }
 
 input:checked + .slider {
-    background-color: #74c4d4;
+    background-color: #333746;
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #74c4d4;
+    box-shadow: 0 0 1px #333746;
 }
 
 input:checked + .slider:before {
