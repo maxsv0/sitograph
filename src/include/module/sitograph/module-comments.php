@@ -32,10 +32,6 @@ if (!empty($_REQUEST["edit"])) {
 
 		// make item Url
 		$itemUrl = $sectionObj->baseUrl.$resultQueryItem["data"]["url"];
-		if (FORSE_TRAILING_SLASH) {
-			$itemUrl .= "/";
-		}
-
 
         msv_assign_data("admin_edit", $resultQueryItem["data"]);
 	}

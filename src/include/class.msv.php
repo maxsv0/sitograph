@@ -139,10 +139,10 @@ class MSV_Website {
 			}
 			
 			if ($this->config["db"]) {
-				// set encoding, if DATABATE_ENCODING  
-				if (defined("DATABATE_ENCODING") && DATABATE_ENCODING) {
-					mysqli_query($this->config["db"], "set charset ".DATABATE_ENCODING);
-					mysqli_query($this->config["db"], "set names ".DATABATE_ENCODING);
+				// set encoding, if DATABASE_ENCODING
+				if (defined("DATABASE_ENCODING") && DATABASE_ENCODING) {
+					mysqli_query($this->config["db"], "set charset ".DATABASE_ENCODING);
+					mysqli_query($this->config["db"], "set names ".DATABASE_ENCODING);
 				}
 			}
 			
@@ -299,15 +299,7 @@ class MSV_Website {
 		}
 		
 		$this->loadPage($this->requestUrl);
-		
-		// redirect if FORSE_TRAILING_SLASH 
-		// if page is NOT found
-//		if (empty($this->page) && defined("FORSE_TRAILING_SLASH") && FORSE_TRAILING_SLASH) {
-//			if (!$this->config["hasTrailingSlash"]) {
-//				$this->outputRedirect($this->requestUrl."/");
-//			}
-//		}
-		
+
 		// apply filters
 		$this->runFilters();
 	}
@@ -597,11 +589,14 @@ class MSV_Website {
         if ($this->includeHTMLCode) {
             $includeHTML = "\n".$this->includeHTMLCode.$includeHTML;
         }
-        // include HTML to footer
-        //$this->htmlFooter = $includeHTML.$this->htmlFooter;
 
-        // include HTML to head
-        $this->htmlHead = $this->htmlHead.$includeHTML;
+        if (defined("JS_BEFORE_BODY") && JS_BEFORE_BODY) {
+            // include HTML to head
+            $this->htmlHead = $this->htmlHead.$includeHTML;
+        } else {
+            // include HTML to footer
+            $this->htmlFooter = $includeHTML.$this->htmlFooter;
+        }
 
         $this->templateEngine->assign("htmlHead", $this->htmlHead);
 
@@ -620,6 +615,7 @@ class MSV_Website {
 
         // assign config values directly to templaye
         foreach ($this->config as $param => $value) {
+            $param = str_replace("-", "_", $param);
             $this->templateEngine->assign($param, $value);
         }
 
