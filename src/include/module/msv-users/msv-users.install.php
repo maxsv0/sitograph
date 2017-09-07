@@ -132,7 +132,10 @@ function Install_Users($module)
         array(
             "name" => "user_registration",
             "subject" => _t("email.user_registration"),
-            "text" => msv_load_module_doc($module->pathModule, "email-registration"),
+            "text" => msv_load_module_doc(
+                $module->pathModule,
+                "email-registration"
+            ),
             "header" => $header,
         ),
         array(
@@ -144,7 +147,9 @@ function Install_Users($module)
         array(
             "name" => "user_registration_verify",
             "subject" => _t("email.user_registration_verify"),
-            "text" => msv_load_module_doc($module->pathModule, "email-registration-verify"),
+            "text" => msv_load_module_doc(
+                $module->pathModule,
+                "email-registration-verify"),
             "header" => $header,
         ),
         array(
@@ -156,7 +161,9 @@ function Install_Users($module)
         array(
             "name" => "user_registration_notify",
             "subject" => _t("email.user_registration_notify"),
-            "text" => msv_load_module_doc($module->pathModule, "email-registration-notify"),
+            "text" => msv_load_module_doc(
+                $module->pathModule,
+                "email-registration-notify"),
             "header" => $header,
         ),
         array(
@@ -168,7 +175,9 @@ function Install_Users($module)
         array(
             "name" => "user_verify",
             "subject" => _t("email.user_verify"),
-            "text" => msv_load_module_doc($module->pathModule, "email-verify"),
+            "text" => msv_load_module_doc(
+                $module->pathModule,
+                "email-verify"),
             "header" => $header,
         ),
         array(
@@ -180,7 +189,9 @@ function Install_Users($module)
         array(
             "name" => "user_password_reset",
             "subject" => _t("email.user_password_reset"),
-            "text" => msv_load_module_doc($module->pathModule, "email-password-reset"),
+            "text" => msv_load_module_doc(
+                $module->pathModule,
+                "email-password-reset"),
             "header" => $header,
         ),
         array(
@@ -192,7 +203,10 @@ function Install_Users($module)
         array(
             "name" => "user_password_reset_confirm",
             "subject" => _t("email.user_password_reset_confirm"),
-            "text" => msv_load_module_doc($module->pathModule, "email-password-reset-confirm"),
+            "text" => msv_load_module_doc(
+                $module->pathModule,
+                "email-password-reset-confirm"
+            ),
             "header" => $header,
         ),
         array(
