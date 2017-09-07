@@ -111,7 +111,7 @@ function msv_output() {
 ';
             }
 
-            msv_set_config("htmlFooter", $htmlFooter);
+            $website->htmlFooter = $htmlFooter;
         }
 	}
 
