@@ -1573,7 +1573,7 @@ function msv_add_cron($row, $options = array()) {
     return $result;
 }
 
-function msv_update_allmodules($module) {
+function msv_update_allmodules() {
     if (!msv_check_accessuser("superadmin")) {
         return false;
     }

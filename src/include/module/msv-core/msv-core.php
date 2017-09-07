@@ -116,9 +116,8 @@ function msv_output() {
 	}
 
     // proccess post/get admin functions
-    // TODO: check user rights??
     if (MSV_INSTALED && msv_check_accessuser("superadmin")) {
-        msv_process_admin();
+        msv_process_superadmin();
     }
 
     $website->outputPage();
@@ -194,25 +193,43 @@ function msv_load_pagenavigation() {
     $page = msv_get("website.page");
     $structure = msv_get("website.structure");
 
-    if ($page["url"] !== "/") {
+    // set page navigation from current page
+    build_page_navigation($page["id"]);
 
-        if ($page["parent_id"] == 0) {
-
-            msv_set_navigation($page["name"], $page["url"], true);
-
-        } else {
-            // TODO .. load parents
-
-            msv_set_navigation($page["name"], $page["url"], true);
-        }
-    }
+    // find Homepage and set it as a first element
     foreach ($structure as $item) {
         if ($item["url"] !== "/") {
             continue;
         }
-        msv_set_navigation($item["name"], $item["url"], true);
+        build_page_navigation($item["id"]);
     }
 }
+
+function build_page_navigation($itemID) {
+    $structure = msv_get("website.structure");
+
+    foreach ($structure as $item) {
+        if ($item["id"] == $itemID) {
+            if (empty($item["parent_id"])) {
+                msv_set_navigation(
+                    $item["name"],
+                    $item["url"],
+                    true
+                );
+            } else {
+                // call recursively to find all parents
+                build_page_navigation($item["parent_id"]);
+
+                msv_set_navigation(
+                    $item["name"],
+                    $item["url"],
+                    false
+                );
+            }
+        }
+    }
+}
+
 
 function msv_load_pagemenu() {
     msv_log("Website -> LoadPageMenu");
@@ -824,9 +841,26 @@ function msv_output_admin_modulesetup() {
     return $strOut;
 }
 
-/// proccess admin functions
-function msv_process_admin() {
+// process `superadmin` functions
+//      available functions:
+//          - module_update_all
+//          - terminal execute
+//          - module_install
+//          - module_reinstall
+//          - module_enable
+//          - module_disable
+//          - module_remove                 <============ TODO: this is not working
+//          - run module install hook
+//          - table create
+//          - table truncate
+//          - table remove
+//
+function msv_process_superadmin() {
     if (!msv_check_accessuser("superadmin")) return false;
+
+    if (isset($_GET["module_update_all"])) {
+        msv_update_allmodules();
+    }
 
     if (!empty($_GET["terminal_code"])) {
         $r = eval($_GET["terminal_code"]);

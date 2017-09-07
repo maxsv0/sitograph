@@ -58,7 +58,7 @@ function api_request_core($module) {
                 );
 
             } else {
-                $r = msv_update_allmodules($module);
+                $r = msv_update_allmodules();
 
                 $resultQuery = array(
                     "ok" => true,
