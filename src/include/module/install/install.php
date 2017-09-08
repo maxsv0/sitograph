@@ -40,7 +40,7 @@ $configListNames = array(
 
 // 'reset' btn click
 if (!empty($_REQUEST["install_reset"])) {
-    $_SESSION["msv_install_step"] = $install_step = 1;
+    $_SESSION["msv_install_step"] = $install_step = 0;
     $_SESSION["user_id"] = $_SESSION["user_email"] = "";
     unset($_SESSION["user_id"]);
     unset($_SESSION["user_email"]);
@@ -374,4 +374,3 @@ if (!empty($install_step)) {
 // output template
 $website->outputDebug();
 $website->outputPage();
-
