@@ -16,6 +16,7 @@ function Install_Core($module) {
     msv_set_config("theme_use_bootstrap", 1, true, "*", _t("settings.theme_use_bootstrap"));
     msv_set_config("theme_use_jquery", 1, true, "*", _t("settings.theme_use_jquery"));
     msv_set_config("edit_mode", 0, true, "*", _t("settings.edit_mode"));
+    msv_set_config("theme_active", "", true, "*", _t("settings.theme_active"));
 
     // add messages to default output
     msv_set_config("message_ok", "", true, "*", _t("settings.message_ok"));

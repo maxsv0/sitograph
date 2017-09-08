@@ -59,18 +59,17 @@ function Install_ThemeDefault($module) {
     );
     msv_add_structure($itemStructure, array("lang" => "all"));
 
-    // theme options
-    msv_set_config("theme_active", "theme-default", true, "*", _t("settings.theme_active"));
-    msv_set_config("theme_css_path", "/content/css/default.css", true, "*", _t("settings.theme_css_path"));
-    msv_set_config("theme_js_path", "/content/js/default.js", true, "*", _t("settings.theme_js_path"));
+    // general theme options
+    msv_set_config("theme_active", "theme-default", true, "*");
+    msv_set_config("theme_css_path", "/content/css/default.css", true, "*");
+    msv_set_config("theme_js_path", "/content/js/default.js", true, "*");
     msv_set_config("theme_use_bootstrap", 1, true, "*");
     msv_set_config("theme_use_jquery", 1, true, "*");
 
-    // theme options
+    // custom theme options
     msv_set_config("theme_bg", "", true, "*", _t("settings.theme_bg"));
     msv_set_config("theme_cms_favicon", "", true, "*", _t("settings.theme_cms_favicon"));
     msv_set_config("theme_logo", "", true, "*", _t("settings.theme_logo"));
-
     msv_set_config("theme_copyright_text", "2016-2017 MSV Framework", true, "*", _t("settings.theme_copyright_text"));
     msv_set_config("theme_header_contacts", "", true, "*", _t("settings.theme_header_contacts"));
 }

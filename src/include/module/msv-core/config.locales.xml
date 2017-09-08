@@ -153,6 +153,21 @@
 		<field name="table.cronjobs_logs.result_ok" value="Результат"/>
 		<field name="table.cronjobs_logs.result_msg" value="Сообщение"/>
 
+		<field name="table.mail_log" value="Отправленные письма"/>
+		<field name="table.mail_log.id" value="ID"/>
+		<field name="table.mail_log.published" value="Активно"/>
+		<field name="table.mail_log.deleted" value="Удалено"/>
+		<field name="table.mail_log.author" value="Автор"/>
+		<field name="table.mail_log.updated" value="Обновлено"/>
+		<field name="table.mail_log.lang" value="Язык"/>
+		<field name="table.mail_log.user_id" value="Пользователь"/>
+		<field name="table.mail_log.date" value="Дата"/>
+		<field name="table.mail_log.to" value="Кому"/>
+		<field name="table.mail_log.subject" value="Тема"/>
+		<field name="table.mail_log.body" value="Текст (HTML)"/>
+		<field name="table.mail_log.header" value="Заголовок (HTML)"/>
+		<field name="table.mail_log.result" value="Результат"/>
+
 		<field name="msg.error_remove_active" value="Невозможно удалить активный модуль"/>
 		<field name="msg.removed" value="удален"/>
 		<field name="msg.no_repository" value="Репозиторий не найден"/>
@@ -165,6 +180,20 @@
 		<field name="msg.development_version" value="Это бета версия MSV Website. Режим чтения."/>
 		<field name="msg.wrong_email" value="Неверный Email"/>
 		<field name="msg.cron.saved" value="CronJob Saved successfuly"/>
+
+		<field name="settings.include_html_head" value="This HTML code is included to all pages, above 'body' tag"/>
+		<field name="settings.theme_css_path" value="Общий CSS файл"/>
+		<field name="settings.theme_js_path" value="Общий JavaScript файл"/>
+		<field name="settings.theme_use_bootstrap" value="Include Bootstrap library globaly, values 0/1"/>
+		<field name="settings.theme_use_jquery" value="Include jQuery library globaly, values 0/1"/>
+		<field name="settings.edit_mode" value="Admin 'Edit Mode' defined globaly, values 0/1"/>
+		<field name="settings.message_ok" value="Text for a success message displayed over website"/>
+		<field name="settings.message_error" value="Text for a error message displayed over website. Enabling error message will prevent all website forms from submitting."/>
+		<field name="settings.email_from" value="Email used in sent-by header"/>
+		<field name="settings.email_fromname" value="Name used in sent-by header"/>
+		<field name="settings.admin_email" value="Public Administrator e-mail"/>
+		<field name="settings.support_email" value="Public Support e-mail"/>
+		<field name="settings.theme_active" value="Активная тема (название шаблона)"/>
 	</locale>
 	<locale name="en">
 		<field name="actions" value="Actions"/>
@@ -317,6 +346,21 @@
 		<field name="table.cronjobs_logs.result_ok" value="Result"/>
 		<field name="table.cronjobs_logs.result_msg" value="Result Message"/>
 
+		<field name="table.mail_log" value="Sent emails log"/>
+		<field name="table.mail_log.id" value="ID"/>
+		<field name="table.mail_log.published" value="Published"/>
+		<field name="table.mail_log.deleted" value="Deleted"/>
+		<field name="table.mail_log.author" value="Author"/>
+		<field name="table.mail_log.updated" value="Updated"/>
+		<field name="table.mail_log.lang" value="Lang"/>
+		<field name="table.mail_log.user_id" value="User"/>
+		<field name="table.mail_log.date" value="Date sent"/>
+		<field name="table.mail_log.to" value="To"/>
+		<field name="table.mail_log.subject" value="Subject"/>
+		<field name="table.mail_log.body" value="Body (HTML)"/>
+		<field name="table.mail_log.header" value="Header (HTML)"/>
+		<field name="table.mail_log.result" value="Result"/>
+
 		<field name="msg.error_remove_active" value="Can't remove active module"/>
 		<field name="msg.removed" value="removed"/>
 		<field name="msg.no_repository" value="Repository not found"/>
@@ -344,6 +388,7 @@
 		<field name="settings.email_fromname" value="Name used in sent-by header"/>
 		<field name="settings.admin_email" value="Public Administrator e-mail"/>
 		<field name="settings.support_email" value="Public Support e-mail"/>
+		<field name="settings.theme_active" value="Name of a active theme"/>
 	</locale>
     <locale name="ua">
         <field name="actions" value="Дії"/>
@@ -372,44 +417,7 @@
 		<field name="tab.files" value="Зображення і файли"/>
 		<field name="tab.access" value="Доступ"/>
 		<field name="tab.history" value="Історія змін"/>
-		
-		<field name="admin.homepage" value="Головна"/>
-		<field name="admin.homepage_title" value="Головна HOST"/>
-		<field name="admin.users" value="Користувачі сайту"/>
-		<field name="admin.users_title" value="Список користувачів сайту"/>
-		<field name="admin.structure" value="Структура сайту"/>
-		<field name="admin.structure_title" value="Структура сайту {HOST}"/>
-		<field name="admin.menu" value="Меню"/>
-		<field name="admin.menu_title" value="Управління меню сайту"/>
-		<field name="admin.documents" value="Документи"/>
-		<field name="admin.documents_title" value="Документи"/>
-		<field name="admin.files_and_doc" value="Файли і документи"/>
-		<field name="admin.files_and_doc_title" value="Менеджер файлів і документів"/>
-		<field name="admin.site_settings" value="Налаштування сайту"/>
-		<field name="admin.site_settings_title" value="Налаштування сайту"/>
-		<field name="admin.locales" value="Мови і тексти"/>
-		<field name="admin.locales_title" value="Мови і тексти"/>
-		<field name="admin.mail_template" value="Шаблони листів"/>
-		<field name="admin.mail_template_title" value="Шаблони листів"/>
-		<field name="admin.stat" value="Статистика переглядів"/>
-		<field name="admin.stat_title" value="Статистика переглядів для {HOST}"/>
-		<field name="admin.seo" value="SEO"/>
-		<field name="admin.seo_title" value="SEO сайту"/>
-		<field name="admin.robots" value="Редагування robots.txt"/>
-		<field name="admin.robots_title" value="Файл robots.txt"/>
-		<field name="admin.module_settings" value="Управління модулями сайту"/>
-		<field name="admin.module_settings_title" value="Управління модулями сайту"/>
-		<field name="admin.design" value="Дизайни"/>
-		<field name="admin.design_title" value="Дизайни"/>
-		<field name="admin.history" value="Істория сесий"/>
-		<field name="admin.history_title" value="Істория сесий користувачів"/>
-		<field name="admin.locale_param" value="Назва змінної"/>
-		<field name="admin.locale_value" value="Значення"/>
-		<field name="admin.robots_example_open" value="Приклад відкритого сайту:"/>
-		<field name="admin.robots_example_closed" value="Приклад закритого сайту:"/>
-		<field name="admin.robots_example_seo" value="Приклад для SEO:"/>
-        <field name="admin.sitemap" value="Мапа сайту"/>
-		
+
 		<field name="type.id" value="ID, число"/>
 		<field name="type.author" value="строка (60)"/>
 		<field name="type.updated" value="дата"/>
@@ -528,6 +536,21 @@
 		<field name="table.cronjobs_logs.time_end" value="Время завершения"/>
 		<field name="table.cronjobs_logs.result_ok" value="Результат"/>
 		<field name="table.cronjobs_logs.result_msg" value="Сообщение"/>
+
+		<field name="table.mail_log" value="Відправлені листи"/>
+		<field name="table.mail_log.id" value="ID"/>
+		<field name="table.mail_log.published" value="Активно"/>
+		<field name="table.mail_log.deleted" value="Видалене"/>
+		<field name="table.mail_log.author" value="Автор"/>
+		<field name="table.mail_log.updated" value="Оновлено"/>
+		<field name="table.mail_log.lang" value="Мова"/>
+		<field name="table.mail_log.user_id" value="Користувач (кому)"/>
+		<field name="table.mail_log.date" value="Дата"/>
+		<field name="table.mail_log.to" value="Кому"/>
+		<field name="table.mail_log.subject" value="Тема"/>
+		<field name="table.mail_log.body" value="Текст (HTML)"/>
+		<field name="table.mail_log.header" value="Заголовок (HTML)"/>
+		<field name="table.mail_log.result" value="Результат"/>
 
 		<field name="msg.error_remove_active" value="Неможливо видалити активный модуль"/>
 		<field name="msg.removed" value="видалене"/>
