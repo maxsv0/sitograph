@@ -1,3 +1,12 @@
+<div class="alert alert-danger">
+	<b>WARNING!</b> PLEASE NOTE: After clicking the <b>Save</b> button changes will be made directly to the <b>config.php</b> file. <br><b>THIS CAN CAUSE WEBSITE STOP FUNCTIONING.</b>
+</div>
+
+<p class="text-right">
+	<a href="/admin/?section=config&remove_config" class="btn btn-danger" onclick="if(!confirm('Are you sure you want to delete config.php file? The website will stop working and Installation Wizard will be launched.')) return false;">Remove config.php</a>
+</p>
+<br>
+
 <form action="{$lang_url}/admin/" method="POST">
 
 <table class="table">

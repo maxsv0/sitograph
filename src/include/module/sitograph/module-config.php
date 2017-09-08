@@ -1,7 +1,4 @@
 <?php
-
-msv_message_error("<b>WARNING!</b> PLEASE NOTE: After clicking the <b>Save</b> button changes will be made directly to the <b>config.php</b> file. <br><b>THIS CAN CAUSE WEBSITE STOP FUNCTIONING.</b>");
-
 $configListNames = array(
     "LANGUAGES",
     "DB_HOST","DB_LOGIN","DB_PASSWORD","DB_NAME",
@@ -22,10 +19,15 @@ foreach ($configListNames as $name) {
 	$configList[$name] = $value;
 }
 
+if (isset($_GET["remove_config"])) {
+    $fileName = ABS."/config.".time().".php";
+    msv_message_ok("Config successfully moved to $fileName. Please refresh a page to procced to Installation Wizard.");
 
+    rename(ABS."/config.php", $fileName);
+}
 
 if (!empty($_POST["save"])) {
-	
+
 	// write config.php
 	
 	$configPHP = "<?php \n";
