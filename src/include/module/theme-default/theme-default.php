@@ -29,7 +29,3 @@ $themeConfig = array(
 );
 
 msv_set_config("theme_config", $themeConfig);
-
-if (isset($_GET["config"])) {
-    msv_set_config("theme_config_show", 1);
-}

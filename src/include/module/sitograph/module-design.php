@@ -10,15 +10,6 @@ foreach ($this->website->modules as $module) {
 }
 msv_assign_data("admin_designs", $designs);
 
-//$config = msv_get("website.config");
-//$themeConfig = array();
-//foreach ($config as $key => $value) {
-//	if (strpos($key, "theme_") === 0) {
-//		$themeConfig[$key] = $value;
-//	}
-//}
-//msv_assign_data("admin_design_config", $themeConfig);
-
 if (!empty($_GET["design_activate"])) {
 	$themeName = $_GET["design_activate"];
 	
@@ -51,6 +42,4 @@ if (!empty($_GET["design_activate"])) {
 	} else {
         msv_message_error("Unrecognized theme $themeName");
 	}
-	
-	
 }

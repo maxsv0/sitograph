@@ -26,7 +26,8 @@
 		<field name="title.upload_step1" value="1. Select file"/>
 		<field name="title.upload_step2" value="2. File uploaded automatically"/>
 		<field name="title.upload_step3" value="3. Click Save"/>
-		
+		<field name="title.customize_design_settings" value="Customize Design Settings"/>
+
 		<field name="form.wellcome" value="Log in to your account —"/>
 		<field name="form.login" value="Login"/>
 		<field name="form.password" value="Password"/>
