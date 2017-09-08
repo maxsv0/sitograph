@@ -34,8 +34,8 @@
 </div>
 </div>
 
+</body>
 
 {$htmlFooter}
 
-</body>
 </html>
