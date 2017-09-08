@@ -47,12 +47,7 @@ jQuery(document).ready(function() {
             $(this).fadeIn(250*index);
             index++;
         });
-
-        console.log(promo_img_deg);
     }, 100);
-
-
-
 
     $(".module-block").click(function (){
 

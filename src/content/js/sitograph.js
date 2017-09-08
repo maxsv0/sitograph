@@ -145,6 +145,13 @@ $(document).ready(function() {
         }
     });
 
+    $(".table-module tr").dblclick(function() {
+        $(this).find(".btn-primary")[0].click();
+    });
+
+    var frame = $("#uploadFrame")[0];
+    uploadFrameLoad(frame);
+
     // Site structure -> hide all sub-levels
     if ($("#structure-table").size()>0) {
         $("#structure-table tr").each(function(){
@@ -215,6 +222,7 @@ function removeLink(x) {
 }
 
 function uploadFrameLoad(iframe) {
+    if (!iframe) return false;
     var doc = iframe.contentDocument || iframe.contentWindow.document;
     var path = doc.body.innerHTML;
 
