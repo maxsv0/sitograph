@@ -493,22 +493,28 @@ class MSV_Website {
 	}
 
 	function parseRequest() {
-		// handle request URL
-		// using REQUEST_URI according to discussion at:
-		// http://stackoverflow.com/questions/6483912/php-serverredirect-url-vs-serverrequest-uri
-		$requestUrl = $_SERVER["REQUEST_URI"];
-		
-		// fix homepage of non-default language
-		foreach ($this->languages as $langName) {
-            if (substr($requestUrl, 0, 4) === "/".$langName."/") {
-				$requestUrl = substr($requestUrl, 3);
-				
-				// if default language is used in URL -> redirect
-				if ($langName === $this->langDefault) {
-					$this->outputRedirect($requestUrl);
-				}
-			}
-		}
+        // normally we read REQUEST_URI
+        // if `server_redirect` was passed in REQUEST then REDIRECT_URL will be used
+        $requestUrl = $_SERVER["REQUEST_URI"];
+        if (isset($_REQUEST["server_redirect"])) {
+            $requestUrl = $_SERVER["REDIRECT_URL"];
+        }
+
+        // if langSubdomain then lang ID is passed in URL
+        // otherwise, lang is a subdomain
+        if (!$this->langSubdomain) {
+            // concat request URL to remove lang ID
+            foreach ($this->languages as $langName) {
+                if (substr($requestUrl, 0, 4) === "/" . $langName . "/") {
+                    $requestUrl = substr($requestUrl, 3);
+
+                    // if default language is used in URL -> redirect
+                    if ($langName === $this->langDefault) {
+                        $this->outputRedirect($requestUrl);
+                    }
+                }
+            }
+        }
 		
 		$ar = explode("?", $requestUrl, 2);
 		$requestUrl = $ar[0];
@@ -599,21 +605,19 @@ class MSV_Website {
         }
 
         $this->templateEngine->assign("htmlHead", $this->htmlHead);
-
         $this->templateEngine->assign("htmlFooter", $this->htmlFooter);
 
         $this->templateEngine->assign("host", $this->host);
         $this->templateEngine->assign("masterhost", $this->masterhost);
         $this->templateEngine->assign("lang", $this->lang);
         $this->templateEngine->assign("navigation", $this->navigation);
-
         $this->templateEngine->assign("menu", $this->menu);
         $this->templateEngine->assign("structure", $this->structure);
         $this->templateEngine->assign("page", $this->page);
         $this->templateEngine->assign("page_template", $this->page["page_template"]);
         $this->templateEngine->assign("themePath", ABS_TEMPLATE."/".$this->template);
 
-        // assign config values directly to templaye
+        // assign config values directly to template
         foreach ($this->config as $param => $value) {
             $param = str_replace("-", "_", $param);
             $this->templateEngine->assign($param, $value);
