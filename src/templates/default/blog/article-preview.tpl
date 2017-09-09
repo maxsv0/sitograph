@@ -32,13 +32,16 @@
 <div class="article-media-block">
 <a href="{$blog.baseUrl}{$article.url}/" title="{$article.title}">
 <img src="{$article.pic_preview}" alt="{$article.title}" class="thumbnail img-responsive">
+{if $article.description}
+	<span class="article-media-description">{$article.description}</span>
+{else}
+	<span class="article-media-description">{$article.title}</span>
+{/if}
 </a>
 </div>
 {/if}
 
 
-{if $article.description}
-	<p>{$article.description}</p>
-{/if}
+
 
 </div>

@@ -27,7 +27,8 @@
 	</div>
 	
 	</div><!-- row -->
-	
+
+	<br>
 
 	<div class="row">
 {foreach from=$blog_articles_newest key=article_id item=article} 

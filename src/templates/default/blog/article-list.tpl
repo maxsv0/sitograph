@@ -37,15 +37,14 @@
 <div class="article-media-block">
 <a href="{$lang_url}{$blog.baseUrl}{$article.url}/">
 <img src="{$article.pic_preview}" alt="" class="thumbnail img-responsive"/>
+{if $article.description}
+	<span class="article-media-description">{$article.description}</span>
+{else}
+	<span class="article-media-description">{$article.title}</span>
+{/if}
 </a>
 </div>
 {/if}
-
-<div class="article-description-block">
-{if $article.description}
-	{$article.description}
-{/if}
-</div>
 
 <div class="article-more-block">
 <a href="{$lang_url}{$blog.baseUrl}{$article.url}/" class="btn btn-primary">{_t("blog.continue_reading")}</a>
