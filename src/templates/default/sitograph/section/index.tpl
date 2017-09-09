@@ -7,7 +7,7 @@
         <p>Exec code:</p>
         <div class="row">
         <div class="col-xs-9">
-            <textarea class="form-control" name="terminal_code">{$terminal_code}</textarea>
+            <textarea class="form-control" name="terminal_code" id="terminal_code">{$terminal_code}</textarea>
         </div>
         <div class="col-xs-3 text-center">
             <input class="btn btn-default btn-block" type="submit" value="Submit Request" onclick="if(!confirm('Are you sure you want to execute this code? This action cannot be undone.')) return false;">
