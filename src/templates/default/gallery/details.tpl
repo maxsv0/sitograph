@@ -22,7 +22,12 @@
 <div class="col-lg-4 col-md-6 col-sm-12 rowItem">
 <a class="thumbnail" rel="fancybox" href="{$photo.pic}" title="{$photo.description}">
 <img src="{$photo.pic_preview}" alt="{$photo.title}">
-<span>{$photo.title}</span></a>
+<span class="thumbnail-overlay">
+    <span class="thumbnail-text">
+        {$photo.description}
+    </span>
+</span>
+</a>
 </div>
 {foreachelse} 
 <div class="alert alert-info" style="margin-top:20px">{_t("gallery.no_photos")}</div>

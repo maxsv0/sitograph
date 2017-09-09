@@ -57,16 +57,7 @@
 	
 	
 {if $blog_article_details.album}
-<div class="row media-well">
-{foreach from=$blog_article_details.album.photos item=photo name=loop}
-<div class="col-sm-3">
-<a class="thumbnail" rel="fancybox" title="{$blog_article_details.description}" href="{$photo.pic}"><img src="{$photo.pic_preview}" alt="{$blog_article_details.title}"></a>
-</div>
-{/foreach}
-	<div class="col-sm-12">
-		{_t("blog.attached_gallery")} <a href="{$gallery.baseUrl}{$blog_article_details.album.url}/">{$blog_article_details.album.title}</a>
-	</div>
-</div>
+    {include "$themePath/widget/gallery-album.tpl" album=$blog_article_details.album}
 {/if}
 
 {if $blog_article_details.text}
