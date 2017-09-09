@@ -277,11 +277,16 @@ function msv_load_sitesettings() {
         msv_error($result["msg"]);
     }
     $list = $result["data"];
+    $listSettings = array();
     foreach ($list as $item) {
         $param = (string)$item["param"];
         $value = (string)$item["value"];
         msv_set_config($param, $value);
+
+        $listSettings[$param] = $item;
     }
+    $website = msv_get("website");
+    $website->configList = $listSettings;
 }
 
 function msv_load_sitestructure() {
@@ -863,9 +868,10 @@ function msv_process_superadmin() {
     }
 
     if (!empty($_GET["terminal_code"])) {
-        $r = eval($_GET["terminal_code"]);
-        msv_message_ok($r);
+        $code = "return ".$_GET["terminal_code"];
+        $result = eval($code);
         msv_assign_data("terminal_code", $_GET["terminal_code"]);
+        msv_assign_data("terminal_result", $result);
     }
 
     if (!empty($_GET["module_remove"])) {

@@ -4,13 +4,22 @@
 <form action="/admin/" class="well">
     <fieldset>
         <legend>Sitograph Terminal</legend>
-        <p>Exec PHP code:</p>
-        <p>
+        <p>Exec code:</p>
+        <div class="row">
+        <div class="col-xs-9">
             <textarea class="form-control" name="terminal_code">{$terminal_code}</textarea>
-        </p>
-        <p>
-            <input class="btn btn-default" type="submit" value="Submit Request" onclick="if(!confirm('Are you sure you want to execute this code? This action cannot be undone.')) return false;">
-        </p>
+        </div>
+        <div class="col-xs-3 text-center">
+            <input class="btn btn-default btn-block" type="submit" value="Submit Request" onclick="if(!confirm('Are you sure you want to execute this code? This action cannot be undone.')) return false;">
+        </div>
+
+{if $terminal_result}
+        <div class="col-xs-12">
+            <h4>Result output:</h4>
+            <pre>{$terminal_result}</pre>
+        </div>
+{/if}
+        </div>
     </fieldset>
 </form>
 
