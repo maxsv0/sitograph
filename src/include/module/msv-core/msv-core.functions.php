@@ -14,11 +14,10 @@ function msv_include($filePath, $url = '', $access = 'everyone') {
         return false;
     }
 
-    // TODO: rework this check
     // detect if $filePath is remote or local file
     // and determine file extension
     if (strpos($filePath, "http") === 0) {
-        $type = substr($filePath, strrchr($filePath, ".")+1);
+        $type = substr(strrchr($filePath, "."), 1);
     } else {
         $type = pathinfo($filePath, PATHINFO_EXTENSION);
     }
