@@ -1,31 +1,24 @@
 <?php
 
-$themeConfig = array(
-    "theme_bg" => array(
-        "name" => _t("settings.theme_bg"),
-        "type" => "pic",
-        "value" => msv_get_config("theme_bg"),
-    ),
-    "theme_logo" => array(
-        "name" => _t("settings.theme_logo"),
-        "type" => "pic",
-        "value" => msv_get_config("theme_logo"),
-    ),
-    "theme_css_path" => array(
-        "name" => _t("settings.theme_css_path"),
-        "type" => "str",
-        "value" => msv_get_config("theme_css_path"),
-    ),
-    "theme_js_path" => array(
-        "name" => _t("settings.theme_js_path"),
-        "type" => "str",
-        "value" => msv_get_config("theme_js_path"),
-    ),
-    "theme_copyright_text" => array(
-        "name" => _t("settings.theme_copyright_text"),
-        "type" => "str",
-        "value" => msv_get_config("theme_copyright_text"),
-    ),
+$themeConfigList = array(
+    "theme_bg" => "pic",
+    "theme_logo" => "pic",
+    "theme_css_path" => "str",
+    "theme_js_path" => "str",
+    "theme_copyright_text" => "str",
 );
+
+$configList = msv_get("website.configList");
+
+$themeConfig = array();
+
+foreach ($themeConfigList as $configName => $configType) {
+    $themeConfig[$configName] = array(
+        "name" => _t("settings.".$configName),
+        "type" => $configType,
+        "value" => $configList[$configName]["value"],
+        "id" => $configList[$configName]["id"],
+    );
+}
 
 msv_set_config("theme_config", $themeConfig);
