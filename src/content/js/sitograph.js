@@ -516,6 +516,7 @@ function prompt_password(link) {
 function list_toggle_submit(section, table, id, field, value) {
     console.log(section, table, id, field, value);
 
+
     $form = $('<form>' +
         '<input type="hidden" value="'+section+'" name="section">'+
         '<input type="hidden" value="'+table+'" name="table">'+
@@ -531,10 +532,17 @@ function list_toggle_submit(section, table, id, field, value) {
         url: "/admin/",
         data: $form.serialize(),
         success: function (data) {
-            console.log('Submission was successful.');
-            obj = JSON.parse(data);
-            console.log(obj);
+            var obj = JSON.parse(data);
 
+            var msg = $("#submit_status");
+            msg.removeClass("alert-danger alert-success hide");
+            msg.html(obj.msg);
+
+            if(obj.ok) {
+                msg.removeClass("alert-warning").addClass("alert-success", 500);
+            } else {
+                msg.removeClass("alert-warning").addClass("alert-danger", 500);
+            }
         },
         error: function (data) {
             console.log(data);

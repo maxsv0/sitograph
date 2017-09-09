@@ -1,4 +1,5 @@
 {if $admin_designs}
+<div class="alert hide" id="submit_status"></div>
 
 <div class="well well-lg">
 <div class="row">
@@ -6,12 +7,12 @@
 
 {foreach from=$theme_config name=loop key=name item=item}
   <div class="form-group">
-    <label class="control-label col-sm-3" for="email">{$item.name}</label>
-    <div class="col-sm-8">
-      <input type="test" class="form-control" readonly id="config_{$name}" value="{$item.value}">
+    <label class="control-label col-sm-4" for="config_{$name}">{$item.name}</label>
+    <div class="col-sm-7">
+      <input type="test" class="form-control" id="config_{$name}" value="{$item.value}">
     </div>
     <div class="col-sm-1">
-      <a href="/admin/?section=site_settings&edit_key={$name}" class="btn btn-primary">{_t("btn.edit")}</a>
+      <a href="/admin/?section=site_settings&edit_key={$name}" onclick="list_toggle_submit('site_settings','{TABLE_SETTINGS}','{$item.id}','value',$('#config_{$name}').val());return false;" class="btn btn-primary">{_t("btn.save")}</a>
     </div>
   </div>
 {/foreach}
