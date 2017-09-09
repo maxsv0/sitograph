@@ -39,9 +39,9 @@
 {/if}
 
 {if $blog_article_details.pic_preview}
-<div class="article-media-block">
+<div class="thumbnail">
 <a href="{$blog_article_details.pic}" rel="fancybox"  title="{$blog_article_details.title}">
-<img src="{$blog_article_details.pic_preview}" alt="{$blog_article_details.title}" class="thumbnail img-responsive">
+<img src="{$blog_article_details.pic_preview}" alt="{$blog_article_details.title}" class="img-responsive">
 </a>
 </div>
 {/if}

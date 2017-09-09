@@ -7,7 +7,7 @@
     {/if}
 {foreach from=$album.photos item=photo name=loop}
     <div class="col-xs-6 col-sm-4">
-        <a class="thumbnail" rel="fancybox" title="{$photo.description}" href="{$photo.pic}">
+        <a class="thumbnail thumbnail-hover" rel="fancybox" title="{$photo.description}" href="{$photo.pic}">
             <img src="{$photo.pic_preview}" alt="{$photo.title}">
             <span class="thumbnail-overlay">
                 <span class="thumbnail-text">{$photo.title}</span>

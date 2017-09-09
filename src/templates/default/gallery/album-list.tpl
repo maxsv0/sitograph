@@ -1,12 +1,16 @@
 <div class="thumbnail galleryAlbum" data-id="{$album.id}">
 
 
-<a href="{$lang_url}{$gallery.baseUrl}{$album.url}/">
+<a href="{$lang_url}{$gallery.baseUrl}{$album.url}/" class="thumbnail-hover">
 <img src="{$album.pic_preview}" alt="">
+<span class="thumbnail-overlay">
+<span class="thumbnail-text">
+{$album.title}
+</span>
+</span>
 </a>
 
 <div class="caption">
-	<h4>{$album.title}</h4>
 	<p>
 	{_t("gallery.posted_by")} {$album.author}, at {$album.date}
 	</p>

@@ -76,7 +76,9 @@
 }
 .article-media-block {
 	position: relative;
-	background-color: #d9ede2;
+	background-color: #74c4d4;
+	background: linear-gradient(to bottom, rgba(116, 196, 212, 0.8), rgba(116, 196, 212, 0.1));
+	overflow: hidden;
 }
 .article-media-block .article-media-description {
 	font-size: 26px;
@@ -88,6 +90,8 @@
 	transition: opacity 0.35s, transform 0.35s;
 	-webkit-transform: translate3d(100%,0,0);
 	transform: translate3d(100%,0,0);
+	text-shadow: 0px 1px #74c4d4;
+	color:#fff;
 }
 .article-media-block:hover .article-media-description {
 	opacity: 1;
@@ -95,16 +99,31 @@
 	transform: translate3d(0,0,0);
 }
 .article-media-block:hover img {
-	opacity: 0.6;
+	opacity: 0.2;
 	-webkit-transform: translate3d(0,0,0);
 	transform: translate3d(0,0,0);
 }
+.thumbnail {
+	overflow: hidden;
+}
+.thumbnail img {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.thumbnail:hover img {
+	-webkit-transform: scale(1.2);
+	transform: scale(1.2);
+}
+
 .thumbnail-overlay {
 	position: absolute;
 	bottom: 0;
 	left: 0;
 	right: 0;
 	background-color: rgba(116, 196, 212, 0.8);
+	background: linear-gradient(to bottom, rgba(116, 196, 212, 0.9), rgba(116, 196, 212, 0.5));
 	overflow: hidden;
 	width: 100%;
 	height:0;
@@ -112,6 +131,7 @@
 }
 .thumbnail-text {
 	color: white;
+	text-shadow: 0px 1px #74c4d4;
 	font-size: 20px;
 	position: absolute;
 	overflow: hidden;
@@ -120,7 +140,7 @@
 	transform: translate(-50%, -50%);
 	-ms-transform: translate(-50%, -50%);
 }
-.thumbnail:hover .thumbnail-overlay {
+.thumbnail-hover:hover .thumbnail-overlay {
 	bottom: 0;
 	height: 100%;
 }

@@ -36,7 +36,7 @@
 {if $article.pic_preview}
 <div class="article-media-block">
 <a href="{$lang_url}{$blog.baseUrl}{$article.url}/">
-<img src="{$article.pic_preview}" alt="" class="thumbnail img-responsive"/>
+<img src="{$article.pic_preview}" alt="{$article.title}" class="img-responsive"/>
 {if $article.description}
 	<span class="article-media-description">{$article.description}</span>
 {else}

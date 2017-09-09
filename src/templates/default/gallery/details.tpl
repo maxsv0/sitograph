@@ -20,11 +20,16 @@
 <div class="row rowItems">
 {foreach from=$gallery_album_details['photos'] item=photo} 
 <div class="col-lg-4 col-md-6 col-sm-12 rowItem">
-<a class="thumbnail" rel="fancybox" href="{$photo.pic}" title="{$photo.description}">
+<a class="thumbnail thumbnail-hover" rel="fancybox" href="{$photo.pic}" title="{$photo.description}">
 <img src="{$photo.pic_preview}" alt="{$photo.title}">
 <span class="thumbnail-overlay">
     <span class="thumbnail-text">
+{if $photo.title}
+        <strong>{$photo.title}</strong><br>
+{/if}
+{if $photo.description != $photo.title}
         {$photo.description}
+{/if}
     </span>
 </span>
 </a>

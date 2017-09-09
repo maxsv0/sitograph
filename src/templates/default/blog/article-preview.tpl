@@ -10,7 +10,7 @@
 		<a href="{$lang_url}{$blog.baseUrl}?{$blog.authorUrlParam}={$article.email}">{$article.email}</a>
         {_t("blog.posted_on")} {$article.date}
 		</div>
-		
+
 		<div class="col-sm-6 text-right small">
 		{$article.shares} {_t("blog.shares")}
 		&nbsp;&nbsp;&nbsp;
@@ -31,7 +31,7 @@
 {if $article.pic_preview}
 <div class="article-media-block">
 <a href="{$blog.baseUrl}{$article.url}/" title="{$article.title}">
-<img src="{$article.pic_preview}" alt="{$article.title}" class="thumbnail img-responsive">
+<img src="{$article.pic_preview}" alt="{$article.title}" class="img-responsive">
 {if $article.description}
 	<span class="article-media-description">{$article.description}</span>
 {else}
