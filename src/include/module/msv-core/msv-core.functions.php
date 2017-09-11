@@ -1436,8 +1436,8 @@ function msv_admin_editbtn($selector, $section, $table) {
     msv_include_js("
 $(document).ready(function() {
     $('".$selector."').hover(function() {
-       $(this).addClass('editor-inline-block').prepend('<a href=\"/admin/?section=".$section."&table=".$table."&edit='+$(this).attr('data-id')+'\" id=\"admin-edit-btn\">Click to edit</a>');
-       $('#admin-edit-btn').addClass('admin-edit-overlay btn btn-warning').on('click', function(e){
+       $(this).addClass('editor-inline-block').prepend('<a href=\"/admin/?section=".$section."&table=".$table."&edit='+$(this).attr('data-id')+'\" id=\"admin-edit-btn\">"._t("btn.click_to_edit")."</a>');
+       $('#admin-edit-btn').addClass('admin-edit-overlay btn btn-danger').on('click', function(e){
         });
     }, function() {
        $(this).removeClass('editor-inline-block');
@@ -1453,8 +1453,8 @@ $(document).ready(function() {
     msv_include_js("
 $(document).ready(function() {
     $('".$selector."').hover(function() {
-       $(this).addClass('editor-inline-block').prepend('<a href=\"/api/form/?section=".$section."&table=".$table."&edit='+$(this).attr('data-id')+'\" id=\"admin-edit-btn\">Click to edit</a>');
-       $('#admin-edit-btn').addClass('admin-edit-overlay btn btn-warning').on('click', function(e){
+       $(this).addClass('editor-inline-block').prepend('<a href=\"/api/form/?section=".$section."&table=".$table."&edit='+$(this).attr('data-id')+'\" id=\"admin-edit-btn\">"._t("btn.click_to_edit")."</a>');
+       $('#admin-edit-btn').addClass('admin-edit-overlay btn btn-danger').on('click', function(e){
             e.preventDefault();
             $('#adminModal').modal('show').find('#modal-frame').attr('src', $(this).attr('href'));
         });

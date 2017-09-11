@@ -25,6 +25,7 @@
 		<field name="btn.edit_seo" value="SEO страницы"/>
 		<field name="btn.previous" value="Предыдущая"/>
 		<field name="btn.next" value="Следующая"/>
+		<field name="btn.click_to_edit" value="Нажмите для редактирования"/>
 
 		<field name="tab.home" value="Основное"/>
 		<field name="tab.document" value="Документ"/>
@@ -219,6 +220,7 @@
 		<field name="btn.edit_seo" value="Edit SEO"/>
 		<field name="btn.previous" value="Previous"/>
 		<field name="btn.next" value="Next"/>
+		<field name="btn.click_to_edit" value="Click to edit"/>
 
 		<field name="tab.home" value="General"/>
 		<field name="tab.document" value="Document"/>
@@ -410,6 +412,7 @@
         <field name="btn.generate" value="Генерувати"/>
 		<field name="btn.previous" value="Попередня"/>
 		<field name="btn.next" value="Наступна"/>
+		<field name="btn.click_to_edit" value="Натисніть для редагування"/>
 
 		<field name="tab.home" value="Головне"/>
 		<field name="tab.document" value="Документ"/>
