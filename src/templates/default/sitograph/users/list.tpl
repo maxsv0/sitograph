@@ -3,7 +3,7 @@
 {if $listTable}
 <div class="table-responsive">
 <table class="table table-hover table-striped table-module">
-
+<tr>
 <th{if $table_sort == "id"} class='colactive'{/if}>
 <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=id&sortd={$table_sortd_rev}">{$t["table.users.id"]}</a>
 {if $table_sort == "id"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
@@ -13,8 +13,8 @@
 {if $table_sort == "status"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
 </th>
 <th{if $table_sort == "access"} class='colactive'{/if}>
-	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=access&sortd={$table_sortd_rev}">{$t["table.users.access"]}</a>
-	{if $table_sort == "access"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
+<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=access&sortd={$table_sortd_rev}">{$t["table.users.access"]}</a>
+{if $table_sort == "access"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
 </th>
 <th{if $table_sort == "email"} class='colactive'{/if}>
 <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=email&sortd={$table_sortd_rev}">{$t["table.users.email"]}</a>
