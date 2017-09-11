@@ -649,6 +649,9 @@ class MSV_Website {
 	function output($output, $code = 200) {
 		if ($code === 200) {
 			echo $output;
+		} elseif ($code === 500) {
+            header("HTTP/1.0 500 Internal Server Error");
+			echo $output;
 		} elseif ($code === 404) {
 			header("HTTP/1.0 404 Not Found");
 			echo $output;
@@ -657,7 +660,7 @@ class MSV_Website {
 		} elseif ($code === 301) {
 			header("HTTP/1.1 301 Moved Permanently"); 
 			header("Location: $output");
-			echo "<a href=='$output'>$output</a>";
+			echo "Redirection to <a href=='$output'>$output</a> .. ";
 		}
 		exit;
 	}
@@ -669,7 +672,7 @@ class MSV_Website {
 		$str .= "<div style='position: absolute; bottom: 0; padding:5px 20px; background:#00f;'>";
 		$str .= "<span style='color:red;'>ERROR: $errorText</span>";
 		$str .= "</div>";
-		$this->output($str, 200);
+		$this->output($str, 500);
 	}
 	function outputNotFound($output = "") {
 		if (empty($output)) {
