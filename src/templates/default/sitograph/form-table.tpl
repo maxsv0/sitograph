@@ -38,7 +38,7 @@
 
 <div class="alert hide">&nbsp;</div>
 
-<div class="form-group">
+<div class="col-sm-12">
 <div class="form-group-btn">
 	<button type="submit" class="btn btn-danger" name="cancel" id="cancel" type="button"><span class="glyphicon glyphicon-remove-circle">&nbsp;</span>{$t["btn.cancel"]}</button>
 	<button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-ban-circle">&nbsp;</span>{$t["btn.reset"]}</button>
