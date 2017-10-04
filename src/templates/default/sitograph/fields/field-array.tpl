@@ -1,4 +1,4 @@
-<div class="col-sm-12">
+<div class="col-sm-4">
     <!-- read only for now -->
-    <pre>{$value|@print_r}</pre>
+    <div class="infowell">{$value|@print_r}</div>
 </div>
