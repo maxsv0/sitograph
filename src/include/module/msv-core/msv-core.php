@@ -113,7 +113,7 @@ function msv_output() {
 
             $website->htmlFooter = $htmlFooter;
         }
-	}
+    }
 
     // proccess post/get admin functions
     if (MSV_INSTALED && msv_check_accessuser("superadmin")) {
@@ -675,103 +675,40 @@ function msv_output_admin_modulesetup() {
     $list = $website->modules;
 
     $strOut  = "";
-    $strOut .= "<div class='well'>";
-    $strOut .= "<p>";
+    $strOut .= "<div class=''>";
 
-    $website = msv_get("website");
+    $strOut .= "<p class='pull-right'>";
+    $strOut .= "<a href='/admin/?section=module_settings&module_install' class='btn btn-lg btn-danger'>install new</a> &nbsp; &nbsp;";
+    $strOut .= "<a href='/admin/?section=module_settings&module_update_all' class='btn btn-lg btn-danger'>update all</a> &nbsp; &nbsp;";
+    $strOut .= "</p>";
 
+    $strOut .= "<h3>";
+    $strOut .= "Repository: ";
+    $headers = get_headers(REP);
+
+    if(strpos($headers[0],'200')===false) {
+        $strOut .= "<strong class='text-danger'>offline</strong>";
+    } else {
+        $strOut .= "<strong class='text-success'>online</strong>";
+    }
+    $strOut .= "</h3>";
+
+    $strOut .= "<div>";
+    $strOut .= "<h3 class='pull-left'>Nagivate to module:</h3>";
     foreach ($list as $module) {
         $obj = $website->{$module};
         if ($obj->enabled) {
-            $strOut .= "<a href='/admin/?section=module_settings&module=".$obj->name."' class='btn btn-primary'>$module</a>";
+            $strOut .= "<a href='/admin/?section=module_settings&module=".$obj->name."' class='btn btn-lg btn-primary".(!empty($_GET["module"]) && $_GET["module"] === $module ? " active" : "")."'>$module</a>";
         } else {
-            $strOut .= "<a href='/admin/?section=module_settings&module=".$module."' class='btn btn-default'>$module</a>";
+            $strOut .= "<a href='/admin/?section=module_settings&module=".$module."' class='btn btn-lg btn-default".(!empty($_GET["module"]) && $_GET["module"] === $module ? " active" : "")."''>$module</a>";
         }
         $strOut .= "&nbsp; &nbsp;";
     }
-    $strOut .= "</p>";
-
-
-    $strOut .= "<p>";
-    $strOut .= "<a href='/admin/?section=module_settings&module_install' class='btn btn-danger'>install new</a> &nbsp; &nbsp;";
-    $strOut .= "<a href='/admin/?section=module_settings&module_update_all' class='btn btn-danger'>update all</a> &nbsp; &nbsp;";
-    $strOut .= "</p>";
-
+    $strOut .= "</div>";
+    $strOut .= "<br>";
     $module = $_GET["module"];
     if (!empty($module)) {
-        $strOut .= "<p>";
-        $strOut .= "Repository: ";
-        $headers = get_headers(REP);
-
-        if(strpos($headers[0],'200')===false) {
-            $strOut .= "<span class='text-danger'>offline</span>";
-        } else {
-            $strOut .= "<span class='text-success'>online</span>";
-        }
-        $strOut .= "</p>";
-
-
-        $obj = $website->{$module};
-        $oVersion = (float)$obj->version;
-
-        $strOut .= "<h3>".$obj->title." <small>".$obj->description."</small></h3>";
-
-        $files = $obj->files;
-        if (!empty($files)) {
-            foreach ($files as $file) {
-                $strOut .= "<div>";
-                if (is_writable($file["abs_path"])) {
-                    $strOut .= "<span class='text-success'>";
-                } else {
-                    $strOut .= "<span class='text-danger'>NOT Writable: ";
-                }
-                if ($file["dir"] === "content" || $file["dir"] === "abs") {
-                    $strOut .= " <a href='".$file["url"]."'>".$file["local_path"]."</a>";
-                } else {
-                    $strOut .= " ".$file["local_path"]."";
-                }
-                $strOut .= "</span>&nbsp;&nbsp;";
-
-                if (file_exists($file["abs_path"])) {
-                    $info = stat($file["abs_path"]);
-                    $strOut .= " <small>".msv_format_size($info["size"])."</small>";
-                } else {
-                    $strOut .= " - <b>NOT FOUND</b>";
-                }
-
-                $strOut .= "</div>";
-            }
-            $strOut .= "<p><b>".count($files)." files</b></p>";
-        }
-        if ($module !== "api" && $module !== "core") {
-            $strOut .= "<p>";
-
-            $strOut .= "<a href='/admin/?module_reinstall=".$obj->name."' class='btn btn-danger btn-sm' onclick=\"if(!confirm('Are you sure? Current module files will be overwritten.')) return false;\">reinstall</a> ";
-
-            if ($obj->enabled) {
-                $strOut .= "<a href='/admin/?module_disable=".$obj->name."' class='btn btn-danger btn-sm'>disable module</a>";
-            } else {
-                $strOut .= "<a href='/admin/?module_enable=".$obj->name."' class='btn btn-danger btn-sm'>enable module</a>";
-            }
-            $strOut .= "&nbsp; &nbsp; ";
-            $strOut .= "<a href='/admin/?module_remove=".$obj->name."' class='btn btn-danger btn-sm' onclick=\"if(!confirm('ALL DATA WILL BE LOST! Are you sure?')) return false;\">remove module</a> &nbsp; &nbsp;";
-            $strOut .= "</p>";
-        }
-
-        $tables = $obj->tables;
-        if (!empty($tables)) {
-            $strOut .= "<div>";
-            $strOut .= "<h4>".$module." tables</h4>";
-            foreach ($tables as $table) {
-                $strOut .= "<p>";
-                $strOut .= "".$table["name"]." ";
-                $strOut .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$table["name"]."&table_action=remove' class='btn btn-danger btn-xs'>remove table</a> ";
-                $strOut .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$table["name"]."&table_action=truncate' class='btn btn-danger btn-xs'>truncate table</a> ";
-                $strOut .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$table["name"]."&table_action=create' class='btn btn-primary btn-xs'>create table</a> ";
-                $strOut .= "</p>";
-            }
-            $strOut .= "</div>";
-        }
+        $strOut .= "<div class='infowell'>".msv_build_module_info($module)."</div>";
     }
     if (isset($_GET["module_install"])) {
         $listRep = msv_list_modules();
@@ -844,6 +781,147 @@ function msv_output_admin_modulesetup() {
     $strOut .= '</div>';
 
     return $strOut;
+}
+
+function msv_build_module_info($module) {
+    $objModule = msv_get("website.".$module);
+
+    $module_params = array(
+        "name","version", "date", "title", "description", "tags", "author", "preview",
+        "activationUrl", "activationLevel", "adminMenu", "adminMenuOrder", "itemsPerPage",
+        "previewItemsCount", "baseUrl", "pageUrlParam", "searchUrlParam",
+        "accessAPIList", "accessAPIDetails", "accessAPIAdd", "accessAPIEdit", "accessAPICategory", "accessAPIAlbum",
+    );
+
+    $str =  "<h2>".$objModule->title."</h2>";
+    $str .= '<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#config">Config</a></li>
+  <li><a data-toggle="tab" href="#tables">Tables</a></li>
+  <li><a data-toggle="tab" href="#install">Install</a></li>
+  <li><a data-toggle="tab" href="#locales">Locales</a></li>
+  <li><a data-toggle="tab" href="#php">Custom PHP</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="config" class="tab-pane fade in active">
+    <h3>Module Configuration</h3>
+    <table class="table">
+    <tr><th>Parameter</th><th>Value</th></tr>
+';
+    foreach ($module_params as $param) {
+        $value = $objModule->{$param};
+        $str .= "<tr><td>$param</td><td>".(string)$value."</td></tr>\n";
+    }
+
+    $str .= '
+    </table>
+  </div>
+  <div id="tables" class="tab-pane fade">
+    <h3>Tables used by module</h3>
+    <table class="table">
+    <tr><th>Table Definition</th><th>Version</th></tr>
+';
+    foreach ($objModule->tables as $tableName => $tableInfo) {
+        //$str .= "<tr><td>".$tableInfo["module"]."</td><td>".$tableInfo["version"]."</td></tr>\n";
+    }
+    $str .= "</table>\n";
+
+    if (empty($objModule->tables)) {
+        $str .= "<div class='alert alert-warning'>No tables found for this module</div>";
+    }
+    $str .= '
+  </div>
+  <div id="install" class="tab-pane fade">
+    <h3>Module dependency</h3>
+    <table class="table">
+    <tr><th>Name</th><th>Version</th></tr>
+';
+    foreach ($objModule->dependency as $fileInfo) {
+        $str .= "<tr><td>".$fileInfo["module"]."</td><td>".$fileInfo["version"]."</td></tr>\n";
+    }
+    $str .= '
+    </table>
+    <h3>List of a files</h3>
+    <table class="table">
+    <tr><th>File Path</th><th>Size</th><th>Access</th></tr>
+';
+    foreach ($objModule->files as $fileInfo) {
+        $trStyle = "";
+        if (!is_readable($fileInfo["abs_path"])) {
+            $trStyle = "danger";
+        } elseif (!is_writable($fileInfo["abs_path"])) {
+            $trStyle = "warning";
+        }
+
+        $str .= "<tr class='$trStyle'>";
+        $str .= "<td>".$fileInfo["local_path"]."</td>";
+        if (is_readable($fileInfo["abs_path"])) {
+            $info = stat($fileInfo["abs_path"]);
+            $str .= "<td>" . msv_format_size($info["size"]) . "</td>";
+
+            if (is_writable($fileInfo["abs_path"])) {
+                $str .= "<td class='text-success'>write</td>";
+            } else {
+                $str .= "<td class='text-danger'>read</td>";
+            }
+        } else {
+            $str .= "<td colspan='2' class='text-center'><i>not found</i></td>";
+        }
+        $str .= "</tr>\n";
+    }
+    $str .= '
+    </table>
+  </div>
+  <div id="locales" class="tab-pane fade">
+    <h3>Locales and texts</h3>
+    <table class="table">
+    <tr><th>Text ID</th><th>Value</th></tr>
+';
+    foreach ($objModule->locales as $textID => $textValue) {
+        $str .= "<tr><td>$textID</td><td>$textValue</td></tr>\n";
+    }
+    $str .= "</table>\n";
+
+    if (empty($objModule->locales)) {
+        $str .= "<div class='alert alert-warning'>No locales found for this module</div>";
+    }
+    $str .= '
+  </div>
+  <div id="php" class="tab-pane fade">
+    <h3>Custom PHP</h3>
+
+<form class="form-horizontal">
+  <div class="form-group">
+    <label class="control-label col-sm-4">PHP Controllers:</label>
+	<div class="col-sm-8">
+	<pre>';
+    foreach ($objModule->pathModuleController as $pathController) {
+        $str .= "<p>$pathController</p>";
+    }
+    $str .= '</pre>
+	</div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="imodule_php">
+    Custom PHP Controller Source';
+    if (is_writable($fileInfo["abs_path"])) {
+        $str .= "<p class='text-success'><b>writable</b></p>";
+    } else {
+        $str .= "<p class='text-danger'>NO WRITE ACCESS</p>";
+    }
+    $str .= '</label>
+	<div class="col-sm-8">
+		<textarea class="form-control" id="imodule_php" name="module_php" rows="15">';
+    $str .= htmlspecialchars(file_get_contents($pathController));
+    $str .= '</textarea>
+	</div>
+  </div>
+</form>
+  </div>
+</div>
+
+';
+    return $str;
 }
 
 // process `superadmin` functions
