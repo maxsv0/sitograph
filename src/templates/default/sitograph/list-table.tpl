@@ -109,5 +109,12 @@
 </div>
 
 <div class="col-sm-6 text-right">
-<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&export" class="btn btn-info"><span class="glyphicon glyphicon-download">&nbsp;</span>{_t("btn.export_table")}</a>
+    <ul class="list-btn">
+        <li>
+            <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&export&export_full" class="btn btn-info"><span class="glyphicon glyphicon-download">&nbsp;</span>{_t("btn.export_all")}</a>
+        </li>
+        <li>
+            <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&export" class="btn btn-info"><span class="glyphicon glyphicon-download">&nbsp;</span>{_t("btn.export_table")}</a>
+        </li>
+    </ul>
 </div>

@@ -206,6 +206,11 @@ if ($resultQuery["ok"]) {
 		}
 	}
 
+	// in case of full export don't skip any fields
+    if (isset($_GET["export_full"])) {
+        $adminListSkipFields = array();
+    }
+
     msv_assign_data("admin_list_skip", $adminListSkipFields);
     msv_assign_data("admin_list", $adminList);
 }
