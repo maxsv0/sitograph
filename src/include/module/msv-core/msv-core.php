@@ -79,7 +79,7 @@ function msv_output() {
 
     msv_log("Website: Output");
 
-    if ($website->requestUrl === "/admin/") {
+    if ($website->requestUrl === "/admin/" && $_REQUEST["section"] === "module_settings") {
         $admin_module_setup = msv_output_admin_modulesetup();
         msv_assign_data("admin_module_setup", $admin_module_setup);
     }
