@@ -112,7 +112,7 @@
 		<field name="not_set" value="not set"/>
 		<field name="help.field.url" value="This field indicates how this page can be accessed with URL.&lt;br&gt; Can only include numbers, letters and dash sign."/>
 
-		<field name="structure.getting_started" value="Getting Started"/>
+		<field name="structure.getting_started" value="Getting Started: default website"/>
 		<field name="structure.file_structure" value="Sitograph File structure"/>
 		<field name="structure.api" value="Website API"/>
 		<field name="structure.sitograph_modules" value="Sitograph Modules"/>
@@ -240,7 +240,7 @@
 		<field name="not_set" value="не указан"/>
 		<field name="help.field.url" value="Это поле указывает, как к этой странице можно получить доступ с помощью URL. Может содержать только цифры, буквы и тире знак."/>
 
-		<field name="structure.getting_started" value="Getting Started"/>
+		<field name="structure.getting_started" value="Getting Started default website"/>
 		<field name="structure.file_structure" value="Sitograph File structure"/>
 		<field name="structure.api" value="Website API"/>
 		<field name="structure.sitograph_modules" value="Sitograph Modules"/>

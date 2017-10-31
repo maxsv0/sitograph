@@ -318,6 +318,7 @@ ul.nav li a {
 .nav li a:hover, .nav li a:focus {
     border-color: transparent;
     background: #eeeeee;
+    color: #ed2a45;
 }
 ul.nav li a:hover {
     color:#ed2a45;

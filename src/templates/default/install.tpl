@@ -188,9 +188,9 @@
 </div>
 
 <h4 style="color:#bebebe;text-align:center;">
-	<a href='http://sitograph.com/' target="_blank">Sitograph 1.0.beta</a>
-	using
-	<a href='http://doc.msvhost.com/' target="_blank">MSV Framework 1.1</a></h4>
+<a href='http://sitograph.com/' target="_blank">Sitograph v1.0</a>
+using
+<a href='https://github.com/maxsv0/msv' target="_blank">MSV Framework 1.2</a></h4>
 
 {$htmlFooter}
 
