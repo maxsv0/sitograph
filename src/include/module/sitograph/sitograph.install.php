@@ -329,7 +329,7 @@ a:active {color:#bb233a;}
         "api" => array(
             "title" => _t("blog.post3"),
             "preview" => "images/blog/blog_3.jpg",
-            "content" => msv_load_module_doc(ABS_INCLUDE."/module/sitograph/", "blog-layers")
+            "content" => msv_load_module_doc(ABS_INCLUDE."/module/blog/", "blog-layers")
         ),
     );
 
@@ -366,7 +366,7 @@ a:active {color:#bb233a;}
         <div class='tab-content'>$tabContent</div>
     </div>
     <div class='col-sm-4'>
-        <ul class='nav well'>$tabHeader</ul>
+        <ul class='nav well well-sm'>$tabHeader</ul>
     </div>
 </div>
 ";

@@ -9,7 +9,7 @@ body, td, div, p, input, textarea {
     color: #747474;
 }
 
-p, form {
+form {
     margin: 0px;
     padding: 0px;
 }
@@ -311,8 +311,6 @@ ul.nav li a {
     font-size: 17px;
     color: #747474;
     text-decoration: none;
-    height:40px;
-    line-height:33px;
     padding: 3px 15px;
 }
 .nav li a:hover, .nav li a:focus {
@@ -699,7 +697,9 @@ div.btn_group tr td input:hover {
 }
 
 .btnCover {
-    position:absolute;right:0;
+    position:absolute;
+    right:0;
+    z-index: 99;
 }
 .btnCover div {
     position:relative;
