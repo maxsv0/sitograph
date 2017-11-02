@@ -59,7 +59,9 @@ if (!empty($_REQUEST["delete"])) {
         foreach ($configXML->locales->locale as $loc) {
         $attributes = $loc->attributes();
         if ((string)$attributes["name"] == LANG) {
-            unset($loc->xpath('field[@name="'.$_REQUEST["delete"].'"]')[0]->{0});
+            $res = $loc->xpath('field[@name="'.$_REQUEST["delete"].'"]');
+            $parent = $res[0];
+            unset($parent[0]);
         }
        } 
      //  echo("<pre>".htmlspecialchars($configXML->asXML())."</pre>");
