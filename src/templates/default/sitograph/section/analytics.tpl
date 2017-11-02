@@ -1,4 +1,4 @@
-{if !$google_analytics_code}
+{if !$google_analytics_tracking_id}
 	<div class="alert alert-danger">
 	<b>{_t("msg.ga_not_configured")}</b><br>
 	<a href="/admin/?section=site_settings&edit_key=google_analytics_tracking_id">{_t("admin.site_settings")} (google_analytics_tracking_id)</a>.
