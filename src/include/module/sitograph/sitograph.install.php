@@ -299,5 +299,77 @@ a:active {color:#bb233a;}
     );
     api_blog_add($item, array("LoadPictures"));
 
+    // create admin manual
+    $manualTopics = array(
+        "release" => array(
+            "title" => "Sitograph CMS v.1.0 released",
+            "content" => msv_load_module_doc(ABS_INCLUDE."/module/sitograph/", "blog-release")
+        ),
+        "install" => array(
+            "title" => "Installing Sitograph CMS",
+            "preview" => "images/blog/blog_sitograph_2.jpg",
+            "content" => msv_load_module_doc(ABS_INCLUDE."/module/sitograph/", "blog-install")
+        ),
+        "folder-structure" => array(
+            "title" => _t("blog.post1"),
+            "content" => msv_load_module_doc(ABS_INCLUDE."/module/blog/", "blog-folder-structure")
+        ),
+        "getting-started" => array(
+            "title" => _t("structure.getting_started"),
+            "content" => msv_load_module_doc(ABS_INCLUDE."/module/sitograph/", "page-getting-started")
+        ),
+        "cms_file_structure" => array(
+            "title" => _t("structure.file_structure"),
+            "content" => msv_load_module_doc(ABS_INCLUDE."/module/sitograph/", "page-file-structure")
+        ),
+        "api" => array(
+            "title" => _t("structure.api"),
+            "content" => msv_load_module_doc(ABS_INCLUDE."/module/sitograph/", "page-api")
+        ),
+        "api" => array(
+            "title" => _t("blog.post3"),
+            "preview" => "images/blog/blog_3.jpg",
+            "content" => msv_load_module_doc(ABS_INCLUDE."/module/blog/", "blog-layers")
+        ),
+    );
 
+    $i = 1;
+    $tabContent = "";
+    $tabHeader = "";
+    foreach ($manualTopics as $topicName => $topicInfo) {
+        if ($i == 1) {
+            $tabContent .= "<div id=\"$topicName\" class=\"tab-pane fade in active\">";
+            $tabHeader .= "<li class=\"active\"><a data-toggle=\"tab\" href=\"#$topicName\">{$topicInfo["title"]}</a></li>";
+        } else {
+            $tabHeader .= "<li><a data-toggle=\"tab\" href=\"#$topicName\">{$topicInfo["title"]}</a></li>";
+            $tabContent .= "<div id=\"$topicName\" class=\"tab-pane fade\">";
+        }
+
+        if (!empty($topicInfo["title"])) {
+            $tabContent .= "<h1>{$topicInfo["title"]}</h1>\n";
+        }
+
+        if (!empty($topicInfo["preview"])) {
+            $tabContent .= "<p><img src='".CONTENT_URL."/".$topicInfo["preview"]."' class='img-responsive'></p>\n";
+        }
+
+        $tabContent .= "
+  {$topicInfo["content"]}
+</div>
+";
+        $i++;
+    }
+
+    $manualContent = "
+<div class='row'>
+    <div class='col-sm-8'>
+        <div class='tab-content'>$tabContent</div>
+    </div>
+    <div class='col-sm-4'>
+        <ul class='nav well well-sm'>$tabHeader</ul>
+    </div>
+</div>
+";
+    $manualPath = ABS."/content/manual.html";
+    file_put_contents($manualPath, $manualContent);
 }

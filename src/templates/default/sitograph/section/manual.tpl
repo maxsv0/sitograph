@@ -35,9 +35,9 @@
 {/if}
 
 {if $admin_manual}
-<div class="well">
+
 {$admin_manual}
-</div>
+
 {else}
 <div class="well text-danger" style="font-size: 14px;">
 manual.html {$t["not_found"]}
