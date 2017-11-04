@@ -149,9 +149,6 @@ $(document).ready(function() {
         $(this).find(".btn-primary")[0].click();
     });
 
-    var frame = $("#uploadFrame")[0];
-    uploadFrameLoad(frame);
-
     // Site structure -> hide all sub-levels
     if ($("#structure-table").size()>0) {
         $("#structure-table tr").each(function(){
@@ -209,6 +206,7 @@ $(document).ready(function() {
         }
     });
 
+
     // enable tooltips
     $('[data-toggle="tooltip"]').tooltip();
 });
@@ -258,7 +256,7 @@ function openUploadModal(x) {
     $("#iUploadFile").trigger('click');
 }
 
-function closeUploadModal(x) {
+function closeUploadModal() {
     var id = $("#iUploadField").val();
     var path = $("#uploadFilePath").val();
 
@@ -269,6 +267,8 @@ function closeUploadModal(x) {
         $("#alert-"+id).hide();
 
         $("#uploadModal").modal('hide');
+    } else {
+        alert("An error has occurred. Please reload a page.");
     }
 }
 
