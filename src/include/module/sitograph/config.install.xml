@@ -39,11 +39,14 @@
 	<file dir="module" path="sitograph/config.install.xml"/>
 	<file dir="module" path="sitograph/config.locales.xml"/>
 	<file dir="module" path="sitograph/doc/en-blog-install.html"/>
+	<file dir="module" path="sitograph/doc/ru-blog-install.html"/>
 	<file dir="module" path="sitograph/doc/en-blog-release.html"/>
 	<file dir="module" path="sitograph/doc/en-page-api.html"/>
 	<file dir="module" path="sitograph/doc/en-page-file-structure.html"/>
 	<file dir="module" path="sitograph/doc/en-page-getting-started.html"/>
 	<file dir="module" path="sitograph/doc/en-page-homepage.html"/>
+	<file dir="module" path="sitograph/doc/ru-page-homepage.html"/>
+	<file dir="module" path="sitograph/doc/ua-page-homepage.html"/>
 	<file dir="module" path="sitograph/doc/en-mail_template_header.html"/>
 	<file dir="module" path="sitograph/doc/en-mail_template_footer.html"/>
 
