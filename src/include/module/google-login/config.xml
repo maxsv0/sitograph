@@ -16,8 +16,8 @@
 	
 	<dependency module="msv-core" version="1.0" />
 	
-	<file dir="module" path="google/google.php"/>
-	<file dir="module" path="google/config.xml"/>
+	<file dir="module" path="google-login/google-login.php"/>
+	<file dir="module" path="google-login/config.xml"/>
 	<file dir="content" path="images/btn_google_signin.png"/>
 </install>
 
