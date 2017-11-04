@@ -83,7 +83,7 @@
 	<input name="field" id="iUploadField" type="hidden" value=""/>
 	<input type="submit" name="submitBtn" id="btnSubmitUpload" value="{$t["btn.upload_file"]}" class="btn btn-warning btn-block"/>
 	</form>	
-	<iframe id="uploadFrame" name="uploadFrame" src="about:blank" style="width:0;height:0;border:0px solid #fff;"></iframe>
+	<iframe id="uploadFrame" name="uploadFrame" src="about:blank" style="width:0;height:0;border:0px solid #fff;" onload="if (typeof uploadFrameLoad === 'function') uploadFrameLoad(this);"></iframe>
 	</div>
         
     <div id="uploadStatus" class="hide" style="margin-top:10px;">

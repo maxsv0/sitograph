@@ -1277,13 +1277,16 @@ function msv_get_ip() {
  * Generates sitemap using information from TABLE_SEO
  * File /sitemap.xml is updated
  *
- * @return boolean
+ * @param bool $autoUpdate call in silent mode
+ * @return bool
  */
-function msv_genegate_sitemap() {
+function msv_genegate_sitemap($autoUpdate = false) {
     $sitemapPath = ABS."/sitemap.xml";
 
     if (!is_writable($sitemapPath)) {
-        msv_message_error("Can't write to $sitemapPath");
+        if (!$autoUpdate) {
+            msv_message_error("Can't write to $sitemapPath");
+        }
         return false;
     }
 

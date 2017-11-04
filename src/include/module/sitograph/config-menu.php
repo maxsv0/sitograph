@@ -5,6 +5,14 @@ $menu_index = array();
 $menu_order = array();
 
 $submenu = array();
+$submenu["index"] = array(
+    "name" => _t("admin.homepage"),
+    "access" => "admin",
+    "url" => "/admin/",
+    "file" => "index.tpl",
+    "title" => _t("admin.homepage_title"),
+    "orderID" => 1,
+);
 $submenu["realtime"] = array(
     "name" => _t("admin.realtime"),
     "access" => "admin",
@@ -315,7 +323,7 @@ $menu_ar["history"] = array(
 $menu_index = array_merge($menu_index, array_keys($menu_ar));
 
 
-/// reorder menu accrding to adminMenuOrder
+/// reorder menu according to adminMenuOrder
 $menu_order_index = array();
 foreach ($menu_ar as $menuID => $menuItem) {
     $num = 50;

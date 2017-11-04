@@ -62,7 +62,7 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
             }
         }
 
-        msv_genegate_sitemap();
+        msv_genegate_sitemap(true);
     } else {
         // extract data from request for corresponding table
         $item = msv_process_tabledata(TABLE_SEO, "form_seo_");
@@ -71,7 +71,7 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
         // execute request
         $resultSave = msv_add_seo($item);
         if ($_POST["form_published"] == 1) {
-            msv_genegate_sitemap();
+            msv_genegate_sitemap(true);
         }
     }
     if (!$resultSave["ok"]) {

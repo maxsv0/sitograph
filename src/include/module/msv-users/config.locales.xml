@@ -38,7 +38,7 @@
 		<field name="msg.users.nopassword2" value="Enter password confirmation"/>
 		<field name="msg.users.password_notmatch" value="Password and confirmation do not match"/>
 		<field name="msg.users.email_exists" value="User with this email already exists"/>
-		<field name="msg.users.wrong_password" value="Login error. Please try again"/>
+		<field name="msg.users.wrong_password" value="Login error. Wrong password or username"/>
 		<field name="msg.users.saved" value="Successfully saved"/>
 		<field name="msg.users.error_sending" value="Error sending email"/>
 		<field name="msg.users.email_verified" value="Email is verified"/>

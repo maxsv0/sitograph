@@ -70,7 +70,9 @@ if (!empty($admin_table)) {
         }
     }
 }
-
+if (empty($menuSubActive)) {
+    $menuSubActive = "index";
+}
 msv_assign_data("admin_section", $section);
 msv_assign_data("admin_menu_active", $menuActive);
 msv_assign_data("admin_submenu_active", $menuSubActive);
