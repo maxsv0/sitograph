@@ -29,7 +29,7 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
                 $rowSEO["sitemap"] = $_POST["form_published"] == 1 ? 1:0;
 				
 				$resultSave = db_update_row(TABLE_SEO, $rowSEO);
-                msv_genegate_sitemap();
+                msv_genegate_sitemap(true);
 			} else {
                 // extract data from request for corresponding table
                 $item = msv_process_tabledata(TABLE_SEO, "form_seo_");
@@ -38,7 +38,7 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
                 $resultSave = msv_add_seo($item);
 
                 if ($_POST["form_published"] == 1) {
-                    msv_genegate_sitemap();
+                    msv_genegate_sitemap(true);
                 }
 			}
 		}
