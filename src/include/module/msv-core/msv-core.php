@@ -675,37 +675,41 @@ function msv_output_admin_modulesetup() {
     $list = $website->modules;
 
     $strOut  = "";
-    $strOut .= "<div class=''>";
+    if (!isset($_GET["module"])) {
+        $strOut .= "<div class=''>";
+        $strOut .= "<h4>";
+        $strOut .= "Repository: ";
+        $headers = get_headers(REP);
 
-    $strOut .= "<p class='pull-right'>";
-    $strOut .= "<a href='/admin/?section=module_settings&module_install' class='btn btn-lg btn-danger'>install new</a> &nbsp; &nbsp;";
-    $strOut .= "<a href='/admin/?section=module_settings&module_update_all' class='btn btn-lg btn-danger'>update all</a> &nbsp; &nbsp;";
-    $strOut .= "</p>";
-
-    $strOut .= "<h3>";
-    $strOut .= "Repository: ";
-    $headers = get_headers(REP);
-
-    if(strpos($headers[0],'200')===false) {
-        $strOut .= "<strong class='text-danger'>offline</strong>";
-    } else {
-        $strOut .= "<strong class='text-success'>online</strong>";
-    }
-    $strOut .= "</h3>";
-
-    $strOut .= "<div>";
-    $strOut .= "<h3 class='pull-left'>Nagivate to module:</h3>";
-    foreach ($list as $module) {
-        $obj = $website->{$module};
-        if ($obj->enabled) {
-            $strOut .= "<a href='/admin/?section=module_settings&module=".$obj->name."' class='btn btn-lg btn-primary".(!empty($_GET["module"]) && $_GET["module"] === $module ? " active" : "")."'>$module</a>";
+        if(strpos($headers[0],'200')===false) {
+            $strOut .= "<strong class='text-danger'>offline</strong>";
         } else {
-            $strOut .= "<a href='/admin/?section=module_settings&module=".$module."' class='btn btn-lg btn-default".(!empty($_GET["module"]) && $_GET["module"] === $module ? " active" : "")."''>$module</a>";
+            $strOut .= "<strong class='text-success'>online</strong>";
         }
-        $strOut .= "&nbsp; &nbsp;";
+        $strOut .= "</h4>";
+        $strOut .= "<p><b>".REP."</b></p>";
+
+        $strOut .= "<p>";
+        $strOut .= "<a href='/admin/?section=module_settings&module_install' class='btn btn-lg btn-danger'><span class='glyphicon glyphicon-download'></span> install new module</a> &nbsp; &nbsp;";
+        $strOut .= "<a href='/admin/?section=module_settings&module_update_all' class='btn btn-lg btn-danger'><span class='glyphicon glyphicon-download-alt'></span> update all</a> &nbsp; &nbsp;";
+        $strOut .= "</p>";
     }
-    $strOut .= "</div>";
-    $strOut .= "<br>";
+
+    if (!isset($_GET["module_install"])) {
+        $strOut .= "<div>";
+        $strOut .= "<h4 class='pull-left'>Navigate to module:</h4>";
+        foreach ($list as $module) {
+            $obj = $website->{$module};
+            if ($obj->enabled) {
+                $strOut .= "<a href='/admin/?section=module_settings&module=" . $obj->name . "' class='btn btn-primary" . (!empty($_GET["module"]) && $_GET["module"] === $module ? " active" : "") . "'>$module</a>";
+            } else {
+                $strOut .= "<a href='/admin/?section=module_settings&module=" . $module . "' class='btn btn-default" . (!empty($_GET["module"]) && $_GET["module"] === $module ? " active" : "") . "''>$module</a>";
+            }
+            $strOut .= "&nbsp; &nbsp;";
+        }
+        $strOut .= "</div>";
+        $strOut .= "<br>";
+    }
     $module = $_GET["module"];
     if (!empty($module)) {
         $strOut .= "<div class='infowell'>".msv_build_module_info($module)."</div>";
