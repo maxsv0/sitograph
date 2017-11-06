@@ -162,8 +162,7 @@ if ($resultQuery["ok"]) {
 			if ($field["select-from"]["source"] === "table") {
 				$cfg = msv_get_config_table($field["select-from"]["name"]);
 				// TODO: multi index support
-				// index from config?
-				$index = "id";
+				$index = $cfg["index"];
 				$title = $cfg["title"];
 				
 				$queryData = db_get_list($field["select-from"]["name"], "", "`$title` asc");
