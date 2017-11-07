@@ -17,6 +17,7 @@
 		<field name="btn.upload_file" value="Upload file"/>
 		<field name="btn.generate" value="Generate"/>
 		<field name="btn.export_table" value="Export table"/>
+		<field name="btn.export_table_full" value="Export full data"/>
 		<field name="btn.goto" value="Goto"/>
 	    <field name="btn.remove_confirm" value="Are you sure you want to delete?"/>
 		<field name="btn.back_to_admin" value="Back to «Sitograph»"/>
@@ -135,6 +136,7 @@
 		<field name="btn.upload_file" value="Загрузить файл"/>
 		<field name="btn.generate" value="Сгенерировать"/>
 		<field name="btn.export_table" value="Экспорт таблицы"/>
+		<field name="btn.export_table_full" value="Полный экспорт"/>
 		<field name="btn.goto" value="Перейти к"/>
 		<field name="btn.remove_confirm" value="Вы уверены что хотите удалить?"/>
 		<field name="btn.back_to_admin" value="Вернуться в «Сайтограф»"/>
@@ -263,6 +265,7 @@
 		<field name="btn.upload_file" value="Завантажити файл"/>
 		<field name="btn.generate" value="Сгенерувати"/>
 		<field name="btn.export_table" value="Експорт таблиці"/>
+		<field name="btn.export_table_full" value="Повный Експорт"/>
 		<field name="btn.goto" value="Перейти до"/>
 		<field name="btn.remove_confirm" value="Ви впевнені що хочете видалити?"/>
 		<field name="btn.back_to_admin" value="Вернуться в «Сайтограф»"/>
