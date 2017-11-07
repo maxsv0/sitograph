@@ -145,10 +145,6 @@ $(document).ready(function() {
         }
     });
 
-    $(".table-module tr").dblclick(function() {
-        $(this).find(".btn-primary")[0].click();
-    });
-
     // Site structure -> hide all sub-levels
     if ($("#structure-table").size()>0) {
         $("#structure-table tr").each(function(){
@@ -214,7 +210,6 @@ $(document).ready(function() {
 function removeLink(x) {
     $('#path-'+x).val('');
     $('#img-'+x).css('opacity', "0.2");
-    $('#value-'+x).css('text-decoration', "line-through");
 
     return true;
 }
@@ -262,7 +257,6 @@ function closeUploadModal() {
 
     if (id && path) {
         $("#img-"+id).attr("src", path);
-        $("#value-"+id).html(path);
         $("#path-"+id).val(path);
         $("#alert-"+id).hide();
 

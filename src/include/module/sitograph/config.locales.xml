@@ -5,7 +5,7 @@
 	<locale name="en">
 		<field name="cms" value="Content Management System"/>
 		<field name="msg.module_handler_not_found" value="Module handler not found"/>
-		<field name="msg.no_stored_image" value="No stored image"/>
+		<field name="msg.no_stored_image" value="File not found"/>
 		<field name="msg.sitemap_generated" value="Sitemap.xml successfully created"/>
 		<field name="msg.ga_not_configured" value="Google Analytics not configured. Specify Tracking ID to start gathering statistics."/>
 		<field name="msg.ga_api_not_configured" value="Google Analytics API not configured. "/>
@@ -31,7 +31,7 @@
 		<field name="form.wellcome" value="Log in to your account —"/>
 		<field name="form.login" value="Login"/>
 		<field name="form.password" value="Password"/>
-		<field name="form.file" value="File:"/>
+		<field name="form.file" value="File path:"/>
 		<field name="form.server_path" value="Server path"/>
 		<field name="form.select_file" value="Select file"/>
 		<field name="form.image_max_size" value="Image max size"/>
