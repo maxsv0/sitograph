@@ -345,7 +345,6 @@ ul.nav li a:hover {
     color: #7c7c7c;
     height: 30px;
     line-height: 25px;
-    padding: 2px 10px 2px 10px;
     font-family: Verdana;
     font-size: 12px;
     border-radius: 4px;
@@ -414,6 +413,13 @@ table.table-module .colactive {
 .form-control {
     background-color: #f9f9f9;
     box-shadow: 1px 1px 1px #eeeeee;
+}
+
+.form-control-text {
+    background: #fff !important;
+    border: 0 !important;
+    display: inline;
+    width: 70%;
 }
 
 .mce-tinymce {

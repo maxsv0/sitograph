@@ -750,7 +750,7 @@ function msv_process_tabledata($table, $prefix = "") {
             case "file":
                 // if string passed - store it
                 // if _FILES entry exists then store file first
-                if (!empty($value)) {
+                if (isset($_REQUEST[$prefix.$item["name"]])) {
                     if (strpos($value, CONTENT_URL) === 0) {
                         $value = substr($value, strlen(CONTENT_URL)+1);
                     }

@@ -14,13 +14,8 @@
 
 
 <p>
-{_t("form.file")} 
-<span id="value-{$item_id}">
-{if $value}
-{$value}
-{else}
-<i>{_t("msg.no_stored_image")}</i>
-{/if}
+{_t("form.file")}
+    <input type="text" class="form-control form-control-text btn-xs" name="{$form_id}_{$item_id}" id="path-{$item_id}" value="{$value}" placeholder="{_t("msg.no_stored_image")}">
 </span>
 
 {if !$readonly}
@@ -37,7 +32,6 @@
 </p>
 {/if}
 
-<input type="text" class="hide" name="{$form_id}_{$item_id}" id="path-{$item_id}" value="{$value}">
 <input type="text" class="hide" id="aspectRatio-{$item_id}" value="{$itemField["max-width"]/$itemField["max-height"]}">
 <input type="text" class="hide" id="width-{$item_id}" value="{$itemField["max-width"]}">
 <input type="text" class="hide" id="height-{$item_id}" value="{$itemField["max-height"]}">

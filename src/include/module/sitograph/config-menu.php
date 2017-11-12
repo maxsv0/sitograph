@@ -149,6 +149,11 @@ foreach ($this->website->modules as $module) {
                 "file" => "custom.tpl",
                 "title" => _t("module.".$module->name)." - "._t("table.".$name)
             );
+
+            $handlerCustom = "module-".$module->name.".php";
+            if (file_exists(ABS_MODULE."/sitograph/".$handlerCustom)) {
+                $submenu[$name]["handler"] = $handlerCustom;
+            }
         }
         $menu_ar[$module->name] = array(
             "name" => _t("module.".$module->name),
