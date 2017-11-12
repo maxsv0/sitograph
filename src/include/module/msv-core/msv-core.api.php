@@ -148,7 +148,7 @@ function api_request_cron($module) {
             $tm_start = time();
 
             if (!empty($rowJob["url_local"])) {
-                $url = "http://localhost".$rowJob["url_local"]."&ajaxcall=1";
+                $url = HOME_LINK.$rowJob["url_local"]."&ajaxcall=1";
                 $cont = file_get_contents($url);
                 $result = json_decode($cont, true);
             } else {
