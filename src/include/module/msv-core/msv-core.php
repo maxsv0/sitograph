@@ -808,12 +808,13 @@ function msv_build_module_info($module) {
   <li><a data-toggle="tab" href="#install">Install</a></li>
   <li><a data-toggle="tab" href="#locales">Locales</a></li>
   <li><a data-toggle="tab" href="#php">Custom PHP</a></li>
+  <li><a data-toggle="tab" href="#actions">'._t("actions").'</a></li>
 </ul>
 
 <div class="tab-content">
   <div id="config" class="tab-pane fade in active">
     <h3>Module Configuration</h3>
-    <table class="table">
+    <table class="table table-hover">
     <tr><th>Parameter</th><th>Value</th></tr>
 ';
     foreach ($module_params as $param) {
@@ -824,15 +825,25 @@ function msv_build_module_info($module) {
     $str .= '
     </table>
   </div>
-  <div id="tables" class="tab-pane fade">
-    <h3>Tables used by module</h3>
-    <table class="table">
-    <tr><th>Table Definition</th><th>Version</th></tr>
-';
+  <div id="tables" class="tab-pane fade">';
     foreach ($objModule->tables as $tableName => $tableInfo) {
-        //$str .= "<tr><td>".$tableInfo["module"]."</td><td>".$tableInfo["version"]."</td></tr>\n";
+        $str .= "<h3>Table Definition</h3>";
+        $str .= "<table class=\"table table-hover\">
+    <tr><th>Parameter</th><th>Value</th></tr>";
+        $str .= "<tr><td>Table Name</td><td>".$tableInfo["name"]."</td></tr>\n";
+        $str .= "<tr><td>Index field</td><td>".$tableInfo["index"]."</td></tr>\n";
+        $str .= "<tr><td>Title field</td><td>".$tableInfo["title"]."</td></tr>\n";
+        $str .= "<tr><td>UseSEO</td><td>".$tableInfo["useseo"]."</td></tr>\n";
+        $str .= "</table>\n";
+
+        $str .= "<h3>Table Fields</h3>";
+        $str .= "<table class=\"table table-hover\">
+    <tr><th>Name</th><th>Type</th><th>ListSkip</th></tr>";
+        foreach ($tableInfo["fields"] as $fieldInfo) {
+            $str .= "<tr><td>".$fieldInfo["name"]."</td><td>".$fieldInfo["type"]."</td><td>".$fieldInfo["listskip"]."</td></tr>\n";
+        }
+        $str .= "</table>\n";
     }
-    $str .= "</table>\n";
 
     if (empty($objModule->tables)) {
         $str .= "<div class='alert alert-warning'>No tables found for this module</div>";
@@ -841,7 +852,7 @@ function msv_build_module_info($module) {
   </div>
   <div id="install" class="tab-pane fade">
     <h3>Module dependency</h3>
-    <table class="table">
+    <table class="table table-hover">
     <tr><th>Name</th><th>Version</th></tr>
 ';
     foreach ($objModule->dependency as $fileInfo) {
@@ -850,7 +861,7 @@ function msv_build_module_info($module) {
     $str .= '
     </table>
     <h3>List of a files</h3>
-    <table class="table">
+    <table class="table table-hover">
     <tr><th>File Path</th><th>Size</th><th>Access</th></tr>
 ';
     foreach ($objModule->files as $fileInfo) {
@@ -882,7 +893,7 @@ function msv_build_module_info($module) {
   </div>
   <div id="locales" class="tab-pane fade">
     <h3>Locales and texts</h3>
-    <table class="table">
+    <table class="table table-hover">
     <tr><th>Text ID</th><th>Value</th></tr>
 ';
     foreach ($objModule->locales as $textID => $textValue) {
@@ -926,6 +937,17 @@ function msv_build_module_info($module) {
   </div>
 </form>
   </div>
+  
+  <div id="actions" class="tab-pane fade">';
+    foreach ($objModule->tables as $tableName => $tableInfo) {
+        $str .= "<h3>Table '".$tableInfo["name"]."'</h3>";
+        $str .= "<p>";
+        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=remove' class='btn btn-danger btn-xs'>remove table</a> ";
+        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=truncate' class='btn btn-danger btn-xs'>truncate table</a> ";
+        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=create' class='btn btn-primary btn-xs'>create table</a> ";
+        $str .= "</p>";
+    }
+  $str .=  '</div>
 </div>
 
 ';
