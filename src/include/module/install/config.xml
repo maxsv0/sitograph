@@ -17,6 +17,7 @@
 	
 	<file dir="module" path="install/install.php"/>
 	<file dir="module" path="install/config.xml"/>
+	<file dir="template" path="default/install.tpl"/>
 </install>
 
 </document>

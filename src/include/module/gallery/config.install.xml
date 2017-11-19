@@ -29,6 +29,7 @@
 	<file dir="template" path="default/gallery/details.tpl"/>
 	<file dir="template" path="default/gallery/album-list.tpl"/>
 	<file dir="template" path="default/gallery/album-preview.tpl"/>
+	<file dir="template" path="default/widget/gallery-album.tpl"/>
 	<file dir="content" path="images/gallery/gallery1_photo1.jpg"/>
 	<file dir="content" path="images/gallery/gallery1_photo2.jpg"/>
 	<file dir="content" path="images/gallery/gallery1_photo3.jpg"/>
