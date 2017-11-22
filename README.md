@@ -4,30 +4,27 @@
 ```
 wget https://github.com/maxsv0/sitograph/archive/v1.0.zip -O sitograph-v1.0.zip
 unzip sitograph-v1.0.zip
-```
-
-### Open Sitograph folder
-```
 cd sitograph-1.0
 ```
 
-### Copy Sitograph files using Install script
+### Run Install script to copy Sitograph files to the web root directory (default: /var/www/html).
 ```
 chmod +x scripts/install.sh
 sudo ./scripts/install.sh /var/www/html
 ```
 
-### Enable Sitograph Apache configuration file and required modules
+### Copy Apache configuration file (sitograph.conf) and enable required modules
 ```
 sudo cp scripts/sitograph.conf  /etc/apache2/conf-available/
 sudo a2enconf sitograph
-sudo a2enmod rewrite headers expires deflate
+sudo a2enmod rewrite headers expires deflate pagespeed
 sudo service apache2 restart
 ```
 
 ## Sitograph Dependencies
 
-Sitograph is designed to use MySQL database and run on Apache Web Server
+Sitograph is designed to use MySQL database and run on Apache Web Server.
+ModPagespeed is used to optimize content delivered to the browser.
 
 ### To Create MySQL database run
 ```
@@ -51,9 +48,23 @@ sudo apt-get update
 sudo apt-get -y install php5-gd php5-curl
 ```
 
+### To Install PageSpeed Module x64
+```
+wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb
+sudo dpkg -i mod-pagespeed-*.deb 
+sudo service apache2 restart
+```
+
+### To Install PageSpeed Module x32
+```
+wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_i386.deb
+sudo dpkg -i mod-pagespeed-*.deb 
+sudo service apache2 restart
+```
+
 # Configure server and install Sitograph CMS
 
-## To Install Sitograph CMS with all dependencies run
+## Install Sitograph CMS with all dependencies run
 ```
 wget -O "install-server.sh" "https://raw.githubusercontent.com/maxsv0/sitograph/master/scripts/install-server.sh"
 chmod +x install-server.sh
@@ -70,5 +81,5 @@ Server installation script steps:
 * download Sitograph CMS v1.0 release archive from GitHub
 * install Sitograph to /var/www/html
 * enable Sitograph Apache configuration file
-* (optional) run CMS installation wizard with common setup - Note! This is disabled by default. Uncomment lines in install-server.sh to enable this step
+* run CMS installation wizard with common setup
 * output generated passwords

@@ -12,3 +12,11 @@ cp -ar src/templates/default/.  $1/templates/custom/
 
 chown -R www-data:www-data $1
 echo "Permissions set www-data:www-data"
+
+echo "Enable Apache configuration and modules"
+cp sitograph.conf  /etc/apache2/conf-available/
+a2enconf sitograph
+a2enmod rewrite headers expires deflate pagespeed
+service apache2 restart
+
+echo "Install finished"
