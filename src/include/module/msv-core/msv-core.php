@@ -700,8 +700,8 @@ function msv_output_admin_modulesetup() {
     }
 
     if (!isset($_GET["module_install"])) {
-        $strOut .= "<div>";
-        $strOut .= "<h4 class='pull-left'>Navigate to module:</h4>";
+        $strOut .= "<div style='line-height:40px;'>";
+        $strOut .= "<h4 class='pull-left'>Navigate to module:</h4>&nbsp;&nbsp;";
         foreach ($list as $module) {
             $obj = $website->{$module};
             if ($obj->enabled) {
@@ -801,7 +801,7 @@ function msv_build_module_info($module) {
         "accessAPIList", "accessAPIDetails", "accessAPIAdd", "accessAPIEdit", "accessAPICategory", "accessAPIAlbum",
     );
 
-    $str =  "<h2>".$objModule->title."</h2>";
+    $str =  "<h1 class='text-center'>".$objModule->title."</h1>";
     $str .= '<ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#config">Config</a></li>
   <li><a data-toggle="tab" href="#tables">Tables</a></li>
@@ -813,9 +813,9 @@ function msv_build_module_info($module) {
 
 <div class="tab-content">
   <div id="config" class="tab-pane fade in active">
-    <h3>Module Configuration</h3>
+    <h4>Module Configuration</h4>
     <table class="table table-hover">
-    <tr><th>Parameter</th><th>Value</th></tr>
+    <tr><th class="col-sm-5">Parameter</th><th>Value</th></tr>
 ';
     foreach ($module_params as $param) {
         $value = $objModule->{$param};
@@ -827,18 +827,18 @@ function msv_build_module_info($module) {
   </div>
   <div id="tables" class="tab-pane fade">';
     foreach ($objModule->tables as $tableName => $tableInfo) {
-        $str .= "<h3>Table Definition</h3>";
+        $str .= "<h4>Table Definition</h4>";
         $str .= "<table class=\"table table-hover\">
-    <tr><th>Parameter</th><th>Value</th></tr>";
+    <tr><th class=\"col-sm-5\">Parameter</th><th>Value</th></tr>";
         $str .= "<tr><td>Table Name</td><td>".$tableInfo["name"]."</td></tr>\n";
         $str .= "<tr><td>Index field</td><td>".$tableInfo["index"]."</td></tr>\n";
         $str .= "<tr><td>Title field</td><td>".$tableInfo["title"]."</td></tr>\n";
         $str .= "<tr><td>UseSEO</td><td>".$tableInfo["useseo"]."</td></tr>\n";
         $str .= "</table>\n";
 
-        $str .= "<h3>Table Fields</h3>";
+        $str .= "<h4>Table Fields</h4>";
         $str .= "<table class=\"table table-hover\">
-    <tr><th>Name</th><th>Type</th><th>ListSkip</th></tr>";
+    <tr><th class=\"col-sm-5\">Name</th><th class=\"col-sm-4\">Type</th><th class=\"col-sm-3\">ListSkip</th></tr>";
         foreach ($tableInfo["fields"] as $fieldInfo) {
             $str .= "<tr><td>".$fieldInfo["name"]."</td><td>".$fieldInfo["type"]."</td><td>".$fieldInfo["listskip"]."</td></tr>\n";
         }
@@ -851,18 +851,18 @@ function msv_build_module_info($module) {
     $str .= '
   </div>
   <div id="install" class="tab-pane fade">
-    <h3>Module dependency</h3>
+    <h4>Module dependency</h4>
     <table class="table table-hover">
-    <tr><th>Name</th><th>Version</th></tr>
+    <tr><th class="col-sm-5">Name</th><th>Version</th></tr>
 ';
     foreach ($objModule->dependency as $fileInfo) {
         $str .= "<tr><td>".$fileInfo["module"]."</td><td>".$fileInfo["version"]."</td></tr>\n";
     }
     $str .= '
     </table>
-    <h3>List of a files</h3>
+    <h4>List of a files</h4>
     <table class="table table-hover">
-    <tr><th>File Path</th><th>Size</th><th>Access</th></tr>
+    <tr><th class="col-sm-7">File Path</th><th>Size</th><th>Access</th></tr>
 ';
     foreach ($objModule->files as $fileInfo) {
         $trStyle = "";
@@ -892,9 +892,9 @@ function msv_build_module_info($module) {
     </table>
   </div>
   <div id="locales" class="tab-pane fade">
-    <h3>Locales and texts</h3>
+    <h4>Locales and texts</h4>
     <table class="table table-hover">
-    <tr><th>Text ID</th><th>Value</th></tr>
+    <tr><th class="col-sm-5">Text ID</th><th>Value</th></tr>
 ';
     foreach ($objModule->locales as $textID => $textValue) {
         $str .= "<tr><td>$textID</td><td>$textValue</td></tr>\n";
@@ -907,7 +907,7 @@ function msv_build_module_info($module) {
     $str .= '
   </div>
   <div id="php" class="tab-pane fade">
-    <h3>Custom PHP</h3>
+    <h4>Custom PHP</h4>
 
 <form class="form-horizontal">
   <div class="form-group">
@@ -939,13 +939,29 @@ function msv_build_module_info($module) {
   </div>
   
   <div id="actions" class="tab-pane fade">';
+    $str .= "<h4>Module actions</h4>";
+    $str .= "<p>";
+    $str .= "<a href='/admin/?module_reinstall=".$objModule->name."' class='btn btn-danger btn-lg' onclick=\"if(!confirm('Are you sure? Current module files will be overwritten.')) return false;\">reinstall</a> ";
+    if ($objModule->enabled) {
+        $str .= "<a href='/admin/?module_disable=".$objModule->name."' class='btn btn-danger btn-lg'>disable module</a>";
+    } else {
+        $str .= "<a href='/admin/?module_enable=".$objModule->name."' class='btn btn-danger btn-lg'>enable module</a>";
+    }
+    $str .= "&nbsp; &nbsp; ";
+    $str .= "<a href='/admin/?module_remove=".$objModule->name."' class='btn btn-danger btn-lg' onclick=\"if(!confirm('ALL DATA WILL BE LOST! Are you sure?')) return false;\">remove module</a> &nbsp; &nbsp;";
+    $str .= "</p>";
+
+    $str .= "<h4>Table actions</h4>";
     foreach ($objModule->tables as $tableName => $tableInfo) {
-        $str .= "<h3>Table '".$tableInfo["name"]."'</h3>";
         $str .= "<p>";
-        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=remove' class='btn btn-danger btn-xs'>remove table</a> ";
-        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=truncate' class='btn btn-danger btn-xs'>truncate table</a> ";
-        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=create' class='btn btn-primary btn-xs'>create table</a> ";
+        $str .= "<b class='col-sm-5'>".$tableInfo["name"]."</b>";
+        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=remove#actions' class='btn btn-danger'>remove table</a> ";
+        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=truncate#actions' class='btn btn-danger'>truncate table</a> ";
+        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=create#actions' class='btn btn-primary'>create table</a> ";
         $str .= "</p>";
+    }
+    if (empty($objModule->tables)) {
+        $str .= "<div class='alert alert-warning'>No tables found for this module</div>";
     }
   $str .=  '</div>
 </div>

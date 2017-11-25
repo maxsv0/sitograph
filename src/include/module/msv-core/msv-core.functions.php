@@ -616,18 +616,21 @@ function msv_check_files() {
         $file = (string)$file;
         if (strpos($file, "/include/custom/") !== false) continue;
         if (strpos($file, ".git") !== false) continue;
+        if (strpos($file, ".DS_Store") !== false) continue;
         $fileList[] = $file;
     }
 
+    $strOut = "";
     foreach ($fileList as $file) {
-        echo "$file ";
+        $strOut .= "$file ";
         if (array_key_exists($file, $fileModuleList)) {
-            echo "<span style='color:green;'>".$fileModuleList[$file]." - ok</span>";
+            $strOut .= "<span style='color:green;'>".$fileModuleList[$file]." - ok</span>";
         } else {
-            echo "<span style='color:red;'>NOT FOUND</span>";
+            $strOut .= "<span style='color:red;'>NOT FOUND</span>";
         }
-        echo "<br>";
+        $strOut .= "<br>";
     }
+    return $strOut;
 }
 
 /**
