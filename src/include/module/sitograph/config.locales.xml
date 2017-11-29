@@ -22,7 +22,7 @@
 	    <field name="btn.remove_confirm" value="Are you sure you want to delete?"/>
 		<field name="btn.back_to_admin" value="Back to «Sitograph»"/>
 
-		<field name="title.back_to_admin" value="Administrative view"/>
+		<field name="title.back_to_admin" value="Manage website content"/>
 		<field name="title.upload_files" value="Upload files"/>
 		<field name="title.upload_step1" value="1. Select file"/>
 		<field name="title.upload_step2" value="2. File uploaded automatically"/>

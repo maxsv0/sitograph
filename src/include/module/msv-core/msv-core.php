@@ -631,7 +631,7 @@ function msv_output_admin_menu() {
     $pageInfo = $scriptTime." sec";
 
     $strOut = '<table width="100%" cellpadding="0" cellspacing="0" class="admin_panel">';
-    $strOut .= '<tbody><tr><td align="left" width="300">';
+    $strOut .= '<tbody><tr><td align="left" width="30%">';
     $strOut .= '<a href="/admin/?toggle_edit_mode" class="link-dashed">Edit Mode</a> ';
 
     $edit_mode = msv_get_config("edit_mode");
@@ -648,12 +648,12 @@ function msv_output_admin_menu() {
     $strOut .= '<span class="admin_title">'._t("btn.back_to_admin").'</span>';
     $strOut .= '</a>';
     $strOut .= '</p></td>';
-    $strOut .= '<td align="center" width="200">';
+    $strOut .= '<td align="center" width="20%">';
     if ($edit_mode) {
         $strOut .= "<a href='/admin/?section=editor&edit_file=/templates/".$templateInfo."&edit_mode'>";
         $strOut .= "<small>$templateInfo <span class='glyphicon glyphicon-edit'></span></small></a>";
     }
-    $strOut .=' <td align="center" width="100">';
+    $strOut .=' <td align="center" width="10%">';
     if ($edit_mode) {
         $strOut .= "<a href='#' data-toggle=\"collapse\" data-target=\"#debugLog\"><small class='link-dashed'>$pageInfo</small><span class=\"caret\"></span></a>";
     }
