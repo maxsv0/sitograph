@@ -42,17 +42,17 @@ sh scripts/install.sh /var/www/html
 sh scripts/mysqlcreate.sh root $MASTER_PASS sitograph $DB_PASS
 
 # run CMS install
-wget -O "result.html" "http://localhost/?install_auto=1&install_step=1&msv_DB_LOGIN=sitograph&msv_DB_PASSWORD=$DB_PASS&msv_DB_NAME=sitograph&msv_LANGUAGES=en&modules_local[]=blog&modules_local[]=gallery&modules_local[]=fancybox&modules_local[]=tinymce&modules_local[]=cropper&modules_local[]=msv-core&modules_local[]=msv-api&modules_local[]=msv-seo&modules_local[]=msv-users&modules_local[]=search&modules_local[]=sitograph&modules_local[]=google-analytics&modules_local[]=theme-default&admin_login=admin&admin_password=$ADMIN_PASS&admin_create=1"
+wget -O "result.html" "http://localhost/?install_auto=1&install_step=1&msv_DB_LOGIN=sitograph&msv_DB_PASSWORD=$DB_PASS&msv_DB_NAME=sitograph&msv_LANGUAGES=en&modules_local[]=blog&modules_local[]=gallery&modules_local[]=fancybox&modules_local[]=tinymce&modules_local[]=cropper&modules_local[]=msv-core&modules_local[]=msv-api&modules_local[]=msv-seo&modules_local[]=msv-users&modules_local[]=search&modules_local[]=google-analytics&modules_local[]=theme-default&modules_local[]=sitograph&admin_login=admin@sitograph.loc&admin_password=$ADMIN_PASS&admin_create=1"
 cat result.html
 
 # done!
 echo "Environment Install Successful."
-echo "----------------------------------"
+echo "--------------------------------------------"
 echo "Mysql Root password: $MASTER_PASS"
-echo "Mysql user: sitograph"
-echo "Mysql user password: $DB_PASS"
-
+echo "Mysql Sitograph user: sitograph"
+echo "Mysql Sitograph user password: $DB_PASS"
+echo "--------------------------------------------"
 echo "Sitograph Install Successful."
-echo "----------------------------------"
-echo "Administrator login: admin"
+echo "--------------------------------------------"
+echo "Administrator login: admin@sitograph.loc"
 echo "Administrator password: $ADMIN_PASS"
