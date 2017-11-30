@@ -753,31 +753,28 @@ function msv_process_tabledata($table, $prefix = "") {
             case "file":
                 // if string passed - store it
                 // if _FILES entry exists then store file first
-                if (isset($_REQUEST[$prefix.$item["name"]])) {
+                if (array_key_exists($prefix.$item["name"], $_FILES) && !empty($_FILES[$prefix.$item["name"]]["tmp_name"])) {
+                    $type = $_FILES[$prefix.$item["name"]]["type"];
+                    $path = $_FILES[$prefix.$item["name"]]["tmp_name"];
+                    $name = $_FILES[$prefix.$item["name"]]["name"];
+
+                    // store file
+                    if ($item["type"] === "pic") {
+                        $fileResult = msv_store_pic($path, $type, $name, $table, $item["name"]);
+                    } else {
+                        $fileResult = msv_store_file($path, $type, $name, $table, $item["name"]);
+                    }
+                    if (!is_numeric($fileResult)) {
+                        $dataItem[$item["name"]] = $fileResult;
+                    } else {
+                        // error storing file
+                        $dataItem[$item["name"]] = "";
+                    }
+                } elseif (isset($_REQUEST[$prefix.$item["name"]])) {
                     if (strpos($value, CONTENT_URL) === 0) {
                         $value = substr($value, strlen(CONTENT_URL)+1);
                     }
                     $dataItem[$item["name"]] = $value;
-                } else {
-                    if (array_key_exists($prefix.$item["name"], $_FILES)) {
-                        $type = $_FILES[$prefix.$item["name"]]["type"];
-                        $path = $_FILES[$prefix.$item["name"]]["tmp_name"];
-                        $name = $_FILES[$prefix.$item["name"]]["name"];
-                        $typeExt = msv_format_mimetype($type);
-                        if (!empty($typeExt)) {
-                            // store file
-                            if ($item["type"] === "pic") {
-                                $fileResult = msv_store_pic($path, $typeExt, $name, $table, $item["name"]);
-                            } else {
-                                $fileResult = msv_store_file($path, $typeExt, $name, $table, $item["name"]);
-                            }
-                            if (!is_numeric($fileResult)) {
-                                $dataItem[$item["name"]] = $fileResult;
-                            } else {
-                                // error storing file
-                            }
-                        }
-                    }
                 }
                 break;
             case "updated":
