@@ -1,7 +1,7 @@
 {if $item_id}
 
 <div class="form-group">
-{if $item_type === "pic" || $item_type === "doc" || $item_type === "text"}
+{if $item_type === "file" || $item_type === "pic" || $item_type === "doc" || $item_type === "text"}
     <label for="i{$item_id}" class="col-sm-12 control-label" style="font-size: 15px; margin-bottom:5px;">
     {_t("table.$admin_table.$item_name")}
     {if $item_type === "pic"}
@@ -88,7 +88,7 @@
 	{include "$themePath/sitograph/fields/field-default.tpl"}
 	
 {/if}
-{if !($item_type === "pic" || $item_type ==="doc" || $item_type ==="text")}
+{if !($item_type === "file" || $item_type === "pic" || $item_type ==="doc" || $item_type ==="text")}
     <label for="i{$item_id}" class="col-sm-6 control-label">
     
     {if $item_name}{_t("table.$admin_table.$item_name")}{/if}
