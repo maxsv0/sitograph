@@ -1,20 +1,20 @@
 # Install Sitograph CMS
 
-### Download the latest version of Sitograph CMS and unzip archive
-```
+### Download the latest version of Sitograph CMS and unzip the archive
+```bash
 wget https://github.com/maxsv0/sitograph/archive/v1.0.zip -O sitograph-v1.0.zip
 unzip sitograph-v1.0.zip
 cd sitograph-1.0
 ```
 
 ### Run Install script to copy Sitograph files to the web root directory (default: /var/www/html).
-```
+```bash
 chmod +x scripts/install.sh
 sudo ./scripts/install.sh /var/www/html
 ```
 
-### Copy Apache configuration file (sitograph.conf) and enable required modules
-```
+### Enable Apache configuration file (sitograph.conf) and enable required modules
+```bash
 sudo cp scripts/sitograph.conf  /etc/apache2/conf-available/
 sudo a2enconf sitograph
 sudo a2enmod rewrite headers expires deflate pagespeed
@@ -23,11 +23,10 @@ sudo service apache2 restart
 
 ## Sitograph Dependencies
 
-Sitograph is designed to use MySQL database and run on Apache Web Server.
-ModPagespeed is used to optimize content delivered to the browser.
+Sitograph runs under LAMP stack. [ModPagespeed](https://developers.google.com/speed/pagespeed/module/)  is used to optimize content delivery.
 
 ### To Create MySQL database run
-```
+```bash
 chmod +x scripts/mysqlcreate.sh
 ./scripts/mysqlcreate.sh root [your-mysql-root-password] sitograph
 ```
@@ -36,45 +35,69 @@ mysqlcreate.sh will create new database and user and grant all permissions for t
 * The third argument is a name of database to create
 * The fourth argument is a password for a user. Leave blank to generate new password
 
-### To Install dependencies for PHP7
-```
+### Install dependencies for PHP7
+```bash
 sudo apt-get update
-sudo apt-get -y install php7.0-xml php7.0-gd php7.0-mbstring php-curl
-```
-
-### To Install dependencies for PHP5
-```
-sudo apt-get update
-sudo apt-get -y install php5-gd php5-curl
+sudo apt-get -y install php7.0-xml php7.0-gd php7.0-mbstring php7.0-zip php-curl
 ```
 
 ### To Install PageSpeed Module x64
-```
+```bash
 wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb
 sudo dpkg -i mod-pagespeed-*.deb 
 sudo service apache2 restart
 ```
 
-### To Install PageSpeed Module x32
+
+
+### To Install dependencies for PHP5
+```bash
+sudo apt-get update
+sudo apt-get -y install php5-gd php5-curl
 ```
+
+### Install PageSpeed Module x32
+```bash
 wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_i386.deb
 sudo dpkg -i mod-pagespeed-*.deb 
 sudo service apache2 restart
 ```
 
-# Configure server and install Sitograph CMS
-
-## Install Sitograph CMS with all dependencies run
+### VirtualBox symlink beetween local Sitograph folder and /var/www/html of virtual machine
 ```
+sudo ln -s /media/sf_sitograph/src /var/www/html
+sudo usermod -G vboxsf -a www-data
+```
+In VirtualBoxManager:
+Settings -> Shared Folders -> Add. Folder name: sitograph
+
+
+# Configure empty Ubuntu/CentOS/.. image to run Sitograph CMS
+
+## Install Sitograph Server
+```bash
 wget -O "install-server.sh" "https://raw.githubusercontent.com/maxsv0/sitograph/master/scripts/install-server.sh"
 chmod +x install-server.sh
-sudo ./install-server.sh>install.log 2>&1
-tail -n 10 install.log
+sudo ./install-server.sh
 ```
-Install Script writes log to `install.log` file.
-Generated passwords will be displayed at the end of a process.
 
-Server installation script steps:
+Example output:
+```bash
+Environment Install Successful
+--------------------------------------------
+Mysql Root password: dooSho7wea4d
+Mysql Sitograph user: sitograph
+Mysql Sitograph user password: Mo0ohchaiquu
+--------------------------------------------
+Sitograph Install Successfull
+--------------------------------------------
+Administrator login: admin
+Administrator password: xoh7ooSu3wai
+```
+
+Don't forget to save passwords that will be displayed at the end of a process, otherwise, they will be lost.
+
+Server installation script includes:
 * install tools (unzip wget pwgen debconf-utils)
 * install LAMP server
 * install PHP7 or PHP5 dependencies (depending on installed version of PHP)
