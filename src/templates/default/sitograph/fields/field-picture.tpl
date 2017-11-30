@@ -12,11 +12,9 @@
 {/if}
 </p>
 
-
 <p>
 {_t("form.file")}
     <input type="text" class="form-control form-control-text btn-xs" name="{$form_id}_{$item_id}" id="path-{$item_id}" value="{$value}" placeholder="{_t("msg.no_stored_image")}">
-</span>
 
 {if !$readonly}
 {if $value}
