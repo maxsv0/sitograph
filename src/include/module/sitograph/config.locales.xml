@@ -23,7 +23,8 @@
 		<field name="btn.back_to_admin" value="Back to «Sitograph»"/>
 
 		<field name="title.back_to_admin" value="Manage website content"/>
-		<field name="title.upload_files" value="Upload files"/>
+		<field name="title.upload_pics" value="Upload picture (PNG/JPG/GIF)"/>
+		<field name="title.upload_files" value="Upload file"/>
 		<field name="title.upload_step1" value="1. Select file"/>
 		<field name="title.upload_step2" value="2. File uploaded automatically"/>
 		<field name="title.upload_step3" value="3. Click Save"/>
@@ -142,6 +143,7 @@
 		<field name="btn.back_to_admin" value="Вернуться в «Сайтограф»"/>
 
 		<field name="title.back_to_admin" value="Административный просмотр сайта"/>
+		<field name="title.upload_pics" value="Загрузить изображения (PNG/JPG/GIF) в"/>
 		<field name="title.upload_files" value="Загрузить файлы в "/>
 		<field name="title.upload_step1" value="1. Выберите файл"/>
 		<field name="title.upload_step2" value="2. Файл будет загружен на сервер"/>
@@ -271,7 +273,8 @@
 		<field name="btn.back_to_admin" value="Вернуться в «Сайтограф»"/>
 
 		<field name="title.back_to_admin" value="Administrative view"/>
-		<field name="title.upload_files" value="Завантажити файли в "/>
+		<field name="title.upload_pics" value="Завантажити файли (PNG/JPG/GIF) в"/>
+		<field name="title.upload_files" value="Завантажити файли в"/>
 		<field name="title.upload_step1" value="1. Оберить файл"/>
 		<field name="title.upload_step2" value="2. Файл буде завантажений на сервер"/>
 		<field name="title.upload_step3" value="3. Натисніть Зберегти"/>
