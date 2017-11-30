@@ -70,7 +70,7 @@
 {/foreach}
 </table>
     
-{include "$themePath/sitograph/media/file-upload.tpl" upload_path=$mediaInfo.url}
+{include "$themePath/sitograph/media/pic-upload.tpl" upload_path=$mediaInfo.url}
 
 </div>
 {/foreach}
@@ -78,6 +78,7 @@
 
 <div role="tabpanel" class="tab-pane {if $admin_media_active == "upload"}active{/if}" id="upload">
 
+{include "$themePath/sitograph/media/pic-upload.tpl" upload_path="/content"}
 {include "$themePath/sitograph/media/file-upload.tpl" upload_path="/content"}
 
 </div>

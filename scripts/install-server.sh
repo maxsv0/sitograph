@@ -27,7 +27,7 @@ if [ $phpversion -lt 70 ]
 then
 	apt-get -y install php5-gd php5-curl
 else
-    apt-get -y install php7.0-xml php7.0-gd php7.0-mbstring php-curl
+    apt-get -y install php7.0-xml php7.0-zip php7.0-gd php7.0-mbstring php-curl
 fi
 
 # Download latest version of Sitograph and upzip folder
@@ -35,32 +35,24 @@ wget https://github.com/maxsv0/sitograph/archive/v1.0.zip -O sitograph-v1.0.zip
 unzip sitograph-v1.0.zip
 cd sitograph-1.0
 
-# Copy Sitograph files
+# Copy Sitograph files and enable Apache configuration
 sh scripts/install.sh /var/www/html
 
 # Create MySQL database
 sh scripts/mysqlcreate.sh root $MASTER_PASS sitograph $DB_PASS
 
-# Enable Apache configuration and modules
-cp scripts/sitograph.conf  /etc/apache2/conf-available/
-a2enconf sitograph
-a2enmod rewrite headers expires deflate
-service apache2 restart
-
 # run CMS install
-# this is disabled by default
-# 
-# wget -O "result.html" "http://localhost/?install_auto=1&install_step=1&msv_DB_LOGIN=sitograph&msv_DB_PASSWORD=$DB_PASS&msv_DB_NAME=sitograph&msv_LANGUAGES=en&modules_local[]=blog&modules_local[]=gallery&modules_local[]=fancybox&modules_local[]=tinymce&modules_local[]=cropper&modules_local[]=msv-core&modules_local[]=msv-api&modules_local[]=msv-seo&modules_local[]=msv-users&modules_local[]=search&modules_local[]=sitograph&modules_local[]=google-analytics&modules_local[]=theme-default&admin_login=admin&admin_password=$ADMIN_PASS&admin_create=1"
-# cat result.html
-# echo "Sitograph Install Successfull"
-# echo "----------------------------------"
-# echo "Administrator login: admin"
-# echo "Administrator password: $ADMIN_PASS"
+wget -O "result.html" "http://localhost/?install_auto=1&install_step=1&msv_DB_LOGIN=sitograph&msv_DB_PASSWORD=$DB_PASS&msv_DB_NAME=sitograph&msv_LANGUAGES=en&modules_local[]=blog&modules_local[]=gallery&modules_local[]=fancybox&modules_local[]=tinymce&modules_local[]=cropper&modules_local[]=msv-core&modules_local[]=msv-api&modules_local[]=msv-seo&modules_local[]=msv-users&modules_local[]=search&modules_local[]=google-analytics&modules_local[]=theme-default&modules_local[]=sitograph&admin_login=admin@sitograph.loc&admin_password=$ADMIN_PASS&admin_create=1"
+cat result.html
 
 # done!
-echo "Install Successfull"
-echo "----------------------------------"
+echo "Environment Install Successful."
+echo "--------------------------------------------"
 echo "Mysql Root password: $MASTER_PASS"
-echo "Mysql user: sitograph"
-echo "Mysql user password: $DB_PASS"
-
+echo "Mysql Sitograph user: sitograph"
+echo "Mysql Sitograph user password: $DB_PASS"
+echo "--------------------------------------------"
+echo "Sitograph Install Successful."
+echo "--------------------------------------------"
+echo "Administrator login: admin@sitograph.loc"
+echo "Administrator password: $ADMIN_PASS"

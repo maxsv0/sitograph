@@ -372,7 +372,7 @@ function api_request_document($module) {
 }
 
 /**
- * API extension for module msv-core to upload file to File Storage
+ * API extension for module msv-core to upload picture to File Storage
  * Requires admin level access
 
  * URL: /api/uploadpic/
@@ -381,7 +381,7 @@ function api_request_document($module) {
  */
 function api_upload_picture($module) {
     if (!msv_check_accessuser("admin")) {
-        return "No access";
+        return _t("msg.api.no_access");
     }
 
     $allowedTypes = array(
@@ -391,10 +391,16 @@ function api_upload_picture($module) {
     );
 
     if (!empty($_FILES["uploadFile"])) {
+        if (empty($_FILES["uploadFile"]['tmp_name'])) {
+            return _t("msg.api.upload_not_found");
+        }
 
         $detectedType = exif_imagetype($_FILES["uploadFile"]['tmp_name']);
-        if (array_key_exists($detectedType, $allowedTypes)) {
+        if (empty($detectedType)) {
+            return _t("msg.api.failed_detect_image_type");
+        }
 
+        if (array_key_exists($detectedType, $allowedTypes)) {
             $fileType = $allowedTypes[$detectedType];
 
             $table = $_REQUEST["table"];
@@ -414,16 +420,65 @@ function api_upload_picture($module) {
             // store Picture
             $fileResult = msv_store_pic($file["tmp_name"], $fileType, $fileName, $table, $field);
             if (!is_numeric($fileResult)) {
-                echo CONTENT_URL."/".$fileResult;
+                return CONTENT_URL."/".$fileResult;
             } else {
-                echo $fileResult;
+                return $fileResult;
             }
         } else {
-            // error
-            // file not allowed
+            return _t("msg.api.type_error_allowed")." ".implode(", ", $allowedTypes);
         }
     }
 }
+
+/**
+ * API extension for module msv-core to upload file to File Storage
+ * Requires admin level access
+
+ * URL: /api/uploadpic/
+ *
+ * @return string Path of a stored file in case of success, error code otherwise.
+ */
+function api_upload_file($module) {
+    if (!msv_check_accessuser("admin")) {
+        return _t("msg.api.no_access");
+    }
+
+    if (!empty($_FILES["uploadFile"])) {
+        if (empty($_FILES["uploadFile"]['tmp_name'])) {
+            return _t("msg.api.upload_not_found");
+        }
+
+        $typeExt = msv_format_mimetype($_FILES["uploadFile"]['type']);
+
+        if (empty($typeExt)) {
+            return _t("msg.api.failed_detect_file_type");
+        }
+
+        $table = $_REQUEST["table"];
+        $field = $_REQUEST["field"];
+        $itemID = $_REQUEST["itemID"];
+
+        // TODO:
+        // check $table and $field (config ..)
+
+        // extract file information
+        $file = $_FILES["uploadFile"];
+        $fileName = $file["name"];
+        if (!empty($itemID)) {
+            $fileName = $itemID."-".$fileName;
+        }
+
+        // store Picture
+        $fileResult = msv_store_pic($file["tmp_name"], $typeExt, $fileName, $table, $field);
+        if (!is_numeric($fileResult)) {
+            return CONTENT_URL."/".$fileResult;
+        } else {
+            return $fileResult;
+        }
+    }
+}
+
+
 
 /**
  * API procedure to create URL-like string
@@ -462,7 +517,7 @@ function api_format_url($module) {
     }
 
     $str = msv_format_url(msv_truncate_text(((!empty($index)? $index.'-':'').$_REQUEST['str']),150));
-	if (!emprty($str)) {
+    if (!empty($str)) {
         $resultQuery = array(
             "ok" => true,
             "data" => $str,

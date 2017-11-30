@@ -21,6 +21,7 @@
 		<api name="document" action="api_request_document"/>
 		<api name="settings" action="api_request_settings"/>
 		<api name="uploadpic" action="api_upload_picture"/>
+		<api name="uploadfile" action="api_upload_file"/>
 		<api name="cron" action="api_request_cron"/>
 		<api name="core" action="api_request_core"/>
 

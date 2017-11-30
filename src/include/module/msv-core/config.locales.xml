@@ -181,7 +181,11 @@
 		<field name="msg.development_version" value="Это бета версия MSV Website. Режим чтения."/>
 		<field name="msg.wrong_email" value="Неверный Email"/>
 		<field name="msg.cron.saved" value="CronJob Saved successfuly"/>
-
+		<field name="msg.api.no_access" value="No access"/>
+		<field name="msg.api.upload_not_found" value="Upload file not found"/>
+		<field name="msg.api.failed_detect_image_type" value="Failed to detect image type"/>
+		<field name="msg.api.failed_detect_file_type" value="Failed to detect file type"/>
+		<field name="msg.api.type_error_allowed" value="File type not allowed. Allowed:"/>
 		<field name="settings.include_html_head" value="This HTML code is included to all pages, above 'body' tag"/>
 		<field name="settings.theme_css_path" value="Общий CSS файл"/>
 		<field name="settings.theme_js_path" value="Общий JavaScript файл"/>
@@ -377,7 +381,11 @@
 		<field name="msg.email_sending_error" value="Error sending email"/>
 		<field name="msg.wrong_email" value="Wrong Email"/>
 		<field name="msg.cron.saved" value="CronJob Saved successfuly"/>
-
+		<field name="msg.api.no_access" value="No access"/>
+		<field name="msg.api.upload_not_found" value="Upload file not found"/>
+		<field name="msg.api.failed_detect_image_type" value="Failed to detect image type"/>
+		<field name="msg.api.failed_detect_file_type" value="Failed to detect file type"/>
+		<field name="msg.api.type_error_allowed" value="File type not allowed. Allowed:"/>
 		<field name="settings.include_html_head" value="This HTML code is included to all pages, above 'body' tag"/>
 		<field name="settings.theme_css_path" value="Path to a CSS file included globaly"/>
 		<field name="settings.theme_js_path" value="Path to a JS file included globaly"/>
@@ -554,7 +562,11 @@
 		<field name="table.mail_log.body" value="Текст (HTML)"/>
 		<field name="table.mail_log.header" value="Заголовок (HTML)"/>
 		<field name="table.mail_log.result" value="Результат"/>
-
+		<field name="msg.api.no_access" value="No access"/>
+		<field name="msg.api.upload_not_found" value="Upload file not found"/>
+		<field name="msg.api.failed_detect_image_type" value="Failed to detect image type"/>
+		<field name="msg.api.failed_detect_file_type" value="Failed to detect file type"/>
+		<field name="msg.api.type_error_allowed" value="File type not allowed. Allowed:"/>
 		<field name="msg.error_remove_active" value="Неможливо видалити активный модуль"/>
 		<field name="msg.removed" value="видалене"/>
 		<field name="msg.repository_not_found" value="не знайден в репозитории"/>

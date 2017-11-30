@@ -43,12 +43,14 @@
 	        <div class="row">
 	        <div class="col-xs-4 header-menu">
 	    <p>
-				
-				<a href="/sitemap/" class="sitemap-ico"></a>
-				<span class="top-delimiter"></span>
+
+				<a href="/sitemap/" class="sitemap-ico">
+					<img src="/content/images/ico_sitemap.svg"  width="20" height="20"/>
+				</a>
 			 {if $feedback}
-				<a href="{$feedback.baseUrl}" class="mail-ico"></a>
-				<span class="top-delimiter"></span>
+				 <a href="{$feedback.baseUrl}" class="mail-ico">
+					 <img src="/content/images/ico_mail.svg"  width="20" height="20"/>
+				 </a>
 			 {/if}
 		</p>
 				

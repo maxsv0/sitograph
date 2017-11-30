@@ -38,6 +38,8 @@ jQuery(document).ready(function() {
         msg = $form.find(".alert");
         msg.html();
     });
+/*
+TODO: move this
 
     $('#admin-edit').submit(function (e) {
         $form = $(this);
@@ -129,7 +131,7 @@ jQuery(document).ready(function() {
         $form.remove("#ajaxcall");
         $form.remove("#save");
     });
-
+*/
 });
 
 $(document).ready(function() {

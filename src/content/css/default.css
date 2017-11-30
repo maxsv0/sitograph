@@ -219,29 +219,29 @@
 .login-block a {
 	color:#fff;
 }
-
 .sitemap-ico {
-	width: 11px;
-	height: 9px;
-	background: url(/content/images/sitemap_ico.png) no-repeat;
-	display: inline-block
-	
+	display: inline-block;
+	margin-right:10px;
 }
-
+.sitemap-ico svg path {
+	color:#fff!important;
+}
 .mail-ico {
-	width: 11px;
-	height: 9px;
-	background: url(/content/images/mail_ico.png) no-repeat;
-	display: inline-block
+	display: inline-block;
+	margin-right:10px;
 }
-
+.mail-ico svg path {
+	color:#fff!important;
+}
 .header-menu {
 	text-align:center;
 }
 .header-menu p {
 	margin: 0 0 5px;
 }
-
+.search-block {
+	margin-bottom:10px;
+}
 .top-lang {
 	font-family: Verdana;
 	color: #ffffff;
@@ -259,6 +259,11 @@
     min-height: inherit;
 	
 	
+}
+.navbar-header {
+	position: absolute;
+	right: 0;
+	top: -45px;
 }
 
 .navbar-default .navbar-nav>li>a {
