@@ -118,6 +118,7 @@
 	<file dir="template" path="default/sitograph/mail_template/edit.tpl"/>
 	<file dir="template" path="default/sitograph/mail_template/list.tpl"/>
 	<file dir="template" path="default/sitograph/media/file-upload.tpl"/>
+	<file dir="template" path="default/sitograph/media/pic-upload.tpl"/>
 	<file dir="template" path="default/sitograph/menu/edit.tpl"/>
 	<file dir="template" path="default/sitograph/menu/list.tpl"/>
 	<file dir="template" path="default/sitograph/seo/edit.tpl"/>
