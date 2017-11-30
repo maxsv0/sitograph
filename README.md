@@ -1,39 +1,32 @@
 # Install Sitograph CMS
 
-### Download the latest version of Sitograph CMS and unzip the archive
+### 1. Download the latest version of Sitograph CMS and unzip the archive
 ```bash
 wget https://github.com/maxsv0/sitograph/archive/v1.0.zip -O sitograph-v1.0.zip
 unzip sitograph-v1.0.zip
 cd sitograph-1.0
 ```
 
-### Run Install script to copy Sitograph files to the web root directory (default: /var/www/html).
+### 2. Run Install script to copy Sitograph files to the web root directory (default: /var/www/html).
 ```bash
 chmod +x scripts/install.sh
 sudo ./scripts/install.sh /var/www/html
 ```
 
-### Enable Apache configuration file (sitograph.conf) and enable required modules
+### 3. Enable Apache configuration file (sitograph.conf) and enable required modules
 ```bash
 sudo cp scripts/sitograph.conf  /etc/apache2/conf-available/
 sudo a2enconf sitograph
 sudo a2enmod rewrite headers expires deflate pagespeed
 sudo service apache2 restart
 ```
+### 4. Run Sitograph Installation wizard
+![Sitograph Installation wizard](https://github.com/maxsv0/sitograph/blob/master/src/content/images/gallery/gallery3_photo1.jpg)
+
 
 ## Sitograph Dependencies
 
 Sitograph runs under LAMP stack. [ModPagespeed](https://developers.google.com/speed/pagespeed/module/)  is used to optimize content delivery.
-
-### To Create MySQL database run
-```bash
-chmod +x scripts/mysqlcreate.sh
-./scripts/mysqlcreate.sh root [your-mysql-root-password] sitograph
-```
-mysqlcreate.sh will create new database and user and grant all permissions for this DB
-* First two arguments are username and password to connect to MySQL
-* The third argument is a name of database to create
-* The fourth argument is a password for a user. Leave blank to generate new password
 
 ### Install dependencies for PHP7
 ```bash
@@ -48,7 +41,15 @@ sudo dpkg -i mod-pagespeed-*.deb
 sudo service apache2 restart
 ```
 
-
+### Create new MySQL database
+```bash
+chmod +x scripts/mysqlcreate.sh
+./scripts/mysqlcreate.sh root [your-mysql-root-password] sitograph
+```
+mysqlcreate.sh will create new database and user and grant all permissions for this DB
+* First two arguments are username and password to connect to MySQL
+* The third argument is a name of database to create
+* The fourth argument is a password for a user. Leave blank to generate new password
 
 ### To Install dependencies for PHP5
 ```bash
