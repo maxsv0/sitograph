@@ -1,5 +1,8 @@
 # Install Sitograph CMS
 
+![Sitograph CMS](https://github.com/maxsv0/sitograph/blob/master/docs/screen-demo-sitograph.jpg)
+
+
 ### 1. Download the latest version of Sitograph CMS and unzip the archive
 ```bash
 wget https://github.com/maxsv0/sitograph/archive/v1.0.zip -O sitograph-v1.0.zip
