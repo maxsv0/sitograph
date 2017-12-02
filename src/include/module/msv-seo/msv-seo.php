@@ -131,11 +131,11 @@ function msv_get_leadstatus($lead) {
 function load_seo_lead_ipinfo($lead) {
     if (empty($lead["id"])) return false;
 
-    if (!empty($lead["ip"]) && empty($lead["ip_info"])) {
+    if (!empty($lead["ip"])) {
+        $serviceUrl = msv_get_config("service_ua_info");
+        if (!empty($serviceUrl)) {
+            $execIP = "curl -X POST -H 'Content-Type: application/json' -d '{\"ip\":\"".$lead["ip"]."\"}' ".$serviceUrl;
 
-        $execIP = msv_get_config("service_ip_info");
-        if (!empty($execIP)) {
-            $execIP = str_replace("{ip}", $lead["ip"], $execIP);
             $cont = trim(shell_exec($execIP));
 
             if (!empty($cont)) {
@@ -157,10 +157,10 @@ function load_seo_lead_uainfo($lead) {
     if (empty($lead["id"])) return false;
 
     if (!empty($lead["ua"])) {
+        $serviceUrl = msv_get_config("service_ua_info");
+        if (!empty($serviceUrl)) {
+            $execUA = "curl -X POST -H 'Content-Type: application/json' -d '{\"useragent\":\"".$lead["ua"]."\"}' ".$serviceUrl;
 
-        $execUA = msv_get_config("service_ua_info");
-        if (!empty($execUA)) {
-            $execUA = str_replace("{ua}", $lead["ua"], $execUA);
             $cont = trim(shell_exec($execUA));
 
             if (!empty($cont)) {
