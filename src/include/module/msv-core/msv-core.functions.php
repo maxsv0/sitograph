@@ -793,7 +793,11 @@ function msv_process_tabledata($table, $prefix = "") {
             case "datetime":
                 if (!empty($value)) {
                     $value = strtotime($value);
-                    $dataItem[$item["name"]] = date("Y-m-d H:i:s", $value);
+                    if ($value > 0) {
+                        $dataItem[$item["name"]] = date("Y-m-d H:i:s", $value);
+                    } else {
+                        $dataItem[$item["name"]] = 'NULL';
+                    }
                 }
                 break;
             case "url":
