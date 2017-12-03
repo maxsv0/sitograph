@@ -11,70 +11,71 @@ $tableInfo["fields"]["document_text"] = array(
 msv_assign_data("admin_table_info", $tableInfo);
 
 if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
-    msv_process_updatetable(TABLE_STRUCTURE, "form_");
+    $resultSave = msv_process_updatetable(TABLE_STRUCTURE, "form_");
 
-    // save document
-    db_update(TABLE_DOCUMENTS, "text", "'".db_escape($_POST["form_document_text"])."'", " `id` = '".(int)$_POST["form_page_document_id"]."'");
-    db_update(TABLE_DOCUMENTS, "name", "'".db_escape($_POST["form_document_name"])."'", " `id` = '".(int)$_POST["form_page_document_id"]."'");
+    if ($resultSave["ok"]) {
+        // save document
+        db_update(TABLE_DOCUMENTS, "text", "'" . db_escape($_POST["form_document_text"]) . "'", " `id` = '" . (int)$_POST["form_page_document_id"] . "'");
+        db_update(TABLE_DOCUMENTS, "name", "'" . db_escape($_POST["form_document_name"]) . "'", " `id` = '" . (int)$_POST["form_page_document_id"] . "'");
 
-    // save seo
-    $resultQuerySEO = db_get(TABLE_SEO, "`url` = '".db_escape($_POST["form_url"])."'");
-    if ($resultQuerySEO["ok"] && !empty($resultQuerySEO["data"])) {
-        $rowSEO = $resultQuerySEO["data"];
-        $rowSEO["title"] = $_POST["form_seo_title"];
-        $rowSEO["description"] = $_POST["form_seo_description"];
-        $rowSEO["keywords"] = $_POST["form_seo_keywords"];
-        $rowSEO["sitemap"] = $_POST["form_published"] == 1 ? 1:0;
+        // save seo
+        $resultQuerySEO = db_get(TABLE_SEO, "`url` = '" . db_escape($_POST["form_url"]) . "'");
+        if ($resultQuerySEO["ok"] && !empty($resultQuerySEO["data"])) {
+            $rowSEO = $resultQuerySEO["data"];
+            $rowSEO["title"] = $_POST["form_seo_title"];
+            $rowSEO["description"] = $_POST["form_seo_description"];
+            $rowSEO["keywords"] = $_POST["form_seo_keywords"];
+            $rowSEO["sitemap"] = $_POST["form_published"] == 1 ? 1 : 0;
 
-        $resultSave = db_update_row(TABLE_SEO, $rowSEO);
-        ///
-        ///
-        $sqlCode = "update `".TABLE_MENU."`
-		   set `url` = '".db_escape($_POST["form_url"])."'
-		   where `structure_id` = '".db_escape($_POST["form_id"])."'
-		   ";
+            $resultSave = db_update_row(TABLE_SEO, $rowSEO);
+            ///
+            ///
+            $sqlCode = "update `" . TABLE_MENU . "`
+               set `url` = '" . db_escape($_POST["form_url"]) . "'
+               where `structure_id` = '" . db_escape($_POST["form_id"]) . "'
+               ";
 
-        $result = db_sql($sqlCode);
+            $result = db_sql($sqlCode);
 
-        $resultQueryItem = db_get(TABLE_STRUCTURE, "`url` = '".db_escape($_POST["form_url"])."'");
+            $resultQueryItem = db_get(TABLE_STRUCTURE, "`url` = '" . db_escape($_POST["form_url"]) . "'");
 
 
-        $parent_url = array();
-        if ($resultQueryItem["ok"]) {
-            $parent_url = GetParentSection($resultQueryItem["data"]["id"]);
-        }
+            $parent_url = array();
+            if ($resultQueryItem["ok"]) {
+                $parent_url = GetParentSection($resultQueryItem["data"]["id"]);
+            }
 
-        if (!empty($parent_url)) {
-            foreach ($parent_url as $v=>$k) {
-                if (!empty($k)) {
-                    $sqlCode = "update `".TABLE_STRUCTURE."`
-						   set `published` = '".db_escape($_POST["form_published"])."'
-						   where `url` = '".$k."'
-						   ";
-                    $result = db_sql($sqlCode);
+            if (!empty($parent_url)) {
+                foreach ($parent_url as $v => $k) {
+                    if (!empty($k)) {
+                        $sqlCode = "update `" . TABLE_STRUCTURE . "`
+                               set `published` = '" . db_escape($_POST["form_published"]) . "'
+                               where `url` = '" . $k . "'
+                               ";
+                        $result = db_sql($sqlCode);
 
-                    $sqlCode = "update `".TABLE_SEO."`
-						   set `sitemap` = '".db_escape($_POST["form_published"])."'
-						   where `url` like '".$k."%'
-						   ";
-                    $result = db_sql($sqlCode);
+                        $sqlCode = "update `" . TABLE_SEO . "`
+                               set `sitemap` = '" . db_escape($_POST["form_published"]) . "'
+                               where `url` like '" . $k . "%'
+                               ";
+                        $result = db_sql($sqlCode);
+                    }
                 }
             }
-        }
 
-        msv_genegate_sitemap(true);
-    } else {
-        // extract data from request for corresponding table
-        $item = msv_process_tabledata(TABLE_SEO, "form_seo_");
-        $item["url"] = $_POST["form_url"];
-
-        // execute request
-        $resultSave = msv_add_seo($item);
-        if ($_POST["form_published"] == 1) {
             msv_genegate_sitemap(true);
+        } else {
+            // extract data from request for corresponding table
+            $item = msv_process_tabledata(TABLE_SEO, "form_seo_");
+            $item["url"] = $_POST["form_url"];
+
+            // execute request
+            $resultSave = msv_add_seo($item);
+            if ($_POST["form_published"] == 1) {
+                msv_genegate_sitemap(true);
+            }
         }
-    }
-    if (!$resultSave["ok"]) {
+    } else {
         msv_redirect("/admin/?section=$section&edit=".$_POST["form_id"]."&save_error=".urlencode($resultSave["msg"]));
     }
 }
