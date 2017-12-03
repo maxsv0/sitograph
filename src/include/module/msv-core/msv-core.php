@@ -970,7 +970,7 @@ function msv_build_module_info($module) {
   <div id="actions" class="tab-pane fade">';
     $str .= "<h4>Module actions</h4>";
     $str .= "<p>";
-    $str .= "<a href='/admin/?module_reinstall=".$objModule->name."' class='btn btn-danger btn-lg' onclick=\"if(!confirm('Are you sure? Current module files will be overwritten.')) return false;\">reinstall</a> ";
+    $str .= "<a href='/admin/?module_reinstall=".$objModule->name."' class='btn btn-danger btn-lg' onclick=\"if(!confirm('Are you sure? Current module files will be overwritten.')) return false;\">update</a> ";
     if ($objModule->enabled) {
         $str .= "<a href='/admin/?module_disable=".$objModule->name."' class='btn btn-danger btn-lg'>disable module</a>";
     } else {
