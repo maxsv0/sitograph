@@ -711,7 +711,10 @@ function msv_output_admin_modulesetup() {
         $strOut .= "<a href='/admin/?section=module_settings&module_update_all' class='btn btn-lg btn-danger'><span class='glyphicon glyphicon-download-alt'></span> update all</a> &nbsp; &nbsp;";
         $strOut .= "</p>";
     }
-
+    $module = $_GET["module"];
+    if (!empty($module)) {
+        $strOut .= "<div class='infowell'>".msv_build_module_info($module)."</div>";
+    }
     if (!isset($_GET["module_install"])) {
         $strOut .= "<div style='line-height:40px;'>";
         $strOut .= "<h4 class='pull-left'>Navigate to module:</h4>&nbsp;&nbsp;";
@@ -743,10 +746,7 @@ function msv_output_admin_modulesetup() {
         $strOut .= "</div>";
         $strOut .= "<br>";
     }
-    $module = $_GET["module"];
-    if (!empty($module)) {
-        $strOut .= "<div class='infowell'>".msv_build_module_info($module)."</div>";
-    }
+
     if (isset($_GET["module_install"])) {
         $listRep = msv_list_modules();
         foreach ($listRep as $module => $moduleInfo) {
