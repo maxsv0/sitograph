@@ -1,6 +1,6 @@
 <?php
 $allowed_types = array(
-    "xml", "tpl", "txt", "htaccess", "html"
+    "xml", "tpl", "txt", "htaccess", "html", "css", "js", "log", "svg", "txt"
 );
 
 if (!empty($_REQUEST["edit_file"])) {

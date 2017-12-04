@@ -545,8 +545,7 @@ class MSV_Website {
 
         $Smarty->template_dir = ABS_TEMPLATE;
 
-        // TODO: set custom debug template
-        //$Smarty->debug_tpl = "";
+        $Smarty->debug_tpl = SMARTY_DIR."debug.tpl";
 
         $compile_dir = SMARTY_DIR."cache";
         if (!is_writeable($compile_dir)) {

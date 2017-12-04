@@ -99,7 +99,15 @@
             #table_config_vars th {
                 color: maroon;
             }
-
+            .debug_log pre {
+                overflow: auto;
+                word-wrap: normal;
+                white-space: pre;
+                margin: 0;
+                padding: 5px;
+                color:#000;
+                background: #f0ead8;
+            }
             {/literal}
         </style>
     </head>
@@ -120,6 +128,9 @@
             {/foreach}
         </div>
     {/if}
+
+    <h2>MSV Debug Log</h2>
+    {print_r($assigned_vars["debug_code"]['value'])}
 
     <h2>assigned template variables</h2>
 
