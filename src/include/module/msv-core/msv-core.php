@@ -722,13 +722,13 @@ function msv_output_admin_modulesetup() {
         foreach ($list as $module) {
             $obj = $website->{$module};
             $strOut .= "<tr>";
-            $strOut .= "<td class='col-sm-4'>";
+            $strOut .= "<td class='col-sm-3'>";
             $strOut .= $obj->config["title"];
             $strOut .= "</td>";
             $strOut .= "<td class='col-sm-1'>";
             $strOut .= $obj->config["version"];
             $strOut .= "</td>";
-            $strOut .= "<td class='col-sm-3'>".LOCAL_MODULE."/$module</td>";
+            $strOut .= "<td class='col-sm-4'>".LOCAL_MODULE."/$module</td>";
             $strOut .= "<td class='col-sm-1'></td>";
             $strOut .= "<td class='col-sm-1'>";
             if ($obj->enabled) {
@@ -738,7 +738,7 @@ function msv_output_admin_modulesetup() {
             }
             $strOut .= "<td>";
             $strOut .= "<td class='col-sm-2'>";
-            $strOut .= "<a href='/admin/?section=module_settings&module=" . $obj->name . "' class='btn btn-primary" . (!empty($_GET["module"]) && $_GET["module"] === $module ? " active" : "") . "'>$module</a>";
+            $strOut .= "<a href='/admin/?section=module_settings&module=" . $obj->name . "' class='btn btn-primary" . (!empty($_GET["module"]) && $_GET["module"] === $module ? " active" : "") . "'>configure</a>";
             $strOut .= "</td>";
             $strOut .= "</tr>";
         }
@@ -856,7 +856,8 @@ function msv_build_module_info($module) {
   </div>
   <div id="tables" class="tab-pane fade">';
     foreach ($objModule->tables as $tableName => $tableInfo) {
-        $str .= "<h4>Table Definition</h4>";
+        $str .= "<div class='row'><div class='col-sm-5'>";
+        $str .= "<h4>Table '".$tableInfo["name"]."' definition</h4>";
         $str .= "<table class=\"table table-hover\">
     <tr><th class=\"col-sm-5\">Parameter</th><th>Value</th></tr>";
         $str .= "<tr><td>Table Name</td><td>".$tableInfo["name"]."</td></tr>\n";
@@ -864,14 +865,15 @@ function msv_build_module_info($module) {
         $str .= "<tr><td>Title field</td><td>".$tableInfo["title"]."</td></tr>\n";
         $str .= "<tr><td>UseSEO</td><td>".$tableInfo["useseo"]."</td></tr>\n";
         $str .= "</table>\n";
-
-        $str .= "<h4>Table Fields</h4>";
+        $str .= "</div><div class='col-sm-7'>";
+        $str .= "<h4>Table '".$tableInfo["name"]."' fields definition</h4>";
         $str .= "<table class=\"table table-hover\">
     <tr><th class=\"col-sm-5\">Name</th><th class=\"col-sm-4\">Type</th><th class=\"col-sm-3\">ListSkip</th></tr>";
         foreach ($tableInfo["fields"] as $fieldInfo) {
             $str .= "<tr><td>".$fieldInfo["name"]."</td><td>".$fieldInfo["type"]."</td><td>".$fieldInfo["listskip"]."</td></tr>\n";
         }
         $str .= "</table>\n";
+        $str .= "</div></div>\n";
     }
 
     if (empty($objModule->tables)) {
@@ -970,7 +972,7 @@ function msv_build_module_info($module) {
   <div id="actions" class="tab-pane fade">';
     $str .= "<h4>Module actions</h4>";
     $str .= "<p>";
-    $str .= "<a href='/admin/?module_reinstall=".$objModule->name."' class='btn btn-danger btn-lg' onclick=\"if(!confirm('Are you sure? Current module files will be overwritten.')) return false;\">update</a> ";
+    $str .= "<a href='/admin/?module_reinstall=".$objModule->name."' class='btn btn-danger btn-lg' onclick=\"if(!confirm('Are you sure? Current module files will be overwritten.')) return false;\">update module</a>&nbsp; &nbsp; ";
     if ($objModule->enabled) {
         $str .= "<a href='/admin/?module_disable=".$objModule->name."' class='btn btn-danger btn-lg'>disable module</a>";
     } else {
