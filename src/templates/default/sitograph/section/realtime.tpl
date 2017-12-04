@@ -1,9 +1,14 @@
 {if !$GA_access_token}
-  <div class="alert alert-danger">
-    <b>{_t("msg.ga_api_not_configured")}</b><br>
-      {_t("msg.ga_json_not_configured")} <br>
-    <a href="/admin/?section=site_settings&edit_key=google_service_auth_json">{_t("admin.site_settings")} (google_service_auth_json)</a>.
+<div class="alert alert-danger">
+  <div class="row">
+    <div class="col-xs-1"><img src="{CONTENT_URL}/{$google_analytics.preview}" class="img-responsive"></div>
+    <div class="col-xs-11">
+      <b>{_t("msg.ga_api_not_configured")}</b><br>
+        {_t("msg.ga_json_not_configured")} <br>
+      <a href="/admin/?section=site_settings&edit_key=google_service_auth_json">{_t("admin.site_settings")} (google_service_auth_json)</a>.
+    </div>
   </div>
+</div>
 {/if}
 
 

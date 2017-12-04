@@ -209,6 +209,7 @@ class MSV_Module {
                     $value = (string)$attributes["value"];
 
                     $this->{$name} = $value;
+                    $this->config[$name] = $value;
                 }
             }
 

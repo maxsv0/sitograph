@@ -2,8 +2,8 @@
 <document>
 <install>
 	<param name="name" value="msv-core" />
-	<param name="version" value="1.4.6"/>
-	<param name="date" value="30.11.2017"/>
+	<param name="version" value="1.4.7"/>
+	<param name="date" value="03.12.2017"/>
 	<param name="installHook" value="Install_Core"/>
 	<param name="title" value="MSV Core"/>
 	<param name="description" value="Core functions for MSV"/>

@@ -110,8 +110,8 @@ function Install_Sitograph($module) {
     msv_set_config("theme_copyright_text", "2016-2017 <a href='http://sitograph.com/' target='_blank'>Sitograph</a>", true, "*");
     msv_set_config("theme_header_contacts", "<a href='https://discord.gg/tPusyxP'>Join Discord channel</a><br>Skype: max.svistunov", true, "*");
 
-    msv_set_config("service_ua_info", "curl -X POST -H 'Content-Type: application/json' -d '{\"useragent\":\"{ua}\"}' https://useragentinfo.co/device", true, "*", _t("settings.service_ua_info"));
-    msv_set_config("service_ip_info", "curl -X POST -H 'Content-Type: application/json' -d '{\"ip\":\"{ip}\"}' https://useragentinfo.co/ip", true, "*", _t("settings.service_ip_info"));
+    msv_set_config("service_ua_info", "", true, "*", _t("settings.service_ua_info"));
+    msv_set_config("service_ip_info", "", true, "*", _t("settings.service_ip_info"));
 
     if (LANG === "ru" || LANG === "ua") {
         msv_set_config("theme_logo", "/content/images/sitograph/sitograph-logo-dark-ru.png", true, "*");

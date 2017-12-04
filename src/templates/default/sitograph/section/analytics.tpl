@@ -1,8 +1,13 @@
 {if !$google_analytics_tracking_id}
-	<div class="alert alert-danger">
-	<b>{_t("msg.ga_not_configured")}</b><br>
-	<a href="/admin/?section=site_settings&edit_key=google_analytics_tracking_id">{_t("admin.site_settings")} (google_analytics_tracking_id)</a>.
-	</div>
+<div class="alert alert-danger">
+  <div class="row">
+    <div class="col-xs-1"><img src="{CONTENT_URL}/{$google_analytics.preview}" class="img-responsive"></div>
+    <div class="col-xs-11">
+      <b>{_t("msg.ga_not_configured")}</b><br>
+      <a href="/admin/?section=site_settings&edit_key=google_analytics_tracking_id">{_t("admin.site_settings")} (google_analytics_tracking_id)</a>.
+    </div>
+  </div>
+</div>
 {/if}
 
 {if $GA_access_token}
@@ -232,10 +237,15 @@ gapi.analytics.ready(function() {
 
 {else}
 
-	<div class="alert alert-danger">
-	<b>{_t("msg.ga_api_not_configured")}</b><br>
-	{_t("msg.ga_json_not_configured")} <br>
-	<a href="/admin/?section=site_settings&edit_key=google_service_auth_json">{_t("admin.site_settings")} (google_service_auth_json)</a>.
-	</div>
-	
+<div class="alert alert-danger">
+  <div class="row">
+    <div class="col-xs-1"><img src="{CONTENT_URL}/{$google_analytics.preview}" class="img-responsive"></div>
+    <div class="col-xs-11">
+      <b>{_t("msg.ga_api_not_configured")}</b><br>
+        {_t("msg.ga_json_not_configured")} <br>
+      <a href="/admin/?section=site_settings&edit_key=google_service_auth_json">{_t("admin.site_settings")} (google_service_auth_json)</a>.
+    </div>
+  </div>
+</div>
+
 {/if}

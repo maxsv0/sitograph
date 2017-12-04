@@ -444,7 +444,14 @@ function msv_remove_module($module) {
 function msv_list_modules() {
     msv_log("Website -> listModules");
 
-    $cont = file_get_contents(REP);
+
+    $ctx = stream_context_create(array('http'=>
+        array(
+            'timeout' => 5,
+        )
+    ));
+
+    $cont = file_get_contents(REP, false, $ctx);
 
     if (!$cont) {
         msv_message_error("Can't load URL: ".REP);
@@ -683,9 +690,15 @@ function msv_output_admin_modulesetup() {
         $strOut .= "<div class=''>";
         $strOut .= "<h4>";
         $strOut .= "Repository: ";
-        $headers = get_headers(REP);
 
-        if(strpos($headers[0],'200')===false) {
+        $ctx = stream_context_create(array('http'=>
+            array(
+                'timeout' => 5,
+            )
+        ));
+
+        $cont = file_get_contents(REP, false, $ctx);
+        if(empty($cont)) {
             $strOut .= "<strong class='text-danger'>offline</strong>";
         } else {
             $strOut .= "<strong class='text-success'>online</strong>";
@@ -698,26 +711,42 @@ function msv_output_admin_modulesetup() {
         $strOut .= "<a href='/admin/?section=module_settings&module_update_all' class='btn btn-lg btn-danger'><span class='glyphicon glyphicon-download-alt'></span> update all</a> &nbsp; &nbsp;";
         $strOut .= "</p>";
     }
-
-    if (!isset($_GET["module_install"])) {
-        $strOut .= "<div style='line-height:40px;'>";
-        $strOut .= "<h4 class='pull-left'>Navigate to module:</h4>&nbsp;&nbsp;";
-        foreach ($list as $module) {
-            $obj = $website->{$module};
-            if ($obj->enabled) {
-                $strOut .= "<a href='/admin/?section=module_settings&module=" . $obj->name . "' class='btn btn-primary" . (!empty($_GET["module"]) && $_GET["module"] === $module ? " active" : "") . "'>$module</a>";
-            } else {
-                $strOut .= "<a href='/admin/?section=module_settings&module=" . $module . "' class='btn btn-default" . (!empty($_GET["module"]) && $_GET["module"] === $module ? " active" : "") . "''>$module</a>";
-            }
-            $strOut .= "&nbsp; &nbsp;";
-        }
-        $strOut .= "</div>";
-        $strOut .= "<br>";
-    }
     $module = $_GET["module"];
     if (!empty($module)) {
         $strOut .= "<div class='infowell'>".msv_build_module_info($module)."</div>";
     }
+    if (!isset($_GET["module_install"])) {
+        $strOut .= "<div style='line-height:40px;'>";
+        $strOut .= "<h4 class='pull-left'>Navigate to module:</h4>&nbsp;&nbsp;";
+        $strOut .= "<table>";
+        foreach ($list as $module) {
+            $obj = $website->{$module};
+            $strOut .= "<tr>";
+            $strOut .= "<td class='col-sm-3'>";
+            $strOut .= $obj->config["title"];
+            $strOut .= "</td>";
+            $strOut .= "<td class='col-sm-1'>";
+            $strOut .= $obj->config["version"];
+            $strOut .= "</td>";
+            $strOut .= "<td class='col-sm-4'>".LOCAL_MODULE."/$module</td>";
+            $strOut .= "<td class='col-sm-1'></td>";
+            $strOut .= "<td class='col-sm-1'>";
+            if ($obj->enabled) {
+                $strOut .= "<span class='label label-success'>enabled</span>";
+            } else {
+                $strOut .= "<span class='label label-warning'>disabled</span>";
+            }
+            $strOut .= "<td>";
+            $strOut .= "<td class='col-sm-2'>";
+            $strOut .= "<a href='/admin/?section=module_settings&module=" . $obj->name . "' class='btn btn-primary" . (!empty($_GET["module"]) && $_GET["module"] === $module ? " active" : "") . "'>configure</a>";
+            $strOut .= "</td>";
+            $strOut .= "</tr>";
+        }
+        $strOut .= "</table>";
+        $strOut .= "</div>";
+        $strOut .= "<br>";
+    }
+
     if (isset($_GET["module_install"])) {
         $listRep = msv_list_modules();
         foreach ($listRep as $module => $moduleInfo) {
@@ -801,7 +830,7 @@ function msv_build_module_info($module) {
         "accessAPIList", "accessAPIDetails", "accessAPIAdd", "accessAPIEdit", "accessAPICategory", "accessAPIAlbum",
     );
 
-    $str =  "<h1 class='text-center'>".$objModule->title."</h1>";
+    $str =  "<h1 class='text-center'>".$objModule->config["title"]."</h1>";
     $str .= '<ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#config">Config</a></li>
   <li><a data-toggle="tab" href="#tables">Tables</a></li>
@@ -827,7 +856,8 @@ function msv_build_module_info($module) {
   </div>
   <div id="tables" class="tab-pane fade">';
     foreach ($objModule->tables as $tableName => $tableInfo) {
-        $str .= "<h4>Table Definition</h4>";
+        $str .= "<div class='row'><div class='col-sm-5'>";
+        $str .= "<h4>Table '".$tableInfo["name"]."' definition</h4>";
         $str .= "<table class=\"table table-hover\">
     <tr><th class=\"col-sm-5\">Parameter</th><th>Value</th></tr>";
         $str .= "<tr><td>Table Name</td><td>".$tableInfo["name"]."</td></tr>\n";
@@ -835,14 +865,15 @@ function msv_build_module_info($module) {
         $str .= "<tr><td>Title field</td><td>".$tableInfo["title"]."</td></tr>\n";
         $str .= "<tr><td>UseSEO</td><td>".$tableInfo["useseo"]."</td></tr>\n";
         $str .= "</table>\n";
-
-        $str .= "<h4>Table Fields</h4>";
+        $str .= "</div><div class='col-sm-7'>";
+        $str .= "<h4>Table '".$tableInfo["name"]."' fields definition</h4>";
         $str .= "<table class=\"table table-hover\">
     <tr><th class=\"col-sm-5\">Name</th><th class=\"col-sm-4\">Type</th><th class=\"col-sm-3\">ListSkip</th></tr>";
         foreach ($tableInfo["fields"] as $fieldInfo) {
             $str .= "<tr><td>".$fieldInfo["name"]."</td><td>".$fieldInfo["type"]."</td><td>".$fieldInfo["listskip"]."</td></tr>\n";
         }
         $str .= "</table>\n";
+        $str .= "</div></div>\n";
     }
 
     if (empty($objModule->tables)) {
@@ -941,7 +972,7 @@ function msv_build_module_info($module) {
   <div id="actions" class="tab-pane fade">';
     $str .= "<h4>Module actions</h4>";
     $str .= "<p>";
-    $str .= "<a href='/admin/?module_reinstall=".$objModule->name."' class='btn btn-danger btn-lg' onclick=\"if(!confirm('Are you sure? Current module files will be overwritten.')) return false;\">reinstall</a> ";
+    $str .= "<a href='/admin/?module_reinstall=".$objModule->name."' class='btn btn-danger btn-lg' onclick=\"if(!confirm('Are you sure? Current module files will be overwritten.')) return false;\">update module</a>&nbsp; &nbsp; ";
     if ($objModule->enabled) {
         $str .= "<a href='/admin/?module_disable=".$objModule->name."' class='btn btn-danger btn-lg'>disable module</a>";
     } else {

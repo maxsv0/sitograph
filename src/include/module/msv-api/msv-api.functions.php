@@ -132,8 +132,13 @@ function db_update_row($table, $row) {
             $sqlCodeValue .= "".(int)$value.",";
             $sqlCodeUpdate .= " `".$field."` = ".(int)$value.", ";
         } else {
-            $sqlCodeValue .= "'".db_escape($value)."',";
-            $sqlCodeUpdate .= " `".$field."` = '".db_escape($value)."', ";
+            if (strtoupper($value) == "NULL") {
+                $sqlCodeValue .= "NULL,";
+                $sqlCodeUpdate .= " `".$field."` = NULL, ";
+            } else {
+                $sqlCodeValue .= "'".db_escape($value)."',";
+                $sqlCodeUpdate .= " `".$field."` = '".db_escape($value)."', ";
+            }
         }
     }
     $sqlCodeField = substr($sqlCodeField, 0, -1)." ) ";
