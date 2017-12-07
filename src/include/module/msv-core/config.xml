@@ -25,7 +25,7 @@
 		<api name="cron" action="api_request_cron"/>
 		<api name="core" action="api_request_core"/>
 
-		<table name="structure" index="url" title="name" useseo="true">
+		<table name="structure" index="id" title="name" useseo="true">
 			<field name="id" type="id"/>
 			<field name="published" type="published"/>
 			<field name="deleted" type="deleted"/>
