@@ -11,6 +11,15 @@ $tableInfo["fields"]["document_text"] = array(
 msv_assign_data("admin_table_info", $tableInfo);
 
 if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
+    // parent url -> parent_id convert
+    $parent_id = 0;
+    if (!empty($_POST["form_parent_id"])) {
+        $resultParent = db_get(TABLE_STRUCTURE, "`url` = '".db_escape($_REQUEST["form_parent_id"])."'", $lang);
+        if ($resultParent["ok"] && !empty($resultParent["data"])) {
+            $_REQUEST["form_parent_id"] = $_POST["form_parent_id"] = $resultParent["data"]["id"];
+        }
+    }
+
     $resultSave = msv_process_updatetable(TABLE_STRUCTURE, "form_");
 
     if ($resultSave["ok"]) {
