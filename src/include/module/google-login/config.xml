@@ -9,8 +9,8 @@
 
 <install>
 	<param name="name" value="google-login" />
-	<param name="version" value="1.0"/>
-	<param name="date" value="03.11.2017"/>
+	<param name="version" value="1.0.1"/>
+	<param name="date" value="07.12.2017"/>
 	<param name="title" value="Google Login"/>
 	<param name="description" value="Google Login Services. Allow to sing up or log in"/>
 	
