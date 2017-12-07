@@ -87,15 +87,25 @@
 </table>
 
 {if !$service_ip_info}
-    <div class="alert alert-danger">
-        <b>IP Info Service is not configured</b><br>
-        <a href="/admin/?section=site_settings&edit_key=service_ip_info">{_t("admin.site_settings")}, Config name: service_ip_info</a>.
+<div class="alert alert-warning">
+    <div class="row">
+        <div class="col-xs-1"><img src="{CONTENT_URL}/{$msv_seo.preview}" class="img-thumbnail"></div>
+        <div class="col-xs-11" style="padding-left:0;">
+            <p><b>IP Info Info Service</b> is not active. <b>service_ip_info</b> must contain valid URL</p>
+            <a href="/admin/?section=site_settings&edit_key=service_ip_info">{_t("admin.site_settings")}, Config name: service_ip_info</a>.
+        </div>
     </div>
+</div>
 {/if}
 
 {if !$service_ua_info}
-    <div class="alert alert-danger">
-        <b>UserAgent Info Service is not configured</b><br>
-        <a href="/admin/?section=site_settings&edit_key=service_ua_info">{_t("admin.site_settings")}, Config name: service_ua_info</a>.
+<div class="alert alert-warning">
+    <div class="row">
+        <div class="col-xs-1"><img src="{CONTENT_URL}/{$msv_seo.preview}" class="img-thumbnail"></div>
+        <div class="col-xs-11" style="padding-left:0;">
+            <p><b>UserAgent Info Service</b> is not active. <b>service_ua_info</b> must contain valid URL</p>
+            <a href="/admin/?section=site_settings&edit_key=service_ua_info">{_t("admin.site_settings")}, Config name: service_ua_info</a>.
+        </div>
     </div>
+</div>
 {/if}
