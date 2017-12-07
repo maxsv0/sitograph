@@ -58,16 +58,12 @@ Disallow: /
 <p>{$t["admin.robots_example_seo"]}</p>
 <pre class="panel panel-info text-muted">
 User-agent: * 
-Disallow: /*form
-Disallow: /*& 
-Disallow: /*friend
+Disallow: /admin/*
 Sitemap: {$home_url}sitemap.xml 
 
 User-agent: Yandex
-Disallow: /*form 
-Disallow: /*& 
-Disallow: /*friend 
+Disallow: /admin/*
 Host: {$host}
-Sitemap: {$home_url} 
+Sitemap: {$home_url} sitemap.xml
 </pre>
 
