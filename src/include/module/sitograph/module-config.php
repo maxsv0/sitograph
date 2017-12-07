@@ -12,10 +12,16 @@ $configListNames = array(
 
 $configList = array();
 foreach ($configListNames as $name) {
-	$value = constant($name);
-	if (is_bool($value)) {
-		$value = $value ? 1 : 0;
-	}
+    if (!defined($name)) {
+        msv_message_error("Constant ".$name." was not found in config.php");
+        $value = "";
+    } else {
+        $value = constant($name);
+        if (is_bool($value)) {
+            $value = $value ? 1 : 0;
+        }
+    }
+
 	$configList[$name] = $value;
 }
 
@@ -33,8 +39,12 @@ if (!empty($_POST["save"])) {
 	$configPHP = "<?php \n";
 	
 	foreach ($configListNames as $name) {
-		$valueCurrent = constant($name);
-		
+        if (defined($name)) {
+            $valueCurrent = constant($name);
+        } else {
+            $valueCurrent = "";
+        }
+
 		if (array_key_exists("config_".$name, $_REQUEST)) {
 			$value = $_REQUEST["config_".$name];
 		} else {
