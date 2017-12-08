@@ -779,7 +779,7 @@ class MSV_Website {
 		// calculate script running time and log
 		$tm = time() + (float)substr((string)microtime(), 1, 8);
 		$this->config["timestampEnd"] = $tm;
-		$scriptTime = $this->config["timestampEnd"] - $this->config["timestampT"];
+		$scriptTime = $this->config["timestampEnd"] - $this->config["timestampStart"];
 		$scriptTime = round($scriptTime, 6);
 		$this->log("Run time: $scriptTime sec");
 			
