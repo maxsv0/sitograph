@@ -1,5 +1,5 @@
-### Expected behaviour
+### Expected behaviour - Ожидаемое поведение
 
-### Actual behaviour
+### Actual behaviour - Фактическое поведение
 
-### Steps to reproduce behaviour
+### Steps to reproduce behaviour - Шаги по воспроизведению
