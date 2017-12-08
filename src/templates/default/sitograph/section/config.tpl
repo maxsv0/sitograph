@@ -1,4 +1,4 @@
-<div class="alert alert-danger">
+<div class="alert alert-warning">
 	<b>WARNING!</b> PLEASE NOTE: After clicking the <b>Save</b> button changes will be made directly to the <b>config.php</b> file. <br><b>THIS CAN CAUSE WEBSITE STOP FUNCTIONING.</b>
 </div>
 
