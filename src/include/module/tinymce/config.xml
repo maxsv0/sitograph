@@ -11,8 +11,8 @@
 
 <install>
 	<param name="name" value="tinymce" />
-	<param name="version" value="1.1.1"/>
-	<param name="date" value="12.08.2017"/>
+	<param name="version" value="1.1.2"/>
+	<param name="date" value="11.12.2017"/>
 	<param name="title" value="TinyMCE"/>
 	<param name="description" value="TinyMCE Editor v. 4.3.12"/>
 	<param name="tags" value="wysiwyg,editor,jquery"/>
