@@ -1,6 +1,16 @@
 <?php
 
 msv_include_jsfile("/content/js/tinymce/tinymce.min.js", "", "admin");
+$theme_css_path = msv_get_config("theme_css_path");
+$theme_use_bootstrap = msv_get_config("theme_use_bootstrap");
+
+$cssList = "";
+if ($theme_use_bootstrap > 0) {
+    $cssList .= "'/content/css/bootstrap.min.css',\n";
+}
+if (!empty($theme_css_path)) {
+    $cssList .= "'$theme_css_path',\n";
+}
 
 // include this code only in admin pages: /admin/*
 msv_include_js("
@@ -19,8 +29,7 @@ $(document).ready(function() {
 		],
 	toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image code',
 	  content_css: [
-		'/content/css/bootstrap.min.css',
-		'/content/css/default.css',
+		$cssList
 	  ]
 	});
  });
@@ -43,8 +52,7 @@ $(document).ready(function() {
 		],
 	toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image code',
 	  content_css: [
-		'/content/css/bootstrap.min.css',
-		'/content/css/default.css',
+		$cssList
 	  ]
 	});
  });
