@@ -12,7 +12,7 @@ msv_assign_data("admin_table_info", $tableInfo);
 if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
 	$result = msv_process_updatetable($table, "form_");
 	if ($result["ok"]) {
-		
+
 		// update SEO
 		if ($tableInfo["useseo"]) {
 			// make item Url
@@ -27,7 +27,7 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
 				$rowSEO["description"] = $_POST["form_seo_description"];
 				$rowSEO["keywords"] = $_POST["form_seo_keywords"];
                 $rowSEO["sitemap"] = $_POST["form_published"] == 1 ? 1:0;
-				
+
 				$resultSave = db_update_row(TABLE_SEO, $rowSEO);
                 msv_genegate_sitemap(true);
 			} else {
@@ -65,7 +65,7 @@ if (!empty($_REQUEST["edit_key"])) {
 if (!empty($_REQUEST["edit"])) {
 	$resultQueryItem = db_get($table, "`id` = '".(int)$_REQUEST["edit"]."'");
 	if ($resultQueryItem["ok"]) {
-		
+
 		// make item Url
 		$itemUrl = $sectionObj->baseUrl.$resultQueryItem["data"]["url"];
 		$itemUrl .= "/";
@@ -94,8 +94,8 @@ if (!empty($_REQUEST["delete"])) {
 }
 if (isset($_REQUEST["add_new"])) {
 	$item = array(
-		"id" => "", 
-		"published" => 1, 
+		"id" => "",
+		"published" => 1,
 		"deleted" => 0,
 		"lang" => LANG,
 	);
@@ -126,16 +126,12 @@ if (!empty($_REQUEST["sortd"])) {
 	$sortd_rev = "asc";
 }
 
+$listLimit = 100;
+
 msv_assign_data("table_sort", $sort);
 msv_assign_data("table_sortd", $sortd);
 msv_assign_data("table_sortd_rev", $sortd_rev);
-
-$listLimit = 100;
-
-// in case of export show all rows
-if (isset($_GET["export"])) {
-	$listLimit = 65000;
-}
+msv_assign_data("table_limit", $listLimit);
 
 $resultQuery = db_get_listpaged($table, "", "`$sort` $sortd", $listLimit, "p");
 if ($resultQuery["ok"]) {
@@ -144,27 +140,31 @@ if ($resultQuery["ok"]) {
 	$adminList = $resultQuery["data"];
 	$listPages = $resultQuery["pages"];
     msv_assign_data("admin_list_pages", $listPages);
-	
-	$adminListSkipFields = array();
+
+	$adminListSkipFields = $adminListFields = array();
 	$adminListSkipFields[] = "deleted";
 	$adminListSkipFields[] = "published";
 	$adminListSkipFields[] = "author";
 	$adminListSkipFields[] = "updated";
 
 	foreach ($tableInfo["fields"] as $field) {
+        if (!in_array($field["name"], $adminListFields)) {
+            $adminListFields[] = $field["name"];
+        }
+
 		if($field["listskip"] > 0) {
 			$adminListSkipFields[] = $field["name"];
 		}
-				
+
 		if (!empty($field["select-from"])) {
 			$field["type"] = "select";
-			
+
 			if ($field["select-from"]["source"] === "table") {
 				$cfg = msv_get_config_table($field["select-from"]["name"]);
 				// TODO: multi index support
 				$index = $cfg["index"];
 				$title = $cfg["title"];
-				
+
 				$queryData = db_get_list($field["select-from"]["name"], "", "`$title` asc");
 				if ($queryData["ok"]) {
 					$arData = array();
@@ -174,42 +174,38 @@ if ($resultQuery["ok"]) {
 					$field["data"] = $arData;
 				}
 			} elseif ($field["select-from"]["source"] === "list") {
-				
+
 				$field["data"] = array();
 				$list = explode(",", $field["select-from"]["name"]);
 				foreach ($list as $listItem) {
 					$field["data"][$listItem] = _t($field["name"].".".$listItem);
 				}
-				
+
 			}
 
 			$adminListFiltered = array();
 			foreach ($adminList as $listItemID => $listItem) {
-				
+
 				if (is_array($listItem[$field["name"]])) {
-					
+
 					$str = "";
 					foreach ($listItem[$field["name"]] as $value) {
 						$str .=  $field["data"][$value].",";
 					}
 					$listItem[$field["name"]] = substr($str, 0, -1);
-					
+
 				} elseif (!empty($listItem[$field["name"]])) {
 					$listItem[$field["name"]."_data"] = $listItem[$field["name"]];
 					$listItem[$field["name"]] = $field["data"][$listItem[$field["name"]]];
 				}
-				
+
 				$adminListFiltered[$listItemID] = $listItem;
 			}
 			$adminList = $adminListFiltered;
 		}
 	}
 
-	// in case of full export don't skip any fields
-    if (isset($_GET["export_full"])) {
-        $adminListSkipFields = array();
-    }
-
     msv_assign_data("admin_list_skip", $adminListSkipFields);
+    msv_assign_data("admin_list_fields", $adminListFields);
     msv_assign_data("admin_list", $adminList);
 }
