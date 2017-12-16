@@ -1,4 +1,70 @@
 {if $listTable}
+
+<div class="row">
+    <div class="col-sm-4">
+        <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&add_new" class="btn btn-primary"><span class="glyphicon glyphicon-ok">&nbsp;</span>{$t["btn.add_new"]}</a>
+    </div>
+
+    <div class="col-sm-8 text-right">
+        <p class="text-right">
+            <button class="btn btn-default" data-toggle="collapse" data-target=".collapse"><span class='glyphicon glyphicon-cog'></span> Options</button>
+        </p>
+
+        <ul class="collapse">
+            <form action="/admin/" method="GET">
+                <div class="well text-left">
+                    <div class="row form-group">
+                        <label for="itableLimit" class="col-sm-4 control-label">Items per page</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="itableLimit" placeholder="Number items per page" name="user_table_limit" value="100">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="inputName" class="col-sm-4 control-label">Show/hide columns</label>
+                        <div class="col-sm-8 checkbox">
+                            {foreach from=$admin_list_fields item=itemFieldID}
+                                <label class="col-sm-6">
+                                    <input type="checkbox" {if !in_array($itemFieldID, $admin_list_skip)}checked{/if} name="utf[]"> {$itemFieldID}
+                                </label>
+                            {/foreach}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="inputName" class="col-sm-4 control-label">Sort by</label>
+                        <div class="col-sm-4">
+                            <select class="form-control col-sm-4" name="user_table_sort">
+                                {foreach from=$admin_list_fields item=itemFieldID}
+                                    <option value="{$itemFieldID}" {if ($itemFieldID == $table_sort)}selected{/if}>{$itemFieldID}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                            <select class="form-control col-sm-4" name="user_table_sort">
+                                <option value="desc">desc</option>
+                                <option value="asc" {if ("asc" == $table_sortd)}selected{/if}>asc</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <a href="{$lang_url}/admin/?section=export&table={$admin_table}&sort={$table_sort}&sortd={$table_sortd}&p={$admin_list_page}&pn={$table_limit}" class="btn btn-info"><span class="glyphicon glyphicon-download">&nbsp;</span>{_t("btn.export_table")}</a>
+                            &nbsp;&nbsp;
+                            <a href="{$lang_url}/admin/?section=export&table={$admin_table}&sort={$table_sort}&sortd={$table_sortd}&export_full" class="btn btn-info"><span class="glyphicon glyphicon-download">&nbsp;</span>{_t("btn.export_table_full")}</a>
+                        </div>
+                        <div class="col-sm-5 text-right">
+                            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok">&nbsp;</span>Save settings</button>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="section" value="{$admin_section}">
+                <input type="hidden" name="table" value="{$admin_table}">
+            </form>
+        </ul>
+    </div>
+</div>
+
+
 <div class="table-responsive">
 <table class="table table-hover table-striped table-module">
 
@@ -104,17 +170,6 @@
 
 {/if} 
 
-<div class="col-sm-6">
+<div class="col-sm-12">
 <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&add_new" class="btn btn-primary"><span class="glyphicon glyphicon-ok">&nbsp;</span>{$t["btn.add_new"]}</a>
-</div>
-
-<div class="col-sm-6 text-right">
-    <ul class="list-btn">
-        <li>
-            <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&export&export_full" class="btn btn-info"><span class="glyphicon glyphicon-download">&nbsp;</span>{_t("btn.export_table_full")}</a>
-        </li>
-        <li>
-            <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&export" class="btn btn-info"><span class="glyphicon glyphicon-download">&nbsp;</span>{_t("btn.export_table")}</a>
-        </li>
-    </ul>
 </div>

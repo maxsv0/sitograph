@@ -811,12 +811,15 @@ class MSV_Website {
 		}
 	}
 
-	function test_compatibility() {
-        if (!function_exists("simplexml_load_file")) {
-            $this->outputError("Required function not found: <b>simplexml_load_file</b>");
+    function test_compatibility() {
+        if (!extension_loaded("simplexml")) {
+            $this->outputError("Required extension not found: <b>simplexml</b>");
         }
-        if (!function_exists("mysqli_connect")) {
-            $this->outputError("Required function not found: <b>mysqli_connect</b>");
+        if (DB_REQUIRED && !extension_loaded("mysqli")) {
+            $this->outputError("Required extension not found: <b>mysqli</b>");
+        }
+        if (USER_HASH_PASSWORD && !function_exists("password_hash")) {
+            $this->outputError("Required function not found: <b>password_hash</b>");
         }
 
         if(function_exists("apache_get_modules")) {

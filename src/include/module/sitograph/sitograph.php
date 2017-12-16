@@ -97,6 +97,13 @@ if ($section === "module_search") {
     }
     $admin_page_title = "Search Website";
     $admin_page_template = "search.tpl";
+} elseif ($section === "export") {
+    $handlerPath = ABS_MODULE."/sitograph/export.php";
+    if (file_exists($handlerPath)) {
+        include($handlerPath);
+    } else {
+        msv_message_error("Export handler not found at path <b>$handlerPath</b>");
+    }
 }
 
 msv_assign_data("admin_page_title", $admin_page_title);
@@ -133,6 +140,9 @@ if (!empty($section) && in_array($section, $menu_index)) {
 
         // TODO: remove this?
         //MSV_redirect("/admin/?section=$section&table=$admin_table&edit=".$_POST["form_id"]."&saved");
+    }
+    if (isset($_GET["msg"])) {
+        msv_message_ok($_GET["msg"]);
     }
     if (isset($_GET["saved"])) {
         msv_message_ok(_t("msg.saved_ok"));
@@ -236,39 +246,6 @@ if (!empty($section) && in_array($section, $menu_index)) {
         }
         msv_assign_data("admin_edit_tabs", $tabs);
         msv_assign_data("admin_edit", $table_edit);
-    }
-
-    if (isset($_GET["export"])) {
-        header('Content-Encoding: UTF-8');
-        header('Content-type: text/csv; charset=UTF-8');
-        header('Content-Disposition: attachment; filename='.$table.'-'.time().'.csv');
-
-        $out = fopen('php://output', 'w');
-        fputs($out, "\xEF\xBB\xBF");
-
-        $table_info = msv_get_config("admin_table_info");
-        $rowShort = array();
-        foreach ($table_info["fields"] as $field) {
-            if (!in_array($field["name"], $adminListSkipFields)) {
-                $rowShort[] = _t("table.".$table_info["name"].".".$field["name"]);
-            }
-        }
-        fputcsv($out, $rowShort);
-
-
-        foreach ($adminList as $row) {
-            $rowShort = array();
-
-            foreach ($row as $k => $v) {
-                if (!in_array($k, $adminListSkipFields)) {
-                    $rowShort[] = $v;
-                }
-            }
-            fputcsv($out, $rowShort);
-        }
-
-        fclose($out);
-        die;
     }
 }
 
