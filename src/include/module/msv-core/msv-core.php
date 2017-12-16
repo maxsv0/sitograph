@@ -706,10 +706,16 @@ function msv_output_admin_modulesetup() {
         $strOut .= "</h4>";
         $strOut .= "<p><b>".REP."</b></p>";
 
-        $strOut .= "<p>";
+        $strOut .= "<div class='row'>";
+        $strOut .= "<div class='col-sm-6'>";
         $strOut .= "<a href='/admin/?section=module_settings&module_install' class='btn btn-lg btn-danger'><span class='glyphicon glyphicon-download'></span> install new module</a> &nbsp; &nbsp;";
-        $strOut .= "<a href='/admin/?section=module_settings&module_update_all' class='btn btn-lg btn-danger'><span class='glyphicon glyphicon-download-alt'></span> update all</a> &nbsp; &nbsp;";
-        $strOut .= "</p>";
+        $strOut .= "<a href='/admin/?section=module_settings&module_update_all' class='btn btn-lg btn-danger'><span class='glyphicon glyphicon-refresh'></span> update all</a> &nbsp; &nbsp;";
+        $strOut .= "</div>";
+
+        $strOut .= "<div class='col-sm-6 text-right'>";
+        $strOut .= "<a href='/admin/?section=export&full' class='btn btn-lg btn-primary'><span class='glyphicon glyphicon-download-alt'></span> Download Website Backup</a> &nbsp; &nbsp;";
+        $strOut .= "</div>";
+        $strOut .= "</div>";
     }
     $module = $_GET["module"];
     if (!empty($module)) {
@@ -718,7 +724,7 @@ function msv_output_admin_modulesetup() {
     if (!isset($_GET["module_install"])) {
         $strOut .= "<div style='line-height:40px;'>";
         $strOut .= "<h4 class='pull-left'>Navigate to module:</h4>&nbsp;&nbsp;";
-        $strOut .= "<table>";
+        $strOut .= "<table class='table table-hover'>";
         foreach ($list as $module) {
             $obj = $website->{$module};
             $strOut .= "<tr>";
@@ -738,7 +744,7 @@ function msv_output_admin_modulesetup() {
             }
             $strOut .= "<td>";
             $strOut .= "<td class='col-sm-2'>";
-            $strOut .= "<a href='/admin/?section=module_settings&module=" . $obj->name . "' class='btn btn-primary" . (!empty($_GET["module"]) && $_GET["module"] === $module ? " active" : "") . "'>configure</a>";
+            $strOut .= "<a href='/admin/?section=module_settings&module=" . $obj->name . "' class='btn btn-primary" . (!empty($_GET["module"]) && $_GET["module"] === $module ? " active" : "") . "'><span class='glyphicon glyphicon-cog'></span> configure</a>";
             $strOut .= "</td>";
             $strOut .= "</tr>";
         }
@@ -819,6 +825,7 @@ function msv_output_admin_modulesetup() {
 
     return $strOut;
 }
+
 
 function msv_build_module_info($module) {
     $objModule = msv_get("website.".$module);
@@ -971,30 +978,52 @@ function msv_build_module_info($module) {
   
   <div id="actions" class="tab-pane fade">';
     $str .= "<h4>Module actions</h4>";
-    $str .= "<p>";
-    $str .= "<a href='/admin/?module_reinstall=".$objModule->name."' class='btn btn-danger btn-lg' onclick=\"if(!confirm('Are you sure? Current module files will be overwritten.')) return false;\">update module</a>&nbsp; &nbsp; ";
+    $str .= "<p class='well text-center'>";
+    // TODO: Export module feature
+    $str .= "<a href='/admin/?section=export&module=".$objModule->name."' class='btn btn-primary btn-lg'><span class='glyphicon glyphicon-download'></span> Export ZIP</a>&nbsp; &nbsp; ";
+    $str .= "<a href='/admin/?module_reinstall=".$objModule->name."' class='btn btn-warning btn-lg' onclick=\"if(!confirm('Are you sure? Current module files will be overwritten.')) return false;\"><span class='glyphicon glyphicon-refresh'></span> update module</a>&nbsp; &nbsp; ";
     if ($objModule->enabled) {
-        $str .= "<a href='/admin/?module_disable=".$objModule->name."' class='btn btn-danger btn-lg'>disable module</a>";
+        $str .= "<a href='/admin/?module_disable=".$objModule->name."' class='btn btn-danger btn-lg'><span class='glyphicon glyphicon-remove'></span> disable module</a>";
     } else {
-        $str .= "<a href='/admin/?module_enable=".$objModule->name."' class='btn btn-danger btn-lg'>enable module</a>";
+        $str .= "<a href='/admin/?module_enable=".$objModule->name."' class='btn btn-danger btn-lg'><span class='glyphicon glyphicon-ok'></span> enable module</a>";
     }
-    $str .= "&nbsp; &nbsp; ";
-    $str .= "<a href='/admin/?module_remove=".$objModule->name."' class='btn btn-danger btn-lg' onclick=\"if(!confirm('ALL DATA WILL BE LOST! Are you sure?')) return false;\">remove module</a> &nbsp; &nbsp;";
+    //$str .= "&nbsp; &nbsp; ";
+    //$str .= "<a href='/admin/?module_remove=".$objModule->name."' class='btn btn-danger btn-lg disabled' onclick=\"if(!confirm('ALL DATA WILL BE LOST! Are you sure?')) return false;\"><span class='glyphicon glyphicon-ban-circle'></span> Remove</a> &nbsp; &nbsp;";
     $str .= "</p>";
 
     $str .= "<h4>Table actions</h4>";
+    $str .= "<table class='table table-hover'>";
     foreach ($objModule->tables as $tableName => $tableInfo) {
-        $str .= "<p>";
-        $str .= "<b class='col-sm-5'>".$tableInfo["name"]."</b>";
-        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=remove#actions' class='btn btn-danger'>remove table</a> ";
-        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=truncate#actions' class='btn btn-danger'>truncate table</a> ";
-        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=create#actions' class='btn btn-primary'>create table</a> ";
-        $str .= "</p>";
+        $str .= "<tr>";
+        $str .= "<td class='col-sm-2 col-sm-offset-1'><p>".$tableInfo["name"]."</p></td>";
+
+        $resultCount = db_get_count($tableInfo["name"]);
+        $tableExists = true;
+        if ($resultCount["ok"]) {
+            $str .= "<td class='col-sm-2'>";
+            $str .= $resultCount["data"]." rows";
+            $str .= "</td>";
+            $str .= "<td class='col-sm-2'>";
+            $str .= " <a href='/admin/?section=export&table=".$tableInfo["name"]."&export_full' class='btn btn-primary'><span class='glyphicon glyphicon-download'></span> Export CSV</a> ";
+            $str .= "</td>";
+        } else {
+            $str .= "<td colspan='2' class='col-sm-4'>";
+            $str .= "<div class='alert alert-warning'>".$resultCount["msg"]."</div>";
+            $str .= "</td>";
+            $tableExists = false;
+        }
+
+        $str .= "<td class='col-sm-5'>";
+        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=remove#actions' class='btn btn-danger".($tableExists ? "" : " disabled")."'><span class='glyphicon glyphicon-remove'></span> remove table</a> ";
+        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=truncate#actions' class='btn btn-danger".($tableExists ? "" : " disabled")."''><span class='glyphicon glyphicon-trash'></span> truncate table</a> ";
+        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=create#actions' class='btn btn-warning".($tableExists ? " disabled" : "")."''><span class='glyphicon glyphicon-plus'></span> create table</a> ";
+        $str .= "</td>";
     }
+    $str .= "</table>";
     if (empty($objModule->tables)) {
         $str .= "<div class='alert alert-warning'>No tables found for this module</div>";
     }
-  $str .=  '</div>
+    $str .=  '</div>
 </div>
 
 ';
@@ -1054,26 +1083,27 @@ function msv_process_superadmin() {
         // TODO: check $_GET["table"]
 
         $result = array();
+        $table = $_GET["module_table"];
+        $module = $_GET["module"];
+
         if ($_GET["table_action"] === "create") {
 
-            $result = db_create_table($_GET["module_table"]);
+            $result = db_create_table($table);
 
         } elseif ($_GET["table_action"] === "truncate") {
 
-            $result = db_empty_table($_GET["module_table"]);
+            $result = db_empty_table($table);
 
         } elseif ($_GET["table_action"] === "remove") {
 
-            $result = db_remove_table($_GET["module_table"]);
+            $result = db_remove_table($table);
 
         }
 
         if (!empty($result)) {
             if ($result["ok"]) {
-                msv_message_ok($result["sql"]);
-                msv_message_ok($result["msg"]);
+                msv_redirect("/admin/?section=module_settings&module=$module&msg=".$result["msg"]);
             } else {
-                msv_message_error($result["sql"]);
                 msv_message_error($result["msg"]);
             }
         }
