@@ -116,10 +116,39 @@ if (!empty($table)) {
 
 if (!empty($module)) {
     $moduleObj = msv_get("website.".$module);
+    $moduleName = $moduleObj->name.'-'.$moduleObj->version;
 
-    var_dump($moduleObj->files);
-    die("123");
+    $zipFile = tmpfile();
+    $zipArchive = new ZipArchive();
 
+    $metaDatas = stream_get_meta_data($zipFile);
+    $tmpFilename = $metaDatas['uri'];
+
+    if (!$zipArchive->open($tmpFilename, ZIPARCHIVE::OVERWRITE)) {
+        msv_error("Error creating archive");
+    }
+    foreach ($moduleObj->files as $fileInfo) {
+        $filePath = $fileInfo["dir"]."/".$fileInfo["path"];
+
+        if (!file_exists($fileInfo["abs_path"])) {
+            msv_error("File not found: $filePath ({$fileInfo["abs_path"]})");
+        }
+
+        $zipArchive->addFile($fileInfo["abs_path"], $filePath);
+    }
+    $zipArchive->close();
+
+    $cont = file_get_contents($tmpFilename);
+    fclose($zipFile);
+
+    // output zip
+    header('Content-Type: application/zip');
+    header('Content-Disposition: attachment; filename="'.$moduleName.'.zip"');
+    header('Content-Transfer-Encoding: binary');
+    header('Accept-Ranges: bytes');
+    header('Cache-Control: private');
+    header('Pragma: private');
+    echo $cont;
 }
 
 msv_error("Wrong input for export");
