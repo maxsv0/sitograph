@@ -390,7 +390,7 @@ function db_get($table, $filter = "", $lang = LANG) {
  * @param string $lang LANG of data
  * @return array API result of action
  */
-function db_get_count($table, $filter, $lang = LANG) {
+function db_get_count($table, $filter = "", $lang = LANG) {
     // function returns $result
     $result = array(
         "ok" => true,
@@ -414,7 +414,6 @@ function db_get_count($table, $filter, $lang = LANG) {
 
     $resultQuery = db_sql($sqlCode);
     if (!$resultQuery["ok"]) {
-        $resultQuery["msg"] .= "Can't get table count `$table`";
         return $resultQuery;
     }
 
