@@ -685,47 +685,23 @@ function msv_output_admin_modulesetup() {
     $website = msv_get("website");
     $list = $website->modules;
 
-    $strOut  = "";
-    if (!isset($_GET["module"])) {
-        $strOut .= "<div class=''>";
-        $strOut .= "<h4>";
-        $strOut .= "Repository: ";
+    $strOut  = "<div class='row'>";
 
-        $ctx = stream_context_create(array('http'=>
-            array(
-                'timeout' => 5,
-            )
-        ));
-
-        $cont = file_get_contents(REP, false, $ctx);
-        if(empty($cont)) {
-            $strOut .= "<strong class='text-danger'>offline</strong>";
-        } else {
-            $strOut .= "<strong class='text-success'>online</strong>";
-        }
-        $strOut .= "</h4>";
-        $strOut .= "<p><b>".REP."</b></p>";
-
-        $strOut .= "<div class='row'>";
-        $strOut .= "<div class='col-sm-6'>";
-        $strOut .= "<a href='/admin/?section=module_settings&module_install' class='btn btn-lg btn-danger'><span class='glyphicon glyphicon-download'></span> install new module</a> &nbsp; &nbsp;";
-        $strOut .= "<a href='/admin/?section=module_settings&module_update_all' class='btn btn-lg btn-danger'><span class='glyphicon glyphicon-refresh'></span> update all</a> &nbsp; &nbsp;";
-        $strOut .= "</div>";
-
-        $strOut .= "<div class='col-sm-6 text-right'>";
-        $strOut .= "<a href='/admin/?section=export&full' class='btn btn-lg btn-primary'><span class='glyphicon glyphicon-download-alt'></span> Download Website Backup</a> &nbsp; &nbsp;";
-        $strOut .= "</div>";
-        $strOut .= "</div>";
-    }
-    $module = $_GET["module"];
-    if (!empty($module)) {
-        $strOut .= "<div class='infowell'>".msv_build_module_info($module)."</div>";
-    }
     if (!isset($_GET["module_install"])) {
-        $strOut .= "<div style='line-height:40px;'>";
-        $strOut .= "<h4 class='pull-left'>Navigate to module:</h4>&nbsp;&nbsp;";
+        $strOut .= "<div class='col-lg-8'>";
+        if (!empty($_GET["module"])) {
+            $obj = $website->{$_GET["module"]};
+            $strOut .= "<h4><a href='/admin/?section=module_settings'>Installed modules</a> &gt; ".$obj->title."</h4>";
+        } else {
+            $strOut .= "<h4>Installed modules</h4>";
+        }
+
         $strOut .= "<table class='table table-hover'>";
         foreach ($list as $module) {
+            if (!empty($_GET["module"]) && $_GET["module"] !== $module) {
+                continue;
+            }
+
             $obj = $website->{$module};
             $strOut .= "<tr>";
             $strOut .= "<td class='col-sm-3'>";
@@ -744,16 +720,15 @@ function msv_output_admin_modulesetup() {
             }
             $strOut .= "<td>";
             $strOut .= "<td class='col-sm-2'>";
-            $strOut .= "<a href='/admin/?section=module_settings&module=" . $obj->name . "' class='btn btn-primary" . (!empty($_GET["module"]) && $_GET["module"] === $module ? " active" : "") . "'><span class='glyphicon glyphicon-cog'></span> configure</a>";
+            $strOut .= "<a href='/admin/?section=module_settings&module=" . $obj->name . "' class='btn btn-primary active'><span class='glyphicon glyphicon-cog'></span> configure</a>";
             $strOut .= "</td>";
             $strOut .= "</tr>";
         }
         $strOut .= "</table>";
         $strOut .= "</div>";
         $strOut .= "<br>";
-    }
-
-    if (isset($_GET["module_install"])) {
+    } else {
+        $strOut .= "<div class='col-lg-8'>";
         $listRep = msv_list_modules();
         foreach ($listRep as $module => $moduleInfo) {
             $obj = $website->{$moduleInfo["name"]};
@@ -820,7 +795,47 @@ function msv_output_admin_modulesetup() {
             $strOut .= "</div> ";
             $strOut .= "</p>";
         }
+        $strOut .= "</div>";
     }
+
+    $strOut .= "<div class='col-lg-4'>";
+    $strOut .= "<div class='well'>";
+    $strOut .= "<h4>";
+    $strOut .= "Repository: ";
+
+    $ctx = stream_context_create(array('http'=>
+        array(
+            'timeout' => 5,
+        )
+    ));
+
+    $cont = file_get_contents(REP, false, $ctx);
+    if(empty($cont)) {
+        $strOut .= "<strong class='text-danger'>offline</strong>";
+    } else {
+        $strOut .= "<strong class='text-success'>online</strong>";
+    }
+    $strOut .= "</h4>";
+    $strOut .= "<p><b>".REP."</b></p>";
+    $strOut .= "<p class='text-center'>";
+    $strOut .= "<a href='/admin/?section=module_settings&module_install' class='btn btn-lg btn-danger'><span class='glyphicon glyphicon-download'></span> Add Module</a> &nbsp; &nbsp;";
+    $strOut .= "</p>";
+    $strOut .= "</div>";
+    $strOut .= "</div>";
+
+    if (!empty($_GET["module"])) {
+        $strOut .= "<div class='col-sm-10 col-sm-offset-1 infowell'>".msv_build_module_info($_GET["module"])."</div>";
+    }
+    $strOut .= "</div>";
+    $strOut .= "<br>\n";
+    $strOut .= "<div class='row'>";
+    $strOut .= "<div class='col-sm-6'>";
+    $strOut .= "<a href='/admin/?section=module_settings&module_update_all' class='btn btn-lg btn-danger'><span class='glyphicon glyphicon-refresh'></span> update all</a> &nbsp; &nbsp;";
+    $strOut .= "<a href='/admin/?section=module_settings&module_install' class='btn btn-lg btn-danger'><span class='glyphicon glyphicon-download'></span> install new module</a> &nbsp; &nbsp;";
+    $strOut .= "</div>";
+    $strOut .= "<div class='col-sm-6 text-right'>";
+    $strOut .= "<a href='/admin/?section=export&full' class='btn btn-lg btn-primary'><span class='glyphicon glyphicon-download-alt'></span> Download Website Backup</a> &nbsp; &nbsp;";
+    $strOut .= "</div>";
     $strOut .= '</div>';
 
     return $strOut;
@@ -843,41 +858,124 @@ function msv_build_module_info($module) {
   <li><a data-toggle="tab" href="#tables">Tables</a></li>
   <li><a data-toggle="tab" href="#install">Install</a></li>
   <li><a data-toggle="tab" href="#locales">Locales</a></li>
-  <li><a data-toggle="tab" href="#php">Custom PHP</a></li>
+  <li><a data-toggle="tab" href="#php">PHP</a></li>
   <li><a data-toggle="tab" href="#actions">'._t("actions").'</a></li>
 </ul>
 
 <div class="tab-content">
   <div id="config" class="tab-pane fade in active">
-    <h4>Module Configuration</h4>
-    <table class="table table-hover">
-    <tr><th class="col-sm-5">Parameter</th><th>Value</th></tr>
-';
+    <h4>Module Configuration</h4>';
+
+    $str .= "<div class='well text-center'>";
+    $str .= '<a href="/admin/?section=editor&edit_file='.LOCAL_MODULE.'/'.$objModule->name.'/config.xml" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-edit"></span> Edit Module XML</a> &nbsp;&nbsp;';
+    if (file_exists(ABS_MODULE.'/'.$objModule->name.'/config.locales.xml')) {
+        $str .= '<a href="/admin/?section=editor&edit_file='.LOCAL_MODULE.'/'.$objModule->name.'/config.locales.xml" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-edit"></span> Edit Locales XML</a> &nbsp;&nbsp;';
+    } else {
+        $str .= '<a href="#" class="btn btn-primary btn-lg disabled"><span class="glyphicon glyphicon-edit"></span> Edit Locales XML</a> &nbsp;&nbsp;';
+    }
+    if (file_exists(ABS_MODULE.'/'.$objModule->name.'/config.install.xml')) {
+        $str .= '<a href="/admin/?section=editor&edit_file='.LOCAL_MODULE.'/'.$objModule->name.'/config.install.xml" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-edit"></span> Edit Install XML</a>';
+    } else {
+        $str .= '<a href="#" class="btn btn-primary btn-lg disabled"><span class="glyphicon glyphicon-edit"></span> Edit Install XML</a>';
+    }
+    $str .= '</div>';
+
+    $str .= '<table class="table table-hover">';
     foreach ($module_params as $param) {
         $value = $objModule->{$param};
         $str .= "<tr><td>$param</td><td>".(string)$value."</td></tr>\n";
     }
-
     $str .= '
     </table>
   </div>
   <div id="tables" class="tab-pane fade">';
     foreach ($objModule->tables as $tableName => $tableInfo) {
-        $str .= "<div class='row'><div class='col-sm-5'>";
-        $str .= "<h4>Table '".$tableInfo["name"]."' definition</h4>";
-        $str .= "<table class=\"table table-hover\">
-    <tr><th class=\"col-sm-5\">Parameter</th><th>Value</th></tr>";
+        $str .= "<div class='row'><div class='col-sm-12'>";
+        $str .= "<h3>".DB_HOST.": ".DB_NAME.": ".$tableInfo["name"]."</h3>";
+        $str .= "</div>\n";
+        $str .= "<div class='col-sm-5'>";
+        $str .= "<h4>Definition</h4>";
+        $str .= "<table class=\"table table-hover\">";
         $str .= "<tr><td>Table Name</td><td>".$tableInfo["name"]."</td></tr>\n";
         $str .= "<tr><td>Index field</td><td>".$tableInfo["index"]."</td></tr>\n";
         $str .= "<tr><td>Title field</td><td>".$tableInfo["title"]."</td></tr>\n";
         $str .= "<tr><td>UseSEO</td><td>".$tableInfo["useseo"]."</td></tr>\n";
         $str .= "</table>\n";
+        $str .= "<br>\n";
+        $str .= "<h4>Info</h4>";
+
+        $resultCount = db_get_count($tableInfo["name"]);
+        $tableExists = true;
+        if (!$resultCount["ok"]) {
+            $str .= "<div class='alert alert-warning'>".$resultCount["msg"]."</div>";
+            $tableExists = false;
+        }
+        $str .= "<p>Table size: ";
+        $str .= $resultCount["data"]." rows";
+        $str .= "&nbsp;&nbsp;&nbsp;";
+        if ($tableExists) {
+            $str .= " <a href='/admin/?section=export&table=".$tableInfo["name"]."&export_full' class='btn btn-primary btn-lg'><span class='glyphicon glyphicon-download'></span> Export CSV</a> ";
+        } else {
+            $str .= " <a href='#' class='btn btn-primary disabled'><span class='glyphicon glyphicon-download'></span> Export CSV</a> ";
+        }
+        $str .= "</p>";
+        $str .= "<p><a href=\"/admin/?section=editor&edit_file=".LOCAL_MODULE."/".$objModule->name."/config.xml\" class='btn btn-primary btn-lg'><span class='glyphicon glyphicon-edit'></span> Edit XML definition</a></p>";
+        $str .= "<p class='well'>";
+        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=remove#tables' class='btn btn-danger".($tableExists ? "" : " disabled")."'><span class='glyphicon glyphicon-remove'></span> remove table</a> ";
+        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=truncate#tables' class='btn btn-danger".($tableExists ? "" : " disabled")."''><span class='glyphicon glyphicon-trash'></span> truncate table</a> ";
+        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=create#tables' class='btn btn-warning".($tableExists ? " disabled" : "")."''><span class='glyphicon glyphicon-plus'></span> create table</a> ";
+        $str .= "</p>";
         $str .= "</div><div class='col-sm-7'>";
-        $str .= "<h4>Table '".$tableInfo["name"]."' fields definition</h4>";
+        $str .= "<h4>Fields definition</h4>";
         $str .= "<table class=\"table table-hover\">
-    <tr><th class=\"col-sm-5\">Name</th><th class=\"col-sm-4\">Type</th><th class=\"col-sm-3\">ListSkip</th></tr>";
+    <tr><th class=\"col-sm-4\">Name</th><th class=\"col-sm-3\">Type</th><th class=\"col-sm-5\">Options</th></tr>";
         foreach ($tableInfo["fields"] as $fieldInfo) {
-            $str .= "<tr><td>".$fieldInfo["name"]."</td><td>".$fieldInfo["type"]."</td><td>".$fieldInfo["listskip"]."</td></tr>\n";
+            if ($fieldInfo["name"] === $tableInfo["index"]) {
+                $str .= "<tr class='info'>";
+            } elseif ($fieldInfo["name"] === $tableInfo["title"]) {
+                $str .= "<tr class='info'>";
+            } else {
+                $str .= "<tr>";
+            }
+            $str .= "<td>".$fieldInfo["name"]."</td><td>".$fieldInfo["type"]."</td>";
+            $str .= "<td>";
+            if ($fieldInfo["name"] === $tableInfo["index"]) {
+                $str .= "<p><span class='label label-success'>INDEX</span></p>";
+            }
+            if ($fieldInfo["name"] === $tableInfo["title"]) {
+                $str .= "<p><span class='label label-success'>TITLE</span></p>";
+            }
+            if ($fieldInfo["listskip"]) {
+                $str .= "<p><span class='label label-info'>SKIP</span></p>";
+            }
+            if ($fieldInfo["max-height"]) {
+                $str .= "<p>Max Height: <span class='label label-success'>".$fieldInfo["max-height"]."</span></p>";
+            }
+            if ($fieldInfo["max-width"]) {
+                $str .= "<p>Max Width: <span class='label label-success'>".$fieldInfo["max-width"]."</span></p>";
+            }
+            if ($fieldInfo["select-from"]) {
+                $str .= "<p>Select from <span class='label label-success'>".$fieldInfo["select-from"]["source"]."</span> ";
+                $str .= "<span class='label label-success'>".$fieldInfo["select-from"]["name"]."</span>";
+
+                $str .= ", filter <span class='label label-success'>";
+                if ($fieldInfo["select-from"]["filter"]) {
+                    $str .= $fieldInfo["select-from"]["filter"];
+                } else {
+                    $str .= "null";
+                }
+                $str .= "</span>";
+
+                $str .= ", order <span class='label label-success'>";
+                if ($fieldInfo["select-from"]["order"]) {
+                    $str .= $fieldInfo["select-from"]["order"];
+                } else {
+                    $str .= "order";
+                }
+                $str .= "</span>";
+                $str .= "<p>";
+            }
+            $str .= "</td></tr>\n";
         }
         $str .= "</table>\n";
         $str .= "</div></div>\n";
@@ -930,7 +1028,15 @@ function msv_build_module_info($module) {
     </table>
   </div>
   <div id="locales" class="tab-pane fade">
-    <h4>Locales and texts</h4>
+    <h4>Locales and texts</h4>';
+    $str .= "<div class='well text-center'>";
+    if (file_exists(ABS_MODULE.'/'.$objModule->name.'/config.locales.xml')) {
+        $str .= '<a href="/admin/?section=editor&edit_file='.LOCAL_MODULE.'/'.$objModule->name.'/config.locales.xml" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-edit"></span> Edit Locales XML</a> &nbsp;&nbsp;';
+    } else {
+        $str .= '<a href="/admin/?section=editor&edit_file='.LOCAL_MODULE.'/'.$objModule->name.'/config.xml" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-edit"></span> Edit Locales XML</a> &nbsp;&nbsp;';
+    }
+    $str .= '<a href="/admin/?section=locales#module-'.$objModule->name.'" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-cog"></span> Manage Translations</a>';
+    $str .= '</div>
     <table class="table table-hover">
     <tr><th class="col-sm-5">Text ID</th><th>Value</th></tr>
 ';
@@ -945,34 +1051,28 @@ function msv_build_module_info($module) {
     $str .= '
   </div>
   <div id="php" class="tab-pane fade">
-    <h4>Custom PHP</h4>
+    <h4>PHP Controllers</h4>
 
-<form class="form-horizontal">
-  <div class="form-group">
-    <label class="control-label col-sm-4">PHP Controllers:</label>
-	<div class="col-sm-8">
-	<pre>';
+<form class="form-horizontal">';
     foreach ($objModule->pathModuleController as $pathController) {
-        $str .= "<p>$pathController</p>";
-    }
-    $str .= '</pre>
-	</div>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-4" for="imodule_php">
-    Custom PHP Controller Source';
-    if (is_writable($fileInfo["abs_path"])) {
-        $str .= "<p class='text-success'><b>writable</b></p>";
-    } else {
-        $str .= "<p class='text-danger'>NO WRITE ACCESS</p>";
-    }
-    $str .= '</label>
-	<div class="col-sm-8">
+        $str .= "<div class=\"form-group\">";
+        $str .= "<label class=\"control-label col-sm-12\">";
+        $str .= "$pathController";
+        if (is_writable($fileInfo["abs_path"])) {
+            $str .= "<span class='pull-right text-success'><b>writable</b></span>";
+        } else {
+            $str .= "<span class='pull-right text-danger'>NO WRITE ACCESS</span>";
+        }
+        $str .= "</label>";
+        $str .= '</label>
+	<div class="col-sm-12">
 		<textarea class="form-control" id="imodule_php" name="module_php" rows="15">';
-    $str .= htmlspecialchars(file_get_contents($pathController));
-    $str .= '</textarea>
-	</div>
-  </div>
+        $str .= htmlspecialchars(file_get_contents($pathController));
+        $str .= '</textarea>';
+        $str .= "</div>";
+        $str .= "</div>";
+    }
+    $str .= '
 </form>
   </div>
   

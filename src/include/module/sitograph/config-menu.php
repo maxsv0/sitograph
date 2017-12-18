@@ -142,6 +142,7 @@ foreach ($this->website->modules as $module) {
 
             $submenu[$name] = array(
                 "name" => _t("table.".$name),
+                "module" => $module->name,
                 "table" => $name,
                 "access" => "admin",
                 "handler" => "module-table.php",

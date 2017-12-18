@@ -51,6 +51,10 @@
                             <a href="{$lang_url}/admin/?section=export&table={$admin_table}&sort={$table_sort}&sortd={$table_sortd}&p={$admin_list_page}&pn={$table_limit}" class="btn btn-info"><span class="glyphicon glyphicon-download">&nbsp;</span>{_t("btn.export_table")}</a>
                             &nbsp;&nbsp;
                             <a href="{$lang_url}/admin/?section=export&table={$admin_table}&sort={$table_sort}&sortd={$table_sortd}&export_full" class="btn btn-info"><span class="glyphicon glyphicon-download">&nbsp;</span>{_t("btn.export_table_full")}</a>
+
+                            {if $user.access === "superadmin" && $admin_menu_item.module}
+                                <a href="{$lang_url}/admin/?section=module_settings&module={$admin_menu_item.module}#tables" class="btn btn-info"><span class="glyphicon glyphicon-cog">&nbsp;</span><span class="admin_crown">Config Table</span></a></p>
+                            {/if}
                         </div>
                         <div class="col-sm-5 text-right">
                             <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok">&nbsp;</span>Save settings</button>
