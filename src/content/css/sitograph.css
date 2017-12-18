@@ -154,16 +154,13 @@ a:hover, .add_link:hover {
     color: #777777;
 }
 
-p.admin_crown {
+.admin_crown {
     background: url(/content/images/sitograph/admin_crown.png) right center no-repeat;
     margin-right: 5px;
-    padding-right: 20px;
-    background-position: 100% 11px;
-}
-p.user_crown {
-    background: url(/content/images/sitograph/user_crown.png) right center no-repeat;
-    margin-right: 5px;
-    padding-right: 20px;
+    padding-right: 25px;
+    background-position: 100% 3px;
+    display:inline-block;
+    line-height:20px;
 }
 
 #menu_left div.mod_box a {

@@ -17,29 +17,32 @@
 <table cellpadding="0" cellspacing="0" width="100%" height="100%">
 <tr>
 	<td height="1">
-	
+
 	<table cellpadding="0" cellspacing="0" border="0" width="100%">
-	<tr valign="bottom" bgcolor="#000000">
-    
-		<td height="25">
-		<div style="padding-bottom: 4px; padding-left: 10px; font-size: 10px; color: #4F4F4F;">{$admin_title}</div>
-		</td>
-		<td width="400">
-		<div style="padding-bottom: 4px; font-size: 11px; color: #D9D9D9;">{_t("admin.logged_as")} {$user.email}</div>
-		</td>
-		<td width="300">
-		<div style="padding-bottom: 4px;">
-		<table cellpadding="0" cellspacing="0" width="100%">
-		<tr>
-			<td>&nbsp;</td>
-			<td align="right"><a style="font-size: 11px; color: #ed2a45;" href="/admin/?section=manual">{_t("admin.manual")}</a></td>
-			<td align="right" style="padding-right: 10px;"><a style="font-size: 11px; color: #ed2a45;" href="/?logout">{_t("btn.logout")}</a></td>
+		<tr valign="bottom" bgcolor="#000000">
+
+			<td height="25">
+				<div style="padding-bottom: 4px; padding-left: 10px; font-size: 10px; color: #4F4F4F;">{$admin_title}</div>
+			</td>
+			<td width="200">
+				<div style="padding-bottom: 4px;">
+					<a style="font-size: 11px; color: #ed2a45;" href="/admin/?section=manual">{_t("admin.manual")}</a>
+				</div>
+			</td>
+			<td width="500">
+				<div style="padding-bottom: 4px;">
+					<table cellpadding="0" cellspacing="0" width="100%">
+						<tr>
+							<td>&nbsp;</td>
+							<td align="right">{_t("admin.logged_as")} <span style="color:#fff;">{$user.email}</span>
+								<span class="label label-success">{$user.access}</span></td>
+							<td align="right" style="padding-right: 10px;"><a style="font-size: 11px; color: #ed2a45;" href="/?logout">{_t("btn.logout")}</a></td>
+						</tr>
+					</table>
+				</div>
+			</td>
+
 		</tr>
-		</table>
-		</div>
-		</td>
-            
-	</tr>
 	<tr bgcolor="#333746" style="border-bottom:3px solid #d7d7d7;border-top:3px solid #313131;">
 		<td><a href="/admin/"><img src="{$content_url}/images/sitograph/sitograph-logo-white-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png" style="border: none;height:80px;" /></a></td>
     	<td>
@@ -223,6 +226,8 @@
 		<td bgcolor="#333746" valign="top" colspan="3">
 			<div>
 			<a href="http://sitograph.com/" target="_blank"><img src="{$content_url}/images/sitograph/sitograph-logo-white-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png" style="height:80px;"/></a>
+
+				<h4 style="display: inline-block;">{$admin_title}</h4>
 			</div>
 		</td>
 	</tr>
