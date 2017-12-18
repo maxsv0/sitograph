@@ -24,6 +24,7 @@
 		<api name="uploadfile" action="api_upload_file"/>
 		<api name="cron" action="api_request_cron"/>
 		<api name="core" action="api_request_core"/>
+		<api name="urlformat" action="api_format_url"/>
 
 		<table name="structure" index="id" title="name" useseo="true">
 			<field name="id" type="id"/>
