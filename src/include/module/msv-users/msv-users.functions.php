@@ -123,6 +123,15 @@ function msv_load_user($userID, $session = true) {
 
         // add info to user row
         $rowUser = array_merge($rowUser, $result["data"]);
+
+        $config = msv_get_config("user-".$userID);
+        if (!empty($config)) {
+            $configList = unserialize($config);
+        } else {
+            $configList = array();
+        }
+
+        $rowUser["config"] = $configList;
     }
 
     if ($session) {
@@ -132,4 +141,22 @@ function msv_load_user($userID, $session = true) {
     if (empty($rowUser["email_verified"])) {
         msv_message_error(_t("msg.users.verification_needed"));
     }
+}
+
+function msv_get_user_config($param) {
+    $rowUser = msv_get("website.user");
+
+    if (array_key_exists($param,$rowUser["config"])) {
+        return $rowUser["config"][$param];
+    } else {
+        return null;
+    }
+}
+
+function msv_set_user_config($param, $value) {
+    $rowUser =& msv_get("website.user");
+
+    $rowUser["config"][$param] = $value;
+
+    return msv_set_config("user-".$rowUser["user_id"], serialize($rowUser["config"]), 1, LANG, "User personal settings (".$rowUser["email"].")", "user");
 }
