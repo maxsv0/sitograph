@@ -13,23 +13,21 @@
 
 <body bottommargin="0" leftmargin="0" marginheight="0" marginwidth="0" rightmargin="0" topmargin="0">
 
-
 <table cellpadding="0" cellspacing="0" width="100%" height="100%">
 <tr>
 	<td height="1">
 
 	<table cellpadding="0" cellspacing="0" border="0" width="100%">
 		<tr valign="bottom" bgcolor="#000000">
-
-			<td height="25">
+			<td height="25" width="200">
 				<div style="padding-bottom: 4px; padding-left: 10px; font-size: 10px; color: #4F4F4F;">{$admin_title}</div>
 			</td>
-			<td width="200">
+			<td align="center">
 				<div style="padding-bottom: 4px;">
 					<a style="font-size: 11px; color: #ed2a45;" href="/admin/?section=manual">{_t("admin.manual")}</a>
 				</div>
 			</td>
-			<td width="500">
+			<td width="400">
 				<div style="padding-bottom: 4px;">
 					<table cellpadding="0" cellspacing="0" width="100%">
 						<tr>
@@ -41,28 +39,36 @@
 					</table>
 				</div>
 			</td>
-
 		</tr>
-	<tr bgcolor="#333746" style="border-bottom:3px solid #d7d7d7;border-top:3px solid #313131;">
-		<td><a href="/admin/"><img src="{$content_url}/images/sitograph/sitograph-logo-white-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png" style="border: none;height:80px;" /></a></td>
-    	<td>
-    		<table cellpadding="0" cellspacing="0">
-    		<tr>
-    			<td><a href="{$home_url}"><img src="{$theme_cms_favicon}"/></a></td>
-    			<td style="padding-left: 10px;"><a style="font-size: 18px; color: #FFFFFF;" href="{$home_url}">{$host}</a></td>
-    		</tr>
-    		</table>        
-        </td>
-		<td>
-    		<table cellpadding="0" cellspacing="0" width="120">
-    		<tr>
-    			<td><a href="{$home_url}"><img src="{$content_url}/images/sitograph/av_pic.gif"/></a></td>
-    			<td style="padding-left: 10px;"><a class="admin_mode_link" href="{$home_url}">{_t("admin.view_website")}</a></td>
-    		</tr>
-    		</table>        
-        
-        </td>
-	</tr>
+		<tr bgcolor="#333746" style="border-bottom:3px solid #d7d7d7;border-top:3px solid #313131;">
+			<td><a href="/admin/"><img src="{$content_url}/images/sitograph/sitograph-logo-white-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png" style="border: none;height:80px;" /></a></td>
+			<td align="center">
+				<div class="btn_fav" style="width:150px;">
+				<table cellpadding="0" cellspacing="0">
+					<tr>
+						<td><a href="{$home_url}"><img src="{$theme_cms_favicon}"/></a></td>
+						<td style="padding-left: 10px;"><a style="font-size: 18px; color: #FFFFFF;" href="{$home_url}">{$host}</a></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center"  style="padding-left: 10px;height:30px;"><a class="admin_mode_link" href="{$home_url}">{_t("admin.view_website")}</a></td>
+					</tr>
+				</table>
+				</div>
+			</td>
+			<td align="right" style="padding-right:30px;">
+                {if $config_cms.favorites}
+				<table cellpadding="0" cellspacing="0">
+					<tr>
+					{foreach from=$config_cms.favorites key=$favID item=favItem}
+						<td width="150" align="center" class="btn_fav">
+							<a href="{$favItem.url}">{$favItem.text}</a>
+						</td>
+					{/foreach}
+					</tr>
+				</table>
+                {/if}
+			</td>
+		</tr>
     
 	{if count($languages) > 1}
 	<tr valign="top" style="position:absolute;right:0;">
@@ -100,7 +106,22 @@
 		<td colspan="2" height="75" class="header_bg">
 		
 		<div style="padding-left: 50px; font-family: Arial; font-size: 36px;">
-		<div class="navi_title">{$admin_page_title}</div>
+			<div class="navi_title">
+                {$admin_page_title}
+                {if $cms_favorite_added}
+					<a href="{$cms_favorite_url}&admin_favorites={$cms_favorite_id}&admin_favorites_remove"><span class="glyphicon glyphicon-star"></span></a>
+
+					<a href="#" data-toggle="modal" data-target="#favoriteModal" style="font-size:14px;">
+						<span class="glyphicon glyphicon-edit"></span> Edit
+					</a>
+                {else}
+
+					<a href="#" data-toggle="modal" data-target="#favoriteModal">
+						<span class="glyphicon glyphicon-star-empty"></span>
+					</a>
+
+                {/if}
+			</div>
 		</div>
 		
 		</td>
@@ -128,7 +149,7 @@
 	<table cellpadding="0" cellspacing="0" width="100%" height="100%">
 	<tr valign="top">
 		<td width="24" style="background: url(/content/images/sitograph/menu_left_bg.gif) repeat-y;"><img src="/content/images/sitograph/menu_left_img_top_2.gif"></td>
-		<td width="220">
+		<td width="220" bgcolor="#E8E8E8">
 		
 		<table cellpadding="0" cellspacing="0" width="220" height="100%">
 		<tr valign="top">
@@ -236,6 +257,38 @@
 	</td>
 </tr>
 </table>
+
+
+<div class="modal fade" id="favoriteModal" tabindex="-1" role="dialog" aria-labelledby="favoriteModalLabel" aria-hidden="true">
+	<form action="{$cms_favorite_url}">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="favoriteModalLabel">Edit Favorite Link</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="recipient-text" class="col-form-label">Text:</label>
+						<input type="text" class="form-control" name="admin_favorites_text" value="{$cms_favorite_text}">
+					</div>
+					<div class="form-group">
+						<label for="recipient-name" class="col-form-label">Link URL:</label>
+						<input type="text" class="form-control" name="admin_favorites_url" value="{$cms_favorite_url}">
+					</div>
+					<input type="hidden" name="admin_favorites" value="{$cms_favorite_id}">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
 {$htmlFooter}
 
 </body>

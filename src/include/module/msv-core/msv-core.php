@@ -655,15 +655,24 @@ function msv_output_admin_menu() {
     $strOut .= '<span class="admin_title">'._t("btn.back_to_admin").'</span>';
     $strOut .= '</a>';
     $strOut .= '</p></td>';
-    $strOut .= '<td align="center" width="20%">';
+
     if ($edit_mode) {
+        $strOut .= '<td align="center" width="20%">';
         $strOut .= "<a href='/admin/?section=editor&edit_file=/templates/".$templateInfo."&edit_mode'>";
         $strOut .= "<small>$templateInfo <span class='glyphicon glyphicon-edit'></span></small></a>";
-    }
-    $strOut .=' <td align="center" width="10%">';
-    if ($edit_mode) {
+        $strOut .=' <td align="center" width="10%">';
         $strOut .= "<a href='#' data-toggle=\"collapse\" data-target=\"#debugLog\"><small class='link-dashed'>$pageInfo</small><span class=\"caret\"></span></a>";
+    } else {
+        $strOut .= '<td align="center" width="30%">';
+        $configCMS = msv_get_user_config("cms");
+        if (!empty($configCMS) && !empty($configCMS["favorites"])) {
+            foreach ($configCMS["favorites"] as $favID => $favItem) {
+                $strOut .= "<a href='".$favItem["url"]."' class='admin_title'>".$favItem["text"]."</a> &nbsp;&nbsp;&nbsp;";
+            }
+        }
+
     }
+
     $strOut .= '</td></tr></tbody></table>';
     if ($edit_mode) {
         if (DEBUG) {

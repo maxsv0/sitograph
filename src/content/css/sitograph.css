@@ -131,11 +131,18 @@ a:hover, .add_link:hover {
     line-height:18px;
     color: #FFFFFF;
 }
-.admin_mode_link:hover {
-    text-decoration: none;
-    color:#ed2a45;
+.btn_fav {
+    text-align: center;
+    padding:5px;
 }
-
+.btn_fav a {
+    color:#fff;
+    font-size:18px;
+    text-decoration: none;
+}
+.btn_fav:hover {
+    background:#ed2a45;
+}
 #menu_left div, #menu_left div div {
     position: relative;
 }

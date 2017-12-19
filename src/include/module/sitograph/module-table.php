@@ -106,27 +106,60 @@ if (isset($_REQUEST["add_new"])) {
     msv_assign_data("admin_edit", $item);
 }
 
-if (!empty($_REQUEST["sort"])) {
-	// TODO: check if correct key
-	$sort = $_REQUEST["sort"];
+// load user config
+$configTable = msv_get_user_config("table-".$table);
+if (!empty($configTable)) {
+    if (!empty($configTable["sort"])) {
+        $sort = $configTable["sort"];
+    }
+    if (!empty($configTable["sortd"])) {
+        $sortd = $configTable["sortd"];
+    }
+    if (!empty($configTable["limit"])) {
+        $listLimit = $configTable["limit"];
+    }
+    if (!empty($configTable["fields"])) {
+        $userListFields = $configTable["fields"];
+    }
 } else {
-	$sort = "id";
+    $userListFields = array();
+}
+
+if (!empty($_REQUEST["sort"])) {
+    // TODO: check if correct key
+    $sort = $_REQUEST["sort"];
+} elseif (empty($sort)) {
+    $sort = "id";
 }
 
 if (!empty($_REQUEST["sortd"])) {
-	if ($_REQUEST["sortd"] === "desc") {
-		$sortd = "desc";
-		$sortd_rev = "asc";
-	} else {
-		$sortd = "asc";
-		$sortd_rev = "desc";
-	}
+    if ($_REQUEST["sortd"] === "desc") {
+        $sortd = "desc";
+        $sortd_rev = "asc";
+    } else {
+        $sortd = "asc";
+        $sortd_rev = "desc";
+    }
 } else {
-	$sortd = "desc";
-	$sortd_rev = "asc";
+    if (empty($sortd)) $sortd = "desc";
+    if (empty($sortd_rev)) $sortd_rev = "asc";
 }
 
-$listLimit = 100;
+if (!empty($_REQUEST["list_limit"])) {
+    $listLimit = $_REQUEST["list_limit"];
+} elseif (empty($listLimit)) {
+    $listLimit = 100;
+}
+
+if (!empty($_REQUEST["utf"])) {
+    $userListFields = $_REQUEST["utf"];
+}
+
+// store current user settings
+$resultConfig = msv_set_user_config("table-".$table, array("sort" => $sort, "sortd" => $sortd, "limit" => $listLimit, "fields" => $userListFields));
+if (!$resultConfig["ok"]) {
+    msv_message_error($resultConfig["msg"]);
+}
 
 msv_assign_data("table_sort", $sort);
 msv_assign_data("table_sortd", $sortd);
@@ -142,19 +175,25 @@ if ($resultQuery["ok"]) {
     msv_assign_data("admin_list_pages", $listPages);
 
 	$adminListSkipFields = $adminListFields = array();
-	$adminListSkipFields[] = "deleted";
-	$adminListSkipFields[] = "published";
-	$adminListSkipFields[] = "author";
-	$adminListSkipFields[] = "updated";
+    if (!in_array("deleted",$userListFields)) $adminListSkipFields[] = "deleted";
+    if (!in_array("published",$userListFields)) $adminListSkipFields[] = "published";
+    if (!in_array("author",$userListFields)) $adminListSkipFields[] = "author";
+    if (!in_array("updated",$userListFields)) $adminListSkipFields[] = "updated";
 
 	foreach ($tableInfo["fields"] as $field) {
         if (!in_array($field["name"], $adminListFields)) {
             $adminListFields[] = $field["name"];
         }
 
-		if($field["listskip"] > 0) {
-			$adminListSkipFields[] = $field["name"];
-		}
+        if(empty($userListFields)) {
+            if($field["listskip"] > 0) {
+                $adminListSkipFields[] = $field["name"];
+            }
+        } else {
+            if(!in_array($field["name"],$userListFields)) {
+                $adminListSkipFields[] = $field["name"];
+            }
+        }
 
 		if (!empty($field["select-from"])) {
 			$field["type"] = "select";
