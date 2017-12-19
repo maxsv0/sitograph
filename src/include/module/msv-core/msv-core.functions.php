@@ -271,7 +271,7 @@ function msv_set_navigation($name, $url = "", $pos = false) {
     return true;
 }
 
-function msv_set_config($param, $value, $updateDB = false, $lang = LANG, $desc = "") {
+function msv_set_config($param, $value, $updateDB = false, $lang = LANG, $desc = "", $group = "system") {
     $website =& msv_get("website");
 
     // TODO : CHECK ...
@@ -290,6 +290,7 @@ function msv_set_config($param, $value, $updateDB = false, $lang = LANG, $desc =
                 "value" => $value,
                 "param" => $param,
                 "description" => $desc,
+                "group" => $group
             );
 
             return db_add(TABLE_SETTINGS, $item, $lang);

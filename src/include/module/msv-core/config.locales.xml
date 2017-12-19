@@ -33,7 +33,12 @@
 		<field name="tab.files" value="Изображения и файлы"/>
 		<field name="tab.access" value="Доступ"/>
 		<field name="tab.history" value="История изменений"/>
-		
+
+		<field name="group.system" value="System"/>
+		<field name="group.theme" value="Theme"/>
+		<field name="group.website" value="Website"/>
+		<field name="group.user" value="User"/>
+
 		<field name="type.id" value="ID, число"/>
 		<field name="type.author" value="строка (60)"/>
 		<field name="type.updated" value="дата"/>
@@ -232,7 +237,12 @@
 		<field name="tab.files" value="Pictures and files"/>
 		<field name="tab.access" value="Access"/>
 		<field name="tab.history" value="Changes history"/>
-		
+
+		<field name="group.system" value="System"/>
+		<field name="group.theme" value="Theme"/>
+		<field name="group.website" value="Website"/>
+		<field name="group.user" value="User"/>
+
 		<field name="type.id" value="ID, int"/>
 		<field name="type.author" value="string (60)"/>
 		<field name="type.updated" value="date"/>
@@ -428,6 +438,11 @@
 		<field name="tab.files" value="Зображення і файли"/>
 		<field name="tab.access" value="Доступ"/>
 		<field name="tab.history" value="Історія змін"/>
+
+		<field name="group.system" value="System"/>
+		<field name="group.theme" value="Theme"/>
+		<field name="group.website" value="Website"/>
+		<field name="group.user" value="User"/>
 
 		<field name="type.id" value="ID, число"/>
 		<field name="type.author" value="строка (60)"/>
