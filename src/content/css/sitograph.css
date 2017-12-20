@@ -136,7 +136,7 @@ a:hover, .add_link:hover {
 }
 .btn_fav a {
     color:#fff;
-    font-size:18px;
+    font-size:15px;
     text-decoration: none;
 }
 .btn_fav:hover {
@@ -442,12 +442,13 @@ table.table-module .colactive {
 .btn-primary:hover, .btn-primary:active, .btn-primary:active, .btn-primary:active:hover {
     background-color: #ed2a45;
     color:#fff;
+    border-color: #333746;
 }
 .btn-warning:hover, .btn-warning:active, .btn-warning:active, .btn-warning:active:hover {
     background-color: rgba(236,151,31,.2);
 }
 .btn-danger:hover, .btn-danger:active, .btn-danger:active, .btn-danger:active:hover{
-    background-color: rgba(201,48,44,.2);
+    -background-color: rgba(201,48,44,.2);
 }
 .btn-info:hover, .btn-info:active, .btn-info:active, .btn-info:active:hover {
     background-color: rgba(49,176,213,.2);
@@ -461,6 +462,9 @@ table.table-module .colactive {
 }
 
 .btn-danger .glyphicon {
+    color: #a31d30;
+}
+.btn-danger:hover .glyphicon, .btn-danger:active .glyphicon, .btn-danger:active .glyphicon  {
     color:#ed2a45;
 }
 

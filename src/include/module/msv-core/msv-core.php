@@ -729,7 +729,7 @@ function msv_output_admin_modulesetup() {
             }
             $strOut .= "<td>";
             $strOut .= "<td class='col-sm-2'>";
-            $strOut .= "<a href='/admin/?section=module_settings&module=" . $obj->name . "' class='btn btn-primary active'><span class='glyphicon glyphicon-cog'></span> configure</a>";
+            $strOut .= "<a href='/admin/?section=module_settings&module=" . $obj->name . "' class='btn btn-primary'><span class='glyphicon glyphicon-cog'></span> configure</a>";
             $strOut .= "</td>";
             $strOut .= "</tr>";
         }
@@ -808,7 +808,7 @@ function msv_output_admin_modulesetup() {
     }
 
     $strOut .= "<div class='col-lg-4'>";
-    $strOut .= "<div class='well'>";
+    $strOut .= "<div class='well text-center'>";
     $strOut .= "<h4>";
     $strOut .= "Repository: ";
 
@@ -825,8 +825,9 @@ function msv_output_admin_modulesetup() {
         $strOut .= "<strong class='text-success'>online</strong>";
     }
     $strOut .= "</h4>";
-    $strOut .= "<p><b>".REP."</b></p>";
-    $strOut .= "<p class='text-center'>";
+    $urlInfo = parse_url(REP);
+    $strOut .= "<p><b>".$urlInfo["host"]."</b></p>";
+    $strOut .= "<p>";
     $strOut .= "<a href='/admin/?section=module_settings&module_install' class='btn btn-lg btn-danger'><span class='glyphicon glyphicon-download'></span> Add Module</a> &nbsp; &nbsp;";
     $strOut .= "</p>";
     $strOut .= "</div>";

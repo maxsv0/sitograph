@@ -29,7 +29,7 @@
 			</td>
 			<td width="400">
 				<div style="padding-bottom: 4px;">
-					<table cellpadding="0" cellspacing="0" width="100%">
+					<table cellpadding="0" cellspacing="0" width="100%" class="small">
 						<tr>
 							<td>&nbsp;</td>
 							<td align="right">{_t("admin.logged_as")} <span style="color:#fff;">{$user.email}</span>

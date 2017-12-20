@@ -1,4 +1,3 @@
-{if $listTable}
 <div class="row">
 <div class="col-sm-6 col-sm-offset-6">
     <p class="text-right">
@@ -98,7 +97,7 @@
     </div>
 </div>
 
-
+{if $listTable}
 <div class="table-responsive">
 <table class="table table-hover table-striped table-module">
 
@@ -153,15 +152,15 @@
 <td>{$itemField|htmlspecialchars|truncate:300:".."}</td>
 {elseif $type === "url"}
 <td class="col-sm-2">
+    <small>
 {if $module_base_url}
-	<small>
-        <a href="{$module_base_url}{$itemField}/" target="_blank">{$module_base_url}{$itemField}/<span class="glyphicon glyphicon-new-window"></span></a>
-    </small>
+    <a href="{$module_base_url}{$itemField}/" target="_blank">{$module_base_url}{$itemField}/<span class="glyphicon glyphicon-new-window"></span></a>
 {elseif $itemField != "#"}
 	<a href="{$itemField}" target="_blank">{$itemField}<span class="glyphicon glyphicon-new-window"></span></a>
 {else}
     {$itemField}
 {/if}
+    </small>
 </td>
 {elseif $type === "array"}
 <td><pre class="small">{$itemField|@print_r}</pre></td>
