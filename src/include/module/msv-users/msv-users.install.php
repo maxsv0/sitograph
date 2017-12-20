@@ -119,7 +119,7 @@ function Install_Users($module)
     // default value: 0 => users can't register himself
     msv_set_config(
         "users_registration_allow",
-        0,
+        1,
         true,
         "*",
         _t("settings.users_registration_allow")
