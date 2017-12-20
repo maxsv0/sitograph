@@ -81,33 +81,49 @@ if (isset($_REQUEST["add_new"])) {
     $admin_edit = array();
     
     $admin_edit[] = array(
-    'name' =>'Модуль',
-    'field_name' =>'module',
-    'type' =>'select',
-    'value' =>'',
-    'data' =>$modules,
+        'name' => 'Module',
+        'field_name' => 'module',
+        'type' => 'select',
+        'value' => '',
+        'data' => $modules,
     );
     
     $admin_edit[] = array(
-    'name' =>'Переменная',
-    'field_name' =>'name',
-    'type' =>'str',
-    'value' =>'',
+        'name' => _t("admin.locale_param"),
+        'field_name' =>'name',
+        'type' =>'str',
+        'value' =>'',
     );
     
     $admin_edit[] = array(
-    'name' =>'Значение',
-    'field_name' =>'value',
-    'type' =>'str',
-    'value' =>'',
+        'name' => _t("admin.locale_value"),
+        'field_name' =>'value',
+        'type' =>'str',
+        'value' =>'',
     );
 
+    $admin_tabs = array();
+    $admin_tabs["home"] = array(
+        "title" => "General",
+        "fields" => array(
+            array("name" => "module", "type" => "str"),
+            array("name" => "name", "type" => "str"),
+        ),
+    );
+
+    msv_assign_data("admin_edit_tabs", $admin_tabs);
     msv_assign_data("admin_edit", $admin_edit);
     msv_assign_data("add", 1);
     
 } elseif (isset($_REQUEST["edit"])) {
    
     $moduleObj = msv_get("website.".$_REQUEST["module"]);
+    $formFields = arrat();
+
+    $formFields[] = array(
+
+    );
+
     $itemField = array(
     'name' =>'',
     'field_name' =>'value',
