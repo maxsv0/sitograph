@@ -25,7 +25,7 @@
 	
 	<api name="gallery" action="api_request_gallery"/>
 	
-	<table name="gallery_album" index="url" title="title" useseo="true">
+	<table name="gallery_album" index="id" title="title" useseo="true">
 		<field name="id" type="id"/>
 		<field name="published" type="published"/>
 		<field name="deleted" type="deleted"/>
@@ -50,7 +50,7 @@
 		<field name="updated" type="updated"/>
 		<field name="lang" type="lang" listskip="1"/>
 		<field name="date" type="date"/>
-		<field name="album_id" type="int" select-from="table:gallery_album"/>
+		<field name="album_id" type="id" select-from="table:gallery_album"/>
 		<field name="order_id" type="int" listskip="1"/>
 		<field name="title" type="str"/>
 		<field name="description" type="str" listskip="1"/>
