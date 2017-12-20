@@ -151,7 +151,7 @@ if (!empty($section) && in_array($section, $menu_index)) {
         msv_message_error(_t("msg.save_error").": ".$_GET["save_error"]);
     }
 
-    if (!empty($_REQUEST["edit"]) || !empty($_REQUEST["duplicate"]) || !empty($_REQUEST["add_child"]) || isset($_REQUEST["add_new"])) {
+    if (true || !empty($_REQUEST["edit"]) || !empty($_REQUEST["duplicate"]) || !empty($_REQUEST["add_child"]) || isset($_REQUEST["add_new"])) {
         $table_edit = msv_get_config("admin_edit");
 
         $tabs = array();

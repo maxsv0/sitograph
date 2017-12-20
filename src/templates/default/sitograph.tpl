@@ -43,30 +43,28 @@
 		<tr bgcolor="#333746" style="border-bottom:3px solid #d7d7d7;border-top:3px solid #313131;">
 			<td><a href="/admin/"><img src="{$content_url}/images/sitograph/sitograph-logo-white-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png" style="border: none;height:80px;" /></a></td>
 			<td align="center">
-				<div class="btn_fav" style="width:150px;">
 				<table cellpadding="0" cellspacing="0">
 					<tr>
 						<td><a href="{$home_url}"><img src="{$theme_cms_favicon}"/></a></td>
 						<td style="padding-left: 10px;"><a style="font-size: 18px; color: #FFFFFF;" href="{$home_url}">{$host}</a></td>
 					</tr>
-					<tr>
-						<td colspan="2" align="center"  style="padding-left: 10px;height:30px;"><a class="admin_mode_link" href="{$home_url}">{_t("admin.view_website")}</a></td>
-					</tr>
 				</table>
-				</div>
 			</td>
-			<td align="right" style="padding-right:30px;">
-                {if $config_cms.favorites}
+			<td align="right" style="padding-right:20px;">
 				<table cellpadding="0" cellspacing="0">
 					<tr>
+{if $config_cms.favorites}
 					{foreach from=$config_cms.favorites key=$favID item=favItem}
 						<td width="150" align="center" class="btn_fav">
 							<a href="{$favItem.url}">{$favItem.text}</a>
 						</td>
 					{/foreach}
+{/if}
+						<td width="150" align="center" class="btn_fav">
+							<a href="{$home_url}">{_t("admin.view_website")}</a>
+						</td>
 					</tr>
 				</table>
-                {/if}
 			</td>
 		</tr>
     
@@ -148,7 +146,7 @@
 	
 	<table cellpadding="0" cellspacing="0" width="100%" height="100%">
 	<tr valign="top">
-		<td width="24" style="background: url(/content/images/sitograph/menu_left_bg.gif) repeat-y;"><img src="/content/images/sitograph/menu_left_img_top_2.gif"></td>
+		<td width="24" style="background: url(/content/images/sitograph/menu_left_bg.gif) repeat-y;">&nbsp;</td>
 		<td width="220" bgcolor="#E8E8E8">
 		
 		<table cellpadding="0" cellspacing="0" width="220" height="100%">

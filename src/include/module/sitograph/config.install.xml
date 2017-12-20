@@ -33,6 +33,7 @@
 	<file dir="module" path="sitograph/module-media.php"/>
 	<file dir="module" path="sitograph/module-robots.php"/>
 	<file dir="module" path="sitograph/module-search.php"/>
+	<file dir="module" path="sitograph/module-settings.php"/>
 	<file dir="module" path="sitograph/module-structure.php"/>
 	<file dir="module" path="sitograph/module-table.php"/>
 	<file dir="module" path="sitograph/module-users.php"/>

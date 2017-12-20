@@ -155,6 +155,19 @@ if (!empty($_REQUEST["utf"])) {
     $userListFields = $_REQUEST["utf"];
 }
 
+if(empty($listFilter)) {
+    $listFilter = "1 = 1 ";
+}
+
+// check filter
+foreach ($tableInfo["fields"] as $field) {
+    if (!empty($field["select-from"])) {
+        if (!empty($_REQUEST["filter_".$field["name"]])) {
+            $listFilter .= " and `".$field["name"]."` like '".db_escape($_REQUEST["filter_".$field["name"]])."'";
+        }
+    }
+}
+
 // store current user settings
 $resultConfig = msv_set_user_config("table-".$table, array("sort" => $sort, "sortd" => $sortd, "limit" => $listLimit, "fields" => $userListFields));
 if (!$resultConfig["ok"]) {
@@ -166,7 +179,7 @@ msv_assign_data("table_sortd", $sortd);
 msv_assign_data("table_sortd_rev", $sortd_rev);
 msv_assign_data("table_limit", $listLimit);
 
-$resultQuery = db_get_listpaged($table, "", "`$sort` $sortd", $listLimit, "p");
+$resultQuery = db_get_listpaged($table, $listFilter, "`$sort` $sortd", $listLimit, "p");
 if ($resultQuery["ok"]) {
     msv_assign_data("admin_list", $resultQuery["data"]);
 
@@ -174,7 +187,7 @@ if ($resultQuery["ok"]) {
 	$listPages = $resultQuery["pages"];
     msv_assign_data("admin_list_pages", $listPages);
 
-	$adminListSkipFields = $adminListFields = array();
+	$adminListSkipFields = $adminListFields = $adminFilterFields = array();
     if (!in_array("deleted",$userListFields)) $adminListSkipFields[] = "deleted";
     if (!in_array("published",$userListFields)) $adminListSkipFields[] = "published";
     if (!in_array("author",$userListFields)) $adminListSkipFields[] = "author";
@@ -236,15 +249,26 @@ if ($resultQuery["ok"]) {
 				} elseif (!empty($listItem[$field["name"]])) {
 					$listItem[$field["name"]."_data"] = $listItem[$field["name"]];
 					$listItem[$field["name"]] = $field["data"][$listItem[$field["name"]]];
+
+
 				}
 
 				$adminListFiltered[$listItemID] = $listItem;
 			}
 			$adminList = $adminListFiltered;
+
+			// add to filter
+            $adminFilterFields[$field["name"]] = array(
+                "name" => $field["name"],
+                "type" => $field["type"],
+                "value" => "",
+                "data" => $field["data"],
+            );
 		}
 	}
 
     msv_assign_data("admin_list_skip", $adminListSkipFields);
     msv_assign_data("admin_list_fields", $adminListFields);
     msv_assign_data("admin_list", $adminList);
+    msv_assign_data("admin_filter_fields", $adminFilterFields);
 }
