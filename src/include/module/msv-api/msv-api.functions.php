@@ -240,12 +240,13 @@ function db_get_listpaged($table, $filter = "", $orderby = "", $items_per_page =
     $skip = ($currentPage - 1)*$items_per_page;
 
     $resultCount = db_get_count($table, $filter);
+
     if (!$resultCount["ok"]) {
         return $resultCount;
     }
     $num_rows = $resultCount["data"];
     if ($num_rows === 0) {
-        return $result;
+        return $resultCount;
     }
 
 

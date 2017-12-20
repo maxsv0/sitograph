@@ -151,7 +151,7 @@ if (!empty($section) && in_array($section, $menu_index)) {
         msv_message_error(_t("msg.save_error").": ".$_GET["save_error"]);
     }
 
-    if (!empty($_REQUEST["edit"]) || !empty($_REQUEST["duplicate"]) || !empty($_REQUEST["add_child"]) || isset($_REQUEST["add_new"])) {
+    if (true || !empty($_REQUEST["edit"]) || !empty($_REQUEST["duplicate"]) || !empty($_REQUEST["add_child"]) || isset($_REQUEST["add_new"])) {
         $table_edit = msv_get_config("admin_edit");
 
         $tabs = array();
@@ -265,7 +265,34 @@ if (isset($_GET["toggle_edit_mode"])) {
     }
 }
 
-if (isset($_GET["check_files"])) {
-    msv_check_files();
-    die;
+$configCMS = msv_get_user_config("cms");
+if (empty($configCMS)) {
+    $configCMS = array();
+}
+if (!empty($_REQUEST["admin_favorites"])) {
+    if (isset($_REQUEST["admin_favorites_remove"])) {
+        unset($configCMS["favorites"][$_REQUEST["admin_favorites"]]);
+    } else {
+        $configCMS["favorites"][$_REQUEST["admin_favorites"]] = array(
+            "url" => $_REQUEST["admin_favorites_url"],
+            "text" => $_REQUEST["admin_favorites_text"],
+        );
+    }
+}
+msv_set_user_config("cms", $configCMS);
+msv_assign_data("config_cms", $configCMS);
+
+if (!empty($admin_table) && !empty($section)) {
+    $pageID = $section."_".$admin_table;
+    $favoriteUrl = "/admin/?section=$section&table=$admin_table";
+} elseif (!empty($section)) {
+    $pageID = $section;
+    $favoriteUrl = "/admin/?section=$section";
+}
+msv_assign_data("cms_favorite_id", $pageID);
+msv_assign_data("cms_favorite_url", $favoriteUrl);
+msv_assign_data("cms_favorite_text", $admin_page_title);
+
+if (array_key_exists($pageID, $configCMS["favorites"])) {
+    msv_assign_data("cms_favorite_added", 1);
 }

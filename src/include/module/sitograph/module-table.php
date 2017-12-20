@@ -106,34 +106,80 @@ if (isset($_REQUEST["add_new"])) {
     msv_assign_data("admin_edit", $item);
 }
 
-if (!empty($_REQUEST["sort"])) {
-	// TODO: check if correct key
-	$sort = $_REQUEST["sort"];
+// load user config
+$configTable = msv_get_user_config("table-".$table);
+if (!empty($configTable)) {
+    if (!empty($configTable["sort"])) {
+        $sort = $configTable["sort"];
+    }
+    if (!empty($configTable["sortd"])) {
+        $sortd = $configTable["sortd"];
+    }
+    if (!empty($configTable["limit"])) {
+        $listLimit = $configTable["limit"];
+    }
+    if (!empty($configTable["fields"])) {
+        $userListFields = $configTable["fields"];
+    }
 } else {
-	$sort = "id";
+    $userListFields = array();
+}
+
+if (!empty($_REQUEST["sort"])) {
+    // TODO: check if correct key
+    $sort = $_REQUEST["sort"];
+} elseif (empty($sort)) {
+    $sort = "id";
 }
 
 if (!empty($_REQUEST["sortd"])) {
-	if ($_REQUEST["sortd"] === "desc") {
-		$sortd = "desc";
-		$sortd_rev = "asc";
-	} else {
-		$sortd = "asc";
-		$sortd_rev = "desc";
-	}
+    if ($_REQUEST["sortd"] === "desc") {
+        $sortd = "desc";
+        $sortd_rev = "asc";
+    } else {
+        $sortd = "asc";
+        $sortd_rev = "desc";
+    }
 } else {
-	$sortd = "desc";
-	$sortd_rev = "asc";
+    if (empty($sortd)) $sortd = "desc";
+    if (empty($sortd_rev)) $sortd_rev = "asc";
 }
 
-$listLimit = 100;
+if (!empty($_REQUEST["list_limit"])) {
+    $listLimit = $_REQUEST["list_limit"];
+} elseif (empty($listLimit)) {
+    $listLimit = 100;
+}
+
+if (!empty($_REQUEST["utf"])) {
+    $userListFields = $_REQUEST["utf"];
+}
+
+if(empty($listFilter)) {
+    $listFilter = "1 = 1 ";
+}
+
+// check filter
+foreach ($tableInfo["fields"] as $field) {
+    if (!empty($field["select-from"])) {
+        if (!empty($_REQUEST["filter_".$field["name"]])) {
+            $listFilter .= " and `".$field["name"]."` like '".db_escape($_REQUEST["filter_".$field["name"]])."'";
+        }
+    }
+}
+
+// store current user settings
+$resultConfig = msv_set_user_config("table-".$table, array("sort" => $sort, "sortd" => $sortd, "limit" => $listLimit, "fields" => $userListFields));
+if (!$resultConfig["ok"]) {
+    msv_message_error($resultConfig["msg"]);
+}
 
 msv_assign_data("table_sort", $sort);
 msv_assign_data("table_sortd", $sortd);
 msv_assign_data("table_sortd_rev", $sortd_rev);
 msv_assign_data("table_limit", $listLimit);
 
-$resultQuery = db_get_listpaged($table, "", "`$sort` $sortd", $listLimit, "p");
+$resultQuery = db_get_listpaged($table, $listFilter, "`$sort` $sortd", $listLimit, "p");
 if ($resultQuery["ok"]) {
     msv_assign_data("admin_list", $resultQuery["data"]);
 
@@ -141,20 +187,26 @@ if ($resultQuery["ok"]) {
 	$listPages = $resultQuery["pages"];
     msv_assign_data("admin_list_pages", $listPages);
 
-	$adminListSkipFields = $adminListFields = array();
-	$adminListSkipFields[] = "deleted";
-	$adminListSkipFields[] = "published";
-	$adminListSkipFields[] = "author";
-	$adminListSkipFields[] = "updated";
+	$adminListSkipFields = $adminListFields = $adminFilterFields = array();
+    if (!in_array("deleted",$userListFields)) $adminListSkipFields[] = "deleted";
+    if (!in_array("published",$userListFields)) $adminListSkipFields[] = "published";
+    if (!in_array("author",$userListFields)) $adminListSkipFields[] = "author";
+    if (!in_array("updated",$userListFields)) $adminListSkipFields[] = "updated";
 
 	foreach ($tableInfo["fields"] as $field) {
         if (!in_array($field["name"], $adminListFields)) {
             $adminListFields[] = $field["name"];
         }
 
-		if($field["listskip"] > 0) {
-			$adminListSkipFields[] = $field["name"];
-		}
+        if(empty($userListFields)) {
+            if($field["listskip"] > 0) {
+                $adminListSkipFields[] = $field["name"];
+            }
+        } else {
+            if(!in_array($field["name"],$userListFields)) {
+                $adminListSkipFields[] = $field["name"];
+            }
+        }
 
 		if (!empty($field["select-from"])) {
 			$field["type"] = "select";
@@ -197,15 +249,26 @@ if ($resultQuery["ok"]) {
 				} elseif (!empty($listItem[$field["name"]])) {
 					$listItem[$field["name"]."_data"] = $listItem[$field["name"]];
 					$listItem[$field["name"]] = $field["data"][$listItem[$field["name"]]];
+
+
 				}
 
 				$adminListFiltered[$listItemID] = $listItem;
 			}
 			$adminList = $adminListFiltered;
+
+			// add to filter
+            $adminFilterFields[$field["name"]] = array(
+                "name" => $field["name"],
+                "type" => $field["type"],
+                "value" => "",
+                "data" => $field["data"],
+            );
 		}
 	}
 
     msv_assign_data("admin_list_skip", $adminListSkipFields);
     msv_assign_data("admin_list_fields", $adminListFields);
     msv_assign_data("admin_list", $adminList);
+    msv_assign_data("admin_filter_fields", $adminFilterFields);
 }

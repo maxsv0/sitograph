@@ -142,6 +142,7 @@ foreach ($this->website->modules as $module) {
 
             $submenu[$name] = array(
                 "name" => _t("table.".$name),
+                "module" => $module->name,
                 "table" => $name,
                 "access" => "admin",
                 "handler" => "module-table.php",
@@ -306,7 +307,7 @@ $menu_ar["design"] = array(
 $menu_ar["site_settings"] = array(
     "name" => _t("admin.site_settings"),
     "access" => "admin",
-    "handler" => "module-table.php",
+    "handler" => "module-settings.php",
     "table" => TABLE_SETTINGS,
     "url" => "/admin/?section=site_settings",
     "file" => "site_settings.tpl",

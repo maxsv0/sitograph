@@ -67,9 +67,9 @@ function Install_ThemeDefault($module) {
     msv_set_config("theme_use_jquery", 1, true, "*");
 
     // custom theme options
-    msv_set_config("theme_bg", "", true, "*", _t("settings.theme_bg"));
-    msv_set_config("theme_cms_favicon", "", true, "*", _t("settings.theme_cms_favicon"));
-    msv_set_config("theme_logo", "", true, "*", _t("settings.theme_logo"));
-    msv_set_config("theme_copyright_text", "2016-2017 MSV Framework", true, "*", _t("settings.theme_copyright_text"));
-    msv_set_config("theme_header_contacts", "", true, "*", _t("settings.theme_header_contacts"));
+    msv_set_config("theme_bg", "", true, "*", _t("settings.theme_bg"), "theme");
+    msv_set_config("theme_cms_favicon", "", true, "*", _t("settings.theme_cms_favicon"), "theme");
+    msv_set_config("theme_logo", "", true, "*", _t("settings.theme_logo"), "theme");
+    msv_set_config("theme_copyright_text", "2016-2017 MSV Framework", true, "*", _t("settings.theme_copyright_text"), "theme");
+    msv_set_config("theme_header_contacts", "", true, "*", _t("settings.theme_header_contacts"), "theme");
 }
