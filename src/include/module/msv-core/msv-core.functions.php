@@ -581,16 +581,14 @@ function &msv_get($param = "website") {
         die(".");
     }
 
-    $returnObj = null;
+    $returnObj =& $website;
 
     $arPath = explode(".", $param);
     if (count($arPath) > 1) {
-
-        $item = $arPath[1];
-
-        $returnObj =& $website->{$item};
-    } else {
-        $returnObj =& $website;
+        for ($i = 1; $i < count($arPath); $i++) {
+            $item = $arPath[$i];
+            $returnObj =& $returnObj->{$item};
+        }
     }
 
     return $returnObj;
