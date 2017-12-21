@@ -1,5 +1,5 @@
 <div class="row">
-<div class="col-sm-6 col-sm-offset-6">
+<div class="col-sm-6 col-sm-offset-5">
     <p class="text-right">
         <button class="btn btn-default" data-toggle="collapse" data-target="#row_add"><span class='glyphicon glyphicon-ok'></span> {$t["btn.add_new"]} <span class='caret'></span></button>
 

@@ -350,7 +350,7 @@ ul.nav li a:hover {
 .tab-pane input[type="text"] {
     background-color: #f9f9f9;
     border: 1px solid #cccccc;
-    color: #7c7c7c;
+    color: #333746;
     height: 30px;
     line-height: 25px;
     font-family: Verdana;
@@ -359,7 +359,7 @@ ul.nav li a:hover {
 
 .form-group-btn {
     text-align: left;
-    margin-top: 20px;
+    margin-left: 20px;
 }
 .form-group-btn .btn {
     margin-right: 10px;
@@ -488,6 +488,7 @@ table.table-module .colactive {
     text-align: left;
     font-weight: normal;
     margin-bottom:5px;
+    color:#707070;
 }
 
 .input_str_small {

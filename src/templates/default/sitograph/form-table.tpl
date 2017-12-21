@@ -4,7 +4,7 @@
   <ul class="nav nav-tabs" role="tablist">
   
 {foreach from=$admin_edit_tabs key=tabID item=tabInfo name=loop}
-{if $tabInfo.fields}
+{if is_array($tabInfo.fields) && count($tabInfo.fields) > 0}
 <li role="presentation"{if $smarty.foreach.loop.first} class="active"{/if}><a href="#{$tabID}" aria-controls="{$tabID}" role="tab" data-toggle="tab">{$tabInfo.title}</a></li>
 {/if}
 {/foreach}
@@ -17,11 +17,11 @@
   
   
 {foreach from=$admin_edit_tabs key=tabID item=tabInfo name=loop}
-{if $tabInfo.fields}
+{if is_array($tabInfo.fields) && count($tabInfo.fields) > 0}
 <div role="tabpanel" class="tab-pane {if $smarty.foreach.loop.first}active{/if}" id="{$tabID}">
 
 {foreach from=$tabInfo.fields item=itemField}
-{include "$themePath/sitograph/field-form.tpl" form_id="form" item_type=$itemField.type item_id=$itemField.name item_name=$itemField.name value=$dataList[$itemField.name] readonly=$itemField.readonly}
+{include "$themePath/sitograph/field-form.tpl" form_id="form" item_type=$itemField.type item_id=$itemField.name item_name=$itemField.name value=$dataList[$itemField.name] title=$itemField.title readonly=$itemField.readonly}
 {/foreach}
 
 </div>
@@ -40,10 +40,10 @@
 
 <div class="">
 <div class="form-group-btn">
-	<button type="submit" class="btn btn-danger" name="cancel" id="cancel" type="button"><span class="glyphicon glyphicon-remove-circle">&nbsp;</span>{$t["btn.cancel"]}</button>
-	<button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-ban-circle">&nbsp;</span>{$t["btn.reset"]}</button>
-	<button type="submit" name="save" id="btnSave" value="1" class="btn btn-primary"><span class="glyphicon glyphicon-repeat">&nbsp;</span>{$t["btn.save"]}</button>
-	<button type="submit" name="save_exit" value="1" class="btn btn-primary"><span class="glyphicon glyphicon-ok">&nbsp;</span>{$t["btn.save_exit"]}</button>
+	<button type="submit" class="btn btn-danger btn-lg" name="cancel" id="cancel" type="button"><span class="glyphicon glyphicon-remove-circle">&nbsp;</span>{$t["btn.cancel"]}</button>
+	<button class="btn btn-danger btn-lg" type="reset"><span class="glyphicon glyphicon-ban-circle">&nbsp;</span>{$t["btn.reset"]}</button>
+	<button type="submit" name="save" id="btnSave" value="1" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-repeat">&nbsp;</span>{$t["btn.save"]}</button>
+	<button type="submit" name="save_exit" value="1" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-ok">&nbsp;</span>{$t["btn.save_exit"]}</button>
 </div>
 </div>
 </form>
