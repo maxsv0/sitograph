@@ -3,7 +3,7 @@
 <div class="form-group">
 {if $item_type === "file" || $item_type === "pic" || $item_type === "doc" || $item_type === "text"}
     <label for="i{$item_id}" class="col-sm-12 control-label" style="font-size: 15px; margin-bottom:5px;">
-    {_t("table.$admin_table.$item_name")}
+    {$title}
     {if $item_type === "pic"}
     
     	<p class="text-info" style="margin-top:10px;font-weight:300;">
@@ -91,7 +91,7 @@
 {if !($item_type === "file" || $item_type === "pic" || $item_type ==="doc" || $item_type ==="text")}
     <label for="i{$item_id}" class="col-sm-6 control-label">
     
-    {if $item_name}{_t("table.$admin_table.$item_name")}{/if}
+    {if $item_name}{$title}{/if}
 
 {if $item_type === "url"}
 <small class="field-help">
@@ -108,5 +108,5 @@
 
 
 {else}
-empty item_id $item_name:{$item_name}
+	<div class="alert alert-danger">Empty item_id/item_name: {$item_id}/{$item_name}</div>
 {/if}

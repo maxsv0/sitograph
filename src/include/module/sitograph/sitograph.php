@@ -153,97 +153,103 @@ if (!empty($section) && in_array($section, $menu_index)) {
 
     if (true || !empty($_REQUEST["edit"]) || !empty($_REQUEST["duplicate"]) || !empty($_REQUEST["add_child"]) || isset($_REQUEST["add_new"])) {
         $table_edit = msv_get_config("admin_edit");
+        $tabs = msv_get_config("admin_edit_tabs");
 
-        $tabs = array();
-        $tabs["home"] = array("title" => _t("tab.home"), "fields" => array());
-        $tabs["document"] = array("title" => _t("tab.document"), "fields" => array());
-        $tabs["seo"] = array("title" => _t("tab.seo"), "fields" => array());
-        $tabs["files"] = array("title" => _t("tab.files"), "fields" => array());
-        $tabs["access"] = array("title" => _t("tab.access"), "fields" => array());
-        $tabs["history"] = array("title" => _t("tab.history"), "fields" => array());
+        if (empty($tabs)) {
+            $tabs = array();
+            $tabs["home"] = array("title" => _t("tab.home"), "fields" => array());
+            $tabs["document"] = array("title" => _t("tab.document"), "fields" => array());
+            $tabs["seo"] = array("title" => _t("tab.seo"), "fields" => array());
+            $tabs["files"] = array("title" => _t("tab.files"), "fields" => array());
+            $tabs["access"] = array("title" => _t("tab.access"), "fields" => array());
+            $tabs["history"] = array("title" => _t("tab.history"), "fields" => array());
 
-        $table_info = msv_get_config("admin_table_info");
-        if (!empty($table_info)) {
-            if ($table_info["useseo"]) {
-                $infoSEO = msv_get_config_table(TABLE_SEO);
+            $table_info = msv_get_config("admin_table_info");
+            if (!empty($table_info)) {
+                if ($table_info["useseo"]) {
+                    $infoSEO = msv_get_config_table(TABLE_SEO);
 
-                $fieldTitle = $infoSEO["fields"]["title"];
-                $fieldTitle["name"] = "seo_title";
-                $fieldDescription = $infoSEO["fields"]["description"];
-                $fieldDescription["name"] = "seo_description";
-                $fieldKeywords = $infoSEO["fields"]["keywords"];
-                $fieldKeywords["name"] = "seo_keywords";
+                    $fieldTitle = $infoSEO["fields"]["title"];
+                    $fieldTitle["name"] = "seo_title";
+                    $fieldDescription = $infoSEO["fields"]["description"];
+                    $fieldDescription["name"] = "seo_description";
+                    $fieldKeywords = $infoSEO["fields"]["keywords"];
+                    $fieldKeywords["name"] = "seo_keywords";
 
-                $tabs["seo"]["fields"] = array(
-                    $fieldTitle,
-                    $fieldDescription,
-                    $fieldKeywords,
-                );
+                    $tabs["seo"]["fields"] = array(
+                        $fieldTitle,
+                        $fieldDescription,
+                        $fieldKeywords,
+                    );
 
-            }
-
-            foreach ($table_info["fields"] as $field) {
-                if (!empty($field["select-from"])) {
-                    if ($field["type"] !== "select" && $field["type"] !== "multiselect") {
-                        $field["type"] = "select";
-                    }
-
-                    if ($field["select-from"]["source"] === "table") {
-
-                        $cfg = msv_get_config_table($field["select-from"]["name"]);
-                        // TODO: multi index support
-                        // index from config?
-                        $index = $cfg["index"];
-                        $title = $cfg["title"];
-                        $filter = $field["select-from"]["filter"];
-                        $order = $field["select-from"]["order"];
-                        if (empty($order)) {
-                            $order = "`$title` asc";
-                        }
-
-                        $queryData = db_get_list($field["select-from"]["name"], $filter, $order);
-                        if ($queryData["ok"]) {
-                            $arData = array();
-                            foreach ($queryData["data"] as $item) {
-                                $arData[$item[$index]] = $item[$title];
-                            }
-                            $field["data"] = $arData;
-                        }
-                    } elseif ($field["select-from"]["source"] === "list") {
-
-                        $field["data"] = array();
-                        $list = explode(",", $field["select-from"]["name"]);
-                        foreach ($list as $listItem) {
-                            $field["data"][$listItem] = _t($field["name"].".".$listItem);
-                        }
-
-                    }
                 }
 
-                if ($field["type"] === "doc" || $field["type"] === "text") {
-                    $tabs["document"]["fields"][] = $field;
-                } elseif ($field["type"] === "pic"
-                    || $field["type"] === "file") {
-                    $tabs["files"]["fields"][] = $field;
-                } elseif ($field["type"] === "published"
-                    || $field["type"] === "deleted"
-                    || $field["type"] === "author"
-                    || $field["type"] === "updated"
-                    || $field["type"] === "lang") {
-                    $tabs["access"]["fields"][] = $field;
-                } elseif ($field["type"] === "int"
-                    || $field["type"] === "id"
-                    || $field["type"] === "str"
-                    || $field["type"] === "url"
-                    || $field["type"] === "array"
-                    || $field["type"] === "multiselect"
-                    || $field["type"] === "select") {
-                    $tabs["home"]["fields"][] = $field;
-                } else {        // TODO: ? do we need this?
-                    $tabs["home"]["fields"][] = $field;
+                foreach ($table_info["fields"] as $field) {
+                    $field["title"] = _t("table.".$table_info["name"].".".$field["name"]);
+
+                    if (!empty($field["select-from"])) {
+                        if ($field["type"] !== "select" && $field["type"] !== "multiselect") {
+                            $field["type"] = "select";
+                        }
+
+                        if ($field["select-from"]["source"] === "table") {
+
+                            $cfg = msv_get_config_table($field["select-from"]["name"]);
+                            // TODO: multi index support
+                            // index from config?
+                            $index = $cfg["index"];
+                            $title = $cfg["title"];
+                            $filter = $field["select-from"]["filter"];
+                            $order = $field["select-from"]["order"];
+                            if (empty($order)) {
+                                $order = "`$title` asc";
+                            }
+
+                            $queryData = db_get_list($field["select-from"]["name"], $filter, $order);
+                            if ($queryData["ok"]) {
+                                $arData = array();
+                                foreach ($queryData["data"] as $item) {
+                                    $arData[$item[$index]] = $item[$title];
+                                }
+                                $field["data"] = $arData;
+                            }
+                        } elseif ($field["select-from"]["source"] === "list") {
+
+                            $field["data"] = array();
+                            $list = explode(",", $field["select-from"]["name"]);
+                            foreach ($list as $listItem) {
+                                $field["data"][$listItem] = _t($field["name"].".".$listItem);
+                            }
+
+                        }
+                    }
+
+                    if ($field["type"] === "doc" || $field["type"] === "text") {
+                        $tabs["document"]["fields"][] = $field;
+                    } elseif ($field["type"] === "pic"
+                        || $field["type"] === "file") {
+                        $tabs["files"]["fields"][] = $field;
+                    } elseif ($field["type"] === "published"
+                        || $field["type"] === "deleted"
+                        || $field["type"] === "author"
+                        || $field["type"] === "updated"
+                        || $field["type"] === "lang") {
+                        $tabs["access"]["fields"][] = $field;
+                    } elseif ($field["type"] === "int"
+                        || $field["type"] === "id"
+                        || $field["type"] === "str"
+                        || $field["type"] === "url"
+                        || $field["type"] === "array"
+                        || $field["type"] === "multiselect"
+                        || $field["type"] === "select") {
+                        $tabs["home"]["fields"][] = $field;
+                    } else {        // TODO: ? do we need this?
+                        $tabs["home"]["fields"][] = $field;
+                    }
                 }
             }
         }
+
         msv_assign_data("admin_edit_tabs", $tabs);
         msv_assign_data("admin_edit", $table_edit);
     }
