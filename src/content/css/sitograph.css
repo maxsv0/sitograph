@@ -380,7 +380,9 @@ input.style_on_off {
     padding-bottom: 3px;
     width: 25px;
 }
-
+table.table-module tr td {
+    font-size: 12px!important;
+}
 table.table-module tr:first-child th  {
     background: #333746;
 }
