@@ -738,15 +738,13 @@ div.btn_group tr td input:hover {
     z-index: 99;
 }
 .btnCover div {
-    position:relative;
-    right:35px;
-    top:-13px;
-    padding:3px;
-    background:#fff;
-    border-radius:5px;
-}
-.btnCover a {
-    line-height:25px;font-size:14px;
+    position: relative;
+    right: 50px;
+    top: -33px;
+    padding: 3px;
+    background: #fff;
+    border-radius: 5px;
+    margin: 10px;
 }
 
 .table-module th {
