@@ -359,6 +359,7 @@ ul.nav li a:hover {
 
 .form-group-btn {
     text-align: left;
+    margin-top: 20px;
     margin-left: 20px;
 }
 .form-group-btn .btn {
