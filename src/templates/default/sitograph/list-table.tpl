@@ -1,14 +1,10 @@
-<div class="row">
-<div class="col-sm-6 col-sm-offset-5">
-    <p class="text-right">
-        <button class="btn btn-default" data-toggle="collapse" data-target="#row_add"><span class='glyphicon glyphicon-ok'></span> {$t["btn.add_new"]} <span class='caret'></span></button>
+<p class="text-right">
+    <button class="btn btn-default" data-toggle="collapse" data-target="#row_add"><span class='glyphicon glyphicon-ok'></span> {$t["btn.add_new"]} <span class='caret'></span></button>
 
-        &nbsp;&nbsp;
+    &nbsp;&nbsp;
 
-        <button class="btn btn-default" data-toggle="collapse" data-target="#row_filter"><span class='glyphicon glyphicon-cog'></span> Options <span class='caret'></span></button>
-    </p>
-</div>
-</div>
+    <button class="btn btn-default" data-toggle="collapse" data-target="#row_filter"><span class='glyphicon glyphicon-cog'></span> Options <span class='caret'></span></button>
+</p>
 
 <div class="collapse" id="row_add">
     <div class="row">
