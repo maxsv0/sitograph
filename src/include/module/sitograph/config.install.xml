@@ -92,6 +92,7 @@
 	<file dir="template" path="default/sitograph/section/send_email.tpl"/>
 	<file dir="template" path="default/sitograph/section/seo.tpl"/>
 	<file dir="template" path="default/sitograph/section/site_settings.tpl"/>
+	<file dir="template" path="default/sitograph/section/sitemap.tpl"/>
 	<file dir="template" path="default/sitograph/section/social.tpl"/>
 	<file dir="template" path="default/sitograph/section/structure.tpl"/>
 	<file dir="template" path="default/sitograph/section/users.tpl"/>
