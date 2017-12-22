@@ -7,16 +7,16 @@
     {/foreach}
 
 {else}
+	<h3>Editing file: {$file_path}</h3>
+
 	<div class="btnCover">
 		<div>
-			<a href="{$lang_url}/admin/?section=editor&edit_file={$file_path}"><span class="glyphicon glyphicon-eye-open"></span> Read file</a>
+			<a href="{$lang_url}/admin/?section=editor&edit_file={$file_path}" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span> Read file</a>
 			&nbsp;&nbsp;&nbsp;
-			<a href="{$lang_url}/admin/?section=editor&edit_file={$file_path}&edit_mode"><span class="glyphicon glyphicon-edit"></span> Edit file</a>
+			<a href="{$lang_url}/admin/?section=editor&edit_file={$file_path}&edit_mode" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit file</a>
 		</div>
 	</div>
-	<p>
-	<h3>{$file_path}</h3>
-	</p>
+
     {if !$file_edit_mode}
 
         {if $file_path}

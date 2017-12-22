@@ -134,8 +134,8 @@
 			<field name="to" type="str"/>
 			<field name="subject" type="str"/>
 			<field name="body" type="doc" listskip="1"/>
-			<field name="header" type="doc" listskip="1"/>
-			<field name="result" type="doc" readonly="1"/>
+			<field name="header" type="text" listskip="1"/>
+			<field name="result" type="text" readonly="1"/>
 		</table>
 	</config>
 </document>

@@ -55,16 +55,16 @@
 <form action="/admin/login/" method="POST" id="login_form">
 		<table align="center" cellpadding="0" cellspacing="0">
 		<tr>
-			<td style="padding-bottom: 4px;">{_t("form.login")}</td>
+			<td style="padding: 5px 0;">{_t("form.login")}</td>
 		</tr>
 		<tr>
-			<td style="padding-bottom: 11px;"><input class="login_form" type="text" name="email" value="" style="width: 280px;"></td>
+			<td style="padding: 5px 0;"><input class="login_form" type="text" name="email" value="" style="width: 280px;"></td>
 		</tr>
 		<tr>
-			<td style="padding-bottom: 4px;">{_t("form.password")}</td>
+			<td style="padding: 10px 0 5px;">{_t("form.password")}</td>
 		</tr>
 		<tr>
-			<td style="padding-bottom: 37px;"><input class="login_form" type="password" name="password" value="" style="width: 280px;"></td>
+			<td style="padding: 5px 0 15px;"><input class="login_form" type="password" name="password" value="" style="width: 280px;"></td>
 		</tr>
 		<tr>
 			<td><input type="submit" class="loginbtn" value="{_t("btn.login")}"></td>

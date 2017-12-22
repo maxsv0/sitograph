@@ -2,7 +2,7 @@
 
 <div class="btnCover">
 <div>
-<a href="{$lang_url}/admin/?section=robots&edit_mode"><span class="glyphicon glyphicon-edit"></span> {$t["btn.edit"]}</a>
+<a href="{$lang_url}/admin/?section=robots&edit_mode" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> {$t["btn.edit"]}</a>
 </div>
 </div>
 {if $robots}
