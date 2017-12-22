@@ -27,6 +27,7 @@
 
 <table class="table table-hover table-module">
 <tr>
+<th>Language</th>
 <th>{$t["admin.locale_param"]}</th>
 <th>{$t["admin.locale_value"]}</th>
 <th>{$t["actions"]}</th>
@@ -34,16 +35,16 @@
 
 {foreach from=$localeList key=localeID item=localeText}
 
-
-<tr>
+<tr data-id="{$localeID}">
+<td>{LANG}</td>
 <td>{$localeID}</td>
 <td>{$localeText}</td>
 <td class="text-nowrap">
-	<a href="{$lang_url}/admin/?section={$admin_section}&delete={$localeID}&module={$moduleName}" title="{$t['btn.delete']}" class="btn btn-danger disabled" onclick="if (!confirm('{$t["btn.remove_confirm"]}')) return false;"><span class="glyphicon glyphicon-remove"></span></a>
-	<a href="/admin/?section={$admin_section}&duplicate={$localeID}&module={$moduleName}" title="{$t['btn.duplicate']}" class="btn btn-warning disabled"><span class="glyphicon glyphicon-duplicate"></span></a>
+	<a href="{$lang_url}/admin/?section={$admin_section}&delete={$localeID}&form_module={$moduleName}" title="{$t['btn.delete']}" class="btn btn-danger" onclick="if (!confirm('{$t["btn.remove_confirm"]}')) return false;"><span class="glyphicon glyphicon-remove"></span></a>
 	<a href="{$lang_url}/admin/?section={$admin_section}&edit={$localeID}&module={$moduleName}" title="{$t['btn.edit']}" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
 </td>
 </tr>
+
 {/foreach}
 
 </table>
