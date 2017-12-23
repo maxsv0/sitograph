@@ -72,30 +72,6 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"]) || !empty($_REQUEST["d
     }
 }
 
-//if (!empty($_POST["save"])) {
-//	$_REQUEST["edit"] = $_POST["itemID"];
-//}
-//
-//if (!empty($_REQUEST["delete"])) {
-//    if (!empty($_REQUEST["module"])) {
-//        $_SESSION['location_active'] = $_REQUEST["module"];
-//        $moduleObj = msv_get("website.".$_REQUEST["module"]);
-//        $config_path = $moduleObj->pathConfig;
-//        $configXML = simplexml_load_file($config_path);
-//        foreach ($configXML->locales->locale as $loc) {
-//        $attributes = $loc->attributes();
-//        if ((string)$attributes["name"] == LANG) {
-//            $res = $loc->xpath('field[@name="'.$_REQUEST["delete"].'"]');
-//            $parent = $res[0];
-//            unset($parent[0]);
-//        }
-//       }
-//     //  echo("<pre>".htmlspecialchars($configXML->asXML())."</pre>");
-//       $configXML->asXml($config_path);
-//    }
-//    msv_redirect($this->website->langUrl."/admin/?section=$section");
-//}
-
 if (isset($_REQUEST["add_new"])) {
     $admin_edit = array(
         'lang' => LANG,
@@ -107,7 +83,6 @@ if (isset($_REQUEST["add_new"])) {
     msv_assign_data("admin_edit", $admin_edit);
     msv_assign_data("add", 1);
 } elseif (isset($_REQUEST["edit"])) {
-
     $locales = msv_get("website.".$_REQUEST["module"].".locales");
 
     $admin_edit = array(
@@ -127,8 +102,6 @@ if (isset($_REQUEST["add_new"])) {
     }
 
     msv_assign_data("admin_module_locales", $module_locales);
-    msv_assign_data("admin_locales", $this->website->locales);
-    msv_assign_data("locales_active", $_SESSION['location_active']);
 }
 
 // prepare form
