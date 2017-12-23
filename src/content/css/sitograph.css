@@ -304,7 +304,7 @@ input.input_search {
 
 /* tab_menu */
 .nav > li {
-    margin-bottom: 5px;
+    margin-top: 3px;
 }
 .nav-tabs {
     border-bottom: 1px solid transparent;

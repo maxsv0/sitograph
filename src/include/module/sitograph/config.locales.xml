@@ -9,7 +9,7 @@
 		<field name="msg.sitemap_generated" value="Sitemap.xml successfully created"/>
 		<field name="msg.ga_not_configured" value="Google Analytics not configured. Specify Tracking ID to start gathering statistics."/>
 		<field name="msg.ga_api_not_configured" value="Google Analytics API not configured. "/>
-		<field name="msg.ga_json_not_configured" value="Please specify path to a JSON authorization file for Google Service."/>
+		<field name="msg.ga_json_not_configured" value="Please specify a path to a JSON authorization file for Google Service."/>
 		
 		<field name="btn.login" value="Login"/>
 		<field name="btn.logout" value="Logout"/>
@@ -75,8 +75,8 @@
 		<field name="admin.history_title" value="History of users sessions"/>
 		<field name="admin.locale_param" value="Text ID"/>
 		<field name="admin.locale_value" value="Value"/>
-		<field name="admin.robots_example_open" value="Example for open website:"/>
-		<field name="admin.robots_example_closed" value="Example for closed website:"/>
+		<field name="admin.robots_example_open" value="Example for an open website:"/>
+		<field name="admin.robots_example_closed" value="Example for a closed website:"/>
 		<field name="admin.robots_example_seo" value="SEO optimized Example:"/>
 		<field name="admin.realtime" value="Real-Time Overview"/>
 		<field name="admin.analytics" value="Analytics"/>
@@ -112,7 +112,7 @@
 		<field name="form.search_word" value="Keyword"/>
 		<field name="search.error_mcg" value="Nothing was found."/>
 		<field name="not_set" value="not set"/>
-		<field name="help.field.url" value="This field indicates how this page can be accessed with URL.&lt;br&gt; Can only include numbers, letters and dash sign."/>
+		<field name="help.field.url" value="This field indicates how this page can be accessed with URL.&lt;br&gt; Can only include numbers, letters, and dash sign."/>
 
 		<field name="structure.getting_started" value="Getting Started: default website"/>
 		<field name="structure.file_structure" value="Sitograph File structure"/>

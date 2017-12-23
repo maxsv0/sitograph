@@ -33,7 +33,7 @@
 		<field name="table.users.reset_token" value="Reset Token"/>
 		<field name="table.users.verify_token" value="Verify Token"/>
 		<field name="table.users.access_token" value="Access Token"/>
-		<field name="msg.users.noemail" value="Email can't be emptry"/>
+		<field name="msg.users.noemail" value="Email can't be empty"/>
 		<field name="msg.users.nopassword" value="Enter your password"/>
 		<field name="msg.users.nopassword2" value="Enter password confirmation"/>
 		<field name="msg.users.password_notmatch" value="Password and confirmation do not match"/>

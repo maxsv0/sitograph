@@ -38,7 +38,7 @@ $(document).ready(function() {
  });
 ", "/admin/", "admin");
 
-// include this code globaly, if admin logged
+// include this code globally, if admin logged
 msv_include_js("
 $(document).ready(function() {
 	tinymce.init({

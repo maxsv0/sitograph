@@ -185,7 +185,7 @@
 		<field name="msg.save_error" value="Ошибка сохранения"/>
 		<field name="msg.development_version" value="Это бета версия MSV Website. Режим чтения."/>
 		<field name="msg.wrong_email" value="Неверный Email"/>
-		<field name="msg.cron.saved" value="CronJob Saved successfuly"/>
+		<field name="msg.cron.saved" value="CronJob Saved successfully"/>
 		<field name="msg.api.no_access" value="No access"/>
 		<field name="msg.api.upload_not_found" value="Upload file not found"/>
 		<field name="msg.api.failed_detect_image_type" value="Failed to detect image type"/>
@@ -194,11 +194,11 @@
 		<field name="settings.include_html_head" value="This HTML code is included to all pages, above 'body' tag"/>
 		<field name="settings.theme_css_path" value="Общий CSS файл"/>
 		<field name="settings.theme_js_path" value="Общий JavaScript файл"/>
-		<field name="settings.theme_use_bootstrap" value="Include Bootstrap library globaly, values 0/1"/>
-		<field name="settings.theme_use_jquery" value="Include jQuery library globaly, values 0/1"/>
-		<field name="settings.edit_mode" value="Admin 'Edit Mode' defined globaly, values 0/1"/>
+		<field name="settings.theme_use_bootstrap" value="Include Bootstrap library globally, values 0/1"/>
+		<field name="settings.theme_use_jquery" value="Include jQuery library globally, values 0/1"/>
+		<field name="settings.edit_mode" value="Admin 'Edit Mode' defined globally, values 0/1"/>
 		<field name="settings.message_ok" value="Text for a success message displayed over website"/>
-		<field name="settings.message_error" value="Text for a error message displayed over website. Enabling error message will prevent all website forms from submitting."/>
+		<field name="settings.message_error" value="Text for a failure message displayed on the  website. Enabling error message will prevent all website forms from submitting."/>
 		<field name="settings.email_from" value="Email used in sent-by header"/>
 		<field name="settings.email_fromname" value="Name used in sent-by header"/>
 		<field name="settings.admin_email" value="Public Administrator e-mail"/>
@@ -383,33 +383,33 @@
 		<field name="msg.no_repository" value="Repository not found"/>
 		<field name="msg.repository_not_found" value="not found in repository"/>
 		<field name="msg.cant_open_zip" value="can't open zip file"/>
-		<field name="msg.deleted_ok" value="Deleted successfuly"/>
-		<field name="msg.created_ok" value="Created successfuly"/>
-		<field name="msg.saved_ok" value="Saved successfuly"/>
+		<field name="msg.deleted_ok" value="Deleted successfully"/>
+		<field name="msg.created_ok" value="Created successfully"/>
+		<field name="msg.saved_ok" value="Saved successfully"/>
 		<field name="msg.save_error" value="Error during saving"/>
 		<field name="msg.development_version" value="This is development version. Readonly mode."/>
 		<field name="msg.email_sent_to" value="Email was successfully sent to"/>
 		<field name="msg.email_sending_error" value="Error sending email"/>
 		<field name="msg.wrong_email" value="Wrong Email"/>
-		<field name="msg.cron.saved" value="CronJob Saved successfuly"/>
+		<field name="msg.cron.saved" value="CronJob Saved successfully"/>
 		<field name="msg.api.no_access" value="No access"/>
 		<field name="msg.api.upload_not_found" value="Upload file not found"/>
 		<field name="msg.api.failed_detect_image_type" value="Failed to detect image type"/>
 		<field name="msg.api.failed_detect_file_type" value="Failed to detect file type"/>
 		<field name="msg.api.type_error_allowed" value="File type not allowed. Allowed:"/>
 		<field name="settings.include_html_head" value="This HTML code is included to all pages, above 'body' tag"/>
-		<field name="settings.theme_css_path" value="Path to a CSS file included globaly"/>
-		<field name="settings.theme_js_path" value="Path to a JS file included globaly"/>
-		<field name="settings.theme_use_bootstrap" value="Include Bootstrap library globaly, values 0/1"/>
-		<field name="settings.theme_use_jquery" value="Include jQuery library globaly, values 0/1"/>
-		<field name="settings.edit_mode" value="Admin 'Edit Mode' defined globaly, values 0/1"/>
+		<field name="settings.theme_css_path" value="Path to a CSS file included globally"/>
+		<field name="settings.theme_js_path" value="Path to a JS file included globally"/>
+		<field name="settings.theme_use_bootstrap" value="Include Bootstrap library globally, values 0/1"/>
+		<field name="settings.theme_use_jquery" value="Include jQuery library globally, values 0/1"/>
+		<field name="settings.edit_mode" value="Admin 'Edit Mode' defined globally, values 0/1"/>
 		<field name="settings.message_ok" value="Text for a success message displayed over website"/>
 		<field name="settings.message_error" value="Text for a error message displayed over website. Enabling error message will prevent all website forms from submitting."/>
 		<field name="settings.email_from" value="Email used in sent-by header"/>
 		<field name="settings.email_fromname" value="Name used in sent-by header"/>
 		<field name="settings.admin_email" value="Public Administrator e-mail"/>
 		<field name="settings.support_email" value="Public Support e-mail"/>
-		<field name="settings.theme_active" value="Name of a active theme"/>
+		<field name="settings.theme_active" value="Name of an active theme"/>
 	</locale>
     <locale name="ua">
         <field name="actions" value="Дії"/>
@@ -594,7 +594,7 @@
 		<field name="msg.development_version" value="This is development version. Readonly mode."/>
 		<field name="msg.email_sent_to" value="Письмо успешно отправлено на email"/>
 		<field name="msg.email_sending_error" value="Ошибка отправки письма на email "/>
-		<field name="msg.cron.saved" value="CronJob Saved successfuly"/>
+		<field name="msg.cron.saved" value="CronJob Saved successfully"/>
     </locale>
 </locales>
 </document>
