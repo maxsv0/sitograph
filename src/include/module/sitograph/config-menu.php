@@ -82,7 +82,7 @@ $submenu["menu"] = array(
 );
 $submenu["documents"] = array(
     "name" => _t("admin.documents"),
-    "access" => "superadmin",
+    "access" => "admin",
     "handler" => "module-table.php",
     "table" => TABLE_DOCUMENTS,
     "url" => "/admin/?section=documents",
@@ -91,7 +91,7 @@ $submenu["documents"] = array(
 );
 $submenu["seo"] = array(
     "name" => _t("admin.seo"),
-    "access" => "superadmin",
+    "access" => "admin",
     "handler" => "module-table.php",
     "table" => TABLE_SEO,
     "url" => "/admin/?section=seo",
