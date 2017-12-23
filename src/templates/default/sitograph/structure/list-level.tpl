@@ -6,9 +6,9 @@
 
 {if $structure_show && $structure_show[$item.parent_id] == $level && !empty($listTable[$item.id])}
 
-	<tr class="selected{if !$item.published} danger{/if}"  data-index="{$item.parent_id}" data-level="{$level}" data-show="{$item.id}">
+	<tr class="selected{if !$item.published} text-muted{/if}"  data-index="{$item.parent_id}" data-level="{$level}" data-show="{$item.id}">
 {else}
-	<tr class="{if !$item.published}danger{/if}" data-index="{$item.parent_id}" data-level="{$level}" >
+	<tr class="{if !$item.published}text-muted{/if}" data-index="{$item.parent_id}" data-level="{$level}" >
 {/if}
 
 <td>
@@ -32,22 +32,16 @@
 </td>
 
 <td class="col-sm-2">
-{if $item.template}
-{if $item.template === "default"}
-	<span class="text-muted">{$item.template}</span>
-{else}
-	<span class="text-info">{$item.template}</span>
-{/if}
-{else}
-<span class="label label-danger">{_t("not_set")}</span>
-{/if}
-
-<br>
-
 {if $item.page_template}
 {$item.page_template}
 {else}
 <span class="label label-danger">{_t("not_set")}</span>
+{/if}
+<br>
+{if $item.template}
+	<small class="text-muted">{$item.template}</small>
+{else}
+	<span class="label label-danger">{_t("not_set")}</span>
 {/if}
 </td>
 
@@ -72,11 +66,7 @@
 {/if}
 </td>
 <td class="text-center col-sm-1">
-{if $item.published}
-	<span class="text-success bool-switch" data-id="{$item.id}" data-section="{$admin_section}" data-table="{$admin_table}" data-field="published" data-value="1">{$t["yes"]}</span>
-{else}
-	<span class="text-danger bool-switch" data-id="{$item.id}" data-section="{$admin_section}" data-table="{$admin_table}" data-field="published" data-value="0">{$t["no"]}</span>
-{/if}
+<small>{$item.updated}</small>
 </td>
 
 <td class="col-sm-3">

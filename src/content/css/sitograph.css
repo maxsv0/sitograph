@@ -382,7 +382,7 @@ input.style_on_off {
     width: 25px;
 }
 table.table-module tr td {
-    font-size: 12px!important;
+    font-size: 13px!important;
 }
 table.table-module tr:first-child th  {
     background: #333746;
@@ -1454,4 +1454,8 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+.text-muted a {
+    color: #777;
 }

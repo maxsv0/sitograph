@@ -6,10 +6,12 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
 {foreach from=$admin_module_locales name=loop key=moduleName item=localeList}
+{if count($localeList) > 0}
 {if $smarty.foreach.loop.first}
-	<li role="presentation" {if !$locales_active}class="active"{/if}><a href="#module-{$moduleName}" aria-controls="module-{$moduleName}" role="tab" data-toggle="tab">{$moduleName}</a></li>
+	<li role="presentation" {if !$locales_active}class="active"{/if}><a href="#module-{$moduleName}" aria-controls="module-{$moduleName}" role="tab" data-toggle="tab">{$moduleName}/{$localeList|count}</a></li>
 {else}
-	<li role="presentation" {if $locales_active == $moduleName}class="active"{/if}><a href="#module-{$moduleName}" aria-controls="module-{$moduleName}" role="tab" data-toggle="tab">{$moduleName}</a></li>
+	<li role="presentation" {if $locales_active == $moduleName}class="active"{/if}><a href="#module-{$moduleName}" aria-controls="module-{$moduleName}" role="tab" data-toggle="tab">{$moduleName}/{$localeList|count}</a></li>
+{/if}
 {/if}
 {/foreach}
   </ul>
@@ -17,6 +19,7 @@
 <!-- Tab panes -->
 <div class="tab-content">
 {foreach from=$admin_module_locales name=loop key=moduleName item=localeList}
+{if count($localeList) > 0}
 {if $smarty.foreach.loop.first}
 	<div role="tabpanel" class="tab-pane {if !$locales_active}active{/if}" id="module-{$moduleName}">
 {else}
@@ -54,6 +57,7 @@
 
 
 	</div>
+{/if}
 {/foreach}
 </div>
 
