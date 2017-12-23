@@ -710,7 +710,7 @@ class MSV_Website {
 	function outputPage() {
 		$this->log("MSV: outputPage");
 
-		if (empty($this->page) && $this->instaled) {
+		if ($this->instaled && (empty($this->page) || empty($this->page["published"]))) {
 			// set 404 template
 
 			$this->log("Page not found, loading 404 template");
@@ -724,7 +724,7 @@ class MSV_Website {
 			// TODO: output this if 404 template not found
 			//$this->outputNotFound("Page not found", 404);
 		}
-		
+
 		$userAccess = $this->user["access"];
 		$pageAccess = $this->page["access"];
 		if (!$this->checkAccess($pageAccess, $userAccess)) {
