@@ -229,41 +229,49 @@ a:active {color:#bb233a;}
 
 
     // add gallery
+    $docContent = msv_load_module_doc($module->pathModule, "sitograph-install");
     $item = array(
-        "date" => "2017-07-01 13:50:12",
+        "date" => "2017-12-23 13:50:12",
         "url" => "sitograph-installation-wizard",
         "title" => "Sitograph Installation Wizard",
-        "description" => "Installing Sitograph CMS and default website content",
+        "description" => $docContent,
         "pic" => "images/gallery/gallery3_photo1.jpg",
         "pic_preview" => "images/gallery/gallery3_photo1.jpg",
         "photos" => array(
             array(
-                "date" => "2017-08-12 11:23:12",
+                "date" => "2017-12-23 10:23:12",
                 "title" => "Step 1. Welcome page",
                 "description" => "Step 1. Welcome page",
                 "pic" => "images/gallery/gallery3_photo1.jpg",
                 "pic_preview" => "images/gallery/gallery3_photo1.jpg",
             ),
             array(
-                "date" => "2017-08-12 11:25:22",
+                "date" => "2017-12-23 10:25:22",
                 "title" => "Step 2. Setting-up config.php",
                 "description" => "Step 2. Setting-up config.php",
                 "pic" => "images/gallery/gallery3_photo2.jpg",
                 "pic_preview" => "images/gallery/gallery3_photo2.jpg",
             ),
             array(
-                "date" => "2017-08-12 11:33:10",
+                "date" => "2017-12-23 10:33:10",
                 "title" => "Step 3. Select modules to install and create administrator",
                 "description" => "Step 3. Select modules to install and create administrator",
                 "pic" => "images/gallery/gallery3_photo3.jpg",
                 "pic_preview" => "images/gallery/gallery3_photo3.jpg",
             ),
             array(
-                "date" => "2017-08-12 11:43:42",
+                "date" => "2017-12-23 10:43:42",
                 "title" => "Step 4. Finish setup",
                 "description" => "Step 4. Finish setup",
                 "pic" => "images/gallery/gallery3_photo4.jpg",
                 "pic_preview" => "images/gallery/gallery3_photo4.jpg",
+            ),
+            array(
+                "date" => "2017-12-23 10:43:42",
+                "title" => "Default website",
+                "description" => "Default website after successful installation",
+                "pic" => "images/gallery/gallery3_photo5.jpg",
+                "pic_preview" => "images/gallery/gallery3_photo5.jpg",
             ),
         )
     );
