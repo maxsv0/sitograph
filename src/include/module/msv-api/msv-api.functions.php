@@ -709,10 +709,14 @@ function db_add($table, $fields, $lang = LANG) {
     $infoTable = $tablesList[$table];
 
     $fields["deleted"] = 0;
-    $fields["author"] = "api";
-    if (!empty($_SESSION["user_email"])) {
-        $fields["author"] = $_SESSION["user_email"];
+    if (empty($fields["author"])) {
+        $fields["author"] = "api";
+
+        if (!empty($_SESSION["user_email"])) {
+            $fields["author"] = $_SESSION["user_email"];
+        }
     }
+
     $fields["lang"] = $lang;
     $fields["updated"] = date("Y-m-d H:i:s");
 
