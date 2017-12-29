@@ -77,9 +77,9 @@
 <td class="col-sm-2">
 {if $item.access_data !== "superadmin" || ($item.access_data === "superadmin" && $user.access === "superadmin")}
 	<ul class="list-btn">
-		<li><a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&reset={$item.id}" title="Reset Password" class="btn btn-primary btn-sm" onclick="prompt_password(this); return false;">Reset Password <span class="glyphicon glyphicon-lock"></span></a></li>
-		<li><a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&edit={$item.id}" title="{_t("btn.edit")}" class="btn btn-primary btn-sm">{_t("btn.edit")} <span class="glyphicon glyphicon-edit"></span></a></li>
-		<li><a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&duplicate={$item.id}" title="{_t("btn.duplicate")}" class="btn btn-warning btn-sm">{_t("btn.duplicate")} <span class="glyphicon glyphicon-duplicate"></span></a></li>
+		<li><a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&reset={$item.id}" title="Reset Password" class="btn btn-default btn-sm" onclick="prompt_password(this); return false;">Reset Password <span class="glyphicon glyphicon-lock"></span></a></li>
+		<li><a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&edit={$item.id}" title="{_t("btn.edit")}" class="btn btn-default btn-sm">{_t("btn.edit")} <span class="glyphicon glyphicon-edit"></span></a></li>
+		<li><a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&duplicate={$item.id}" title="{_t("btn.duplicate")}" class="btn btn-default btn-sm">{_t("btn.duplicate")} <span class="glyphicon glyphicon-duplicate"></span></a></li>
 		<li><a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&delete={$item.id}" title="Delete" class="btn btn-danger btn-sm">Delete <span class="glyphicon glyphicon-remove"></span></a></li>
 	</ul>
 {/if}

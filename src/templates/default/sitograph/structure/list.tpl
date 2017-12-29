@@ -15,7 +15,7 @@
 <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=url&sortd={$table_sortd_rev}">{$t["table.structure.url"]}</a>
 {if $table_sort == "url"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
 </th>
-<th class="text-nowrap">{$t["table.structure.template"]} / {$t["table.structure.page_template"]}</th>
+<th class="text-nowrap">{$t["table.structure.page_template"]}</th>
 <th{if $table_sort == "access"} class='colactive'{/if}>
 <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=access&sortd={$table_sortd_rev}">{$t["table.structure.access"]}</a>
 {if $table_sort == "access"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}

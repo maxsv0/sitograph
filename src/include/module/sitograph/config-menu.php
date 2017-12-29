@@ -47,7 +47,7 @@ $submenu["manual"] = array(
     "handler" => "module-manual.php",
     "url" => "/admin/?section=manual",
     "file" => "manual.tpl",
-    "title" => _t("admin.manual")
+    "title" => _t("admin.manual_title")
 );
 $menu_index = array_merge($menu_index, array_keys($submenu));
 
@@ -82,7 +82,7 @@ $submenu["menu"] = array(
 );
 $submenu["documents"] = array(
     "name" => _t("admin.documents"),
-    "access" => "superadmin",
+    "access" => "admin",
     "handler" => "module-table.php",
     "table" => TABLE_DOCUMENTS,
     "url" => "/admin/?section=documents",
@@ -91,7 +91,7 @@ $submenu["documents"] = array(
 );
 $submenu["seo"] = array(
     "name" => _t("admin.seo"),
-    "access" => "superadmin",
+    "access" => "admin",
     "handler" => "module-table.php",
     "table" => TABLE_SEO,
     "url" => "/admin/?section=seo",
@@ -267,6 +267,14 @@ $submenu["robots"] = array(
     "url" => "/admin/?section=robots",
     "file" => "robots.tpl",
     "title" => _t("admin.robots_title")
+);
+$submenu["sitemap"] = array(
+    "name" => _t("admin.sitemap"),
+    "access" => "superadmin",
+    "handler" => "module-sitemap.php",
+    "url" => "/admin/?section=sitemap",
+    "file" => "sitemap.tpl",
+    "title" => _t("admin.sitemap_title")
 );
 $submenu["config"] = array(
     "name" => _t("admin.config"),

@@ -1169,74 +1169,95 @@ function msv_email($to = "", $subject = "", $body = "", $header = "") {
  * Send an email to $mailTo using template name $template
  * Current email provider is used
  * Additional parameters are passed using $data array
- * replace pattern: {email} into $data["email"]
- * replacement is done for both body and subject of email
  *
  * @param string $template Name of a email template
  * @param string $mailTo Send to this email
  * @param array $data Optional Array with data for auto replacement
- * @param boolean $message Optional Flag to add result message to output; defaults to true
  * @param string $lang Optional Language of a template; defaults to LANG
  * @return boolean
  */
-function msv_email_template($template, $mailTo, $data = array(), $message = true, $lang = LANG) {
-
+function msv_email_template($template, $mailTo, $data = array(), $lang = LANG) {
     // get template
-    $resultMail = db_get(TABLE_MAIL_TEMPLATES, " `name` = '".db_escape($template)."'", $lang);
-
-    if ($resultMail["ok"] && !empty($resultMail["data"])) {
-        $mailSubject = $resultMail["data"]["subject"];
-        $mailBody = $resultMail["data"]["text"];
-
-        msv_set_config("dataTemplate", $data);
-
-        // replace pattern:
-        // {email} into $data["email"]
-        $mailBody = preg_replace_callback(
-            '~\{(\w+?)\}~sU',
-            create_function('$t','
-            $r = msv_get_config("dataTemplate");
-            $retText = $t[0];
-            if (defined($t[1])) {
-                $retText = constant($t[1]);
-            }
-            $config = msv_get_config($t[1]);
-            if (!empty($config)) {
-                $retText = $config;
-            }
-            if (array_key_exists($t[1], $r)) {
-                $retText = $r[$t[1]];
-            }
-            return $retText;
-                '), $mailBody);
-
-        $mailSubject = preg_replace_callback(
-            '~\{(\w+?)\}~sU',
-            create_function('$t','
-            $r = msv_get_config("dataTemplate");
-            $retText = $t[0];
-            if (defined($t[1])) {
-                $retText = constant($t[1]);
-            }
-            $config = msv_get_config($t[1]);
-            if (!empty($config)) {
-                $retText = $config;
-            }
-            if (array_key_exists($t[1], $r)) {
-                $retText = $r[$t[1]];
-            }
-            return $retText;
-                '), $mailSubject);
-
-        // add header HTML to a body
-        if (!empty($resultMail["data"]["header"])) {
-            $mailBody = $resultMail["data"]["header"].$mailBody;
-        }
-
-        return msv_email($mailTo, $mailSubject, $mailBody);
+    $template = msv_get_template($template,$data,  $lang);
+    if (!empty($template)) {
+        return msv_email($mailTo, $template["subject"], $template["text"]);
     } else {
         return false;
     }
+}
+
+/**
+ * Get email $template
+ * Additional parameters are passed using $data array
+ * replace pattern: {email} into $data["email"]
+ * replacement is done for both body and subject of email
+ *
+ * @param string $template Name of a email template
+ * @param array $data Optional Array with data for auto replacement
+ * @param string $lang Optional Language of a template; defaults to LANG
+ * @return boolean
+ */
+function msv_get_template($template, $data = array(), $lang = LANG) {
+    // get template
+    $resultMail = db_get(TABLE_MAIL_TEMPLATES, " `name` = '" . db_escape($template) . "'", $lang);
+    $template = $resultMail["data"];
+
+    if (!$resultMail["ok"] || empty($template)) {
+        return false;
+    }
+
+    $mailSubject = $template["subject"];
+    $mailBody = $template["text"];
+
+    msv_set_config("dataTemplate", $data);
+
+    // replace pattern:
+    // {email} into $data["email"]
+    $mailBody = preg_replace_callback(
+        '~\{(\w+?)\}~sU',
+        create_function('$t', '
+        $r = msv_get_config("dataTemplate");
+        $retText = $t[0];
+        if (defined($t[1])) {
+            $retText = constant($t[1]);
+        }
+        $config = msv_get_config($t[1]);
+        if (!empty($config)) {
+            $retText = $config;
+        }
+        if (array_key_exists($t[1], $r)) {
+            $retText = $r[$t[1]];
+        }
+        return $retText;
+            '), $mailBody);
+
+    $mailSubject = preg_replace_callback(
+        '~\{(\w+?)\}~sU',
+        create_function('$t', '
+        $r = msv_get_config("dataTemplate");
+        $retText = $t[0];
+        if (defined($t[1])) {
+            $retText = constant($t[1]);
+        }
+        $config = msv_get_config($t[1]);
+        if (!empty($config)) {
+            $retText = $config;
+        }
+        if (array_key_exists($t[1], $r)) {
+            $retText = $r[$t[1]];
+        }
+        return $retText;
+            '), $mailSubject);
+
+    // add header HTML to a body
+    if (!empty($template["header"])) {
+        $mailBody = $template["header"] . $mailBody;
+    }
+
+    $template["subject"] = $mailSubject;
+    $template["text"] = $mailBody;
+
+    return $template;
 }
 
 /**

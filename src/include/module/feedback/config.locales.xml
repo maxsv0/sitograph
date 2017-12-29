@@ -21,9 +21,9 @@
 		<field name="table.feedback.pic" value="Picture Big"/>
 		<field name="table.feedback.stars" value="Stars (from 1 to 5)"/>
 		<field name="table.feedback.ip" value="IP"/>
-		<field name="msg.feedback.noemail" value="Email can't be emtry"/>
+		<field name="msg.feedback.noemail" value="Email can't be empty"/>
 		<field name="msg.feedback.noname" value="Please enter your name"/>
-		<field name="msg.feedback.saved" value="Thanks you. Your request was successfully received."/>
+		<field name="msg.feedback.saved" value="Thank you. Your request was successfully received."/>
 		<field name="feedback.form.email" value="Your Email"/>
 		<field name="feedback.form.name" value="Your name"/>
 		<field name="feedback.form.name_title" value="Name title"/>

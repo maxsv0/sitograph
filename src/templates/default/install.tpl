@@ -72,75 +72,89 @@
 
                 {elseif $install_step === 3}
 
+				<div class="row">
+					<div class="col-sm-6">
 
-				<h3 class="text-center">Install modules</h3>
+						<h3 class="text-center" style="margin-top: 0;">Install modules</h3>
 
-				<p>
-					Once you press "<b>Continue</b>" each of modules will be installed.
-					Installation process includes creation of database tables and default website content.
-				</p>
+						<p>
+							Once you press "<b>Continue</b>" each of modules will be installed.
+							The installation process includes the creation of database tables and default website content.
+						</p>
 
-				<div>
+						<div>
 
-					<h5>Local modules to be installed:</h5>
-					<p class="well well-sm" style="background: #fff;">
-                        {foreach from=$modulesList key=moduleName item=moduleInfo}
-							<span style="margin-right:10px;">
+							<h5>Local modules to be installed:</h5>
+							<p class="well well-sm" style="background: #fff;">
+                                {foreach from=$modulesList key=moduleName item=moduleInfo}
+							<span style="margin-right:10px;white-space: nowrap;">
 								<input type="checkbox" name="modules_local[]" checked value="{$moduleName}">&nbsp;{$moduleName}
 							</span>
-                        {/foreach}
-					</p>
-
-					<h5>Remote modules to be installed:</h5>
-					<p class="well well-sm" style="background: #fff;margin-bottom:5px;">
-                        {foreach from=$modulesListRemote item=moduleName}
-							<input type="checkbox" name="modules_remote[]" checked value="{$moduleName}">
-                            {$moduleName}<br>
-                        {foreachelse}
-							<i>no modules selected</i>
-                        {/foreach}
-					</p>
-					<p>
-						Type modules to add separated with comma:
-						<input type="text" size="50" name="modules_remote_str">
-						<a href="{REP}" class="btn btn-default btn-sm">Browse</a>
-					</p>
-				</div>
-
-				<h3 class="text-center">Create Administrator account</h3>
-
-				<div class="form-group">
-					<div class="col-sm-offset-5 col-sm-7">
-						<div class="checkbox">
-							<label for="admin_create">
-								<input type="checkbox" id="admin_create" name="admin_create" value="1" checked> Create Administrator account
-							</label>
-							<br>
-							<label for="admin_notify">
-								<input type="checkbox" id="admin_notify" name="admin_notify" value="1"> Send email notification
-							</label>
+                                {/foreach}
+							</p>
+							<div class="hide">
+								<h5>Remote modules to be installed:</h5>
+								<p class="well well-sm" style="background: #fff;margin-bottom:5px;">
+                                    {foreach from=$modulesListRemote item=moduleName}
+										<input type="checkbox" name="modules_remote[]" checked value="{$moduleName}">
+                                        {$moduleName}<br>
+                                        {foreachelse}
+										<i>no modules selected</i>
+                                    {/foreach}
+								</p>
+								<p>
+									Type modules to add separated with comma:
+									<input type="text" size="50" name="modules_remote_str">
+									<a href="{REP}" class="btn btn-default btn-sm">Browse</a>
+								</p>
+							</div>
 						</div>
+
+					</div>
+					<div class="col-sm-6">
+
+						<h3 class="text-center" style="margin-top: 0;">Create Administrator account</h3>
+
+						<div class="form-group">
+							<div class="col-sm-offset-5 col-sm-7">
+								<div class="checkbox">
+									<label for="admin_create">
+										<input type="checkbox" id="admin_create" name="admin_create" value="1" checked> Create Administrator account
+									</label>
+									<br>
+									<label for="admin_notify">
+										<input type="checkbox" id="admin_notify" name="admin_notify" value="1"> Send email notification
+									</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="iadmin_login" class="col-sm-5 control-label">Administrator Email</label>
+							<div class="col-sm-7">
+								<input type="email" class="form-control" id="iadmin_login" name="admin_login" value="{$admin_login}" placeholder="Email">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="iadmin_password" class="col-sm-5 control-label">Password</label>
+							<div class="col-sm-7">
+								<input type="text" class="form-control" id="iadmin_password" name="admin_password" value="{$admin_password}">
+							</div>
+						</div>
+
+
 					</div>
 				</div>
 
-				<div class="form-group">
-					<label for="iadmin_login" class="col-sm-5 control-label">Administrator Email</label>
-					<div class="col-sm-7">
-						<input type="email" class="form-control" id="iadmin_login" name="admin_login" value="{$admin_login}" placeholder="Email">
-					</div>
-				</div>
 
-				<div class="form-group">
-					<label for="iadmin_password" class="col-sm-5 control-label">Administrator Password</label>
-					<div class="col-sm-7">
-						<input type="text" class="form-control" id="iadmin_password" name="admin_password" value="{$admin_password}">
-					</div>
-				</div>
 
-				<p class="text-center">
-					<input type="submit" value="Continue" class="btn btn-lg btn-primary">
-					<input type="hidden" name="install_step" value="4">
-				</p>
+					<p class="text-center">
+						<input type="submit" value="Continue" class="btn btn-lg btn-primary">
+						<input type="hidden" name="install_step" value="4">
+					</p>
+
+
 
                 {elseif $install_step === 4}
 

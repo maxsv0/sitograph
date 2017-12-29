@@ -96,7 +96,7 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
             $resultFile = @file_put_contents(ABS."/config.php", $configPHP);
 
             if ($resultFile) {
-                $website->messages["success"][] = "".ABS."/config.php successfuly created";
+                $website->messages["success"][] = "".ABS."/config.php successfully created";
             } else {
                 $website->messages["error"][] = "ERROR: Can't write to ".ABS."/config.php";
             }

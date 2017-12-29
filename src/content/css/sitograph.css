@@ -304,7 +304,7 @@ input.input_search {
 
 /* tab_menu */
 .nav > li {
-    margin-bottom: 5px;
+    margin-top: 3px;
 }
 .nav-tabs {
     border-bottom: 1px solid transparent;
@@ -359,6 +359,7 @@ ul.nav li a:hover {
 
 .form-group-btn {
     text-align: left;
+    margin-top: 20px;
     margin-left: 20px;
 }
 .form-group-btn .btn {
@@ -380,7 +381,9 @@ input.style_on_off {
     padding-bottom: 3px;
     width: 25px;
 }
-
+table.table-module tr td {
+    font-size: 13px!important;
+}
 table.table-module tr:first-child th  {
     background: #333746;
 }
@@ -738,15 +741,13 @@ div.btn_group tr td input:hover {
     z-index: 99;
 }
 .btnCover div {
-    position:relative;
-    right:35px;
-    top:-13px;
-    padding:3px;
-    background:#fff;
-    border-radius:5px;
-}
-.btnCover a {
-    line-height:25px;font-size:14px;
+    position: relative;
+    right: 50px;
+    top: -33px;
+    padding: 3px;
+    background: #fff;
+    border-radius: 5px;
+    margin: 10px;
 }
 
 .table-module th {
@@ -1453,4 +1454,8 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+.text-muted a {
+    color: #777;
 }

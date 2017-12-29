@@ -11,7 +11,7 @@ if ($code) {
 	  ";
 	$includeCode .= "ga('create', '$code', 'auto');\n";
 	$rowUser = msv_get("website.user");
-	if (empty($rowUser["id"])) {
+	if (!empty($rowUser["id"])) {
 		$includeCode .= "ga('set', 'userId', ".$rowUser["id"].");\n";
 	}
 	$includeCode .= "ga('send', 'pageview');\n";

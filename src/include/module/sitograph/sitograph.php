@@ -136,10 +136,9 @@ if (!empty($section) && in_array($section, $menu_index)) {
         msv_redirect("/admin/?section=$section&table=$admin_table&saved&p=".$admin_list_page);
     }
     if (!empty($_POST["save"])) {
-        msv_message_ok(_t("msg.saved_ok"));
-
-        // TODO: remove this?
-        //MSV_redirect("/admin/?section=$section&table=$admin_table&edit=".$_POST["form_id"]."&saved");
+        if (!msv_has_messages()) {
+            msv_message_ok(_t("msg.saved_ok"));
+        }
     }
     if (isset($_GET["msg"])) {
         msv_message_ok($_GET["msg"]);

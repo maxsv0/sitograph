@@ -19,7 +19,7 @@
             <td class="col-sm-8">{$email_subject}</td>
         </tr>
         <tr>
-            <td colspan="2" class="col-sm-12" style="padding:50px;">
+            <td colspan="2" class="col-sm-12" style="padding:50px;" contentEditable="true" oncut="return false" onpaste="return false" onkeydown="if(event.metaKey) return true; return false;">
 {$email_body}
             </td>
         </tr>
@@ -37,14 +37,13 @@
     <input type="hidden" value="{$email_to}" name="email_to">
     <input type="hidden" value="{$email_from}" name="email_from">
     <input type="hidden" value="{$email_subject}" name="email_subject">
-    <input type="hidden" value="{$email_body}" name="email_body">
+    <input type="hidden" value="{$email_body|htmlspecialchars}" name="email_body">
     <input type="hidden" value="{$admin_section}" name="section">
 </form>
 {else}
 
 <form method="POST" action="{$lang_url}/admin/" class="form-horizontal">
-    <h1>Step 1/2. Sending New Message</h1>
-    <br>
+    <h2>Step 1/2. Sending New Message</h2>
     <div class="form-group">
         <label for="inputEmailFrom" class="col-sm-4 control-label">
             From
@@ -54,6 +53,19 @@
         </label>
         <div class="col-sm-8">
             <input type="text" class="form-control" id="inputEmailFrom" value="{$email_from}" disabled>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="inputEmailTemplate" class="col-sm-4 control-label">
+            Template
+        </label>
+        <div class="col-sm-8">
+            <select class="form-control" id="inputEmailTemplate" name="email_template" onchange="location.href='/admin/?section=send_email&email_template='+this.value">
+{foreach from=$email_templates item=template}
+    <option value="{$template.name}">{$template.name}</option>
+{/foreach}
+            </select>
         </div>
     </div>
 
@@ -72,14 +84,14 @@
     <div class="form-group">
         <label for="inputEmailSubject" class="col-sm-4 control-label">Email Subject</label>
         <div class="col-sm-8">
-            <input type="text" class="form-control" id="inputEmailSubject" value="" placeholder="" name="email_subject">
+            <input type="text" class="form-control" id="inputEmailSubject" value="{$email_subject}" placeholder="" name="email_subject">
         </div>
     </div>
 
     <div class="form-group">
         <label for="inputEmailBody" class="col-sm-12 control-label">Email Body</label>
         <div class="col-sm-12">
-            <textarea class="form-control" id="inputEmailBody" rows="15" name="email_body"></textarea>
+            <textarea class="form-control editor" id="inputEmailBody" rows="25" name="email_body">{$email_body}</textarea>
         </div>
     </div>
 
