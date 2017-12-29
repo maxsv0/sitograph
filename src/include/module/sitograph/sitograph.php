@@ -298,6 +298,6 @@ msv_assign_data("cms_favorite_id", $pageID);
 msv_assign_data("cms_favorite_url", $favoriteUrl);
 msv_assign_data("cms_favorite_text", $admin_page_title);
 
-if (array_key_exists($pageID, $configCMS["favorites"])) {
+if (!empty($pageID) && array_key_exists($pageID, $configCMS["favorites"])) {
     msv_assign_data("cms_favorite_added", 1);
 }
