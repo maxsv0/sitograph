@@ -621,9 +621,7 @@ function msv_reinstall_module($module, $redirect = true) {
     msv_log("***** reinstallModule");
 
     // TODO: check, reinstall ckeck??
-    msv_install_module($module, $redirect);
-
-    return true;
+    return msv_install_module($module, $redirect);
 }
 
 function msv_output_admin_menu() {
@@ -1224,7 +1222,12 @@ function msv_process_superadmin() {
         // TODO: check $_GET["module_install"]
         $module = $_GET["module_install"];
 
-        msv_install_module($module);
+        $result = msv_install_module($module);
+        if ($result) {
+            msv_message_ok("Install module successful: $module");
+        } else {
+            msv_message_error("Install fail: $module");
+        }
     }
 
     if (!empty($_GET["install_ok"])) {
