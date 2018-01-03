@@ -13,25 +13,22 @@
 </h4>
 <p>
     Modules and extensions for Sitograph CMS can be downloaded  
-    directly from <a href='/admin/'>Admin UI</a> (Section '<a href='/admin/?section=module_settings'>Module Settings</a>').
-    To browse repository catalog and write feedback go to <a href='http://rep.msvhost.com/'>rep.msvhost.com</a>
+    directly from Admin UI, <a href='/admin/' target="_blank">http://sitograph.ua/admin/</a>.
 </p>
 <p>
-    To contribute in development please send module update as *.zip archive directly to
-    <a href='http://rep.msvhost.com/' target="_blank">Sitograph Repository<span class="glyphicon glyphicon-new-window"></span></a> using your personal key
-    or
-    commit to main <a href='https://github.com/maxsv0/sitograph' target="_blank">GitHub repository</a> directly ('development' branch).
+    To browse list of available modules visit the
+    <a href='http://rep.msvhost.com/' target="_blank">Sitograph Repository<span class="glyphicon glyphicon-new-window"></span></a>
 </p>
 <p>
-    To receive personal key please contact <a href='http://rep.msvhost.com/contacts/'>Sitograph Repository Support</a>
+    For any found bugs or suggestions please raise an issue at GitHub,
+    <a href='https://github.com/maxsv0/sitograph/issues' target="_blank">github.com/maxsv0/sitograph/issues<span class="glyphicon glyphicon-new-window"></span></a>
+</p>
+<p>
+    To contribute to development please contact <a href='http://rep.msvhost.com/contacts/' target="_blank">Sitograph Repository Support<span class="glyphicon glyphicon-new-window"></span></a>
 </p>
 <p>
     The architecture of the service, a design of the application,
-    core development and release was done by <a href='https://github.com/maxsv0' target="_blank">github.com/maxsv0<span class="glyphicon glyphicon-new-window"></span></a> (Max Svistunov).
-</p>
-<p>
-    Any found bugs and suggestions please send to
-    <a href='http://support.sitograph.com/create/' target="_blank">Sitograph Support<span class="glyphicon glyphicon-new-window"></span></a>
+    core development and release was done by <b>Max Svistunov</b>, <a href='https://github.com/maxsv0' target="_blank">github.com/maxsv0<span class="glyphicon glyphicon-new-window"></span></a>.
 </p>
 <br>
 <p>
@@ -54,37 +51,25 @@
 <p>The latest version of The Sitograph CMS can be found here. Release notes, usage documentation</p>
 <h4><a href='http://demo.sitograph.com' target="_blank">http://demo.sitograph.com<span class="glyphicon glyphicon-new-window"></span></a></h4>
 <p>Live demo of the current version. Resets every day, feel free to edit as you wish!</p>
+<h4><a href='http://rep.msvhost.com' target="_blank">http://rep.msvhost.com<span class="glyphicon glyphicon-new-window"></span></a></h4>
+<p>Open Source Catalog of Sitograph modules and extensions.</p>
 <h4><a href='http://doc.sitograph.com' target="_blank">http://doc.sitograph.com<span class="glyphicon glyphicon-new-window"></span></a></h4>
 <p>Technical documentation and user manuals. Development kit features and updates.</p>
 <h4><a href='http://support.sitograph.com' target="_blank">http://support.sitograph.com<span class="glyphicon glyphicon-new-window"></span></a></h4>
 <p>Support Team is happy to answer any question and get your feedback.</p>
 <p>Fill out support form, and they will get back to you.</p>
-<h4><a href='http://rep.msvhost.com' target="_blank">http://rep.msvhost.com<span class="glyphicon glyphicon-new-window"></span></a></h4>
-<p>Open Source Catalog of Sitograph modules and extensions.</p>
 </div>
 <div id="install" class="tab-pane fade"><h1>Installing Sitograph CMS</h1>
 <p><img src='/content/images/blog/blog_sitograph_2.jpg' class='img-responsive'></p>
 
-  <h3>
-   To install Sitograph CMS follow instructions in the installation wizard.
-</h3>
-<p>
-   The installation process includes the creation of database tables and default website content.
+  <p>
+	Для установки Sitograph CMS следуйте инструкциям мастера установки.
 </p>
 <p>
-    Once the installation is finished go to the "<a href="/admin/?section=site_settings">Site Settings</a>" and check if all necessary fields are filled.
+	Процесс установки включает создание таблиц базы данных и содержимого веб-сайта по умолчанию.
 </p>
-
-<ul>
-    <li>
-        <a href="/admin/?section=site_settings&amp;edit_key=google_analytics_tracking_id">google_analytics_tracking_id</a> - to enable Google Analytics tracking
-    </li>
-    <li>
-        <a href="/admin/?section=site_settings&amp;edit_key=google_service_auth_json">google_service_auth_json</a> - to enable live-analytics integration
-    </li>
-</ul>
 </div>
-<div id="folder-structure" class="tab-pane fade"><h1>Folder structure and usage</h1>
+<div id="folder-structure" class="tab-pane fade"><h1>Структура папок и их использование</h1>
 
   <h3>Basic folder structure</h3>
 <pre>
@@ -118,7 +103,7 @@
 </ul>
 <br>
 </div>
-<div id="getting-started" class="tab-pane fade"><h1>Getting Started: default website</h1>
+<div id="getting-started" class="tab-pane fade"><h1>Getting Started default website</h1>
 
   <h3>Default Sitograph Website</h3>
 <p>Default website structure is presented in table below (database table <code>TABLE_STRUCTURE</code>).</p>
@@ -634,27 +619,27 @@ include/
 <p><img src='/content/images/blog/blog_3.jpg' class='img-responsive'></p>
 
   <p>
-    Application Kernel contains: <u>msv-core</u>, <u>msv-api</u>, <u>msv-users</u>, <u>msv-seo</u>.
+    Application Kernel contains: <b>msv-core</b>, <b>msv-api</b>, <b>msv-users</b>, <b>msv-seo</b>.
 </p>
 <p>
-    Kernel modules provides website with basic functionality.
+    Kernel modules provide website with basic functionality.
 </p>
 <p>
-    <u>msv-core</u> is a main website module. It provides with a set of functions to handle website requests, store website structure, allocate resources, install and update of new modules.
+    <b>msv-core</b> is the main website module. Provides a set of functions to handle website requests, store website structure, allocate resources, install and update of new modules.
 </p>
 <p>
-    <u>msv-api</u> is a data connector module. It provides with data exchange functions that allows to run SQL queries, update rows, delete and create database tables.
+    <b>msv-api</b> is a data connector module. Provides data exchange functions that allow to run SQL queries, update rows, delete and create database tables.
 </p>
 <p>
-    <u>msv-users</u> is a module to handle website users. Allows common functionality: register new user, log in, reset password, update personal information, email notifications.
+    <b>msv-users</b> is a module to handle website users. Allows common functionality: register new user, log in, reset a password, update personal information, email notifications.
 </p>
 <p>
-    <u>msv-seo</u> provides Search Engine Optimization for website. Allows to edit common page META headers and track information about visitors.
+    <b>msv-seo</b> provides Search Engine Optimization for the website. Allows to edit common page META headers and track information about visitors.
 </p>
 </div>
 </div>
     </div>
     <div class='col-sm-4'>
-        <ul class='nav well well-sm'><li class="active"><a data-toggle="tab" href="#release">Sitograph CMS v.1.0 released</a></li><li><a data-toggle="tab" href="#install">Installing Sitograph CMS</a></li><li><a data-toggle="tab" href="#folder-structure">Folder structure and usage</a></li><li><a data-toggle="tab" href="#getting-started">Getting Started: default website</a></li><li><a data-toggle="tab" href="#cms_file_structure">Sitograph File structure</a></li><li><a data-toggle="tab" href="#api">PHP Framework Layers</a></li></ul>
+        <ul class='nav well well-sm'><li class="active"><a data-toggle="tab" href="#release">Sitograph CMS v.1.0 released</a></li><li><a data-toggle="tab" href="#install">Installing Sitograph CMS</a></li><li><a data-toggle="tab" href="#folder-structure">Структура папок и их использование</a></li><li><a data-toggle="tab" href="#getting-started">Getting Started default website</a></li><li><a data-toggle="tab" href="#cms_file_structure">Sitograph File structure</a></li><li><a data-toggle="tab" href="#api">PHP Framework Layers</a></li></ul>
     </div>
 </div>
