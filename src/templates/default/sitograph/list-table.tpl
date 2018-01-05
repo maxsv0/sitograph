@@ -128,7 +128,7 @@
 </td>
 {elseif $type === "updated" || $type === "date"}
 <td><small>{$itemField}</small></td>
-{elseif $type === "bool"}
+{elseif $type === "bool" || $type ==="published"}
 <td class="col-sm-1">
 {if $admin_table_info.fields.$itemFieldID.readonly}
     {if $itemField}

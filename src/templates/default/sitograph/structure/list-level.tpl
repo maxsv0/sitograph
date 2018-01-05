@@ -66,7 +66,12 @@
 {/if}
 </td>
 <td class="text-center col-sm-1">
-<small>{$item.updated}</small>
+    {if $item.published}
+		<span class="text-success bool-switch" data-id="{$item.id}" data-section="{$admin_section}" data-table="{$admin_table}" data-field="published" data-value="1">{$t["yes"]}</span>
+    {else}
+		<span class="text-danger bool-switch" data-id="{$item.id}" data-section="{$admin_section}" data-table="{$admin_table}" data-field="published" data-value="0">{$t["no"]}</span>
+    {/if}
+<!--<small>{$item.updated}</small>-->
 </td>
 
 <td class="col-sm-3">
