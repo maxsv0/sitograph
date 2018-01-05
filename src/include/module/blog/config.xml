@@ -31,7 +31,7 @@
 	<api name="blog" action="api_request_blog"/>
 	
 	<table name="articles" index="url" title="title" useseo="1">
-		<field name="id" type="id"/>
+		<field name="id" type="id" readonly="1"/>
 		<field name="published" type="published"/>
 		<field name="deleted" type="deleted"/>
 		<field name="author" type="author"/>
@@ -52,7 +52,7 @@
 		<field name="comments" type="int" listskip="1"/>
 	</table>
 	<table name="article_categories" index="url,article_id" title="title">
-		<field name="id" type="id"/>
+		<field name="id" type="id" readonly="1"/>
 		<field name="published" type="published"/>
 		<field name="deleted" type="deleted"/>
 		<field name="author" type="author"/>

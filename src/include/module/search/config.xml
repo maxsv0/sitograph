@@ -17,7 +17,7 @@
     <constant name="TABLE_SEARCH" value="search"/>
     
     <table name="search" index="id" title="name">
-		<field name="id" type="id"/>
+		<field name="id" type="id" readonly="1"/>
 		<field name="published" type="published"/>
 		<field name="deleted" type="deleted"/>
 		<field name="author" type="author"/>
