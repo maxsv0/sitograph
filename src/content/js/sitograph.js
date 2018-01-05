@@ -523,12 +523,10 @@ function prompt_password(link) {
 
 function list_toggle_submit(e,section, table, id, field, value) {
     //console.log(e,section, table, id, field, value);
-    if ($(e).parent().parent().parent().parent().hasClass("text-muted")) {
+    if ($(e).parent().parent().parent().parent().hasClass("text-muted") && field == "published") {
         $(e).parent().parent().parent().parent().removeClass("text-muted");
-
-    } else {
+    } else if(field == "published"){
         $(e).parent().parent().parent().parent().addClass("text-muted");
-
     }
 
     $form = $('<form>' +
