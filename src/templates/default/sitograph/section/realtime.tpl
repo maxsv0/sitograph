@@ -17,8 +17,8 @@
     <ul class="FlexGrid">
       <li class="FlexGrid-item">
         <div class="Titles">
-          <h1 class="Titles-main" id="view-name">Select a View</h1>
-          <div class="Titles-sub">Various visualizations</div>
+          <h1 class="Titles-main" id="view-name">{_t("admin.realtime_slect_a_view")}</h1>
+          <div class="Titles-sub">{_t("admin.realtime_visualizations")}</div>
         </div>
       </li>
       <li class="FlexGrid-item FlexGrid-item--fixed">
@@ -34,8 +34,8 @@
   <li class="FlexGrid-item">
     <div class="Chartjs">
       <header class="Titles">
-        <h3 class="Titles-main">Site Traffic</h3>
-        <div class="Titles-sub">Sessions vs. Users - last 30 days</div>
+        <h3 class="Titles-main">{_t("admin.realtime_site_traffic")}</h3>
+        <div class="Titles-sub">{_t("admin.realtime_sessions")}</div>
       </header>
       <figure id="chart-n1-container"></figure>
     </div>
@@ -43,8 +43,8 @@
   <li class="FlexGrid-item">
     <div class="Chartjs">
       <header class="Titles">
-        <h3 class="Titles-main">Most Popular Demos/Tools</h3>
-        <div class="Titles-sub">Pageviews - last 30 days</div>
+        <h3 class="Titles-main">{_t("admin.realtime_most_popular")}</h3>
+        <div class="Titles-sub">{_t("admin.realtime_pageviews")}</div>
       </header>
       <figure id="chart-n2-container"></figure>
     </div>
@@ -53,8 +53,8 @@
     <li class="FlexGrid-item">
       <div class="Chartjs">
         <header class="Titles">
-          <h1 class="Titles-main">This Week vs Last Week</h1>
-          <div class="Titles-sub">By sessions</div>
+          <h1 class="Titles-main">{_t("admin.realtime_this_week")}</h1>
+          <div class="Titles-sub">{_t("admin.realtime_by_sessions")}</div>
         </header>
         <figure class="Chartjs-figure" id="chart-1-container"></figure>
         <ol class="Chartjs-legend" id="legend-1-container"></ol>
@@ -63,8 +63,8 @@
     <li class="FlexGrid-item">
       <div class="Chartjs">
         <header class="Titles">
-          <h1 class="Titles-main">This Year vs Last Year</h1>
-          <div class="Titles-sub">By users</div>
+          <h1 class="Titles-main">{_t("admin.realtime_this_year")}</h1>
+          <div class="Titles-sub">{_t("admin.realtime_by_users")}</div>
         </header>
         <figure class="Chartjs-figure" id="chart-2-container"></figure>
         <ol class="Chartjs-legend" id="legend-2-container"></ol>
@@ -73,8 +73,8 @@
     <li class="FlexGrid-item">
       <div class="Chartjs">
         <header class="Titles">
-        <h1 class="Titles-main">Top Browsers</h1>
-        <div class="Titles-sub">By pageview</div>
+        <h1 class="Titles-main">{_t("admin.realtime_top_browsers")}</h1>
+        <div class="Titles-sub">{_t("admin.realtime_by_pageview")}</div>
       </header>
         <figure class="Chartjs-figure" id="chart-3-container"></figure>
         <ol class="Chartjs-legend" id="legend-3-container"></ol>
@@ -83,8 +83,8 @@
     <li class="FlexGrid-item">
       <div class="Chartjs">
         <header class="Titles">
-          <h1 class="Titles-main">Top Countries</h1>
-          <div class="Titles-sub">By sessions</div>
+          <h1 class="Titles-main">{_t("admin.realtime_top_countries")}</h1>
+          <div class="Titles-sub">{_t("admin.realtime_by_sessions")}</div>
         </header>
         <figure class="Chartjs-figure" id="chart-4-container"></figure>
         <ol class="Chartjs-legend" id="legend-4-container"></ol>

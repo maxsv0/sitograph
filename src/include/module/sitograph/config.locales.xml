@@ -122,12 +122,29 @@
 		<field name="settings.email_fromname" value="Name for 'From' header for all emails send from website"/>
 		<field name="settings.service_ua_info" value="External service for parsing User Agent"/>
 		<field name="settings.service_ip_info" value="External service for getting information about IP"/>
+
+		<field name="admin.realtime_slect_a_view" value="Select a View"/>
+		<field name="admin.realtime_visualizations" value="Various visualizations"/>
+		<field name="admin.realtime_site_traffic" value="Site Traffic"/>
+		<field name="admin.realtime_sessions" value="Sessions vs. Users - last 30 days"/>
+		<field name="admin.realtime_most_popular" value="Most Popular Demos/Tools"/>
+		<field name="admin.realtime_pageviews" value="Pageviews - last 30 days"/>
+		<field name="admin.realtime_this_week" value="This Week vs Last Week"/>
+		<field name="admin.realtime_by_sessions" value="By sessions"/>
+		<field name="admin.realtime_this_year" value="This Year vs Last Year"/>
+		<field name="admin.realtime_by_users" value="By users"/>
+		<field name="admin.realtime_top_browsers" value="Top Browsers"/>
+		<field name="admin.realtime_by_pageview" value="By pageview"/>
+		<field name="admin.realtime_top_countries" value="Top Countries"/>
+
+
 	</locale>
 	<locale name="ru">
 		<field name="cms" value="Система управления сайтом"/>
 		<field name="msg.module_handler_not_found" value="Не найден обработчик модуля"/>
 		<field name="msg.no_stored_image" value="Изображение не загружено"/>
 		<field name="msg.sitemap_generated" value="Sitemap.xml успешно создан"/>
+		<field name="msg.ga_api_not_configured" value="Google Analytics API не настроен."/>
 		<field name="msg.ga_not_configured" value="Google Analytics API не настроен. Укажите идентификатор отслеживания, чтобы начать сбор статистики."/>
 		<field name="msg.ga_json_not_configured" value="Необходимо указать JSON файл авторизации для Google Service."/>
 
@@ -252,12 +269,32 @@
 		<field name="settings.email_fromname" value="Name for 'From' header for all emails send from website"/>
 		<field name="settings.service_ua_info" value="External service for parsing User Agent"/>
 		<field name="settings.service_ip_info" value="External service for getting information about IP"/>
+
+
+
+
+		<field name="admin.realtime_slect_a_view" value="Выбрать вид" />
+		<field name="admin.realtime_visualizations" value="Различные отображения" />
+		<field name="admin.realtime_site_traffic" value="Трафик сайта" />
+		<field name="admin.realtime_sessions" value="Сеансы и пользователели - последние 30 дней" />
+		<field name="admin.realtime_most_popular" value="Самые популярные демо / инструменты" />
+		<field name="admin.realtime_pageviews" value="Просмотры страниц - последние 30 дней" />
+		<field name="admin.realtime_this_week" value="Эта неделя против последней недели" />
+		<field name="admin.realtime_by_sessions" value="По сеансам" />
+		<field name="admin.realtime_this_year" value="Этот год против прошлого года" />
+		<field name="admin.realtime_by_users" value="По пользователям" />
+		<field name="admin.realtime_top_browsers" value="Браузеры" />
+		<field name="admin.realtime_by_pageview" value="По просмотру страницы" />
+		<field name="admin.realtime_top_countries" value="Страны" />
+
+
 	</locale>
     <locale name="ua">
     	<field name="cms" value="Система управління контентом"/>
 		<field name="msg.module_handler_not_found" value="Не вдалося знайти обробник модуля"/>
 		<field name="msg.no_stored_image" value="Зображення не завантажено"/>
 		<field name="msg.sitemap_generated" value="Sitemap.xml успішно створений"/>
+		<field name="msg.ga_api_not_configured" value="Google Analytics API не настроен."/>
 		<field name="msg.ga_not_configured" value="Google Analytics API не настроен. Укажите идентификатор отслеживания, чтобы начать сбор статистики."/>
 		<field name="msg.ga_json_not_configured" value="Необходимо указать JSON файл авторизации для Google Service."/>
 
@@ -374,6 +411,20 @@
 		<field name="search.error_mcg" value="По вашему запросу ничего не найдено."/>
 		<field name="not_set" value="не указан"/>
 		<field name="help.field.url" value="Это поле указывает, как к этой странице можно получить доступ с помощью URL. &lt;br&gt;Может содержать только цифры, буквы и тире знак."/>
+
+		<field name="admin.realtime_slect_a_view" value="Вибрати вид" />
+		<field name="admin.realtime_visualizations" value="Різні відображення" />
+		<field name="admin.realtime_site_traffic" value="Трафік сайту" />
+		<field name="admin.realtime_sessions" value="Сеанси і пользователелі - останні 30 днів" />
+		<field name="admin.realtime_most_popular" value="Найпопулярніші демо / інструменти" />
+		<field name="admin.realtime_pageviews" value="Перегляди сторінок - останні 30 днів" />
+		<field name="admin.realtime_this_week" value="Цей тиждень проти останнього тижня" />
+		<field name="admin.realtime_by_sessions" value="За сеансів" />
+		<field name="admin.realtime_this_year" value="Цей рік проти минулого року" />
+		<field name="admin.realtime_by_users" value="По користувачам" />
+		<field name="admin.realtime_top_browsers" value="Програми перегляду" />
+		<field name="admin.realtime_by_pageview" value="По перегляду сторінки" />
+		<field name="admin.realtime_top_countries" value="Країни" />
 	</locale>
 
 </locales>

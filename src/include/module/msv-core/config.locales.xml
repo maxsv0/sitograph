@@ -91,7 +91,8 @@
 		<field name="table.settings.param" value="Название переменной"/>
 		<field name="table.settings.value" value="Значение"/>
 		<field name="table.settings.description" value="Описание"/>
-		
+		<field name="table.settings.group" value="Группа"/>
+
 		<field name="table.documents" value="Документы"/>
 		<field name="table.documents.id" value="ID"/>
 		<field name="table.documents.published" value="Активно"/>
@@ -496,6 +497,7 @@
 		<field name="table.settings.param" value="Назва змінной"/>
 		<field name="table.settings.value" value="Значення"/>
 		<field name="table.settings.description" value="Опис"/>
+		<field name="table.settings.group" value="Група"/>
 		
 		<field name="table.documents" value="Документи"/>
 		<field name="table.documents.id" value="ID"/>

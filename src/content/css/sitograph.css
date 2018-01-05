@@ -136,11 +136,12 @@ a:hover, .add_link:hover {
 }
 .btn_fav a {
     color:#fff;
-    font-size:15px;
+    font-size:12px;
     text-decoration: none;
+    white-space: nowrap;
 }
-.btn_fav:hover {
-    background:#ed2a45;
+.btn_fav a:hover {
+    text-decoration: underline;
 }
 #menu_left div, #menu_left div div {
     position: relative;
@@ -296,7 +297,7 @@ input.input_search {
     border-right: none;
     border-bottom: 1px solid #FCFCFC;
     border-left: 1px solid #F0F0F0;
-    height: 28px;
+    height: 25px;
 }
 *html input.input_search {
     padding-top: 5px;

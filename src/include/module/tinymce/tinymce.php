@@ -26,7 +26,7 @@ $(document).ready(function() {
 		plugins: [
 				'advlist autolink autosave lists link image charmap print preview anchor pagebreak hr',
 				'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
-				'table contextmenu directionality emoticons textcolor paste fullpage textcolor colorpicker textpattern'
+				'table contextmenu directionality emoticons textcolor paste textcolor colorpicker textpattern'
 		],
 		toolbar1: 'undo redo | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect',
         toolbar2: 'cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | link unlink anchor image media code | insertdatetime preview | forecolor backcolor',
