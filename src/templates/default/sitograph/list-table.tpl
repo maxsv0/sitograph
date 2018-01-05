@@ -104,7 +104,7 @@
 {foreach from=$item key=itemFieldID item=itemField} 
 {if !in_array($itemFieldID, $admin_list_skip) && !empty($admin_table_info.fields.$itemFieldID.type)}
 <th{if $table_sort == $itemFieldID} class='colactive'{/if}>
-	<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort={$itemFieldID}&sortd={$table_sortd_rev}&p={$admin_list_page}&list_limit={$table_limit}">{_t("table.$admin_table.$itemFieldID")}</a>{if $table_sort == $itemFieldID}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
+    <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort={$itemFieldID}&sortd={$table_sortd_rev}&p={$admin_list_page}&list_limit={$table_limit}">{_t("table.$admin_table.$itemFieldID")}</a>{if $table_sort == $itemFieldID}{if $table_sortd == "asc"}<span>&darr;</span>{else}<span>&uarr;</span>{/if}{/if}
 </th>
 {/if}
 {/foreach}

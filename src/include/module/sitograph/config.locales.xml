@@ -165,6 +165,7 @@
 		<field name="title.upload_step1" value="1. Выберите файл"/>
 		<field name="title.upload_step2" value="2. Файл будет загружен на сервер"/>
 		<field name="title.upload_step3" value="3. Нажмите Сохранить"/>
+		<field name="title.customize_design_settings" value="Настройка параметров конфигурации"/>
 
 		<field name="form.wellcome" value="представьтесь, пожалуйста —"/>
 		<field name="form.login" value="Логин"/>
@@ -226,7 +227,7 @@
 		<field name="admin.manual" value="Инструкция"/>
 		<field name="admin.structure_manage" value="Управление структурой"/>
 		<field name="admin.media_library" value="Хранилище файлов"/>
-		<field name="admin.dev_tools" value="Настройки"/>
+		<field name="admin.dev_tools" value="Системные нстройки"/>
 		<field name="admin.sitemap" value="sitemap.xml"/>
 		<field name="admin.sitemap_title" value="Управление sitemap.xml"/>
 		<field name="admin.config" value="Настройки сайта"/>
@@ -246,11 +247,11 @@
 		<field name="admin.cronjobslog_title" value="Отчеты планировщика задач"/>
 		<field name="admin.editor" value="Редактор файлов"/>
 		<field name="admin.editor_title" value="Текстовый Редактор файлов"/>
-		<field name="admin.maillog" value="Отчеты Email"/>
+		<field name="admin.maillog" value="Отчеты email"/>
 		<field name="admin.maillog_title" value="Отправленные письма"/>
-		<field name="admin.send_email" value="Отправка Email"/>
-		<field name="admin.send_email_title" value="Отправка Email с сайта"/>
-		<field name="admin.emails" value="Управление Email"/>
+		<field name="admin.send_email" value="Отправка email"/>
+		<field name="admin.send_email_title" value="Отправка email с сайта"/>
+		<field name="admin.emails" value="Управление email"/>
 		<field name="admin.view_website" value="Административный просмотр сайта"/>
 		<field name="admin.logged_as" value="Вы вошли как"/>
 		<field name="btn.search" value="Искать"/>
@@ -259,16 +260,16 @@
 		<field name="form.search_word" value="Ключевое слово"/>
 		<field name="search.error_mcg" value="По вашему запросу ничего не найдено."/>
 		<field name="not_set" value="не указан"/>
-		<field name="help.field.url" value="Это поле указывает, как к этой странице можно получить доступ с помощью URL. Может содержать только цифры, буквы и тире знак."/>
+		<field name="help.field.url" value="Это поле указывает, как к этой странице можно получить доступ с помощью URL. URL может содержать только цифры, буквы, дефисы"/>
 
-		<field name="structure.getting_started" value="Getting Started default website"/>
-		<field name="structure.file_structure" value="Sitograph File structure"/>
-		<field name="structure.api" value="Website API"/>
-		<field name="structure.sitograph_modules" value="Sitograph Modules"/>
-		<field name="settings.email_from" value="'From' header for all emails send from website"/>
-		<field name="settings.email_fromname" value="Name for 'From' header for all emails send from website"/>
-		<field name="settings.service_ua_info" value="External service for parsing User Agent"/>
-		<field name="settings.service_ip_info" value="External service for getting information about IP"/>
+		<field name="structure.getting_started" value="Веб-сайт по умолчанию"/>
+		<field name="structure.file_structure" value="Структура файлов Sitograph"/>
+		<field name="structure.api" value="API сайта"/>
+		<field name="structure.sitograph_modules" value="Модули Sitograph"/>
+		<field name="settings.email_from" value="Заголовок 'From' для всех писем, которые отправляются с сайта"/>
+		<field name="settings.email_fromname" value="Имя для заголовка 'From' для всех писем, которые отправляются с сайта"/>
+		<field name="settings.service_ua_info" value="Внешний сервис для парсинга User Agent"/>
+		<field name="settings.service_ip_info" value="Внешняя служба для получения информации об IP-адресах"/>
 
 
 
@@ -396,11 +397,11 @@
 		<field name="admin.cronjobslog_title" value="Звіти планувальника завдань"/>
 		<field name="admin.editor" value="Редактор файлів"/>
 		<field name="admin.editor_title" value="Текстовий Редактор файлів"/>
-		<field name="admin.maillog" value="Звіти Email"/>
+		<field name="admin.maillog" value="Звіти email"/>
 		<field name="admin.maillog_title" value="Надіслані листи"/>
-		<field name="admin.send_email" value="Відправка Email"/>
-		<field name="admin.send_email_title" value="Відправка Email з сайту"/>
-		<field name="admin.emails" value="Управление Email"/>
+		<field name="admin.send_email" value="Відправка email"/>
+		<field name="admin.send_email_title" value="Відправка email з сайту"/>
+		<field name="admin.emails" value="Управление email"/>
 		<field name="admin.view_website" value="View Website"/>
 		<field name="admin.logged_as" value="Ви увійшли як"/>
 		<field name="admin.locale_tab_name" value="Назва"/>
@@ -411,6 +412,18 @@
 		<field name="search.error_mcg" value="По вашему запросу ничего не найдено."/>
 		<field name="not_set" value="не указан"/>
 		<field name="help.field.url" value="Это поле указывает, как к этой странице можно получить доступ с помощью URL. &lt;br&gt;Может содержать только цифры, буквы и тире знак."/>
+
+
+
+		<field name="structure.getting_started" value="Веб-сайт за замовчуванням"/>
+		<field name="structure.file_structure" value="Структура файлів Sitograph"/>
+		<field name="structure.api" value="API сайту"/>
+		<field name="structure.sitograph_modules" value="Модулі Sitograph"/>
+		<field name="settings.email_from" value="Заголовок 'From' для всіх електронних листів надсилати з веб-сайту"/>
+		<field name="settings.email_fromname" value="Назва для заголовка 'From' для всіх електронних листів надсилати з веб-сайту"/>
+		<field name="settings.service_ua_info" value="Зовнішній сервіс для парсінга User Agent"/>
+		<field name="settings.service_ip_info" value="Зовнішній сервіс для отримання інформації про IP"/>
+
 
 		<field name="admin.realtime_slect_a_view" value="Вибрати вид" />
 		<field name="admin.realtime_visualizations" value="Різні відображення" />

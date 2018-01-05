@@ -147,6 +147,16 @@ $(document).ready(function() {
         }
     });
 
+    $("#menu_left div.mod_box_active").unbind('click').click(function() {
+        if ($(this).hasClass("mod_box_active")) {
+            $(this).addClass("mod_box")
+            $(this).removeClass("mod_box_active")
+        } else {
+            $(this).removeClass("mod_box")
+            $(this).addClass("mod_box_active")
+        }
+    });
+
     // Site structure -> hide all sub-levels
     if ($("#structure-table").size()>0) {
         $("#structure-table tr").each(function(){

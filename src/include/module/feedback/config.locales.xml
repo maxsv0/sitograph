@@ -46,11 +46,11 @@
 		<field name="table.feedback.updated" value="Обновлено"/>
 		<field name="table.feedback.lang" value="Язык"/>
 		<field name="table.feedback.sticked" value="Прикрепить"/>
-		<field name="table.feedback.date" value="Дата"/>
+		<field name="table.feedback.date" value="Дата, время"/>
 		<field name="table.feedback.email" value="Email"/>
 		<field name="table.feedback.name" value="Имя"/>
 		<field name="table.feedback.name_title" value="Должность"/>
-		<field name="table.feedback.text" value="Текст комментария"/>
+		<field name="table.feedback.text" value="Комментарий"/>
 		<field name="table.feedback.pic" value="Изображение"/>
 		<field name="table.feedback.stars" value="Рейтинг (от 1 до 5)"/>
 		<field name="table.feedback.ip" value="IP"/>

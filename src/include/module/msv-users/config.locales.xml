@@ -122,28 +122,28 @@
 		<field name="table.users.reset_token" value="Токен сброса пароля"/>
 		<field name="table.users.verify_token" value="Токен проверки email"/>
 		<field name="table.users.access_token" value="Токен доступа"/>
-		<field name="msg.users.noemail" value="Не указан Email"/>
+		<field name="msg.users.noemail" value="Не указан email"/>
 		<field name="msg.users.nopassword" value="Укажите ваш пароль"/>
 		<field name="msg.users.nopassword2" value="Укажите подтверждение пароля"/>
 		<field name="msg.users.password_notmatch" value="Пароль и подтверждение пароля не совпадают"/>
-		<field name="msg.users.email_exists" value="Пользователь с таким Email уже зарегистрирован"/>
+		<field name="msg.users.email_exists" value="Пользователь с таким email уже зарегистрирован"/>
 		<field name="msg.users.wrong_password" value="Неверно указан пароль"/>
 		<field name="msg.users.saved" value="Пользователь успешно обновлен"/>
 		<field name="msg.users.error_sending" value="Ошибка отправки сообщения"/>
-		<field name="msg.users.email_verified" value="Email is verified"/>
-		<field name="msg.users.email_notverified" value="Email is not verified"/>
-		<field name="msg.users.verification_sent" value="Verification Email sent."/>
-		<field name="msg.users.verification_needed" value="Подтвердите ваш Email."/>
-		<field name="msg.users.resend_verification" value="Resend Email Activation"/>
+		<field name="msg.users.email_verified" value="Email подтвержден"/>
+		<field name="msg.users.email_notverified" value="Email не подтвержден"/>
+		<field name="msg.users.verification_sent" value="Письмо для подтверждения отослано."/>
+		<field name="msg.users.verification_needed" value="Подтвердите ваш email."/>
+		<field name="msg.users.resend_verification" value="Повторная отправка письма для активации"/>
 		<field name="msg.users.noaccess" value="Доступ к этой странице запрещен"/>
 		<field name="msg.users.reg_success" value="Вы успешно зарегистрировались на сайте"/>
-		<field name="msg.users.email_not_found" value="Указанный вами Email не найден"/>
+		<field name="msg.users.email_not_found" value="Указанный вами email не найден"/>
 		<field name="msg.users.password_update_ok" value="Пароль успешно обновлен"/>
 		<field name="msg.email_sending_error" value="Ошибка отправки сообщения"/>
 		<field name="users.hello" value="Добро пожаловать,"/>
 		<field name="users.goto_account" value="Перейти в аккаунт"/>
 		<field name="users.activate_account" value="Активировать аккаунт"/>
-		<field name="users.password_reset" value="Enter your email address that you used to register. We'll send you an email with your username and a link to reset your password."/>
+		<field name="users.password_reset" value="Введите свой адрес электронной почты, который вы использовали для регистрации. Мы отправим вам электронное письмо с вашим именем пользователя и ссылкой для сброса пароля."/>
 		<field name="users.form.password_reset" value="Reset Password"/>
 		<field name="users.form.email" value="Email"/>
 		<field name="users.form.password" value="Пароль"/>
