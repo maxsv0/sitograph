@@ -183,11 +183,13 @@ $(document).ready(function() {
         if ($(this).data("value") > 0) {
             str = '<label class="switch"><input type="checkbox" checked onclick="';
             value_set = 0;
+           // $(this).parent().parent().addClass("text-muted");
         } else {
             str = '<label class="switch"><input type="checkbox" onclick="';
             value_set = 1;
+           // $(this).parent().parent().removeClass("text-muted");
         }
-        str += 'list_toggle_submit(\''+$(this).data("section")+'\',\''+$(this).data("table")+'\',\''+$(this).data("id")+'\',\''+$(this).data("field")+'\',\''+value_set+'\');';
+        str += 'list_toggle_submit(this,\''+$(this).data("section")+'\',\''+$(this).data("table")+'\',\''+$(this).data("id")+'\',\''+$(this).data("field")+'\',\''+value_set+'\');';
         str += '"><span class="slider round"></span></label>';
         return str;
     });
@@ -519,9 +521,13 @@ function prompt_password(link) {
     return false;
 }
 
-function list_toggle_submit(section, table, id, field, value) {
-    console.log(section, table, id, field, value);
-
+function list_toggle_submit(e,section, table, id, field, value) {
+    //console.log(e,section, table, id, field, value);
+    if ($(e).parent().parent().parent().parent().hasClass("text-muted") && field == "published") {
+        $(e).parent().parent().parent().parent().removeClass("text-muted");
+    } else if(field == "published"){
+        $(e).parent().parent().parent().parent().addClass("text-muted");
+    }
 
     $form = $('<form>' +
         '<input type="hidden" value="'+section+'" name="section">'+

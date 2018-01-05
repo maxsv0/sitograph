@@ -189,7 +189,7 @@ if ($resultQuery["ok"]) {
 
 	$adminListSkipFields = $adminListFields = $adminFilterFields = array();
     if (!in_array("deleted",$userListFields)) $adminListSkipFields[] = "deleted";
-    if (!in_array("published",$userListFields)) $adminListSkipFields[] = "published";
+   /* if (!in_array("published",$userListFields)) $adminListSkipFields[] = "published";*/
     if (!in_array("author",$userListFields)) $adminListSkipFields[] = "author";
     if (!in_array("updated",$userListFields)) $adminListSkipFields[] = "updated";
 
