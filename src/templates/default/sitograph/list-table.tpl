@@ -3,7 +3,7 @@
 
     &nbsp;&nbsp;
 
-    <button class="btn btn-default" data-toggle="collapse" data-target="#row_filter"><span class='glyphicon glyphicon-cog'></span> Options <span class='caret'></span></button>
+    <button class="btn btn-default" data-toggle="collapse" data-target="#row_filter"><span class='glyphicon glyphicon-cog'></span> {$t["btn.options"]} <span class='caret'></span></button>
 </p>
 
 <div class="collapse" id="row_add">
@@ -26,29 +26,29 @@
                         <div class="row form-group">
                             <label for="itableLimit" class="col-sm-4 control-label">{_t("table.$admin_table.$itemFieldID")}</label>
                             <div class="col-sm-8">
-{if $itemField.type == "select"}
+                        {if $itemField.type == "select"}
                             <select class="form-control" id="i{$itemFieldID}" name="filter_{$itemFieldID}">
                                 <option value=""></option>
                                 {foreach from=$itemField.data key=dataID item=dataValue}
                                     <option value="{$dataID}" {if ($dataID == $itemField.value)}selected{/if}>{$dataValue}</option>
                                 {/foreach}
                             </select>
-{else}
+                        {else}
                             <input type="text" class="form-control" id="i{$itemFieldID}" placeholder="{$itemFieldID}" name="filter_{$itemFieldID}" value="{$itemField.value|htmlspecialchars}">
-{/if}
+                        {/if}
                             </div>
                         </div>
                     {/foreach}
 
 
                     <div class="row form-group">
-                        <label for="itableLimit" class="col-sm-4 control-label">Items per page</label>
+                        <label for="itableLimit" class="col-sm-4 control-label">{_t("options.items_per_page")}</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="itableLimit" placeholder="Number items per page" name="list_limit" value="{$table_limit}">
+                            <input type="text" class="form-control" id="itableLimit" placeholder="{_t("options.number_items_per_page")}" name="list_limit" value="{$table_limit}">
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label for="inputName" class="col-sm-4 control-label">Show/hide columns</label>
+                        <label for="inputName" class="col-sm-4 control-label">{_t("options.show_hide_columns")}</label>
                         <div class="col-sm-8 checkbox small">
                             {foreach from=$admin_list_fields item=itemFieldID}
                                 <label class="col-sm-6">
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <div class="row form-group">
-                        <label for="inputName" class="col-sm-4 control-label">Sort by</label>
+                        <label for="inputName" class="col-sm-4 control-label">{_t("options.sort_by")}</label>
                         <div class="col-sm-4">
                             <select class="form-control col-sm-4" name="sort">
                                 {foreach from=$admin_list_fields item=itemFieldID}
@@ -77,11 +77,11 @@
                     <div class="row">
                         <div class="col-sm-7">
                             {if $user.access === "superadmin" && $admin_menu_item.module}
-                                <a href="{$lang_url}/admin/?section=module_settings&module={$admin_menu_item.module}#tables" class="btn btn-info"><span class="glyphicon glyphicon-cog">&nbsp;</span><span class="admin_crown">Config Table</span></a></p>
+                                <a href="{$lang_url}/admin/?section=module_settings&module={$admin_menu_item.module}#tables" class="btn btn-info"><span class="glyphicon glyphicon-cog">&nbsp;</span><span class="admin_crown">{_t("options.config_table")}</span></a></p>
                             {/if}
                         </div>
                         <div class="col-sm-5 text-right">
-                            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok">&nbsp;</span>Save settings</button>
+                            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok">&nbsp;</span>{_t("options.save_settings")}</button>
                         </div>
                     </div>
                 </div>
@@ -128,7 +128,7 @@
 </td>
 {elseif $type === "updated" || $type === "date"}
 <td><small>{$itemField}</small></td>
-{elseif $type === "bool" || $type ==="published"}
+{elseif $type === "bool" || $type ==="published" || $type ==="deleted"}
 <td class="col-sm-1">
 {if $admin_table_info.fields.$itemFieldID.readonly}
     {if $itemField}

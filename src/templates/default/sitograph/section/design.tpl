@@ -12,7 +12,7 @@
       <input type="test" class="form-control" id="config_{$name}" value="{$item.value}">
     </div>
     <div class="col-sm-2">
-      <a href="/admin/?section=site_settings&edit_key={$name}" onclick="list_toggle_submit('site_settings','{TABLE_SETTINGS}','{$item.id}','value',$('#config_{$name}').val());return false;" class="btn btn-block btn-primary">{_t("btn.save")}</a>
+      <a href="{$lang_url}/admin/?section=site_settings&edit_key={$name}" onclick="list_toggle_submit('site_settings','{TABLE_SETTINGS}','{$item.id}','value',$('#config_{$name}').val());return false;" class="btn btn-block btn-primary">{_t("btn.save")}</a>
     </div>
   </div>
 {/foreach}
@@ -42,9 +42,9 @@
 
 <div class="col-sm-2">
     {if $theme_active !== $design_name}
-      <p><a href="/admin/?section=design&design_activate={$design_name}" class="btn btn-primary">Activate</a></p>
+      <p><a href="{$lang_url}/admin/?section=design&design_activate={$design_name}" class="btn btn-primary">{_t("admin.activate")}</a></p>
     {else}
-      <p class="text-success"><b>activated</b></p>
+      <p class="text-success"><b>{_t("admin.activated")}</b></p>
     {/if}
 </div>
 

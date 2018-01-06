@@ -5,7 +5,7 @@
     <div class="col-xs-11" style="padding-left:0;">
       <b>{_t("msg.ga_api_not_configured")}</b><br>
         {_t("msg.ga_json_not_configured")} <br>
-      <a href="/admin/?section=site_settings&edit_key=google_service_auth_json">{_t("admin.site_settings")} (google_service_auth_json)</a>.
+      <a href="{$lang_url}/admin/?section=site_settings&edit_key=google_service_auth_json">{_t("admin.site_settings")} (google_service_auth_json)</a>.
     </div>
   </div>
 </div>

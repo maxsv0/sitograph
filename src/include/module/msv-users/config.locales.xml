@@ -91,11 +91,11 @@
 		<field name="email.user_password_reset_confirm" value="Reset Password"/>
 	</locale>
 	<locale name="ru">
-		<field name="structure.users.account" value="My Account"/>
-		<field name="structure.users.signup" value="Sing Up"/>
-		<field name="structure.users.login" value="Log In"/>
+		<field name="structure.users.account" value="Мой аккаунт"/>
+		<field name="structure.users.signup" value="Выйти"/>
+		<field name="structure.users.login" value="Войти"/>
 		<field name="structure.users.password_reset" value="Сбросить пароль"/>
-		<field name="structure.users.settings" value="My settings"/>
+		<field name="structure.users.settings" value="Мои настройки"/>
 		<field name="table.users" value="Пользователи сайта"/>
 		<field name="table.users.id" value="ID"/>
 		<field name="table.users.published" value="Активно"/>

@@ -3,7 +3,7 @@
 </div>
 
 <p class="text-right">
-	<a href="/admin/?section=config&remove_config" class="btn btn-danger" onclick="if(!confirm('Are you sure you want to delete config.php file? The website will stop working and Installation Wizard will be launched.')) return false;">Remove config.php</a>
+	<a href="{$lang_url}/admin/?section=config&remove_config" class="btn btn-danger" onclick="if(!confirm('Are you sure you want to delete config.php file? The website will stop working and Installation Wizard will be launched.')) return false;">Remove config.php</a>
 </p>
 <br>
 

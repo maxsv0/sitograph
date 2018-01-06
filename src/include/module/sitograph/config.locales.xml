@@ -137,6 +137,9 @@
 		<field name="admin.realtime_by_pageview" value="By pageview"/>
 		<field name="admin.realtime_top_countries" value="Top Countries"/>
 
+		<field name="admin.activate" value="Activate"/>
+		<field name="admin.activated" value="activated"/>
+
 
 	</locale>
 	<locale name="ru">
@@ -206,8 +209,8 @@
 		<field name="admin.robots_title" value="Файл robots.txt"/>
 		<field name="admin.module_settings" value="Управление модулями сайта"/>
 		<field name="admin.module_settings_title" value="Управление модулями сайта"/>
-		<field name="admin.module_catalog" value="Загрузка каталога из 1С"/>
-		<field name="admin.module_catalog_title" value="Загрузка каталога из 1С"/>
+		
+		
 		<field name="admin.module_comments" value="Комментарии"/>
 		<field name="admin.module_comments_title" value="Комментарии"/>
 		<field name="admin.module_search" value="Поиск"/>
@@ -274,20 +277,22 @@
 
 
 
-		<field name="admin.realtime_slect_a_view" value="Выбрать вид" />
-		<field name="admin.realtime_visualizations" value="Различные отображения" />
-		<field name="admin.realtime_site_traffic" value="Трафик сайта" />
-		<field name="admin.realtime_sessions" value="Сеансы и пользователели - последние 30 дней" />
-		<field name="admin.realtime_most_popular" value="Самые популярные демо / инструменты" />
-		<field name="admin.realtime_pageviews" value="Просмотры страниц - последние 30 дней" />
-		<field name="admin.realtime_this_week" value="Эта неделя против последней недели" />
-		<field name="admin.realtime_by_sessions" value="По сеансам" />
-		<field name="admin.realtime_this_year" value="Этот год против прошлого года" />
-		<field name="admin.realtime_by_users" value="По пользователям" />
-		<field name="admin.realtime_top_browsers" value="Браузеры" />
-		<field name="admin.realtime_by_pageview" value="По просмотру страницы" />
-		<field name="admin.realtime_top_countries" value="Страны" />
+		<field name="admin.realtime_slect_a_view" value="Выбрать вид"/>
+		<field name="admin.realtime_visualizations" value="Различные отображения"/>
+		<field name="admin.realtime_site_traffic" value="Трафик сайта"/>
+		<field name="admin.realtime_sessions" value="Сеансы и пользователели - последние 30 дней"/>
+		<field name="admin.realtime_most_popular" value="Самые популярные демо / инструменты"/>
+		<field name="admin.realtime_pageviews" value="Просмотры страниц - последние 30 дней"/>
+		<field name="admin.realtime_this_week" value="Эта неделя против последней недели"/>
+		<field name="admin.realtime_by_sessions" value="По сеансам"/>
+		<field name="admin.realtime_this_year" value="Этот год против прошлого года"/>
+		<field name="admin.realtime_by_users" value="По пользователям"/>
+		<field name="admin.realtime_top_browsers" value="Браузеры"/>
+		<field name="admin.realtime_by_pageview" value="По просмотру страницы"/>
+		<field name="admin.realtime_top_countries" value="Страны"/>
 
+		<field name="admin.activate" value="Активировать"/>
+		<field name="admin.activated" value="активно"/>
 
 	</locale>
     <locale name="ua">
@@ -425,19 +430,22 @@
 		<field name="settings.service_ip_info" value="Зовнішній сервіс для отримання інформації про IP"/>
 
 
-		<field name="admin.realtime_slect_a_view" value="Вибрати вид" />
-		<field name="admin.realtime_visualizations" value="Різні відображення" />
-		<field name="admin.realtime_site_traffic" value="Трафік сайту" />
-		<field name="admin.realtime_sessions" value="Сеанси і пользователелі - останні 30 днів" />
-		<field name="admin.realtime_most_popular" value="Найпопулярніші демо / інструменти" />
-		<field name="admin.realtime_pageviews" value="Перегляди сторінок - останні 30 днів" />
-		<field name="admin.realtime_this_week" value="Цей тиждень проти останнього тижня" />
-		<field name="admin.realtime_by_sessions" value="За сеансів" />
-		<field name="admin.realtime_this_year" value="Цей рік проти минулого року" />
-		<field name="admin.realtime_by_users" value="По користувачам" />
-		<field name="admin.realtime_top_browsers" value="Програми перегляду" />
-		<field name="admin.realtime_by_pageview" value="По перегляду сторінки" />
-		<field name="admin.realtime_top_countries" value="Країни" />
+		<field name="admin.realtime_slect_a_view" value="Вибрати вид"/>
+		<field name="admin.realtime_visualizations" value="Різні відображення"/>
+		<field name="admin.realtime_site_traffic" value="Трафік сайту"/>
+		<field name="admin.realtime_sessions" value="Сеанси і пользователелі - останні 30 днів"/>
+		<field name="admin.realtime_most_popular" value="Найпопулярніші демо / інструменти"/>
+		<field name="admin.realtime_pageviews" value="Перегляди сторінок - останні 30 днів"/>
+		<field name="admin.realtime_this_week" value="Цей тиждень проти останнього тижня"/>
+		<field name="admin.realtime_by_sessions" value="За сеансів"/>
+		<field name="admin.realtime_this_year" value="Цей рік проти минулого року"/>
+		<field name="admin.realtime_by_users" value="По користувачам"/>
+		<field name="admin.realtime_top_browsers" value="Програми перегляду"/>
+		<field name="admin.realtime_by_pageview" value="По перегляду сторінки"/>
+		<field name="admin.realtime_top_countries" value="Країни"/>
+
+		<field name="admin.activate" value="Активувати"/>
+		<field name="admin.activated" value="активно"/>
 	</locale>
 
 </locales>

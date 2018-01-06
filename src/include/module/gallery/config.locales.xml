@@ -90,7 +90,7 @@
 		<field name="table.gallery_photos.article_id" value="Статья"/>
 		<field name="table.gallery_photos.title" value="Заголовок"/>
 		<field name="gallery.search_no_result" value="Альбомы не найдены."/>
-		<field name="gallery.gallery1" value="The Beautiful photo gallery"/>
+		<field name="gallery.gallery1" value="Красивая фотогалерея"/>
 		<field name="gallery.posted_by" value="размещено"/>
 		<field name="gallery.photos" value="Фото"/>
 		<field name="gallery.views" value="Просмотров"/>
