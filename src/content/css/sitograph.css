@@ -384,6 +384,7 @@ input.style_on_off {
 }
 table.table-module tr td {
     font-size: 13px!important;
+    min-width: 50px;
 }
 table.table-module tr:first-child th  {
     background: #333746;
@@ -411,13 +412,24 @@ table.table-module tr:first-child th:first-child {
 table.table-module .colactive {
     background:#ed2a45!important;
 }
-table.table-module .colactive span {
 
-    position: absolute;
-    font-weight: bold;
-    margin-left: 5px;
-    margin-top:-2px;
+table.table-module .colactive a{
+    margin-right: 20px;
 }
+
+.arrow-up:after {
+    position:absolute;
+    font-family: 'Glyphicons Halflings';
+    content: "\e093";
+    margin-left: 3px;
+}
+.arrow-down:after {
+    position:absolute;
+    font-family: 'Glyphicons Halflings';
+    content: "\e094";
+    margin-left: 3px;
+}
+
 
 .form-inline .form-control {
     padding:0px 10px

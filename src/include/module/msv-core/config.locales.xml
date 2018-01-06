@@ -26,6 +26,7 @@
 		<field name="btn.previous" value="Предыдущая"/>
 		<field name="btn.next" value="Следующая"/>
 		<field name="btn.click_to_edit" value="Нажмите для редактирования"/>
+		<field name="btn.options" value="Опции"/>
 
 		<field name="tab.home" value="Основное"/>
 		<field name="tab.document" value="Документ"/>
@@ -206,18 +207,25 @@
 		<field name="settings.support_email" value="Email службы поддержки"/>
 		<field name="settings.theme_active" value="Активная тема (название шаблона)"/>
 
-		<field name="email.label.step_2" value = "Шаг 2/2. Подтверждение отправки электронной почты" />
-		<field name="email.label.step_1" value = "Шаг 1/2. Отправка нового сообщения" />
-		<field name="email.label.to" value = "Кому" />
-		<field name="email.label.from" value = "От кого" />
-		<field name="email.label.subject" value = "Заголовок" />
-		<field name="btn.send_email" value = "Отправить сообщение" />
-		<field name="email.label.site_settings" value = "Настройки сайта" />
-		<field name="email.label.edit_from" value = "для редактирования поля 'От кого' перейдите к"/>
-		<field name="email.label.template" значение = "Шаблон" />
-		<field name="email.label.use_comma" value = "использовать запятую для разделения получателей" />
-		<field name="email.label.body" value = "Тело письма" />
-		<field name="email.label.save_and_preview" value = "Сохранить и просмотреть письмо" />
+		<field name="email.label.step_2" value="Шаг 2/2. Подтверждение отправки электронной почты"/>
+		<field name="email.label.step_1" value="Шаг 1/2. Отправка нового сообщения"/>
+		<field name="email.label.to" value="Кому"/>
+		<field name="email.label.from" value="От кого"/>
+		<field name="email.label.subject" value="Заголовок"/>
+		<field name="btn.send_email" value="Отправить сообщение"/>
+		<field name="email.label.site_settings" value="Настройки сайта"/>
+		<field name="email.label.edit_from" value="для редактирования поля 'От кого' перейдите к"/>
+		<field name="email.label.template" значение="Шаблон"/>
+		<field name="email.label.use_comma" value="использовать запятую для разделения получателей"/>
+		<field name="email.label.body" value="Тело письма"/>
+		<field name="email.label.save_and_preview" value="Сохранить и просмотреть письмо"/>
+
+		<field name="options.items_per_page" value="Количество строк на странице"/>
+		<field name="options.show_hide_columns" value="Показать/Скрыть колонку"/>
+		<field name="options.number_items_per_page" value="Количество строк на странице"/>
+		<field name="options.sort_by" value="Сортировать по"/>
+		<field name="options.config_table" value="Конфигурация таблицы"/>
+		<field name="options.save_settings" value="Сохранить настройки"/>
 
 	</locale>
 	<locale name="en">
@@ -245,6 +253,7 @@
 		<field name="btn.previous" value="Previous"/>
 		<field name="btn.next" value="Next"/>
 		<field name="btn.click_to_edit" value="Click to edit"/>
+		<field name="btn.options" value="Options"/>
 
 		<field name="tab.home" value="General"/>
 		<field name="tab.document" value="Document"/>
@@ -439,6 +448,13 @@
 		<field name="email.label.body" value="Email Body"/>
 		<field name="email.label.save_and_preview" value="Save and Preview Email"/>
 
+		<field name="options.items_per_page" value="Кількість рядків на сторінці"/>
+		<field name="options.show_hide_columns" value="Показати/Сховати колонку"/>
+		<field name="options.number_items_per_page" value="Кількість рядків на сторінці"/>
+		<field name="options.sort_by" value="Сортувати по"/>
+		<field name="options.config_table" value="Конфігурація таблиці"/>
+		<field name="options.save_settings" value="Зберігти налаштування"/>
+
 	</locale>
     <locale name="ua">
         <field name="actions" value="Дії"/>
@@ -461,6 +477,7 @@
 		<field name="btn.previous" value="Попередня"/>
 		<field name="btn.next" value="Наступна"/>
 		<field name="btn.click_to_edit" value="Натисніть для редагування"/>
+		<field name="btn.options" value="Опції"/>
 
 		<field name="tab.home" value="Головне"/>
 		<field name="tab.document" value="Документ"/>
@@ -626,18 +643,25 @@
 		<field name="msg.email_sending_error" value="Ошибка отправки письма на email "/>
 		<field name="msg.cron.saved" value="CronJob Saved successfully"/>
 
-		<Field name = "email.label.step_2" value = "Крок 2/2. Підтвердження відправлення електронної пошти" />
-		<Field name = "email.label.step_1" value = "Крок 1/2. Відправлення нового повідомлення" />
-		<Field name = "email.label.to" value = "Кому" />
-		<Field name = "email.label.from" value = "Від кого" />
-		<Field name = "email.label.subject" value = "Тема" />
-		<Field name = "btn.send_email" value = "Відправити повідомлення" />
-		<Field name = "email.label.site_settings" value = "Налаштування сайту" />
-		<Field name = "email.label.edit_from" value = "для редагування поля 'Від кого' перейдіть до" />
-		<Field name = "email.label.template" значення = "Шаблон" />
-		<Field name = "email.label.use_comma" value = "використовувати кому для відокремлення кожного одержувача" />
-		<Field name = "email.label.body" value = "Тіло листа" />
-		<Field name = "email.label.save_and_preview" value = "Зберегти і переглянути лист" />
+		<field name="email.label.step_2" value="Крок 2/2. Підтвердження відправлення електронної пошти"/>
+		<field name="email.label.step_1" value="Крок 1/2. Відправлення нового повідомлення"/>
+		<field name="email.label.to" value="Кому"/>
+		<field name="email.label.from" value="Від кого"/>
+		<field name="email.label.subject" value="Тема"/>
+		<field name="btn.send_email" value="Відправити повідомлення"/>
+		<field name="email.label.site_settings" value="Налаштування сайту"/>
+		<field name="email.label.edit_from" value="для редагування поля 'Від кого' перейдіть до"/>
+		<field name="email.label.template" значення="Шаблон"/>
+		<field name="email.label.use_comma" value="використовувати кому для відокремлення кожного одержувача"/>
+		<field name="email.label.body" value="Тіло листа"/>
+		<field name="email.label.save_and_preview" value="Зберегти і переглянути лист"/>
+
+		<field name="options.items_per_page" value="Items per page"/>
+		<field name="options.show_hide_columns" value="Show/hide columns"/>
+		<field name="options.number_items_per_page" value="Number items per page"/>
+		<field name="options.sort_by" value="Sort by"/>
+		<field name="options.config_table" value="Config Table"/>
+		<field name="options.save_settings" value="Save settings"/>
 
     </locale>
 </locales>

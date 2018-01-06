@@ -1,7 +1,7 @@
 <ul class="nav nav-pills">
-    <li class="active"><a href="/admin/?section=leads">Last 24h</a></li>
-    <li><a href="/admin/?section=leads&range=7d">Last 7 days</a></li>
-    <li><a href="/admin/?section=leads&range=30d">Last 30 days</a></li>
+    <li class="active"><a href="{$lang_url}/admin/?section=leads">Last 24h</a></li>
+    <li><a href="{$lang_url}/admin/?section=leads&range=7d">Last 7 days</a></li>
+    <li><a href="{$lang_url}/admin/?section=leads&range=30d">Last 30 days</a></li>
 </ul>
 <br>
 
@@ -37,7 +37,7 @@
             <td class="col-sm-1">
 {if $lead.user_id}
     <p>ID: {$lead.user_id}</p>
-    <p><a href="/admin/?section=users&table=users&edit={$lead.user_id}">edit user</a></p>
+    <p><a href="{$lang_url}/admin/?section=users&table=users&edit={$lead.user_id}">edit user</a></p>
 {else}
            <i>anonymous</i>
 {/if}
@@ -50,7 +50,7 @@
             </td>
 {if $service_ip_info}
             <td class="col-sm-2">
-                <a href="/api/lead/loadip/{$lead.id}/" class="pull-right btn btn-default btn-sm" onclick="load_ajax(this, $('#ipinfo{$lead.id}'));return false;"><span class="glyphicon glyphicon-refresh"></span></a>
+                <a href="{$lang_url}/api/lead/loadip/{$lead.id}/" class="pull-right btn btn-default btn-sm" onclick="load_ajax(this, $('#ipinfo{$lead.id}'));return false;"><span class="glyphicon glyphicon-refresh"></span></a>
 
                 <div class="infowell" id="ipinfo{$lead.id}">
 
@@ -69,7 +69,7 @@
             </td>
 {if $service_ua_info}
             <td class="col-sm-3">
-                <a href="/api/lead/loadua/{$lead.id}/" class="pull-right btn btn-default btn-sm"  onclick="load_ajax(this, $('#uainfo{$lead.id}'));return false;"><span class="glyphicon glyphicon-refresh"></span></a>
+                <a href="{$lang_url}/api/lead/loadua/{$lead.id}/" class="pull-right btn btn-default btn-sm"  onclick="load_ajax(this, $('#uainfo{$lead.id}'));return false;"><span class="glyphicon glyphicon-refresh"></span></a>
 
                 <div class="infowell" id="uainfo{$lead.id}">
 {if $lead.ua_info}
@@ -92,7 +92,7 @@
         <div class="col-xs-1"><img src="{CONTENT_URL}/{$msv_seo.preview}" class="img-thumbnail"></div>
         <div class="col-xs-11" style="padding-left:0;">
             <p><b>IP Info Info Service</b> is not active. <b>service_ip_info</b> must contain valid URL</p>
-            <a href="/admin/?section=site_settings&edit_key=service_ip_info">{_t("admin.site_settings")}, Config name: service_ip_info</a>.
+            <a href="{$lang_url}/admin/?section=site_settings&edit_key=service_ip_info">{_t("admin.site_settings")}, Config name: service_ip_info</a>.
         </div>
     </div>
 </div>
@@ -104,7 +104,7 @@
         <div class="col-xs-1"><img src="{CONTENT_URL}/{$msv_seo.preview}" class="img-thumbnail"></div>
         <div class="col-xs-11" style="padding-left:0;">
             <p><b>UserAgent Info Service</b> is not active. <b>service_ua_info</b> must contain valid URL</p>
-            <a href="/admin/?section=site_settings&edit_key=service_ua_info">{_t("admin.site_settings")}, Config name: service_ua_info</a>.
+            <a href="{$lang_url}/admin/?section=site_settings&edit_key=service_ua_info">{_t("admin.site_settings")}, Config name: service_ua_info</a>.
         </div>
     </div>
 </div>

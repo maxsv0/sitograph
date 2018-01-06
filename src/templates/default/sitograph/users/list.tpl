@@ -5,32 +5,25 @@
 <table class="table table-hover table-striped table-module">
 <tr>
 <th{if $table_sort == "id"} class='colactive'{/if}>
-<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=id&sortd={$table_sortd_rev}">{$t["table.users.id"]}</a>
-{if $table_sort == "id"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
+<a {if $table_sort == "id"}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=id&sortd={$table_sortd_rev}">{$t["table.users.id"]}</a>
 </th>
 <th{if $table_sort == "status"} class='colactive'{/if}>
-<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=status&sortd={$table_sortd_rev}">{$t["users.status"]}</a>
-{if $table_sort == "status"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
+<a {if $table_sort == "status"}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=status&sortd={$table_sortd_rev}">{$t["users.status"]}</a>
 </th>
 <th{if $table_sort == "access"} class='colactive'{/if}>
-<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=access&sortd={$table_sortd_rev}">{$t["table.users.access"]}</a>
-{if $table_sort == "access"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
+<a {if $table_sort == "access"}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=access&sortd={$table_sortd_rev}">{$t["table.users.access"]}</a>
 </th>
 <th{if $table_sort == "email"} class='colactive'{/if}>
-<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=email&sortd={$table_sortd_rev}">{$t["table.users.email"]}</a>
-{if $table_sort == "email"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
+<a {if $table_sort == "email"}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=email&sortd={$table_sortd_rev}">{$t["table.users.email"]}</a>
 </th>
 <th{if $table_sort == "name"} class='colactive'{/if}>
-<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=name&sortd={$table_sortd_rev}">{$t["table.users.name"]}</a>
-{if $table_sort == "name"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
+<a {if $table_sort == "name"}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=name&sortd={$table_sortd_rev}">{$t["table.users.name"]}</a>
 </th>
 <th{if $table_sort == "iss"} class='colactive'{/if}>
-<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=iss&sortd={$table_sortd_rev}">{$t["table.users.iss"]}</a>
-{if $table_sort == "iss"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
+<a {if $table_sort == "iss"}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=iss&sortd={$table_sortd_rev}">{$t["table.users.iss"]}</a>
 </th>
 <th{if $table_sort == "updated"} class='colactive'{/if}>
-<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=updated&sortd={$table_sortd_rev}">{$t["table.users.updated"]}</a>
-{if $table_sort == "updated"}{if $table_sortd == "asc"}&darr;{else}&uarr;{/if}{/if}
+<a {if $table_sort == "updated"}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=updated&sortd={$table_sortd_rev}">{$t["table.users.updated"]}</a>
 </th>
 <th>{$t["actions"]}</th>
 </tr>
@@ -50,7 +43,7 @@
 		<span class="label label-default">{_t("users.offline")}</span>
     {/if}
 	<div class="small">
-        <a href="/admin/?section=leads&lead_id={$item["lead"]["id"]}">open info</a>
+        <a href="{$lang_url}/admin/?section=leads&lead_id={$item["lead"]["id"]}">open info</a>
 	</div>
 </td>
 
@@ -64,7 +57,7 @@
 {else}
 	<span class="label label-danger">{_t("msg.users.email_notverified")}</span>
 {/if}
-	<a href="/admin/?section=send_email&send_to={$item.email}" class="btn btn-default btn-sm">send email..</a>
+	<a href="{$lang_url}/admin/?section=send_email&send_to={$item.email}" class="btn btn-default btn-sm">send email..</a>
 </td>
 
 <td class="text-nowrap">
