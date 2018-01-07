@@ -17,7 +17,7 @@
 		<api name="lead" action="api_request_lead"/>
 
 		<table name="leads" index="id" title="id">
-			<field name="id" type="id"/>
+			<field name="id" type="id" readonly="1"/>
 			<field name="published" type="published"/>
 			<field name="deleted" type="deleted"/>
 			<field name="author" type="author"/>
@@ -35,7 +35,7 @@
 			<field name="comment" type="text"/>
 		</table>
 		<table name="seo" index="url" title="param">
-			<field name="id" type="id"/>
+			<field name="id" type="id" readonly="1"/>
 			<field name="published" type="published"/>
 			<field name="deleted" type="deleted"/>
 			<field name="author" type="author"/>

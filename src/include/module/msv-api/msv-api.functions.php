@@ -339,8 +339,10 @@ function db_get($table, $filter = "", $lang = LANG) {
 
     $sqlCode = "select * from `$table` where ";
 
+    // Not published content is available only in Admin UI
     $user = msv_get("website.user");
-    if (!($user["access"] === "superadmin" || $user["access"] === "admin")) {
+    $request = msv_get("website.requestUrl");
+    if (!($request === "/admin/") && ($user["access"] === "superadmin" || $user["access"] === "admin")) {
         $sqlCode .= " `published` > 0 and ";
     }
 
@@ -401,8 +403,10 @@ function db_get_count($table, $filter = "", $lang = LANG) {
 
     $sqlCode = "select count(*) total from `$table` where";
 
+    // Not published content is available only in Admin UI
     $user = msv_get("website.user");
-    if (!($user["access"] === "superadmin" || $user["access"] === "admin")) {
+    $request = msv_get("website.requestUrl");
+    if (!($request === "/admin/") && ($user["access"] === "superadmin" || $user["access"] === "admin")) {
         $sqlCode .= " `published` > 0 and ";
     }
 
@@ -465,11 +469,14 @@ function db_get_list($table, $filter = "", $orderby = "", $limit = 1000000, $ski
 
     $sqlCode = "select * from `$table` where";
 
+    // Not published content is available only in Admin UI
     $user = msv_get("website.user");
-    if (!($user["access"] === "superadmin" || $user["access"] === "admin")) {
+    $request = msv_get("website.requestUrl");
+    if (!($request === "/admin/") && ($user["access"] === "superadmin" || $user["access"] === "admin")) {
         $sqlCode .= " `published` > 0 and ";
     }
 
+    // TODO: allow displaying deleted content in
     $sqlCode .= " `deleted` = 0  and ";
     $sqlCode .= " (`lang` = '".$lang."' or `lang` = '*')  ";
 

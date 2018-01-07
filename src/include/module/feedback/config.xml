@@ -19,7 +19,7 @@
 	<api name="feedback" action="api_request_feedback"/>
 
 	<table name="feedback" index="id" title="name">
-		<field name="id" type="id"/>
+		<field name="id" type="id" readonly="1"/>
 		<field name="published" type="published"/>
 		<field name="deleted" type="deleted"/>
 		<field name="author" type="author"/>

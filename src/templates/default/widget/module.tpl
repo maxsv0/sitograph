@@ -3,7 +3,7 @@
 
 {if $module.preview}
     <div class="col-xs-6 col-sm-4">
-        <img src="{CONTENT_URL}/{$module.preview}" class="img-thumbnail module-preview">
+        <img src="{$module.preview}" class="img-thumbnail module-preview">
     </div>
     <div class="col-xs-6 col-sm-8">
 {else}

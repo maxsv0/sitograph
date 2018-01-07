@@ -136,11 +136,12 @@ a:hover, .add_link:hover {
 }
 .btn_fav a {
     color:#fff;
-    font-size:15px;
+    font-size:12px;
     text-decoration: none;
+    white-space: nowrap;
 }
-.btn_fav:hover {
-    background:#ed2a45;
+.btn_fav a:hover {
+    text-decoration: underline;
 }
 #menu_left div, #menu_left div div {
     position: relative;
@@ -166,7 +167,7 @@ a:hover, .add_link:hover {
     padding-right: 25px;
     background-position: 100% 3px;
     display:inline-block;
-    line-height:20px;
+    line-height:14px;
 }
 
 #menu_left div.mod_box a {
@@ -296,7 +297,7 @@ input.input_search {
     border-right: none;
     border-bottom: 1px solid #FCFCFC;
     border-left: 1px solid #F0F0F0;
-    height: 28px;
+    height: 25px;
 }
 *html input.input_search {
     padding-top: 5px;
@@ -383,6 +384,7 @@ input.style_on_off {
 }
 table.table-module tr td {
     font-size: 13px!important;
+    min-width: 50px;
 }
 table.table-module tr:first-child th  {
     background: #333746;
@@ -395,19 +397,39 @@ table.table-module tr:first-child th a, table.table-module tr:first-child th {
     font-weight: normal;
 }
 table.table-module tr td:last-child, table.table-module tr:first-child th:last-child {
-    text-align: right;
+    text-align: left;
     padding:4px;
 }
 table.table-module tr:first-child th:last-child {
     padding: 8px;
+
 }
 table.table-module tr:first-child th:first-child {
     width:50px;
 }
 
+
 table.table-module .colactive {
     background:#ed2a45!important;
 }
+
+table.table-module .colactive a{
+    margin-right: 20px;
+}
+
+.arrow-up:after {
+    position:absolute;
+    font-family: 'Glyphicons Halflings';
+    content: "\e093";
+    margin-left: 3px;
+}
+.arrow-down:after {
+    position:absolute;
+    font-family: 'Glyphicons Halflings';
+    content: "\e094";
+    margin-left: 3px;
+}
+
 
 .form-inline .form-control {
     padding:0px 10px
@@ -1313,7 +1335,8 @@ legend.legend {
 }
 
 .field-help {
-    color:#a94442;
+    /*color:#a94442;*/
+    color:#707070;
     margin-left:10px;
 }
 

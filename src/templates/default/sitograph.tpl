@@ -19,8 +19,8 @@
 
 	<table cellpadding="0" cellspacing="0" border="0" width="100%">
 		<tr valign="bottom" bgcolor="#000000">
-			<td height="25" width="200">
-				<div style="padding-bottom: 4px; padding-left: 10px; font-size: 10px; color: #4F4F4F;">{$admin_title}</div>
+			<td height="25" width="300">
+				<div style="padding-bottom: 4px; padding-left: 10px; font-size: 10px; color: #4F4F4F;">{$admin_title_page}</div>
 			</td>
 			<td align="center">
 				<div style="padding-bottom: 4px;">
@@ -32,7 +32,7 @@
 					<table cellpadding="0" cellspacing="0" width="100%" class="small">
 						<tr>
 							<td>&nbsp;</td>
-							<td align="right">{_t("admin.logged_as")} <span style="color:#fff;">{$user.email}</span>
+							<td align="right"><span style="color:#fff;">{_t("admin.logged_as")} {$user.email}</span>
 								<span class="label label-success">{$user.access}</span></td>
 							<td align="right" style="padding-right: 10px;"><a style="font-size: 11px; color: #ed2a45;" href="/?logout">{_t("btn.logout")}</a></td>
 						</tr>
@@ -128,7 +128,7 @@
 		<form action="{$lang_url}/admin/?section=module_search&search" method="POST">
 		<table align="right" cellpadding="0" cellspacing="0">
 		<tr>
-			<td><input class="input_search" type="text" name="keyword" value="" placeholder="{_t("form.search_placeholder")}"></td>
+			<td valign="top"><input class="input_search" type="text" name="keyword" value="" placeholder="{_t("form.search_placeholder")}"></td>
 			<td><input type="image" src="{$content_url}/images/sitograph/btn_search.gif" name="search"/></td>
 		</tr>
 		</table>
@@ -244,7 +244,7 @@
 		<td bgcolor="#333746" height="81"></td>
 		<td bgcolor="#333746" valign="top" colspan="3">
 			<div>
-			<a href="http://sitograph.com/" target="_blank"><img src="{$content_url}/images/sitograph/sitograph-logo-white-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png" style="height:80px;"/></a>
+			<img src="{$content_url}/images/sitograph/sitograph-logo-white-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png" style="height:80px;"/>
 
 				<h4 style="display: inline-block;">{$admin_title}</h4>
 			</div>

@@ -27,7 +27,7 @@
 		<api name="urlformat" action="api_format_url"/>
 
 		<table name="structure" index="id" title="name" useseo="true">
-			<field name="id" type="id"/>
+			<field name="id" type="id" readonly="1"/>
 			<field name="published" type="published"/>
 			<field name="deleted" type="deleted"/>
 			<field name="author" type="author" readonly="1"/>
@@ -45,7 +45,7 @@
 			<field name="access_users" type="array" selectlist="table:users"/>
 		</table>
 		<table name="documents" index="id" title="id">
-			<field name="id" type="id"/>
+			<field name="id" type="id" readonly="1"/>
 			<field name="published" type="published"/>
 			<field name="deleted" type="deleted"/>
 			<field name="author" type="author" readonly="1"/>
@@ -56,7 +56,7 @@
 			<field name="external_link" type="str" listskip="1"/>
 		</table>
 		<table name="settings" index="param" title="param">
-			<field name="id" type="id"/>
+			<field name="id" type="id" readonly="1"/>
 			<field name="published" type="published"/>
 			<field name="deleted" type="deleted"/>
 			<field name="author" type="author" readonly="1"/>
@@ -68,7 +68,7 @@
 			<field name="group" type="str" select-from="list:system,theme,website,user" listskip="1"/>
 		</table>
 		<table name="mail_templates" index="id" title="name">
-			<field name="id" type="id"/>
+			<field name="id" type="id" readonly="1"/>
 			<field name="published" type="published"/>
 			<field name="deleted" type="deleted"/>
 			<field name="author" type="author" readonly="1"/>
@@ -80,7 +80,7 @@
 			<field name="header" type="text" listskip="1"/>
 		</table>
 		<table name="menu" index="id" title="name">
-			<field name="id" type="id"/>
+			<field name="id" type="id" readonly="1"/>
 			<field name="published" type="published"/>
 			<field name="deleted" type="deleted"/>
 			<field name="author" type="author" readonly="1"/>
@@ -94,7 +94,7 @@
 			<field name="parent_id" type="int" select-from="table:menu"/>
 		</table>
 		<table name="cronjobs" index="id" title="name">
-			<field name="id" type="id"/>
+			<field name="id" type="id" readonly="1"/>
 			<field name="published" type="published"/>
 			<field name="deleted" type="deleted"/>
 			<field name="author" type="author" readonly="1"/>
@@ -109,7 +109,7 @@
 			<field name="last_result" type="bool" readonly="1"/>
 		</table>
 		<table name="cronjobs_logs" index="id" title="id">
-			<field name="id" type="id"/>
+			<field name="id" type="id" readonly="1"/>
 			<field name="published" type="published"/>
 			<field name="deleted" type="deleted"/>
 			<field name="author" type="author" readonly="1"/>
@@ -123,7 +123,7 @@
 			<field name="result_msg" type="text" readonly="1"/>
 		</table>
 		<table name="mail_log" index="id" title="id">
-			<field name="id" type="id"/>
+			<field name="id" type="id" readonly="1"/>
 			<field name="published" type="published"/>
 			<field name="deleted" type="deleted"/>
 			<field name="author" type="author" readonly="1"/>

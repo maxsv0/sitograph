@@ -507,6 +507,10 @@ function msv_install_module($module, $redirect = true) {
     // download zip
     $moduleUrl = $moduleInfo["download_url"];
     $moduleCont = file_get_contents($moduleUrl);
+    if (empty($moduleCont)) {
+        msv_message_error("Can't load archive from URL $moduleUrl");
+        return false;
+    }
 
     $zipFile = tmpfile();
     $metaDatas = stream_get_meta_data($zipFile);
@@ -1183,7 +1187,14 @@ function msv_process_superadmin() {
 
     if (!empty($_GET["module_reinstall"])) {
         // TODO: check $_GET["module_reinstall"]
-        msv_reinstall_module($_GET["module_reinstall"], false);
+        $module = $_GET["module_reinstall"];
+
+        $result = msv_reinstall_module($module, false);
+        if ($result) {
+            msv_message_ok("Update module '$module' successful");
+        } else {
+            msv_message_error("Update failed for module '$module'");
+        }
     }
 
     if (!empty($_GET["table_action"])) {

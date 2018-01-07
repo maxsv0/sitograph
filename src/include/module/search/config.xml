@@ -17,7 +17,7 @@
     <constant name="TABLE_SEARCH" value="search"/>
     
     <table name="search" index="id" title="name">
-		<field name="id" type="id"/>
+		<field name="id" type="id" readonly="1"/>
 		<field name="published" type="published"/>
 		<field name="deleted" type="deleted"/>
 		<field name="author" type="author"/>
@@ -32,8 +32,8 @@
 
 <install>
 	<param name="name" value="search"/>
-	<param name="version" value="1.0.1"/>
-	<param name="date" value="12.08.2017"/>
+	<param name="version" value="1.0.2"/>
+	<param name="date" value="07.01.2018"/>
 	<param name="title" value="Site search"/>
 	<param name="description" value="Text site search"/>
 	<param name="tags" value="search"/>
