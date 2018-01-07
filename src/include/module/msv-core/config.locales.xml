@@ -448,13 +448,12 @@
 		<field name="email.label.body" value="Email Body"/>
 		<field name="email.label.save_and_preview" value="Save and Preview Email"/>
 
-		<field name="options.items_per_page" value="Кількість рядків на сторінці"/>
-		<field name="options.show_hide_columns" value="Показати/Сховати колонку"/>
-		<field name="options.number_items_per_page" value="Кількість рядків на сторінці"/>
-		<field name="options.sort_by" value="Сортувати по"/>
-		<field name="options.config_table" value="Конфігурація таблиці"/>
-		<field name="options.save_settings" value="Зберігти налаштування"/>
-
+		<field name="options.items_per_page" value="Items per page"/>
+		<field name="options.show_hide_columns" value="Show/hide columns"/>
+		<field name="options.number_items_per_page" value="Number items per page"/>
+		<field name="options.sort_by" value="Sort by"/>
+		<field name="options.config_table" value="Config Table"/>
+		<field name="options.save_settings" value="Save settings"/>
 	</locale>
     <locale name="ua">
         <field name="actions" value="Дії"/>
@@ -656,13 +655,12 @@
 		<field name="email.label.body" value="Тіло листа"/>
 		<field name="email.label.save_and_preview" value="Зберегти і переглянути лист"/>
 
-		<field name="options.items_per_page" value="Items per page"/>
-		<field name="options.show_hide_columns" value="Show/hide columns"/>
-		<field name="options.number_items_per_page" value="Number items per page"/>
-		<field name="options.sort_by" value="Sort by"/>
-		<field name="options.config_table" value="Config Table"/>
-		<field name="options.save_settings" value="Save settings"/>
-
+		<field name="options.items_per_page" value="Кількість рядків на сторінці"/>
+		<field name="options.show_hide_columns" value="Показати/Сховати колонку"/>
+		<field name="options.number_items_per_page" value="Кількість рядків на сторінці"/>
+		<field name="options.sort_by" value="Сортувати по"/>
+		<field name="options.config_table" value="Конфігурація таблиці"/>
+		<field name="options.save_settings" value="Зберігти налаштування"/>
     </locale>
 </locales>
 </document>
