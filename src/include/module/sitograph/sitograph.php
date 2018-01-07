@@ -13,7 +13,7 @@ include(ABS_MODULE."/sitograph/config-menu.php");
 msv_assign_data("admin_menu", $menu_ar);
 
 msv_assign_data("admin_title", $this->title." ".$this->version." <small>".$this->date."</small>");
-msv_assign_data("admin_title_page", $this->title." ".$this->description." ".$this->version."");
+msv_assign_data("admin_title_page", $this->description." ".$this->version."");
 
 $section = "index";
 $menuActive = "index";
