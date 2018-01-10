@@ -136,12 +136,12 @@ a:hover, .add_link:hover {
 }
 .btn_fav a {
     color:#fff;
-    font-size:12px;
+    font-size:13px;
     text-decoration: none;
     white-space: nowrap;
 }
-.btn_fav a:hover {
-    text-decoration: underline;
+.btn_fav:hover {
+    background: #ed2a45;
 }
 #menu_left div, #menu_left div div {
     position: relative;
