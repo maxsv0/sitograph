@@ -19,8 +19,8 @@
 
 	<table cellpadding="0" cellspacing="0" border="0" width="100%">
 		<tr valign="bottom" bgcolor="#000000">
-			<td height="25" width="200">
-				<div style="padding-bottom: 4px; padding-left: 10px; font-size: 10px; color: #4F4F4F;">{$admin_title}</div>
+			<td height="25" width="300">
+				<div style="padding-bottom: 4px; padding-left: 10px; font-size: 10px; color: #4F4F4F;">{$admin_title_page}</div>
 			</td>
 			<td align="center">
 				<div style="padding-bottom: 4px;">

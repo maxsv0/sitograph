@@ -21,3 +21,7 @@ if (file_exists($handlerPath)) {
     msv_message_error("Module handler file not found <b>$handlerPath</b>");
 }
 
+$dataEdit = msv_get_config("admin_edit");
+if (!empty($dataEdit)) {
+    msv_assign_data("list_filter_group", $dataEdit["group"]);
+}
