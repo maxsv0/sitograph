@@ -33,7 +33,7 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
 			} else {
                 // extract data from request for corresponding table
                 $item = msv_process_tabledata(TABLE_SEO, "form_seo_");
-
+                $item["url"] = $itemUrl;
                 // execute request
                 $resultSave = msv_add_seo($item);
 

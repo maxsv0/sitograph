@@ -34,7 +34,7 @@
 		<form method="POST" action="{$lang_url}/admin/?section={$admin_section}">
 
 			<div class="form-group">
-				<textarea class="form-control" rows="15" name="form_file_content">{$file_content}</textarea>
+				<textarea class="form-control" rows="15" name="form_file_content">{$file_content|escape}</textarea>
 			</div>
 
 			<div class="form-group">

@@ -473,39 +473,9 @@ function msv_list_modules() {
     return false;
 }
 
-/**
- * Install module from reposiroty
- *
- * Produces msv_message_error is case of error
- *
- * @param string $module Name of a module
- * @param boolean $redirect Optional Flag for running install hook for this module; defaults to true
- * @return boolean Result of the action
- */
-function msv_install_module($module, $redirect = true) {
-    msv_log("*****  installModule -> $module");
+// TODO: rework
+function msv_install_module_archive($moduleUrl, $fileList = array()) {
 
-    $website = msv_get("website");
-
-    // TODO add info, check
-    $list = msv_list_modules();
-    if (empty($list)) {
-        msv_message_error("installModule -> $module "._t("msg.no_repository"));
-        return false;
-    }
-    $moduleInfo = array();
-    foreach ($list as $info) {
-        if ($info["name"] == $module) {
-            $moduleInfo = $info;
-        }
-    }
-    if (empty($moduleInfo)) {
-        msv_message_error("installModule -> $module "._t("msg.repository_not_found"));
-        return false;
-    }
-
-    // download zip
-    $moduleUrl = $moduleInfo["download_url"];
     $moduleCont = file_get_contents($moduleUrl);
     if (empty($moduleCont)) {
         msv_message_error("Can't load archive from URL $moduleUrl");
@@ -522,11 +492,6 @@ function msv_install_module($module, $redirect = true) {
     $tempDir = $tempDir."dir";
     mkdir($tempDir);
 
-//      $zipArchive = new PclZip($tmpFilename);
-//      if (!$zipArchive->extract(PCLZIP_OPT_PATH, $tempDir) == 0) {
-//              msv_error("installModule -> "._t("msg.cant_open_zip"));
-//      }
-
     // try to extract using ZipArchive lib
     // in case of fail, use shell_exec
     if (class_exists("ZipArchive")) {
@@ -541,23 +506,34 @@ function msv_install_module($module, $redirect = true) {
         shell_exec("unzip $tmpFilename -d $tempDir");
     }
 
-    // TODO:
-    // check if files are in $tempDir/..
-
-    $moduleObj = msv_get("website.".$module);
-    if (!empty($moduleObj)) {
-
-        // module exist, overwrite
-        $fileList = $moduleObj->files;
-    } else {
-        // module first install
-
-        $fileList = $moduleInfo["files"];
-    }
-
     if (empty($fileList)) {
-        msv_message_error("$module: File list empty");
-        return false;
+        $di = new RecursiveDirectoryIterator($tempDir, RecursiveDirectoryIterator::SKIP_DOTS);
+        $it = new RecursiveIteratorIterator($di);
+
+        foreach($it as $file) {
+            $file = (string)$file;
+            if (strpos($file, ".DS_Store") !== false) continue;
+
+            $filePath = substr($file, strlen($tempDir));
+            if (strpos($filePath, "/content/") === 0) {
+                $dir = "content";
+                $path = substr($filePath, strlen($dir) + 2);
+            } elseif (strpos($filePath, "/module/") === 0) {
+                $dir = "module";
+                $path = substr($filePath, strlen($dir) + 2);
+            } elseif (strpos($filePath, "/template/") === 0) {
+                $dir = "template";
+                $path = substr($filePath, strlen($dir) + 2);
+            } else {
+                $dir = "abs";
+                $path = substr($filePath, 1);
+            }
+
+            $fileList[] = array(
+                "dir" => $dir,
+                "path" => $path,
+            );
+        }
     }
 
     // copy files according to config
@@ -603,13 +579,62 @@ function msv_install_module($module, $redirect = true) {
         msv_log("MSV copy: $filePath -> $fileCopyPath -> ".($r ? 'true' : 'false'));
     }
 
+    return true;
+}
 
-    if ($redirect) {
-        msv_log("installModule -> redirect");
-        $website->outputRedirect("/admin/?install_hook=".$module);
+
+/**
+ * Install module from reposiroty
+ *
+ * Produces msv_message_error is case of error
+ *
+ * @param string $module Name of a module
+ * @param boolean $redirect Optional Flag for running install hook for this module; defaults to true
+ * @return boolean Result of the action
+ */
+function msv_install_module($module, $redirect = true) {
+    msv_log("*****  installModule -> $module");
+
+    $website = msv_get("website");
+
+    // TODO add info, check
+    $list = msv_list_modules();
+    if (empty($list)) {
+        msv_message_error("installModule -> $module "._t("msg.no_repository"));
+        return false;
+    }
+    $moduleInfo = array();
+    foreach ($list as $info) {
+        if ($info["name"] == $module) {
+            $moduleInfo = $info;
+        }
+    }
+    if (empty($moduleInfo)) {
+        msv_message_error("installModule -> $module "._t("msg.repository_not_found"));
+        return false;
     }
 
-    return true;
+    $moduleObj = msv_get("website.".$module);
+    if (!empty($moduleObj)) {
+
+        // module exist, overwrite
+        $fileList = $moduleObj->files;
+    } else {
+        // module first install
+
+        $fileList = $moduleInfo["files"];
+    }
+
+    // download archive and install
+    if (msv_install_module_archive($moduleInfo["download_url"], $fileList)) {
+        if ($redirect) {
+            msv_log("installModule -> redirect");
+            $website->outputRedirect("/admin/?install_hook=".$module);
+        }
+
+        return true;
+    }
+    return false;
 }
 
 /**
@@ -782,23 +807,23 @@ function msv_output_admin_modulesetup() {
             $strOut .= "</p>";
 
             $strOut .= "<p>";
-            $strOut .= "<a href='".$moduleInfo["download_url"]."' class='btn btn-primary btn-xs'>".$title.".zip</a> ";
+            $strOut .= "<a href='".$moduleInfo["download_url"]."' class='btn btn-primary'>".$title.".zip</a> ";
 
             if (!empty($obj)) {
-                $strOut .= "<a href='/admin/?module_reinstall=".$moduleInfo["name"]."' class='btn btn-danger btn-xs' onclick=\"if(!confirm('Are you sure? Current module files will be overwritten.')) return false;\">reinstall</a> ";
+                $strOut .= "<a href='/admin/?module_reinstall=".$moduleInfo["name"]."' class='btn btn-danger' onclick=\"if(!confirm('Are you sure? Current module files will be overwritten.')) return false;\">reinstall</a> ";
 
                 $mVersion = (float)$moduleInfo["version"];
                 $oVersion = (float)$obj->version;
 
                 if ($mVersion > $oVersion) {
-                    $strOut .= "<a href='/admin/?module_reinstall=".$moduleInfo["name"]."' class='btn btn-danger btn-xs'>update</a> ";
+                    $strOut .= "<a href='/admin/?module_reinstall=".$moduleInfo["name"]."' class='btn btn-danger'>update</a> ";
                 }
             } else {
                 if (!$meetDep) {
-                    $strOut .= "<a href='/admin/?module_install=".$moduleInfo["name"]."' class='btn btn-primary btn-xs' onclick=\"if(!confirm('Installing module without dependencies can cause system error.')) return false;\">install</a> ";
+                    $strOut .= "<a href='/admin/?module_install=".$moduleInfo["name"]."' class='btn btn-primary' onclick=\"if(!confirm('Installing module without dependencies can cause system error.')) return false;\">install</a> ";
                     $strOut .= "<span class='text-danger'>Dependencies not met<span> ";
                 } else {
-                    $strOut .= "<a href='/admin/?module_install=".$moduleInfo["name"]."' class='btn btn-primary btn-xs'>install</a> ";
+                    $strOut .= "<a href='/admin/?module_install=".$moduleInfo["name"]."' class='btn btn-primary'>install</a> ";
                 }
             }
             $strOut .= "</p>";
@@ -806,6 +831,21 @@ function msv_output_admin_modulesetup() {
             $strOut .= "</div> ";
             $strOut .= "</p>";
         }
+
+        $strOut .= "<div class='well'>";
+        $strOut .= "<h4>Select module .zip archive and press Install button for manual installing</h4>";
+        $strOut .= "
+<form action='/admin/' class=\"form-inline row\" enctype='multipart/form-data' method='POST'>
+  <div class=\"form-group col-sm-10\">
+    <label for=\"inputPassword2\">Password</label>
+    <input type=\"file\" class=\"form-control\" name=\"install_archive\" placeholder=\"Password\">
+  </div>
+  <button type=\"submit\" class=\"btn btn-primary col-sm-2\" name='install_module_manually' value='1'>Install Module</button>
+  <input type='hidden' name='section' value='module_settings'>
+</form>
+";
+        $strOut .= "</div>";
+
         $strOut .= "</div>";
     }
 
@@ -1168,6 +1208,29 @@ function msv_process_superadmin() {
         $result = eval($code);
         msv_assign_data("terminal_code", $_GET["terminal_code"]);
         msv_assign_data("terminal_result", $result);
+    }
+
+    if (!empty($_POST["install_module_manually"])) {
+        if (!empty($_FILES['install_archive']) && !empty($_FILES['install_archive']['tmp_name'])) {
+
+            $type = $_FILES['install_archive']["type"];
+            $path = $_FILES['install_archive']["tmp_name"];
+            $name = $_FILES['install_archive']["name"];
+            $file = msv_store_file($path, $type, $name);
+
+            if (!is_numeric($file)) {
+                msv_message_ok("File uploaded successfully: $file");
+
+                $result = msv_install_module_archive(UPLOAD_FILES_PATH."/".$file);
+                if ($result) {
+                    msv_message_ok("Module install successful");
+                } else {
+                    msv_message_error("Module install failed");
+                }
+            } else {
+                msv_message_error("Error occurs while saving module archive file");
+            }
+        }
     }
 
     if (!empty($_GET["module_remove"])) {

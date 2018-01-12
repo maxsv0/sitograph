@@ -21,7 +21,7 @@ define("PHP_TIMEZONE", "Europe/Berlin");
 define("DATABASE_ENCODING", "utf8");
 define("JS_BEFORE_BODY", false);
 define("SUBDOMAIN_LANGUAGES", false);
-define("REP", "http://rep.msvhost.com/rep/main/");
+define("REP", "http://rep.msvhost.com/api/rep/main/");
 define("USER_HASH_PASSWORD", true);
 define("USER_IGNORE_PRIVILEGES", false);
 define("SMARTY_DIR", __DIR__."/include/custom/smarty/");
