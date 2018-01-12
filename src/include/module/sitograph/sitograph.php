@@ -170,10 +170,13 @@ if (!empty($section) && in_array($section, $menu_index)) {
 
                     $fieldTitle = $infoSEO["fields"]["title"];
                     $fieldTitle["name"] = "seo_title";
+                    $fieldTitle["title"] = _t("table.".$table_info["name"].".seo_title");
                     $fieldDescription = $infoSEO["fields"]["description"];
                     $fieldDescription["name"] = "seo_description";
+                    $fieldDescription["title"] = _t("table.".$table_info["name"].".seo_description");
                     $fieldKeywords = $infoSEO["fields"]["keywords"];
                     $fieldKeywords["name"] = "seo_keywords";
+                    $fieldKeywords["title"] = _t("table.".$table_info["name"].".seo_keywords");
 
                     $tabs["seo"]["fields"] = array(
                         $fieldTitle,
