@@ -145,7 +145,7 @@ function msv_load_pagedocument() {
         return false;
     }
 
-    $separator = "<hr class=\"next_block\">";
+    $separator = '<hr class="next_block" />';
     $document = $result["data"];
     $documentText = $document["text"];
     $documentBlocks = array();
