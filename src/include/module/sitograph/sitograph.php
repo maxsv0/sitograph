@@ -303,7 +303,7 @@ msv_assign_data("cms_favorite_text", $admin_page_title);
 
 if (!empty($pageID) && 
 	!empty($configCMS) && 
-	in_array($configCMS["favorites"]) &&
+	in_array($pageID,$configCMS["favorites"]) &&
 	array_key_exists($pageID, $configCMS["favorites"])) {
     msv_assign_data("cms_favorite_added", 1);
 }
