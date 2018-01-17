@@ -107,7 +107,7 @@ function Install_Sitograph($module) {
     msv_set_config("email_from", "tech@sitograph.com", true, "*", _t("settings.email_from"));
     msv_set_config("email_fromname", "Sitograph", true, "*", _t("settings.email_fromname"));
 
-    msv_set_config("theme_copyright_text", "2016-2017 <a href='http://sitograph.com/' target='_blank'>Sitograph</a>", true, "*");
+    msv_set_config("theme_copyright_text", "2016-".date("Y")." Sitograph CMS. <a href='http://sitograph.com/' target='_blank'>sitograph.com</a>", true, "*");
     msv_set_config("theme_header_contacts", "<a href='https://discord.gg/tPusyxP'>Join Discord channel</a><br>Skype: max.svistunov", true, "*");
 
     msv_set_config("service_ua_info", "", true, "*", _t("settings.service_ua_info"), "website");

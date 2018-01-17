@@ -633,6 +633,9 @@ class MSV_Website {
         $this->templateEngine->assign("message_success", $messageSuccess);
 
         $this->templateEngine->assign("document", $this->document);
+        if (!empty($this->document_blocks)) {
+            $this->templateEngine->assign("document_blocks", $this->document_blocks);
+        }
         $this->templateEngine->assign("tables", $this->tables);
         $this->templateEngine->assign("user", $this->user);
 

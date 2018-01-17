@@ -3,7 +3,7 @@
 <form method="POST" action="{$lang_url}/admin/?section={$admin_section}">
 
 <div class="form-group">
-  <textarea class="form-control" rows="25" name="form_manual_content">{$admin_manual}</textarea>
+  <textarea class="form-control editor" rows="25" name="form_manual_content">{$admin_manual}</textarea>
 </div>
 
 
@@ -26,7 +26,7 @@
 
 
 
-{if $user.access === "superadmin"}
+{if $user.access === "superadmin" || $user.access === "admin"}
 <div class="btnCover">
 <div>
 <a href="{$lang_url}/admin/?section=manual&edit_mode" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> {$t["btn.edit"]}</a>
