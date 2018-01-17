@@ -1,4 +1,4 @@
-# Sitograph CMS
+# Sitograph CMS v1.0
 ![Sitograph CMS](https://github.com/maxsv0/sitograph/blob/master/docs/screen-demo-sitograph.jpg)
 
 # Install Sitograph CMS
@@ -26,8 +26,16 @@ sudo service apache2 restart
 ### 4. Run Sitograph Installation wizard
 ![Sitograph Installation wizard](https://github.com/maxsv0/sitograph/blob/master/src/content/images/gallery/gallery3_photo1.jpg)
 
+# Sitograph Deployment Workflow
+![Sitograph Deployment Workflow](https://raw.githubusercontent.com/maxsv0/sitograph/development/docs/deployment-workflow.jpg)
 
-## Sitograph Dependencies
+
+# Bugs Reporting Workflow
+![Sitograph Bugs Reporting Workflow](https://raw.githubusercontent.com/maxsv0/sitograph/development/docs/issues-workflow.jpg)
+
+
+
+# Install Sitograph Dependencies
 
 Sitograph runs under LAMP stack. [ModPagespeed](https://developers.google.com/speed/pagespeed/module/)  is used to optimize content delivery.
 
@@ -76,9 +84,9 @@ In VirtualBoxManager:
 Settings -> Shared Folders -> Add. Folder name: sitograph
 
 
-# Configure empty Ubuntu/CentOS/.. image to run Sitograph CMS
+# Install Sitograph Server Environment
 
-## Install Sitograph Server
+## Configure empty Ubuntu/CentOS/.. image to run Sitograph CMS
 ```bash
 wget -O "install-server.sh" "https://raw.githubusercontent.com/maxsv0/sitograph/master/scripts/install-server.sh"
 chmod +x install-server.sh
