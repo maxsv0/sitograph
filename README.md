@@ -26,6 +26,12 @@ sudo service apache2 restart
 ### 4. Run Sitograph Installation wizard
 ![Sitograph Installation wizard](https://github.com/maxsv0/sitograph/blob/master/src/content/images/gallery/gallery3_photo1.jpg)
 
+# Extensions Repository for Sitograph
+http://rep.msvhost.com/
+![MSV Repository for Sitograph](https://raw.githubusercontent.com/maxsv0/repository/master/docs/screencapture-rep-msvhost-com.jpg)
+Download modules for Sitograph and MSV Framework.
+
+
 # Sitograph Deployment Workflow
 ![Sitograph Deployment Workflow](https://raw.githubusercontent.com/maxsv0/sitograph/development/docs/deployment-workflow.jpg)
 
