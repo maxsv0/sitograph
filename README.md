@@ -24,14 +24,14 @@ Sitograph attempts to take care of common tasks used in the majority of web proj
 
 # Install Sitograph CMS
 
-### 1. Download the latest version of Sitograph CMS and unzip the archive
+#### 1. Download the latest version of Sitograph CMS and unzip the archive
 ```bash
 wget https://github.com/maxsv0/sitograph/archive/v1.0.zip -O sitograph-v1.0.zip
 unzip sitograph-v1.0.zip
 cd sitograph-1.0
 ```
 
-### 2. Run Install script to copy Sitograph files to the web root directory (default: /var/www/html).
+#### 2. Run Install script to copy Sitograph files to the web root directory (default: /var/www/html).
 ```bash
 chmod +x scripts/install.sh
 sudo ./scripts/install.sh /var/www/html
@@ -44,7 +44,7 @@ sudo a2enconf sitograph
 sudo a2enmod rewrite headers expires deflate pagespeed
 sudo service apache2 restart
 ```
-### 4. Run Sitograph Installation wizard
+#### 4. Run Sitograph Installation wizard
 ![Sitograph Installation wizard](https://github.com/maxsv0/sitograph/blob/master/src/content/images/gallery/gallery3_photo1.jpg)
 
 # Extensions Repository for Sitograph
@@ -113,7 +113,7 @@ Settings -> Shared Folders -> Add. Folder name: sitograph
 
 # Install Sitograph Server Environment
 
-## Configure empty Ubuntu/CentOS/.. image to run Sitograph CMS
+## Configure empty Ubuntu/CentOS/.. instance to run Sitograph CMS
 ```bash
 wget -O "install-server.sh" "https://raw.githubusercontent.com/maxsv0/sitograph/master/scripts/install-server.sh"
 chmod +x install-server.sh
