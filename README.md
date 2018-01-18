@@ -1,5 +1,26 @@
-# Sitograph CMS v1.0
-![Sitograph CMS](https://github.com/maxsv0/sitograph/blob/master/docs/screen-demo-sitograph.jpg)
+<p align="center">
+<img src="https://github.com/maxsv0/sitograph/blob/master/src/content/images/sitograph/sitograph-logo-dark-en.png" width="265"></p>
+</p>
+
+
+## About Sitograph
+Sitograph is open source Content Management System (CMS) that enables you to build websites and efficient online applications.
+
+## Sitograph CMS Features Overview
+We believe website development must be easy and enjoyable. 
+Sitograph attempts to take care of common tasks used in the majority of web projects, such as: 
+- Website structure and routing
+- Multi-language support
+- Manage content of a website: documents, photos, videos, etc.
+- User management, sessions, real-time analytics
+- Email Marketing and customizable mailing templates
+- Scheduled job processing
+- Configurable JSON API
+- Internal PHP API for developers
+- Updates and functionality extending via modules repository
+
+## Sitograph admin homepage
+![Sitograph admin homepage](https://github.com/maxsv0/sitograph/blob/master/docs/screen-demo-sitograph.jpg)
 
 # Install Sitograph CMS
 
