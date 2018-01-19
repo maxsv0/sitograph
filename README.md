@@ -2,7 +2,7 @@
 <img src="https://github.com/maxsv0/sitograph/blob/master/src/content/images/sitograph/sitograph-logo-dark-en.png" width="265"></p>
 </p>
 
-## [Table of Contents]
+## Table of Contents
 
 - [About Sitograph](#about-sitograph)
   - [Content Management System features overview](#content-management-system-features-overview)
