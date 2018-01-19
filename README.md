@@ -2,6 +2,22 @@
 <img src="https://github.com/maxsv0/sitograph/blob/master/src/content/images/sitograph/sitograph-logo-dark-en.png" width="265"></p>
 </p>
 
+## [Table of Contents]
+
+- [About Sitograph](#about-sitograph)
+  - [Content Management System features overview](#content-management-system-features-overview)
+  - [Admin UI homepage](#admin-ui-homepage)
+- [Install Sitograph CMS](#install-sitograph-cms)
+  - [1. Download Sitograph CMS](#1-download-sitograph-cms)
+  - [2. Copy files and enable Apache configuration](#2-copy-files-and-enable-apache-configuration)
+  - [3. Run Sitograph Installation wizard](#3-run-sitograph-installation-wizard)
+- [Extensions Repository](#extensions-repository)
+- [Content Delivery](#content-delivery)
+- [Deployment Workflow](#deployment-workflow)
+- [Bugs Reporting Workflow](#bugs-reporting-workflow)
+- [Install Dependencies](#install-dependencies)
+- [Install Sitograph Server Environment](#install-sitograph-server-environment)
+
 
 # About Sitograph
 Sitograph is open source Content Management System (CMS) that enables you to build websites and efficient online applications.
@@ -24,7 +40,7 @@ Sitograph attempts to take care of common tasks used in the majority of web proj
 
 # Install Sitograph CMS
 
-#### 1. Download Sitograph CMS
+### 1. Download Sitograph CMS
 Download the latest version of Sitograph CMS and unzip the archive
 
 ```bash
@@ -33,7 +49,7 @@ unzip sitograph-v1.0.zip
 cd sitograph-1.0
 ```
 
-#### 2. Copy files and enable Apache configuration
+### 2. Copy files and enable Apache configuration
 
 Run Install script to copy Sitograph files to the web root directory (default: /var/www/html).
 This will also enable Apache configuration file (sitograph.conf) and enable required modules
@@ -42,7 +58,7 @@ chmod +x scripts/install.sh
 sudo ./scripts/install.sh /var/www/html
 ```
 
-#### 3. Run Sitograph Installation wizard
+### 3. Run Sitograph Installation wizard
 ![Sitograph Installation wizard](https://github.com/maxsv0/sitograph/blob/master/src/content/images/gallery/gallery3_photo1.jpg)
 
 
@@ -53,7 +69,7 @@ Download modules for Sitograph and MSV Framework.
 
 
 # Content Delivery
-Sitograph optimize pages structure and together with ModPagespeed it results with 100/100 score [Google Pagespeed Insights](https://developers.google.com/speed/pagespeed/insights/)
+Sitograph optimizes pages structure and together with ModPagespeed, it results in 100/100 score [Google Pagespeed Insights](https://developers.google.com/speed/pagespeed/insights/).
 ![Sitograph Pagespeed Insights](https://raw.githubusercontent.com/maxsv0/sitograph/development/docs/pagespeed-insights.jpg)
 
 
