@@ -9,14 +9,14 @@ Sitograph is open source Content Management System (CMS) that enables you to bui
 ## Content Management System features overview
 We believe website development must be easy and enjoyable. 
 Sitograph attempts to take care of common tasks used in the majority of web projects, such as: 
-- Website structure and routing
-- Multi-language support
+- Website structure and routing with multi-language support
 - Manage content of a website: documents, photos, videos, etc.
+- Adaptive web design optimized for any type of mobile devices
 - User management, sessions, real-time analytics
 - Email Marketing and customizable mailing templates
-- Scheduled job processing
 - Configurable JSON API
 - Internal PHP API for developers
+- Scheduled job processing
 - Updates and functionality extending via modules repository
 
 ## Admin UI homepage
@@ -24,33 +24,37 @@ Sitograph attempts to take care of common tasks used in the majority of web proj
 
 # Install Sitograph CMS
 
-#### 1. Download the latest version of Sitograph CMS and unzip the archive
+#### 1. Download Sitograph CMS
+Download the latest version of Sitograph CMS and unzip the archive
+
 ```bash
 wget https://github.com/maxsv0/sitograph/archive/v1.0.zip -O sitograph-v1.0.zip
 unzip sitograph-v1.0.zip
 cd sitograph-1.0
 ```
 
-#### 2. Run Install script to copy Sitograph files to the web root directory (default: /var/www/html).
+#### 2. Copy files and enable Apache configuration
+
+Run Install script to copy Sitograph files to the web root directory (default: /var/www/html).
+This will also enable Apache configuration file (sitograph.conf) and enable required modules
 ```bash
 chmod +x scripts/install.sh
 sudo ./scripts/install.sh /var/www/html
 ```
 
-### 3. Enable Apache configuration file (sitograph.conf) and enable required modules
-```bash
-sudo cp scripts/sitograph.conf  /etc/apache2/conf-available/
-sudo a2enconf sitograph
-sudo a2enmod rewrite headers expires deflate pagespeed
-sudo service apache2 restart
-```
-#### 4. Run Sitograph Installation wizard
+#### 3. Run Sitograph Installation wizard
 ![Sitograph Installation wizard](https://github.com/maxsv0/sitograph/blob/master/src/content/images/gallery/gallery3_photo1.jpg)
+
 
 # Extensions Repository
 http://rep.msvhost.com/
 ![MSV Repository for Sitograph](https://raw.githubusercontent.com/maxsv0/repository/master/docs/screencapture-rep-msvhost-com.jpg)
 Download modules for Sitograph and MSV Framework.
+
+
+# Content Delivery
+Sitograph optimize pages structure and together with ModPagespeed it results with 100/100 score [Google Pagespeed Insights](https://developers.google.com/speed/pagespeed/insights/)
+![Sitograph Pagespeed Insights](https://raw.githubusercontent.com/maxsv0/sitograph/development/docs/pagespeed-insights.jpg)
 
 
 # Deployment Workflow
@@ -60,11 +64,11 @@ Download modules for Sitograph and MSV Framework.
 # Bugs Reporting Workflow
 ![Sitograph Bugs Reporting Workflow](https://raw.githubusercontent.com/maxsv0/sitograph/development/docs/issues-workflow.jpg)
 
-To report a bug please visit [Github Issues page](https://github.com/maxsv0/sitograph/issues)
+To report a bug please visit [Github Issues page](https://github.com/maxsv0/sitograph/issues).
 
 # Install Dependencies
 
-Sitograph runs under LAMP stack. [ModPagespeed](https://developers.google.com/speed/pagespeed/module/)  is used to optimize content delivery.
+Sitograph runs under LAMP stack. [ModPagespeed](https://developers.google.com/speed/pagespeed/module/) is used to optimize content delivery.
 
 ### Create new MySQL database
 ```bash
