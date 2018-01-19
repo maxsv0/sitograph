@@ -60,7 +60,7 @@ Download modules for Sitograph and MSV Framework.
 # Bugs Reporting Workflow
 ![Sitograph Bugs Reporting Workflow](https://raw.githubusercontent.com/maxsv0/sitograph/development/docs/issues-workflow.jpg)
 
-https://github.com/maxsv0/sitograph/issues
+To report a bug please visit [Github Issues page](https://github.com/maxsv0/sitograph/issues)
 
 # Install Dependencies
 
