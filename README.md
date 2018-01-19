@@ -70,6 +70,7 @@ Download modules for Sitograph and MSV Framework.
 
 # Content Delivery
 Sitograph optimizes pages structure and together with ModPagespeed, it results in 100/100 score [Google Pagespeed Insights](https://developers.google.com/speed/pagespeed/insights/).
+
 ![Sitograph Pagespeed Insights](https://raw.githubusercontent.com/maxsv0/sitograph/development/docs/pagespeed-insights.jpg)
 
 
