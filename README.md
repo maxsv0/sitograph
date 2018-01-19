@@ -3,10 +3,10 @@
 </p>
 
 
-## About Sitograph
+# About Sitograph
 Sitograph is open source Content Management System (CMS) that enables you to build websites and efficient online applications.
 
-## Sitograph CMS Features Overview
+## Content Management System features overview
 We believe website development must be easy and enjoyable. 
 Sitograph attempts to take care of common tasks used in the majority of web projects, such as: 
 - Website structure and routing
@@ -19,7 +19,7 @@ Sitograph attempts to take care of common tasks used in the majority of web proj
 - Internal PHP API for developers
 - Updates and functionality extending via modules repository
 
-## Sitograph admin homepage
+## Admin UI homepage
 ![Sitograph admin homepage](https://github.com/maxsv0/sitograph/blob/master/docs/screen-demo-sitograph.jpg)
 
 # Install Sitograph CMS
@@ -47,37 +47,24 @@ sudo service apache2 restart
 #### 4. Run Sitograph Installation wizard
 ![Sitograph Installation wizard](https://github.com/maxsv0/sitograph/blob/master/src/content/images/gallery/gallery3_photo1.jpg)
 
-# Extensions Repository for Sitograph
+# Extensions Repository
 http://rep.msvhost.com/
 ![MSV Repository for Sitograph](https://raw.githubusercontent.com/maxsv0/repository/master/docs/screencapture-rep-msvhost-com.jpg)
 Download modules for Sitograph and MSV Framework.
 
 
-# Sitograph Deployment Workflow
+# Deployment Workflow
 ![Sitograph Deployment Workflow](https://raw.githubusercontent.com/maxsv0/sitograph/development/docs/deployment-workflow.jpg)
 
 
 # Bugs Reporting Workflow
 ![Sitograph Bugs Reporting Workflow](https://raw.githubusercontent.com/maxsv0/sitograph/development/docs/issues-workflow.jpg)
 
+https://github.com/maxsv0/sitograph/issues
 
-
-# Install Sitograph Dependencies
+# Install Dependencies
 
 Sitograph runs under LAMP stack. [ModPagespeed](https://developers.google.com/speed/pagespeed/module/)  is used to optimize content delivery.
-
-### Install dependencies for PHP7
-```bash
-sudo apt-get update
-sudo apt-get -y install php7.0-xml php7.0-gd php7.0-mbstring php7.0-zip php-curl
-```
-
-### To Install PageSpeed Module x64
-```bash
-wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb
-sudo dpkg -i mod-pagespeed-*.deb 
-sudo service apache2 restart
-```
 
 ### Create new MySQL database
 ```bash
@@ -89,10 +76,24 @@ mysqlcreate.sh will create new database and user and grant all permissions for t
 * The third argument is a name of database to create
 * The fourth argument is a password for a user. Leave blank to generate new password
 
+
+### Install dependencies for PHP7
+```bash
+sudo apt-get update
+sudo apt-get -y install php7.0-xml php7.0-gd php7.0-mbstring php7.0-zip php-curl
+```
+
 ### To Install dependencies for PHP5
 ```bash
 sudo apt-get update
 sudo apt-get -y install php5-gd php5-curl
+```
+
+### To Install PageSpeed Module x64
+```bash
+wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb
+sudo dpkg -i mod-pagespeed-*.deb 
+sudo service apache2 restart
 ```
 
 ### Install PageSpeed Module x32
@@ -102,8 +103,10 @@ sudo dpkg -i mod-pagespeed-*.deb
 sudo service apache2 restart
 ```
 
-### VirtualBox symlink beetween local Sitograph folder and /var/www/html of virtual machine
-```
+### VirtualBox symlink
+VirtualBox symlink beetween local Sitograph folder and /var/www/html of virtual machine
+
+```bash
 sudo ln -s /media/sf_sitograph/src /var/www/html
 sudo usermod -G vboxsf -a www-data
 ```
