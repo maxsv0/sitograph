@@ -11,9 +11,11 @@
   - [1. Download Sitograph CMS](#1-download-sitograph-cms)
   - [2. Copy files and enable Apache configuration](#2-copy-files-and-enable-apache-configuration)
   - [3. Run Sitograph Installation wizard](#3-run-sitograph-installation-wizard)
-- [Extensions Repository](#extensions-repository)
+- [Extending Sitograph modules](#extending-sitograph-modules)
+  - [Default modules package of CMS](#cms-modules)
+  - [Modules Repository](#modules-repository)
+  - [Module deployment Workflow](#module-deployment-workflow)
 - [Content Delivery](#content-delivery)
-- [Deployment Workflow](#deployment-workflow)
 - [Bugs Reporting Workflow](#bugs-reporting-workflow)
 - [Install Dependencies](#install-dependencies)
 - [Install Sitograph Server Environment](#install-sitograph-server-environment)
@@ -62,20 +64,50 @@ sudo ./scripts/install.sh /var/www/html
 ![Sitograph Installation wizard](https://github.com/maxsv0/sitograph/blob/master/src/content/images/gallery/gallery3_photo1.jpg)
 
 
-# Extensions Repository
-http://rep.msvhost.com/
+
+# Extending Sitograph modules
+Sitograph CMS is a set of modules that can be easily configured from admin UI. 
+
+
+# Default modules package of CMS
+Default modules package is listed below.
+
+```
+include/
+│   ....
+└── module/
+    ├── blog
+    ├── gallery
+    ├── cropper
+    ├── fancybox
+    ├── feedback
+    ├── google-analytics
+    ├── google-login
+    ├── install
+    ├── msv-api
+    ├── msv-core
+    ├── msv-seo
+    ├── msv-users
+    ├── search
+    ├── sitograph
+    ├── theme-default
+    └── tinymce
+```
+
+## Modules Repository
+List of available modules and extensions for Sitograph CMS can be found in [Repository catalog](http://rep.msvhost.com/).
 ![MSV Repository for Sitograph](https://raw.githubusercontent.com/maxsv0/repository/master/docs/screencapture-rep-msvhost-com.jpg)
-Download modules for Sitograph and MSV Framework.
+http://rep.msvhost.com/
+
+
+## Module deployment Workflow
+![Sitograph Module Deployment Workflow](https://raw.githubusercontent.com/maxsv0/sitograph/development/docs/deployment-workflow.jpg)
 
 
 # Content Delivery
 Sitograph optimizes pages structure and together with ModPagespeed, it results in 100/100 score [Google Pagespeed Insights](https://developers.google.com/speed/pagespeed/insights/).
 
 ![Sitograph Pagespeed Insights](https://raw.githubusercontent.com/maxsv0/sitograph/development/docs/pagespeed-insights.jpg)
-
-
-# Deployment Workflow
-![Sitograph Deployment Workflow](https://raw.githubusercontent.com/maxsv0/sitograph/development/docs/deployment-workflow.jpg)
 
 
 # Bugs Reporting Workflow
