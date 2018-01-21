@@ -24,13 +24,13 @@ $(document).ready(function() {
 		menubar: false,
 		toolbar_items_size: 'small',
 		plugins: [
-				'advlist autolink autosave lists link image charmap print preview anchor pagebreak hr',
-				'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+				'advlist autolink autosave lists link image charmap print preview hr',
+				'searchreplace wordcount visualblocks code fullscreen insertdatetime media',
 				'table contextmenu directionality emoticons textcolor paste textcolor colorpicker textpattern'
 		],
 		toolbar1: 'undo redo | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect',
-        toolbar2: 'cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | link unlink anchor image media code | insertdatetime preview | forecolor backcolor',
-        toolbar3: 'table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualchars visualblocks nonbreaking pagebreak restoredraft',
+        toolbar2: 'searchreplace | bullist numlist | outdent indent blockquote | link unlink image media code | insertdatetime preview | forecolor backcolor',
+        toolbar3: 'table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualblocks',
 	  content_css: [
 		$cssList
 	  ]
@@ -49,7 +49,7 @@ $(document).ready(function() {
 		convert_urls : false,
 		menubar: false,
 		plugins: [
-				'advlist autolink lists link image charmap print preview anchor',
+				'advlist autolink lists link image charmap print preview',
 				'searchreplace visualblocks code fullscreen',
 				'insertdatetime media table contextmenu paste code'
 		],

@@ -208,7 +208,10 @@ function db_update($table, $param, $value, $filter = "", $lang = LANG) {
  */
 function db_delete($table, $filter = "") {
 
-    return db_update($table, "deleted", 1, $filter);
+    $updateResult = db_update($table, "published", 0, $filter);
+    if ($updateResult["ok"]) {
+        return db_update($table, "deleted", 1, $filter);
+    }
 }
 
 /**
