@@ -12,7 +12,7 @@
   - [2. Copy files and enable Apache configuration](#2-copy-files-and-enable-apache-configuration)
   - [3. Run Sitograph Installation wizard](#3-run-sitograph-installation-wizard)
 - [Extending Sitograph modules](#extending-sitograph-modules)
-  - [Default modules package of CMS](#cms-modules)
+  - [Default modules package of CMS](#default-modules-package-of-cms)
   - [Modules Repository](#modules-repository)
   - [Module deployment Workflow](#module-deployment-workflow)
 - [Content Delivery](#content-delivery)
@@ -29,13 +29,14 @@ We believe website development must be easy and enjoyable.
 Sitograph attempts to take care of common tasks used in the majority of web projects, such as: 
 - Website structure and routing with multi-language support
 - Manage content of a website: documents, photos, videos, etc.
-- Adaptive web design optimized for any type of mobile devices
-- User management, sessions, real-time analytics
+- Adaptive web design optimized for [any type of mobile devices](#content-delivery)
+- User management, sessions, [real-time analytics](#admin-ui-homepage)
 - Email Marketing and customizable mailing templates
-- Configurable JSON API
-- Internal PHP API for developers
+- [Configurable JSON API](http://sitograph.com/sitograph/API/)
+- Internal PHP API for developers, [easy functionality extending](http://sitograph.com/sitograph/modules/)
 - Scheduled job processing
-- Updates and functionality extending via modules repository
+- Updates via modules repository - [rep.msvhost.com](http://rep.msvhost.com/)
+- Support and [active development](#module-deployment-workflow).
 
 ## Admin UI homepage
 ![Sitograph admin homepage](https://github.com/maxsv0/sitograph/blob/master/docs/screen-demo-sitograph.jpg)
