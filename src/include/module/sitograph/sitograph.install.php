@@ -175,15 +175,15 @@ a:active {color:#bb233a;}
                 "date" => "2017-07-01 10:25:22",
                 "title" => "Admin Homepage",
                 "description" => "Admin Homepage",
-                "pic" => "images/gallery2_photo_1.jpg",
-                "pic_preview" => "images/gallery2_photo_1.jpg",
+                "pic" => "images/gallery/gallery2_photo_1.jpg",
+                "pic_preview" => "images/gallery/gallery2_photo_1.jpg",
             )
         )
     );
     for ($i = 2; $i < 25; $i++) {
         $item["photos"][] = array(
-            "pic" => "images/gallery2_photo_".$i.".jpg",
-            "pic_preview" => "images/gallery2_photo_".$i.".jpg",
+            "pic" => "images/gallery/gallery2_photo_".$i.".jpg",
+            "pic_preview" => "images/gallery/gallery2_photo_".$i.".jpg",
         );
     }
     $result = api_gallery_add($item, array("LoadPictures"));
