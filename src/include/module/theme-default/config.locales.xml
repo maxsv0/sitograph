@@ -9,7 +9,7 @@
 		<field name="settings.theme_copyright_text" value="Сopyright text line"/>
 		<field name="settings.theme_header_contacts" value="Header contacts"/>
 
-		<field name="structure.homepage" value="Homepage"/>
+		<field name="structure.homepage" value="{HOST}"/>
 		<field name="structure.page1" value="Example page"/>
 		<field name="structure.sitemap" value="Sitemap"/>
 		<field name="structure.404" value="Error 404"/>
