@@ -161,58 +161,35 @@ a:active {color:#bb233a;}
         "url" => "Sitograph-CMS-Screenshots",
         "title" => "Sitograph CMS Screenshots",
         "description" => "Sitograph CMS Admin UI Screenshots",
-        "pic" => "images/gallery/gallery_2.jpg",
-        "pic_preview" => "images/gallery/gallery_2.jpg",
+        "pic" => "images/gallery/gallery2_photo_1.jpg",
+        "pic_preview" => "images/gallery/gallery2_photo_1.jpg",
         "photos" => array(
             array(
                 "date" => "2017-07-01 10:23:12",
                 "title" => "Login page",
                 "description" => "Login page",
-                "pic" => "images/gallery/gallery_photo1_1.jpg",
-                "pic_preview" => "images/gallery/gallery_photo1_1.jpg",
-            ),
-//            array(
-//                "date" => "2017-07-01 10:25:22",
-//                "title" => "Admin Homepage",
-//                "description" => "Admin Homepage",
-//                "pic" => "images/gallery_photo1_2.jpg",
-//                "pic_preview" => "images/gallery_photo1_2.jpg",
-//            ),
-            array(
-                "date" => "2017-07-01 10:33:10",
-                "title" => "Website Structure Table",
-                "description" => "Website Structure Table",
-                "pic" => "images/gallery/gallery_photo1_3.jpg",
-                "pic_preview" => "images/gallery/gallery_photo1_3.jpg",
+                "pic" => "images/gallery/gallery2_photo_login.jpg",
+                "pic_preview" => "images/gallery/gallery2_photo_login.jpg",
             ),
             array(
-                "date" => "2017-07-01 10:43:42",
-                "title" => "Website Menu",
-                "description" => "Website Menu - edit item settings",
-                "pic" => "images/gallery/gallery_photo1_4.jpg",
-                "pic_preview" => "images/gallery/gallery_photo1_4.jpg",
-            ),
-            array(
-                "date" => "2017-07-01 10:45:42",
-                "title" => "Blog",
-                "description" => "Blog - edit attached pictures",
-                "pic" => "images/gallery/gallery_photo1_5.jpg",
-                "pic_preview" => "images/gallery/gallery_photo1_5.jpg",
-            ),
-            array(
-                "date" => "2017-07-01 10:43:50",
-                "title" => "Email templates",
-                "description" => "Email templates",
-                "pic" => "images/gallery/gallery_photo1_6.jpg",
-                "pic_preview" => "images/gallery/gallery_photo1_6.jpg",
-            ),
+                "date" => "2017-07-01 10:25:22",
+                "title" => "Admin Homepage",
+                "description" => "Admin Homepage",
+                "pic" => "images/gallery/gallery2_photo_1.jpg",
+                "pic_preview" => "images/gallery/gallery2_photo_1.jpg",
+            )
         )
     );
+    for ($i = 2; $i < 25; $i++) {
+        $item["photos"][] = array(
+            "pic" => "images/gallery/gallery2_photo_".$i.".jpg",
+            "pic_preview" => "images/gallery/gallery2_photo_".$i.".jpg",
+        );
+    }
     $result = api_gallery_add($item, array("LoadPictures"));
     $album_id = $result["insert_id"];
 
     // add blog posts
-    //$docContent = file_get_contents($module->pathModule."install-blog-folder-structure.html");
     $item = array(
         "sticked" => 0,
         "album_id" => $album_id,

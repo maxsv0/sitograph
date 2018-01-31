@@ -226,7 +226,8 @@ class MSV_Website {
 		
 		define("HOST", $this->host);
 		define("LANG", $this->lang); 
-		
+		define("LANG_URL", $this->langUrl);
+
 		// set defaut protocol
 		if (defined("PROTOCOL")) {
 			$this->protocol = PROTOCOL;
