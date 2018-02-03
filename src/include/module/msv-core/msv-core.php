@@ -51,6 +51,18 @@ function msv_load() {
 
     $website->load();
 
+    // if website closed output text
+    // allow access to /admin/ and for superadmin
+    if (defined("SITE_CLOSED") && SITE_CLOSED
+        && ($website->requestUrl !== "/admin/" && $website->requestUrl !== "/admin/login/")) {
+
+        if ($website->user["access"] === "superadmin") {
+            $website->includeHead[] = "<p class='alert alert-warning'><b>SITE_CLOSED</b>. Access available only for <b>superadmin</b>.</p>";
+        } else {
+            msv_output("Will come back soon.");
+        }
+    }
+
     msv_load_pagenavigation();
     msv_load_pagedocument();
 
@@ -78,7 +90,13 @@ function msv_output404() {
     $website->outputNotFound();
 }
 
-function msv_output() {
+function msv_output($content) {
+    $website = msv_get("website");
+
+    $website->output($content);
+}
+
+function msv_output_page() {
     $website = msv_get("website");
 
     msv_log("Website: Output");
