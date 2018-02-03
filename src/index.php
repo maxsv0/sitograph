@@ -16,7 +16,7 @@ msv_load();
 
 
 
-msv_output();
+msv_output_page();
 
 
 

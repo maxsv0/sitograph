@@ -95,12 +95,7 @@ class MSV_Website {
 		} else {
 			$this->outputError("Can't create website: Languages not set");
 		}
-		
-		// if website closed output text
-		if (defined("SITE_CLOSED") && SITE_CLOSED) {
-			$this->output("Will come back soon.");
-		}
-		
+
 		// set install flag depending to defined constant
 		if (MSV_INSTALED) {
 			$this->instaled = true;
