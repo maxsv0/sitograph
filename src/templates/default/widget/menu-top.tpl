@@ -30,13 +30,29 @@
 		<!-- Navbar links -->
 		<ul class="nav navbar-nav">
 		  {section name=index loop=$items}
-            {if !$items[index].sub}
-            {if $items[index].url == $page.url}
-                <li class="active"><a href="{$lang_url}{$items[index].url}">{$items[index].name}</a></li>
-            {else}
-                <li><a href="{$lang_url}{$items[index].url}">{$items[index].name}</a></li>
-            {/if}
-            {else}
+{if !$items[index].sub}
+	{if $items[index].url == $page.url}
+			<li class="active">
+				<a href="{$lang_url}{$items[index].url}">
+{if $items[index].url == "/"}
+					<span class="glyphicon glyphicon-home"></span>
+{else}
+					{$items[index].name}
+{/if}
+				</a>
+			</li>
+	{else}
+            <li>
+				<a href="{$lang_url}{$items[index].url}">
+{if $items[index].url == "/"}
+					<span class="glyphicon glyphicon-home"></span>
+{else}
+					{$items[index].name}
+{/if}
+				</a>
+			</li>
+	{/if}
+{else}
             <li class="dropdown">
                 <a href="{$lang_url}{$items[index].url}" class="dropdown-toggle" data-toggle="dropdown">{$items[index].name}<span class="caret"></span></a> 
                 <ul class="dropdown-menu" role="menu">
@@ -45,7 +61,7 @@
                 {/foreach}
                 </ul>
             </li>
-            {/if}
+{/if}
           {/section} 
 		</ul>
 	  </div>
