@@ -16,46 +16,37 @@ if ($code) {
 	}
 	$includeCode .= "ga('send', 'pageview');\n";
 
-    msv_include_js($includeCode);
-} 
+	msv_include_js($includeCode);
+}
 
 
 // Google Service Account auth for server-server usage
 $googleservice_auth_json = msv_get_config("google_service_auth_json");
 if (!empty($googleservice_auth_json)) {
 	$clientGA = new Google_Client();
-	
 	try {
-		$credentials = @$clientGA->loadServiceAccountJson($googleservice_auth_json,'https://www.googleapis.com/auth/analytics.readonly');
-	} catch (Google_Exception $e) {
-		$credentials = false;
-	}
-	
-	if ($credentials) {
+		$credentials = $clientGA->loadServiceAccountJson($googleservice_auth_json,'https://www.googleapis.com/auth/analytics.readonly');
+
 		$clientGA->setAssertionCredentials($credentials);
-		
+
 		if ($clientGA->getAuth()->isAccessTokenExpired()) {
-		    $clientGA->getAuth()->refreshTokenWithAssertion();
+			$clientGA->getAuth()->refreshTokenWithAssertion();
 		}
-		
-		$service = new Google_Service_Analytics($clientGA);
-		$ar = json_decode($clientGA->getAccessToken());
-		$token = $ar->access_token;
-        msv_assign_data("GA_access_token", $token);
-	} else {
-        msv_message_error(_t("msg.invalid_google_service_auth_file"));
+
+		$token = json_decode($clientGA->getAccessToken());
+		msv_assign_data("GA_access_token", $token->access_token);
+	} catch (Google_Exception $e) {
+		msv_message_error(_t("msg.invalid_google_service_auth_file"));
 	}
 }
 
-
-
 function Install_GoogleAnalytics($module) {
-	
+
 	// 
 	// install function
 	// run when module in installed
-	
+
 	// Google Analytics options
-    msv_set_config("google_analytics_tracking_id", "", true, "*", _t("settings.google_analytics_tracking_id"), "website");
-    msv_set_config("google_service_auth_json", "", true, "*", _t("settings.google_service_auth_json"), "website");
+	msv_set_config("google_analytics_tracking_id", "", true, "*", _t("settings.google_analytics_tracking_id"), "website");
+	msv_set_config("google_service_auth_json", "", true, "*", _t("settings.google_service_auth_json"), "website");
 }
