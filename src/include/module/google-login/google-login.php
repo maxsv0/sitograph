@@ -1,4 +1,7 @@
 <?php
+return
+
+// TODO: fix this
 
 // Google Service Account auth for server-server usage
 $googleservice_auth_json = msv_get_config("google_service_auth_json");
