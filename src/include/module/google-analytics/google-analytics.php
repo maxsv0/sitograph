@@ -19,6 +19,10 @@ if ($code) {
 	msv_include_js($includeCode);
 }
 
+$ga_webproperty = msv_get_config("google_analytics_webproperty");
+if (!empty($ga_webproperty)) {
+	msv_assign_data("GA_webproperty", $ga_webproperty);
+}
 
 // Google Service Account auth for server-server usage
 $googleservice_auth_json = msv_get_config("google_service_auth_json");
@@ -48,5 +52,6 @@ function Install_GoogleAnalytics($module) {
 
 	// Google Analytics options
 	msv_set_config("google_analytics_tracking_id", "", true, "*", _t("settings.google_analytics_tracking_id"), "website");
+	msv_set_config("google_analytics_webproperty", "", true, "*", _t("settings.google_analytics_webproperty"), "website");
 	msv_set_config("google_service_auth_json", "", true, "*", _t("settings.google_service_auth_json"), "website");
 }

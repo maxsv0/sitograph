@@ -25,7 +25,7 @@
         <div id="active-users-container"></div>
       </li>
     </ul>
-    <div id="view-selector-container"></div>
+    <div id="view-selector-container" style="display: none;"></div>
   </header>
 
 
@@ -124,6 +124,7 @@
 
 
 <script>
+GA_webproperty = "{/literal}{$GA_webproperty}{literal}";
 
 // == NOTE ==
 // This code uses ES6 promises. If you want to use this code in a browser
@@ -182,6 +183,7 @@ gapi.analytics.ready(function() {
    */
   var viewSelector = new gapi.analytics.ext.ViewSelector2({
     container: 'view-selector-container',
+    ids:GA_webproperty,
   })
   .execute();
 
