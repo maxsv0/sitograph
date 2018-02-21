@@ -568,7 +568,6 @@ class MSV_Website {
 
         $this->includeCSS = array_reverse($this->includeCSS);
         foreach ($this->includeCSS as $filePath) {
-            if ($this->requestUrl =='/admin/' && $filePath == $this->config ["theme_css_path"]) continue;
             $this->includeHead[] = "<link href=\"$filePath\" rel=\"stylesheet\">";
         }
 
@@ -579,7 +578,6 @@ class MSV_Website {
 
         $includeHTML = "";
         foreach ($this->includeJS as $filePath) {
-            if ($this->requestUrl =='/admin/' && $filePath == $this->config ["theme_js_path"] ) continue;
             $includeHTML = $includeHTML."<script src=\"$filePath\"></script>\n";
         }
         if ($this->includeCSSCode) {

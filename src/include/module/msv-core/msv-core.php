@@ -23,13 +23,15 @@ function msv_start() {
         msv_include("/content/js/bootstrap.min.js");
     }
 
+    // include Theme CSS, website only
     $theme_css_path = msv_get_config("theme_css_path");
-    if (!empty($theme_css_path)) {
+    if (!empty($theme_css_path) && $website->requestUrl !== "/admin/") {
         msv_include($theme_css_path);
     }
 
+	// include Theme JS, website only
     $theme_js_path = msv_get_config("theme_js_path");
-    if (!empty($theme_js_path)) {
+    if (!empty($theme_js_path) && $website->requestUrl !== "/admin/") {
         msv_include($theme_js_path);
     }
 
