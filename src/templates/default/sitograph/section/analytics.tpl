@@ -24,7 +24,7 @@
         to <b id="to-dates">this week</b>
       </div>
     </div>
-    <div id="view-selector-container"></div>
+    <div id="view-selector-container" style="display: none;"></div>
   </header>
 
   <ul class="FlexGrid">
