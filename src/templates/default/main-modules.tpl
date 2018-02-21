@@ -55,7 +55,7 @@ $website
 
 			<div class="row">
                 {foreach from=$modules_list key=$moduleID item=$module}
-					<div class="col-lg-6">
+					<div class="col-sm-4">
                         {include file="$themePath/widget/module.tpl"}
 					</div>
                 {/foreach}

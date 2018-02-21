@@ -1,4 +1,4 @@
-<div class="row module-block" data-id="{$module.id}">
+<div class="row module-block" data-id="{$module.name}">
     <input type="hidden" value="{$module.name}" name="module_name[]">
 
     <div class="col-xs-6 col-sm-4">
@@ -19,7 +19,7 @@
 
 
         {if $module.tags}
-            <p class="module-tags">
+            <p class="module-tags hide">
                 Tags:
                 {foreach from=$module.tags item=$tag name=loop}
                 <a href="{$rep_url}/?tags[]={$tag}" target="_blank">{$tag} <span class="glyphicon glyphicon-new-window"></span></a>{if !$smarty.foreach.loop.last},{/if}
@@ -27,15 +27,8 @@
             </p>
         {/if}
 
-        <p class="module-postdate">
-            {$module.name} v.{$module.version} <span class="text-muted">posted</span> {$module.date}
-        </p>
-
         <p class="module-description">{$module.description}</p>
 
-        <p class="text-muted module-buildinfo">
-            Date build: {$module.date}<br>
-        </p>
         <p class="hide module-btnpage">
            {$rep_url}/module/{$module.name}/
         </p>
