@@ -1,4 +1,4 @@
-<?xml version='1.0'?> 
+<?xml version='1.0'?>
 <document>
 
 <config>
@@ -10,17 +10,25 @@
 <install>
 	<param name="name" value="google-login" />
 	<param name="version" value="1.0.2"/>
-	<param name="date" value="15.01.2018"/>
+	<param name="date" value="21.02.2018"/>
 	<param name="title" value="Google Login"/>
 	<param name="description" value="Google Login Services. Allow to sing up or log in"/>
 
 	<param name="installHook" value="Install_GoogleLogin"/>
 
 	<dependency module="msv-core" version="1.0" />
-	
+
 	<file dir="module" path="google-login/google-login.php"/>
 	<file dir="module" path="google-login/config.xml"/>
 	<file dir="content" path="images/btn_google_signin.png"/>
 </install>
 
+<locales>
+	<locale name="en">
+		<field name="settings.google_client_secrets_json" value="Google Client Secret authentication JSON file path"/>
+	</locale>
+	<locale name="ru">
+		<field name="settings.google_client_secrets_json" value="Путь к JSON файлу авторизации Google Client Secret"/>
+	</locale>
+</locales>
 </document>
