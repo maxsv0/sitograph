@@ -668,7 +668,7 @@ class MSV_Website {
 		$str .= "<span style='color:red;'>WEBSITE ERROR.</span>";
 		$str .= "</div>";
 		$str .= "<div style='position: absolute; bottom: 0; padding:5px 20px; background:#00f;'>";
-		$str .= "<span style='color:red;'>ERROR: $errorText</span>";
+		$str .= "<span style='color:red;'>ERROR: ".nl2br($errorText)."</span>";
 		$str .= "</div>";
 		$this->output($str, 500);
 	}
