@@ -74,5 +74,5 @@ function Install_GoogleLogin($module) {
 	// run when module in installed
 
 	// Google Login options
-	msv_set_config("google_client_secrets_json", "", true, "*", _t("settings.google_client_secrets_json"), "website");
+	msv_set_config("google_client_secrets_json", "", true, "*", _t("settings.google_client_secrets_json"), "system");
 }
