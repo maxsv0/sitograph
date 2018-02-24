@@ -9,10 +9,13 @@
 
 <install>
 	<param name="name" value="google-login" />
-	<param name="version" value="1.0.2"/>
-	<param name="date" value="21.02.2018"/>
-	<param name="title" value="Google Login"/>
-	<param name="description" value="Google Login Services. Allow to sing up or log in"/>
+	<param name="version" value="1.0.3"/>
+	<param name="date" value="24.02.2018"/>
+	<param name="title" value="Google - Login"/>
+	<param name="description" value="Google auth service. Allows to sing up or log in using Google account"/>
+	<param name="tags" value="google,auth"/>
+	<param name="author" value="max@msvhost.com"/>
+	<param name="preview" value="images/module_preview_google-login.jpg"/>
 
 	<param name="installHook" value="Install_GoogleLogin"/>
 
