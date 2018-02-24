@@ -9,13 +9,13 @@
 
 <install>
 	<param name="name" value="google-analytics" />
-	<param name="version" value="1.1.6"/>
-	<param name="date" value="13.01.2018"/>
-	<param name="title" value="Google: Analytics"/>
-	<param name="description" value="Google Analytics Integration"/>
+	<param name="version" value="1.1.7"/>
+	<param name="date" value="24.02.2018"/>
+	<param name="title" value="Google - Analytics"/>
+	<param name="description" value="Google Analytics integration. Analytics tracking and real-time reports"/>
 	<param name="tags" value="google,analytics"/>
 	<param name="author" value="max@msvhost.com"/>
-	<param name="preview" value="images/module_preview_ga.png"/>
+	<param name="preview" value="images/module_preview_ga.jpg"/>
 
 	<param name="installHook" value="Install_GoogleAnalytics"/>
 
