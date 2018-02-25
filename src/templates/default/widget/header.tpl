@@ -29,7 +29,7 @@
 				</table>
             </div>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-3">
 			<div class="search-block">
 				{if $search}
 				<form action="{$lang_url}{$search.baseUrl}?search" method="post">
@@ -39,7 +39,7 @@
 				{/if}
 			</div>
 		</div>
-    	<div class="col-sm-4">
+    	<div class="col-sm-5">
 	        <div class="row">
 	        <div class="col-xs-4 header-menu">
 	    <p>
