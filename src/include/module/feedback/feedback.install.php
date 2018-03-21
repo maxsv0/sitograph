@@ -13,7 +13,7 @@ function Install_Feedback($module) {
         "page_template" => "main-feedback.tpl",
         "sitemap" => 1,
         "menu" => "bottom",
-        "menu_order" => 5,
+        "menu_order" => 15,
         "document_title" => $docFeedbackTitle,
         "document_text" => $docFeedbackText,
     );
