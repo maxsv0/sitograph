@@ -1600,7 +1600,7 @@ function msv_add_cron($row, $options = array()) {
 }
 
 function msv_update_allmodules() {
-    if (!msv_check_accessuser("superadmin")) {
+    if (!msv_check_accessuser("dev")) {
         return false;
     }
 

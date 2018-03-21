@@ -76,7 +76,7 @@
 
                     <div class="row">
                         <div class="col-sm-7">
-                            {if $user.access === "superadmin" && $admin_menu_item.module}
+                            {if $user.access === "dev" && $admin_menu_item.module}
                                 <a href="{$lang_url}/admin/?section=module_settings&module={$admin_menu_item.module}#tables" class="btn btn-info"><span class="glyphicon glyphicon-cog">&nbsp;</span><span class="admin_crown">{_t("options.config_table")}</span></a></p>
                             {/if}
                         </div>

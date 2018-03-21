@@ -181,7 +181,7 @@ if (!empty($_REQUEST["doLogin"]) && !empty($_REQUEST["email"]) && !empty($_REQUE
                 unset($_SESSION["redirect_url"]);
             }
 
-            if ($result["data"]["access"] === "admin" || $result["data"]["access"] === "superadmin") {
+            if ($result["data"]["access"] === "admin" || $result["data"]["access"] === "dev") {
                 $redirect_uri = "/admin/";
             }
 

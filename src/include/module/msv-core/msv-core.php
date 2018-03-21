@@ -54,12 +54,12 @@ function msv_load() {
     $website->load();
 
     // if website closed output text
-    // allow access to /admin/ and for superadmin
+    // allow access to /admin/ and for dev
     if (defined("SITE_CLOSED") && SITE_CLOSED
         && ($website->requestUrl !== "/admin/" && $website->requestUrl !== "/admin/login/")) {
 
-        if ($website->user["access"] === "superadmin") {
-            $website->includeHead[] = "<p class='alert alert-warning'><b>SITE_CLOSED</b>. Access available only for <b>superadmin</b>.</p>";
+        if ($website->user["access"] === "dev") {
+            $website->includeHead[] = "<p class='alert alert-warning'><b>SITE_CLOSED</b>. Access available only for <b>dev</b>.</p>";
         } else {
             msv_output("Will come back soon.");
         }
@@ -140,8 +140,8 @@ function msv_output_page() {
     }
 
     // proccess post/get admin functions
-    if (MSV_INSTALED && msv_check_accessuser("superadmin")) {
-        msv_process_superadmin();
+    if (MSV_INSTALED && msv_check_accessuser("dev")) {
+        msv_process_dev();
     }
 
     $website->outputPage();
@@ -1202,7 +1202,7 @@ function msv_build_module_info($module) {
     return $str;
 }
 
-// process `superadmin` functions
+// process `dev` functions
 //      available functions:
 //          - module_update_all
 //          - terminal execute
@@ -1216,8 +1216,8 @@ function msv_build_module_info($module) {
 //          - table truncate
 //          - table remove
 //
-function msv_process_superadmin() {
-    if (!msv_check_accessuser("superadmin")) return false;
+function msv_process_dev() {
+    if (!msv_check_accessuser("dev")) return false;
 
     if (isset($_GET["module_update_all"])) {
         msv_update_allmodules();

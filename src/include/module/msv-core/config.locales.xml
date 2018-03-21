@@ -80,7 +80,7 @@
 		<field name="access.everyone" value="Доступен всем"/>
 		<field name="access.user" value="Только пользователи"/>
 		<field name="access.admin" value="Администраторы"/>
-		<field name="access.superadmin" value="Суперадмин"/>
+		<field name="access.dev" value="Суперадмин"/>
 		
 		<field name="table.settings" value="Настройки сайта"/>
 		<field name="table.settings.id" value="ID"/>
@@ -307,7 +307,7 @@
 		<field name="access.everyone" value="Everyone"/>
 		<field name="access.user" value="Registered Users"/>
 		<field name="access.admin" value="Administrator"/>
-		<field name="access.superadmin" value="Superadmin"/>
+		<field name="access.dev" value="Developer"/>
 		
 		<field name="table.settings" value="Settings"/>
 		<field name="table.settings.id" value="ID"/>
@@ -529,7 +529,7 @@
 		<field name="access.everyone" value="Доступен для всіх"/>
 		<field name="access.user" value="Зарег. користувачі"/>
 		<field name="access.admin" value="Адміністратор"/>
-		<field name="access.superadmin" value="Суперадмін"/>
+		<field name="access.dev" value="Суперадмін"/>
 		
 		<field name="table.settings" value="Налаштування сайту"/>
 		<field name="table.settings.id" value="ID"/>

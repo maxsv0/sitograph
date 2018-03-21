@@ -147,7 +147,7 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
             // ok? sure
         }
 
-        // create superadmin account
+        // create dev account
         if (!empty($_REQUEST["admin_create"])) {
             if (!empty($_REQUEST["admin_login"]) && !empty($_REQUEST["admin_password"])) {
 
@@ -158,7 +158,7 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
                     "password" => $_REQUEST["admin_password"],
                     "email_verified" => 1,
                     "name" => "Admin",
-                    "access" => "superadmin",
+                    "access" => "dev",
                     "iss" => "install",
                     "access_token" => $access_token,
                 );

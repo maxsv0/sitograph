@@ -6,7 +6,7 @@
 		<param name="adminMenu" value="0"/>
 
 		<param name="accessAPIStatus" value="admin"/>
-		<param name="accessAPIUpdateAll" value="superadmin"/>
+		<param name="accessAPIUpdateAll" value="dev"/>
 
 		<constant name="TABLE_STRUCTURE" value="structure"/>
 		<constant name="TABLE_DOCUMENTS" value="documents"/>
@@ -41,7 +41,7 @@
 			<field name="page_document_id" type="int"/>
 			<field name="sitemap" type="bool"/>
 			<field name="debug" type="bool"/>
-			<field name="access" type="str" select-from="list:everyone,user,admin,superadmin"/>
+			<field name="access" type="str" select-from="list:everyone,user,admin,dev"/>
 			<field name="access_users" type="array" selectlist="table:users"/>
 		</table>
 		<table name="documents" index="id" title="id">

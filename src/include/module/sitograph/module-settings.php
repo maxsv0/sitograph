@@ -1,5 +1,5 @@
 <?php
-if (msv_check_accessuser("superadmin")) {
+if (msv_check_accessuser("dev")) {
     $listFilter = "(`group` like '%')";
 } else {
     $listFilter = "(`group` like 'theme' or `group` like 'website' or `group` like 'user')";
