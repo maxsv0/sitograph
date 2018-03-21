@@ -177,7 +177,7 @@ foreach ($this->website->modules as $module) {
 
 $menu_ar["module_settings"] = array(
     "name" => _t("admin.module_settings"),
-    "access" => "superadmin",
+    "access" => "dev",
     "url" => "/admin/?section=module_settings",
     "file" => "module_settings.tpl",
     "title" => _t("admin.module_settings_title"),
@@ -234,7 +234,7 @@ TODO: rework locales
 */
 $submenu["locales"] = array(
         "name" => _t("admin.locales"),
-        "access" => "superadmin",
+        "access" => "dev",
         "handler" => "module-locales.php",
         "url" => "/admin/?section=locales",
         "file" => "locales.tpl",
@@ -242,7 +242,7 @@ $submenu["locales"] = array(
 );
 $submenu["cronjobs"] = array(
     "name" => _t("admin.cronjobs"),
-    "access" => "superadmin",
+    "access" => "dev",
     "handler" => "module-table.php",
     "table" => TABLE_CRONJOBS,
     "url" => "/admin/?section=cronjobs",
@@ -252,7 +252,7 @@ $submenu["cronjobs"] = array(
 );
 $submenu["cronjobslog"] = array(
     "name" => _t("admin.cronjobslog"),
-    "access" => "superadmin",
+    "access" => "dev",
     "handler" => "module-table.php",
     "table" => TABLE_CRONJOBS_LOGS,
     "url" => "/admin/?section=cronjobslog",
@@ -262,7 +262,7 @@ $submenu["cronjobslog"] = array(
 );
 $submenu["robots"] = array(
     "name" => _t("admin.robots"),
-    "access" => "superadmin",
+    "access" => "dev",
     "handler" => "module-robots.php",
     "url" => "/admin/?section=robots",
     "file" => "robots.tpl",
@@ -270,7 +270,7 @@ $submenu["robots"] = array(
 );
 $submenu["sitemap"] = array(
     "name" => _t("admin.sitemap"),
-    "access" => "superadmin",
+    "access" => "dev",
     "handler" => "module-sitemap.php",
     "url" => "/admin/?section=sitemap",
     "file" => "sitemap.tpl",
@@ -278,7 +278,7 @@ $submenu["sitemap"] = array(
 );
 $submenu["config"] = array(
     "name" => _t("admin.config"),
-    "access" => "superadmin",
+    "access" => "dev",
     "handler" => "module-config.php",
     "url" => "/admin/?section=config",
     "file" => "config.tpl",
@@ -286,7 +286,7 @@ $submenu["config"] = array(
 );
 $submenu["editor"] = array(
     "name" => _t("admin.editor"),
-    "access" => "superadmin",
+    "access" => "dev",
     "handler" => "module-editor.php",
     "url" => "/admin/?section=editor",
     "file" => "editor.tpl",
@@ -296,7 +296,7 @@ $menu_index = array_merge($menu_index, array_keys($submenu));
 
 $menu_ar["dev_tools"] = array(
     "name" => _t("admin.dev_tools"),
-    "access" => "superadmin",
+    "access" => "dev",
     "title" => _t("admin.dev_tools"),
     "submenu" => $submenu,
     "orderID" => 200,
@@ -325,7 +325,7 @@ $menu_ar["site_settings"] = array(
 
 $menu_ar["history"] = array(
     "name" => _t("admin.history"),
-    "access" => "superadmin",
+    "access" => "dev",
     "handler" => "module-history.php",
     "url" => "/admin/?section=history",
     "file" => "history.tpl",

@@ -44,7 +44,9 @@ function Install_ThemeDefault($module) {
         "name" => _t("structure.sitemap"),
         "template" => "custom",
         "page_template" => "sitemap.tpl",
-        "sitemap" => 0,
+        "sitemap" => 1,
+        "menu" => "bottom",
+        "menu_order" => 5,
     );
     msv_add_structure($itemStructure, array("lang" => "all"));
 
@@ -58,6 +60,32 @@ function Install_ThemeDefault($module) {
         "document_text" => $doc404Text,
     );
     msv_add_structure($itemStructure, array("lang" => "all"));
+
+    $docPrivacyPolicy = msv_load_module_doc($module->pathModule, "privacy-policy");
+    $itemStructure = array(
+        "url" => "/privacy-policy/",
+        "name" => _t("structure.privacy_policy"),
+        "template" => "custom",
+        "page_template" => "main.tpl",
+        "sitemap" => 1,
+        "menu" => "bottom",
+        "menu_order" => 1,
+        "document_text" => $docPrivacyPolicy,
+    );
+    msv_add_structure($itemStructure, array("lang" => "all"));
+
+	$docTermsConditions = msv_load_module_doc($module->pathModule, "terms-conditions");
+	$itemStructure = array(
+		"url" => "/terms-and-conditions/",
+		"name" => _t("structure.terms_conditions"),
+		"template" => "custom",
+		"page_template" => "main.tpl",
+		"sitemap" => 1,
+		"menu" => "bottom",
+		"menu_order" => 2,
+		"document_text" => $docTermsConditions,
+	);
+	msv_add_structure($itemStructure, array("lang" => "all"));
 
     // general theme options
     msv_set_config("theme_active", "theme-default", true, "*");

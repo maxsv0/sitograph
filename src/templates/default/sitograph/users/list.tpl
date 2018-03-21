@@ -68,7 +68,7 @@
 <td>{$item.iss}</td>
 <td class="text-nowrap"><small>{$item.updated}</small></td>
 <td class="col-sm-2">
-{if $item.access_data !== "superadmin" || ($item.access_data === "superadmin" && $user.access === "superadmin")}
+{if $item.access_data !== "dev" || ($item.access_data === "dev" && $user.access === "dev")}
 	<ul class="list-btn">
 		<li><a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&reset={$item.id}" title="Reset Password" class="btn btn-default btn-sm" onclick="prompt_password(this); return false;">Reset Password <span class="glyphicon glyphicon-lock"></span></a></li>
 		<li><a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&edit={$item.id}" title="{_t("btn.edit")}" class="btn btn-default btn-sm">{_t("btn.edit")} <span class="glyphicon glyphicon-edit"></span></a></li>

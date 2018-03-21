@@ -32,7 +32,7 @@
 		<field name="company" type="str"/>
 		<field name="company_info" type="str"/>
 		<field name="lang_default" type="str"/>
-		<field name="access" type="str" select-from="list:everyone,user,admin,superadmin"/>
+		<field name="access" type="str" select-from="list:everyone,user,admin,dev"/>
 		<field name="iss" type="str"/>
 		<field name="reset_token" type="str"/>
 		<field name="verify_token" type="str"/>

@@ -158,7 +158,7 @@
 <div id="menu_left">
 
 {foreach from=$admin_menu key=menu_id item=item} 
-{if $item.access === "superadmin" && $user.access === "superadmin" || $item.access === "admin" && $user.access === "admin" || $item.access === "admin" && $user.access === "superadmin"}
+{if $item.access === "dev" && $user.access === "dev" || $item.access === "admin" && $user.access === "admin" || $item.access === "admin" && $user.access === "dev"}
 {if $item.submenu}
 {if $admin_menu_active == $menu_id}
 <div class="mod_box_active">
@@ -167,14 +167,14 @@
 {/if}
 <a href="#" onclick="return false;"><p class="">{$item.name}</p></a>
 {foreach from=$item.submenu key=submenu_id item=subitem}
-{if $subitem.access === "superadmin" && $user.access === "superadmin" || $subitem.access === "admin" && $user.access === "admin" || $subitem.access === "admin" && $user.access === "superadmin"}
+{if $subitem.access === "dev" && $user.access === "dev" || $subitem.access === "admin" && $user.access === "admin" || $subitem.access === "admin" && $user.access === "dev"}
 {if $admin_submenu_active == $submenu_id} 
 <div class="active">
 {else}
 <div class="">
 {/if}
 <a href="{$lang_url}{$subitem.url}">
-<p {if $subitem.access === "superadmin"}class="admin_crown"{/if}>{$subitem.name}</p>
+<p {if $subitem.access === "dev"}class="admin_crown"{/if}>{$subitem.name}</p>
 {if $admin_submenu_active == $submenu_id} 
 <img id="menu_active_arrow" src="/content/images/sitograph/menu_h37px.gif">
 {/if}
@@ -189,14 +189,14 @@
 	{if $admin_menu_active == $menu_id}
 		<div class="active">
 			<a href="{$lang_url}{$item.url}">
-				<p {if $item.access === "superadmin"}class="admin_crown"{/if}>{$item.name}</p></a>
+				<p {if $item.access === "dev"}class="admin_crown"{/if}>{$item.name}</p></a>
 			</a>
 			<img id="menu_active_arrow" src="/content/images/sitograph/menu_h37px.gif" style="left: 218px;">
 		</div>
 	{else}
 		<div class="">
 		<a href="{$lang_url}{$item.url}">
-			<p {if $item.access === "superadmin"}class="admin_crown"{/if}>{$item.name}</p></a>
+			<p {if $item.access === "dev"}class="admin_crown"{/if}>{$item.name}</p></a>
 		</a>
 		</div>
 	{/if}

@@ -695,13 +695,13 @@ class MSV_Website {
 		if ($pageAccess === "everyone") {
 			return true;
 		}
-		if ($userAccess === "superadmin") {
+		if ($userAccess === "dev") {
 			return true;
 		}
-		if ($pageAccess === "admin" && ($userAccess === "admin" || $userAccess === "superadmin")) {
+		if ($pageAccess === "admin" && ($userAccess === "admin" || $userAccess === "dev")) {
 			return true;
 		}
-		if ($pageAccess === "user" && ($userAccess === "user" || $userAccess === "admin" || $userAccess === "superadmin")) {
+		if ($pageAccess === "user" && ($userAccess === "user" || $userAccess === "admin" || $userAccess === "dev")) {
 			return true;
 		}
 		return false;

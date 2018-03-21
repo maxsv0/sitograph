@@ -52,7 +52,7 @@
 	<span class="text-warning">{$item.access_data}</span>
 {elseif $item.access === "admin"}
 	<span class="text-danger">{$item.access_data}</span>
-{elseif $item.access === "superadmin"}
+{elseif $item.access === "dev"}
 	<span class="text-danger"><b>{$item.access_data}</b></span>
 {else}
 	{$item.access_data}

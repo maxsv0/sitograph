@@ -192,7 +192,12 @@
 	z-index:100;
 	position: relative;
 }
-
+.bottom_menu {
+	padding:20px 10px;
+}
+.bottom_menu li a {
+	color: #fff;
+}
 .album-title-block {
 	margin:0 0 10px;
 }

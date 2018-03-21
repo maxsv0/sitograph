@@ -26,7 +26,7 @@
 
 
 
-{if $user.access === "superadmin" || $user.access === "admin"}
+{if $user.access === "dev" || $user.access === "admin"}
 <div class="btnCover">
 <div>
 <a href="{$lang_url}/admin/?section=manual&edit_mode" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> {$t["btn.edit"]}</a>

@@ -12,7 +12,7 @@
 
 {include "$themePath/sitograph/section/realtime.tpl"}
 
-{if $user.access == "superadmin"}
+{if $user.access == "dev"}
 <br>
 
 <form action="{$lang_url}/admin/" class="well">
