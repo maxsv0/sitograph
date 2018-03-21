@@ -44,7 +44,9 @@ function Install_ThemeDefault($module) {
         "name" => _t("structure.sitemap"),
         "template" => "custom",
         "page_template" => "sitemap.tpl",
-        "sitemap" => 0,
+        "sitemap" => 1,
+        "menu" => "bottom",
+        "menu_order" => 2,
     );
     msv_add_structure($itemStructure, array("lang" => "all"));
 
@@ -56,6 +58,19 @@ function Install_ThemeDefault($module) {
         "sitemap" => 0,
         "document_title" => $doc404Title,
         "document_text" => $doc404Text,
+    );
+    msv_add_structure($itemStructure, array("lang" => "all"));
+
+    $docPrivacyPolicy = msv_load_module_doc($module->pathModule, "privacy-policy");
+    $itemStructure = array(
+        "url" => "/privacy-policy/",
+        "name" => _t("structure.privacy_policy"),
+        "template" => "custom",
+        "page_template" => "main.tpl",
+        "sitemap" => 1,
+        "menu" => "bottom",
+        "menu_order" => 1,
+        "document_text" => $docPrivacyPolicy,
     );
     msv_add_structure($itemStructure, array("lang" => "all"));
 

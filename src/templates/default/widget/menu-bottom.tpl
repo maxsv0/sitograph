@@ -1,6 +1,6 @@
 {assign var="items" value=$menu['bottom']}
 
-<ul class="list-inline">
+<ul class="list-unstyled">
 {section name=index loop=$items} 
 
 {if $items[index].url == $page.url}

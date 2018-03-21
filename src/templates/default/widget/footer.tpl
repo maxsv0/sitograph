@@ -21,7 +21,7 @@
 			</div>	
  		</div>
         <div class="col-lg-6 col-md-4 col-sm-4 col-xs-4">
-			<div class="bottom_menu">
+			<div class="bottom_menu text-right">
                 {include file="$themePath/widget/menu-bottom.tpl"}    
              </div>
 		</div> 	
