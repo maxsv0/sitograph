@@ -3,20 +3,20 @@
  		<div class="col-lg-6 col-md-8 col-sm-8 col-xs-8">
 			<h4>Sitograph Content Management System</h4>
 			<div class="row">
-				<div class="col-sm-3">E-mail</div>
+				<div class="col-sm-3">Website</div>
 				<div class="col-sm-9">
-					<p>info@sitograph.com</p>
+					<p><a href="https://www.sitograph.com" target="_blank">www.sitograph.com <span class="glyphicon glyphicon-new-window"></span></a></p>
 				</div>
 				<div class="col-sm-3">Git Repository</div>
 				<div class="col-sm-9">
 					<p>
-					<a href="https://github.com/maxsv0/sitograph" target="_blank">github.com/maxsv0/sitograph</a>
+					<a href="https://github.com/maxsv0/sitograph" target="_blank">github.com/maxsv0/sitograph <span class="glyphicon glyphicon-new-window"></span></a>
 					</p>
 				</div>
 				
 				<div class="col-sm-3">Report a problem</div>
 				<div class="col-sm-9">
-						<p>info@sitograph.com or <a href="https://support.sitograph.com">sitograph.com</a></p>
+						<p>support@sitograph.com or <a href="https://support.sitograph.com" target="_blank">support.sitograph.com <span class="glyphicon glyphicon-new-window"></span></a></p>
 				</div>
 			</div>	
  		</div>

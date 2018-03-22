@@ -1,8 +1,8 @@
-{if $blog_articles_topviews}
-<h3>{_t("blog.label_popular_posts")}</h3>
+{if $blog_articles_newest}
+  <h3>{_t("blog.label_latest_posts")}</h3>
 {/if}
 
-{foreach from=$blog_articles_topviews key=article_id item=article} 
+{foreach from=$blog_articles_newest key=article_id item=article}
 
 <div class="media">
 {if $article.pic_preview}
