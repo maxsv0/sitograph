@@ -277,7 +277,7 @@ a:active {color:#bb233a;}
         "email" => "support@sitograph.com",
         "url" => "Sitograph-v.1.0-released",
         "title" => "Sitograph CMS v.1.0 released",
-        "description" => "Sitograph version 1.0 was released July 2017!",
+        "description" => "Sitograph CMS v.1.0 powered by MSV Framework",
         "text" => $docContent,
         "pic" => "images/blog/blog_sitograph_3.jpg",
         "pic_preview" => "images/blog/blog_sitograph_3.jpg",
@@ -287,7 +287,7 @@ a:active {color:#bb233a;}
     // create admin manual
     $manualTopics = array(
         "release" => array(
-            "title" => "Sitograph CMS v.1.0 released",
+            "title" => "Sitograph CMS v.1.0 was released",
             "content" => msv_load_module_doc(ABS_INCLUDE."/module/sitograph/", "blog-release")
         ),
         "install" => array(
