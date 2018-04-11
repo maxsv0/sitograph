@@ -777,6 +777,12 @@ class MSV_Website {
 		// init Template Engine
 		$this->initTemplateEngine();
 
+		// Disable ERR_BLOCKED_BY_XSS_AUDITOR
+		// https://github.com/maxsv0/sitograph/issues/134
+        if ($this->page["url"] === "/admin/") {
+            header('X-XSS-Protection:0');
+        }
+
 		// output current page, use Template Engine object
 		$this->templateEngine->display($this->pageTemplatePath);
 
