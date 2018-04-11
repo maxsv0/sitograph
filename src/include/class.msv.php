@@ -670,6 +670,12 @@ class MSV_Website {
 		$str .= "<div style='position: absolute; bottom: 0; padding:5px 20px; background:#00f;'>";
 		$str .= "<span style='color:red;'>ERROR: ".nl2br($errorText)."</span>";
 		$str .= "</div>";
+
+        // Error page -> auto reload
+        // https://github.com/maxsv0/sitograph/issues/113
+		$str .= "<script>";
+		$str .= "setTimeout(function(){window.history.back();}, 5000);";
+		$str .= "</script>";
 		$this->output($str, 500);
 	}
 	function outputNotFound($output = "") {
