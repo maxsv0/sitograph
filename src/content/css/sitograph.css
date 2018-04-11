@@ -338,7 +338,7 @@ ul.nav li a:hover {
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
     color: #fff;
-    background-color: #ed2a45;
+    background-color: #333746;
 }
 
 .tab-pane {

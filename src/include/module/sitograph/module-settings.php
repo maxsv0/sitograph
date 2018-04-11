@@ -2,7 +2,7 @@
 if (msv_check_accessuser("dev")) {
     $listFilter = "(`group` like '%')";
 } else {
-    $listFilter = "(`group` like 'theme' or `group` like 'website' or `group` like 'user')";
+    $listFilter = "(`group` like 'theme' or `group` like 'website')";
 }
 
 if (!empty($_REQUEST["filter_group"])) {
