@@ -216,13 +216,13 @@ function Get_Search_List($module)
             $modules_base_url = array();
             foreach ($module->website->modules as $v => $k)
             {
-                $attr = $module->website->config[$k]->attributes();
-                $url = (string )$attr['baseUrl'];
-                if (!empty($url))
+                $config = msv_get_config($k);
+                $url = $config["baseUrl"];
+                if (!empty($config["baseUrl"]))
                 {
-                    foreach ($module->website->config[$k]->table as $m => $n)
+                    $tables = msv_get("website.".$k.".tables");
+                    foreach ($tables as $m => $attr)
                     {
-                        $attr = $n->attributes();
                         $modules_base_url[(string )$attr['name']]['url'] = $url;
                         $modules_base_url[(string )$attr['name']]['title'] = (string )$attr['title'];
                     }
