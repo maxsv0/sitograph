@@ -3,7 +3,7 @@
 msv_admin_editbtn(".articles-block", "blog", TABLE_BLOG_ARTICLES);
 
 function BlogLoadPreview($blog) {
-	 $resultQuery = db_get_list(TABLE_BLOG_ARTICLES, "", "`views` desc, `date` desc", $blog->previewItemsCount, "");
+	 $resultQuery = db_get_list(TABLE_BLOG_ARTICLES, "`date` <= NOW()", "`views` desc, `date` desc", $blog->previewItemsCount, "");
 	 if ($resultQuery["ok"]) {
 		// get a list of albums from API result
 		$listItems = $resultQuery["data"];
@@ -12,7 +12,7 @@ function BlogLoadPreview($blog) {
          msv_assign_data("blog_articles_topviews", $listItems);
 	}
 	
-	$resultQuery = db_get_list(TABLE_BLOG_ARTICLES, "", "`date` desc", $blog->newestItemsCount, "");
+	$resultQuery = db_get_list(TABLE_BLOG_ARTICLES, "`date` <= NOW()", "`date` desc", $blog->newestItemsCount, "");
 	if ($resultQuery["ok"]) {
 		// get a list of albums from API result
 		$listItems = $resultQuery["data"];
@@ -27,8 +27,8 @@ function BlogLoadPreview($blog) {
 function BlogLoadArticles($blog) {
 	
 	// ************ sql filter ************
-	$sqlFilter = " 1 = 1 ";
-	
+	$sqlFilter = " `date` <= NOW() ";
+
     if (!empty($_GET[$blog->searchUrlParam])) {
     	$arSearch = array("title", "description", "text");
     	$sn = db_escape($_GET[$blog->searchUrlParam]);
