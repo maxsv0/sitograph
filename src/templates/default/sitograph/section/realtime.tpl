@@ -25,7 +25,11 @@
         <div id="active-users-container"></div>
       </li>
     </ul>
+{if $GA_webproperty}
     <div id="view-selector-container" style="display: none;"></div>
+{else}
+    <div id="view-selector-container"></div>
+{/if}
   </header>
 
 
@@ -124,7 +128,7 @@
 
 
 <script>
-GA_webproperty = "{/literal}{$GA_webproperty}{literal}";
+var GA_webproperty = "{/literal}{$GA_webproperty}{literal}";
 
 // == NOTE ==
 // This code uses ES6 promises. If you want to use this code in a browser
@@ -181,11 +185,16 @@ gapi.analytics.ready(function() {
    * Create a new ViewSelector2 instance to be rendered inside of an
    * element with the id "view-selector-container".
    */
-  var viewSelector = new gapi.analytics.ext.ViewSelector2({
-    container: 'view-selector-container',
-    ids:GA_webproperty,
-  })
-  .execute();
+    if (GA_webproperty == '') {
+        var viewSelector = new gapi.analytics.ext.ViewSelector2({
+            container: 'view-selector-container'
+        }).execute();
+    } else {
+        var viewSelector = new gapi.analytics.ext.ViewSelector2({
+            container: 'view-selector-container',
+            ids:GA_webproperty,
+        }).execute();
+    }
 
 
   /**

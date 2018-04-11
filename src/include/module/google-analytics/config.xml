@@ -9,8 +9,8 @@
 
 <install>
 	<param name="name" value="google-analytics" />
-	<param name="version" value="1.1.7"/>
-	<param name="date" value="24.02.2018"/>
+	<param name="version" value="1.1.8"/>
+	<param name="date" value="11.04.2018"/>
 	<param name="title" value="Google - Analytics"/>
 	<param name="description" value="Google Analytics integration. Analytics tracking and real-time reports"/>
 	<param name="tags" value="google,analytics"/>
@@ -24,17 +24,20 @@
 	<file dir="module" path="google-analytics/google-analytics.php"/>
 	<file dir="module" path="google-analytics/config.xml"/>
 	<file dir="content" path="images/module_preview_ga.png"/>
+	<file dir="content" path="js/analytics.js"/>
 </install>
 
 <locales>
 	<locale name="en">
 		<field name="msg.invalid_google_service_auth_file" value="Invalid Google Service Auth JSON file"/>
 		<field name="settings.google_analytics_tracking_id" value="Google Analytics Tracking ID"/>
+		<field name="settings.google_analytics_webproperty" value="Google Analytics View ID"/>
 		<field name="settings.google_service_auth_json" value="Google Service server-server authentication JSON file path"/>
 	</locale>
 	<locale name="ru">
 		<field name="msg.invalid_google_service_auth_file" value="Ошибка в файле авторизации Google Service Auth"/>
 		<field name="settings.google_analytics_tracking_id" value="Google Analytics Tracking ID"/>
+		<field name="settings.google_analytics_webproperty" value="Google Analytics View ID"/>
 		<field name="settings.google_service_auth_json" value="Путь к JSON файлу авторизации Google Service server-server"/>
 	</locale>
 </locales>
