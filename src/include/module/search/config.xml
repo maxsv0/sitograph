@@ -32,8 +32,8 @@
 
 <install>
 	<param name="name" value="search"/>
-	<param name="version" value="1.0.2"/>
-	<param name="date" value="07.01.2018"/>
+	<param name="version" value="1.0.3"/>
+	<param name="date" value="11.04.2018"/>
 	<param name="title" value="Site search"/>
 	<param name="description" value="Text site search"/>
 	<param name="tags" value="search"/>

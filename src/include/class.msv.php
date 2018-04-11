@@ -670,6 +670,12 @@ class MSV_Website {
 		$str .= "<div style='position: absolute; bottom: 0; padding:5px 20px; background:#00f;'>";
 		$str .= "<span style='color:red;'>ERROR: ".nl2br($errorText)."</span>";
 		$str .= "</div>";
+
+        // Error page -> auto reload
+        // https://github.com/maxsv0/sitograph/issues/113
+		$str .= "<script>";
+		$str .= "setTimeout(function(){window.history.back();}, 5000);";
+		$str .= "</script>";
 		$this->output($str, 500);
 	}
 	function outputNotFound($output = "") {
@@ -770,6 +776,12 @@ class MSV_Website {
 		
 		// init Template Engine
 		$this->initTemplateEngine();
+
+		// Disable ERR_BLOCKED_BY_XSS_AUDITOR
+		// https://github.com/maxsv0/sitograph/issues/134
+        if ($this->page["url"] === "/admin/") {
+            header('X-XSS-Protection:0');
+        }
 
 		// output current page, use Template Engine object
 		$this->templateEngine->display($this->pageTemplatePath);
