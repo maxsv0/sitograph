@@ -144,7 +144,7 @@ function msv_output_page() {
         msv_process_dev();
     }
 
-    $website->outputPage();
+    return $website->outputPage();
 }
 
 function msv_load_pagedocument() {

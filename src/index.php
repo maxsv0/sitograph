@@ -16,7 +16,7 @@ msv_load();
 
 
 
-msv_output_page();
+echo msv_output_page();
 
 
 

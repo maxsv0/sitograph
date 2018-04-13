@@ -92,7 +92,7 @@ class MSV_Module {
 
     function runModule() {
         foreach ($this->pathModuleController as $pathController) {
-            include($pathController);
+            include_once($pathController);
         }
 
         return true;

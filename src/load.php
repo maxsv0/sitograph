@@ -55,8 +55,8 @@ define("LOCAL_INCLUDE", $pathIncludeLocal);
 define("LOCAL_MODULE", $pathIncludeLocal."/module");
 define("LOCAL_TEMPLATE", "templates");
 
-include(ABS_INCLUDE."/class.module.php");
-include(ABS_INCLUDE."/class.msv.php");
+require(ABS_INCLUDE."/class.module.php");
+require(ABS_INCLUDE."/class.msv.php");
 
 
 // create MSV Website instance

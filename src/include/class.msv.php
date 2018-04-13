@@ -158,7 +158,7 @@ class MSV_Website {
 		} else {
 			$this->host = $_SERVER['HTTP_HOST'];
 		}
-		
+
 		// set lang: current language
 		reset($this->languages);
 		$this->lang = $this->langDefault = current($this->languages);
@@ -783,19 +783,15 @@ class MSV_Website {
             header('X-XSS-Protection:0');
         }
 
-		// output current page, use Template Engine object
-		$this->templateEngine->display($this->pageTemplatePath);
-
-
 		// calculate script running time and log
 		$tm = time() + (float)substr((string)microtime(), 1, 8);
 		$this->config["timestampEnd"] = $tm;
 		$scriptTime = $this->config["timestampEnd"] - $this->config["timestampStart"];
 		$scriptTime = round($scriptTime, 6);
 		$this->log("Run time: $scriptTime sec");
-			
-		
-		die;
+
+        // output current page, use Template Engine object
+        return $this->templateEngine->fetch($this->pageTemplatePath);
 	}
 	
 	function outputDebug() {
