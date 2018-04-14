@@ -660,7 +660,6 @@ class MSV_Website {
 			header("Location: $output");
 			echo "Redirection to <a href=='$output'>$output</a> .. ";
 		}
-		exit;
 	}
 	function outputError($errorText = "") {
 		$str = "<body style='background:#eee;height:100%;margin:0;'>";

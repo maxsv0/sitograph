@@ -1,7 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-final class MSVWebsiteClass extends TestCase {
+final class MSVWebsiteClass extends MSVTestCase {
     public function testCreateMSVClassInstance() {
 
         $website = msv_get();
@@ -154,13 +154,12 @@ final class MSVWebsiteClass extends TestCase {
         }
     }
 
-//    public function testCreateMSVWebsiteStartDefault() {
-//        msv_start();
-//        msv_load();
-//        $output = msv_output_page();
-//        $this->assertNotEmpty($output);
-//        // TODO: assert HTML
-//    }
+    public function testCreateMSVWebsiteStartDefault() {
+        msv_start();
+        msv_load();
+        $output = msv_output_page();
+        $this->assertNotEmpty($output);
+	}
 }
 
 
