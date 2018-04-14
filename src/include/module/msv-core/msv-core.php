@@ -321,12 +321,8 @@ function msv_load_sitestructure() {
         msv_error($result["msg"]);
     }
 
-    $website =& msv_get("website");
-
-    $list = $result["data"];
-    foreach ($list as $item) {
-        $website->structure[] = $item;
-    }
+    $website = msv_get("website");
+    $website->structure = $result["data"];
 
     return true;
 }
