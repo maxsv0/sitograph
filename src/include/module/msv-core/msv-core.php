@@ -100,8 +100,11 @@ function msv_output($content) {
 
 function msv_output_page() {
     $website = msv_get("website");
-
     msv_log("Website: Output");
+
+    if (!empty($website->outputData)) {
+    	return $website->outputData;
+	}
 
     if ($website->requestUrl === "/admin/" && $_REQUEST["section"] === "module_settings") {
         $admin_module_setup = msv_output_admin_modulesetup();

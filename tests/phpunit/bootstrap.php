@@ -1,10 +1,7 @@
 <?php
-use PHPUnit\Framework\TestCase;
-
 error_reporting(E_ALL);
 
-// run CMS
-chdir(__DIR__."/./../../src/");
+include("MSVTestCase.php");
 
 // Mock some default
 if (empty($_SERVER['HTTP_HOST'])) {
@@ -17,15 +14,14 @@ if (empty($_SERVER['REQUEST_URI'])) {
     $_SERVER['REQUEST_URI'] = "/";
 }
 
+// chmod for CMS home
+chdir(__DIR__."/./../../src/");
+
 // Load MSV Website
 include("load.php");
 
+// create MSV Website instance
+$website = new MSV_Website();
 
-
-class MSVTestCase extends TestCase {
-	public function loadPageDOM($string) {
-		$doc = new DOMDocument();
-		$doc->loadHTML($string);
-		return $doc;
-	}
-}
+// start the instance
+$website->start();

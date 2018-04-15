@@ -47,14 +47,15 @@ class MSV_Website {
 	public $htmlBodyBegin 	= "";									// include this after <body>
 	public $htmlBodyEnd		= "";									// include this before </body>
 	public $htmlFooter		= "";									// include this after </footer>
-								// 
+								//
 	public $includeHead 	= array();								// include this lines beetween <head>
 	public $includeCSS 		= array();								// insert this CSS files to head
 	public $includeJS 		= array();								// insert this JS file to head
 	public $includeJSCode 	= "";									// add this JS code in template
 	public $includeHTMLCode = "";									// add this HTML code in template
 	public $includeCSSCode 	= "";									// add this CSS code in template
-	
+	public $outputData		= "";									// app output
+
 	public $log				= "";									// 
 	public $logDebug		= "";									// 
 	public $templateEngine			= "";                           //  Template Engine obj
