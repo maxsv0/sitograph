@@ -15,7 +15,7 @@ final class BlogInstallTest extends MSVTestCase {
 			"Check that /blog/ structure doesn't exists before test execution"
 		);
 
-		Install_Blog($website->blog);
+		$website->blog->runInstallHook();
 
 		$blogCreated = $this->checkIfStructureExists($website->blog->baseUrl);
 		$this->assertTrue(

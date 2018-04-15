@@ -117,6 +117,45 @@ final class MSVWebsiteClass extends MSVTestCase {
         $output = msv_output_page();
         $this->assertNotEmpty($output);
 	}
+
+    public function testCreateMSVWebsiteError() {
+        $website = msv_get();
+
+        ob_start();
+		$website->outputError("test message");
+		$output = ob_get_contents();
+		ob_end_flush();
+
+        $this->assertContains("test message",$output);
+        $this->assertContains("ERROR",$output);
+	}
+
+    public function testCreateMSVWebsiteForbidden() {
+        $website = msv_get();
+
+        ob_start();
+		$website->outputForbidden();
+		$output = ob_get_contents();
+		ob_end_flush();
+        $this->assertEmpty($output);
+	}
+
+    public function testCreateMSVWebsiteRedirect() {
+        $website = msv_get();
+
+        ob_start();
+		$website->outputRedirect("/test/");
+		$output = ob_get_contents();
+		ob_end_flush();
+		$this->assertContains("/test/",$output);
+	}
+
+    public function testCreateMSVWebsiteOutputDebug() {
+        $website = msv_get();
+
+		$website->outputDebug();
+		$this->assertNotEmpty($website->config["debug_code"]);
+	}
 }
 
 
