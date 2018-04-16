@@ -150,16 +150,33 @@ final class BlogOutputTest extends MSVTestCase {
      * https://github.com/maxsv0/sitograph/issues/143
      *
      */
-    public function testBlogOutputArticles404() {
+    public function testBlogOutputArticleEmpty() {
 		global $website;
         $randomStr = md5(time());
 		$website->setRequestUrl(
 			$website->blog->baseUrl.$randomStr."/"
 		);
+		$website->loadPage($website->blog->baseUrl);
 		$website->load();
 
         $output = msv_output_page();
         $this->printPage($output);
+		// TODO: add asserts here
+		// FIX: right now it returns 404
+    }
+
+    public function testBlogOutputArticle404() {
+		global $website;
+        $randomStr = md5(time());
+		$website->setRequestUrl(
+			$website->blog->baseUrl."/"
+		);
+		$website->load();
+
+        $output = msv_output_page();
+        $this->printPage($output);
+        // TODO: add asserts here
+		// FIX: right now it returns 404
     }
 
 }

@@ -1,23 +1,6 @@
 <?php
 
 final class BlogAPITest extends MSVTestCase {
-	private $articleId = 0;
-
-    public function testBlogAPIDirectPHP() {
-        blogAddTestData();
-
-        global $website;
-        $website->setRequestUrl("/api/blog/category/");
-        $website->load();
-
-        $output = msv_output_page();
-        $this->printPage($output);
-
-        $outputData = json_decode($output, true);
-        $this->assertTrue($outputData["ok"]);
-        $this->assertEmpty($outputData["msg"]);
-        $this->assertTrue(is_array($outputData["data"]));
-    }
 
 	public function testBlogAPIWrongCall() {
 		global $website;
@@ -46,6 +29,22 @@ final class BlogAPITest extends MSVTestCase {
         $this->assertEmpty($outputData["msg"]);
         $this->assertTrue(is_array($outputData["data"]));
     }
+
+	public function testBlogAPICategory() {
+		blogAddTestData();
+
+		global $website;
+		$website->setRequestUrl("/api/blog/category/");
+		$website->load();
+
+		$output = msv_output_page();
+		$this->printPage($output);
+
+		$outputData = json_decode($output, true);
+		$this->assertTrue($outputData["ok"]);
+		$this->assertEmpty($outputData["msg"]);
+		$this->assertTrue(is_array($outputData["data"]));
+	}
 
     public function testBlogAPIDetails() {
         $articleData = blogAddTestData();
