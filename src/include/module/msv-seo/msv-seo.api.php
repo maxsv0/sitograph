@@ -17,7 +17,7 @@ function api_request_lead($module) {
         $resultQuery = array(
             "ok" => false,
             "data" => array(),
-            "msg" => "No access",
+            "msg" => _t("msg.api.no_access"),
         );
         return json_encode($resultQuery);
     }
@@ -83,7 +83,7 @@ function api_request_lead($module) {
                 $resultQuery = array(
                     "ok" => false,
                     "data" => array(),
-                    "msg" => "Wrong Input",
+                    "msg" => _t("msg.api.wrong_api"),
                 );
             } else {
                 $resultQuery = db_update(TABLE_LEADS, $_REQUEST["updateName"], "'".db_escape($_REQUEST["updateValue"])."'", "`id` = ".$itemID);
@@ -93,7 +93,7 @@ function api_request_lead($module) {
             $resultQuery = array(
                 "ok" => false,
                 "data" => array(),
-                "msg" => "Wrong API call",
+                "msg" => _t("msg.api.wrong_api"),
             );
             break;
     }

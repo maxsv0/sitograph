@@ -21,7 +21,7 @@ function api_request_feedback($module) {
                 $resultQuery = array(
                     "ok" => false,
                     "data" => array(),
-                    "msg" => "No access",
+                    "msg" => _t("msg.api.no_access"),
                 );
             } else {
                 $resultQuery = db_get_list(TABLE_FEEDBACK, "`sticked` > 0", "`date` desc", 999, "");
@@ -32,7 +32,7 @@ function api_request_feedback($module) {
                 $resultQuery = array(
                     "ok" => false,
                     "data" => array(),
-                    "msg" => "No access",
+                    "msg" => _t("msg.api.no_access"),
                 );
             } else {
                 $item = msv_process_tabledata(TABLE_FEEDBACK, "");
@@ -44,14 +44,14 @@ function api_request_feedback($module) {
                 $resultQuery = array(
                     "ok" => false,
                     "data" => array(),
-                    "msg" => "No access",
+                    "msg" => _t("msg.api.no_access"),
                 );
             } else {
                 if (empty($_REQUEST["updateName"]) || empty($_REQUEST["updateID"]) || !isset($_REQUEST["updateValue"]) ) {
                     $resultQuery = array(
                         "ok" => false,
                         "data" => array(),
-                        "msg" => "Wrong Input",
+                        "msg" => _t("msg.api.wrong_api"),
                     );
                 } else {
                     $resultQuery = db_update(TABLE_FEEDBACK, $_REQUEST["updateName"], "'".db_escape($_REQUEST["updateValue"])."'", "`id` = ".(int)$_REQUEST["updateID"]);
@@ -62,7 +62,7 @@ function api_request_feedback($module) {
             $resultQuery = array(
                 "ok" => false,
                 "data" => array(),
-                "msg" => "Wrong API call",
+                "msg" => _t("msg.api.wrong_api"),
             );
             break;
     }

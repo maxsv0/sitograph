@@ -21,7 +21,7 @@ function api_request_core($module) {
                 $resultQuery = array(
                     "ok" => false,
                     "data" => array(),
-                    "msg" => "No access",
+                    "msg" => _t("msg.api.no_access"),
                 );
 
             } else {
@@ -54,7 +54,7 @@ function api_request_core($module) {
                 $resultQuery = array(
                     "ok" => false,
                     "data" => array(),
-                    "msg" => "No access",
+                    "msg" => _t("msg.api.no_access"),
                 );
 
             } else {
@@ -71,7 +71,7 @@ function api_request_core($module) {
             $resultQuery = array(
                 "ok" => false,
                 "data" => array(),
-                "msg" => "Wrong API call",
+                "msg" => _t("msg.api.wrong_api"),
             );
             break;
     }
@@ -97,7 +97,7 @@ function api_request_cron($module) {
         $resultQuery = array(
             "ok" => false,
             "data" => array(),
-            "msg" => "No access",
+            "msg" => _t("msg.api.no_access"),
         );
         return json_encode($resultQuery);
     }
@@ -130,7 +130,7 @@ function api_request_cron($module) {
             $resultQuery = array(
                 "ok" => false,
                 "data" => array(),
-                "msg" => "Wrong API call",
+                "msg" => _t("msg.api.wrong_api"),
             );
             break;
     }
@@ -208,7 +208,7 @@ function api_request_settings($module) {
         $resultQuery = array(
             "ok" => false,
             "data" => array(),
-            "msg" => "No access",
+            "msg" => _t("msg.api.no_access"),
         );
         return json_encode($resultQuery);
     }
@@ -229,7 +229,7 @@ function api_request_settings($module) {
                 $resultQuery = array(
                     "ok" => false,
                     "data" => array(),
-                    "msg" => "Wrong Input",
+                    "msg" => _t("msg.api.wrong_api"),
                 );
             } else {
                 $resultQuery = db_update(TABLE_SETTINGS, $_REQUEST["updateName"], "'".db_escape($_REQUEST["updateValue"])."'", "`id` = ".(int)$_REQUEST["updateID"]);
@@ -239,7 +239,7 @@ function api_request_settings($module) {
             $resultQuery = array(
                 "ok" => false,
                 "data" => array(),
-                "msg" => "Wrong API call",
+                "msg" => _t("msg.api.wrong_api"),
             );
             break;
     }
@@ -268,7 +268,7 @@ function api_request_structure($module) {
         $resultQuery = array(
             "ok" => false,
             "data" => array(),
-            "msg" => "No access",
+            "msg" => _t("msg.api.no_access"),
         );
         return json_encode($resultQuery);
     }
@@ -289,7 +289,7 @@ function api_request_structure($module) {
                 $resultQuery = array(
                     "ok" => false,
                     "data" => array(),
-                    "msg" => "Wrong Input",
+                    "msg" => _t("msg.api.wrong_api"),
                 );
             } else {
                 $resultQuery = db_update(TABLE_STRUCTURE, $_REQUEST["updateName"], "'".db_escape($_REQUEST["updateValue"])."'", "`id` = ".(int)$_REQUEST["updateID"]);
@@ -299,7 +299,7 @@ function api_request_structure($module) {
             $resultQuery = array(
                 "ok" => false,
                 "data" => array(),
-                "msg" => "Wrong API call",
+                "msg" => _t("msg.api.wrong_api"),
             );
             break;
     }
@@ -328,7 +328,7 @@ function api_request_document($module) {
         $resultQuery = array(
             "ok" => false,
             "data" => array(),
-            "msg" => "No access",
+            "msg" => _t("msg.api.no_access"),
         );
         return json_encode($resultQuery);
     }
@@ -349,7 +349,7 @@ function api_request_document($module) {
                 $resultQuery = array(
                     "ok" => false,
                     "data" => array(),
-                    "msg" => "Wrong Input",
+                    "msg" => _t("msg.api.wrong_api"),
                 );
             } else {
                 $resultQuery = db_update(TABLE_DOCUMENTS, $_REQUEST["updateName"], "'".db_escape($_REQUEST["updateValue"])."'", "`id` = ".(int)$_REQUEST["updateID"]);
@@ -359,7 +359,7 @@ function api_request_document($module) {
             $resultQuery = array(
                 "ok" => false,
                 "data" => array(),
-                "msg" => "Wrong API call",
+                "msg" => _t("msg.api.wrong_api"),
             );
             break;
     }
@@ -491,7 +491,7 @@ function api_format_url($module) {
         $resultQuery = array(
             "ok" => false,
             "data" => array(),
-            "msg" => "No access",
+            "msg" => _t("msg.api.no_access"),
         );
         return json_encode($resultQuery);
     }

@@ -76,7 +76,7 @@ function api_request_blog($module) {
                     $resultQuery = array(
                         "ok" => false,
                         "data" => array(),
-                        "msg" =>  _t("msg.api.wrong_api"),
+                        "msg" => _t("msg.api.wrong_api"),
                     );
                 } else {
                     $resultQuery = db_update(TABLE_BLOG_ARTICLES, $_REQUEST["updateName"], "'".db_escape($_REQUEST["updateValue"])."'", "`id` = ".(int)$_REQUEST["updateID"]);
