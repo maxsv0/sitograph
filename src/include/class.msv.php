@@ -88,8 +88,6 @@ class MSV_Website {
 	
 	
 	function start() {
-	    $this->test_compatibility();
-
 		// set languages
 		if (defined("LANGUAGES")) {
 			$this->languages = explode(",", LANGUAGES);
@@ -102,6 +100,7 @@ class MSV_Website {
 			$this->instaled = true;
 		} else {
 			$this->instaled = false;
+            $this->test_compatibility();
 			$this->log("MSV: setup required");
 		}
 		

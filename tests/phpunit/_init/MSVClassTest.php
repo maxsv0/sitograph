@@ -2,7 +2,7 @@
 
 final class MSVWebsiteClass extends MSVTestCase {
 
-    public function testMSVInit() {
+    public function testMSVWebsiteInit() {
 
         // check MSV settings:
         $this->assertTrue(defined("HOST"));
@@ -40,7 +40,7 @@ final class MSVWebsiteClass extends MSVTestCase {
         $this->assertEquals("testreferer",$website->config["referer"]);
     }
 
-    public function testMSVClassParseRequest() {
+    public function testMSVWebsiteParseRequest() {
         $listTestUrl = array(
             array(
                 "request" => "/some_random_url/",
@@ -91,6 +91,7 @@ final class MSVWebsiteClass extends MSVTestCase {
 
         $website = msv_get();
         foreach ($listTestUrl as $testUrl) {
+            echo "Testing: ".$testUrl["request"];
             $_SERVER["REQUEST_URI"] = $testUrl["request"];
             $website->parseRequest();
 
@@ -108,17 +109,73 @@ final class MSVWebsiteClass extends MSVTestCase {
                 $testUrl["hasTrailingSlash"],
                 $website->config["hasTrailingSlash"]
             );
+            echo " .. done\n";
         }
     }
 
-    public function testCreateMSVWebsiteStartDefault() {
+    public function testMSVWebsiteCheckAccess() {
+        $website = msv_get();
+
+        $accessList = array(
+            // List of test data
+            // page access,  user access, expected result
+            array("everyone", "unknown", true),
+            array("everyone", "anonymous", true),
+            array("everyone", "user", true),
+            array("everyone", "admin", true),
+            array("everyone", "dev", true),
+
+            array("user", "unknown", false),
+            array("user", "anonymous", false),
+            array("user", "user", true),
+            array("user", "admin", true),
+            array("user", "dev", true),
+
+            array("admin", "unknown", false),
+            array("admin", "anonymous", false),
+            array("admin", "user", false),
+            array("admin", "admin", true),
+            array("admin", "dev", true),
+
+            array("dev", "unknown", false),
+            array("dev", "anonymous", false),
+            array("dev", "user", false),
+            array("dev", "admin", false),
+            array("dev", "dev", true),
+        );
+
+        foreach ($accessList as $accessTemplate) {
+            list($page, $user, $result) = $accessTemplate;
+            echo "Access: page=$page, user=$user => ".(int)$result."\n";
+
+            if ($result) {
+                $this->assertTrue($website->checkAccess($page, $user));
+            } else {
+                $this->assertFalse($website->checkAccess($page, $user));
+            }
+        }
+
+        $tempValue = $website->instaled;
+
+        $website->instaled = false;
+        foreach ($accessList as $accessTemplate) {
+            list($page, $user, ) = $accessTemplate;
+
+            $this->assertTrue($website->checkAccess($page, $user));
+        }
+
+        $website->instaled = $tempValue;
+	}
+
+
+    public function testMSVWebsiteOutputDefault() {
         msv_start();
         msv_load();
         $output = msv_output_page();
-        $this->assertNotEmpty($output);
+        $this->printPage($output);
 	}
 
-    public function testCreateMSVWebsiteError() {
+    public function testMSVWebsiteOutputError() {
         $website = msv_get();
 
         ob_start();
@@ -130,7 +187,7 @@ final class MSVWebsiteClass extends MSVTestCase {
         $this->assertContains("ERROR",$output);
 	}
 
-    public function testCreateMSVWebsiteForbidden() {
+    public function testMSVWebsiteOutputForbidden() {
         $website = msv_get();
 
         ob_start();
@@ -140,7 +197,7 @@ final class MSVWebsiteClass extends MSVTestCase {
         $this->assertEmpty($output);
 	}
 
-    public function testCreateMSVWebsiteRedirect() {
+    public function testMSVWebsiteOutputRedirect() {
         $website = msv_get();
 
         ob_start();
@@ -150,15 +207,20 @@ final class MSVWebsiteClass extends MSVTestCase {
 		$this->assertContains("/test/",$output);
 	}
 
-    public function testCreateMSVWebsiteOutputDebug() {
+    public function testMSVWebsiteOutput404() {
+        $website = msv_get();
+
+        ob_start();
+		$website->outputNotFound();
+		$output = ob_get_contents();
+		ob_end_flush();
+		$this->assertContains("Page not found.",$output);
+	}
+
+    public function testMSVWebsiteOutputDebug() {
         $website = msv_get();
 
 		$website->outputDebug();
-		$this->assertNotEmpty($website->config["debug_code"]);
+		$this->printPage($website->config["debug_code"]);
 	}
 }
-
-
-
-
-

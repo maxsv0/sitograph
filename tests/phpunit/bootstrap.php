@@ -2,6 +2,7 @@
 error_reporting(E_ALL);
 
 include("MSVTestCase.php");
+include("module-blog/BlogUtil.php");
 
 // Mock some default
 if (empty($_SERVER['HTTP_HOST'])) {

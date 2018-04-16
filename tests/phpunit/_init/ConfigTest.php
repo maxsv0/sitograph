@@ -2,7 +2,7 @@
 
 final class ConfigTest extends MSVTestCase {
 
-	public function testLoad() {
+	public function testConfigLoad() {
 		// Load MSV Website
 		include("index.php");
 

@@ -1,7 +1,7 @@
 <?php
 
 final class BlogInstallTest extends MSVTestCase {
-	public function testInstall() {
+	public function testBlogInstallHook() {
 		global $website;
 
 		//cleanup
@@ -22,6 +22,12 @@ final class BlogInstallTest extends MSVTestCase {
 			$blogCreated,
 			"Check that /blog/ structure was created"
 		);
+
+		// TODO:
+        // check ALL installed data
+
+        // TODO:
+        // cleanup
 	}
 }
 

@@ -87,9 +87,9 @@ function msv_output404() {
     if (!empty($website->page)) {
         header("HTTP/1.0 404 Not Found");
         $website->outputPage();
+    } else {
+        $website->outputNotFound();
     }
-
-    $website->outputNotFound();
 }
 
 function msv_output($content) {

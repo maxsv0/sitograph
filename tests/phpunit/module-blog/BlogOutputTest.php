@@ -12,11 +12,13 @@ final class BlogOutputTest extends MSVTestCase {
 		$website->setRequestUrl($website->blog->baseUrl);
 	}
 
-	public function testCreateDefaultOutput() {
+	public function testBlogOutputDefault() {
+	    $articleData = blogAddTestData();
+
 		global $website;
 		$website->load();
 		$output = $website->outputPage();
-		$this->assertNotEmpty($output);
+        $this->printPage($output);
 
 		// check default website content
 		$this->assertContains(
@@ -27,13 +29,18 @@ final class BlogOutputTest extends MSVTestCase {
 			$website->blog->baseUrl."?author=cyhiso",
 			$output
 		);
+		$this->assertContains(
+            $articleData["data"]["url"],
+			$output
+		);
 	}
 
-    public function testCreateOutputArticlesByAuthor() {
+    public function testBlogOutputArticlesByAuthor() {
 		global $website;
-        $_GET["author"] = "tech@sitograph.com";
+        $_GET[$website->blog->authorUrlParam] = "tech@sitograph.com";
 		$website->load();
 		$output = $website->outputPage();
+        $this->printPage($output);
 
 		// check default website content
 		$this->assertContains(
@@ -45,31 +52,73 @@ final class BlogOutputTest extends MSVTestCase {
 			$output
 		);
 
-		unset($_GET["author"]);
+		unset($_GET[$website->blog->authorUrlParam]);
     }
 
-    public function testCreateOutputArticlesSearch() {
+    public function testBlogOutputArticlesByCategory() {
+        $articleData = blogAddTestData();
+
+        global $website;
+        $_GET[$website->blog->categoryUrlParam] = "art";
+        $website->load();
+        $output = $website->outputPage();
+        $this->printPage($output);
+
+        // check website content
+        $this->assertContains(
+            $articleData["data"]["url"],
+            $output
+        );
+
+        unset($_GET[$website->blog->categoryUrlParam]);
+    }
+
+    public function testBlogOutputArticlesBySubCategory() {
+        $articleData = blogAddTestData();
+
 		global $website;
-		$_GET["s"] = _t("blog.post1");
+        $_GET[$website->blog->categoryUrlParam] = "art/music";
 		$website->load();
 		$output = $website->outputPage();
+        $this->printPage($output);
+
+		// check website content
+        $this->assertContains(
+            $articleData["data"]["url"],
+            $output
+        );
+
+		unset($_GET[$website->blog->categoryUrlParam]);
+    }
+
+    public function testBlogOutputArticlesSearch() {
+        $articleData = blogAddTestData();
+        $tmp = explode(" ", $articleData["data"]["title"]);
+        $keyword = $tmp[count($tmp)-1];
+
+		global $website;
+		$_GET[$website->blog->searchUrlParam] = $keyword;
+		$website->load();
+		$output = $website->outputPage();
+        $this->printPage($output);
 
 		// check default website content
 		$this->assertContains(
-			"<span class=\"highlight\">"._t("blog.post1")."</span>",
+			"<span class=\"highlight\">".$keyword."</span>",
 			$output
 		);
 
-		unset($_GET["s"]);
+		unset($_GET[$website->blog->searchUrlParam]);
     }
 
-	public function testCreateOutputArticleDetails() {
+	public function testBlogOutputArticleDetailsDefault() {
 		global $website;
 		$website->setRequestUrl(
 			$website->blog->baseUrl."the-beautiful-photo-gallery-is-attached-to-this-post/"
 		);
 		$website->load();
 		$output = $website->outputPage();
+        $this->printPage($output);
 
 		// check default website content
 		$this->assertContains(
@@ -78,38 +127,40 @@ final class BlogOutputTest extends MSVTestCase {
 		);
 	}
 
+    public function testBlogOutputArticleDetailsRandom() {
+        $articleData = blogAddTestData();
+
+        global $website;
+        $website->setRequestUrl(
+            $website->blog->baseUrl.$articleData["data"]["url"]."/"
+        );
+        $website->load();
+        $output = $website->outputPage();
+        $this->printPage($output);
+
+        // check default website content
+        $this->assertContains(
+            "<h1>".$articleData["data"]["title"]."</h1>",
+            $output
+        );
+    }
+
     /*
      *
      * https://github.com/maxsv0/sitograph/issues/143
      *
      */
-    public function testCreateOutputArticles404() {
+    public function testBlogOutputArticles404() {
 		global $website;
-        $randomStr = md5(date());
+        $randomStr = md5(time());
 		$website->setRequestUrl(
 			$website->blog->baseUrl.$randomStr."/"
 		);
 		$website->load();
 
         $output = msv_output_page();
-        $this->assertNotEmpty($output);
+        $this->printPage($output);
     }
-
-	public function testAPIListArticles() {
-		global $website;
-		$website->setRequestUrl(
-			"/api/blog/list/"
-		);
-		$website->load();
-
-		$output = msv_output_page();
-		$this->assertNotEmpty($output);
-
-		$outputData = json_decode($output, true);
-		$this->assertTrue($outputData["ok"]);
-		$this->assertEmpty($outputData["msg"]);
-		$this->assertTrue(is_array($outputData["data"]));
-	}
 
 }
 
