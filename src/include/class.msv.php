@@ -483,9 +483,16 @@ class MSV_Website {
 	}
 	
 	function setRequestUrl($url) {
-		// TODO: check $url
-		
 		$this->requestUrl = $url;
+
+		// reset output
+		$this->includeHead 	= array();
+		$this->includeCSS 		= array();
+		$this->includeJS 		= array();
+		$this->includeJSCode 	= "";
+		$this->includeHTMLCode = "";
+		$this->includeCSSCode 	= "";
+		$this->outputData		= "";
 	}
 
 	function parseRequest() {
@@ -517,8 +524,8 @@ class MSV_Website {
 		if (!empty($ar[1])) {
 			$params = $ar[1];
 		}
-		$this->requestUrl = $requestUrl;
 		$this->requestUrlRaw = $requestUrl;
+		$this->setRequestUrl($requestUrl);
 		
 		$lastChar = substr($requestUrl, -1, 1);
 		if ($lastChar === "/") {
@@ -598,6 +605,9 @@ class MSV_Website {
             // include HTML to footer
             $this->htmlFooter = $includeHTML.$this->htmlFooter;
         }
+
+		// clear all assigned variables
+		$this->templateEngine->clearAllAssign();
 
         $this->templateEngine->assign("htmlHead", $this->htmlHead);
         $this->templateEngine->assign("htmlFooter", $this->htmlFooter);
