@@ -10,3 +10,4 @@ Change /Users/max/sitograph/ to your local path.
 Results will be saved to tests/phpunit-report/
 
 ## Current state 
+
