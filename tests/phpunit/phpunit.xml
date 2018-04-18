@@ -1,7 +1,8 @@
 <phpunit bootstrap="bootstrap.php" colors="true">
     <testsuites>
         <testsuite name="MSV Website Class">
-            <directory>class-msv</directory>
+            <directory>_init</directory>
+            <directory>module-blog</directory>
         </testsuite>
     </testsuites>
 
