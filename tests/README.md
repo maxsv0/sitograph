@@ -1,7 +1,7 @@
 # To execute PHPUnit test run:
 
 ```bash
-/usr/bin/php /Users/max/sitograph/tests/phpunit/phpunit.phar --configuration /Users/max/sitograph/tests/phpunit/phpunit.xml /Users/max/sitograph/tests/phpunit
+/usr/bin/php /usr/local/bin/phpunit --configuration tests/phpunit.xml tests/phpunit 
 ``` 
 
 Change /Users/max/sitograph/ to your local path.
