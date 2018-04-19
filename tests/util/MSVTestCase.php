@@ -10,7 +10,7 @@ class MSVTestCase extends TestCase {
 
     public function printPage($output) {
         $this->assertNotEmpty($output);
-
+		echo $this->getCallerName()."\n";
         echo "-------------------------- Page output ----------------------- \n";
         echo $output;
         echo "\n\n\n";
@@ -44,5 +44,12 @@ class MSVTestCase extends TestCase {
 		}
 
 		return $blogExists;
+	}
+
+	private function getCallerName(){
+		$e = new Exception();
+		$trace = $e->getTrace();
+		$last_call = $trace[2];
+		return $last_call["class"]."::".$last_call["function"];
 	}
 }
