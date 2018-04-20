@@ -4,8 +4,6 @@
 /usr/bin/php /usr/local/bin/phpunit --configuration tests/phpunit.xml tests/phpunit 
 ``` 
 
-Change /Users/max/sitograph/ to your local path.
-
 ## View tests results 
 Results will be saved to tests/phpunit-report/
 
