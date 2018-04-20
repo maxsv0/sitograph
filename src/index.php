@@ -7,6 +7,13 @@ include("load.php");
 
 
 
+// create MSV Website instance
+$website = new MSV_Website();
+
+// start the instance
+$website->start();
+
+
 msv_start();
 
 
@@ -16,7 +23,7 @@ msv_load();
 
 
 
-msv_output_page();
+echo msv_output_page();
 
 
 

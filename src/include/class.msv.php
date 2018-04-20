@@ -47,14 +47,15 @@ class MSV_Website {
 	public $htmlBodyBegin 	= "";									// include this after <body>
 	public $htmlBodyEnd		= "";									// include this before </body>
 	public $htmlFooter		= "";									// include this after </footer>
-								// 
+								//
 	public $includeHead 	= array();								// include this lines beetween <head>
 	public $includeCSS 		= array();								// insert this CSS files to head
 	public $includeJS 		= array();								// insert this JS file to head
 	public $includeJSCode 	= "";									// add this JS code in template
 	public $includeHTMLCode = "";									// add this HTML code in template
 	public $includeCSSCode 	= "";									// add this CSS code in template
-	
+	public $outputData		= "";									// app output
+
 	public $log				= "";									// 
 	public $logDebug		= "";									// 
 	public $templateEngine			= "";                           //  Template Engine obj
@@ -87,8 +88,6 @@ class MSV_Website {
 	
 	
 	function start() {
-	    $this->test_compatibility();
-
 		// set languages
 		if (defined("LANGUAGES")) {
 			$this->languages = explode(",", LANGUAGES);
@@ -101,6 +100,7 @@ class MSV_Website {
 			$this->instaled = true;
 		} else {
 			$this->instaled = false;
+            $this->test_compatibility();
 			$this->log("MSV: setup required");
 		}
 		
@@ -158,7 +158,7 @@ class MSV_Website {
 		} else {
 			$this->host = $_SERVER['HTTP_HOST'];
 		}
-		
+
 		// set lang: current language
 		reset($this->languages);
 		$this->lang = $this->langDefault = current($this->languages);
@@ -483,9 +483,16 @@ class MSV_Website {
 	}
 	
 	function setRequestUrl($url) {
-		// TODO: check $url
-		
 		$this->requestUrl = $url;
+
+		// reset output
+		$this->includeHead 	= array();
+		$this->includeCSS 		= array();
+		$this->includeJS 		= array();
+		$this->includeJSCode 	= "";
+		$this->includeHTMLCode = "";
+		$this->includeCSSCode 	= "";
+		$this->outputData		= "";
 	}
 
 	function parseRequest() {
@@ -517,8 +524,8 @@ class MSV_Website {
 		if (!empty($ar[1])) {
 			$params = $ar[1];
 		}
-		$this->requestUrl = $requestUrl;
 		$this->requestUrlRaw = $requestUrl;
+		$this->setRequestUrl($requestUrl);
 		
 		$lastChar = substr($requestUrl, -1, 1);
 		if ($lastChar === "/") {
@@ -599,6 +606,9 @@ class MSV_Website {
             $this->htmlFooter = $includeHTML.$this->htmlFooter;
         }
 
+		// clear all assigned variables
+		$this->templateEngine->clearAllAssign();
+
         $this->templateEngine->assign("htmlHead", $this->htmlHead);
         $this->templateEngine->assign("htmlFooter", $this->htmlFooter);
 
@@ -660,7 +670,6 @@ class MSV_Website {
 			header("Location: $output");
 			echo "Redirection to <a href=='$output'>$output</a> .. ";
 		}
-		exit;
 	}
 	function outputError($errorText = "") {
 		$str = "<body style='background:#eee;height:100%;margin:0;'>";
@@ -783,19 +792,15 @@ class MSV_Website {
             header('X-XSS-Protection:0');
         }
 
-		// output current page, use Template Engine object
-		$this->templateEngine->display($this->pageTemplatePath);
-
-
 		// calculate script running time and log
 		$tm = time() + (float)substr((string)microtime(), 1, 8);
 		$this->config["timestampEnd"] = $tm;
 		$scriptTime = $this->config["timestampEnd"] - $this->config["timestampStart"];
 		$scriptTime = round($scriptTime, 6);
 		$this->log("Run time: $scriptTime sec");
-			
-		
-		die;
+
+        // output current page, use Template Engine object
+        return $this->templateEngine->fetch($this->pageTemplatePath);
 	}
 	
 	function outputDebug() {

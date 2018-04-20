@@ -64,7 +64,7 @@ function BlogLoadArticles($blog) {
     		
     		$section = $category;
     	} else {
-    		$sn = "-";
+    		$sn = "%";
     	}
     	
     	// add item to page nativation line

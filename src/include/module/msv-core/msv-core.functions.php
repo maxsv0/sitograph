@@ -578,7 +578,7 @@ function &msv_get($param = "website") {
     global $website;
     if (empty($website)) {
         // TODO: ???
-        die(".");
+        die("MSV instance not found");
     }
 
     $returnObj =& $website;

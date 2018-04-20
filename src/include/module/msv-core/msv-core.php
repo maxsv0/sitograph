@@ -87,9 +87,9 @@ function msv_output404() {
     if (!empty($website->page)) {
         header("HTTP/1.0 404 Not Found");
         $website->outputPage();
+    } else {
+        $website->outputNotFound();
     }
-
-    $website->outputNotFound();
 }
 
 function msv_output($content) {
@@ -100,8 +100,11 @@ function msv_output($content) {
 
 function msv_output_page() {
     $website = msv_get("website");
-
     msv_log("Website: Output");
+
+    if (!empty($website->outputData)) {
+    	return $website->outputData;
+	}
 
     if ($website->requestUrl === "/admin/" && $_REQUEST["section"] === "module_settings") {
         $admin_module_setup = msv_output_admin_modulesetup();
@@ -144,7 +147,7 @@ function msv_output_page() {
         msv_process_dev();
     }
 
-    $website->outputPage();
+    return $website->outputPage();
 }
 
 function msv_load_pagedocument() {
@@ -321,12 +324,8 @@ function msv_load_sitestructure() {
         msv_error($result["msg"]);
     }
 
-    $website =& msv_get("website");
-
-    $list = $result["data"];
-    foreach ($list as $item) {
-        $website->structure[] = $item;
-    }
+    $website = msv_get("website");
+    $website->structure = $result["data"];
 
     return true;
 }

@@ -189,6 +189,7 @@
 		<field name="msg.wrong_email" value="Неверный email"/>
 		<field name="msg.cron.saved" value="CronJob успешно сохранен"/>
 		<field name="msg.api.no_access" value="Нет доступа"/>
+		<field name="msg.api.wrong_api" value="Wrong API request"/>
 		<field name="msg.api.upload_not_found" value="Загружаемый файл не найден"/>
 		<field name="msg.api.failed_detect_image_type" value="Не удалось определить тип изображения"/>
 		<field name="msg.api.failed_detect_file_type" value="Не удалось определить тип файла"/>
@@ -417,6 +418,7 @@
 		<field name="msg.wrong_email" value="Wrong Email"/>
 		<field name="msg.cron.saved" value="CronJob Saved successfully"/>
 		<field name="msg.api.no_access" value="No access"/>
+		<field name="msg.api.wrong_api" value="Wrong API request"/>
 		<field name="msg.api.upload_not_found" value="Upload file not found"/>
 		<field name="msg.api.failed_detect_image_type" value="Failed to detect image type"/>
 		<field name="msg.api.failed_detect_file_type" value="Failed to detect file type"/>
@@ -625,6 +627,7 @@
 		<field name="table.mail_log.header" value="Заголовок (HTML)"/>
 		<field name="table.mail_log.result" value="Результат"/>
 		<field name="msg.api.no_access" value="No access"/>
+		<field name="msg.api.wrong_api" value="Wrong API request"/>
 		<field name="msg.api.upload_not_found" value="Upload file not found"/>
 		<field name="msg.api.failed_detect_image_type" value="Failed to detect image type"/>
 		<field name="msg.api.failed_detect_file_type" value="Failed to detect file type"/>

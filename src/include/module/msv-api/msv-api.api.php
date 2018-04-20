@@ -39,12 +39,10 @@ function api_request($module) {
                 }
 
                 // output result
-                echo $result;
+				$module->website->outputData = $result;
             } else {
                 msv_error("Function not found: ".$apiInfo["action"]);
             }
         }
     }
-
-    die;
 }
