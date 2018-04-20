@@ -17,5 +17,6 @@ $cont = substr($cont, 0, $a);
 $cont = $cont."</div>";
 
 $cont = preg_replace('#<a.*?>(.*?)</a>#i', '\1', $cont);
+$cont = preg_replace('#<span.*?>(.*?)</span>#i', '', $cont);
 
 file_put_contents($reportFile, $cont);
