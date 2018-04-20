@@ -14,4 +14,8 @@ $cont = substr($cont, $a+9);
 $a = strpos($cont, "<footer>");
 $cont = substr($cont, 0, $a);
 
+$cont = $cont."</div>";
+
+$cont = preg_replace('#<a.*?>(.*?)</a>#i', '\1', $cont);
+
 file_put_contents($reportFile, $cont);
