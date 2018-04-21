@@ -60,5 +60,3 @@ define("LOCAL_TEMPLATE", "templates");
 require_once(ABS_INCLUDE."/util.php");
 require_once(ABS_INCLUDE."/class.module.php");
 require_once(ABS_INCLUDE."/class.msv.php");
-
-@register_shutdown_function('msv_error_handler');
