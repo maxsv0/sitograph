@@ -1,4 +1,6 @@
-<img src="http://ci.msvhost.com:8080/job/dev.sitograph.com/badge/icon">
+<p align="center">
+  <img src="http://ci.msvhost.com:8080/job/dev.sitograph.com/badge/icon">
+</p>
 
 # To execute PHPUnit test run:
 
@@ -20,6 +22,4 @@ Results will be saved to tests/phpunit-report/
 
 Online reports from Jenkins
 http://ci.msvhost.com/
-
-
 
