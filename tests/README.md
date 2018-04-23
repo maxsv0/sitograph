@@ -1,3 +1,5 @@
+<img src="http://ci.msvhost.com:8080/job/dev.sitograph.com/badge/icon">
+
 # To execute PHPUnit test run:
 
 ```bash
@@ -18,3 +20,6 @@ Results will be saved to tests/phpunit-report/
 
 Online reports from Jenkins
 http://ci.msvhost.com/
+
+
+

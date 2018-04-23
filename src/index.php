@@ -4,7 +4,7 @@
 // *** WILL BE OVERWRITTEN DURING UPDATE
 
 include("load.php");
-
+@register_shutdown_function('msv_error_handler');
 
 
 // create MSV Website instance
