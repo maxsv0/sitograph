@@ -5,18 +5,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-<link rel="stylesheet" type="text/css" href="{$content_url}/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="{$content_url}/css/sitograph.css" />
+<link rel="stylesheet" type="text/css" href="{$contentUrl}/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="{$contentUrl}/css/sitograph.css" />
 
-<script src="{$content_url}/js/jquery.min.js"></script>
-<script src="{$content_url}/js/default.js"></script>
-<script src="{$content_url}/js/bootstrap.min.js"></script>
+<script src="{$contentUrl}/js/jquery.min.js"></script>
+<script src="{$contentUrl}/js/default.js"></script>
+<script src="{$contentUrl}/js/bootstrap.min.js"></script>
 
 <link href="/favicon.ico" rel="shortcut icon">
 </head>
 
 
-<body style="background: url({$content_url}/images/sitograph/bg.gif) repeat-x #FFFFFF;padding-top:10px;">
+<body style="background: url({$contentUrl}/images/sitograph/bg.gif) repeat-x #FFFFFF;padding-top:10px;">
 
 
 
@@ -33,7 +33,7 @@
 	<tr>
 		<td style="padding-bottom: 50px;" align="center">
 		<p>
-			<img src="{$content_url}/images/sitograph/sitograph-logo-dark-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png" style="height:80px;">
+			<img src="{$contentUrl}/images/sitograph/sitograph-logo-dark-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png" style="height:80px;">
 		</p>
 		<h4>{_t("cms")}</h4>
 		</td>
@@ -50,7 +50,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td style="background: url({$content_url}/images/sitograph/login_plain.png) 0 0 no-repeat; padding: 1px 3px 5px 3px;" height="206">
+		<td style="background: url({$contentUrl}/images/sitograph/login_plain.png) 0 0 no-repeat; padding: 1px 3px 5px 3px;" height="206">
 		
 <form action="/admin/login/" method="POST" id="login_form">
 		<table align="center" cellpadding="0" cellspacing="0">

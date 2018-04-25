@@ -6,7 +6,7 @@ if (!msv_check_accessuser("admin")) {
 // include JS for inline edit
 $edit_mode = msv_get_config("edit_mode");
 if ($edit_mode) {
-    msv_include_jsfile("/content/js/sitograph.js");
+    msv_include_jsfile(CONTENT_URL."/js/sitograph.js");
 }
 
 include(ABS_MODULE."/sitograph/config-menu.php");

@@ -557,9 +557,6 @@ class MSV_Website {
         $Smarty->compile_dir = $compile_dir;
         $Smarty->compile_check = true;
 
-        $Smarty->assign("themeDefaultPath", ABS_TEMPLATE."/default");
-        $Smarty->assign("content_url", CONTENT_URL);
-
         $this->templateEngine =& $Smarty;
     }
 
@@ -608,6 +605,9 @@ class MSV_Website {
 
 		// clear all assigned variables
 		$this->templateEngine->clearAllAssign();
+
+        $this->templateEngine->assign("themeDefaultPath", ABS_TEMPLATE."/default");
+        $this->templateEngine->assign("contentUrl", CONTENT_URL);
 
         $this->templateEngine->assign("htmlHead", $this->htmlHead);
         $this->templateEngine->assign("htmlFooter", $this->htmlFooter);

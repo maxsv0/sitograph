@@ -3,13 +3,13 @@
 {if $info.browser}
     <p>
         {if $info.browser == "Chrome"}
-            <img src="/content/images/sitograph/browser/chrome.png" width="16" height="16">
+            <img src="{$contentUrl}/images/sitograph/browser/chrome.png" width="16" height="16">
         {elseif $info.browser == "Firefox"}
-            <img src="/content/images/sitograph/browser/firefox.png" width="16" height="16">
+            <img src="{$contentUrl}/images/sitograph/browser/firefox.png" width="16" height="16">
         {elseif $info.browser == "Safari"}
-            <img src="/content/images/sitograph/browser/safari.png" width="16" height="16">
+            <img src="{$contentUrl}/images/sitograph/browser/safari.png" width="16" height="16">
         {elseif $info.browser == "Internet Explorer"}
-            <img src="/content/images/sitograph/browser/internet_explorer.png" width="16" height="16">
+            <img src="{$contentUrl}/images/sitograph/browser/internet_explorer.png" width="16" height="16">
         {/if}
 
         {$info.browser}

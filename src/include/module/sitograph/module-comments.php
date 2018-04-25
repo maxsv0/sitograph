@@ -1,8 +1,8 @@
 <?php
 
-msv_include_jsfile("/content/js/jstree.min.js");
-msv_include_jsfile("/content/js/comments_admin_function.js");
-msv_include_cssfile("/content/css/jstreestyle.css");
+msv_include_jsfile(CONTENT_URL."/js/jstree.min.js");
+msv_include_jsfile(CONTENT_URL."/js/comments_admin_function.js");
+msv_include_cssfile(CONTENT_URL."/css/jstreestyle.css");
 
 
 if (empty($section)) {

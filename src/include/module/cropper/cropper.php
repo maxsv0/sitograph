@@ -1,4 +1,4 @@
 <?php
 
-msv_include("/content/css/jquery.cropper.css");
-msv_include("/content/js/jquery.cropper.js");
+msv_include(CONTENT_URL."/css/jquery.cropper.css");
+msv_include(CONTENT_URL."/js/jquery.cropper.js");

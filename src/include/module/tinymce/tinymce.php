@@ -1,12 +1,12 @@
 <?php
 
-msv_include_jsfile("/content/js/tinymce/tinymce.min.js", "", "admin");
+msv_include_jsfile(CONTENT_URL."/js/tinymce/tinymce.min.js", "", "admin");
 $theme_css_path = msv_get_config("theme_css_path");
 $theme_use_bootstrap = msv_get_config("theme_use_bootstrap");
 
 $cssList = "";
 if ($theme_use_bootstrap > 0) {
-    $cssList .= "'/content/css/bootstrap.min.css',\n";
+    $cssList .= "'".CONTENT_URL."/css/bootstrap.min.css',\n";
 }
 if (!empty($theme_css_path)) {
     $cssList .= "'$theme_css_path',\n";

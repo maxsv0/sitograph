@@ -14,35 +14,56 @@
  */
 function api_request($module) {
     $apiRequest = $module->website->requestUrlMatch[1];
+    $apiList = msv_get("website.api");
+    $apiOutput = "";
 
-    foreach ($module->website->api as $apiInfo) {
-        if ($apiInfo["name"] === $apiRequest) {
-            if (function_exists($apiInfo["action"])) {
-                $moduleObj = msv_get("website.".$apiInfo["module"]);
+    if ($apiRequest === "list" && msv_check_accessuser("user")) {
+        $result = array(
+            "ok" => true,
+            "data" => array(),
+            "msg" => "List of available API",
+        );
 
-                // run pre hook
-                $hookFn = $apiInfo["action"]."_pre";
-                if (function_exists($hookFn)) {
-                    $evalCode = "\$result = ".$hookFn."(\$moduleObj);";
+        foreach ($apiList as $api) {
+            $apiInfo = array(
+                "name" => $api["name"],
+                "module" => $api["module"],
+                "url" => HOME_URL."api/".$api["name"]."/",
+            );
+
+            $result["data"][] = $apiInfo;
+        }
+
+        $apiOutput  = json_encode($result);
+    } else {
+        foreach ($apiList as $apiInfo) {
+            if ($apiInfo["name"] === $apiRequest) {
+                if (function_exists($apiInfo["action"])) {
+                    $moduleObj = msv_get("website.".$apiInfo["module"]);
+
+                    // run pre hook
+                    $hookFn = $apiInfo["action"]."_pre";
+                    if (function_exists($hookFn)) {
+                        $evalCode = "\$apiOutput = ".$hookFn."(\$moduleObj);";
+                        eval($evalCode);
+                    }
+
+                    // run API function
+                    $evalCode = "\$apiOutput = ".$apiInfo["action"]."(\$moduleObj);";
                     eval($evalCode);
+
+                    // run post hook
+                    $hookFn = $apiInfo["action"]."_post";
+                    if (function_exists($hookFn)) {
+                        $evalCode = "\$apiOutput = ".$hookFn."(\$moduleObj, \$result);";
+                        eval($evalCode);
+                    }
+                } else {
+                    msv_error("Function not found: ".$apiInfo["action"]);
                 }
-
-                // run API function
-                $evalCode = "\$result = ".$apiInfo["action"]."(\$moduleObj);";
-                eval($evalCode);
-
-                // run post hook
-                $hookFn = $apiInfo["action"]."_post";
-                if (function_exists($hookFn)) {
-                    $evalCode = "\$result = ".$hookFn."(\$moduleObj, \$result);";
-                    eval($evalCode);
-                }
-
-                // output result
-				$module->website->outputData = $result;
-            } else {
-                msv_error("Function not found: ".$apiInfo["action"]);
             }
         }
     }
+
+    $module->website->outputData = $apiOutput;
 }
