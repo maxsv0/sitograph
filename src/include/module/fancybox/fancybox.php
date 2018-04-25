@@ -1,7 +1,7 @@
 <?php
 
-msv_include("/content/css/jquery.fancybox.css");
-msv_include("/content/js/jquery.fancybox.min.js");
+msv_include(CONTENT_URL."/css/jquery.fancybox.css");
+msv_include(CONTENT_URL."/js/jquery.fancybox.min.js");
 
 msv_include_js("
    $('[rel=\"fancybox\"]').fancybox({

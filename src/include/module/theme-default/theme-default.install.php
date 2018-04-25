@@ -89,8 +89,8 @@ function Install_ThemeDefault($module) {
 
     // general theme options
     msv_set_config("theme_active", "theme-default", true, "*");
-    msv_set_config("theme_css_path", "/content/css/default.css", true, "*");
-    msv_set_config("theme_js_path", "/content/js/default.js", true, "*");
+    msv_set_config("theme_css_path", CONTENT_URL."/css/default.css", true, "*");
+    msv_set_config("theme_js_path", CONTENT_URL."/js/default.js", true, "*");
     msv_set_config("theme_use_bootstrap", 1, true, "*");
     msv_set_config("theme_use_jquery", 1, true, "*");
 

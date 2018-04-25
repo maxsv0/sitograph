@@ -45,11 +45,11 @@
 	    <p>
 
 				<a href="/sitemap/" class="sitemap-ico">
-					<img src="/content/images/ico_sitemap.svg"  width="20" height="20"/>
+					<img src="{$contentUrl}/images/ico_sitemap.svg"  width="20" height="20"/>
 				</a>
 			 {if $feedback}
 				 <a href="{$feedback.baseUrl}" class="mail-ico">
-					 <img src="/content/images/ico_mail.svg"  width="20" height="20"/>
+					 <img src="{$contentUrl}/images/ico_mail.svg"  width="20" height="20"/>
 				 </a>
 			 {/if}
 		</p>

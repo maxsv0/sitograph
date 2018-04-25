@@ -13,14 +13,14 @@ function msv_start() {
     // load jQuery. Required by admin UI
     $theme_use_jquery = msv_get_config("theme_use_jquery");
     if ($theme_use_jquery > 0 || $website->requestUrl === "/admin/") {
-        msv_include("/content/js/jquery.min.js");
+        msv_include(CONTENT_URL."/js/jquery.min.js");
     }
 
     // load Bootstrap. Required by admin UI
     $theme_use_bootstrap = msv_get_config("theme_use_bootstrap");
     if ($theme_use_bootstrap > 0 || $website->requestUrl === "/admin/") {
-        msv_include("/content/css/bootstrap.min.css");
-        msv_include("/content/js/bootstrap.min.js");
+        msv_include(CONTENT_URL."/css/bootstrap.min.css");
+        msv_include(CONTENT_URL."/js/bootstrap.min.js");
     }
 
     // include Theme CSS, website only

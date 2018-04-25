@@ -13,7 +13,7 @@
 
 <td>
 {if !empty($listTable[$item.id])}
-<a href="javascript:void(0)" style="margin-top:3px" onclick="toogle_parent(this,'{$item.id}','{$level}')"><img id="block_{$item.id}" src="/content/images/sitograph/arrow_right.png"/></a>
+<a href="javascript:void(0)" style="margin-top:3px" onclick="toogle_parent(this,'{$item.id}','{$level}')"><img id="block_{$item.id}" src="{$contentUrl}/images/sitograph/arrow_right.png"/></a>
 {/if}
 </td>
 

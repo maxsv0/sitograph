@@ -1,6 +1,6 @@
 <?php
 
-$manualPath = ABS."/content/manual.html";
+$manualPath = ABS.CONTENT_URL."/manual.html";
 if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
 	file_put_contents($manualPath, $_POST["form_manual_content"]);
 }

@@ -3,7 +3,7 @@
 function Install_Feedback($module) {
 
     $docFeedbackTitle = _t("structure.feedback_title");
-    $docFeedbackText = "<img src='/content/images/contacts.png' class='img-responsive'>";
+    $docFeedbackText = "<img src='".CONTENT_URL."/images/contacts.png' class='img-responsive'>";
 
     // install website page with feedback form
     $itemStructure = array(

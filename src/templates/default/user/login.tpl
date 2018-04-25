@@ -28,7 +28,7 @@
       <button type="submit" class="btn btn-lg btn-primary" name="doLogin" value="1">{_t("users.form.sign_in")}</button>
     </div>
     <div class="col-sm-offset-1 col-sm-5">
-      <a href="{$google_user_auth_url}"><img src="/content/images/btn_google_signin.png" title="{_t("users.form.sign_in_with_google")}" class="img-responsive"></a>
+      <a href="{$google_user_auth_url}"><img src="{$contentUrl}/images/btn_google_signin.png" title="{_t("users.form.sign_in_with_google")}" class="img-responsive"></a>
     </div>
   </div>
 </form>

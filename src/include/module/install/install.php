@@ -19,9 +19,9 @@ $website->pageTemplate = "install.tpl";
 $website->pageTemplatePath = ABS_TEMPLATE."/default/install.tpl";
 
 // include extra JS/CSS
-msv_include("/content/js/jquery.min.js");
-msv_include("/content/css/bootstrap.min.css");
-msv_include("/content/js/bootstrap.min.js");
+msv_include(CONTENT_URL."/js/jquery.min.js");
+msv_include(CONTENT_URL."/css/bootstrap.min.css");
+msv_include(CONTENT_URL."/js/bootstrap.min.js");
 
 $configListNames = array(
     "LANGUAGES",

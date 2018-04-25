@@ -18,8 +18,8 @@ function api_request_form() {
 
 
 function AdminLoadUI($admin) {
-    msv_include_jsfile("/content/js/sitograph.js");
-    msv_include_cssfile("/content/css/sitograph.css");
+    msv_include_jsfile(CONTENT_URL."/js/sitograph.js");
+    msv_include_cssfile(CONTENT_URL."/css/sitograph.css");
 }
 
 

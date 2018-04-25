@@ -41,7 +41,7 @@
 			</td>
 		</tr>
 		<tr bgcolor="#333746" style="border-bottom:3px solid #d7d7d7;border-top:3px solid #313131;">
-			<td><a href="/admin/"><img src="{$content_url}/images/sitograph/sitograph-logo-white-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png" style="border: none;height:80px;" /></a></td>
+			<td><a href="/admin/"><img src="{$contentUrl}/images/sitograph/sitograph-logo-white-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png" style="border: none;height:80px;" /></a></td>
 			<td align="center">
 				<table cellpadding="0" cellspacing="0">
 					<tr>
@@ -129,7 +129,7 @@
 		<table align="right" cellpadding="0" cellspacing="0">
 		<tr>
 			<td valign="top"><input class="input_search" type="text" name="keyword" value="" placeholder="{_t("form.search_placeholder")}"></td>
-			<td><input type="image" src="{$content_url}/images/sitograph/btn_search.gif" name="search"/></td>
+			<td><input type="image" src="{$contentUrl}/images/sitograph/btn_search.gif" name="search"/></td>
 		</tr>
 		</table>
 		</form>
@@ -146,7 +146,7 @@
 	
 	<table cellpadding="0" cellspacing="0" width="100%" height="100%">
 	<tr valign="top">
-		<td width="24" style="background: url(/content/images/sitograph/menu_left_bg.gif) repeat-y;">&nbsp;</td>
+		<td width="24" style="background: url({$contentUrl}/images/sitograph/menu_left_bg.gif) repeat-y;">&nbsp;</td>
 		<td width="220" bgcolor="#E8E8E8">
 		
 		<table cellpadding="0" cellspacing="0" width="220" height="100%">
@@ -176,7 +176,7 @@
 <a href="{$lang_url}{$subitem.url}">
 <p {if $subitem.access === "dev"}class="admin_crown"{/if}>{$subitem.name}</p>
 {if $admin_submenu_active == $submenu_id} 
-<img id="menu_active_arrow" src="/content/images/sitograph/menu_h37px.gif">
+<img id="menu_active_arrow" src="{$contentUrl}/images/sitograph/menu_h37px.gif">
 {/if}
 </a>
 </div>
@@ -191,7 +191,7 @@
 			<a href="{$lang_url}{$item.url}">
 				<p {if $item.access === "dev"}class="admin_crown"{/if}>{$item.name}</p></a>
 			</a>
-			<img id="menu_active_arrow" src="/content/images/sitograph/menu_h37px.gif" style="left: 218px;">
+			<img id="menu_active_arrow" src="{$contentUrl}/images/sitograph/menu_h37px.gif" style="left: 218px;">
 		</div>
 	{else}
 		<div class="">
@@ -244,7 +244,7 @@
 		<td bgcolor="#333746" height="81"></td>
 		<td bgcolor="#333746" valign="top" colspan="3">
 			<div>
-			<img src="{$content_url}/images/sitograph/sitograph-logo-white-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png" style="height:80px;"/>
+			<img src="{$contentUrl}/images/sitograph/sitograph-logo-white-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png" style="height:80px;"/>
 
 				<h4 style="display: inline-block;">{$admin_title}</h4>
 			</div>

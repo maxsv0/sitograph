@@ -114,12 +114,12 @@ function Install_Sitograph($module) {
     msv_set_config("service_ip_info", "", true, "*", _t("settings.service_ip_info"), "website");
 
     if (LANG === "ru" || LANG === "ua") {
-        msv_set_config("theme_logo", "/content/images/sitograph/sitograph-logo-dark-ru.png", true, "*");
+        msv_set_config("theme_logo", CONTENT_URL."/images/sitograph/sitograph-logo-dark-ru.png", true, "*");
     } else {
-        msv_set_config("theme_logo", "/content/images/sitograph/sitograph-logo-dark-en.png", true, "*");
+        msv_set_config("theme_logo", CONTENT_URL."/images/sitograph/sitograph-logo-dark-en.png", true, "*");
     }
-    msv_set_config("theme_bg", "/content/images/bg_full.jpg", true, "*");
-    msv_set_config("theme_cms_favicon", "/content/images/sitograph/cms_favicon.gif", true, "*");
+    msv_set_config("theme_bg", CONTENT_URL."/images/bg_full.jpg", true, "*");
+    msv_set_config("theme_cms_favicon", CONTENT_URL."/images/sitograph/cms_favicon.gif", true, "*");
 
     // add mail templates
     $header = '
@@ -355,6 +355,6 @@ a:active {color:#bb233a;}
     </div>
 </div>
 ";
-    $manualPath = ABS."/content/manual.html";
+    $manualPath = ABS.CONTENT_URL."/manual.html";
     file_put_contents($manualPath, $manualContent);
 }
