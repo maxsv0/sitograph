@@ -5,6 +5,7 @@
 	<param name="activationUrl" value="*"/>
 	<param name="adminMenu" value="0"/>
 	
+	<filter action="api_request" url="/api/"/>
 	<filter action="api_request" url="/api/*"/>
 	<filter action="api_request" url="/api/*/*"/>
 	<filter action="api_request" url="/api/*/*/*"/>

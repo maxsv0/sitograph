@@ -2,7 +2,45 @@
 
 final class BlogAPITest extends MSVTestCase {
 
-	public function testBlogAPIWrongCall() {
+    public function testBlogAPIInfoPublic() {
+        global $website;
+        $website->setRequestUrl("/api/blog/");
+        $website->load();
+
+        $output = msv_output_page();
+        $this->printPage($output);
+
+        $outputData = json_decode($output, true);
+        $this->assertTrue($outputData["ok"]);
+        $this->assertEquals(_t("msg.api.list_of_api"), $outputData["msg"]);
+        $this->assertTrue(is_array($outputData["data"]));
+        $this->assertEquals(3, count($outputData["data"]));
+    }
+
+    public function testBlogAPIInfoAdmin() {
+        global $website;
+        $website->setRequestUrl("/api/blog/");
+        $tempAccess = $website->blog->accessAPIAdd;
+        $tempAccess2 = $website->blog->accessAPIEdit;
+        $website->blog->accessAPIAdd = "everyone";
+        $website->blog->accessAPIEdit = "everyone";
+        $website->load();
+
+        $output = msv_output_page();
+        $this->printPage($output);
+
+        $outputData = json_decode($output, true);
+        $this->assertTrue($outputData["ok"]);
+        $this->assertEquals(_t("msg.api.list_of_api"), $outputData["msg"]);
+        $this->assertTrue(is_array($outputData["data"]));
+        $this->assertEquals(5, count($outputData["data"]));
+
+        // cleanup
+        $website->blog->accessAPIAdd = $tempAccess;
+        $website->blog->accessAPIEdit = $tempAccess2;
+    }
+
+    public function testBlogAPIWrongCall() {
 		global $website;
 		$website->setRequestUrl("/api/blog/".msv_generate_password()."/");
 		$website->load();
