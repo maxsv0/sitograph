@@ -550,7 +550,10 @@ class MSV_Website {
 
         $Smarty->debug_tpl = SMARTY_DIR."debug.tpl";
 
-        $compile_dir = SMARTY_DIR."cache";
+        $compile_dir = sys_get_temp_dir()."/msv";
+        if (!file_exists($compile_dir)) {
+            mkdir($compile_dir);
+        }
         if (!is_writeable($compile_dir)) {
             $this->outputError("Cant write to $compile_dir");
         }
@@ -682,10 +685,14 @@ class MSV_Website {
 
         // Error page -> auto reload
         // https://github.com/maxsv0/sitograph/issues/113
+        $str .= "<div style='position: absolute; bottom: 0; right:0; padding:5px 20px;'>";
+        $str .= "<span style='color:#bebebe;'>Reloading page in <span id='timer_cd'>15</span> sec</span>";
+        $str .= "</div>";
 		$str .= "<script>";
-		$str .= "setTimeout(function(){window.history.back();}, 5000);";
+		$str .= "var cd = 15; var reloadTimer = function(){ cd--; if (cd <= 0) { location.reload(); } else { tm = document.getElementById('timer_cd'); tm.innerHTML = cd; setTimeout('reloadTimer()', 1000); }}; reloadTimer();";
 		$str .= "</script>";
 		$this->output($str, 500);
+		exit;
 	}
 	function outputNotFound($output = "") {
 		if (empty($output)) {
