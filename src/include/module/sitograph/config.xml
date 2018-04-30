@@ -9,7 +9,7 @@
 	<filter url="/admin/" action="AdminLoadUI"/>
 	<filter url="/sitograph/modules/" action="SitographLoadModules"/>
 
-	<api name="form" action="api_request_form"/>
+	<api name="form" action="api_request_form" disabled="1"/>
     <api name="set_structure_status" action="ajax_set_structure_status"/>
 </config>
 
