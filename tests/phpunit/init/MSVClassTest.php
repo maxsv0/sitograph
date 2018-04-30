@@ -175,9 +175,13 @@ final class MSVWebsiteClass extends MSVTestCase {
         $this->printPage($output);
 	}
 
-	// TODO: use set_exit_overload
-    // for now test is disabled
-    public function testMSVWebsiteOutputError() {
+/*
+// TODO: use set_exit_overload
+
+	Jenkins doesn't support skipped tests
+	to just comment
+
+	public function testMSVWebsiteOutputError() {
         $this->markTestSkipped('Need to rewrite a test to use set_exit_overload');
 
         $website = msv_get();
@@ -192,6 +196,7 @@ final class MSVWebsiteClass extends MSVTestCase {
         $this->assertContains("ERROR",$output);
         unset_exit_overload();
 	}
+*/
 
     public function testMSVWebsiteOutputForbidden() {
         $website = msv_get();
