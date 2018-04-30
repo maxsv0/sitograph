@@ -294,11 +294,6 @@ if ($install_step === 3) {
     } else {
         $website->messages["success"][] = "SUCCESS: Database connection established.";
     }
-    if (!is_writable(SMARTY_DIR."cache")) {
-        $website->messages["error"][] = "ERROR: <b>".SMARTY_DIR."cache</b> is not writable";
-    } else {
-        $website->messages["success"][] = "SUCCESS: smarty/cache is writable";
-    }
 }
 
 // prepare initial data, step 2
@@ -373,4 +368,5 @@ if (!empty($install_step)) {
 
 // output template
 $website->outputDebug();
-$website->outputPage();
+echo $website->outputPage();
+exit();
