@@ -26,9 +26,6 @@ echo count($tr_list)." lines found\n";
 $cont_filtered = "";
 $i = 0;
 foreach ($tr_list as $block) {
-    // skip title
-    if (strpos($block, "Code Coverage") !== false) continue;
-
     if (strpos($block, ">Total<") !== false) {
         $tr_text = "<tr class='lead'>";
     } else {
