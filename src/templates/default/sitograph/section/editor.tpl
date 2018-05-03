@@ -2,7 +2,7 @@
 	<h4>Files found</h4>
     {foreach from=$file_list item=file_path}
 		<p>
-			<a href="{$lang_url}/admin/?section=editor&edit_file={$file_path}">{$file_path}</a>
+			<a href="{$lang_url}{$admin_url}?section=editor&edit_file={$file_path}">{$file_path}</a>
 		</p>
     {/foreach}
 
@@ -11,9 +11,9 @@
 
 	<div class="btnCover">
 		<div>
-			<a href="{$lang_url}/admin/?section=editor&edit_file={$file_path}" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span> Read file</a>
+			<a href="{$lang_url}{$admin_url}?section=editor&edit_file={$file_path}" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span> Read file</a>
 			&nbsp;&nbsp;&nbsp;
-			<a href="{$lang_url}/admin/?section=editor&edit_file={$file_path}&edit_mode" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit file</a>
+			<a href="{$lang_url}{$admin_url}?section=editor&edit_file={$file_path}&edit_mode" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit file</a>
 		</div>
 	</div>
 
@@ -27,11 +27,11 @@
 			<pre class="panel panel-danger text-danger" style="font-size: 14px;">
 {$t["not_found"]}
 </pre>
-			<a class="btn btn-primary" href="{$lang_url}/admin/?section=editor&edit_file={$file_path}&create_confirm">Create File</a>
+			<a class="btn btn-primary" href="{$lang_url}{$admin_url}?section=editor&edit_file={$file_path}&create_confirm">Create File</a>
         {/if}
 
     {else}
-		<form method="POST" action="{$lang_url}/admin/?section={$admin_section}">
+		<form method="POST" action="{$lang_url}{$admin_url}?section={$admin_section}">
 
 			<div class="form-group">
 				<textarea class="form-control" rows="15" name="form_file_content">{$file_content|escape}</textarea>

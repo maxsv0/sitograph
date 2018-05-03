@@ -12,26 +12,26 @@ function msv_start() {
 
     // load jQuery. Required by admin UI
     $theme_use_jquery = msv_get_config("theme_use_jquery");
-    if ($theme_use_jquery > 0 || $website->requestUrl === "/admin/") {
+    if ($theme_use_jquery > 0 || $website->requestUrl === ADMIN_URL) {
         msv_include(CONTENT_URL."/js/jquery.min.js");
     }
 
     // load Bootstrap. Required by admin UI
     $theme_use_bootstrap = msv_get_config("theme_use_bootstrap");
-    if ($theme_use_bootstrap > 0 || $website->requestUrl === "/admin/") {
+    if ($theme_use_bootstrap > 0 || $website->requestUrl === ADMIN_URL) {
         msv_include(CONTENT_URL."/css/bootstrap.min.css");
         msv_include(CONTENT_URL."/js/bootstrap.min.js");
     }
 
     // include Theme CSS, website only
     $theme_css_path = msv_get_config("theme_css_path");
-    if (!empty($theme_css_path) && $website->requestUrl !== "/admin/") {
+    if (!empty($theme_css_path) && $website->requestUrl !== ADMIN_URL) {
         msv_include($theme_css_path);
     }
 
 	// include Theme JS, website only
     $theme_js_path = msv_get_config("theme_js_path");
-    if (!empty($theme_js_path) && $website->requestUrl !== "/admin/") {
+    if (!empty($theme_js_path) && $website->requestUrl !== ADMIN_URL) {
         msv_include($theme_js_path);
     }
 
@@ -54,9 +54,9 @@ function msv_load() {
     $website->load();
 
     // if website closed output text
-    // allow access to /admin/ and for dev
+    // allow access to ADMIN_URL and for dev
     if (defined("SITE_CLOSED") && SITE_CLOSED
-        && ($website->requestUrl !== "/admin/" && $website->requestUrl !== "/admin/login/")) {
+        && ($website->requestUrl !== ADMIN_URL && $website->requestUrl !== ADMIN_URL."login/")) {
 
         if ($website->user["access"] === "dev") {
             $website->includeHead[] = "<p class='alert alert-warning'><b>SITE_CLOSED</b>. Access available only for <b>dev</b>.</p>";
@@ -106,13 +106,13 @@ function msv_output_page() {
     	return $website->outputData;
 	}
 
-    if ($website->requestUrl === "/admin/" && $_REQUEST["section"] === "module_settings") {
+    if ($website->requestUrl === ADMIN_URL && $_REQUEST["section"] === "module_settings") {
         $admin_module_setup = msv_output_admin_modulesetup();
         msv_assign_data("admin_module_setup", $admin_module_setup);
     }
 
     if (defined("SHOW_ADMIN_MENU") && SHOW_ADMIN_MENU > 0) {
-        if ($website->requestUrl !== "/admin/" && msv_check_accessuser("admin")) {
+        if ($website->requestUrl !== ADMIN_URL && msv_check_accessuser("admin")) {
             $admin_menu = msv_output_admin_menu();
 
             $htmlFooter = msv_get_config("htmlFooter");
@@ -360,7 +360,7 @@ function msv_enable_module($module) {
 
     msv_log("===== enableModule OK");
 
-    $website->outputRedirect("/admin/?section=module_settings&module=".$module);
+    $website->outputRedirect(ADMIN_URL."?section=module_settings&module=".$module);
 
     return true;
 }
@@ -395,7 +395,7 @@ function msv_disable_module($module) {
 
     msv_log("===== disableModule OK");
 
-    $website->outputRedirect("/admin/?section=module_settings&module=".$module);
+    $website->outputRedirect(ADMIN_URL."?section=module_settings&module=".$module);
 
     return true;
 }
@@ -648,7 +648,7 @@ function msv_install_module($module, $redirect = true) {
     if (msv_install_module_archive($moduleInfo["download_url"], $fileList)) {
         if ($redirect) {
             msv_log("installModule -> redirect");
-            $website->outputRedirect("/admin/?install_hook=".$module);
+            $website->outputRedirect(ADMIN_URL."?install_hook=".$module);
         }
 
         return true;
@@ -685,18 +685,18 @@ function msv_output_admin_menu() {
 
     $strOut = '<table width="100%" cellpadding="0" cellspacing="0" class="admin_panel">';
     $strOut .= '<tbody><tr><td align="left" width="30%">';
-    $strOut .= '<a href="/admin/?toggle_edit_mode" class="link-dashed">Edit Mode</a> ';
+    $strOut .= '<a href="'.ADMIN_URL.'?toggle_edit_mode" class="link-dashed">Edit Mode</a> ';
 
     $edit_mode = msv_get_config("edit_mode");
     if ($edit_mode) {
         $strOut .= '<span class="label label-success">ON</span>';
-        $strOut .= ' <small>'."<a href='/admin/?section=structure&table=structure&edit=".$website->page["id"]."'>settings</a>".' <span class=\'glyphicon glyphicon-edit\'></span></small>';
+        $strOut .= ' <small>'."<a href='".ADMIN_URL."?section=structure&table=structure&edit=".$website->page["id"]."'>settings</a>".' <span class=\'glyphicon glyphicon-edit\'></span></small>';
     } else {
         $strOut .= '<span class="label label-danger">OFF</span>';
     }
     $strOut .= '</td><td align="center">';
     $strOut .= '<p>'._t("title.back_to_admin").'';
-    $strOut .= '<a href="/admin/">';
+    $strOut .= '<a href="'.ADMIN_URL.'">';
     $strOut .= '<span class="admin_pic">&nbsp;</span>';
     $strOut .= '<span class="admin_title">'._t("btn.back_to_admin").'</span>';
     $strOut .= '</a>';
@@ -704,7 +704,7 @@ function msv_output_admin_menu() {
 
     if ($edit_mode) {
         $strOut .= '<td align="center" width="20%">';
-        $strOut .= "<a href='/admin/?section=editor&edit_file=/templates/".$templateInfo."&edit_mode'>";
+        $strOut .= "<a href='".ADMIN_URL."?section=editor&edit_file=/templates/".$templateInfo."&edit_mode'>";
         $strOut .= "<small>$templateInfo <span class='glyphicon glyphicon-edit'></span></small></a>";
         $strOut .=' <td align="center" width="10%">';
         $strOut .= "<a href='#' data-toggle=\"collapse\" data-target=\"#debugLog\"><small class='link-dashed'>$pageInfo</small><span class=\"caret\"></span></a>";
@@ -746,7 +746,7 @@ function msv_output_admin_modulesetup() {
         $strOut .= "<div class='col-lg-8'>";
         if (!empty($_GET["module"])) {
             $obj = $website->{$_GET["module"]};
-            $strOut .= "<h4><a href='/admin/?section=module_settings'>Installed modules</a> &gt; ".$obj->title."</h4>";
+            $strOut .= "<h4><a href='".ADMIN_URL."?section=module_settings'>Installed modules</a> &gt; ".$obj->title."</h4>";
         } else {
             $strOut .= "<h4>Installed modules</h4>";
         }
@@ -775,7 +775,7 @@ function msv_output_admin_modulesetup() {
             }
             $strOut .= "<td>";
             $strOut .= "<td class='col-sm-2'>";
-            $strOut .= "<a href='/admin/?section=module_settings&module=" . $obj->name . "' class='btn btn-primary'><span class='glyphicon glyphicon-cog'></span> configure</a>";
+            $strOut .= "<a href='".ADMIN_URL."?section=module_settings&module=" . $obj->name . "' class='btn btn-primary'><span class='glyphicon glyphicon-cog'></span> configure</a>";
             $strOut .= "</td>";
             $strOut .= "</tr>";
         }
@@ -829,20 +829,20 @@ function msv_output_admin_modulesetup() {
             $strOut .= "<a href='".$moduleInfo["download_url"]."' class='btn btn-primary'>".$title.".zip</a> ";
 
             if (!empty($obj)) {
-                $strOut .= "<a href='/admin/?module_reinstall=".$moduleInfo["name"]."' class='btn btn-danger' onclick=\"if(!confirm('Are you sure? Current module files will be overwritten.')) return false;\">reinstall</a> ";
+                $strOut .= "<a href='".ADMIN_URL."?module_reinstall=".$moduleInfo["name"]."' class='btn btn-danger' onclick=\"if(!confirm('Are you sure? Current module files will be overwritten.')) return false;\">reinstall</a> ";
 
                 $mVersion = (float)$moduleInfo["version"];
                 $oVersion = (float)$obj->version;
 
                 if ($mVersion > $oVersion) {
-                    $strOut .= "<a href='/admin/?module_reinstall=".$moduleInfo["name"]."' class='btn btn-danger'>update</a> ";
+                    $strOut .= "<a href='".ADMIN_URL."?module_reinstall=".$moduleInfo["name"]."' class='btn btn-danger'>update</a> ";
                 }
             } else {
                 if (!$meetDep) {
-                    $strOut .= "<a href='/admin/?module_install=".$moduleInfo["name"]."' class='btn btn-primary' onclick=\"if(!confirm('Installing module without dependencies can cause system error.')) return false;\">install</a> ";
+                    $strOut .= "<a href='".ADMIN_URL."?module_install=".$moduleInfo["name"]."' class='btn btn-primary' onclick=\"if(!confirm('Installing module without dependencies can cause system error.')) return false;\">install</a> ";
                     $strOut .= "<span class='text-danger'>Dependencies not met<span> ";
                 } else {
-                    $strOut .= "<a href='/admin/?module_install=".$moduleInfo["name"]."' class='btn btn-primary'>install</a> ";
+                    $strOut .= "<a href='".ADMIN_URL."?module_install=".$moduleInfo["name"]."' class='btn btn-primary'>install</a> ";
                 }
             }
             $strOut .= "</p>";
@@ -854,7 +854,7 @@ function msv_output_admin_modulesetup() {
         $strOut .= "<div class='well'>";
         $strOut .= "<h4>Select module .zip archive and press Install button for manual installing</h4>";
         $strOut .= "
-<form action='/admin/' class=\"form-inline row\" enctype='multipart/form-data' method='POST'>
+<form action='".ADMIN_URL."' class=\"form-inline row\" enctype='multipart/form-data' method='POST'>
   <div class=\"form-group col-sm-10\">
     <label for=\"inputPassword2\">Password</label>
     <input type=\"file\" class=\"form-control\" name=\"install_archive\" placeholder=\"Password\">
@@ -889,7 +889,7 @@ function msv_output_admin_modulesetup() {
     $urlInfo = parse_url(REP);
     $strOut .= "<p><b>".$urlInfo["host"]."</b></p>";
     $strOut .= "<p>";
-    $strOut .= "<a href='/admin/?section=module_settings&module_install' class='btn btn-lg btn-danger'><span class='glyphicon glyphicon-download'></span> Add Module</a> &nbsp; &nbsp;";
+    $strOut .= "<a href='".ADMIN_URL."?section=module_settings&module_install' class='btn btn-lg btn-danger'><span class='glyphicon glyphicon-download'></span> Add Module</a> &nbsp; &nbsp;";
     $strOut .= "</p>";
     $strOut .= "</div>";
     $strOut .= "</div>";
@@ -901,11 +901,11 @@ function msv_output_admin_modulesetup() {
     $strOut .= "<br>\n";
     $strOut .= "<div class='row'>";
     $strOut .= "<div class='col-sm-6'>";
-    $strOut .= "<a href='/admin/?section=module_settings&module_update_all' class='btn btn-lg btn-danger'><span class='glyphicon glyphicon-refresh'></span> update all</a> &nbsp; &nbsp;";
-    $strOut .= "<a href='/admin/?section=module_settings&module_install' class='btn btn-lg btn-danger'><span class='glyphicon glyphicon-download'></span> install new module</a> &nbsp; &nbsp;";
+    $strOut .= "<a href='".ADMIN_URL."?section=module_settings&module_update_all' class='btn btn-lg btn-danger'><span class='glyphicon glyphicon-refresh'></span> update all</a> &nbsp; &nbsp;";
+    $strOut .= "<a href='".ADMIN_URL."?section=module_settings&module_install' class='btn btn-lg btn-danger'><span class='glyphicon glyphicon-download'></span> install new module</a> &nbsp; &nbsp;";
     $strOut .= "</div>";
     $strOut .= "<div class='col-sm-6 text-right'>";
-    $strOut .= "<a href='/admin/?section=export&full' class='btn btn-lg btn-primary'><span class='glyphicon glyphicon-download-alt'></span> Download Website Backup</a> &nbsp; &nbsp;";
+    $strOut .= "<a href='".ADMIN_URL."?section=export&full' class='btn btn-lg btn-primary'><span class='glyphicon glyphicon-download-alt'></span> Download Website Backup</a> &nbsp; &nbsp;";
     $strOut .= "</div>";
     $strOut .= '</div>';
 
@@ -938,14 +938,14 @@ function msv_build_module_info($module) {
     <h4>Module Configuration</h4>';
 
     $str .= "<div class='well text-center'>";
-    $str .= '<a href="/admin/?section=editor&edit_file='.LOCAL_MODULE.'/'.$objModule->name.'/config.xml" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-edit"></span> Edit Module XML</a> &nbsp;&nbsp;';
+    $str .= '<a href="'.ADMIN_URL.'?section=editor&edit_file='.LOCAL_MODULE.'/'.$objModule->name.'/config.xml" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-edit"></span> Edit Module XML</a> &nbsp;&nbsp;';
     if (file_exists(ABS_MODULE.'/'.$objModule->name.'/config.locales.xml')) {
-        $str .= '<a href="/admin/?section=editor&edit_file='.LOCAL_MODULE.'/'.$objModule->name.'/config.locales.xml" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-edit"></span> Edit Locales XML</a> &nbsp;&nbsp;';
+        $str .= '<a href="'.ADMIN_URL.'?section=editor&edit_file='.LOCAL_MODULE.'/'.$objModule->name.'/config.locales.xml" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-edit"></span> Edit Locales XML</a> &nbsp;&nbsp;';
     } else {
         $str .= '<a href="#" class="btn btn-primary btn-lg disabled"><span class="glyphicon glyphicon-edit"></span> Edit Locales XML</a> &nbsp;&nbsp;';
     }
     if (file_exists(ABS_MODULE.'/'.$objModule->name.'/config.install.xml')) {
-        $str .= '<a href="/admin/?section=editor&edit_file='.LOCAL_MODULE.'/'.$objModule->name.'/config.install.xml" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-edit"></span> Edit Install XML</a>';
+        $str .= '<a href="'.ADMIN_URL.'?section=editor&edit_file='.LOCAL_MODULE.'/'.$objModule->name.'/config.install.xml" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-edit"></span> Edit Install XML</a>';
     } else {
         $str .= '<a href="#" class="btn btn-primary btn-lg disabled"><span class="glyphicon glyphicon-edit"></span> Edit Install XML</a>';
     }
@@ -985,16 +985,16 @@ function msv_build_module_info($module) {
         $str .= $resultCount["data"]." rows";
         $str .= "&nbsp;&nbsp;&nbsp;";
         if ($tableExists) {
-            $str .= " <a href='/admin/?section=export&table=".$tableInfo["name"]."&export_full' class='btn btn-primary btn-lg'><span class='glyphicon glyphicon-download'></span> Export CSV</a> ";
+            $str .= " <a href='".ADMIN_URL."?section=export&table=".$tableInfo["name"]."&export_full' class='btn btn-primary btn-lg'><span class='glyphicon glyphicon-download'></span> Export CSV</a> ";
         } else {
             $str .= " <a href='#' class='btn btn-primary disabled'><span class='glyphicon glyphicon-download'></span> Export CSV</a> ";
         }
         $str .= "</p>";
-        $str .= "<p><a href=\"/admin/?section=editor&edit_file=".LOCAL_MODULE."/".$objModule->name."/config.xml\" class='btn btn-primary btn-lg'><span class='glyphicon glyphicon-edit'></span> Edit XML definition</a></p>";
+        $str .= "<p><a href=\"".ADMIN_URL."?section=editor&edit_file=".LOCAL_MODULE."/".$objModule->name."/config.xml\" class='btn btn-primary btn-lg'><span class='glyphicon glyphicon-edit'></span> Edit XML definition</a></p>";
         $str .= "<p class='well'>";
-        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=remove#tables' class='btn btn-danger".($tableExists ? "" : " disabled")."'><span class='glyphicon glyphicon-remove'></span> remove table</a> ";
-        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=truncate#tables' class='btn btn-danger".($tableExists ? "" : " disabled")."''><span class='glyphicon glyphicon-trash'></span> truncate table</a> ";
-        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=create#tables' class='btn btn-warning".($tableExists ? " disabled" : "")."''><span class='glyphicon glyphicon-plus'></span> create table</a> ";
+        $str .= " <a href='".ADMIN_URL."?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=remove#tables' class='btn btn-danger".($tableExists ? "" : " disabled")."'><span class='glyphicon glyphicon-remove'></span> remove table</a> ";
+        $str .= " <a href='".ADMIN_URL."?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=truncate#tables' class='btn btn-danger".($tableExists ? "" : " disabled")."''><span class='glyphicon glyphicon-trash'></span> truncate table</a> ";
+        $str .= " <a href='".ADMIN_URL."?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=create#tables' class='btn btn-warning".($tableExists ? " disabled" : "")."''><span class='glyphicon glyphicon-plus'></span> create table</a> ";
         $str .= "</p>";
         $str .= "</div><div class='col-sm-7'>";
         $str .= "<h4>Fields definition</h4>";
@@ -1102,11 +1102,11 @@ function msv_build_module_info($module) {
     <h4>Locales and texts</h4>';
     $str .= "<div class='well text-center'>";
     if (file_exists(ABS_MODULE.'/'.$objModule->name.'/config.locales.xml')) {
-        $str .= '<a href="/admin/?section=editor&edit_file='.LOCAL_MODULE.'/'.$objModule->name.'/config.locales.xml" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-edit"></span> Edit Locales XML</a> &nbsp;&nbsp;';
+        $str .= '<a href="'.ADMIN_URL.'?section=editor&edit_file='.LOCAL_MODULE.'/'.$objModule->name.'/config.locales.xml" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-edit"></span> Edit Locales XML</a> &nbsp;&nbsp;';
     } else {
-        $str .= '<a href="/admin/?section=editor&edit_file='.LOCAL_MODULE.'/'.$objModule->name.'/config.xml" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-edit"></span> Edit Locales XML</a> &nbsp;&nbsp;';
+        $str .= '<a href="'.ADMIN_URL.'?section=editor&edit_file='.LOCAL_MODULE.'/'.$objModule->name.'/config.xml" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-edit"></span> Edit Locales XML</a> &nbsp;&nbsp;';
     }
-    $str .= '<a href="/admin/?section=locales#module-'.$objModule->name.'" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-cog"></span> Manage Translations</a>';
+    $str .= '<a href="'.ADMIN_URL.'?section=locales#module-'.$objModule->name.'" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-cog"></span> Manage Translations</a>';
     $str .= '</div>
     <table class="table table-hover">
     <tr><th class="col-sm-5">Text ID</th><th>Value</th></tr>
@@ -1151,15 +1151,15 @@ function msv_build_module_info($module) {
     $str .= "<h4>Module actions</h4>";
     $str .= "<p class='well text-center'>";
     // TODO: Export module feature
-    $str .= "<a href='/admin/?section=export&module=".$objModule->name."' class='btn btn-primary btn-lg'><span class='glyphicon glyphicon-download'></span> Export ZIP</a>&nbsp; &nbsp; ";
-    $str .= "<a href='/admin/?module_reinstall=".$objModule->name."' class='btn btn-warning btn-lg' onclick=\"if(!confirm('Are you sure? Current module files will be overwritten.')) return false;\"><span class='glyphicon glyphicon-refresh'></span> update module</a>&nbsp; &nbsp; ";
+    $str .= "<a href='".ADMIN_URL."?section=export&module=".$objModule->name."' class='btn btn-primary btn-lg'><span class='glyphicon glyphicon-download'></span> Export ZIP</a>&nbsp; &nbsp; ";
+    $str .= "<a href='".ADMIN_URL."?module_reinstall=".$objModule->name."' class='btn btn-warning btn-lg' onclick=\"if(!confirm('Are you sure? Current module files will be overwritten.')) return false;\"><span class='glyphicon glyphicon-refresh'></span> update module</a>&nbsp; &nbsp; ";
     if ($objModule->enabled) {
-        $str .= "<a href='/admin/?module_disable=".$objModule->name."' class='btn btn-danger btn-lg'><span class='glyphicon glyphicon-remove'></span> disable module</a>";
+        $str .= "<a href='".ADMIN_URL."?module_disable=".$objModule->name."' class='btn btn-danger btn-lg'><span class='glyphicon glyphicon-remove'></span> disable module</a>";
     } else {
-        $str .= "<a href='/admin/?module_enable=".$objModule->name."' class='btn btn-danger btn-lg'><span class='glyphicon glyphicon-ok'></span> enable module</a>";
+        $str .= "<a href='".ADMIN_URL."?module_enable=".$objModule->name."' class='btn btn-danger btn-lg'><span class='glyphicon glyphicon-ok'></span> enable module</a>";
     }
     //$str .= "&nbsp; &nbsp; ";
-    //$str .= "<a href='/admin/?module_remove=".$objModule->name."' class='btn btn-danger btn-lg disabled' onclick=\"if(!confirm('ALL DATA WILL BE LOST! Are you sure?')) return false;\"><span class='glyphicon glyphicon-ban-circle'></span> Remove</a> &nbsp; &nbsp;";
+    //$str .= "<a href='".ADMIN_URL."?module_remove=".$objModule->name."' class='btn btn-danger btn-lg disabled' onclick=\"if(!confirm('ALL DATA WILL BE LOST! Are you sure?')) return false;\"><span class='glyphicon glyphicon-ban-circle'></span> Remove</a> &nbsp; &nbsp;";
     $str .= "</p>";
 
     $str .= "<h4>Table actions</h4>";
@@ -1175,7 +1175,7 @@ function msv_build_module_info($module) {
             $str .= $resultCount["data"]." rows";
             $str .= "</td>";
             $str .= "<td class='col-sm-2'>";
-            $str .= " <a href='/admin/?section=export&table=".$tableInfo["name"]."&export_full' class='btn btn-primary'><span class='glyphicon glyphicon-download'></span> Export CSV</a> ";
+            $str .= " <a href='".ADMIN_URL."?section=export&table=".$tableInfo["name"]."&export_full' class='btn btn-primary'><span class='glyphicon glyphicon-download'></span> Export CSV</a> ";
             $str .= "</td>";
         } else {
             $str .= "<td colspan='2' class='col-sm-4'>";
@@ -1185,9 +1185,9 @@ function msv_build_module_info($module) {
         }
 
         $str .= "<td class='col-sm-5'>";
-        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=remove#actions' class='btn btn-danger".($tableExists ? "" : " disabled")."'><span class='glyphicon glyphicon-remove'></span> remove table</a> ";
-        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=truncate#actions' class='btn btn-danger".($tableExists ? "" : " disabled")."''><span class='glyphicon glyphicon-trash'></span> truncate table</a> ";
-        $str .= " <a href='/admin/?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=create#actions' class='btn btn-warning".($tableExists ? " disabled" : "")."''><span class='glyphicon glyphicon-plus'></span> create table</a> ";
+        $str .= " <a href='".ADMIN_URL."?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=remove#actions' class='btn btn-danger".($tableExists ? "" : " disabled")."'><span class='glyphicon glyphicon-remove'></span> remove table</a> ";
+        $str .= " <a href='".ADMIN_URL."?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=truncate#actions' class='btn btn-danger".($tableExists ? "" : " disabled")."''><span class='glyphicon glyphicon-trash'></span> truncate table</a> ";
+        $str .= " <a href='".ADMIN_URL."?section=module_settings&module={$module}&module_table=".$tableInfo["name"]."&table_action=create#actions' class='btn btn-warning".($tableExists ? " disabled" : "")."''><span class='glyphicon glyphicon-plus'></span> create table</a> ";
         $str .= "</td>";
     }
     $str .= "</table>";
@@ -1303,7 +1303,7 @@ function msv_process_dev() {
 
         if (!empty($result)) {
             if ($result["ok"]) {
-                msv_redirect("/admin/?section=module_settings&module=$module&msg=".$result["msg"]);
+                msv_redirect(ADMIN_URL."?section=module_settings&module=$module&msg=".$result["msg"]);
             } else {
                 msv_message_error($result["msg"]);
             }
@@ -1346,7 +1346,7 @@ function msv_process_dev() {
             }
             $obj->runInstallHook();
 
-            msv_redirect("/admin/?section=module_settings&install_ok=".$module."&module=".$module."&module_install");
+            msv_redirect(ADMIN_URL."?section=module_settings&install_ok=".$module."&module=".$module."&module_install");
         }
     }
 

@@ -46,7 +46,7 @@
 
 <td>
 {if $fileInfo.type == "directory"}
-	<a href="{$lang_url}/admin/?section=media_library&media={$mediaID}&mediapath={$fileInfo.url}" class="btn btn-info">open folder</a>
+	<a href="{$lang_url}{$admin_url}?section=media_library&media={$mediaID}&mediapath={$fileInfo.url}" class="btn btn-info">open folder</a>
 {elseif ($fileInfo.type == "image/png" || $fileInfo.type == "image/gif" || $fileInfo.type == "image/jpeg")}
 	<img src="{$fileInfo.urlabs}" class="img-responsive" border="1">
 {else}
@@ -62,7 +62,7 @@
 {/if}
 </td>
 <td>
-	<a href="{$lang_url}/admin/?section={$admin_section}&media={$mediaID}&delete={$fileInfo.url}" title="{$t['btn.delete']}" class="btn btn-danger" onclick="if (!confirm('{$t['btn.remove_confirm']}')) return false;"><span class="glyphicon glyphicon-remove"></span></a>
+	<a href="{$lang_url}{$admin_url}?section={$admin_section}&media={$mediaID}&delete={$fileInfo.url}" title="{$t['btn.delete']}" class="btn btn-danger" onclick="if (!confirm('{$t['btn.remove_confirm']}')) return false;"><span class="glyphicon glyphicon-remove"></span></a>
 </td>
 
 </tr>

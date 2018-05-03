@@ -103,7 +103,7 @@ class MSV_Module {
 
         // always include all modules at /admin/ page and /api/*
         if ($url === "*" ||
-            $url === "/admin/" ||
+            $url === ADMIN_URL ||
             strpos($url, "/api/") === 0) {
             // include without check
 

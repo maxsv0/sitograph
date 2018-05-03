@@ -65,9 +65,9 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"]) || !empty($_REQUEST["d
         $configXML->asXml($configLocales);
 
         if (!empty($_POST["save"])) {
-            msv_redirect("/admin/?section=locales&edit=$textID&module=$moduleName&msg="._t("msg.saved_ok"));
+            msv_redirect(ADMIN_URL."?section=locales&edit=$textID&module=$moduleName&msg="._t("msg.saved_ok"));
         } else {
-            msv_redirect("/admin/?section=locales&msg="._t("msg.saved_ok")."#module-".$moduleName);
+            msv_redirect(ADMIN_URL."?section=locales&msg="._t("msg.saved_ok")."#module-".$moduleName);
         }
     }
 }

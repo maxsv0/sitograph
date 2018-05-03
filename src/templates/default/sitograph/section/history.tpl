@@ -55,7 +55,7 @@
 		<div class="col-xs-11" style="padding-left:0;">
 			<p><b>Debug History</b> is not active. DEBUG_LOG must contain valid path and DEBUG set to 1.</p>
 			<p>
-				<a href="{$lang_url}/admin/?section=config#DEBUG_LOG">{_t("admin.config")} (DEBUG_LOG)</a>, <a href="{$lang_url}/admin/?section=config#DEBUG">{_t("admin.config")} (DEBUG)</a>.
+				<a href="{$lang_url}{$admin_url}?section=config#DEBUG_LOG">{_t("admin.config")} (DEBUG_LOG)</a>, <a href="{$lang_url}{$admin_url}?section=config#DEBUG">{_t("admin.config")} (DEBUG)</a>.
 			</p>
 		</div>
 	</div>
@@ -63,7 +63,7 @@
 {else}
 
 	<p>
-		<a class="btn btn-danger" href="{$lang_url}/admin/?section=history&truncate_log">Truncate log file</a>
+		<a class="btn btn-danger" href="{$lang_url}{$admin_url}?section=history&truncate_log">Truncate log file</a>
 
 		&nbsp;&nbsp;&nbsp;&nbsp;
 		Log file:

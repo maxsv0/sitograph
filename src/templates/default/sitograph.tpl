@@ -24,7 +24,7 @@
 			</td>
 			<td align="center">
 				<div style="padding-bottom: 4px;">
-					<a style="font-size: 11px; color: #ed2a45;" href="/admin/?section=manual">{_t("admin.manual")}</a>
+					<a style="font-size: 11px; color: #ed2a45;" href="{$admin_url}?section=manual">{_t("admin.manual")}</a>
 				</div>
 			</td>
 			<td width="400">
@@ -41,7 +41,7 @@
 			</td>
 		</tr>
 		<tr bgcolor="#333746" style="border-bottom:3px solid #d7d7d7;border-top:3px solid #313131;">
-			<td><a href="/admin/"><img src="{$contentUrl}/images/sitograph/sitograph-logo-white-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png" style="border: none;height:80px;" /></a></td>
+			<td><a href="{$admin_url}"><img src="{$contentUrl}/images/sitograph/sitograph-logo-white-{if $lang == "ru" || $lang == "ua"}ru{else}en{/if}.png" style="border: none;height:80px;" /></a></td>
 			<td align="center">
 				<table cellpadding="0" cellspacing="0">
 					<tr>
@@ -84,7 +84,7 @@
 {if $lang  == $langID}
 	<li><span class="active">{$langID}</span></li>
 {else}
-	<li><a href="/admin/?lang={$langID}">{$langID}</a></li>
+	<li><a href="{$admin_url}?lang={$langID}">{$langID}</a></li>
 {/if}
 {/foreach}
 </ul>
@@ -125,7 +125,7 @@
 		</td>
 		<td style="padding-right: 5px; padding-top: 25px;">
 		
-		<form action="{$lang_url}/admin/?section=module_search&search" method="POST">
+		<form action="{$lang_url}{$admin_url}?section=module_search&search" method="POST">
 		<table align="right" cellpadding="0" cellspacing="0">
 		<tr>
 			<td valign="top"><input class="input_search" type="text" name="keyword" value="" placeholder="{_t("form.search_placeholder")}"></td>

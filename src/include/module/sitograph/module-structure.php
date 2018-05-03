@@ -85,7 +85,7 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
             }
         }
     } else {
-        msv_redirect("/admin/?section=$section&edit=".$_POST["form_id"]."&save_error=".urlencode($resultSave["msg"]));
+        msv_redirect(ADMIN_URL."?section=$section&edit=".$_POST["form_id"]."&save_error=".urlencode($resultSave["msg"]));
     }
 }
 

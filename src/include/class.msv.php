@@ -611,6 +611,7 @@ class MSV_Website {
 
         $this->templateEngine->assign("themeDefaultPath", ABS_TEMPLATE."/default");
         $this->templateEngine->assign("contentUrl", CONTENT_URL);
+        $this->templateEngine->assign("admin_url", ADMIN_URL);
 
         $this->templateEngine->assign("htmlHead", $this->htmlHead);
         $this->templateEngine->assign("htmlFooter", $this->htmlFooter);
@@ -752,9 +753,9 @@ class MSV_Website {
 			// set redirect url to return after login
 			$_SESSION["redirect_url"] = $this->requestUrlRaw;
 			
-			if ($this->page["url"] === "/admin/") {
+			if ($this->page["url"] === ADMIN_URL) {
 				// redirect to login page
-				$this->outputRedirect("/admin/login/");
+				$this->outputRedirect(ADMIN_URL."login/");
 			} else {
 				// redirect to login page
 				$this->outputRedirect("/login/");
@@ -795,7 +796,7 @@ class MSV_Website {
 
 		// Disable ERR_BLOCKED_BY_XSS_AUDITOR
 		// https://github.com/maxsv0/sitograph/issues/134
-        if ($this->page["url"] === "/admin/") {
+        if ($this->page["url"] === ADMIN_URL) {
             header('X-XSS-Protection:0');
         }
 

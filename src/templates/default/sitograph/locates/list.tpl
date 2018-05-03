@@ -42,8 +42,8 @@
 <td>{$localeID}</td>
 <td>{$localeText}</td>
 <td class="text-nowrap">
-	<a href="{$lang_url}/admin/?section={$admin_section}&delete={$localeID}&form_module={$moduleName}" title="{$t['btn.delete']}" class="btn btn-danger" onclick="if (!confirm('{$t["btn.remove_confirm"]}')) return false;"><span class="glyphicon glyphicon-remove"></span></a>
-	<a href="{$lang_url}/admin/?section={$admin_section}&edit={$localeID}&module={$moduleName}" title="{$t['btn.edit']}" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
+	<a href="{$lang_url}{$admin_url}?section={$admin_section}&delete={$localeID}&form_module={$moduleName}" title="{$t['btn.delete']}" class="btn btn-danger" onclick="if (!confirm('{$t["btn.remove_confirm"]}')) return false;"><span class="glyphicon glyphicon-remove"></span></a>
+	<a href="{$lang_url}{$admin_url}?section={$admin_section}&edit={$localeID}&module={$moduleName}" title="{$t['btn.edit']}" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
 </td>
 </tr>
 
@@ -68,7 +68,7 @@
 
 
 <div class="col-sm-6">
-<a href="{$lang_url}/admin/?section={$admin_section}&add_new" class="btn btn-primary"><span class="glyphicon glyphicon-ok">&nbsp;</span>{$t["btn.add_new"]}</a>
+<a href="{$lang_url}{$admin_url}?section={$admin_section}&add_new" class="btn btn-primary"><span class="glyphicon glyphicon-ok">&nbsp;</span>{$t["btn.add_new"]}</a>
 </div>
 
 

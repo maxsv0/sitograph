@@ -36,7 +36,7 @@ $(document).ready(function() {
 	  ]
 	});
  });
-", "/admin/", "admin");
+", ADMIN_URL, "admin");
 
 // include this code globally, if admin logged
 msv_include_js("

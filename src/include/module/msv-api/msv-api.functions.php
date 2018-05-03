@@ -252,12 +252,14 @@ function db_get_listpaged($table, $filter = "", $orderby = "", $items_per_page =
         return $resultCount;
     }
 
+    $result["count_total"] = $num_rows;
 
     $resultList = db_get_list($table, $filter, $orderby, $items_per_page, $skip);
     if (!$resultList["ok"]) {
         return $resultList;
     }
 
+    $result["count_data"] = min($items_per_page, count($resultList["data"]));
 
     $listPages = array();
     $pages = array();
@@ -345,7 +347,7 @@ function db_get($table, $filter = "", $lang = LANG) {
     // Not published content is available only in Admin UI
     $user = msv_get("website.user");
     $request = msv_get("website.requestUrl");
-    if (!($request === "/admin/") && ($user["access"] === "dev" || $user["access"] === "admin")) {
+    if (!($request === ADMIN_URL) && ($user["access"] === "dev" || $user["access"] === "admin")) {
         $sqlCode .= " `published` > 0 and ";
     }
 
@@ -409,7 +411,7 @@ function db_get_count($table, $filter = "", $lang = LANG) {
     // Not published content is available only in Admin UI
     $user = msv_get("website.user");
     $request = msv_get("website.requestUrl");
-    if (!(($request === "/admin/") && ($user["access"] === "dev" || $user["access"] === "admin"))) {
+    if (!(($request === ADMIN_URL) && ($user["access"] === "dev" || $user["access"] === "admin"))) {
         $sqlCode .= " `published` > 0 and ";
     }
 
@@ -475,7 +477,7 @@ function db_get_list($table, $filter = "", $orderby = "", $limit = 1000000, $ski
     // Not published content is available only in Admin UI
     $user = msv_get("website.user");
     $request = msv_get("website.requestUrl");
-    if (!(($request === "/admin/") && ($user["access"] === "dev" || $user["access"] === "admin"))) {
+    if (!(($request === ADMIN_URL) && ($user["access"] === "dev" || $user["access"] === "admin"))) {
         $sqlCode .= " `published` > 0 and ";
     }
 
@@ -524,6 +526,8 @@ function db_get_list($table, $filter = "", $orderby = "", $limit = 1000000, $ski
         $listItem[$rowFormated["id"]] = $rowFormated;
     }
     $result["data"] = $listItem;
+
+    $result["count_total"] = $result["count_data"] = mysqli_num_rows($resultQuery["data"]);
 
     return $result;
 }

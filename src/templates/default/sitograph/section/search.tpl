@@ -1,7 +1,7 @@
 
 <div class="filter_block" style="padding:0px">
         <div class="search_header"><b>{$t["form.search_lable"]}</b></div>
-        <form action="{$lang_url}/admin/?section=module_search&search" method="POST">
+        <form action="{$lang_url}{$admin_url}?section=module_search&search" method="POST">
         <table width="100%" cellpadding="0" cellspacing="0" class="search_table">
         <td width="130">{$t["form.search_word"]}</td>
             <td valign="center">

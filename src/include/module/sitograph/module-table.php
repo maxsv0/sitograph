@@ -44,9 +44,9 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"])) {
 		}
 	} else {
 	    if (!empty($_REQUEST["ajaxcall"])) {
-            msv_redirect("/admin/?ajaxcall=1&section=$section&table=$admin_table&save_error=".$result["msg"]);
+            msv_redirect(ADMIN_URL."?ajaxcall=1&section=$section&table=$admin_table&save_error=".$result["msg"]);
         } else {
-            msv_redirect("/admin/?section=$section&table=$admin_table&save_error=".$result["msg"]);
+            msv_redirect(ADMIN_URL."?section=$section&table=$admin_table&save_error=".$result["msg"]);
         }
 
 	}

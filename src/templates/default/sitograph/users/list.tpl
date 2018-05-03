@@ -5,25 +5,25 @@
 <table class="table table-hover table-striped table-module">
 <tr>
 <th{if $table_sort == "id"} class='colactive'{/if}>
-<a {if $table_sort == "id"}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=id&sortd={$table_sortd_rev}">{$t["table.users.id"]}</a>
+<a {if $table_sort == "id"}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}{$admin_url}?section={$admin_section}&table={$admin_table}&sort=id&sortd={$table_sortd_rev}">{$t["table.users.id"]}</a>
 </th>
 <th{if $table_sort == "status"} class='colactive'{/if}>
-<a {if $table_sort == "status"}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=status&sortd={$table_sortd_rev}">{$t["users.status"]}</a>
+<a {if $table_sort == "status"}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}{$admin_url}?section={$admin_section}&table={$admin_table}&sort=status&sortd={$table_sortd_rev}">{$t["users.status"]}</a>
 </th>
 <th{if $table_sort == "access"} class='colactive'{/if}>
-<a {if $table_sort == "access"}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=access&sortd={$table_sortd_rev}">{$t["table.users.access"]}</a>
+<a {if $table_sort == "access"}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}{$admin_url}?section={$admin_section}&table={$admin_table}&sort=access&sortd={$table_sortd_rev}">{$t["table.users.access"]}</a>
 </th>
 <th{if $table_sort == "email"} class='colactive'{/if}>
-<a {if $table_sort == "email"}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=email&sortd={$table_sortd_rev}">{$t["table.users.email"]}</a>
+<a {if $table_sort == "email"}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}{$admin_url}?section={$admin_section}&table={$admin_table}&sort=email&sortd={$table_sortd_rev}">{$t["table.users.email"]}</a>
 </th>
 <th{if $table_sort == "name"} class='colactive'{/if}>
-<a {if $table_sort == "name"}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=name&sortd={$table_sortd_rev}">{$t["table.users.name"]}</a>
+<a {if $table_sort == "name"}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}{$admin_url}?section={$admin_section}&table={$admin_table}&sort=name&sortd={$table_sortd_rev}">{$t["table.users.name"]}</a>
 </th>
 <th{if $table_sort == "iss"} class='colactive'{/if}>
-<a {if $table_sort == "iss"}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=iss&sortd={$table_sortd_rev}">{$t["table.users.iss"]}</a>
+<a {if $table_sort == "iss"}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}{$admin_url}?section={$admin_section}&table={$admin_table}&sort=iss&sortd={$table_sortd_rev}">{$t["table.users.iss"]}</a>
 </th>
 <th{if $table_sort == "updated"} class='colactive'{/if}>
-<a {if $table_sort == "updated"}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort=updated&sortd={$table_sortd_rev}">{$t["table.users.updated"]}</a>
+<a {if $table_sort == "updated"}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}{$admin_url}?section={$admin_section}&table={$admin_table}&sort=updated&sortd={$table_sortd_rev}">{$t["table.users.updated"]}</a>
 </th>
 <th>{$t["actions"]}</th>
 </tr>
@@ -43,7 +43,7 @@
 		<span class="label label-default">{_t("users.offline")}</span>
     {/if}
 	<div class="small">
-        <a href="{$lang_url}/admin/?section=leads&lead_id={$item["lead"]["id"]}">open info</a>
+        <a href="{$lang_url}{$admin_url}?section=leads&lead_id={$item["lead"]["id"]}">open info</a>
 	</div>
 </td>
 
@@ -57,7 +57,7 @@
 {else}
 	<span class="label label-danger">{_t("msg.users.email_notverified")}</span>
 {/if}
-	<a href="{$lang_url}/admin/?section=send_email&send_to={$item.email}" class="btn btn-default btn-sm">send email..</a>
+	<a href="{$lang_url}{$admin_url}?section=send_email&send_to={$item.email}" class="btn btn-default btn-sm">send email..</a>
 </td>
 
 <td class="text-nowrap">
@@ -70,10 +70,10 @@
 <td class="col-sm-2">
 {if $item.access_data !== "dev" || ($item.access_data === "dev" && $user.access === "dev")}
 	<ul class="list-btn">
-		<li><a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&reset={$item.id}" title="Reset Password" class="btn btn-default btn-sm" onclick="prompt_password(this); return false;">Reset Password <span class="glyphicon glyphicon-lock"></span></a></li>
-		<li><a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&edit={$item.id}" title="{_t("btn.edit")}" class="btn btn-default btn-sm">{_t("btn.edit")} <span class="glyphicon glyphicon-edit"></span></a></li>
-		<li><a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&duplicate={$item.id}" title="{_t("btn.duplicate")}" class="btn btn-default btn-sm">{_t("btn.duplicate")} <span class="glyphicon glyphicon-duplicate"></span></a></li>
-		<li><a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&delete={$item.id}" title="Delete" class="btn btn-danger btn-sm">Delete <span class="glyphicon glyphicon-remove"></span></a></li>
+		<li><a href="{$lang_url}{$admin_url}?section={$admin_section}&table={$admin_table}&reset={$item.id}" title="Reset Password" class="btn btn-default btn-sm" onclick="prompt_password(this); return false;">Reset Password <span class="glyphicon glyphicon-lock"></span></a></li>
+		<li><a href="{$lang_url}{$admin_url}?section={$admin_section}&table={$admin_table}&edit={$item.id}" title="{_t("btn.edit")}" class="btn btn-default btn-sm">{_t("btn.edit")} <span class="glyphicon glyphicon-edit"></span></a></li>
+		<li><a href="{$lang_url}{$admin_url}?section={$admin_section}&table={$admin_table}&duplicate={$item.id}" title="{_t("btn.duplicate")}" class="btn btn-default btn-sm">{_t("btn.duplicate")} <span class="glyphicon glyphicon-duplicate"></span></a></li>
+		<li><a href="{$lang_url}{$admin_url}?section={$admin_section}&table={$admin_table}&delete={$item.id}" title="Delete" class="btn btn-danger btn-sm">Delete <span class="glyphicon glyphicon-remove"></span></a></li>
 	</ul>
 {/if}
 </td>
@@ -90,5 +90,5 @@
 {/if} 
 
 <div class="col-sm-6">
-<a href="{$lang_url}/admin/?section={$admin_section}&add_new" class="btn btn-primary"><span class="glyphicon glyphicon-ok">&nbsp;</span>{$t["btn.add_new"]}</a>
+<a href="{$lang_url}{$admin_url}?section={$admin_section}&add_new" class="btn btn-primary"><span class="glyphicon glyphicon-ok">&nbsp;</span>{$t["btn.add_new"]}</a>
 </div>

@@ -25,3 +25,4 @@ define("REP", "http://rep.msvhost.com/api/rep/main/");
 define("USER_HASH_PASSWORD", true);
 define("USER_IGNORE_PRIVILEGES", false);
 define("SMARTY_DIR", __DIR__."/include/custom/smarty/");
+define("ADMIN_URL", "/admin/");
