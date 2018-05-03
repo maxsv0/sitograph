@@ -37,17 +37,24 @@ foreach ($tr_list as $block) {
 
     $td_list = explode("<td", $block);
 
+    // *** now remove 3 right columns
     if (count($td_list) === 5) {
     	unset($td_list[4]);
+        $block = implode("<td", $td_list);
+        $block .= "</tr>";
 	} elseif (count($td_list) === 11) {
     	unset($td_list[8]);
     	unset($td_list[9]);
     	unset($td_list[10]);
+        $block = implode("<td", $td_list);
+        $block .= "</tr>\n\n";
 	}
-	$block = implode("<td", $td_list);
+	// *** done
 
     $cont_filtered .= $block;
 }
+// fix for removed html
+$cont_filtered .= "</tbody></table></div>";
 
 echo "Write to file $reportFile ".strlen($cont_filtered)." bytes\n";
 
