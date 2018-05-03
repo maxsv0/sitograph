@@ -4,7 +4,7 @@
 
 {if $admin_sitemap_edit_mode}
 
-    <form method="POST" action="{$lang_url}/admin/?section={$admin_section}">
+    <form method="POST" action="{$lang_url}{$admin_url}?section={$admin_section}">
 
         <div class="form-group">
             <textarea class="form-control" rows="15" name="form_sitemap_content">{$admin_sitemap}</textarea>
@@ -31,7 +31,7 @@
 
     <div class="btnCover">
         <div>
-            <a href="{$lang_url}/admin/?section=sitemap&edit_mode" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> {_t("btn.edit")}</a>
+            <a href="{$lang_url}{$admin_url}?section=sitemap&edit_mode" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> {_t("btn.edit")}</a>
         </div>
     </div>
 
@@ -42,5 +42,5 @@
 {/if}
 
 
-<a href="{$lang_url}/admin/?section=sitemap&generate" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-flash"></span> {_t("btn.generate")} sitemap.xml</a>
+<a href="{$lang_url}{$admin_url}?section=sitemap&generate" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-flash"></span> {_t("btn.generate")} sitemap.xml</a>
 &nbsp;&nbsp;&nbsp;

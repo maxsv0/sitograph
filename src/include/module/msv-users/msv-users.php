@@ -182,7 +182,7 @@ if (!empty($_REQUEST["doLogin"]) && !empty($_REQUEST["email"]) && !empty($_REQUE
             }
 
             if ($result["data"]["access"] === "admin" || $result["data"]["access"] === "dev") {
-                $redirect_uri = "/admin/";
+                $redirect_uri = ADMIN_URL;
             }
 
             header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));

@@ -8,7 +8,7 @@ $submenu = array();
 $submenu["index"] = array(
     "name" => _t("admin.homepage"),
     "access" => "admin",
-    "url" => "/admin/",
+    "url" => ADMIN_URL."",
     "file" => "index.tpl",
     "title" => _t("admin.homepage_title"),
     "orderID" => 1,
@@ -16,28 +16,28 @@ $submenu["index"] = array(
 $submenu["realtime"] = array(
     "name" => _t("admin.realtime"),
     "access" => "admin",
-    "url" => "/admin/?section=realtime",
+    "url" => ADMIN_URL."?section=realtime",
     "file" => "realtime.tpl",
     "title" => _t("admin.realtime"),
 );
 $submenu["leads"] = array(
     "name" => _t("admin.leads"),
     "access" => "admin",
-    "url" => "/admin/?section=leads",
+    "url" => ADMIN_URL."?section=leads",
     "file" => "leads.tpl",
     "title" => _t("admin.leads_title"),
 );
 $submenu["analytics"] = array(
     "name" => _t("admin.analytics"),
     "access" => "admin",
-    "url" => "/admin/?section=analytics",
+    "url" => ADMIN_URL."?section=analytics",
     "file" => "analytics.tpl",
     "title" => _t("admin.analytics")
 );
 //$submenu["social"] = array(
 //    "name" => _t("admin.social"),
 //    "access" => "admin",
-//    "url" => "/admin/?section=social",
+//    "url" => ADMIN_URL."?section=social",
 //    "file" => "social.tpl",
 //    "title" => _t("admin.social"),
 //);
@@ -45,7 +45,7 @@ $submenu["manual"] = array(
     "name" => _t("admin.manual"),
     "access" => "admin",
     "handler" => "module-manual.php",
-    "url" => "/admin/?section=manual",
+    "url" => ADMIN_URL."?section=manual",
     "file" => "manual.tpl",
     "title" => _t("admin.manual_title")
 );
@@ -67,7 +67,7 @@ $submenu["structure"] = array(
     "access" => "admin",
     "handler" => "module-structure.php",
     "table" => TABLE_STRUCTURE,
-    "url" => "/admin/?section=structure",
+    "url" => ADMIN_URL."?section=structure",
     "file" => "structure.tpl",
     "title" => _t("admin.structure_title")
 );
@@ -76,7 +76,7 @@ $submenu["menu"] = array(
     "access" => "admin",
     "handler" => "module-table.php",
     "table" => TABLE_MENU,
-    "url" => "/admin/?section=menu",
+    "url" => ADMIN_URL."?section=menu",
     "file" => "menu.tpl",
     "title" => _t("admin.menu_title")
 );
@@ -85,7 +85,7 @@ $submenu["documents"] = array(
     "access" => "admin",
     "handler" => "module-table.php",
     "table" => TABLE_DOCUMENTS,
-    "url" => "/admin/?section=documents",
+    "url" => ADMIN_URL."?section=documents",
     "file" => "documents.tpl",
     "title" => _t("admin.documents_title")
 );
@@ -94,7 +94,7 @@ $submenu["seo"] = array(
     "access" => "admin",
     "handler" => "module-table.php",
     "table" => TABLE_SEO,
-    "url" => "/admin/?section=seo",
+    "url" => ADMIN_URL."?section=seo",
     "file" => "seo.tpl",
     "title" => _t("admin.seo_title")
 );
@@ -114,7 +114,7 @@ $menu_ar["users"] = array(
     "access" => "admin",
     "handler" => "module-users.php",
     "table" => TABLE_USERS,
-    "url" => "/admin/?section=users",
+    "url" => ADMIN_URL."?section=users",
     "file" => "users.tpl",
     "title" => _t("admin.users_title"),
     "orderID" => 30,
@@ -124,7 +124,7 @@ $menu_ar["media_library"] = array(
     "name" =>  _t("admin.media_library"),
     "access" => "admin",
     "handler" => "module-media.php",
-    "url" => "/admin/?section=media_library",
+    "url" => ADMIN_URL."?section=media_library",
     "file" => "media_library.tpl",
     "title" =>  _t("admin.media_library"),
     "orderID" => 40,
@@ -146,7 +146,7 @@ foreach ($this->website->modules as $module) {
                 "table" => $name,
                 "access" => "admin",
                 "handler" => "module-table.php",
-                "url" => "/admin/?section=".$module->name."&table=".$name,
+                "url" => ADMIN_URL."?section=".$module->name."&table=".$name,
                 "file" => "custom.tpl",
                 "title" => _t("module.".$module->name)." - "._t("table.".$name)
             );
@@ -160,7 +160,7 @@ foreach ($this->website->modules as $module) {
             "name" => _t("module.".$module->name),
             "access" => "admin",
             "handler" => "module-table.php",
-            "url" => "/admin/?section=".$module->name,
+            "url" => ADMIN_URL."?section=".$module->name,
             "file" => "custom.tpl",
             "title" => $module->description,
             "submenu" => $submenu,
@@ -178,7 +178,7 @@ foreach ($this->website->modules as $module) {
 $menu_ar["module_settings"] = array(
     "name" => _t("admin.module_settings"),
     "access" => "dev",
-    "url" => "/admin/?section=module_settings",
+    "url" => ADMIN_URL."?section=module_settings",
     "file" => "module_settings.tpl",
     "title" => _t("admin.module_settings_title"),
     "orderID" => 150,
@@ -190,7 +190,7 @@ $submenu["send_email"] = array(
     "name" => _t("admin.send_email"),
     "access" => "admin",
     "handler" => "module-email.php",
-    "url" => "/admin/?section=send_email",
+    "url" => ADMIN_URL."?section=send_email",
     "file" => "send_email.tpl",
     "title" => _t("admin.send_email_title"),
     "orderID" => 10,
@@ -200,7 +200,7 @@ $submenu["maillog"] = array(
     "access" => "admin",
     "handler" => "module-table.php",
     "table" => TABLE_MAIL_LOG,
-    "url" => "/admin/?section=maillog",
+    "url" => ADMIN_URL."?section=maillog",
     "file" => "custom.tpl",
     "title" => _t("admin.maillog_title"),
     "orderID" => 50,
@@ -210,7 +210,7 @@ $submenu["mail_template"] = array(
     "access" => "admin",
     "handler" => "module-table.php",
     "table" => TABLE_MAIL_TEMPLATES,
-    "url" => "/admin/?section=mail_template",
+    "url" => ADMIN_URL."?section=mail_template",
     "file" => "mail_template.tpl",
     "title" => _t("admin.mail_template_title"),
     "orderID" => 100,
@@ -236,7 +236,7 @@ $submenu["locales"] = array(
         "name" => _t("admin.locales"),
         "access" => "dev",
         "handler" => "module-locales.php",
-        "url" => "/admin/?section=locales",
+        "url" => ADMIN_URL."?section=locales",
         "file" => "locales.tpl",
         "title" => _t("admin.locales_title")
 );
@@ -245,7 +245,7 @@ $submenu["cronjobs"] = array(
     "access" => "dev",
     "handler" => "module-table.php",
     "table" => TABLE_CRONJOBS,
-    "url" => "/admin/?section=cronjobs",
+    "url" => ADMIN_URL."?section=cronjobs",
     "file" => "cronjobs.tpl",
     "title" => _t("admin.cronjobs_title"),
     "orderID" => 101,
@@ -255,7 +255,7 @@ $submenu["cronjobslog"] = array(
     "access" => "dev",
     "handler" => "module-table.php",
     "table" => TABLE_CRONJOBS_LOGS,
-    "url" => "/admin/?section=cronjobslog",
+    "url" => ADMIN_URL."?section=cronjobslog",
     "file" => "custom.tpl",
     "title" => _t("admin.cronjobslog_title"),
     "orderID" => 102,
@@ -264,7 +264,7 @@ $submenu["robots"] = array(
     "name" => _t("admin.robots"),
     "access" => "dev",
     "handler" => "module-robots.php",
-    "url" => "/admin/?section=robots",
+    "url" => ADMIN_URL."?section=robots",
     "file" => "robots.tpl",
     "title" => _t("admin.robots_title")
 );
@@ -272,7 +272,7 @@ $submenu["sitemap"] = array(
     "name" => _t("admin.sitemap"),
     "access" => "dev",
     "handler" => "module-sitemap.php",
-    "url" => "/admin/?section=sitemap",
+    "url" => ADMIN_URL."?section=sitemap",
     "file" => "sitemap.tpl",
     "title" => _t("admin.sitemap_title")
 );
@@ -280,7 +280,7 @@ $submenu["config"] = array(
     "name" => _t("admin.config"),
     "access" => "dev",
     "handler" => "module-config.php",
-    "url" => "/admin/?section=config",
+    "url" => ADMIN_URL."?section=config",
     "file" => "config.tpl",
     "title" => _t("admin.config_title")
 );
@@ -288,7 +288,7 @@ $submenu["editor"] = array(
     "name" => _t("admin.editor"),
     "access" => "dev",
     "handler" => "module-editor.php",
-    "url" => "/admin/?section=editor",
+    "url" => ADMIN_URL."?section=editor",
     "file" => "editor.tpl",
     "title" => _t("admin.editor_title")
 );
@@ -306,7 +306,7 @@ $menu_ar["design"] = array(
     "name" => _t("admin.design"),
     "access" => "admin",
     "handler" => "module-design.php",
-    "url" => "/admin/?section=design",
+    "url" => ADMIN_URL."?section=design",
     "file" => "design.tpl",
     "title" => _t("admin.design_title"),
     "orderID" => 100,
@@ -317,7 +317,7 @@ $menu_ar["site_settings"] = array(
     "access" => "admin",
     "handler" => "module-settings.php",
     "table" => TABLE_SETTINGS,
-    "url" => "/admin/?section=site_settings",
+    "url" => ADMIN_URL."?section=site_settings",
     "file" => "site_settings.tpl",
     "title" => _t("admin.site_settings_title"),
     "orderID" => 105,
@@ -327,7 +327,7 @@ $menu_ar["history"] = array(
     "name" => _t("admin.history"),
     "access" => "dev",
     "handler" => "module-history.php",
-    "url" => "/admin/?section=history",
+    "url" => ADMIN_URL."?section=history",
     "file" => "history.tpl",
     "title" => _t("admin.history_title"),
     "orderID" => 200,

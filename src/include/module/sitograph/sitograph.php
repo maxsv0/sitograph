@@ -133,7 +133,7 @@ if (!empty($section) && in_array($section, $menu_index)) {
     }
 
     if (!empty($_POST["save_exit"])) {
-        msv_redirect("/admin/?section=$section&table=$admin_table&saved&p=".$admin_list_page);
+        msv_redirect(ADMIN_URL."?section=$section&table=$admin_table&saved&p=".$admin_list_page);
     }
     if (!empty($_POST["save"])) {
         if (!msv_has_messages()) {
@@ -292,10 +292,10 @@ msv_assign_data("config_cms", $configCMS);
 
 if (!empty($admin_table) && !empty($section)) {
     $pageID = $section."_".$admin_table;
-    $favoriteUrl = "/admin/?section=$section&table=$admin_table";
+    $favoriteUrl = ADMIN_URL."?section=$section&table=$admin_table";
 } elseif (!empty($section)) {
     $pageID = $section;
-    $favoriteUrl = "/admin/?section=$section";
+    $favoriteUrl = ADMIN_URL."?section=$section";
 }
 msv_assign_data("cms_favorite_id", $pageID);
 msv_assign_data("cms_favorite_url", $favoriteUrl);

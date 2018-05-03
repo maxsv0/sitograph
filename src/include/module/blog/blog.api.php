@@ -4,6 +4,7 @@
  * API extension for module blog
  *
  * Allow URLs like:
+ * 		/api/blog/				    => access: everyone, but list only available API's
  * 		/api/blog/list/				=> access: accessAPIList
  * 		/api/blog/category/			=> access: accessAPICategory
  * 		/api/blog/details/12345/	=> access: accessAPIDetails
@@ -15,6 +16,7 @@
  */
 function api_request_blog($module) {
     $request = msv_get('website.requestUrlMatch');
+    $apiName = $request[1];
     $apiType = $request[2];
 
     switch ($apiType) {
@@ -82,6 +84,55 @@ function api_request_blog($module) {
                     $resultQuery = db_update(TABLE_BLOG_ARTICLES, $_REQUEST["updateName"], "'".db_escape($_REQUEST["updateValue"])."'", "`id` = ".(int)$_REQUEST["updateID"]);
                 }
             }
+            break;
+        case "":
+            $apiInfo = array();
+            if (msv_check_accessuser($module->accessAPIList)) {
+                $apiInfo[] = array(
+                    "name" => "List published articles",
+                    "module" => $module->name,
+                    "url" => HOME_URL . "api/" . $apiName . "/list/",
+                    "access" => $module->accessAPIList,
+                );
+            }
+            if (msv_check_accessuser($module->accessAPICategory)) {
+                $apiInfo[] = array(
+                    "name" => "List categories of articles",
+                    "module" => $module->name,
+                    "url" => HOME_URL . "api/" . $apiName . "/category/",
+                    "access" => $module->accessAPICategory,
+                );
+            }
+            if (msv_check_accessuser($module->accessAPIDetails)) {
+                $apiInfo[] = array(
+                    "name" => "Details for article",
+                    "module" => $module->name,
+                    "url" => HOME_URL . "api/" . $apiName . "/details/[id]/",
+                    "access" => $module->accessAPIDetails,
+                );
+            }
+            if (msv_check_accessuser($module->accessAPIAdd)) {
+                $apiInfo[] = array(
+                    "name" => "Add article",
+                    "module" => $module->name,
+                    "url" => HOME_URL . "api/" . $apiName . "/add/",
+                    "access" => $module->accessAPIAdd,
+                );
+            }
+            if (msv_check_accessuser($module->accessAPIEdit)) {
+                $apiInfo[] = array(
+                    "name" => "Edit article details",
+                    "module" => $module->name,
+                    "url" => HOME_URL . "api/" . $apiName . "/edit/",
+                    "access" => $module->accessAPIEdit,
+                );
+            }
+
+            $resultQuery = array(
+                "ok" => true,
+                "data" => $apiInfo,
+                "msg" => _t("msg.api.list_of_api"),
+            );
             break;
         default:
             $resultQuery = array(

@@ -194,6 +194,7 @@
 		<field name="msg.api.failed_detect_image_type" value="Не удалось определить тип изображения"/>
 		<field name="msg.api.failed_detect_file_type" value="Не удалось определить тип файла"/>
 		<field name="msg.api.type_error_allowed" value="Тип файла не разрешен. Разрешенные типы:"/>
+		<field name="msg.api.list_of_api" value="List of available API"/>
 		<field name="settings.include_html_head" value="Этот HTML-код включен во все страницы, над тегом body"/>
 		<field name="settings.theme_css_path" value="Общий CSS файл"/>
 		<field name="settings.theme_js_path" value="Общий JavaScript файл"/>
@@ -423,6 +424,7 @@
 		<field name="msg.api.failed_detect_image_type" value="Failed to detect image type"/>
 		<field name="msg.api.failed_detect_file_type" value="Failed to detect file type"/>
 		<field name="msg.api.type_error_allowed" value="File type not allowed. Allowed:"/>
+		<field name="msg.api.list_of_api" value="List of available API"/>
 		<field name="settings.include_html_head" value="This HTML code is included to all pages, above 'body' tag"/>
 		<field name="settings.theme_css_path" value="Path to a CSS file included globally"/>
 		<field name="settings.theme_js_path" value="Path to a JS file included globally"/>
@@ -632,6 +634,7 @@
 		<field name="msg.api.failed_detect_image_type" value="Failed to detect image type"/>
 		<field name="msg.api.failed_detect_file_type" value="Failed to detect file type"/>
 		<field name="msg.api.type_error_allowed" value="File type not allowed. Allowed:"/>
+		<field name="msg.api.list_of_api" value="List of available API"/>
 		<field name="msg.error_remove_active" value="Неможливо видалити активный модуль"/>
 		<field name="msg.removed" value="видалене"/>
 		<field name="msg.repository_not_found" value="не знайден в репозитории"/>

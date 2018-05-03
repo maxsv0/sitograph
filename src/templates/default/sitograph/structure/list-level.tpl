@@ -77,16 +77,16 @@
 <td class="col-sm-3">
 <ul class="list-btn">
 	<li>
-		<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&edit={$item.id}" title="{$t['btn.edit']}" class="btn btn-default btn-sm">{$t['btn.edit']} <span class="glyphicon glyphicon-edit"></span></a>
+		<a href="{$lang_url}{$admin_url}?section={$admin_section}&table={$admin_table}&edit={$item.id}" title="{$t['btn.edit']}" class="btn btn-default btn-sm">{$t['btn.edit']} <span class="glyphicon glyphicon-edit"></span></a>
 	</li>
 	<li>
-		<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&add_child={$item.id}" title="{$t['btn.add_child']}" class="btn btn-default btn-sm">{$t['btn.add_child']} <span class="glyphicon glyphicon-plus"></span></a>
+		<a href="{$lang_url}{$admin_url}?section={$admin_section}&table={$admin_table}&add_child={$item.id}" title="{$t['btn.add_child']}" class="btn btn-default btn-sm">{$t['btn.add_child']} <span class="glyphicon glyphicon-plus"></span></a>
 	</li>
 	<li>
-		<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&duplicate={$item.id}" title="{$t['btn.duplicate']}" class="btn btn-default btn-sm">{$t['btn.duplicate']} <span class="glyphicon glyphicon-duplicate"></span></a>
+		<a href="{$lang_url}{$admin_url}?section={$admin_section}&table={$admin_table}&duplicate={$item.id}" title="{$t['btn.duplicate']}" class="btn btn-default btn-sm">{$t['btn.duplicate']} <span class="glyphicon glyphicon-duplicate"></span></a>
 	</li>
 	<li>
-		<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&delete={$item.id}" onclick="if (!confirm('{$t["btn.remove_confirm"]}')) return false;" title="{$t['btn.delete']}" class="btn btn-danger btn-sm">{$t['btn.delete']} <span class="glyphicon glyphicon-remove"></span></a>
+		<a href="{$lang_url}{$admin_url}?section={$admin_section}&table={$admin_table}&delete={$item.id}" onclick="if (!confirm('{$t["btn.remove_confirm"]}')) return false;" title="{$t['btn.delete']}" class="btn btn-danger btn-sm">{$t['btn.delete']} <span class="glyphicon glyphicon-remove"></span></a>
 	</li>
 </ul>
 </td>

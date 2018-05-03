@@ -9,7 +9,7 @@
 
 <div class="articles-block" data-id="{$article.id}">
 
-<h2><a href="{$lang_url}{$blog.baseUrl}{$article.url}/">{$article.title}</a></h2>
+<h2><a href="{$lang_url}{$blog.baseUrl}{$article.url}/">{$article.title_highlight}</a></h2>
 
 <div class="row article-info-block">
 	<div class="col-sm-6 text-muted small">
@@ -38,7 +38,7 @@
 <a href="{$lang_url}{$blog.baseUrl}{$article.url}/">
 <img src="{$article.pic_preview}" alt="{$article.title}" class="img-responsive"/>
 {if $article.description}
-	<span class="article-media-description">{$article.description}</span>
+	<span class="article-media-description">{$article.description_highlight}</span>
 {else}
 	<span class="article-media-description">{$article.title}</span>
 {/if}

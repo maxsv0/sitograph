@@ -13,6 +13,19 @@ function api_request_form() {
     echo ($output);
 }
 
+function ajax_set_structure_status ($module) {
+
+    if (!empty($_REQUEST['mode'])) {
+        if ($_REQUEST['mode'] == 'add') {
+            $_SESSION['structure_show'][$_REQUEST['index']] = $_REQUEST['level'];
+        } elseif($_REQUEST['mode'] == 'remove') {
+            unset($_SESSION['structure_show'][$_REQUEST['index']]);
+        }
+    }
+
+    $result['ok'] =true;
+    return json_encode($result);
+}
 
 // ******** filters **********
 

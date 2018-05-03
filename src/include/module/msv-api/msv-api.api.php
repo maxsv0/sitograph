@@ -3,6 +3,7 @@
 /**
  * Filter to enable website API
  * Allow URLs like:
+ *              /api/
  *              /api/level-1/
  *              /api/level-1/level-2/
  *              /api/level-1/level-2/level-3/
@@ -17,11 +18,11 @@ function api_request($module) {
     $apiList = msv_get("website.api");
     $apiOutput = "";
 
-    if ($apiRequest === "list" && msv_check_accessuser("user")) {
+    if (empty($apiRequest) && msv_check_accessuser("user")) {
         $result = array(
             "ok" => true,
             "data" => array(),
-            "msg" => "List of available API",
+            "msg" => _t("msg.api.list_of_api"),
         );
 
         foreach ($apiList as $api) {

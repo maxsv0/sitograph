@@ -4,7 +4,7 @@
     <div class="col-xs-1"><img src="{CONTENT_URL}/{$google_analytics.preview}" class="img-thumbnail"></div>
     <div class="col-xs-11" style="padding-left:0;">
       <p><b>{_t("msg.ga_not_configured")}</b></p>
-      <p><a href="/admin/?section=site_settings&edit_key=google_analytics_tracking_id">{_t("admin.site_settings")} (google_analytics_tracking_id)</a>.</p>
+      <p><a href="{$admin_url}?section=site_settings&edit_key=google_analytics_tracking_id">{_t("admin.site_settings")} (google_analytics_tracking_id)</a>.</p>
     </div>
   </div>
 </div>
@@ -255,7 +255,7 @@ gapi.analytics.ready(function() {
     <div class="col-xs-11" style="padding-left:0;">
       <b>{_t("msg.ga_api_not_configured")}</b><br>
         {_t("msg.ga_json_not_configured")} <br>
-      <a href="/admin/?section=site_settings&edit_key=google_service_auth_json">{_t("admin.site_settings")} (google_service_auth_json)</a>.
+      <a href="{$admin_url}?section=site_settings&edit_key=google_service_auth_json">{_t("admin.site_settings")} (google_service_auth_json)</a>.
     </div>
   </div>
 </div>

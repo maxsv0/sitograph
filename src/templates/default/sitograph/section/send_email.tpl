@@ -1,7 +1,7 @@
 {if $email_step_preview}
 
 
-<form method="POST" action="{$lang_url}/admin/" class="form-horizontal">
+<form method="POST" action="{$lang_url}{$admin_url}" class="form-horizontal">
 
     <h1>{_t("email.label.step_2")}</h1>
     <br>
@@ -42,13 +42,13 @@
 </form>
 {else}
 
-<form method="POST" action="{$lang_url}/admin/" class="form-horizontal">
+<form method="POST" action="{$lang_url}{$admin_url}" class="form-horizontal">
     <h2>{_t("email.label.step_1")}</h2>
     <div class="form-group">
         <label for="inputEmailFrom" class="col-sm-4 control-label">
             {_t("email.label.from")}
             <small class="field-help">
-                {_t("email.label.edit_from")} <a href="{$lang_url}/admin/?section=site_settings">{_t("email.label.site_settings")}</a>
+                {_t("email.label.edit_from")} <a href="{$lang_url}{$admin_url}?section=site_settings">{_t("email.label.site_settings")}</a>
             </small>
         </label>
         <div class="col-sm-8">
@@ -61,7 +61,7 @@
             {_t("email.label.template")}
         </label>
         <div class="col-sm-8">
-            <select class="form-control" id="inputEmailTemplate" name="email_template" onchange="location.href='/admin/?section=send_email&email_template='+this.value">
+            <select class="form-control" id="inputEmailTemplate" name="email_template" onchange="location.href='{$admin_url}?section=send_email&email_template='+this.value">
 {foreach from=$email_templates item=template}
     <option value="{$template.name}">{$template.name}</option>
 {/foreach}

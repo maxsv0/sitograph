@@ -31,7 +31,8 @@ $configListNames = array(
     "DEBUG","DEBUG_LOG","SITE_CLOSED","SHOW_ADMIN_MENU",
     "PHP_LOCALE","PHP_TIMEZONE","DATABASE_ENCODING",
     "JS_BEFORE_BODY","SUBDOMAIN_LANGUAGES","REP",
-    "USER_HASH_PASSWORD","USER_IGNORE_PRIVILEGES","SMARTY_DIR"
+    "USER_HASH_PASSWORD","USER_IGNORE_PRIVILEGES","SMARTY_DIR",
+    "ADMIN_URL"
 );
 
 /// TODO:
@@ -294,11 +295,6 @@ if ($install_step === 3) {
     } else {
         $website->messages["success"][] = "SUCCESS: Database connection established.";
     }
-    if (!is_writable(SMARTY_DIR."cache")) {
-        $website->messages["error"][] = "ERROR: <b>".SMARTY_DIR."cache</b> is not writable";
-    } else {
-        $website->messages["success"][] = "SUCCESS: smarty/cache is writable";
-    }
 }
 
 // prepare initial data, step 2
@@ -373,4 +369,5 @@ if (!empty($install_step)) {
 
 // output template
 $website->outputDebug();
-$website->outputPage();
+echo $website->outputPage();
+exit();

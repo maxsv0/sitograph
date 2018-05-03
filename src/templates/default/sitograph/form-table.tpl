@@ -10,7 +10,7 @@
 {/foreach}
   </ul>
   
-<form action="{$lang_url}/admin/" class="form-horizontal" method="POST" id="admin-edit" enctype="multipart/form-data">
+<form action="{$lang_url}{$admin_url}" class="form-horizontal" method="POST" id="admin-edit" enctype="multipart/form-data">
 
   <!-- Tab panes -->
   <div class="tab-content">

@@ -103,7 +103,7 @@ class MSV_Module {
 
         // always include all modules at /admin/ page and /api/*
         if ($url === "*" ||
-            $url === "/admin/" ||
+            $url === ADMIN_URL ||
             strpos($url, "/api/") === 0) {
             // include without check
 
@@ -320,7 +320,7 @@ class MSV_Module {
                     $nameTable = (string)$attributes["name"];
                     $index = (string)$attributes["index"];
                     $title = (string)$attributes["title"];
-                    $useseo = (bool)$attributes["useseo"];
+                    $useseo = (int)$attributes["useseo"];
 
                     $fields = array();
                     foreach ($table->field as $field) {
@@ -389,6 +389,8 @@ class MSV_Module {
             if (property_exists($this->configXML, "filter")) {
                 foreach ($this->configXML->filter as $filter) {
                     $attributes = $filter->attributes();
+                    $disabled = (int)$attributes["disabled"];
+                    if ($disabled) continue;
 
                     $action = (string)$attributes["action"];
                     $url = (string)$attributes["url"];
@@ -407,6 +409,8 @@ class MSV_Module {
             if (property_exists($this->configXML, "api")) {
                 foreach ($this->configXML->api as $filter) {
                     $attributes = $filter->attributes();
+                    $disabled = (int)$attributes["disabled"];
+                    if ($disabled) continue;
 
                     $action = (string)$attributes["action"];
                     $name = (string)$attributes["name"];

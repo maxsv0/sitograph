@@ -97,7 +97,7 @@ function BlogLoadArticles($blog) {
     }
   	
     $resultQuery = db_get_listpaged(TABLE_BLOG_ARTICLES, $sqlFilter, "`sticked` desc, `date` desc", $blog->itemsPerPage, $blog->pageUrlParam);
-    
+
 	// Display message in case of error
 	if (!$resultQuery["ok"]) {
         msv_message_error($resultQuery["msg"]);
@@ -108,8 +108,11 @@ function BlogLoadArticles($blog) {
 	$listItems = array();
 	foreach ($resultQuery["data"] as $id => $item) {
         if (!empty($_GET[$blog->searchUrlParam])) {
-            $item["title"] = msv_highlight_text($_GET[$blog->searchUrlParam], $item["title"], 10);
-            $item["description"] = msv_highlight_text($_GET[$blog->searchUrlParam], $item["description"], 10);
+            $item["title_highlight"] = msv_highlight_text($_GET[$blog->searchUrlParam], $item["title"], 10);
+            $item["description_highlight"] = msv_highlight_text($_GET[$blog->searchUrlParam], $item["description"], 10);
+        } else {
+            $item["title_highlight"] = $item["title"];
+            $item["description_highlight"] = $item["description"];
         }
         $listItems[$id] = $item;
     }
@@ -151,6 +154,8 @@ function BlogLoadArticles($blog) {
 	// assign data to template
     msv_assign_data("blog_articles", $listItems);
     msv_assign_data("blog_pages", $listPages);
+    msv_assign_data("blog_count_total", $resultQuery["count_total"]);
+    msv_assign_data("blog_count_displayed", $resultQuery["count_data"]);
 }
 
 function BlogLoadArticleDetails($blog) {

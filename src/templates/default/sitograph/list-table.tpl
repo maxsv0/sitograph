@@ -20,7 +20,7 @@
     <div class="row">
     <div class="col-sm-10 col-sm-offset-2 text-right">
         <ul>
-            <form action="/admin/" method="GET">
+            <form action="{$admin_url}" method="GET">
                 <div class="well text-left">
                     {foreach from=$admin_filter_fields key=itemFieldID item=itemField}
                         <div class="row form-group">
@@ -77,7 +77,7 @@
                     <div class="row">
                         <div class="col-sm-7">
                             {if $user.access === "dev" && $admin_menu_item.module}
-                                <a href="{$lang_url}/admin/?section=module_settings&module={$admin_menu_item.module}#tables" class="btn btn-info"><span class="glyphicon glyphicon-cog">&nbsp;</span><span class="admin_crown">{_t("options.config_table")}</span></a></p>
+                                <a href="{$lang_url}{$admin_url}?section=module_settings&module={$admin_menu_item.module}#tables" class="btn btn-info"><span class="glyphicon glyphicon-cog">&nbsp;</span><span class="admin_crown">{_t("options.config_table")}</span></a></p>
                             {/if}
                         </div>
                         <div class="col-sm-5 text-right">
@@ -104,7 +104,7 @@
 {foreach from=$item key=itemFieldID item=itemField} 
 {if !in_array($itemFieldID, $admin_list_skip) && !empty($admin_table_info.fields.$itemFieldID.type)}
 <th{if $table_sort == $itemFieldID} class='colactive'{/if}>
-    <a {if $table_sort == $itemFieldID}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&sort={$itemFieldID}&sortd={$table_sortd_rev}&p={$admin_list_page}&list_limit={$table_limit}">{_t("table.$admin_table.$itemFieldID")}</a>
+    <a {if $table_sort == $itemFieldID}{if $table_sortd == "asc"}class="arrow-up"{else}class="arrow-down"{/if}{/if} href="{$lang_url}{$admin_url}?section={$admin_section}&table={$admin_table}&sort={$itemFieldID}&sortd={$table_sortd_rev}&p={$admin_list_page}&list_limit={$table_limit}">{_t("table.$admin_table.$itemFieldID")}</a>
 </th>
 {/if}
 {/foreach}
@@ -169,13 +169,13 @@
 <td class="col-sm-1">
     <ul class="list-btn">
         <li>
-            <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&edit={$item.id}&p={$admin_list_page}" title="{$t['btn.edit']}" class="btn btn-default btn-sm">{$t['btn.edit']} <span class="glyphicon glyphicon-edit"></span></a>
+            <a href="{$lang_url}{$admin_url}?section={$admin_section}&table={$admin_table}&edit={$item.id}&p={$admin_list_page}" title="{$t['btn.edit']}" class="btn btn-default btn-sm">{$t['btn.edit']} <span class="glyphicon glyphicon-edit"></span></a>
         </li>
         <li>
-            <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&duplicate={$item.id}&p={$admin_list_page}" title="{$t['btn.duplicate']}" class="btn btn-default btn-sm">{$t['btn.duplicate']} <span class="glyphicon glyphicon-duplicate"></span></a>
+            <a href="{$lang_url}{$admin_url}?section={$admin_section}&table={$admin_table}&duplicate={$item.id}&p={$admin_list_page}" title="{$t['btn.duplicate']}" class="btn btn-default btn-sm">{$t['btn.duplicate']} <span class="glyphicon glyphicon-duplicate"></span></a>
         </li>
         <li>
-            <a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&delete={$item.id}&p={$admin_list_page}" title="{$t['btn.delete']}" class="btn btn-danger btn-sm" onclick="if (!confirm('{$t["btn.remove_confirm"]}')) return false;">{$t['btn.delete']} <span class="glyphicon glyphicon-remove"></span></a>
+            <a href="{$lang_url}{$admin_url}?section={$admin_section}&table={$admin_table}&delete={$item.id}&p={$admin_list_page}" title="{$t['btn.delete']}" class="btn btn-danger btn-sm" onclick="if (!confirm('{$t["btn.remove_confirm"]}')) return false;">{$t['btn.delete']} <span class="glyphicon glyphicon-remove"></span></a>
         </li>
     </ul>
 </td>
@@ -201,11 +201,11 @@
 {/if} 
 
 <div class="col-sm-6">
-<a href="{$lang_url}/admin/?section={$admin_section}&table={$admin_table}&add_new" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-ok">&nbsp;</span>{$t["btn.add_new"]} ..</a>
+<a href="{$lang_url}{$admin_url}?section={$admin_section}&table={$admin_table}&add_new" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-ok">&nbsp;</span>{$t["btn.add_new"]} ..</a>
 </div>
 
 <div class="col-sm-6 text-right">
-    <a href="{$lang_url}/admin/?section=export&table={$admin_table}&sort={$table_sort}&sortd={$table_sortd}&p={$admin_list_page}&pn={$table_limit}" class="btn btn-info"><span class="glyphicon glyphicon-download">&nbsp;</span>{_t("btn.export_table")}</a>
+    <a href="{$lang_url}{$admin_url}?section=export&table={$admin_table}&sort={$table_sort}&sortd={$table_sortd}&p={$admin_list_page}&pn={$table_limit}" class="btn btn-info"><span class="glyphicon glyphicon-download">&nbsp;</span>{_t("btn.export_table")}</a>
     &nbsp;&nbsp;
-    <a href="{$lang_url}/admin/?section=export&table={$admin_table}&sort={$table_sort}&sortd={$table_sortd}&export_full" class="btn btn-info"><span class="glyphicon glyphicon-download">&nbsp;</span>{_t("btn.export_table_full")}</a>
+    <a href="{$lang_url}{$admin_url}?section=export&table={$admin_table}&sort={$table_sort}&sortd={$table_sortd}&export_full" class="btn btn-info"><span class="glyphicon glyphicon-download">&nbsp;</span>{_t("btn.export_table_full")}</a>
 </div>

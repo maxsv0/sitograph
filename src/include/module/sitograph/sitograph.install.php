@@ -4,7 +4,7 @@ function Install_Sitograph($module) {
 
     // create Admin UI pages
     $itemStructure = array(
-        "url" => "/admin/",
+        "url" => ADMIN_URL,
         "name" => _t("structure.admin_homepage"),
         "template" => "custom",
         "page_template" => "sitograph.tpl",
@@ -13,7 +13,7 @@ function Install_Sitograph($module) {
     msv_add_structure($itemStructure, array("lang" => "*"));
 
     $itemStructure = array(
-        "url" => "/admin/login/",
+        "url" => ADMIN_URL."login/",
         "name" => _t("structure.admin_login"),
         "template" => "custom",
         "page_template" => "sitograph-login.tpl",

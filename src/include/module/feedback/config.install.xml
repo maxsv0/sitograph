@@ -2,8 +2,8 @@
 <document>
 <install>
 	<param name="name" value="feedback"/>
-	<param name="version" value="1.1.1"/>
-	<param name="date" value="29.07.2017"/>
+	<param name="version" value="1.1.2"/>
+	<param name="date" value="01.05.2018"/>
 	<param name="installHook" value="Install_Feedback"/>
 	<param name="title" value="Feedback and contacts"/>
 	<param name="description" value="Contact form, user feedback and testimonials for website"/>

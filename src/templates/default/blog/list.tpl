@@ -14,14 +14,18 @@
     </div>
 {/if}
 
+{if count($blog_articles) > 0}
+
 {foreach from=$blog_articles key=article_id item=article}
 
 {include "$themePath/blog/article-list.tpl"}
 
-{foreachelse}
+{/foreach}
 
-<div class="alert alert-info">{_t('blog.search_no_result')}</div>
-
-{/foreach} 
-        
+<h4>{$blog_count_displayed} of {$blog_count_total} results shown</h4>
 {include file="$themePath/widget/pagination.tpl" pagination=$blog_pages}
+{else}
+    <div class="alert alert-info">{_t('blog.search_no_result')}</div>
+{/if}
+
+

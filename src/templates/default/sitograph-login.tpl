@@ -52,7 +52,7 @@
 	<tr>
 		<td style="background: url({$contentUrl}/images/sitograph/login_plain.png) 0 0 no-repeat; padding: 1px 3px 5px 3px;" height="206">
 		
-<form action="/admin/login/" method="POST" id="login_form">
+<form action="{$admin_url}login/" method="POST" id="login_form">
 		<table align="center" cellpadding="0" cellspacing="0">
 		<tr>
 			<td style="padding: 5px 0;">{_t("form.login")}</td>

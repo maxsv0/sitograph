@@ -2,7 +2,7 @@
 
 <div class="btnCover">
 <div>
-<a href="{$lang_url}/admin/?section=robots&edit_mode" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> {$t["btn.edit"]}</a>
+<a href="{$lang_url}{$admin_url}?section=robots&edit_mode" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> {$t["btn.edit"]}</a>
 </div>
 </div>
 {if $robots}
@@ -17,7 +17,7 @@ Robots.txt {$t["not_found"]}
 
 {if $robots_edit_mode}
 
-<form method="POST" action="{$lang_url}/admin/?section={$admin_section}">
+<form method="POST" action="{$lang_url}{$admin_url}?section={$admin_section}">
 
 <div class="form-group">
 	<label for="exampleInputPassword1">robots.txt</label>
@@ -58,11 +58,11 @@ Disallow: /
 <p>{$t["admin.robots_example_seo"]}</p>
 <pre class="panel panel-info text-muted">
 User-agent: * 
-Disallow: /admin/*
+Disallow: {$admin_url}*
 Sitemap: {$home_url}sitemap.xml 
 
 User-agent: Yandex
-Disallow: /admin/*
+Disallow: {$admin_url}*
 Host: {$host}
 Sitemap: {$home_url} sitemap.xml
 </pre>
