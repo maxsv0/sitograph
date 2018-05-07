@@ -23,7 +23,7 @@
 
 	<file dir="module" path="google-analytics/google-analytics.php"/>
 	<file dir="module" path="google-analytics/config.xml"/>
-	<file dir="content" path="images/module_preview_ga.png"/>
+	<file dir="content" path="images/module_preview_ga.jpg"/>
 	<file dir="content" path="js/analytics.js"/>
 </install>
 

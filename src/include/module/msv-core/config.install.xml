@@ -18,6 +18,7 @@
 	<file dir="abs" path="load.php"/>
 	<file dir="abs" path="config-sample.php"/>
 	<file dir="include" path="index.php"/>
+	<file dir="include" path="util.php"/>
 	<file dir="include" path="class.msv.php"/>
 	<file dir="include" path="class.module.php"/>
 	<file dir="module" path="index.php"/>

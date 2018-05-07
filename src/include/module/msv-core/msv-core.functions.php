@@ -614,6 +614,7 @@ function msv_check_files() {
     foreach($it as $file) {
         $file = (string)$file;
         if (strpos($file, "/include/custom/") !== false) continue;
+        if (strpos($file, "/templates/custom/") !== false) continue;
         if (strpos($file, ".git") !== false) continue;
         if (strpos($file, ".DS_Store") !== false) continue;
         $fileList[] = $file;
