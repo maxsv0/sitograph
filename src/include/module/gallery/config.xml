@@ -9,7 +9,7 @@
 	<param name="pageUrlParam" value="p"/>
 	<param name="searchUrlParam" value="s"/>
 	<param name="previewItemsCount" value="2"/>
-	<param name="adminMenu" value="true"/>
+	<param name="adminMenu" value="1"/>
 	<param name="adminMenuOrder" value="29"/>
 
 	<param name="accessAPIList" value="everyone"/>
@@ -25,7 +25,7 @@
 	
 	<api name="gallery" action="api_request_gallery"/>
 
-	<table name="gallery_album" index="id" title="title" useseo="true">
+	<table name="gallery_album" index="id" title="title" useseo="1">
 		<field name="id" type="id" readonly="1"/>
 		<field name="published" type="published"/>
 		<field name="deleted" type="deleted"/>
