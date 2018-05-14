@@ -149,12 +149,18 @@
 {elseif $type === "url"}
 <td class="col-sm-2">
     <small>
-{if $module_base_url}
-    <a href="{$module_base_url}{$itemField}/" target="_blank">{$module_base_url}{$itemField}/<span class="glyphicon glyphicon-new-window"></span></a>
-{elseif $itemField != "#"}
-	<a href="{$itemField}" target="_blank">{$itemField}<span class="glyphicon glyphicon-new-window"></span></a>
+{if $itemField}
+    {if strpos($itemField, "http") === 0}
+        <a href="{$itemField}" target="_blank">{$itemField}<span class="glyphicon glyphicon-new-window"></span></a>
+    {elseif $module_base_url}
+        <a href="{$module_base_url}{$itemField}/" target="_blank">{$module_base_url}{$itemField}/<span class="glyphicon glyphicon-new-window"></span></a>
+    {elseif $itemField != "#"}
+        <a href="{$itemField}" target="_blank">{$itemField}<span class="glyphicon glyphicon-new-window"></span></a>
+    {else}
+        {$itemField}
+    {/if}
 {else}
-    {$itemField}
+    <span class="text-muted">{_t("not_set")}</span>
 {/if}
     </small>
 </td>

@@ -12,7 +12,7 @@
     </a>
   </div>
 {/if}
-  <div class="media-body">
+  <div class="media-body article-title-block">
     <h4 style="margin-top:0;"><a href="{$lang_url}{$blog.baseUrl}{$article.url}/">{$article.title}</a></h4>
     <p class="text-muted">
       <small class="text-muted pull-right"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>

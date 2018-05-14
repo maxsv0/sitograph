@@ -32,6 +32,7 @@
 	<file dir="template" path="default/main-blog.tpl"/>
 	<file dir="template" path="default/blog/article-list.tpl"/>
 	<file dir="template" path="default/blog/article-preview.tpl"/>
+	<file dir="template" path="default/blog/article-preview-list.tpl"/>
 	<file dir="template" path="default/blog/article-preview-short.tpl"/>
 	<file dir="template" path="default/blog/list.tpl"/>
 	<file dir="template" path="default/blog/details.tpl"/>

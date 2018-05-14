@@ -14,6 +14,7 @@
 		<field name="table.articles.lang" value="Lang"/>
 		<field name="table.articles.sticked" value="Sticked"/>
 		<field name="table.articles.url" value="URL"/>
+		<field name="table.articles.link" value="External Link"/>
 		<field name="table.articles.date" value="Date"/>
 		<field name="table.articles.email" value="Author Email"/>
 		<field name="table.articles.title" value="Title"/>
@@ -67,6 +68,7 @@
 		<field name="table.articles.lang" value="Язык"/>
 		<field name="table.articles.sticked" value="Топ"/>
 		<field name="table.articles.url" value="URL"/>
+		<field name="table.articles.link" value="Внешняя ссылка"/>
 		<field name="table.articles.date" value="Дата"/>
 		<field name="table.articles.email" value="Email автора"/>
 		<field name="table.articles.title" value="Заголовок"/>
@@ -120,6 +122,7 @@
 		<field name="table.articles.lang" value="Мова"/>
 		<field name="table.articles.sticked" value="Топ"/>
 		<field name="table.articles.url" value="URL"/>
+		<field name="table.articles.link" value="External Link"/>
 		<field name="table.articles.date" value="Дата"/>
 		<field name="table.articles.email" value="Email автора"/>
 		<field name="table.articles.title" value="Заголовок"/>
