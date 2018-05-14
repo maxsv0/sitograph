@@ -67,15 +67,16 @@
 	display:inline-block;
     margin-bottom: 5px;
 }
+.articles-block p, .articles-block ul, .articles-block ol {
+    font-size: 14pt;
+    margin-bottom: 20px;
+}
 .article-title-block {
 	margin:0 0 10px;
 }
-.article-title-block h4 {
+.article-title-block h1, .article-title-block h2, .article-title-block h3, .article-title-block h4 {
 	margin-top: 0px;
     margin-bottom: 20px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 .article-media-block {
 	position: relative;
@@ -321,7 +322,7 @@
 }
 
 .navigation {
-	height: 40px;
+	height: auto;
 	line-height: 40px;
 	background-color: #e5e5e5;
 	clear: both
