@@ -72,6 +72,42 @@ if (!empty($_POST["save_exit"]) || !empty($_POST["save"]) || !empty($_REQUEST["d
     }
 }
 
+if (isset($_REQUEST["export_po"])) {
+    header('Content-Encoding: UTF-8');
+    header('Content-type: plain/text; charset=UTF-8');
+    header('Content-Disposition: attachment; filename=sitograph_'.LANG.'.po');
+
+    $export_locales = 'msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: '.LANG.'\n"
+
+    ';
+
+    $module_locales = array();
+    foreach ($this->website->modules as $module) {
+        $moduleObj = msv_get("website.".$module);
+        foreach ($moduleObj->locales as $textID => $textString) {
+
+            $export_locales .= 'msgid "'.$module.'.'.$textID.'"
+msgstr "'.$textString.'"
+
+';
+        }
+    }
+
+
+
+
+    msv_output($export_locales);
+    die;
+}
+
+
 if (isset($_REQUEST["add_new"])) {
     $admin_edit = array(
         'lang' => LANG,

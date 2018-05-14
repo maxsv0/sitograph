@@ -14,6 +14,7 @@ final class BlogOutputTest extends MSVTestCase {
 
 	public function testBlogOutputDefault() {
 	    $articleData = blogAddTestData();
+		$this->assertTrue($articleData["ok"], $articleData["msg"]);
 
 		global $website;
 		$website->load();
@@ -57,6 +58,7 @@ final class BlogOutputTest extends MSVTestCase {
 
     public function testBlogOutputArticlesByCategory() {
         $articleData = blogAddTestData();
+		$this->assertTrue($articleData["ok"], $articleData["msg"]);
 
         global $website;
         $_GET[$website->blog->categoryUrlParam] = "art";
@@ -76,6 +78,7 @@ final class BlogOutputTest extends MSVTestCase {
 
     public function testBlogOutputArticlesBySubCategory() {
         $articleData = blogAddTestData();
+		$this->assertTrue($articleData["ok"], $articleData["msg"]);
 
 		global $website;
         $_GET[$website->blog->categoryUrlParam] = "art/music";
@@ -95,6 +98,7 @@ final class BlogOutputTest extends MSVTestCase {
 
     public function testBlogOutputArticlesByAllCategory() {
         $articleData = blogAddTestData();
+		$this->assertTrue($articleData["ok"], $articleData["msg"]);
 
 		global $website;
         $_GET[$website->blog->categoryUrlParam] = "%";
@@ -113,6 +117,8 @@ final class BlogOutputTest extends MSVTestCase {
 
     public function testBlogOutputArticlesSearch() {
         $articleData = blogAddTestData();
+        $this->assertTrue($articleData["ok"], $articleData["msg"]);
+
         $tmp = explode(" ", $articleData["data"]["title"]);
         $keyword = $tmp[count($tmp)-1];
 
@@ -166,6 +172,7 @@ final class BlogOutputTest extends MSVTestCase {
 
     public function testBlogOutputArticleDetailsRandom() {
         $articleData = blogAddTestData();
+		$this->assertTrue($articleData["ok"], $articleData["msg"]);
 
         global $website;
         $website->setRequestUrl(

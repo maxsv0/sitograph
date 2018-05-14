@@ -6,12 +6,17 @@
 
 <div class="article-info-block">
 	<div class="row">
+{if $article.link}
+	<div class="col-xs-12">
+		Link: <a href="{$article.link}" target="_blank">{$article.link} <span class="glyphicon glyphicon-new-window"></span></a>
+	</div>
+{/if}
 	<div class="col-sm-6 text-muted small">
 		<a href="{$lang_url}{$blog.baseUrl}?{$blog.authorUrlParam}={$article.email}">{$article.email}</a>
         {_t("blog.posted_on")} {$article.date}
 		</div>
 
-		<div class="col-sm-6 text-right small">
+		<div class="col-sm-6 text-right">
 		{$article.shares} {_t("blog.shares")}
 		&nbsp;&nbsp;&nbsp;
 		<span class="glyphicon glyphicon-eye-open" aria-hidden="true" title="{_t("blog.views")}"></span>

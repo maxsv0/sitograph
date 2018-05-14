@@ -2,8 +2,8 @@
 <document>
 <install>
 	<param name="name" value="sitograph"/>
-	<param name="version" value="1.0.22"/>
-	<param name="date" value="01.05.2018"/>
+	<param name="version" value="1.0.23"/>
+	<param name="date" value="12.05.2018"/>
 	<param name="title" value="Sitograph"/>
 	<param name="description" value="Sitograph Content Management System (CMS)"/>
 	<param name="tags" value="CMS"/>
@@ -34,6 +34,7 @@
 	<file dir="module" path="sitograph/module-robots.php"/>
 	<file dir="module" path="sitograph/module-search.php"/>
 	<file dir="module" path="sitograph/module-settings.php"/>
+	<file dir="module" path="sitograph/module-sitemap.php"/>
 	<file dir="module" path="sitograph/module-structure.php"/>
 	<file dir="module" path="sitograph/module-table.php"/>
 	<file dir="module" path="sitograph/module-users.php"/>
@@ -49,6 +50,8 @@
 	<file dir="module" path="sitograph/doc/en-page-homepage.html"/>
 	<file dir="module" path="sitograph/doc/ru-page-homepage.html"/>
 	<file dir="module" path="sitograph/doc/ua-page-homepage.html"/>
+	<file dir="module" path="sitograph/doc/en-sitograph-install.html"/>
+	<file dir="module" path="sitograph/doc/ru-sitograph-install.html"/>
 	<file dir="module" path="sitograph/doc/en-mail_template_header.html"/>
 	<file dir="module" path="sitograph/doc/en-mail_template_footer.html"/>
 
@@ -141,7 +144,10 @@
 	<file dir="template" path="default/sitograph/list-table.tpl"/>
 
 	<file dir="content" path="css/sitograph.css"/>
+	<file dir="content" path="css/bootstrap.min.css"/>
 	<file dir="content" path="js/sitograph.js"/>
+	<file dir="content" path="js/bootstrap.min.js"/>
+	<file dir="content" path="js/jquery.min.js"/>
 	<file dir="content" path="images/bg_full.jpg"/>
 	<file dir="content" path="images/sitograph/admin_crown.png"/>
 	<file dir="content" path="images/sitograph/admin_panel.png"/>

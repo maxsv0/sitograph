@@ -112,7 +112,7 @@
 		<field name="form.search_word" value="Keyword"/>
 		<field name="search.error_mcg" value="Nothing was found."/>
 		<field name="not_set" value="not set"/>
-		<field name="help.field.url" value="This field indicates how this page can be accessed with URL.&lt;br&gt; Can only include numbers, letters, and dash sign."/>
+		<field name="help.field.url" value="URL can only contain numbers, letters, and dash sign."/>
 
 		<field name="structure.getting_started" value="Getting Started: default website"/>
 		<field name="structure.file_structure" value="Sitograph File structure"/>

@@ -12,12 +12,17 @@
 <h2><a href="{$lang_url}{$blog.baseUrl}{$article.url}/">{$article.title_highlight}</a></h2>
 
 <div class="row article-info-block">
-	<div class="col-sm-6 text-muted small">
+{if $article.link}
+	<div class="col-xs-12">
+		Link: <a href="{$article.link}" target="_blank">{$article.link} <span class="glyphicon glyphicon-new-window"></span></a>
+	</div>
+{/if}
+	<div class="col-sm-6 text-muted">
 	<a href="{$lang_url}{$blog.baseUrl}?{$blog.authorUrlParam}={$article.email}">{$article.email}</a>
     {_t("blog.posted_on")} {$article.date}
 	</div>
 	
-	<div class="col-sm-6 text-right small">
+	<div class="col-sm-6 text-right">
 	{$article.shares} {_t("blog.shares")}
 	&nbsp;&nbsp;&nbsp;
 	<span class="glyphicon glyphicon-eye-open" aria-hidden="true" title="{_t("blog.views")}"></span>
