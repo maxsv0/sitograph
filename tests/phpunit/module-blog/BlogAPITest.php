@@ -55,6 +55,9 @@ final class BlogAPITest extends MSVTestCase {
 	}
 
 	public function testBlogAPIList() {
+		$articleData = blogAddTestData();
+		$this->assertTrue($articleData["ok"], $articleData["msg"]);
+		
         global $website;
         $website->setRequestUrl("/api/blog/list/");
         $website->load();
