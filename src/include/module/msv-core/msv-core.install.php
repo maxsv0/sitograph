@@ -10,7 +10,7 @@
 function Install_Core($module) {
 
     // add site settings
-    msv_set_config("include_html_head", "", true, "*", _t("settings.include_html_head"));
+    msv_set_config("include_html_head", "", true, "*", _t("settings.include_html_head"), "theme");
     msv_set_config("theme_css_path", "", true, "*", _t("settings.theme_css_path"), "theme");
     msv_set_config("theme_js_path", "", true, "*", _t("settings.theme_js_path"), "theme");
     msv_set_config("theme_use_bootstrap", 1, true, "*", _t("settings.theme_use_bootstrap"), "theme");
