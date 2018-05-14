@@ -69,7 +69,8 @@ final class BlogAPITest extends MSVTestCase {
     }
 
 	public function testBlogAPICategory() {
-		blogAddTestData();
+		$articleData = blogAddTestData();
+		$this->assertTrue($articleData["ok"], $articleData["msg"]);
 
 		global $website;
 		$website->setRequestUrl("/api/blog/category/");
@@ -86,6 +87,7 @@ final class BlogAPITest extends MSVTestCase {
 
     public function testBlogAPIDetails() {
         $articleData = blogAddTestData();
+		$this->assertTrue($articleData["ok"], $articleData["msg"]);
 
         global $website;
 		$website->setRequestUrl("/api/blog/details/".$articleData["data"]["id"]."/");
@@ -194,6 +196,7 @@ final class BlogAPITest extends MSVTestCase {
 
     public function testBlogAPIEditValid() {
         $articleData = blogAddTestData();
+		$this->assertTrue($articleData["ok"], $articleData["msg"]);
 
         global $website;
         $accessLevel = $website->blog->accessAPIEdit;
