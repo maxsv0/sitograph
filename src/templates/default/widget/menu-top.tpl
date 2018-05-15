@@ -1,7 +1,7 @@
 {assign var="items" value=$menu['top']}
 
 
-<div class="col-sm-3 logo-block">
+<div class="col-lg-4 col-md-4 col-sm-5 logo-block">
 	<a href="{$home_url}">
 {if $theme_logo}
 	<img src="{$theme_logo}"/>
@@ -13,7 +13,7 @@
 
 
 
-<div class="col-sm-8">
+<div class="col-lg-8 col-md-8 col-sm-7">
 <!-- Menu navbar -->
 	<nav class="navbar navbar-default">
 	  <!-- Logo link and btn to toggle navigation -->

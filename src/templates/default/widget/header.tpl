@@ -13,7 +13,7 @@
 
 <div class="container header">
     <div class="row">
-		<div class="col-md-4 col-sm-6">
+		<div class="col-md-4 col-sm-6 hidden-xs">
 			<div class="phone-block">
 				{if $theme_header_contacts}
  		       <table cellpadding="0" cellspacing="0" width="170" style="margin-bottom:15px">
@@ -29,7 +29,7 @@
 				</table>
             </div>
 		</div>
-		<div class="col-md-4 col-sm-6">
+		<div class="col-md-4 col-sm-6 hidden-xs">
 			<div class="search-block">
 				{if $search}
 				<form action="{$lang_url}{$search.baseUrl}?search" method="post" class="form-inline">

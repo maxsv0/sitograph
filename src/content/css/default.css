@@ -28,7 +28,7 @@
 	margin:10px 0;
 }
 .logo-block img {
-	max-width:100%;
+	max-width: 311px;
 }
 .content-offset {
 	padding: 50px 0;
@@ -279,7 +279,6 @@
 	color: #333746;
 	font-size: 16.92px;
 	line-height: 30px;
-	transform: scale(1.064,1.064);
     padding-bottom: 0px;
     padding-top: 5px;
 	border-bottom: 2px solid transparent;
@@ -479,7 +478,8 @@ div.navigation a:hover {
 }
 .img-promo {
 	margin-top: -25px;
-	height:450px;
+	height:auto;
+	max-width:100%;
 	position:absolute;
 	display:none;
 	-webkit-transition: -webkit-transform 1.0s ease-in-out;
