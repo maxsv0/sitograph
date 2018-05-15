@@ -106,18 +106,6 @@ function db_update_row($table, $row) {
         if ($type === "id") {
             $indexValue = $value;
         }
-        if ($type === "url" && empty($value)) {
-            if (empty($indexValue)) {
-                $value = "----------";
-                if (!empty($row["name"])) {
-                    $value = msv_format_url($row["name"]);
-                } elseif (!empty($row["title"])) {
-                    $value = msv_format_url($row["title"]);
-                }
-            } else {
-                $value = $indexValue;
-            }
-        }
         if ($type === "array" || $type === "multiselect") {
             $value = serialize($value);
         }
