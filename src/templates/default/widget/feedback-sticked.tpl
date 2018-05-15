@@ -4,7 +4,7 @@
 {foreach from=$feedback_sticked key=feedback_id item=feedback}
 
 <div class="col-md-4">
-    <div class="feedbackItem" data-id="{$feedback.id}">
+    <div class="feedbackItem" data-id="{$feedback.id}" style="margin-bottom: 15px;">
         <div style="min-height:300px;background:#fff;">
             <img src="{$feedback.pic}" class="img-responsive">
         </div>
