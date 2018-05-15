@@ -256,7 +256,10 @@ final class BlogAPITest extends MSVTestCase {
         $website->blog->accessAPIEdit = $accessLevel;
     }
 
-	public function testBlogAPIAddArticleNoEmail() {
+/*
+ * 	disable cause of a email notification
+ *
+ * 	public function testBlogAPIAddArticleNoEmail() {
         global $website;
 	    $data = array(
 	        "title" => "title",
@@ -280,6 +283,7 @@ final class BlogAPITest extends MSVTestCase {
         // clean
         $this->unsetRequestData($data);
     }
+*/
 
 	public function testBlogAPIAddArticleNoUrl() {
         global $website;
