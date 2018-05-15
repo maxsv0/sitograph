@@ -2,7 +2,7 @@
 
 echo "Updating sitograph"
 
-git pull
+git pull origin master
 
 cp -ar src/.  /var/www/html
 
