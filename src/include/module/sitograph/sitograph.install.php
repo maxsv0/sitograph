@@ -284,6 +284,20 @@ a:active {color:#bb233a;}
     );
     api_blog_add($item, array("LoadPictures"));
 
+    $docContent = msv_load_module_doc($module->pathModule, "blog-release-1-1");
+    $item = array(
+        "sticked" => 1,
+        "date" => "2018-05-17 10:51:59",
+        "email" => "support@sitograph.com",
+        "url" => "Sitograph-v.1.1-released",
+        "title" => "Sitograph CMS v.1.1 released",
+        "description" => "Sitograph CMS v.1.1 released",
+        "text" => $docContent,
+        "pic" => "images/blog/blog_sitograph_3.jpg",
+        "pic_preview" => "images/blog/blog_sitograph_3.jpg",
+    );
+    api_blog_add($item, array("LoadPictures"));
+
     // create admin manual
     $manualTopics = array(
         "release" => array(

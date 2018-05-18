@@ -1,0 +1,51 @@
+<p class="lead text-center"><a href="https://github.com/maxsv0/sitograph/archive/v1.1.zip" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-download-alt"></span> Download Sitograph v.1.1</a>&nbsp; <a href="https://github.com/maxsv0/sitograph/" class="btn btn-primary btn-lg" target="_blank"><span class="glyphicon glyphicon-circle-arrow-right"></span> Visit GitHub</a>&nbsp;</p>
+<h3>New features in&nbsp;Sitograph v.1.1</h3>
+<ul>
+    <li><a href="https://www.sitograph.com/blog/continuous-deployment-pipeline-of-the-sitograph-cms/">Continuous Development Pipeline implemented</a>, flowchart created</li>
+    <li>Jenkins run a "Build check" that is executed when <a href="https://github.com/maxsv0/sitograph/pulls">pull request created</a></li>
+    <li>PHPUnit tests added,&nbsp;PHPunit readme</li>
+    <li>Code covarage <a href="http://ci.msvhost.com/">status pare created</a></li>
+    <li>Module Blog line coverage &gt;95%</li>
+    <li>Theme default: now mobile friendly</li>
+    <li>Extract locales to .PO file</li>
+    <li>Blog: article external Link, increase article text size, add articles count</li>
+    <li>Allow 'disabled' for API/filters</li>
+    <li>list api with /api/, list blog api with /api/blog/</li>
+    <li>Constant ADMIN_URL and {$admin_url}</li>
+    <li>outputError() JS refresh timer added</li>
+    <li>change tpl compile dir to system tmp dir</li>
+    <li>rework module controllers inclusion</li>
+</ul>
+<h3>Fixed Bugs</h3>
+<ul>
+    <li>Wrong content URL #156</li>
+    <li>script update - don't overrwrite custom templates</li>
+    <li>API: msg.no_access</li>
+    <li>BLOG: 404 error</li>
+    <li>git pull origin master&nbsp;</li>
+    <li>Allow empty URL&nbsp;</li>
+    <li>Theme default: change layout to enable resizing (background to img)</li>
+    <li>Theme default: fix layout for search input</li>
+    <li>Theme default: Broken layout blog highlight</li>
+    <li>include_html_head group set to "theme"</li>
+    <li>Fixed Admin Structure -&gt; SEO tab missing</li>
+    <li>Fixed missing files/wrong configs</li>
+</ul>
+<h3>Module updates</h3>
+<ul>
+    <li>Blog (blog) 1.3.7 -&gt; 1.3.9</li>
+    <li>Pictures Gallery (gallery) 1.3.5 -&gt; 1.3.6</li>
+    <li>Feedback (feedback) 1.1.1 -&gt; 1.1.2</li>
+    <li>Google - Analytics (google-analytics) 1.1.8 -&gt; 1.1.9</li>
+    <li>Google - Login (google-login) 1.0.4 -&gt; 1.0.5</li>
+    <li>MSV Core (msv-core) 1.4.15 -&gt; 1.4.17</li>
+    <li>MSV API (msv-api) 1.3.10 -&gt; 1.3.11</li>
+    <li>Install (install) 1.2.4 -&gt; 1.2.5</li>
+    <li>Sitograph (sitograph) 1.0.21 -&gt; 1.0.23</li>
+    <li>Theme - Default (theme-default) 1.3.7 -&gt; 1.3.8</li>
+</ul>
+<h3>Patch required</h3>
+<p>Append to config.php</p>
+<p><code>define("ADMIN_URL", "/admin/");</code></p>
+<p>SQL:</p>
+<p><code>ALTER TABLE articles ADD link VARCHAR(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL AFTER url;</code></p>
