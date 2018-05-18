@@ -105,6 +105,9 @@ final class BlogAPITest extends MSVTestCase {
 		$this->assertTrue(is_array($outputData["data"]));
 	}
 
+/*
+ * 	disable cause of a email notification
+ *
     public function testBlogAPIAddArticleValid() {
         global $website;
         $data = array(
@@ -177,6 +180,7 @@ final class BlogAPITest extends MSVTestCase {
         // clean
         $this->unsetRequestData($data);
     }
+ */
 
     //
     // TEST API Errors handling:
@@ -256,10 +260,7 @@ final class BlogAPITest extends MSVTestCase {
         $website->blog->accessAPIEdit = $accessLevel;
     }
 
-/*
- * 	disable cause of a email notification
- *
- * 	public function testBlogAPIAddArticleNoEmail() {
+	public function testBlogAPIAddArticleNoEmail() {
         global $website;
 	    $data = array(
 	        "title" => "title",
@@ -283,7 +284,6 @@ final class BlogAPITest extends MSVTestCase {
         // clean
         $this->unsetRequestData($data);
     }
-*/
 
 	public function testBlogAPIAddArticleNoUrl() {
         global $website;
