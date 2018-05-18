@@ -435,5 +435,9 @@ class MSV_Module {
                 }
             }
         }
+
+        unset($this->configXML);
+        unset($this->configInstallXML);
+        unset($this->configLocalesXML);
     }
 }

@@ -64,6 +64,9 @@ class MSV_Website {
 	
 	function __construct() {
 		$this->log("MSV: __construct");
+        $memory = memory_get_usage();
+        $this->config["memory_free"] = $memory;
+
 		$tm = time() + (float)substr((string)microtime(), 1, 8);
 		$this->config["timestampStart"] = $tm;
 		
@@ -74,6 +77,11 @@ class MSV_Website {
 	
 	function __destruct() {
 		$this->log("MSV: __destruct");
+
+        $memoryEnd = memory_get_usage();
+        $this->config["memory_used"] = $memoryEnd - $this->config["memory_free"];
+
+        $this->log("Memory usage: ". msv_format_size($this->config["memory_used"]));
 
 		// write to debug log
 		if ($this->debug) {

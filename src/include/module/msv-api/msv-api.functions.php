@@ -771,16 +771,6 @@ function db_add($table, $fields, $lang = LANG) {
             case "pic":
                 $valueEscaped = " '".db_escape($value)."' ";
                 break;
-            case "url":
-                // if url is empty set: url = id
-                if (empty($value) && empty($indexValue)) {
-                    $valueEscaped = " '----------' ";
-                } elseif (empty($value)) {
-                    $valueEscaped = " '".db_escape($indexValue)."' ";
-                } else {
-                    $valueEscaped = " '".db_escape($value)."' ";
-                }
-                break;
             case "date":
             case "datetime":
                 if (is_numeric($value)) {
