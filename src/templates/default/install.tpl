@@ -202,7 +202,7 @@
 </div>
 
 <h4 style="color:#bebebe;text-align:center;">
-<a href='http://sitograph.com/' target="_blank">Sitograph v1.0</a>
+<a href='https://www.sitograph.com/' target="_blank">Sitograph v1.0</a>
 using
 <a href='https://github.com/maxsv0/msv' target="_blank">MSV Framework 1.2</a></h4>
 
