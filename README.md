@@ -32,8 +32,8 @@ Sitograph attempts to take care of common tasks used in the majority of web proj
 - Adaptive web design optimized for [any type of mobile devices](#content-delivery)
 - User management, sessions, [real-time analytics](#admin-ui-homepage)
 - Email Marketing and customizable mailing templates
-- [Configurable JSON API](http://sitograph.com/sitograph/API/)
-- Internal PHP API for developers, [easy functionality extending](http://sitograph.com/sitograph/modules/)
+- [Configurable JSON API](https://www.sitograph.com/sitograph/API/)
+- Internal PHP API for developers, [easy functionality extending](https://www.sitograph.com/sitograph/modules/)
 - Scheduled job processing
 - Updates via modules repository - [rep.msvhost.com](http://rep.msvhost.com/)
 - Support and [active development](#module-deployment-workflow).
