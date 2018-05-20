@@ -47,9 +47,9 @@ Sitograph attempts to take care of common tasks used in the majority of web proj
 Download the latest version of Sitograph CMS and unzip the archive
 
 ```bash
-wget https://github.com/maxsv0/sitograph/archive/v1.0.zip -O sitograph-v1.0.zip
-unzip sitograph-v1.0.zip
-cd sitograph-1.0
+wget https://github.com/maxsv0/sitograph/archive/v1.1.zip -O sitograph-v1.1.zip
+unzip sitograph-v1.1.zip
+cd sitograph-1.1
 ```
 
 ### 2. Copy files and enable Apache configuration

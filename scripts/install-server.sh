@@ -31,9 +31,9 @@ else
 fi
 
 # Download latest version of Sitograph and upzip folder
-wget https://github.com/maxsv0/sitograph/archive/v1.0.zip -O sitograph-v1.0.zip
-unzip sitograph-v1.0.zip
-cd sitograph-1.0
+wget https://github.com/maxsv0/sitograph/archive/v1.1.zip -O sitograph-v1.1.zip
+unzip sitograph-v1.1.zip
+cd sitograph-1.1
 
 # Copy Sitograph files and enable Apache configuration
 sh scripts/install.sh /var/www/html
