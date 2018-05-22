@@ -46,7 +46,7 @@
 		<field name="type.lang" value="строка (20)"/>
 		<field name="type.str" value="строка (255)"/>
 		<field name="type.int" value="целое число"/>
-		<field name="type.boot" value="логический"/>
+		<field name="type.bool" value="логический"/>
 		<field name="type.array" value="список"/>
 		<field name="type.pic" value="изображение"/>
 		<field name="type.file" value="файл"/>
@@ -155,7 +155,6 @@
 		<field name="table.cronjobs_logs.lang" value="Язык"/>
 		<field name="table.cronjobs_logs.job_id" value="Задача"/>
 		<field name="table.cronjobs_logs.job_name" value="Задача"/>
-		<field name="table.cronjobs_logs.structure_id" value="Название Задачи"/>
 		<field name="table.cronjobs_logs.time_start" value="Время старта"/>
 		<field name="table.cronjobs_logs.time_end" value="Время завершения"/>
 		<field name="table.cronjobs_logs.result_ok" value="Результат"/>
@@ -186,6 +185,8 @@
 		<field name="msg.saved_ok" value="Успешно сохранено"/>
 		<field name="msg.save_error" value="Ошибка сохранения"/>
 		<field name="msg.development_version" value="Это бета версия MSV Website. Режим чтения."/>
+		<field name="msg.email_sent_to" value="Письмо успешно отправлено на email"/>
+		<field name="msg.email_sending_error" value="Ошибка отправки письма на email "/>
 		<field name="msg.wrong_email" value="Неверный email"/>
 		<field name="msg.cron.saved" value="CronJob успешно сохранен"/>
 		<field name="msg.api.no_access" value="Нет доступа"/>
@@ -217,7 +218,7 @@
 		<field name="btn.send_email" value="Отправить сообщение"/>
 		<field name="email.label.site_settings" value="Настройки сайта"/>
 		<field name="email.label.edit_from" value="для редактирования поля 'От кого' перейдите к"/>
-		<field name="email.label.template" значение="Шаблон"/>
+		<field name="email.label.template" value="Шаблон"/>
 		<field name="email.label.use_comma" value="использовать запятую для разделения получателей"/>
 		<field name="email.label.body" value="Тело письма"/>
 		<field name="email.label.save_and_preview" value="Сохранить и просмотреть письмо"/>
@@ -500,7 +501,7 @@
 		<field name="type.lang" value="строка (20)"/>
 		<field name="type.str" value="строка (255)"/>
 		<field name="type.int" value="целое число"/>
-		<field name="type.boot" value="логический"/>
+		<field name="type.bool" value="логический"/>
 		<field name="type.array" value="список"/>
 		<field name="type.pic" value="зображення"/>
 		<field name="type.file" value="файл"/>
@@ -608,7 +609,6 @@
 		<field name="table.cronjobs_logs.lang" value="Язык"/>
 		<field name="table.cronjobs_logs.job_id" value="Задача"/>
 		<field name="table.cronjobs_logs.job_name" value="Задача"/>
-		<field name="table.cronjobs_logs.structure_id" value="Название Задачи"/>
 		<field name="table.cronjobs_logs.time_start" value="Время старта"/>
 		<field name="table.cronjobs_logs.time_end" value="Время завершения"/>
 		<field name="table.cronjobs_logs.result_ok" value="Результат"/>

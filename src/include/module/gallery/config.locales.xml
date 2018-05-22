@@ -86,8 +86,6 @@
 		<field name="table.gallery_photos.description" value="Краткий текст"/>
 		<field name="table.gallery_photos.pic" value="Изображение большое"/>
 		<field name="table.gallery_photos.pic_preview" value="Изображение"/>
-		<field name="table.gallery_photos.url" value="URL"/>
-		<field name="table.gallery_photos.article_id" value="Статья"/>
 		<field name="table.gallery_photos.title" value="Заголовок"/>
 		<field name="gallery.search_no_result" value="Альбомы не найдены."/>
 		<field name="gallery.gallery1" value="Красивая фотогалерея"/>
@@ -137,8 +135,6 @@
 		<field name="table.gallery_photos.description" value="Стислий текст"/>
 		<field name="table.gallery_photos.pic" value="Зображення велике"/>
 		<field name="table.gallery_photos.pic_preview" value="Зображення"/>
-		<field name="table.gallery_photos.url" value="URL"/>
-		<field name="table.gallery_photos.article_id" value="Стаття"/>
 		<field name="table.gallery_photos.title" value="Заголовок"/>
 		<field name="gallery.search_no_result" value="Альбомы не найдены."/>
 		<field name="gallery.gallery1" value="The Beautiful photo gallery"/>

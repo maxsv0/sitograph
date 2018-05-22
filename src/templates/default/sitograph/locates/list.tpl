@@ -69,6 +69,8 @@
 
 <div class="col-sm-6">
 <a href="{$lang_url}{$admin_url}?section={$admin_section}&add_new" class="btn btn-primary"><span class="glyphicon glyphicon-ok">&nbsp;</span>{$t["btn.add_new"]}</a>
+
+<a href="{$lang_url}{$admin_url}?section={$admin_section}&export_po" class="btn btn-primary"><span class="glyphicon glyphicon-download">&nbsp;</span> Export .PO file</a>
 </div>
 
 
