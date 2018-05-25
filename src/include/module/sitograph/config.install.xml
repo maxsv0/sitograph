@@ -20,7 +20,6 @@
 	<file dir="module" path="sitograph/sitograph.install.php"/>
 	<file dir="module" path="sitograph/config-menu.php"/>
 	<file dir="module" path="sitograph/export.php"/>
-	<file dir="module" path="sitograph/module-comments.php"/>
 	<file dir="module" path="sitograph/module-config.php"/>
 	<file dir="module" path="sitograph/module-design.php"/>
 	<file dir="module" path="sitograph/module-docs.php"/>
