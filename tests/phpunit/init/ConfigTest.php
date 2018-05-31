@@ -4,7 +4,7 @@ final class ConfigTest extends MSVTestCase {
 
 	public function testConfigLoad() {
 		// Load MSV Website
-		include("index.php");
+		include(ABS."/index.php");
 
 		// check config.php constants:
 		$this->assertTrue(defined("LANGUAGES"));

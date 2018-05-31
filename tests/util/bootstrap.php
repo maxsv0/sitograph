@@ -15,11 +15,11 @@ if (empty($_SERVER['REQUEST_URI'])) {
     $_SERVER['REQUEST_URI'] = "/";
 }
 
-// chmod for CMS home
-chdir(__DIR__."/./../../src/");
-
 // Load MSV Website
-include("load.php");
+require(__DIR__."/./../../src/load.php");
+
+ini_set("display_errors", 1);
+error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 
 // create MSV Website instance
 $website = new MSV_Website();
