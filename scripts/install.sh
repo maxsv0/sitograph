@@ -6,7 +6,7 @@ if [ -z "$1" ]
 	exit
 fi
 
-echo "Installing Sitograph to $1"
+echo "Installing Sitograph CMS to $1"
 cp -ar src/.  $1
 cp -ar src/templates/default/.  $1/templates/custom/
 
@@ -19,4 +19,4 @@ a2enconf sitograph
 a2enmod rewrite headers expires deflate pagespeed
 service apache2 restart
 
-echo "Install finished"
+echo "Sitograph CMS install finished"
