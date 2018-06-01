@@ -170,25 +170,20 @@ Settings -> Shared Folders -> Add. Folder name: sitograph
 
 # Install Sitograph Server Environment
 
-## Configure empty Ubuntu/CentOS/.. instance to run Sitograph CMS
+## Configure new instance running Ubuntu/CentOS/.. to setup Sitograph CMS
 ```bash
-wget -O "install-server.sh" "https://raw.githubusercontent.com/maxsv0/sitograph/master/scripts/install-server.sh"
-chmod +x install-server.sh
-sudo ./install-server.sh
+wget -O - https://raw.githubusercontent.com/maxsv0/sitograph/master/scripts/install-server.sh | bash
 ```
 
 Example output:
 ```bash
-Environment Install Successful
+Sitograph CMS Environment
 --------------------------------------------
 Mysql Root password: dooSho7wea4d
 Mysql Sitograph user: sitograph
 Mysql Sitograph user password: Mo0ohchaiquu
 --------------------------------------------
-Sitograph Install Successfull
---------------------------------------------
-Administrator login: admin
-Administrator password: xoh7ooSu3wai
+Install Successful.
 ```
 
 Don't forget to save passwords that will be displayed at the end of a process, otherwise, they will be lost.
