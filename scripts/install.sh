@@ -14,7 +14,7 @@ chown -R www-data:www-data $1
 echo "Permissions set to www-data:www-data for $1"
 
 echo "Enable Apache configuration sitograph.conf and modules (rewrite headers expires deflate pagespeed)"
-cp sitograph.conf  /etc/apache2/conf-available/
+cp scripts/sitograph.conf  /etc/apache2/conf-available/
 a2enconf sitograph
 a2enmod rewrite headers expires deflate pagespeed
 service apache2 restart
