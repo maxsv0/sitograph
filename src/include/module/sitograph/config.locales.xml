@@ -87,7 +87,7 @@
 		<field name="admin.dev_tools" value="Development Tools"/>
 		<field name="admin.sitemap" value="Manage sitemap.xml"/>
 		<field name="admin.sitemap_title" value="Manage sitemap.xml"/>
-		<field name="admin.manual_title" value="Инструкция"/>
+		<field name="admin.manual_title" value="Admin Manual"/>
 		<field name="admin.config" value="Manage config"/>
 		<field name="admin.config_title" value="Manage config.php file"/>
 		<field name="admin.htaccess" value="Web-server config"/>

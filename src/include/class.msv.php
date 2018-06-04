@@ -81,7 +81,7 @@ class MSV_Website {
         $memoryEnd = memory_get_usage();
         $this->config["memory_used"] = $memoryEnd - $this->config["memory_free"];
 
-        $this->log("Memory usage: ". msv_format_size($this->config["memory_used"]));
+        $this->log("Memory usage: ". $this->config["memory_used"]);
 
 		// write to debug log
 		if ($this->debug) {

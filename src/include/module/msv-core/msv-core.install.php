@@ -19,8 +19,8 @@ function Install_Core($module) {
     msv_set_config("edit_mode", 0, true, "*", _t("settings.edit_mode"));
 
     // add messages to default output
-    msv_set_config("message_ok", "", true, "*", _t("settings.message_ok"));
-    msv_set_config("message_error", "", true, "*", _t("settings.message_error"));
+    msv_set_config("message_ok", "", true, "*", _t("settings.message_ok"),"website");
+    msv_set_config("message_error", "", true, "*", _t("settings.message_error"),"website");
 
     // FROM field for all emails send by app
     msv_set_config("email_from", "admin@localhost", true, "*", _t("settings.email_from"), "website");

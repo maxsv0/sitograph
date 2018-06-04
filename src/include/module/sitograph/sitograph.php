@@ -133,7 +133,11 @@ if (!empty($section) && in_array($section, $menu_index)) {
     }
 
     if (!empty($_POST["save_exit"])) {
-        msv_redirect(ADMIN_URL."?section=$section&table=$admin_table&saved&p=".$admin_list_page);
+        if (!empty($_POST["referer"])) {
+            msv_redirect($_POST["referer"]);
+        } else {
+            msv_redirect(ADMIN_URL."?section=$section&table=$admin_table&saved&p=".$admin_list_page);
+        }
     }
     if (!empty($_POST["save"])) {
         if (!msv_has_messages()) {
