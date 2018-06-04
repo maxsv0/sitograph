@@ -86,7 +86,8 @@
 		<field name="admin.media_library" value="Media Library"/>
 		<field name="admin.dev_tools" value="Development Tools"/>
 		<field name="admin.sitemap" value="Manage sitemap.xml"/>
-		<field name="admin.manual_title" value="Инструкция"/>
+		<field name="admin.sitemap_title" value="Manage sitemap.xml"/>
+		<field name="admin.manual_title" value="Admin Manual"/>
 		<field name="admin.config" value="Manage config"/>
 		<field name="admin.config_title" value="Manage config.php file"/>
 		<field name="admin.htaccess" value="Web-server config"/>
@@ -211,10 +212,6 @@
 		<field name="admin.module_settings_title" value="Управление модулями сайта"/>
 		
 		
-		<field name="admin.module_comments" value="Комментарии"/>
-		<field name="admin.module_comments_title" value="Комментарии"/>
-		<field name="admin.module_search" value="Поиск"/>
-		<field name="admin.module_search_title" value="Поиск"/>
 		<field name="admin.design" value="Дизайны"/>
 		<field name="admin.design_title" value="Дизайны"/>
 		<field name="admin.history" value="История сессий"/>
@@ -361,12 +358,6 @@
 		<field name="admin.robots_title" value="Файл robots.txt"/>
 		<field name="admin.module_settings" value="Управління модулями сайту"/>
 		<field name="admin.module_settings_title" value="Управління модулями сайту"/>
-        <field name="admin.module_catalog" value="Завантаження каталогу з 1С"/>
-        <field name="admin.module_catalog_title" value="Завантаження каталогу з 1С"/>
-        <field name="admin.module_comments" value="Коментарі"/>
-        <field name="admin.module_comments_title" value="Коментарі"/>
-        <field name="admin.module_search" value="Пошук"/>
-        <field name="admin.module_search_title" value="Пошук"/>
 		<field name="admin.design" value="Дизайни"/>
 		<field name="admin.design_title" value="Дизайни"/>
 		<field name="admin.history" value="Історія сесій"/>
@@ -409,7 +400,6 @@
 		<field name="admin.emails" value="Управление email"/>
 		<field name="admin.view_website" value="View Website"/>
 		<field name="admin.logged_as" value="Ви увійшли як"/>
-		<field name="admin.locale_tab_name" value="Назва"/>
 		<field name="btn.search" value="Искать"/>
 		<field name="form.search_lable" value="Поиск"/>
 		<field name="search.expand_all" value="Развернуть все"/>

@@ -10,16 +10,16 @@ if (!headers_sent()) {
 // include config file
 // if config.php exists it will be included
 // otherwise config-sample will be used and installation module will be started
-if (file_exists("config.php")) {
-	include("config.php");
+if (file_exists(__DIR__."/config.php")) {
+    require_once(__DIR__."/config.php");
 	
 	if (empty($_SESSION["msv_install_step"])) {
 		define("MSV_INSTALED", true);
 	} else {
 		define("MSV_INSTALED", false);
 	}
-} elseif (file_exists("config-sample.php")) {
-	include("config-sample.php");
+} elseif (file_exists(__DIR__."/config-sample.php")) {
+    require_once(__DIR__."/config-sample.php");
 	define("MSV_INSTALED", false);
 } else {
 	die("Can't load in configuration file");
@@ -32,7 +32,7 @@ if (defined("PHP_HIDE_ERRORS") && PHP_HIDE_ERRORS) {
 	error_reporting(0);
 } else {
 	ini_set("display_errors", 1);
-	error_reporting(E_ALL & ~E_NOTICE);
+	error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 }
 
 if (defined("PHP_LOCALE")) {

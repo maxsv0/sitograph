@@ -300,6 +300,10 @@ a:active {color:#bb233a;}
 
     // create admin manual
     $manualTopics = array(
+        "release11" => array(
+            "title" => "Sitograph CMS v.1.1 was released",
+            "content" => msv_load_module_doc(ABS_INCLUDE."/module/sitograph/", "blog-release-1-1")
+        ),
         "release" => array(
             "title" => "Sitograph CMS v.1.0 was released",
             "content" => msv_load_module_doc(ABS_INCLUDE."/module/sitograph/", "blog-release")

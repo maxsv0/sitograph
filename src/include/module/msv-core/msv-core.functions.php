@@ -885,7 +885,7 @@ function _t($textID) {
 
         return $retStr;
     } else {
-        return $textID;
+        return "tID:".LANG.".".$textID;
     }
 }
 
