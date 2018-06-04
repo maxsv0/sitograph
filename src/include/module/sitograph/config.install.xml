@@ -2,8 +2,8 @@
 <document>
 <install>
 	<param name="name" value="sitograph"/>
-	<param name="version" value="1.0.23"/>
-	<param name="date" value="12.05.2018"/>
+	<param name="version" value="1.1.0"/>
+	<param name="date" value="04.06.2018"/>
 	<param name="title" value="Sitograph"/>
 	<param name="description" value="Sitograph Content Management System (CMS)"/>
 	<param name="tags" value="CMS"/>
@@ -20,8 +20,11 @@
 	<file dir="module" path="sitograph/sitograph.install.php"/>
 	<file dir="module" path="sitograph/config-menu.php"/>
 	<file dir="module" path="sitograph/export.php"/>
+<<<<<<< HEAD
 	<file dir="module" path="sitograph/module-catalog.php"/>
 	<file dir="module" path="sitograph/module-comments.php"/>
+=======
+>>>>>>> master
 	<file dir="module" path="sitograph/module-config.php"/>
 	<file dir="module" path="sitograph/module-design.php"/>
 	<file dir="module" path="sitograph/module-docs.php"/>

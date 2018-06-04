@@ -55,6 +55,10 @@
 		<field name="blog.comments" value="Comments"/>
 		<field name="blog.attached_gallery" value="Attached gallery:"/>
 		<field name="email.blog_admin_notify" value="New article was added"/>
+		<field name="msg.blog.noemail" value="Field 'E-mail' can't be empty"/>
+		<field name="msg.blog.nourl" value="Field 'URL' can't be empty"/>
+		<field name="msg.blog.notitle" value="Field 'Title' can't be empty"/>
+		<field name="msg.blog.saved" value="Article saved successfully"/>
 	</locale>
 	<locale name="ru">
 		<field name="module.blog" value="Блог"/>
@@ -109,6 +113,10 @@
 		<field name="blog.comments" value="Коментариев"/>
 		<field name="blog.attached_gallery" value="Прикрепленная галерея:"/>
 		<field name="email.blog_admin_notify" value="New article was added"/>
+		<field name="msg.blog.noemail" value="Field 'E-mail' can't be empty"/>
+		<field name="msg.blog.nourl" value="Field 'URL' can't be empty"/>
+		<field name="msg.blog.notitle" value="Field 'Title' can't be empty"/>
+		<field name="msg.blog.saved" value="Article saved successfully"/>
 	</locale>
     <locale name="ua">
 		<field name="module.blog" value="Блог"/>
@@ -163,6 +171,10 @@
 		<field name="blog.comments" value="Коментарів"/>
 		<field name="blog.attached_gallery" value="Прикріплена галерея:"/>
 		<field name="email.blog_admin_notify" value="New article was added"/>
+		<field name="msg.blog.noemail" value="Field 'E-mail' can't be empty"/>
+		<field name="msg.blog.nourl" value="Field 'URL' can't be empty"/>
+		<field name="msg.blog.notitle" value="Field 'Title' can't be empty"/>
+		<field name="msg.blog.saved" value="Article saved successfully"/>
 	</locale>
 
 </locales>
