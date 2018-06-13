@@ -23,6 +23,9 @@
 	padding-bottom: 10px;
 	color:#fff;
 }
+label.error {
+	color:#ed2a45;
+}
 .contact-title {
 	color:#fff;
 	margin:10px 0;
