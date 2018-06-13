@@ -1,6 +1,6 @@
 {if $users_registration_allow}
 
-<form class="form-horizontal" method="POST" >
+<form class="form-horizontal" id="user_signup_form" method="POST" >
   <div class="form-group">
     <label for="inputEmail" class="col-sm-4 control-label">{_t("users.form.email")} <span class="text-danger">*</span></label>
     <div class="col-sm-8">
