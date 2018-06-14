@@ -938,17 +938,39 @@ function msv_build_module_info($module) {
     <h4>Module Configuration</h4>';
 
     $str .= "<div class='well text-center'>";
-    $str .= '<a href="'.ADMIN_URL.'?section=editor&edit_file='.LOCAL_MODULE.'/'.$objModule->name.'/config.xml" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-edit"></span> Edit Module XML</a> &nbsp;&nbsp;';
+
+    $str .= '<p>';
+    $str .= 'File: <b>'.LOCAL_MODULE.'/'.$objModule->name.'/config.xml</b> &nbsp;&nbsp;';
+    if (file_exists(ABS_MODULE.'/'.$objModule->name.'/config.xml')) {
+        $str .= '<span class="label label-success">file exists</span>';
+    } else {
+        $str .= '<span class="label label-danger">not found</span>';
+    }
+    $str .= ' &nbsp;&nbsp;';
+    $str .= '<a href="'.ADMIN_URL.'?section=editor&edit_file='.LOCAL_MODULE.'/'.$objModule->name.'/config.xml" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Edit Module XML</a> &nbsp;&nbsp;';
+    $str .= '</p>';
+
+    $str .= '<p>';
+    $str .= 'File: <b>'.LOCAL_MODULE.'/'.$objModule->name.'/config.locales.xml</b> &nbsp;&nbsp;';
     if (file_exists(ABS_MODULE.'/'.$objModule->name.'/config.locales.xml')) {
-        $str .= '<a href="'.ADMIN_URL.'?section=editor&edit_file='.LOCAL_MODULE.'/'.$objModule->name.'/config.locales.xml" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-edit"></span> Edit Locales XML</a> &nbsp;&nbsp;';
+        $str .= '<span class="label label-success">file exists</span>  &nbsp;&nbsp;';
+        $str .= '<a href="'.ADMIN_URL.'?section=editor&edit_file='.LOCAL_MODULE.'/'.$objModule->name.'/config.locales.xml" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Edit Locales XML</a> &nbsp;&nbsp;';
     } else {
-        $str .= '<a href="#" class="btn btn-primary btn-lg disabled"><span class="glyphicon glyphicon-edit"></span> Edit Locales XML</a> &nbsp;&nbsp;';
+        $str .= '<span class="label label-danger">not found</span> &nbsp;&nbsp;';
+        $str .= '<a href="#" class="btn btn-primary disabled"><span class="glyphicon glyphicon-edit"></span> Edit Locales XML</a> &nbsp;&nbsp;';
     }
+    $str .= '</p>';
+
+    $str .= '<p>';
+    $str .= 'File: <b>'.LOCAL_MODULE.'/'.$objModule->name.'/config.install.xml</b> &nbsp;&nbsp;';
     if (file_exists(ABS_MODULE.'/'.$objModule->name.'/config.install.xml')) {
-        $str .= '<a href="'.ADMIN_URL.'?section=editor&edit_file='.LOCAL_MODULE.'/'.$objModule->name.'/config.install.xml" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-edit"></span> Edit Install XML</a>';
+        $str .= '<span class="label label-success">file exists</span>  &nbsp;&nbsp;';
+        $str .= '<a href="'.ADMIN_URL.'?section=editor&edit_file='.LOCAL_MODULE.'/'.$objModule->name.'/config.install.xml" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Edit Install XML</a>';
     } else {
-        $str .= '<a href="#" class="btn btn-primary btn-lg disabled"><span class="glyphicon glyphicon-edit"></span> Edit Install XML</a>';
+        $str .= '<span class="label label-danger">not found</span> &nbsp;&nbsp;';
+        $str .= '<a href="#" class="btn btn-primary disabled"><span class="glyphicon glyphicon-edit"></span> Edit Install XML</a>';
     }
+    $str .= '</p>';
     $str .= '</div>';
 
     $str .= '<table class="table table-hover">';
@@ -1149,18 +1171,25 @@ function msv_build_module_info($module) {
   
   <div id="actions" class="tab-pane fade">';
     $str .= "<h4>Module actions</h4>";
-    $str .= "<p class='well text-center'>";
-    // TODO: Export module feature
-    $str .= "<a href='".ADMIN_URL."?section=export&module=".$objModule->name."' class='btn btn-primary btn-lg'><span class='glyphicon glyphicon-download'></span> Export ZIP</a>&nbsp; &nbsp; ";
-    $str .= "<a href='".ADMIN_URL."?module_reinstall=".$objModule->name."' class='btn btn-warning btn-lg' onclick=\"if(!confirm('Are you sure? Current module files will be overwritten.')) return false;\"><span class='glyphicon glyphicon-refresh'></span> update module</a>&nbsp; &nbsp; ";
-    if ($objModule->enabled) {
-        $str .= "<a href='".ADMIN_URL."?module_disable=".$objModule->name."' class='btn btn-danger btn-lg'><span class='glyphicon glyphicon-remove'></span> disable module</a>";
-    } else {
-        $str .= "<a href='".ADMIN_URL."?module_enable=".$objModule->name."' class='btn btn-danger btn-lg'><span class='glyphicon glyphicon-ok'></span> enable module</a>";
-    }
-    //$str .= "&nbsp; &nbsp; ";
-    //$str .= "<a href='".ADMIN_URL."?module_remove=".$objModule->name."' class='btn btn-danger btn-lg disabled' onclick=\"if(!confirm('ALL DATA WILL BE LOST! Are you sure?')) return false;\"><span class='glyphicon glyphicon-ban-circle'></span> Remove</a> &nbsp; &nbsp;";
+    $str .= "<div class='well text-center'>";
+    $str .= "<p>";
+    $str .= "<a href='".ADMIN_URL."?section=export&module=".$objModule->name."' class='btn btn-primary btn-lg'><span class='glyphicon glyphicon-download'></span> Export Module as .ZIP</a>&nbsp; &nbsp; ";
     $str .= "</p>";
+    $str .= "<p>";
+    $str .= "<a href='".ADMIN_URL."?section=module_settings&module=".$objModule->name."&install_hook=".$objModule->name."' class='btn btn-primary btn-lg'><span class='glyphicon glyphicon-play'></span> Execute Install Hook</a>&nbsp; &nbsp; ";
+    $str .= "<a href='".ADMIN_URL."?module_reinstall=".$objModule->name."' class='btn btn-warning btn-lg' onclick=\"if(!confirm('Are you sure? Current module files will be overwritten.')) return false;\"><span class='glyphicon glyphicon-refresh'></span> update module</a>&nbsp; &nbsp; ";
+    $str .= "</p>";
+    // TODO: enable this features
+    $str .= "<p>";
+    if ($objModule->enabled) {
+        $str .= "<a href='".ADMIN_URL."?module_disable=".$objModule->name."' class='disabled btn btn-danger btn-lg'><span class='glyphicon glyphicon-remove'></span> disable module</a>";
+    } else {
+        $str .= "<a href='".ADMIN_URL."?module_enable=".$objModule->name."' class='disabled btn btn-danger btn-lg'><span class='glyphicon glyphicon-ok'></span> enable module</a>";
+    }
+    $str .= "&nbsp; &nbsp; ";
+    $str .= "<a href='".ADMIN_URL."?module_remove=".$objModule->name."' class='disabled btn btn-danger btn-lg disabled' onclick=\"if(!confirm('ALL DATA WILL BE LOST! Are you sure?')) return false;\"><span class='glyphicon glyphicon-ban-circle'></span> Remove</a> &nbsp; &nbsp;";
+    $str .= "</p>";
+    $str .= "</div>";
 
     $str .= "<h4>Table actions</h4>";
     $str .= "<table class='table table-hover'>";
