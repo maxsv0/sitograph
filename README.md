@@ -22,7 +22,7 @@
 
 
 # About Sitograph
-Sitograph is open source Content Management System (CMS) that enables you to build websites and efficient online applications..
+Sitograph is open source Content Management System (CMS) that enables you to build websites and efficient online applications.
 
 ## Content Management System features overview
 We believe website development must be easy and enjoyable. 
