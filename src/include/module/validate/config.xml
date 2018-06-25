@@ -23,5 +23,6 @@
     <file dir="module" path="validate/validate.php"/>
     <file dir="module" path="validate/config.xml"/>
     <file dir="content" path="js/jquery.validate.min.js"/>
+    <file dir="content" path="js/jquery.validate.additional-methods.js"/>
 </install>
 </document>
