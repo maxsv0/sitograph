@@ -10,7 +10,7 @@
 	{$document.text}
 </div>
 
-<div class="container promo-block" style="background:url(/content/images/sitograph/sitograph-promo-responsive.png);">
+<div class="container promo-block" style="background:url(/content/images/sitograph/sitograph-promo-responsive.png) no-repeat;background-color: #fff;">
 	<div class="row">
 		<div class="col-lg-5 col-md-5 col-sm-6 col-lg-offset-7 col-md-offset-7">
 			<p>&nbsp;</p>
@@ -28,8 +28,7 @@
 		<div class="col-md-10 col-md-offset-1">
 			<h2>Sitograph CMS Admin Homepage</h2>
 			<a class="thumbnail" href="http://demo.sitograph.com/admin/" title="Demo Sitograph CMS">
-				{*<img src="https://www.sitograph.com/content/articles/2018/04/screen-demo-sitograph-5acc681cce581.jpg" alt="Demo Sitograph CMS">*}
-				<img src="https://www.sitograph.com/content/articles/2018/04/7-pic_preview-5acc683ce810c.jpg" alt="Demo Sitograph CMS">
+				<img src="https://www.sitograph.com/content/articles/2018/04/screen-demo-sitograph-5acc681cce581.jpg" alt="Demo Sitograph CMS">
 			</a>
 			<h3><a href="http://demo.sitograph.com/admin/">http://demo.sitograph.com/admin/</a></h3>
 		</div>
@@ -55,7 +54,7 @@
 			<p>&nbsp;</p>
 			<p>&nbsp;</p>
 			<p>
-				<img src="" alt="Demo Sitograph CMS" class="img-responsive">
+				<img src="/content/images/sitograph/sitograph-promo-laptop.png" alt="Sitograph CMS" class="img-responsive">
 			</p>
 		</div>
 	</div>
