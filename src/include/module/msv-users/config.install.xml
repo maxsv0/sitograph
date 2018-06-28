@@ -3,8 +3,8 @@
 
 	<install>
 	<param name="name" value="msv-users"/>
-	<param name="version" value="1.2.4"/>
-	<param name="date" value="07.01.2018"/>
+	<param name="version" value="1.2.5"/>
+	<param name="date" value="20.06.2018"/>
 	<param name="installHook" value="Install_Users"/>
 	<param name="title" value="MSV Users"/>
 	<param name="description" value="Users auth functions for MSV"/>
