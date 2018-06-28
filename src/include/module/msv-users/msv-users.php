@@ -279,3 +279,53 @@ if (isset($_REQUEST["doSendVerify"])) {
         msv_message_error(_t("msg.users.noaccess"));
     }
 }
+
+// Enable form validation
+//
+// User Login form
+//
+msv_include_js("
+$(\"#user_login_form\").validate({
+    rules: {
+        email: {
+            required: true,
+            email: true 
+        },
+        password: 'required'
+    },
+    messages: {
+        email: {
+            required: \""._t("msg.users.noemail")."\",
+            email: \""._t("msg.wrong_email")."\"
+        },
+    }
+});
+", "/login/");
+
+//
+// User SingUp form
+//
+msv_include_js("
+$(\"#user_signup_form\").validate({
+    rules: {
+        email: {
+            required: true,
+            email: true 
+        },
+        password: {
+            required: true,
+            minlength: 8
+        },
+        password2: {
+            required: true,
+            equalTo: '#inputPassword'
+        },
+    },
+    messages: {
+        email: {
+            required: \""._t("msg.users.noemail")."\",
+            email: \""._t("msg.wrong_email")."\"
+        },
+    }
+});
+", "/signup/");

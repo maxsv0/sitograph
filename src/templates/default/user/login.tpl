@@ -1,4 +1,4 @@
-<form class="form-horizontal" method="POST" action="{$lang_url}/login/">
+<form class="form-horizontal" id="user_login_form" method="POST" action="{$lang_url}/login/">
   <div class="form-group">
     <label for="inputEmail" class="col-sm-2 control-label">{_t("users.form.email")}</label>
     <div class="col-sm-10">

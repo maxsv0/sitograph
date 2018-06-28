@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+<config>
+    <param name="activationUrl" value="*"/>
+    <param name="activationLevel" value="10"/>
+    <param name="adminMenu" value="0"/>
+</config>
+
+
+<install>
+    <param name="name" value="validate" />
+    <param name="version" value="1.0.0"/>
+    <param name="date" value="13.06.2018"/>
+    <param name="title" value="jQuery.Validate"/>
+    <param name="description" value="jQuery Validation Plugin v1.14.0"/>
+    <param name="tags" value="validation,jquery"/>
+    <param name="author" value="max@msvhost.com"/>
+    <param name="preview" value="images/module_preview/jquery_validate.jpg"/>
+
+    <dependency module="msv-core" version="1.0" />
+
+    <file dir="module" path="validate/validate.php"/>
+    <file dir="module" path="validate/config.xml"/>
+    <file dir="content" path="js/jquery.validate.min.js"/>
+    <file dir="content" path="js/jquery.validate.additional-methods.js"/>
+</install>
+</document>
