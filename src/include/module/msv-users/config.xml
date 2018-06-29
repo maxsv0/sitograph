@@ -2,7 +2,6 @@
 <document>
 
 <config>
-
 	<param name="activationLevel" value="2"/>
 	<param name="activationUrl" value="*"/>
 	<param name="adminMenu" value="0"/>

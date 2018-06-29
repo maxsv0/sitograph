@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document>
 
-	<install>
+<install>
 	<param name="name" value="msv-users"/>
-	<param name="version" value="1.2.5"/>
-	<param name="date" value="20.06.2018"/>
+	<param name="version" value="1.2.6"/>
+	<param name="date" value="29.06.2018"/>
 	<param name="installHook" value="Install_Users"/>
 	<param name="title" value="MSV Users"/>
 	<param name="description" value="Users auth functions for MSV"/>
 	<param name="tags" value="kernel,users,profile"/>
 	<param name="author" value="max@msvhost.com"/>
-	<param name="preview" value="images/module_preview_msv-users.jpg"/>
+	<param name="preview" value="images/module_preview/msv-users.jpg"/>
 
-	<dependency module="msv-core" version="1.0" />
-	<dependency module="msv-api" version="1.0" />
+	<dependency module="msv-core" version="1.5" />
+	<dependency module="msv-api" version="1.5" />
 	
 	<file dir="module" path="msv-users/msv-users.php"/>
 	<file dir="module" path="msv-users/msv-users.install.php"/>
@@ -40,7 +40,7 @@
 	<file dir="template" path="default/user/password-reset.tpl"/>
 	<file dir="template" path="default/widget/menu-user.tpl"/>
 
-	<file dir="content" path="images/module_preview_msv-users.jpg"/>
+	<file dir="content" path="images/module_preview/msv-users.jpg"/>
 </install>
 
 </document>
