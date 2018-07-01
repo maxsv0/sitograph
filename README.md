@@ -64,7 +64,6 @@ sudo ./scripts/install.sh /var/www/html
 ![Sitograph Installation wizard](https://github.com/maxsv0/sitograph/blob/master/src/content/images/gallery/gallery3_photo1.jpg)
 
 
-
 # Extending Sitograph modules
 Sitograph CMS is a set of modules that can be easily configured from admin UI. 
 
