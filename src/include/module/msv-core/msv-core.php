@@ -62,6 +62,7 @@ function msv_load() {
             $website->includeHead[] = "<p class='alert alert-warning'><b>SITE_CLOSED</b>. Access available only for <b>dev</b>.</p>";
         } else {
             msv_output("Will come back soon.");
+            exit;
         }
     }
 
