@@ -7,13 +7,12 @@
 	<param name="baseUrl" value="/search/"/>
     <param name="adminMenu" value="1"/>
     <param name="adminMenuOrder" value="150"/>
+	<param name="installHook" value="Install_Search"/>
 
 	<filter url="/search/" action="Get_Search_List"/>
-    
+
     <api name="more_search" action="ajax_More_Search"/>
-    
-    <param name="installHook" value="Install_Search"/>
-    
+
     <constant name="TABLE_SEARCH" value="search"/>
     
     <table name="search" index="id" title="name">
@@ -32,20 +31,20 @@
 
 <install>
 	<param name="name" value="search"/>
-	<param name="version" value="1.0.3"/>
-	<param name="date" value="11.04.2018"/>
+	<param name="version" value="1.0.4"/>
+	<param name="date" value="29.06.2018"/>
 	<param name="title" value="Site search"/>
 	<param name="description" value="Text site search"/>
 	<param name="tags" value="search"/>
 	<param name="author" value="max@msvhost.com"/>
-	<param name="preview" value="images/module_preview_search.jpg"/>
+	<param name="preview" value="images/module_preview/search.jpg"/>
 
-	<dependency module="core" version="1.0" />
+	<dependency module="core" version="1.5" />
     
 	<file dir="module" path="search/search.php"/>
 	<file dir="module" path="search/config.xml"/>
 	<file dir="module" path="search/config.locales.xml"/>
 	<file dir="template" path="default/site-search.tpl"/>
-	<file dir="content" path="images/module_preview_search.jpg"/>
+	<file dir="content" path="images/module_preview/search.jpg"/>
 </install>
 </document>

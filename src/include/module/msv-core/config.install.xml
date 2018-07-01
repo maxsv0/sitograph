@@ -2,16 +2,16 @@
 <document>
 <install>
 	<param name="name" value="msv-core" />
-	<param name="version" value="1.5.0"/>
-	<param name="date" value="04.06.2018"/>
+	<param name="version" value="1.5.1"/>
+	<param name="date" value="29.06.2018"/>
 	<param name="installHook" value="Install_Core"/>
 	<param name="title" value="MSV Core"/>
 	<param name="description" value="Core functions for MSV"/>
 	<param name="tags" value="kernel"/>
 	<param name="author" value="max@msvhost.com"/>
-	<param name="preview" value="images/module_preview_msv-core.jpg"/>
+	<param name="preview" value="images/module_preview/msv-core.jpg"/>
 
-	<dependency module="msv-api" version="1.0" />
+	<dependency module="msv-api" version="1.4" />
 	
 	<file dir="abs" path="robots.txt"/>
 	<file dir="abs" path="index.php"/>
@@ -29,6 +29,6 @@
 	<file dir="module" path="msv-core/config.xml"/>
 	<file dir="module" path="msv-core/config.install.xml"/>
 	<file dir="module" path="msv-core/config.locales.xml"/>
-	<file dir="content" path="images/module_preview_msv-core.jpg"/>
+	<file dir="content" path="images/module_preview/msv-core.jpg"/>
 </install>
 </document>
