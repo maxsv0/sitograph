@@ -20,7 +20,6 @@
 - [Install Dependencies](#install-dependencies)
 - [Install Sitograph Server Environment](#install-sitograph-server-environment)
 
-
 # About Sitograph
 Sitograph is open source Content Management System (CMS) that enables you to build websites and efficient online applications.
 
