@@ -163,14 +163,10 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
                     "iss" => "install",
                     "access_token" => $access_token,
                 );
-
-                $options = array();
-                if (!empty($_REQUEST["admin_notify"])) {
-                    $options = array("EmailNotifyUser");
-                }
+                $_SESSION['user_info'] = $item;
 
                 // add admin account
-                $resultUser = msv_add_user($item, $options);
+                $resultUser = msv_add_user($item);
                 if ($resultUser["ok"] && !empty($resultUser["insert_id"])) {
                     $_SESSION['user_id'] = $resultUser["insert_id"];
                     $_SESSION['user_email'] = $_REQUEST["admin_login"];
@@ -187,8 +183,6 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
                         "type" => "daily",
                     );
                     $resultRun = msv_add_cron($item);
-
-
                 } else {
                     $website->messages["error"][] = "Error adding administrator account: ".$resultUser["msg"];
                 }
@@ -243,12 +237,25 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
 
                 if ($valueCurrent !== $value) {
                     db_update(TABLE_SETTINGS, "value", "'".db_escape($value)."'", " `param` = '".$name."'");
+                    msv_set_config($name, $value);
                 }
             }
         }
 
+        $sendFrom = msv_get_config("email_from");
+        if (empty($sendFrom)) {
+            msv_set_config("email_from", "SitographCMS Install");
+        }
+
         // reset step
         $_SESSION["msv_install_step"] = $install_step = 0;
+
+        if (!empty($_REQUEST["admin_notify"])) {
+            if (!empty($_SESSION['user_info']) && is_array($_SESSION['user_info'])) {
+                $resultMail = msv_email_template("user_registration", $_SESSION['user_info']["email"], $_SESSION['user_info']);
+            }
+            unset($_SESSION['user_info']);
+        }
 
         // copy design "default" to "custom"
         // TODO: >>>>>>>
