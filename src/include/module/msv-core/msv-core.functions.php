@@ -1145,7 +1145,7 @@ function msv_email($to = "", $subject = "", $body = "", $header = "") {
     $result = call_user_func_array($mailer, array($to, $subject, $body, $header));
 
     if (!$result) {
-        $resultStr = "fail";
+        $resultStr = "fail:$mailer";
     } else {
         $resultStr = $result;
     }
