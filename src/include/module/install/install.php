@@ -244,7 +244,7 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
 
         $sendFrom = msv_get_config("email_from");
         if (empty($sendFrom)) {
-            msv_set_config("email_from", "SitographCMS Install");
+            msv_set_config("email_from", "install@sitograph");
         }
 
         // reset step
