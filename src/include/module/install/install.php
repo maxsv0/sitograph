@@ -159,7 +159,7 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
                     "password" => $_REQUEST["admin_password"],
                     "email_verified" => 1,
                     "name" => "Admin",
-                    "access" => "dev",
+                    "access" => $_REQUEST["admin_access"],
                     "iss" => "install",
                     "access_token" => $access_token,
                 );
@@ -357,6 +357,7 @@ if ($install_step === 3) {
     }
 
     $website->config["admin_password"] = msv_generate_password();
+    $website->config["admin_access"] = "admin";
 }
 
 // prepare initial data, step 4

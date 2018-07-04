@@ -143,7 +143,12 @@
 							</div>
 						</div>
 
-
+						<div class="form-group">
+							<label for="iadmin_access" class="col-sm-5 control-label">Access</label>
+							<div class="col-sm-7">
+								<input type="text" class="form-control" id="iadmin_access" name="admin_access" value="{$admin_access}">
+							</div>
+						</div>
 					</div>
 				</div>
 
