@@ -10,6 +10,10 @@ function msv_start() {
 
     $website = msv_get("website");
 
+	//load MSV default files
+	msv_include(CONTENT_URL."/css/default.js");
+	msv_include(CONTENT_URL."/css/default.css");
+
     // load jQuery. Required by admin UI
     $theme_use_jquery = msv_get_config("theme_use_jquery");
     if ($theme_use_jquery > 0 || $website->requestUrl === ADMIN_URL) {

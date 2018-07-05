@@ -29,6 +29,8 @@
 	<file dir="module" path="theme-default/doc/en-privacy-policy.html"/>
 	<file dir="module" path="theme-default/doc/en-terms-conditions.html"/>
 	<file dir="module" path="theme-default/doc/ru-example-page.html"/>
+	<file dir="content" path="css/theme-default.css"/>
+	<file dir="content" path="js/theme-default.js"/>
 	<file dir="content" path="images/ico_mail.svg"/>
 	<file dir="content" path="images/ico_sitemap.svg"/>
 	<file dir="content" path="images/menu_bg.png"/>
