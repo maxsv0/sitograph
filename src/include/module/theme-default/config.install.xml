@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+<install>
+	<param name="name" value="theme-default"/>
+	<param name="version" value="1.3.11"/>
+	<param name="date" value="06.07.2018"/>
+	<param name="installHook" value="Install_ThemeDefault"/>
+	<param name="title" value="Theme Default"/>
+	<param name="description" value="Default theme for MSV"/>
+	<param name="tags" value="theme,design"/>
+	<param name="author" value="max@msvhost.com"/>
+	<param name="preview" value="images/module_preview/theme-default.jpg"/>
+
+	<dependency module="msv-core" version="1.5" />
+	
+	<file dir="module" path="theme-default/theme-default.php"/>
+	<file dir="module" path="theme-default/theme-default.install.php"/>
+	<file dir="module" path="theme-default/config.xml"/>
+	<file dir="module" path="theme-default/config.locales.xml"/>
+	<file dir="module" path="theme-default/doc/en-example-page.html"/>
+	<file dir="module" path="theme-default/doc/en-privacy-policy.html"/>
+	<file dir="module" path="theme-default/doc/en-terms-conditions.html"/>
+	<file dir="module" path="theme-default/doc/ru-example-page.html"/>
+	<file dir="content" path="css/theme-default.css"/>
+	<file dir="content" path="js/theme-default.js"/>
+	<file dir="content" path="images/ico_mail.svg"/>
+	<file dir="content" path="images/ico_sitemap.svg"/>
+	<file dir="content" path="images/menu_bg.png"/>
+	<file dir="content" path="images/module_preview/theme-default.jpg"/>
+	<file dir="template" path="default/404.tpl"/>
+	<file dir="template" path="default/sitemap.tpl"/>
+	<file dir="template" path="default/main.tpl"/>
+	<file dir="template" path="default/main-sideblock.tpl"/>
+	<file dir="template" path="default/index.tpl"/>
+	<file dir="template" path="default/widget/header.tpl"/>
+	<file dir="template" path="default/widget/footer.tpl"/>
+	<file dir="template" path="default/widget/messages.tpl"/>
+	<file dir="template" path="default/widget/navigation.tpl"/>
+	<file dir="template" path="default/widget/pagination.tpl"/>
+	<file dir="template" path="default/widget/sideblock.tpl"/>
+	<file dir="template" path="default/widget/menu-top.tpl"/>
+	<file dir="template" path="default/widget/menu-bottom.tpl"/>
+</install>
+</document>

@@ -1,0 +1,6 @@
+
+</body>
+
+{$htmlFooter}
+
+</html>

@@ -327,14 +327,28 @@ if ($install_step === 3) {
         foreach ($website->modules as $module) {
             if ($module === "install") continue;
 
+			$moduleEnabled = true;
+            if (strpos($module, "theme-") === 0) {
+            	//check if any theme already enabled
+				foreach ($modulesList as $mName => $item) {
+					if (strpos($mName, "theme-") === 0) {
+						$moduleEnabled = false;
+					}
+				}
+			}
+
             $objModule = msv_get("website.".$module);
             if (empty($objModule)) {
                 continue;
             }
             $lvl = $objModule->activationLevel;
 
+            $info = array(
+            	"enabled" => $moduleEnabled,
+			);
+
             if ($lvl == $i) {
-                $modulesList[$module] = array();
+                $modulesList[$module] = $info;
             }
         }
     }
