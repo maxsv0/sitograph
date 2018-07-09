@@ -12,7 +12,15 @@
 .promo-block {
     background:#fff;
 }
-
+.img-promo {
+    margin-top: -25px;
+    height:auto;
+    max-width:100%;
+    position:absolute;
+    display:inline;
+    -webkit-transition: -webkit-transform 1.0s ease-in-out;
+    transition:         transform 1.0s ease-in-out;
+}
 .footer {
     background:#bbb;
 }
