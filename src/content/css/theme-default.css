@@ -1,0 +1,36 @@
+.header {
+}
+
+.content-block {
+    background:#fff;
+}
+
+.top-menu {
+    padding:20px 0;
+}
+
+.promo-block {
+    background:#fff;
+}
+
+.footer {
+    background:#bbb;
+}
+.footer-copyright {
+    background:#aaa;
+}
+
+.navigation {
+    height: auto;
+    line-height: 40px;
+    clear: both;
+    background:#fff;
+}
+.navigation ul {
+    list-style: none;
+    margin-left: -40px;
+}
+.navigation ul li {
+    display: block;
+    float: left
+}

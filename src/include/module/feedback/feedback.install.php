@@ -1,7 +1,7 @@
 <?php
 
 function Install_Feedback($module) {
-
+    $themeName = msv_get_config("theme_active");
     $docFeedbackTitle = _t("structure.feedback_title");
     $docFeedbackText = "<img src='".CONTENT_URL."/images/contacts.png' class='img-responsive'>";
 
@@ -9,7 +9,7 @@ function Install_Feedback($module) {
     $itemStructure = array(
         "url" => $module->baseUrl,
         "name" => _t("structure.feedback"),
-        "template" => "custom",
+        "template" => $themeName,
         "page_template" => "main-feedback.tpl",
         "sitemap" => 1,
         "menu" => "bottom",

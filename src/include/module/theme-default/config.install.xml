@@ -6,6 +6,7 @@
 	<param name="version" value="1.3.11"/>
 	<param name="date" value="06.07.2018"/>
 	<param name="installHook" value="Install_ThemeDefault"/>
+	<param name="enableHook" value="Install_ThemeDefault_Activate"/>
 	<param name="title" value="Theme Default"/>
 	<param name="description" value="Default theme for MSV"/>
 	<param name="tags" value="theme,design"/>
@@ -24,9 +25,6 @@
 	<file dir="module" path="theme-default/doc/ru-example-page.html"/>
 	<file dir="content" path="css/theme-default.css"/>
 	<file dir="content" path="js/theme-default.js"/>
-	<file dir="content" path="images/ico_mail.svg"/>
-	<file dir="content" path="images/ico_sitemap.svg"/>
-	<file dir="content" path="images/menu_bg.png"/>
 	<file dir="content" path="images/module_preview/theme-default.jpg"/>
 	<file dir="template" path="default/404.tpl"/>
 	<file dir="template" path="default/sitemap.tpl"/>

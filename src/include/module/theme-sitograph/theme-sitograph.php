@@ -1,6 +1,6 @@
 <?php
 $configList = msv_get("website.configList");
-if ($configList["theme_active"]["value"] !== "theme-sitograph") return;
+if ($configList["theme_active"]["value"] !== "sitograph") return;
 
 $themeConfigList = array(
     "theme_bg" => "pic",

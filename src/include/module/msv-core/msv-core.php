@@ -10,8 +10,7 @@ function msv_start() {
 
     $website = msv_get("website");
 
-	//load MSV default files
-	msv_include(CONTENT_URL."/css/default.js");
+	//load MSV default CSS
 	msv_include(CONTENT_URL."/css/default.css");
 
     // load jQuery. Required by admin UI
@@ -26,6 +25,9 @@ function msv_start() {
         msv_include(CONTENT_URL."/css/bootstrap.min.css");
         msv_include(CONTENT_URL."/js/bootstrap.min.js");
     }
+
+    //load MSV default JS
+    msv_include(CONTENT_URL."/js/default.js");
 
     // include Theme CSS, website only
     $theme_css_path = msv_get_config("theme_css_path");

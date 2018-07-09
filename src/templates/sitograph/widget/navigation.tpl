@@ -1,6 +1,6 @@
 {if $navigation}
 <div class="container navigation">
-    <ul class="bread_block block-crumbs" xmlns:v="http://rdf.data-vocabulary.org/#">
+    <ul class="block-crumbs" xmlns:v="http://rdf.data-vocabulary.org/#">
     {section name=index loop=$navigation}
         {if $smarty.section.index.last}
         <li class="current-crumbs"><span>{$navigation[index].name}</span></li>

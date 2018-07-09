@@ -20,7 +20,6 @@
 </div>
 </div>
 
-
 {foreach from=$admin_designs name=loop key=design_name item=info}
 <div class="row">
 
@@ -50,6 +49,7 @@
 
 
 </div>
+<br>
 {/foreach}
 
 

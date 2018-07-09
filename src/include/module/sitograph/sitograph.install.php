@@ -1,12 +1,11 @@
 <?php
 
 function Install_Sitograph($module) {
-
     // create Admin UI pages
     $itemStructure = array(
         "url" => ADMIN_URL,
         "name" => _t("structure.admin_homepage"),
-        "template" => "custom",
+        "template" => "default",
         "page_template" => "sitograph.tpl",
         "access" => "admin",
     );
@@ -15,7 +14,7 @@ function Install_Sitograph($module) {
     $itemStructure = array(
         "url" => ADMIN_URL."login/",
         "name" => _t("structure.admin_login"),
-        "template" => "custom",
+        "template" => "default",
         "page_template" => "sitograph-login.tpl",
         "access" => "everyone",
     );
@@ -32,12 +31,14 @@ function Install_Sitograph($module) {
     $result = db_add(TABLE_MENU, $item);
     $menu_parent_id = $result["insert_id"];
 
+    $themeName = msv_get_config("theme_active");
+
     // create sample site structure
     $docContent = msv_load_module_doc($module->pathModule, "page-getting-started");
     $itemStructure = array(
         "url" => "/sitograph/getting-started/",
         "name" => _t("structure.getting_started"),
-        "template" => "custom",
+        "template" => $themeName,
         "page_template" => "main.tpl",
         "menu" => "top",
         "menu_order" => 5,
@@ -51,7 +52,7 @@ function Install_Sitograph($module) {
     $itemStructure = array(
         "url" => "/sitograph/file-structure/",
         "name" => _t("structure.file_structure"),
-        "template" => "custom",
+        "template" => $themeName,
         "page_template" => "main-sideblock.tpl",
         "menu" => "top",
         "menu_order" => 10,
@@ -65,7 +66,7 @@ function Install_Sitograph($module) {
     $itemStructure = array(
         "url" => "/sitograph/API/",
         "name" => _t("structure.api"),
-        "template" => "custom",
+        "template" => $themeName,
         "page_template" => "main-sideblock.tpl",
         "menu" => "top",
         "menu_order" => 15,
@@ -78,7 +79,7 @@ function Install_Sitograph($module) {
     $itemStructure = array(
         "url" => "/sitograph/modules/",
         "name" => _t("structure.sitograph_modules"),
-        "template" => "custom",
+        "template" => $themeName,
         "page_template" => "main-modules.tpl",
         "menu" => "top",
         "menu_order" => 20,
@@ -107,19 +108,8 @@ function Install_Sitograph($module) {
     msv_set_config("email_from", "tech@sitograph.com", true, "*", _t("settings.email_from"));
     msv_set_config("email_fromname", "Sitograph", true, "*", _t("settings.email_fromname"));
 
-    msv_set_config("theme_copyright_text", "2016-".date("Y")." Sitograph CMS. <a href='https://www.sitograph.com/' target='_blank'>sitograph.com</a>", true, "*");
-    msv_set_config("theme_header_contacts", "<a href='https://discord.gg/tPusyxP'>Join Discord channel</a><br>Skype: max.svistunov", true, "*");
-
     msv_set_config("service_ua_info", "", true, "*", _t("settings.service_ua_info"), "website");
     msv_set_config("service_ip_info", "", true, "*", _t("settings.service_ip_info"), "website");
-
-    if (LANG === "ru" || LANG === "ua") {
-        msv_set_config("theme_logo", CONTENT_URL."/images/sitograph/sitograph-logo-dark-ru.png", true, "*");
-    } else {
-        msv_set_config("theme_logo", CONTENT_URL."/images/sitograph/sitograph-logo-dark-en.png", true, "*");
-    }
-    msv_set_config("theme_bg", CONTENT_URL."/images/bg_full.jpg", true, "*");
-    msv_set_config("theme_cms_favicon", CONTENT_URL."/images/sitograph/cms_favicon.gif", true, "*");
 
     // add mail templates
     $header = '

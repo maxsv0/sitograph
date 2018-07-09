@@ -17,7 +17,7 @@ function Install_ThemeSitograph($module) {
     $itemStructure = array(
         "url" => "/",
         "name" => _t("structure.homepage"),
-        "template" => "custom",
+        "template" => "sitograph",
         "page_template" => "index.tpl",
         "sitemap" => 1,
         "menu" => "top",
@@ -29,7 +29,7 @@ function Install_ThemeSitograph($module) {
     $itemStructure = array(
         "url" => "/example-page/",
         "name" => _t("structure.page1"),
-        "template" => "custom",
+        "template" => "sitograph",
         "page_template" => "main.tpl",
         "sitemap" => 1,
         "menu" => "top",
@@ -42,7 +42,7 @@ function Install_ThemeSitograph($module) {
     $itemStructure = array(
         "url" => "/sitemap/",
         "name" => _t("structure.sitemap"),
-        "template" => "custom",
+        "template" => "sitograph",
         "page_template" => "sitemap.tpl",
         "sitemap" => 1,
         "menu" => "bottom",
@@ -53,7 +53,7 @@ function Install_ThemeSitograph($module) {
     $itemStructure = array(
         "url" => "/404/",
         "name" => _t("structure.404"),
-        "template" => "custom",
+        "template" => "sitograph",
         "page_template" => "404.tpl",
         "sitemap" => 0,
         "document_title" => $doc404Title,
@@ -65,7 +65,7 @@ function Install_ThemeSitograph($module) {
     $itemStructure = array(
         "url" => "/privacy-policy/",
         "name" => _t("structure.privacy_policy"),
-        "template" => "custom",
+        "template" => "sitograph",
         "page_template" => "main.tpl",
         "sitemap" => 1,
         "menu" => "bottom",
@@ -87,17 +87,26 @@ function Install_ThemeSitograph($module) {
 	);
 	msv_add_structure($itemStructure, array("lang" => "all"));
 
+    Install_ThemeSitograph_Activate($module);
+}
+
+function Install_ThemeSitograph_Activate($module) {
     // general theme options
-    msv_set_config("theme_active", "theme-sitograph", true, "*");
-    msv_set_config("theme_css_path", CONTENT_URL."/css/theme-sitograph.css", true, "*");
-    msv_set_config("theme_js_path", CONTENT_URL."/js/theme-sitograph.js", true, "*");
-    msv_set_config("theme_use_bootstrap", 1, true, "*");
-    msv_set_config("theme_use_jquery", 1, true, "*");
+    msv_set_config("theme_active", "sitograph", true, "*", _t("settings.theme_active"), "theme");
+    msv_set_config("theme_css_path", CONTENT_URL."/css/theme-sitograph.css", true, "*", _t("settings.theme_css_path"), "theme");
+    msv_set_config("theme_js_path", CONTENT_URL."/js/theme-sitograph.js", true, "*", _t("settings.theme_js_path"), "theme");
+    msv_set_config("theme_use_bootstrap", 1, true, "*", _t("settings.theme_use_bootstrap"), "theme");
+    msv_set_config("theme_use_jquery", 1, true, "*", _t("settings.theme_use_jquery"), "theme");
 
     // custom theme options
-    msv_set_config("theme_bg", "", true, "*", _t("settings.theme_bg"), "theme");
-    msv_set_config("theme_cms_favicon", "", true, "*", _t("settings.theme_cms_favicon"), "theme");
-    msv_set_config("theme_logo", "", true, "*", _t("settings.theme_logo"), "theme");
-    msv_set_config("theme_copyright_text", "2016-".date("Y")." MSV Framework", true, "*", _t("settings.theme_copyright_text"), "theme");
-    msv_set_config("theme_header_contacts", "", true, "*", _t("settings.theme_header_contacts"), "theme");
+    if (LANG === "ru" || LANG === "ua") {
+        msv_set_config("theme_logo", CONTENT_URL."/images/sitograph/sitograph-logo-dark-ru.png", true, "*");
+    } else {
+        msv_set_config("theme_logo", CONTENT_URL."/images/sitograph/sitograph-logo-dark-en.png", true, "*");
+    }
+    msv_set_config("theme_bg", CONTENT_URL."/images/bg_full.jpg", true, "*");
+    msv_set_config("theme_cms_favicon", CONTENT_URL."/images/sitograph/cms_favicon.gif", true, "*");
+
+    msv_set_config("theme_copyright_text", "2016-".date("Y")." Sitograph CMS. <a href='https://www.sitograph.com/' target='_blank'>sitograph.com</a>", true, "*");
+    msv_set_config("theme_header_contacts", "<a href='https://discord.gg/tPusyxP'>Join Discord channel</a><br>Skype: max.svistunov", true, "*");
 }

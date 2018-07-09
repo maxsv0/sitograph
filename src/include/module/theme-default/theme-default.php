@@ -1,9 +1,8 @@
 <?php
 $configList = msv_get("website.configList");
-if ($configList["theme_active"]["value"] !== "theme-default") return;
+if ($configList["theme_active"]["value"] !== "default") return;
 
 $themeConfigList = array(
-    "theme_bg" => "pic",
     "theme_logo" => "pic",
     "theme_css_path" => "str",
     "theme_js_path" => "str",
