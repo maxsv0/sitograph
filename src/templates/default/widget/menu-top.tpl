@@ -4,7 +4,7 @@
 <div class="col-lg-4 col-md-4 col-sm-5 logo-block">
 	<a href="{$home_url}">
 {if $theme_logo}
-	<img src="{$theme_logo}"/>
+	<img src="{$theme_logo}" class="img-responsive"/>
 {else}
 	<h1>{$host}</h1>
 {/if}
@@ -13,7 +13,7 @@
 
 
 
-<div class="col-lg-8 col-md-8 col-sm-7">
+<div class="col-sm-7">
 <!-- Menu navbar -->
 	<nav class="navbar navbar-default">
 	  <!-- Logo link and btn to toggle navigation -->

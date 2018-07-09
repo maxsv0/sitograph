@@ -350,11 +350,12 @@ function Get_Search_List($module)
 }
 
 function Install_Search($module) {
+    $themeName = msv_get_config("theme_active");
 
     $itemStructure = array(
         "url" => $module->baseUrl,
         "name" => "Site Search",
-        "template" => "custom",
+        "template" => $themeName,
         "page_template" => "site-search.tpl",
         "sitemap" => 1,
     );

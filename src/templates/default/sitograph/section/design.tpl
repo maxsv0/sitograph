@@ -20,36 +20,30 @@
 </div>
 </div>
 
-
 {foreach from=$admin_designs name=loop key=design_name item=info}
 <div class="row">
 
-<div class="col-sm-2">
-<img src="{CONTENT_URL}/{$info.preview}" class="img-responsive">
+<div class="col-sm-3">
+<img src="{CONTENT_URL}/{$info.preview}" class="img-thumbnail">
 </div>
-<div class="col-sm-6">
-
-<h3>{$info.title}</h3>
+<div class="col-sm-7">
+<h2>{$info.title}</h2>
 <h4>{$design_name} v.{$info.version}</h4>
-
-<p>{$info.description}</p>
-</div>
-
-
-<div class="col-sm-2">
-  <p>{$info.date}</p>
+<p>{$info.date}</p>
+  <p class="lead">{$info.description}</p>
 </div>
 
 <div class="col-sm-2">
     {if $theme_active !== $design_name}
-      <p><a href="{$lang_url}{$admin_url}?section=design&design_activate={$design_name}" class="btn btn-primary">{_t("admin.activate")}</a></p>
+      <p><a href="{$lang_url}{$admin_url}?section=design&design_activate={$design_name}" class="btn btn-primary btn-lg" onclick="if (!confirm('Are you sure you want to activate? This action couldn\'t be undone.')) return false;">{_t("admin.activate")}</a></p>
     {else}
-      <p class="text-success"><b>{_t("admin.activated")}</b></p>
+      <p class="label label-success">{_t("admin.activated")}</p>
     {/if}
 </div>
 
 
 </div>
+<br>
 {/foreach}
 
 

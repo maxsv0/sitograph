@@ -1,11 +1,13 @@
 <?php
 
 function Install_Gallery($module) {
+    $themeName = msv_get_config("theme_active");
+
     // create website structure item
     $itemStructure = array(
         "url" => $module->baseUrl,
         "name" => _t("structure.gallery"),
-        "template" => "custom",
+        "template" => $themeName,
         "page_template" => "main-gallery.tpl",
         "sitemap" => 1,
         "menu" => "top",

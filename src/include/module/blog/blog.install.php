@@ -1,11 +1,14 @@
 <?php
 
+
 function Install_Blog($module) {
+    $themeName = msv_get_config("theme_active");
+
     // create website structure item
     $itemStructure = array(
         "url" => $module->baseUrl,
         "name" => _t("structure.blog"),
-        "template" => "custom",
+        "template" => $themeName,
         "page_template" => "main-blog.tpl",
         "sitemap" => 1,
         "menu" => "top",

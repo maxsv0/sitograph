@@ -30,5 +30,7 @@
 	<file dir="module" path="msv-core/config.install.xml"/>
 	<file dir="module" path="msv-core/config.locales.xml"/>
 	<file dir="content" path="images/module_preview/msv-core.jpg"/>
+	<file dir="content" path="css/default.css"/>
+	<file dir="content" path="js/default.js"/>
 </install>
 </document>

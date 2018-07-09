@@ -159,7 +159,7 @@ if (!empty($_REQUEST["install_step"]) && empty($website->messages["error"])) {
                     "password" => $_REQUEST["admin_password"],
                     "email_verified" => 1,
                     "name" => "Admin",
-                    "access" => "dev",
+                    "access" => $_REQUEST["admin_access"],
                     "iss" => "install",
                     "access_token" => $access_token,
                 );
@@ -327,14 +327,28 @@ if ($install_step === 3) {
         foreach ($website->modules as $module) {
             if ($module === "install") continue;
 
+			$moduleEnabled = true;
+            if (strpos($module, "theme-") === 0) {
+            	//check if any theme already enabled
+				foreach ($modulesList as $mName => $item) {
+					if (strpos($mName, "theme-") === 0) {
+						$moduleEnabled = false;
+					}
+				}
+			}
+
             $objModule = msv_get("website.".$module);
             if (empty($objModule)) {
                 continue;
             }
             $lvl = $objModule->activationLevel;
 
+            $info = array(
+            	"enabled" => $moduleEnabled,
+			);
+
             if ($lvl == $i) {
-                $modulesList[$module] = array();
+                $modulesList[$module] = $info;
             }
         }
     }
@@ -357,6 +371,7 @@ if ($install_step === 3) {
     }
 
     $website->config["admin_password"] = msv_generate_password();
+    $website->config["admin_access"] = "admin";
 }
 
 // prepare initial data, step 4

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+<install>
+	<param name="name" value="theme-sitograph"/>
+	<param name="version" value="1.3.11"/>
+	<param name="date" value="06.07.2018"/>
+	<param name="installHook" value="Install_ThemeSitograph"/>
+	<param name="enableHook" value="Install_ThemeSitograph_Activate"/>
+	<param name="title" value="Theme Sitograph"/>
+	<param name="description" value="Sitograph CMS default theme"/>
+	<param name="tags" value="theme,design"/>
+	<param name="author" value="max@msvhost.com"/>
+	<param name="preview" value="images/module_preview/theme-sitograph.jpg"/>
+
+	<dependency module="msv-core" version="1.5" />
+	
+	<file dir="module" path="theme-sitograph/theme-sitograph.php"/>
+	<file dir="module" path="theme-sitograph/theme-sitograph.install.php"/>
+	<file dir="module" path="theme-sitograph/config.xml"/>
+	<file dir="module" path="theme-sitograph/config.locales.xml"/>
+	<file dir="module" path="theme-sitograph/doc/en-example-page.html"/>
+	<file dir="module" path="theme-sitograph/doc/en-privacy-policy.html"/>
+	<file dir="module" path="theme-sitograph/doc/en-terms-conditions.html"/>
+	<file dir="module" path="theme-sitograph/doc/ru-example-page.html"/>
+	<file dir="content" path="css/theme-sitograph.css"/>
+	<file dir="content" path="js/theme-sitograph.js"/>
+	<file dir="content" path="images/ico_mail.svg"/>
+	<file dir="content" path="images/ico_sitemap.svg"/>
+	<file dir="content" path="images/module_preview/theme-sitograph.jpg"/>
+	<file dir="template" path="sitograph/404.tpl"/>
+	<file dir="template" path="sitograph/sitemap.tpl"/>
+	<file dir="template" path="sitograph/main.tpl"/>
+	<file dir="template" path="sitograph/main-sideblock.tpl"/>
+	<file dir="template" path="sitograph/index.tpl"/>
+	<file dir="template" path="sitograph/widget/header.tpl"/>
+	<file dir="template" path="sitograph/widget/footer.tpl"/>
+	<file dir="template" path="sitograph/widget/messages.tpl"/>
+	<file dir="template" path="sitograph/widget/navigation.tpl"/>
+	<file dir="template" path="sitograph/widget/pagination.tpl"/>
+	<file dir="template" path="sitograph/widget/sideblock.tpl"/>
+	<file dir="template" path="sitograph/widget/menu-top.tpl"/>
+	<file dir="template" path="sitograph/widget/menu-bottom.tpl"/>
+</install>
+</document>

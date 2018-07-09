@@ -2,12 +2,13 @@
 
 function Install_Users($module)
 {
+    $themeName = msv_get_config("theme_active");
 
     msv_add_structure(
         array(
             "url" => "/user/",
             "name" => _t("structure.users.account"),
-            "template" => "custom",
+            "template" => $themeName,
             "page_template" => "user.tpl",
             "sitemap" => 1,
             "access" => "user",
@@ -24,7 +25,7 @@ function Install_Users($module)
             "url" => "/signup/",
             "name" => _t("structure.users.signup"),
             "parent_url" => "/user/",
-            "template" => "custom",
+            "template" => $themeName,
             "page_template" => "user-signup.tpl",
             "sitemap" => 1,
             "access" => "everyone",
@@ -40,7 +41,7 @@ function Install_Users($module)
             "url" => "/login/",
             "name" => _t("structure.users.login"),
             "parent_url" => "/user/",
-            "template" => "custom",
+            "template" => $themeName,
             "page_template" => "user-login.tpl",
             "sitemap" => 1,
             "access" => "everyone",
@@ -57,7 +58,7 @@ function Install_Users($module)
             "url" => "/password-reset/",
             "name" => _t("structure.users.password_reset"),
             "parent_url" => "/user/",
-            "template" => "custom",
+            "template" => $themeName,
             "page_template" => "user-password-reset.tpl",
             "sitemap" => 1,
             "access" => "everyone",
@@ -72,7 +73,7 @@ function Install_Users($module)
             "url" => "/settings/",
             "name" => _t("structure.users.settings"),
             "parent_url" => "/user/",
-            "template" => "custom",
+            "template" => $themeName,
             "page_template" => "user-settings.tpl",
             "sitemap" => 1,
             "access" => "user",

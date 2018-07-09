@@ -1,0 +1,45 @@
+.header {
+    margin-top:10px;
+}
+
+.content-block {
+    background:#fff;
+}
+
+.top-menu {
+    padding:20px 0;
+}
+
+.promo-block {
+    background:#fff;
+}
+.img-promo {
+    margin-top: -25px;
+    height:auto;
+    max-width:100%;
+    position:absolute;
+    display:inline;
+    -webkit-transition: -webkit-transform 1.0s ease-in-out;
+    transition:         transform 1.0s ease-in-out;
+}
+.footer {
+    background:#bbb;
+}
+.footer-copyright {
+    background:#aaa;
+}
+
+.navigation {
+    height: auto;
+    line-height: 40px;
+    clear: both;
+    background:#fff;
+}
+.navigation ul {
+    list-style: none;
+    margin-left: -40px;
+}
+.navigation ul li {
+    display: block;
+    float: left
+}

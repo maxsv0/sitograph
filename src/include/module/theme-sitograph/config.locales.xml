@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+<locales>
+	<locale name="en">
+		<field name="settings.theme_bg" value="Website Background Image"/>
+		<field name="settings.theme_logo" value="Logo Image"/>
+		<field name="settings.theme_cms_favicon" value="Favicon for Admin UI"/>
+		<field name="settings.theme_copyright_text" value="Сopyright text line"/>
+		<field name="settings.theme_header_contacts" value="Header contacts"/>
+
+		<field name="structure.homepage" value="{HOST}"/>
+		<field name="structure.page1" value="Example page"/>
+		<field name="structure.sitemap" value="Sitemap"/>
+		<field name="structure.404" value="Error 404"/>
+		<field name="structure.404_doc" value="Page not found"/>
+		<field name="structure.admin_homepage" value="Admin Homepage"/>
+		<field name="structure.admin_login" value="Admin Login"/>
+		<field name="structure.privacy_policy" value="Privacy Policy"/>
+		<field name="structure.terms_conditions" value="Terms and Conditions"/>
+
+		<field name="title.advertisment" value="advertisment"/>
+	</locale>
+	<locale name="ru">
+		<field name="settings.theme_bg" value="Фон сайта, картинка"/>
+		<field name="settings.theme_logo" value="Логотип, картинка"/>
+		<field name="settings.theme_cms_favicon" value="Favicon для CMS"/>
+		<field name="settings.theme_copyright_text" value="Сopyright строка"/>
+		<field name="settings.theme_header_contacts" value="Блок с контактами"/>
+
+		<field name="structure.homepage" value="Главная"/>
+		<field name="structure.page1" value="Тестовая страница"/>
+		<field name="structure.sitemap" value="Карта сайта"/>
+		<field name="structure.404" value="Ошибка 404"/>
+		<field name="structure.404_doc" value="Страница не найдена"/>
+		<field name="structure.admin_homepage" value="Панель управления"/>
+		<field name="structure.admin_login" value="Вход в Панель управления"/>
+		<field name="structure.privacy_policy" value="Privacy Policy"/>
+		<field name="structure.terms_conditions" value="Terms and Conditions"/>
+
+		<field name="title.advertisment" value="реклама"/>
+	</locale>
+	<locale name="ua">
+		<field name="settings.theme_bg" value="Фон сайта, картинка"/>
+		<field name="settings.theme_logo" value="Логотип, картинка"/>
+		<field name="settings.theme_cms_favicon" value="Favicon для Admin UI"/>
+		<field name="settings.theme_copyright_text" value="Сopyright строка"/>
+		<field name="settings.theme_header_contacts" value="Блок з контактами"/>
+
+		<field name="structure.homepage" value="Головна"/>
+		<field name="structure.page1" value="Тестова сторінка"/>
+		<field name="structure.sitemap" value="Мапа сайту"/>
+		<field name="structure.404" value="Помилка 404"/>
+		<field name="structure.404_doc" value="Сторінка не знайдена"/>
+		<field name="structure.admin_homepage" value="Панель управління"/>
+		<field name="structure.admin_login" value="Вхід в Панель управління"/>
+		<field name="structure.privacy_policy" value="Privacy Policy"/>
+		<field name="structure.terms_conditions" value="Terms and Conditions"/>
+
+		<field name="title.advertisment" value="реклама"/>
+	</locale>
+</locales>
+</document>

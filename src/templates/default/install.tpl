@@ -88,7 +88,7 @@
 							<p class="well well-sm" style="background: #fff;">
                                 {foreach from=$modulesList key=moduleName item=moduleInfo}
 							<span style="margin-right:10px;white-space: nowrap;">
-								<input type="checkbox" name="modules_local[]" checked value="{$moduleName}">&nbsp;{$moduleName}
+								<input type="checkbox" name="modules_local[]" {if $moduleInfo.enabled}checked{/if} value="{$moduleName}">&nbsp;{$moduleName}
 							</span>
                                 {/foreach}
 							</p>
@@ -143,7 +143,12 @@
 							</div>
 						</div>
 
-
+						<div class="form-group">
+							<label for="iadmin_access" class="col-sm-5 control-label">Access</label>
+							<div class="col-sm-7">
+								<input type="text" class="form-control" id="iadmin_access" name="admin_access" value="{$admin_access}">
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -202,7 +207,7 @@
 </div>
 
 <h4 style="color:#bebebe;text-align:center;">
-<a href='https://www.sitograph.com/' target="_blank">Sitograph v1.0</a>
+<a href='https://www.sitograph.com/' target="_blank">Sitograph v1.2</a>
 using
 <a href='https://github.com/maxsv0/msv' target="_blank">MSV Framework 1.2</a></h4>
 
