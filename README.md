@@ -1,4 +1,4 @@
-<p align="center">
+ <p align="center">
 <img src="https://github.com/maxsv0/sitograph/blob/master/src/content/images/sitograph/sitograph-logo-dark-en.png" width="265">
 </p>
 
@@ -40,6 +40,7 @@ Sitograph is open source Content Management System (CMS) that enables you to bui
 - http://yuvelirika.ua/
 - https://arsis-ua.com/
 - https://autoexpert.kiev.ua/
+- http://veteran.mvs.gov.ua/
 
 ## Content Management System features overview
 We believe website development must be easy and enjoyable. 
