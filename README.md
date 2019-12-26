@@ -1,10 +1,11 @@
 <p align="center">
-<img src="https://github.com/maxsv0/sitograph/blob/master/src/content/images/sitograph/sitograph-logo-dark-en.png" width="265"></p>
+<img src="https://github.com/maxsv0/sitograph/blob/master/src/content/images/sitograph/sitograph-logo-dark-en.png" width="265">
 </p>
 
 ## Table of Contents
 
 - [About Sitograph](#about-sitograph)
+  - [Example websites running under Sitograph CMS](#example-websites-running-under-sitograph-cms)
   - [Content Management System features overview](#content-management-system-features-overview)
   - [Admin UI homepage](#admin-ui-homepage)
 - [Install Sitograph CMS](#install-sitograph-cms)
@@ -22,6 +23,22 @@
 
 # About Sitograph
 Sitograph is open source Content Management System (CMS) that enables you to build websites and efficient online applications.
+
+## Example websites running under Sitograph CMS
+- http://ung.in.ua/
+- http://infrastructure.kiev.ua/en/
+- https://cloud-10.bitp.kiev.ua/en/
+- https://cluster.bitp.kiev.ua/
+- http://www.atlastour.ua/en/
+- https://kicapastry.com/en/
+- https://azura.ua/en/
+- http://favorite-fishing.com/en/
+- https://mcg.net.ua/
+- http://advocate-didenko.com/
+- http://atlastravel.az/
+- http://coca-cola-csr-report.com.ua/
+- http://yuvelirika.ua/
+- https://arsis-ua.com/
 
 ## Content Management System features overview
 We believe website development must be easy and enjoyable. 
