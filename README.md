@@ -39,6 +39,7 @@ Sitograph is open source Content Management System (CMS) that enables you to bui
 - http://coca-cola-csr-report.com.ua/
 - http://yuvelirika.ua/
 - https://arsis-ua.com/
+- https://autoexpert.kiev.ua/
 
 ## Content Management System features overview
 We believe website development must be easy and enjoyable. 
